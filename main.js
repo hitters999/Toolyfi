@@ -43,3 +43,14 @@ function filterCat(cat, btn) {
 }
 
 document.addEventListener('DOMContentLoaded', initFilter);
+
+// ===== NAV MOBILE MENU =====
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.querySelector('.nav-mobile-btn');
+  const links = document.querySelector('.nav-links');
+  if (btn && links) {
+    btn.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+  }
+});
