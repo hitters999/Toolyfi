@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Word Counter – Count Words Characters Online Free | Toolyfi</title>
+<meta name="description" content="Free online word counter. Count words, characters, sentences, paragraphs and reading time instantly. No signup required."/>
+<meta name="keywords" content="word counter, character counter, word count online, free word counter, count words online"/>
+<link rel="canonical" href="https://toolyfi.com/tools/word-counter.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Word Counter</div>
+  <div class="tool-header"><h1>✍️ Word Counter</h1><p>Count words, characters, sentences, paragraphs and estimate reading time — all in real time as you type.</p></div>
+  <div class="tool-box">
+    <div class="form-group">
+      <label class="form-label">Paste or Type Your Text</label>
+      <textarea class="form-textarea" id="wcText" style="min-height:180px" placeholder="Start typing or paste your text here..." oninput="count()"></textarea>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="num" id="wc">0</div><div class="lbl">Words</div></div>
+      <div class="stat-card"><div class="num" id="cc">0</div><div class="lbl">Characters</div></div>
+      <div class="stat-card"><div class="num" id="ccns">0</div><div class="lbl">Chars (no spaces)</div></div>
+      <div class="stat-card"><div class="num" id="sc">0</div><div class="lbl">Sentences</div></div>
+      <div class="stat-card"><div class="num" id="pc">0</div><div class="lbl">Paragraphs</div></div>
+      <div class="stat-card"><div class="num" id="rt">0</div><div class="lbl">Min Read</div></div>
+    </div>
+    <button class="btn-primary" style="margin-top:16px" onclick="document.getElementById('wcText').value='';count()">🗑️ Clear Text</button>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>What is a Word Counter?</h2>
+  <p>A <strong>word counter</strong> is a free online tool that counts the number of words, characters, sentences and paragraphs in any piece of text. It also calculates estimated reading time, which is useful for bloggers, students, and content writers.</p>
+  <h2>Who Uses Word Counter?</h2>
+  <ul>
+    <li><strong>Students</strong> — checking essay word limits for assignments</li>
+    <li><strong>Bloggers</strong> — ensuring articles meet minimum SEO word count</li>
+    <li><strong>Writers</strong> — tracking progress on novels or scripts</li>
+    <li><strong>Social media managers</strong> — staying within platform character limits</li>
+  </ul>
+  <h2>Count Words Online — Fast and Free</h2>
+  <p>Our <strong>online word counter</strong> updates in real time as you type or paste text. No button clicking, no waiting. It is the fastest and most accurate free word counter available.</p>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="case-converter.html" class="related-card">🔤 Case Converter</a><a href="number-to-words.html" class="related-card">🔢 Number to Words</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+function count() {
+  const t = document.getElementById('wcText').value;
+  document.getElementById('wc').textContent = t.trim() === '' ? 0 : t.trim().split(/\s+/).length;
+  document.getElementById('cc').textContent = t.length;
+  document.getElementById('ccns').textContent = t.replace(/\s/g,'').length;
+  document.getElementById('sc').textContent = (t.match(/[.!?]+/g)||[]).length;
+  document.getElementById('pc').textContent = t.split(/\n\n+/).filter(p=>p.trim()).length || (t.trim()?1:0);
+  const words = t.trim()===''?0:t.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.ceil(words/200);
+}
+</script>
+</body>
+</html>

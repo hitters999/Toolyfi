@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Age Calculator – Calculate Your Exact Age Online Free | Toolyfi</title>
+<meta name="description" content="Free age calculator online. Calculate your exact age in years, months, days, hours and minutes from your date of birth instantly. No signup required."/>
+<meta name="keywords" content="age calculator, calculate age online, age calculator by date of birth, exact age calculator, free age calculator"/>
+<link rel="canonical" href="https://toolyfi.com/tools/age-calculator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">⚡ Toolyfi</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#calc" class="active">Calculators</a></li>
+  </ul>
+  <button class="nav-mobile-btn">☰</button>
+</nav>
+
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → <a href="../index.html">Calculators</a> → Age Calculator</div>
+
+  <div class="tool-header">
+    <h1>🎂 Age Calculator</h1>
+    <p>Calculate your exact age in years, months, days, hours and minutes. Just enter your date of birth and get instant results.</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-input" id="dob"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Calculate Age On</label>
+        <input type="date" class="form-input" id="target"/>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="calcAge()">🎂 Calculate My Age</button>
+
+    <div id="result" style="display:none;margin-top:22px">
+      <div style="background:rgba(0,245,160,0.06);border:1.5px solid rgba(0,245,160,0.2);border-radius:14px;padding:24px;text-align:center;margin-bottom:16px">
+        <div style="font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--c4)" id="mainAge"></div>
+        <div style="color:var(--muted);margin-top:6px" id="nextBday"></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="num" id="totalDays">0</div><div class="lbl">Total Days</div></div>
+        <div class="stat-card"><div class="num" id="totalHours">0</div><div class="lbl">Total Hours</div></div>
+        <div class="stat-card"><div class="num" id="totalMins">0</div><div class="lbl">Total Minutes</div></div>
+        <div class="stat-card"><div class="num" id="totalWeeks">0</div><div class="lbl">Total Weeks</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEO ARTICLE -->
+<div class="seo-article">
+  <h2>What is an Age Calculator?</h2>
+  <p>An <strong>age calculator</strong> is a free online tool that calculates your exact age from your date of birth. Instead of manually counting years and months, this tool gives you instant, precise results including total days, weeks, hours and minutes lived.</p>
+
+  <h2>How to Use This Age Calculator?</h2>
+  <p>Using our free age calculator is very simple. Enter your date of birth in the first field. The second field automatically sets today's date, but you can change it to calculate your age on any specific date. Click the Calculate button and your exact age appears instantly.</p>
+
+  <h2>Why Use an Online Age Calculator?</h2>
+  <p>Manually calculating age involves dealing with leap years, different month lengths, and complex date arithmetic. Our <strong>age calculator online</strong> handles all of this automatically and gives you precise results in seconds.</p>
+
+  <h3>Common Uses</h3>
+  <ul>
+    <li>Filling out government forms and applications that require exact age</li>
+    <li>Checking age eligibility for jobs, exams, or programs</li>
+    <li>Finding out how many days until your next birthday</li>
+    <li>Calculating age for retirement or pension planning</li>
+    <li>Fun curiosity — how many hours have you been alive?</li>
+  </ul>
+
+  <h2>Calculate Age by Date of Birth — Accurate Every Time</h2>
+  <p>Our <strong>age calculator by date of birth</strong> accounts for leap years and exact calendar differences, so you always get the most accurate result. Whether you need your age for a visa application or just want to know your exact age in days, this tool has you covered — completely free.</p>
+</div>
+
+<!-- RELATED TOOLS -->
+<div class="related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="bmi-calculator.html" class="related-card">⚖️ BMI Calculator</a>
+    <a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a>
+    <a href="percentage-calculator.html" class="related-card">💯 Percentage Calculator</a>
+    <a href="scientific-calculator.html" class="related-card">🧮 Scientific Calculator</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact</a>
+  </div>
+  <p>© 2026 Toolyfi.com — Free Online Tools</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+// Set today's date
+document.getElementById('target').value = new Date().toISOString().split('T')[0];
+
+function calcAge() {
+  const dob = new Date(document.getElementById('dob').value);
+  const target = new Date(document.getElementById('target').value);
+  if (!document.getElementById('dob').value) { showToast('⚠️ Please enter your date of birth'); return; }
+
+  let y = target.getFullYear() - dob.getFullYear();
+  let m = target.getMonth() - dob.getMonth();
+  let d = target.getDate() - dob.getDate();
+  if (d < 0) { m--; d += new Date(target.getFullYear(), target.getMonth(), 0).getDate(); }
+  if (m < 0) { y--; m += 12; }
+
+  const diffMs = target - dob;
+  const totalDays = Math.floor(diffMs / 86400000);
+  const totalWeeks = Math.floor(totalDays / 7);
+  const totalHours = totalDays * 24;
+  const totalMins = totalHours * 60;
+
+  // Next birthday
+  const nextBday = new Date(target.getFullYear(), dob.getMonth(), dob.getDate());
+  if (nextBday <= target) nextBday.setFullYear(target.getFullYear() + 1);
+  const daysLeft = Math.ceil((nextBday - target) / 86400000);
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('mainAge').textContent = `${y} Years, ${m} Months, ${d} Days`;
+  document.getElementById('nextBday').textContent = `🎉 Next birthday in ${daysLeft} days`;
+  document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+  document.getElementById('totalHours').textContent = totalHours.toLocaleString();
+  document.getElementById('totalMins').textContent = totalMins.toLocaleString();
+  document.getElementById('totalWeeks').textContent = totalWeeks.toLocaleString();
+}
+</script>
+</body>
+</html>

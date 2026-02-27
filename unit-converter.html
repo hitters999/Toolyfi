@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unit Converter – Convert Length Weight Temperature Speed Online | Toolyfi</title>
+<meta name="description" content="Free online unit converter. Convert length, weight, temperature, and speed units instantly. Accurate results, no signup needed."/>
+<link rel="canonical" href="https://toolyfi.com/tools/unit-converter.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Unit Converter</div>
+  <div class="tool-header"><h1>📏 Unit Converter</h1><p>Convert between different units of length, weight, temperature, and speed accurately and instantly.</p></div>
+  <div class="tool-box">
+    <div class="form-group"><label class="form-label">Category</label>
+      <select class="form-input" id="cat" onchange="loadUnits()">
+        <option value="length">Length</option>
+        <option value="weight">Weight</option>
+        <option value="temp">Temperature</option>
+        <option value="speed">Speed</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">From</label><select class="form-input" id="ufrom"></select></div>
+      <div class="form-group"><label class="form-label">To</label><select class="form-input" id="uto"></select></div>
+    </div>
+    <div class="form-group"><label class="form-label">Value</label><input type="number" class="form-input" id="uval" placeholder="Enter value" oninput="conv()"/></div>
+    <div class="result-area" id="ures" style="font-size:1.3rem;font-weight:700;text-align:center"></div>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Free Online Unit Converter</h2>
+  <p>Our <strong>unit converter</strong> supports all common unit conversions including length (km to miles, meters to feet), weight (kg to pounds, grams to ounces), temperature (Celsius to Fahrenheit), and speed (km/h to mph). All conversions are instant and highly accurate.</p>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="scientific-calculator.html" class="related-card">🧮 Scientific Calculator</a><a href="number-to-words.html" class="related-card">🔢 Number to Words</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+const ud={length:{u:['Meter','Kilometer','Mile','Yard','Foot','Inch','Centimeter','Millimeter'],f:[1,1000,1609.34,0.9144,0.3048,0.0254,0.01,0.001]},weight:{u:['Kilogram','Gram','Pound','Ounce','Ton'],f:[1,0.001,0.453592,0.0283495,1000]},temp:{u:['Celsius','Fahrenheit','Kelvin']},speed:{u:['km/h','mph','m/s','knot'],f:[1,1.60934,3.6,1.852]}};
+function loadUnits(){
+  const cat=document.getElementById('cat').value;
+  const us=ud[cat].u;
+  ['ufrom','uto'].forEach((id,i)=>{document.getElementById(id).innerHTML=us.map((u,j)=>`<option value="${j}"${i===1&&j===1?' selected':''}>${u}</option>`).join('');});
+  conv();
+}
+function conv(){
+  const cat=document.getElementById('cat').value,val=+document.getElementById('uval').value;
+  const fi=+document.getElementById('ufrom').value,ti=+document.getElementById('uto').value;
+  let res;
+  if(cat==='temp'){const c=fi===0?val:fi===1?(val-32)*5/9:val-273.15;res=ti===0?c:ti===1?c*9/5+32:c+273.15;}
+  else{const f=ud[cat].f;res=val*f[fi]/f[ti];}
+  const us=ud[cat].u;
+  document.getElementById('ures').textContent=val?`${val} ${us[fi]} = ${parseFloat(res.toFixed(6))} ${us[ti]}`:'Enter a value';
+}
+loadUnits();
+</script>
+</body>
+</html>

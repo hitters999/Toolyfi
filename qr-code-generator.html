@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QR Code Generator – Generate QR Code Online Free | Toolyfi</title>
+<meta name="description" content="Free QR code generator online. Generate QR codes for URLs, text, contact info. Download as PNG image instantly. No signup needed."/>
+<link rel="canonical" href="https://toolyfi.com/tools/qr-code-generator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → QR Code Generator</div>
+  <div class="tool-header"><h1>📱 QR Code Generator</h1><p>Generate QR codes for any URL, text, or information. Download as a high-quality PNG image.</p></div>
+  <div class="tool-box">
+    <div class="form-group"><label class="form-label">Enter URL or Text</label><input type="text" class="form-input" id="qrIn" placeholder="https://toolyfi.com" oninput="makeQR()"/></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Size</label>
+        <select class="form-input" id="qrSz" onchange="makeQR()">
+          <option value="200">Small (200×200)</option>
+          <option value="300" selected>Medium (300×300)</option>
+          <option value="400">Large (400×400)</option>
+        </select>
+      </div>
+    </div>
+    <div id="qrOut" style="text-align:center;margin:20px 0;min-height:100px"></div>
+    <button class="btn-primary" onclick="dlQR()">⬇️ Download QR Code</button>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>What is a QR Code Generator?</h2>
+  <p>A <strong>QR code generator</strong> creates scannable QR codes that link to any URL or contain any text. QR codes are used everywhere — on business cards, restaurant menus, product packaging, and marketing materials.</p>
+  <h2>How to Generate a QR Code?</h2>
+  <p>Simply enter your URL or text in the field above. Your QR code generates instantly as you type. Choose your preferred size and download it as a PNG image, ready to use anywhere.</p>
+  <h2>Common Uses of QR Codes</h2>
+  <ul>
+    <li>Restaurant menus and ordering systems</li>
+    <li>Business card contact information</li>
+    <li>Product packaging with website links</li>
+    <li>Event tickets and invitations</li>
+    <li>Wi-Fi network sharing</li>
+    <li>Payment links</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="password-generator.html" class="related-card">🔐 Password Generator</a><a href="color-picker.html" class="related-card">🎨 Color Picker</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="../assets/main.js"></script>
+<script>
+let qrObj=null;
+function makeQR(){
+  const val=document.getElementById('qrIn').value.trim();
+  const sz=+document.getElementById('qrSz').value;
+  const box=document.getElementById('qrOut');
+  box.innerHTML='';if(!val)return;
+  qrObj=new QRCode(box,{text:val,width:sz,height:sz,colorDark:'#ffffff',colorLight:'#10101a'});
+}
+function dlQR(){
+  const c=document.querySelector('#qrOut canvas');
+  if(!c){showToast('⚠️ Generate a QR code first');return;}
+  const a=document.createElement('a');a.download='qr-toolyfi.png';a.href=c.toDataURL();a.click();
+  showToast('✅ QR Code downloaded!');
+}
+</script>
+</body>
+</html>
