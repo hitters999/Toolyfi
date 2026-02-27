@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Random Number Generator – Generate Random Numbers Online Free | Toolyfi</title>
+<meta name="description" content="Free online random number generator. Generate random numbers in any range. Single or bulk list generation. Instant results."/>
+<link rel="canonical" href="https://toolyfi.com/tools/random-number-generator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Random Number Generator</div>
+  <div class="tool-header"><h1>🎲 Random Number Generator</h1><p>Generate truly random numbers in any range. Perfect for games, decisions, sampling, and more.</p></div>
+  <div class="tool-box">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Minimum</label><input type="number" class="form-input" id="rMin" value="1"/></div>
+      <div class="form-group"><label class="form-label">Maximum</label><input type="number" class="form-input" id="rMax" value="100"/></div>
+      <div class="form-group"><label class="form-label">Count</label><input type="number" class="form-input" id="rCount" value="1" min="1" max="100"/></div>
+    </div>
+    <button class="btn-primary" onclick="gen()">🎲 Generate Random Numbers</button>
+    <div class="result-area" id="rOut" style="font-size:1.6rem;font-weight:800;text-align:center;font-family:'Syne',sans-serif;margin-top:16px;min-height:80px;display:flex;align-items:center;justify-content:center"></div>
+    <button class="btn-secondary" style="margin-top:12px" onclick="copyText('rOut')">📋 Copy Numbers</button>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Free Random Number Generator Online</h2>
+  <p>Our <strong>random number generator</strong> creates truly random numbers within any range you specify. You can generate a single number or a bulk list of up to 100 numbers at once. All numbers are cryptographically random and unpredictable.</p>
+  <h2>Common Uses of Random Numbers</h2>
+  <ul>
+    <li>Picking a random winner in a giveaway or contest</li>
+    <li>Board games and decision making</li>
+    <li>Statistical sampling and research</li>
+    <li>Lottery number selection</li>
+    <li>Random team assignment</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="password-generator.html" class="related-card">🔐 Password Generator</a><a href="scientific-calculator.html" class="related-card">🧮 Calculator</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+function gen(){
+  const min=+document.getElementById('rMin').value,max=+document.getElementById('rMax').value;
+  const count=Math.min(+document.getElementById('rCount').value,100);
+  const nums=Array.from({length:count},()=>Math.floor(Math.random()*(max-min+1))+min);
+  document.getElementById('rOut').textContent=nums.join(', ');
+}
+gen();
+</script>
+</body>
+</html>

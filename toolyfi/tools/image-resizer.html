@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Image Resizer – Resize Image Online Free | Toolyfi</title>
+<meta name="description" content="Free online image resizer. Resize JPG, PNG, WebP images to any dimension instantly. No signup, no watermark, no software needed."/>
+<meta name="keywords" content="image resizer, resize image online, free image resizer, resize image, online image resizer"/>
+<link rel="canonical" href="https://toolyfi.com/tools/image-resizer.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Image Resizer</div>
+  <div class="tool-header"><h1>🖼️ Image Resizer</h1><p>Resize any image to custom dimensions online for free. No software, no watermark, instant download.</p></div>
+  <div class="tool-box">
+    <div class="upload-zone" onclick="document.getElementById('imgFile').click()">
+      <input type="file" id="imgFile" accept="image/*" onchange="loadImg(event)"/>
+      <div style="font-size:2.5rem">📁</div>
+      <p>Click or drag & drop your image here</p>
+      <p>JPG, PNG, WebP, GIF supported</p>
+    </div>
+    <img id="imgPreview" class="preview-img"/>
+    <div id="imgInfo" style="color:var(--muted);font-size:0.9rem;margin:10px 0"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Width (px)</label><input type="number" class="form-input" id="rW" value="1280" oninput="updateRatio('w')"/></div>
+      <div class="form-group"><label class="form-label">Height (px)</label><input type="number" class="form-input" id="rH" value="720" oninput="updateRatio('h')"/></div>
+    </div>
+    <div class="check-row"><input type="checkbox" id="keepRatio" checked/><label>Keep aspect ratio</label></div>
+    <div style="margin:10px 0"><label class="form-label">Quality</label>
+      <div class="range-group"><input type="range" min="10" max="100" value="92" id="quality"/><span class="range-val" id="qv">92%</span></div>
+    </div>
+    <button class="btn-primary" onclick="resizeAndDownload()">⬇️ Resize & Download</button>
+    <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px" id="presetBtns">
+      <button class="btn-secondary" onclick="setPreset(1280,720)">YouTube 1280×720</button>
+      <button class="btn-secondary" onclick="setPreset(500,500)">WhatsApp DP 500×500</button>
+      <button class="btn-secondary" onclick="setPreset(1080,1080)">Instagram 1080×1080</button>
+      <button class="btn-secondary" onclick="setPreset(820,312)">Facebook Cover</button>
+    </div>
+    <canvas id="canvas" style="display:none"></canvas>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>What is an Image Resizer?</h2>
+  <p>An <strong>image resizer</strong> is a free online tool that lets you change the width and height of any image. Whether you need to resize image online for social media, a website, or an email, this tool makes it fast and easy with no software installation needed.</p>
+  <h2>How to Resize Image Online?</h2>
+  <p>Upload your image by clicking the upload area or dragging it in. Enter your desired width and height in pixels. Use our presets for common sizes like YouTube thumbnails or WhatsApp profile pictures. Click Download and your resized image saves instantly.</p>
+  <h2>Common Image Sizes</h2>
+  <ul>
+    <li>YouTube Thumbnail: 1280 × 720 pixels</li>
+    <li>WhatsApp DP: 500 × 500 pixels</li>
+    <li>Instagram Post: 1080 × 1080 pixels</li>
+    <li>Facebook Cover: 820 × 312 pixels</li>
+    <li>LinkedIn Banner: 1584 × 396 pixels</li>
+    <li>Resume Photo: 300 × 300 pixels</li>
+  </ul>
+  <h2>Free Image Resizer — No Watermark</h2>
+  <p>Unlike many online tools, our <strong>free image resizer</strong> adds no watermarks to your images. You get clean, professional results every time, completely free.</p>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="image-compressor.html" class="related-card">📦 Image Compressor</a><a href="color-picker.html" class="related-card">🎨 Color Picker</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+let origW=0,origH=0,imgFile=null;
+document.getElementById('quality').oninput=function(){document.getElementById('qv').textContent=this.value+'%';};
+function loadImg(e){
+  imgFile=e.target.files[0];if(!imgFile)return;
+  const url=URL.createObjectURL(imgFile);
+  const img=document.getElementById('imgPreview');
+  img.src=url;img.style.display='block';
+  const i=new Image();i.onload=()=>{
+    origW=i.width;origH=i.height;
+    document.getElementById('rW').value=i.width;
+    document.getElementById('rH').value=i.height;
+    document.getElementById('imgInfo').textContent=`Original: ${i.width} × ${i.height}px | ${(imgFile.size/1024).toFixed(0)} KB`;
+  };i.src=url;
+}
+function updateRatio(changed){
+  if(!document.getElementById('keepRatio').checked||!origW)return;
+  if(changed==='w'){const w=+document.getElementById('rW').value;document.getElementById('rH').value=Math.round(w*origH/origW);}
+  else{const h=+document.getElementById('rH').value;document.getElementById('rW').value=Math.round(h*origW/origH);}
+}
+function setPreset(w,h){document.getElementById('rW').value=w;document.getElementById('rH').value=h;}
+function resizeAndDownload(){
+  if(!imgFile){showToast('⚠️ Please upload an image first');return;}
+  const w=+document.getElementById('rW').value,h=+document.getElementById('rH').value;
+  const q=+document.getElementById('quality').value/100;
+  const c=document.getElementById('canvas');c.width=w;c.height=h;
+  const img=new Image();img.onload=()=>{
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    const a=document.createElement('a');a.download='resized-toolyfi.jpg';
+    a.href=c.toDataURL('image/jpeg',q);a.click();
+    showToast('✅ Image downloaded!');
+  };img.src=URL.createObjectURL(imgFile);
+}
+</script>
+</body>
+</html>

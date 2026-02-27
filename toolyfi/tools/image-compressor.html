@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Image Compressor – Compress Images Online Free No Watermark | Toolyfi</title>
+<meta name="description" content="Free online image compressor. Reduce JPG PNG image file size without losing quality. No watermark, no signup, instant download."/>
+<link rel="canonical" href="https://toolyfi.com/tools/image-compressor.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Image Compressor</div>
+  <div class="tool-header"><h1>📦 Image Compressor</h1><p>Reduce image file size without losing quality. Fast, free, no watermark, instant download.</p></div>
+  <div class="tool-box">
+    <div class="upload-zone" onclick="document.getElementById('cFile').click()">
+      <input type="file" id="cFile" accept="image/*" onchange="loadComp(event)"/>
+      <div style="font-size:2.5rem">📁</div>
+      <p>Click or drag & drop your image</p>
+    </div>
+    <img id="cPrev" class="preview-img"/>
+    <div id="cInfo" style="color:var(--muted);font-size:0.9rem;margin:10px 0"></div>
+    <div class="form-group" style="margin-top:14px">
+      <label class="form-label">Quality: <span id="qLbl">80</span>%</label>
+      <div class="range-group"><input type="range" min="10" max="100" value="80" id="cQ" oninput="document.getElementById('qLbl').textContent=this.value"/></div>
+    </div>
+    <div id="cResult" style="color:var(--c4);font-weight:600;margin:10px 0"></div>
+    <button class="btn-primary" onclick="compressImg()">📦 Compress & Download</button>
+    <canvas id="cCanvas" style="display:none"></canvas>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Free Image Compressor Online</h2>
+  <p>Large image files slow down websites, fail to upload on forms, and take too long to send via email. Our free <strong>image compressor</strong> reduces file size significantly while maintaining visual quality. No software, no watermark, completely free.</p>
+  <h2>When Should You Compress Images?</h2>
+  <ul>
+    <li>Before uploading to a website or blog for faster page loading</li>
+    <li>When email attachments are too large to send</li>
+    <li>Before uploading to government forms with file size limits</li>
+    <li>To save storage space on your phone or computer</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="image-resizer.html" class="related-card">🖼️ Image Resizer</a><a href="color-picker.html" class="related-card">🎨 Color Picker</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+let cFile=null;
+function loadComp(e){cFile=e.target.files[0];if(!cFile)return;document.getElementById('cPrev').src=URL.createObjectURL(cFile);document.getElementById('cPrev').style.display='block';document.getElementById('cInfo').textContent=`Original: ${(cFile.size/1024).toFixed(1)} KB`;}
+function compressImg(){
+  if(!cFile){showToast('⚠️ Upload an image first');return;}
+  const q=+document.getElementById('cQ').value/100;
+  const img=new Image();img.onload=()=>{
+    const c=document.getElementById('cCanvas');c.width=img.width;c.height=img.height;
+    c.getContext('2d').drawImage(img,0,0);
+    c.toBlob(blob=>{
+      const saved=((1-blob.size/cFile.size)*100).toFixed(0);
+      document.getElementById('cResult').textContent=`✅ ${(cFile.size/1024).toFixed(1)} KB → ${(blob.size/1024).toFixed(1)} KB (${saved}% saved)`;
+      const a=document.createElement('a');a.download='compressed-toolyfi.jpg';a.href=URL.createObjectURL(blob);a.click();
+      showToast('✅ Downloaded!');
+    },'image/jpeg',q);
+  };img.src=URL.createObjectURL(cFile);
+}
+</script>
+</body>
+</html>

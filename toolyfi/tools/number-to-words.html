@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Number to Words Converter – Convert Numbers to English Words Free | Toolyfi</title>
+<meta name="description" content="Free number to words converter. Convert any number into written English words instantly. Useful for cheques, invoices and documents."/>
+<link rel="canonical" href="https://toolyfi.com/tools/number-to-words.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Number to Words</div>
+  <div class="tool-header"><h1>🔢 Number to Words Converter</h1><p>Convert any number into written English words instantly. Perfect for cheques, invoices and legal documents.</p></div>
+  <div class="tool-box">
+    <div class="form-group"><label class="form-label">Enter Number</label><input type="number" class="form-input" id="nIn" placeholder="e.g. 125000" oninput="convert()"/></div>
+    <div class="result-label" style="margin-top:16px">In Words</div>
+    <div class="result-area" id="nOut" style="font-size:1.15rem;line-height:1.7"></div>
+    <button class="btn-secondary" style="margin-top:12px" onclick="copyText('nOut')">📋 Copy Result</button>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Number to Words Converter Online</h2>
+  <p>Our <strong>number to words</strong> converter instantly translates any numeric value into its English word equivalent. This is especially useful when writing cheques, creating invoices, filling legal documents, or any situation where numbers must be written in words.</p>
+  <h2>Common Uses</h2>
+  <ul>
+    <li>Writing amounts on cheques in words</li>
+    <li>Creating professional invoices</li>
+    <li>Legal and financial documents</li>
+    <li>Educational purposes for learning number names</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="word-counter.html" class="related-card">✍️ Word Counter</a><a href="unit-converter.html" class="related-card">📏 Unit Converter</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+const ones=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+function toW(n){
+  if(n===0)return'Zero';if(n<0)return'Negative '+toW(-n);
+  if(n<20)return ones[n];if(n<100)return tens[Math.floor(n/10)]+(n%10?' '+ones[n%10]:'');
+  if(n<1000)return ones[Math.floor(n/100)]+' Hundred'+(n%100?' '+toW(n%100):'');
+  if(n<1e6)return toW(Math.floor(n/1000))+' Thousand'+(n%1000?' '+toW(n%1000):'');
+  if(n<1e9)return toW(Math.floor(n/1e6))+' Million'+(n%1e6?' '+toW(n%1e6):'');
+  return toW(Math.floor(n/1e9))+' Billion'+(n%1e9?' '+toW(n%1e9):'');
+}
+function convert(){const v=document.getElementById('nIn').value;document.getElementById('nOut').textContent=v===''?'':isNaN(+v)?'Invalid number':toW(+v);}
+</script>
+</body>
+</html>

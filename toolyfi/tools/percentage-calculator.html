@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Percentage Calculator – Calculate Percentage Online Free | Toolyfi</title>
+<meta name="description" content="Free percentage calculator online. Find what percent of a number is, percentage change, and more. Instant results, no signup."/>
+<link rel="canonical" href="https://toolyfi.com/tools/percentage-calculator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Percentage Calculator</div>
+  <div class="tool-header"><h1>💯 Percentage Calculator</h1><p>Calculate percentages quickly and accurately. Three different percentage calculations in one tool.</p></div>
+  <div class="tool-box">
+    <div style="margin-bottom:28px">
+      <label class="form-label" style="font-size:1rem;text-transform:none;letter-spacing:0;color:var(--text);margin-bottom:14px;display:block">📌 What is X% of Y?</label>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Percentage (%)</label><input type="number" class="form-input" id="p1x" placeholder="25"/></div>
+        <div class="form-group"><label class="form-label">Of Number</label><input type="number" class="form-input" id="p1y" placeholder="200"/></div>
+      </div>
+      <button class="btn-primary" onclick="calc1()">Calculate</button>
+      <div class="result-area" id="r1" style="margin-top:12px"></div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:28px;margin-bottom:28px">
+      <label class="form-label" style="font-size:1rem;text-transform:none;letter-spacing:0;color:var(--text);margin-bottom:14px;display:block">📌 X is what % of Y?</label>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Value (X)</label><input type="number" class="form-input" id="p2x" placeholder="50"/></div>
+        <div class="form-group"><label class="form-label">Total (Y)</label><input type="number" class="form-input" id="p2y" placeholder="200"/></div>
+      </div>
+      <button class="btn-primary" onclick="calc2()">Calculate</button>
+      <div class="result-area" id="r2" style="margin-top:12px"></div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:28px">
+      <label class="form-label" style="font-size:1rem;text-transform:none;letter-spacing:0;color:var(--text);margin-bottom:14px;display:block">📌 Percentage Change (A → B)</label>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">From (A)</label><input type="number" class="form-input" id="p3a" placeholder="100"/></div>
+        <div class="form-group"><label class="form-label">To (B)</label><input type="number" class="form-input" id="p3b" placeholder="150"/></div>
+      </div>
+      <button class="btn-primary" onclick="calc3()">Calculate Change</button>
+      <div class="result-area" id="r3" style="margin-top:12px"></div>
+    </div>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Free Percentage Calculator Online</h2>
+  <p>Our <strong>percentage calculator</strong> handles three common percentage problems in one place. Whether you need to find what percentage of a number something is, calculate a percentage change, or find the original value from a percentage, this free tool does it instantly.</p>
+  <h2>Common Percentage Uses</h2>
+  <ul>
+    <li>Calculating discount amounts while shopping</li>
+    <li>Finding exam scores and grades</li>
+    <li>Calculating tax amounts</li>
+    <li>Tracking profit and loss percentages</li>
+    <li>Measuring growth rates in business</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="scientific-calculator.html" class="related-card">🧮 Scientific Calculator</a><a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+function calc1(){const x=+document.getElementById('p1x').value,y=+document.getElementById('p1y').value;document.getElementById('r1').textContent=`${x}% of ${y} = ${(x/100*y).toFixed(4)}`;}
+function calc2(){const x=+document.getElementById('p2x').value,y=+document.getElementById('p2y').value;document.getElementById('r2').textContent=`${x} is ${(x/y*100).toFixed(4)}% of ${y}`;}
+function calc3(){const a=+document.getElementById('p3a').value,b=+document.getElementById('p3b').value;const ch=((b-a)/a*100).toFixed(4);document.getElementById('r3').textContent=`Change: ${ch}% ${+ch>0?'increase 📈':'decrease 📉'}`;}
+</script>
+</body>
+</html>

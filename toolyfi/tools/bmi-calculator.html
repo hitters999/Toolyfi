@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BMI Calculator – Calculate Body Mass Index Free Online | Toolyfi</title>
+<meta name="description" content="Free BMI calculator online. Calculate your Body Mass Index instantly. Find out if you are underweight, normal, overweight or obese. No signup needed."/>
+<meta name="keywords" content="bmi calculator, body mass index calculator, bmi calculator online, free bmi calculator, calculate bmi"/>
+<link rel="canonical" href="https://toolyfi.com/tools/bmi-calculator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → BMI Calculator</div>
+  <div class="tool-header"><h1>⚖️ BMI Calculator</h1><p>Calculate your Body Mass Index and find out your weight category instantly. Free, accurate and easy to use.</p></div>
+  <div class="tool-box">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Weight (kg)</label><input type="number" class="form-input" id="bW" placeholder="e.g. 70"/></div>
+      <div class="form-group"><label class="form-label">Height (cm)</label><input type="number" class="form-input" id="bH" placeholder="e.g. 175"/></div>
+    </div>
+    <button class="btn-primary" onclick="calcBMI()">⚖️ Calculate BMI</button>
+    <div id="bmiRes" style="display:none;margin-top:22px">
+      <div style="text-align:center;background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:800" id="bmiNum"></div>
+        <div style="font-size:1.2rem;margin-top:8px;font-weight:600" id="bmiCat"></div>
+      </div>
+      <div class="bmi-bar"><div class="bmi-fill" id="bmiFill"></div></div>
+      <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:0.8rem;margin-top:6px">
+        <span>Underweight &lt;18.5</span><span>Normal 18.5–24.9</span><span>Overweight 25–29.9</span><span>Obese 30+</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>What is BMI?</h2>
+  <p>BMI stands for Body Mass Index. It is a measurement of body fat based on height and weight. Our free <strong>BMI calculator online</strong> gives you instant results and tells you whether your weight is in the healthy range.</p>
+  <h2>BMI Categories</h2>
+  <ul>
+    <li><strong>Below 18.5</strong> — Underweight</li>
+    <li><strong>18.5 to 24.9</strong> — Normal weight (healthy)</li>
+    <li><strong>25 to 29.9</strong> — Overweight</li>
+    <li><strong>30 and above</strong> — Obese</li>
+  </ul>
+  <h2>How to Calculate BMI?</h2>
+  <p>BMI is calculated by dividing your weight in kilograms by your height in meters squared. Our <strong>BMI calculator</strong> does this automatically — just enter your weight and height and click Calculate.</p>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="age-calculator.html" class="related-card">🎂 Age Calculator</a><a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a><a href="percentage-calculator.html" class="related-card">💯 Percentage</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+function calcBMI() {
+  const w=+document.getElementById('bW').value, h=+document.getElementById('bH').value/100;
+  if(!w||!h){showToast('⚠️ Enter weight and height');return;}
+  const bmi=(w/(h*h)).toFixed(1);
+  let cat,col,pct;
+  if(bmi<18.5){cat='Underweight';col='var(--c3)';pct=bmi/18.5*25;}
+  else if(bmi<25){cat='✅ Normal Weight';col='var(--c4)';pct=25+((bmi-18.5)/6.5)*30;}
+  else if(bmi<30){cat='⚠️ Overweight';col='var(--c5)';pct=55+((bmi-25)/5)*25;}
+  else{cat='🔴 Obese';col='var(--c6)';pct=Math.min(95,80+((bmi-30)/10)*15);}
+  document.getElementById('bmiRes').style.display='block';
+  document.getElementById('bmiNum').textContent=bmi;
+  document.getElementById('bmiNum').style.color=col;
+  document.getElementById('bmiCat').innerHTML=`<span style="color:${col}">${cat}</span>`;
+  const f=document.getElementById('bmiFill');f.style.background=col;f.style.width=pct+'%';
+}
+</script>
+</body>
+</html>

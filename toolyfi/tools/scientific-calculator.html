@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scientific Calculator Online Free | Toolyfi</title>
+<meta name="description" content="Free scientific calculator online. Calculate sin, cos, tan, log, sqrt, powers and more. No download needed."/>
+<link rel="canonical" href="https://toolyfi.com/tools/scientific-calculator.html"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
+<div class="tool-page">
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Scientific Calculator</div>
+  <div class="tool-header"><h1>🧮 Scientific Calculator</h1><p>Full scientific calculator with advanced functions including trigonometry, logarithms, and more.</p></div>
+  <div class="tool-box">
+    <div class="calc-display">
+      <div class="calc-expr" id="expr"></div>
+      <div class="calc-screen" id="screen">0</div>
+    </div>
+    <div class="calc-grid">
+      <button class="calc-key" onclick="kp('sin(')">sin</button>
+      <button class="calc-key" onclick="kp('cos(')">cos</button>
+      <button class="calc-key" onclick="kp('tan(')">tan</button>
+      <button class="calc-key op" onclick="kp('/')">÷</button>
+      <button class="calc-key" onclick="kp('log(')">log</button>
+      <button class="calc-key" onclick="kp('sqrt(')">√</button>
+      <button class="calc-key" onclick="kp('Math.PI')">π</button>
+      <button class="calc-key op" onclick="kp('*')">×</button>
+      <button class="calc-key" onclick="kp('7')">7</button>
+      <button class="calc-key" onclick="kp('8')">8</button>
+      <button class="calc-key" onclick="kp('9')">9</button>
+      <button class="calc-key op" onclick="kp('-')">−</button>
+      <button class="calc-key" onclick="kp('4')">4</button>
+      <button class="calc-key" onclick="kp('5')">5</button>
+      <button class="calc-key" onclick="kp('6')">6</button>
+      <button class="calc-key op" onclick="kp('+')">+</button>
+      <button class="calc-key" onclick="kp('1')">1</button>
+      <button class="calc-key" onclick="kp('2')">2</button>
+      <button class="calc-key" onclick="kp('3')">3</button>
+      <button class="calc-key" onclick="kp('(')"> ( </button>
+      <button class="calc-key" onclick="kp('0')">0</button>
+      <button class="calc-key" onclick="kp('.')">.</button>
+      <button class="calc-key" onclick="del()">DEL</button>
+      <button class="calc-key" onclick="kp(')')"> ) </button>
+      <button class="calc-key" onclick="clr()" style="color:var(--c6)">C</button>
+      <button class="calc-key" onclick="kp('**2')">x²</button>
+      <button class="calc-key" onclick="kp('%')">%</button>
+      <button class="calc-key eq" onclick="calc()">=</button>
+    </div>
+  </div>
+</div>
+<div class="seo-article">
+  <h2>Free Scientific Calculator Online</h2>
+  <p>Our <strong>scientific calculator online</strong> supports all standard and advanced mathematical operations. Use it for school homework, college assignments, or professional calculations — completely free with no installation needed.</p>
+  <h2>Supported Functions</h2>
+  <ul>
+    <li>Basic: addition, subtraction, multiplication, division</li>
+    <li>Trigonometry: sin, cos, tan</li>
+    <li>Logarithm and square root</li>
+    <li>Powers and percentages</li>
+    <li>Pi (π) constant</li>
+    <li>Parentheses for complex expressions</li>
+  </ul>
+</div>
+<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="age-calculator.html" class="related-card">🎂 Age Calculator</a><a href="bmi-calculator.html" class="related-card">⚖️ BMI Calculator</a><a href="percentage-calculator.html" class="related-card">💯 Percentage</a><a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a></div></div>
+<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
+<div class="toast" id="toast"></div>
+<script src="../assets/main.js"></script>
+<script>
+let expr='',cur='0';
+function kp(v){
+  if(['0','1','2','3','4','5','6','7','8','9','.'].includes(v)){cur=(cur==='0'&&v!=='.')?v:cur+v;}
+  else{expr+=cur+v;cur='0';}
+  update();
+}
+function update(){document.getElementById('screen').textContent=cur;document.getElementById('expr').textContent=expr;}
+function clr(){expr='';cur='0';update();}
+function del(){cur=cur.slice(0,-1)||'0';update();}
+function calc(){
+  try{
+    let e=expr+cur;
+    e=e.replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(').replace(/log\(/g,'Math.log10(').replace(/sqrt\(/g,'Math.sqrt(');
+    const r=eval(e);
+    document.getElementById('expr').textContent=expr+cur+' =';
+    cur=String(parseFloat(r.toFixed(10)));expr='';update();
+  }catch{cur='Error';update();}
+}
+</script>
+</body>
+</html>
