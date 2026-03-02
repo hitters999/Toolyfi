@@ -63,9 +63,18 @@
       border: 1px solid var(--medium-gray);
     }
 
+    body.dark-mode .contact-form-section {
+      background: #1F2937;
+      border-color: #4B5563;
+    }
+
     .contact-form-section h2 {
       margin-bottom: 1.5rem;
       color: var(--text-primary);
+    }
+
+    body.dark-mode .contact-form-section h2 {
+      color: #F9FAFB;
     }
 
     .form-group {
@@ -79,6 +88,10 @@
       color: var(--text-primary);
     }
 
+    body.dark-mode .form-group label {
+      color: #F9FAFB;
+    }
+
     .form-group input,
     .form-group textarea {
       width: 100%;
@@ -88,6 +101,13 @@
       font-family: inherit;
       font-size: 1rem;
       transition: border-color var(--transition-fast);
+    }
+
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group textarea {
+      background: #374151;
+      color: #F9FAFB;
+      border-color: #4B5563;
     }
 
     .form-group input:focus,
@@ -132,9 +152,18 @@
       border-left: 4px solid var(--primary);
     }
 
+    body.dark-mode .info-card {
+      background: #374151;
+      border-left-color: #A78BFA;
+    }
+
     .info-card h3 {
       color: var(--text-primary);
       margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .info-card h3 {
+      color: #F9FAFB;
     }
 
     .info-card p {
@@ -142,10 +171,18 @@
       margin: 0;
     }
 
+    body.dark-mode .info-card p {
+      color: #D1D5DB;
+    }
+
     .info-card a {
       color: var(--primary);
       font-weight: 600;
       text-decoration: none;
+    }
+
+    body.dark-mode .info-card a {
+      color: #A78BFA;
     }
 
     .info-card a:hover {
@@ -159,8 +196,16 @@
       text-align: center;
     }
 
+    body.dark-mode .social-section {
+      background: #374151;
+    }
+
     .social-section h3 {
       margin-bottom: 1rem;
+    }
+
+    body.dark-mode .social-section h3 {
+      color: #F9FAFB;
     }
 
     .social-icons {
@@ -184,10 +229,21 @@
       color: var(--primary);
     }
 
+    body.dark-mode .social-icon {
+      background: #1F2937;
+      border-color: #A78BFA;
+      color: #A78BFA;
+    }
+
     .social-icon:hover {
       background: var(--primary);
       color: var(--white);
       transform: translateY(-3px);
+    }
+
+    body.dark-mode .social-icon:hover {
+      background: #A78BFA;
+      color: #1F2937;
     }
 
     .response-time {
@@ -221,6 +277,10 @@
 <header>
   <div class="header-container">
     <div class="logo">Toolyfi</div>
+    
+    <!-- Theme Toggle Button - ADDED -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#tools">Tools</a>
@@ -363,6 +423,27 @@
 <script>
   // Auto year update
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Dark Mode Toggle - ADDED
+  const themeToggle = document.getElementById('themeToggle');
+  
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeToggle.textContent = '🌙';
+    }
+  });
 
   // Form submission
   function handleSubmit(event) {
