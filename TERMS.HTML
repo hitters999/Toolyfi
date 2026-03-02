@@ -1,442 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>Terms & Conditions - Toolyfi | Legal Terms</title>
-  <meta name="description" content="Toolyfi Terms & Conditions - Read our legal terms of service. By using Toolyfi, you agree to these terms.">
-  <meta name="keywords" content="terms and conditions, terms of service, legal, toolyfi">
-  <meta name="author" content="Toolyfi">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Terms & Conditions - Toolyfi">
-  <meta property="og:description" content="Read Toolyfi's Terms & Conditions and legal agreement">
-  <meta property="og:url" content="https://toolyfi.com/terms.html">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  
-  <style>
-    /* Terms Page Specific Styles */
-    .terms-hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Toolyfi</title>
+    <meta name="description" content="Terms of Service for Toolyfi - Free online tools for everyone. Read our terms before using our services.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Terms of Service - Toolyfi">
+    <meta property="og:description" content="Terms of Service for Toolyfi - Free online tools for everyone.">
+    <meta property="og:url" content="https://toolyfi.com/terms.html">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://toolyfi.com/terms.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f7ff;
+            --surface: #ffffff;
+            --surface2: #f0eeff;
+            --text: #1a1a2e;
+            --text-muted: #555577;
+            --primary: #6c3de8;
+            --primary-light: #8b5cf6;
+            --accent: #a78bfa;
+            --border: #e0d9ff;
+            --shadow: 0 4px 24px rgba(108,61,232,0.08);
+        }
+        [data-theme="dark"] {
+            --bg: #0f0e1a;
+            --surface: #1a1830;
+            --surface2: #221f3a;
+            --text: #f0eeff;
+            --text-muted: #a89ec0;
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --accent: #c4b5fd;
+            --border: #2d2850;
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.7;
+        }
 
-    .terms-hero h1 {
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
+        /* NAV */
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 8px; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { background: var(--surface2); color: var(--primary); }
+        .theme-toggle {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 38px; height: 38px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+        .theme-toggle:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
-    .terms-hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+        /* HERO */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            padding: 60px 24px;
+            text-align: center;
+            color: white;
+        }
+        .page-hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; }
+        .page-hero p { font-size: 1rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+        .page-hero .last-updated {
+            margin-top: 16px;
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
 
-    .terms-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
+        /* CONTENT */
+        .content-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        .toc h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .toc ol { padding-left: 20px; }
+        .toc li { margin-bottom: 8px; }
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--primary); }
 
-    .terms-section {
-      margin-bottom: 3rem;
-    }
+        .section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .section-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .section p:last-child { margin-bottom: 0; }
+        .section ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding-left: 20px;
+        }
+        .section ul li { margin-bottom: 8px; }
+        .section ul li::marker { color: var(--primary); }
 
-    .terms-section h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.75rem;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 0.75rem;
-    }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(108,61,232,0.08), rgba(167,139,250,0.08));
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+        .highlight-box p {
+            color: var(--text) !important;
+            font-size: 0.93rem !important;
+            margin: 0 !important;
+        }
 
-    .terms-section h3 {
-      color: var(--text-primary);
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-    }
+        /* CONTACT BOX */
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            padding: 36px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+        .contact-box h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+        .contact-box p { opacity: 0.9; font-size: 0.95rem; margin-bottom: 20px; }
+        .contact-box a {
+            background: white;
+            color: var(--primary);
+            padding: 10px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .contact-box a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
-    .terms-section p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
+        /* FOOTER */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        footer .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+        footer a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+        footer a:hover { color: var(--primary); }
+        footer p { color: var(--text-muted); font-size: 0.85rem; }
 
-    .terms-section ul {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-left: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .terms-section li {
-      margin-bottom: 0.75rem;
-    }
-
-    .terms-section ol {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-left: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .terms-section ol li {
-      margin-bottom: 0.75rem;
-    }
-
-    .warning-box {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
-      border-left: 4px solid #EF4444;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .warning-box p {
-      color: #DC2626;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    .info-box {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-      border-left: 4px solid #3B82F6;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .info-box p {
-      color: #1D4ED8;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    .contact-box {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .contact-box h3 {
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-box p {
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 0;
-    }
-
-    .contact-box a {
-      color: var(--white);
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    .last-updated {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-style: italic;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--medium-gray);
-    }
-
-    @media (max-width: 768px) {
-      .terms-section h2 {
-        font-size: 1.5rem;
-      }
-
-      .terms-container {
-        padding: 2rem 1rem;
-      }
-    }
-  </style>
+        @media (max-width: 600px) {
+            .page-hero h1 { font-size: 1.7rem; }
+            .nav-links a { display: none; }
+            .nav-links .theme-toggle { display: flex; }
+            .section { padding: 22px; }
+            .toc { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-container">
-    <div class="logo">Toolyfi</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#" class="nav-cta">Get Started</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="terms-hero">
-  <h1>Terms & Conditions</h1>
-  <p>By using Toolyfi, you agree to these terms and conditions. Please read them carefully.</p>
-</section>
-
-<!-- TERMS CONTENT -->
-<section class="terms-container">
-
-  <!-- Introduction -->
-  <div class="terms-section">
-    <h2>1. Agreement to Terms</h2>
-    <p>By accessing and using Toolyfi ("Website," "Service," or "Platform"), you acknowledge that you have read, understood, and agree to be bound by all the terms and conditions contained herein. If you do not agree with any part of these terms, please do not use our Website.</p>
-    
-    <div class="info-box">
-      <p>ℹ️ These terms apply to all users, visitors, and anyone accessing Toolyfi</p>
+<nav>
+    <a href="index.html" class="logo">⚡ Toolyfi</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     </div>
-  </div>
+</nav>
 
-  <!-- Use License -->
-  <div class="terms-section">
-    <h2>2. Use License</h2>
-    <p>Toolyfi grants you a limited, non-exclusive, non-transferable license to access and use our tools and services for personal, non-commercial purposes. You may not:</p>
-    <ul>
-      <li>Modify or copy our content</li>
-      <li>Use our tools for illegal purposes</li>
-      <li>Attempt to gain unauthorized access to our systems</li>
-      <li>Transmit viruses, malware, or any code of destructive nature</li>
-      <li>Harass, abuse, or cause harm to others through our platform</li>
-      <li>Reverse engineer or attempt to bypass any security measures</li>
-      <li>Scrape or bulk download content without permission</li>
-    </ul>
-  </div>
+<div class="page-hero">
+    <h1>📋 Terms of Service</h1>
+    <p>Please read these terms carefully before using Toolyfi's free online tools.</p>
+    <span class="last-updated">Last Updated: January 2026</span>
+</div>
 
-  <!-- Disclaimer of Warranties -->
-  <div class="terms-section">
-    <h2>3. Disclaimer of Warranties</h2>
-    <p>Toolyfi is provided "as is" and "as available" without any warranties, expressed or implied. We make no warranties about:</p>
-    <ul>
-      <li>The accuracy, completeness, or reliability of our tools</li>
-      <li>The timeliness or continuity of service</li>
-      <li>The absence of errors, bugs, or interruptions</li>
-      <li>The fitness of tools for a particular purpose</li>
-    </ul>
-    
-    <div class="warning-box">
-      <p>⚠️ While we strive for accuracy, we are not responsible for errors or omissions in calculations or conversions</p>
+<div class="content-wrapper">
+
+    <div class="toc">
+        <h2>📑 Table of Contents</h2>
+        <ol>
+            <li><a href="#acceptance">Acceptance of Terms</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#use">Acceptable Use</a></li>
+            <li><a href="#ip">Intellectual Property</a></li>
+            <li><a href="#privacy">Privacy & Data</a></li>
+            <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+            <li><a href="#liability">Limitation of Liability</a></li>
+            <li><a href="#changes">Changes to Terms</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ol>
     </div>
-  </div>
 
-  <!-- Limitation of Liability -->
-  <div class="terms-section">
-    <h2>4. Limitation of Liability</h2>
-    <p>To the fullest extent permitted by law, Toolyfi and its owners, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
-    <ul>
-      <li>Loss of profits or revenue</li>
-      <li>Loss of data or information</li>
-      <li>Business interruption</li>
-      <li>Damage to hardware or software</li>
-      <li>Any other damages arising from your use of our tools</li>
-    </ul>
-    
-    <p><strong>Our total liability to you shall not exceed $1 USD, or the maximum amount allowed by law, whichever is greater.</strong></p>
-  </div>
-
-  <!-- User Content -->
-  <div class="terms-section">
-    <h2>5. User Content</h2>
-    <p>You are solely responsible for any content, data, or files you upload to Toolyfi:</p>
-    <ul>
-      <li>You warrant that you own or have permission to use all content</li>
-      <li>You grant Toolyfi a license to process your content for service delivery</li>
-      <li>We do not store user uploads by default (processed locally)</li>
-      <li>You assume all risks associated with your data</li>
-    </ul>
-
-    <div class="info-box">
-      <p>ℹ️ Most processing happens locally in your browser. We don't access or store your files</p>
-    </div>
-  </div>
-
-  <!-- Intellectual Property -->
-  <div class="terms-section">
-    <h2>6. Intellectual Property Rights</h2>
-    <p>All content on Toolyfi, including but not limited to:</p>
-    <ul>
-      <li>Code and software</li>
-      <li>Design and layout</li>
-      <li>Text, graphics, and logos</li>
-      <li>Tools and algorithms</li>
-      <li>Documentation and guides</li>
-    </ul>
-    <p>...are the exclusive property of Toolyfi and protected by international copyright laws. Unauthorized reproduction or distribution is prohibited.</p>
-  </div>
-
-  <!-- Acceptable Use Policy -->
-  <div class="terms-section">
-    <h2>7. Acceptable Use Policy</h2>
-    <p>You agree not to use Toolyfi for:</p>
-    <ul>
-      <li>Illegal activities or purposes</li>
-      <li>Harassment, discrimination, or hate speech</li>
-      <li>Phishing, fraud, or deception</li>
-      <li>Distributing malware or viruses</li>
-      <li>Violating intellectual property rights</li>
-      <li>Spam or excessive requests that overload our systems</li>
-      <li>Testing security vulnerabilities without authorization</li>
-      <li>Commercial use without permission</li>
-    </ul>
-  </div>
-
-  <!-- Availability and Changes -->
-  <div class="terms-section">
-    <h2>8. Service Availability</h2>
-    <p>Toolyfi makes no guarantee of continuous, uninterrupted, or error-free service. We may:</p>
-    <ul>
-      <li>Modify or discontinue tools without notice</li>
-      <li>Perform maintenance that causes temporary unavailability</li>
-      <li>Update tools and services to improve functionality</li>
-      <li>Change terms and conditions at any time</li>
-    </ul>
-    <p>We will notify you of major changes via email or website announcement when possible.</p>
-  </div>
-
-  <!-- Third-Party Links -->
-  <div class="terms-section">
-    <h2>9. Third-Party Links</h2>
-    <p>Toolyfi may contain links to third-party websites. We are not responsible for:</p>
-    <ul>
-      <li>The content, accuracy, or legality of external sites</li>
-      <li>Any damages arising from your use of external links</li>
-      <li>The privacy practices of third parties</li>
-    </ul>
-    <p>Your use of third-party services is governed by their terms, not ours.</p>
-  </div>
-
-  <!-- Indemnification -->
-  <div class="terms-section">
-    <h2>10. Indemnification</h2>
-    <p>You agree to indemnify, defend, and hold harmless Toolyfi, its owners, employees, and agents from any claims, damages, losses, or expenses (including legal fees) arising from:</p>
-    <ul>
-      <li>Your violation of these terms</li>
-      <li>Your use of Toolyfi</li>
-      <li>Your content or data</li>
-      <li>Your infringement of third-party rights</li>
-    </ul>
-  </div>
-
-  <!-- Governing Law -->
-  <div class="terms-section">
-    <h2>11. Governing Law</h2>
-    <p>These terms are governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions. Any legal action or proceeding shall be subject to the exclusive jurisdiction of courts in Pakistan.</p>
-  </div>
-
-  <!-- Termination -->
-  <div class="terms-section">
-    <h2>12. Termination</h2>
-    <p>Toolyfi reserves the right to terminate or restrict your access to our services at any time, for any reason, without notice or liability. Reasons may include:</p>
-    <ul>
-      <li>Violation of these terms</li>
-      <li>Illegal or harmful activities</li>
-      <li>Abuse of our resources</li>
-      <li>At our sole discretion for any reason</li>
-    </ul>
-  </div>
-
-  <!-- Severability -->
-  <div class="terms-section">
-    <h2>13. Severability</h2>
-    <p>If any provision of these terms is found to be invalid or unenforceable, such provision shall be struck, and the remaining provisions shall remain in full force and effect.</p>
-  </div>
-
-  <!-- Entire Agreement -->
-  <div class="terms-section">
-    <h2>14. Entire Agreement</h2>
-    <p>These Terms & Conditions, along with our Privacy Policy, constitute the entire agreement between you and Toolyfi regarding the use of our services. This agreement supersedes all prior agreements, understandings, and negotiations.</p>
-  </div>
-
-  <!-- Contact for Legal Inquiries -->
-  <div class="contact-box">
-    <h3>Questions About These Terms?</h3>
-    <p>Contact us at <a href="mailto:legal@toolyfi.com">legal@toolyfi.com</a></p>
-    <p>We'll respond to your inquiry within 30 days.</p>
-  </div>
-
-  <div class="last-updated">
-    <p>Last Updated: <span id="year"></span></p>
-    <p>By continuing to use Toolyfi, you accept all changes to these terms</p>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-column">
-        <h4>About Toolyfi</h4>
-        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">100+ Free Online Tools that make your daily digital tasks easy and efficient.</p>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="image-resizer.html">Image Resizer</a></li>
-          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-          <li><a href="password-generator.html">Password Generator</a></li>
-          <li><a href="unit-converter.html">Unit Converter</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms & Conditions</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="GitHub">⚙️</a>
-          <a href="#" title="LinkedIn">💼</a>
-          <a href="#" title="Facebook">f</a>
+    <div class="section" id="acceptance">
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <h2>1. Acceptance of Terms</h2>
         </div>
-      </div>
+        <p>By accessing or using <strong>Toolyfi</strong> (available at toolyfi.com), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.</p>
+        <div class="highlight-box">
+            <p>🔔 These terms apply to all visitors and users of Toolyfi, including those who use our free online tools.</p>
+        </div>
+        <p>We reserve the right to update these terms at any time. Continued use of the site after changes means you accept the new terms.</p>
     </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Toolyfi. All rights reserved.</p>
-      <p>
-        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy</a> •
-        <a href="terms.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
-      </p>
+
+    <div class="section" id="services">
+        <div class="section-header">
+            <div class="section-icon">🛠️</div>
+            <h2>2. Our Services</h2>
+        </div>
+        <p>Toolyfi provides a collection of <strong>free online tools</strong> designed to help users with everyday tasks. Our tools include but are not limited to:</p>
+        <ul>
+            <li>Image Resizer & Converter</li>
+            <li>QR Code Generator</li>
+            <li>Password Generator</li>
+            <li>Calculator & Unit Converters</li>
+            <li>Text Tools & Formatters</li>
+            <li>Color Picker & Gradient Tools</li>
+            <li>And 200+ more tools (coming soon!)</li>
+        </ul>
+        <p>All tools are provided <strong>free of charge</strong>. We aim to keep Toolyfi accessible to everyone without requiring registration or payment.</p>
     </div>
-  </div>
+
+    <div class="section" id="use">
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2>3. Acceptable Use</h2>
+        </div>
+        <p>You agree to use Toolyfi only for lawful purposes. You must NOT use our services to:</p>
+        <ul>
+            <li>Violate any applicable local, national, or international laws</li>
+            <li>Transmit any harmful, offensive, or malicious content</li>
+            <li>Attempt to hack, disrupt, or gain unauthorized access to our servers</li>
+            <li>Use automated bots or scrapers without our written permission</li>
+            <li>Infringe on any third-party intellectual property rights</li>
+            <li>Generate spam or conduct phishing activities</li>
+        </ul>
+        <div class="highlight-box">
+            <p>⚠️ We reserve the right to restrict or terminate access for any user who violates these guidelines.</p>
+        </div>
+    </div>
+
+    <div class="section" id="ip">
+        <div class="section-header">
+            <div class="section-icon">©️</div>
+            <h2>4. Intellectual Property</h2>
+        </div>
+        <p>All content on Toolyfi — including the logo, design, code, graphics, and tool functionality — is the intellectual property of <strong>Toolyfi</strong> and is protected by copyright laws.</p>
+        <p>You may NOT:</p>
+        <ul>
+            <li>Copy or reproduce our website design or code without permission</li>
+            <li>Use the Toolyfi name or logo without written consent</li>
+            <li>Sell or redistribute our tools or content</li>
+        </ul>
+        <p>However, you are free to use the <strong>output</strong> of our tools (e.g., generated QR codes, resized images, generated passwords) for your personal or commercial projects.</p>
+    </div>
+
+    <div class="section" id="privacy">
+        <div class="section-header">
+            <div class="section-icon">🔒</div>
+            <h2>5. Privacy & Data</h2>
+        </div>
+        <p>Your privacy matters to us. Most of our tools work <strong>entirely in your browser</strong> — meaning your files and data are NOT uploaded to our servers.</p>
+        <ul>
+            <li>We do not store files you process through our tools</li>
+            <li>We may collect anonymous usage analytics (via Google Analytics)</li>
+            <li>We do not sell your personal data to third parties</li>
+        </ul>
+        <p>Please review our full <a href="privacy.html" style="color: var(--primary); font-weight: 500;">Privacy Policy</a> for complete details on how we handle your data.</p>
+    </div>
+
+    <div class="section" id="disclaimer">
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>6. Disclaimer of Warranties</h2>
+        </div>
+        <p>Toolyfi is provided on an <strong>"as is" and "as available"</strong> basis without any warranties, express or implied.</p>
+        <p>We do not guarantee that:</p>
+        <ul>
+            <li>Our tools will always be available or error-free</li>
+            <li>Results produced by our tools are 100% accurate in all cases</li>
+            <li>The website will be free from viruses or harmful components</li>
+        </ul>
+        <div class="highlight-box">
+            <p>💡 Always verify important outputs (like passwords, calculations, etc.) independently before relying on them for critical decisions.</p>
+        </div>
+    </div>
+
+    <div class="section" id="liability">
+        <div class="section-header">
+            <div class="section-icon">🛡️</div>
+            <h2>7. Limitation of Liability</h2>
+        </div>
+        <p>To the maximum extent permitted by applicable law, <strong>Toolyfi and its owners</strong> shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.</p>
+        <p>This includes but is not limited to:</p>
+        <ul>
+            <li>Loss of data or files</li>
+            <li>Loss of profits or business opportunities</li>
+            <li>Damages resulting from reliance on tool outputs</li>
+            <li>Service downtime or interruptions</li>
+        </ul>
+        <p>Your use of Toolyfi is entirely at your own risk.</p>
+    </div>
+
+    <div class="section" id="changes">
+        <div class="section-header">
+            <div class="section-icon">🔄</div>
+            <h2>8. Changes to Terms</h2>
+        </div>
+        <p>We may update these Terms of Service from time to time. When we make significant changes, we will update the <strong>"Last Updated"</strong> date at the top of this page.</p>
+        <p>We encourage you to review these terms periodically. Continued use of Toolyfi after any changes constitutes your acceptance of the updated terms.</p>
+    </div>
+
+    <div class="section" id="governing">
+        <div class="section-header">
+            <div class="section-icon">🌍</div>
+            <h2>9. Governing Law</h2>
+        </div>
+        <p>These Terms of Service shall be governed by and construed in accordance with applicable laws. Any disputes arising from these terms or your use of Toolyfi shall be resolved through good-faith negotiation first.</p>
+        <p>If you have a concern or complaint, please reach out to us directly via our contact page — we're always happy to help resolve any issues.</p>
+    </div>
+
+    <div class="section" id="contact">
+        <div class="section-header">
+            <div class="section-icon">📧</div>
+            <h2>10. Contact Us</h2>
+        </div>
+        <p>If you have any questions about these Terms of Service, please contact us:</p>
+        <ul>
+            <li>📧 Email: <a href="mailto:support@toolyfi.com" style="color: var(--primary);">support@toolyfi.com</a></li>
+            <li>🌐 Website: <a href="https://toolyfi.com" style="color: var(--primary);">toolyfi.com</a></li>
+            <li>📝 Contact Form: <a href="contact.html" style="color: var(--primary);">Contact Page</a></li>
+        </ul>
+    </div>
+
+    <div class="contact-box">
+        <h3>Have Questions About Our Terms?</h3>
+        <p>We're here to help! Reach out and we'll get back to you quickly.</p>
+        <a href="contact.html">Contact Us →</a>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+    </div>
+    <p>© <span id="year"></span> Toolyfi. All rights reserved. Free tools for everyone. ⚡</p>
 </footer>
 
 <script>
-  // Auto year update
-  const yearElements = document.querySelectorAll('#year');
-  const currentYear = new Date().getFullYear();
-  yearElements.forEach(el => el.textContent = currentYear);
+    // Auto year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dark mode
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme') || 'light';
+    if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️';
+    }
+    toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            toggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            toggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 </script>
 
 </body>
