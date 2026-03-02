@@ -60,11 +60,19 @@
       font-size: 2rem;
     }
 
+    body.dark-mode .about-section h2 {
+      color: #F9FAFB;
+    }
+
     .about-section p {
       color: var(--text-secondary);
       font-size: 1.05rem;
       line-height: 1.8;
       margin-bottom: 1rem;
+    }
+
+    body.dark-mode .about-section p {
+      color: #D1D5DB;
     }
 
     .about-grid {
@@ -82,10 +90,19 @@
       transition: all var(--transition-normal);
     }
 
+    body.dark-mode .about-card {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(167, 139, 250, 0.02) 100%);
+      border-color: #4B5563;
+    }
+
     .about-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
       border-color: var(--primary);
+    }
+
+    body.dark-mode .about-card:hover {
+      border-color: #A78BFA;
     }
 
     .about-card h3 {
@@ -94,9 +111,17 @@
       font-size: 1.5rem;
     }
 
+    body.dark-mode .about-card h3 {
+      color: #A78BFA;
+    }
+
     .about-card p {
       color: var(--text-secondary);
       margin: 0;
+    }
+
+    body.dark-mode .about-card p {
+      color: #D1D5DB;
     }
 
     .features-grid {
@@ -121,9 +146,17 @@
       margin-bottom: 0.5rem;
     }
 
+    body.dark-mode .feature-item h3 {
+      color: #F9FAFB;
+    }
+
     .feature-item p {
       color: var(--text-secondary);
       font-size: 0.95rem;
+    }
+
+    body.dark-mode .feature-item p {
+      color: #D1D5DB;
     }
 
     .stats-section {
@@ -190,6 +223,10 @@
 <header>
   <div class="header-container">
     <div class="logo">Toolyfi</div>
+    
+    <!-- Theme Toggle Button - ADDED -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#tools">Tools</a>
@@ -384,6 +421,27 @@
 <script>
   // Auto year update
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Dark Mode Toggle - ADDED
+  const themeToggle = document.getElementById('themeToggle');
+  
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeToggle.textContent = '🌙';
+    }
+  });
 </script>
 
 </body>
