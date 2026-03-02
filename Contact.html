@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Contact Us - Toolyfi | Get in Touch</title>
+  <meta name="description" content="Contact Toolyfi for support, feedback, or partnerships. We're here to help! Send us a message and we'll respond within 24 hours.">
+  <meta name="keywords" content="contact toolyfi, support, feedback, partnership, help">
+  <meta name="author" content="Toolyfi">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Us - Toolyfi">
+  <meta property="og:description" content="Get in touch with Toolyfi team. We're always happy to help!">
+  <meta property="og:url" content="https://toolyfi.com/contact.html">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Contact Page Specific Styles */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-hero p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form-section {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--medium-gray);
+    }
+
+    .contact-form-section h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--medium-gray);
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .info-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .info-card a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .info-card a:hover {
+      text-decoration: underline;
+    }
+
+    .social-section {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .social-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    .response-time {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+      border-left: 4px solid #22C55E;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .response-time p {
+      color: #16A34A;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <div class="logo">Toolyfi</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" style="color: var(--primary); font-weight: 600;">Contact</a>
+      <a href="#" class="nav-cta">Get Started</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <h1>Get In Touch</h1>
+  <p>Have a question or feedback? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+</section>
+
+<!-- CONTACT CONTENT -->
+<section class="contact-container">
+  <div class="contact-content">
+    <!-- Contact Form -->
+    <div class="contact-form-section">
+      <h2>Send us a Message</h2>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject *</label>
+          <input type="text" id="subject" name="subject" required placeholder="What is this about?">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required placeholder="Tell us more..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Message</button>
+
+        <div class="response-time">
+          <p>✓ We typically respond within 24 hours</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <!-- Email -->
+      <div class="info-card">
+        <h3>📧 Email</h3>
+        <p>For general inquiries and support:</p>
+        <a href="mailto:support@toolyfi.com">support@toolyfi.com</a>
+      </div>
+
+      <!-- Feedback -->
+      <div class="info-card">
+        <h3>💡 Feedback</h3>
+        <p>Have a feature request or bug report?</p>
+        <a href="mailto:feedback@toolyfi.com">feedback@toolyfi.com</a>
+      </div>
+
+      <!-- Partnership -->
+      <div class="info-card">
+        <h3>🤝 Partnership</h3>
+        <p>Interested in collaborating with us?</p>
+        <a href="mailto:partner@toolyfi.com">partner@toolyfi.com</a>
+      </div>
+
+      <!-- Social Media -->
+      <div class="social-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" class="social-icon" title="Twitter">𝕏</a>
+          <a href="#" class="social-icon" title="GitHub">⚙️</a>
+          <a href="#" class="social-icon" title="LinkedIn">💼</a>
+          <a href="#" class="social-icon" title="Facebook">f</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>About Toolyfi</h4>
+        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">100+ Free Online Tools that make your daily digital tasks easy and efficient.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="image-resizer.html">Image Resizer</a></li>
+          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+          <li><a href="unit-converter.html">Unit Converter</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="GitHub">⚙️</a>
+          <a href="#" title="LinkedIn">💼</a>
+          <a href="#" title="Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Toolyfi. All rights reserved.</p>
+      <p>
+        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy</a> •
+        <a href="terms.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Auto year update
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Form submission
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    // Create mailto link
+    const mailtoLink = `mailto:support@toolyfi.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Show success message
+    alert('Thank you for your message! Opening your email client...');
+    document.getElementById('contactForm').reset();
+  }
+</script>
+
+</body>
+</html>
