@@ -43,6 +43,10 @@
 <header>
   <div class="header-container">
     <div class="logo">Toolyfi</div>
+    
+    <!-- Theme Toggle Button - ADDED -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    
     <nav>
       <a href="#tools">Tools</a>
       <a href="#categories">Categories</a>
@@ -272,7 +276,7 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="#terms">Terms & Conditions</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
         </ul>
       </div>
       
@@ -288,10 +292,10 @@
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; 2024 Toolyfi. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Toolyfi. All rights reserved.</p>
       <p>
         <a href="privacy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy</a> •
-        <a href="#" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
+        <a href="terms.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
       </p>
     </div>
   </div>
@@ -299,6 +303,32 @@
 
 <!-- Scripts -->
 <script>
+  // Auto year update
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Dark Mode Toggle - ADDED
+  const themeToggle = document.getElementById('themeToggle');
+  
+  // Check saved preference
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+  }
+  
+  // Toggle functionality
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeToggle.textContent = '🌙';
+    }
+  });
+
   // Category Pills Filter
   const categoryPills = document.querySelectorAll('.category-pill');
   const toolCards = document.querySelectorAll('.tool-card');
