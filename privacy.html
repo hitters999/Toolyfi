@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y3ETYH2QF0');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -192,7 +193,7 @@
   <div class="header-container">
     <div class="logo">Toolyfi</div>
     
-    <!-- Theme Toggle Button - ADDED -->
+    <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     
     <nav>
@@ -348,7 +349,7 @@
   <!-- Contact Us -->
   <div class="contact-box">
     <h3>Questions About Our Privacy Policy?</h3>
-    <p>Contact us at <a href="/cdn-cgi/l/email-protection#2a5a58435c4b49536a5e454546534c4304494547"><span class="__cf_email__" data-cfemail="a1d1d3c8d7c0c2d8e1d5cececdd8c7c88fc2cecc">[email&#160;protected]</span></a></p>
+    <p>Contact us at <a href="mailto:support@toolyfi.com">support@toolyfi.com</a></p>
     <p>We'll respond to your privacy inquiry within 30 days.</p>
   </div>
 
@@ -412,13 +413,14 @@
 <!-- Tidio Chatbot -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<!-- Scripts -->
+<script>
   // Auto year update
   const yearElements = document.querySelectorAll('#year');
   const currentYear = new Date().getFullYear();
   yearElements.forEach(el => el.textContent = currentYear);
 
-  // Dark Mode Toggle - ADDED
+  // Dark Mode Toggle
   const themeToggle = document.getElementById('themeToggle');
   
   const savedTheme = localStorage.getItem('theme') || 'light';
@@ -430,4 +432,14 @@
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     
-    if (document.body.classList.contai
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeToggle.textContent = '🌙';
+    }
+  });
+</script>
+</body>
+</html>
