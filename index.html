@@ -44,6 +44,330 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* NEWS CAROUSEL WIDGET */
+    .news-carousel-section {
+      background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .news-carousel-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-carousel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .news-carousel-header h2 {
+      color: white;
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .news-carousel-header p {
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+
+    .news-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* CAROUSEL WRAPPER */
+    .carousel-wrapper {
+      perspective: 1000px;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .carousel-container {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel-container::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #dc2626;
+      border-radius: 10px;
+    }
+
+    /* NEWS CARD 3D EFFECT */
+    .news-card {
+      flex: 0 0 calc(100% - 2rem);
+      min-width: 300px;
+      scroll-snap-align: start;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: slideInCard 0.6s ease-out;
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .news-card {
+        flex: 0 0 calc(50% - 0.75rem);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .news-card {
+        flex: 0 0 calc(33.333% - 1rem);
+      }
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(220, 38, 38, 0.3);
+    }
+
+    .news-card-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .news-card-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .news-card-content {
+      padding: 1.5rem;
+    }
+
+    .news-card-tag {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 0.8rem;
+    }
+
+    .news-card h3 {
+      margin: 0 0 0.8rem 0;
+      font-size: 1.1rem;
+      color: #1a1a1a;
+      line-height: 1.4;
+    }
+
+    .news-card p {
+      margin: 0 0 1rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .news-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .read-more {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* CAROUSEL CONTROLS */
+    .carousel-controls {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .carousel-btn {
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: #991b1b;
+      transform: scale(1.05);
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideInCard {
+      from {
+        opacity: 0;
+        transform: translateX(50px) rotateY(20deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0);
+      }
+    }
+
+    /* TOOL CARDS FIX */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .tool-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .tool-info h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: #1a1a1a;
+    }
+
+    .tool-info p {
+      margin: 0 0 1rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .tool-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .tool-link:hover {
+      gap: 0.5rem;
+    }
+
+    /* FLOATING CARDS FIX FOR DESKTOP */
+    .hero-visual {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .hero-container {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-visual {
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        gap: 1.5rem;
+        flex: 1;
+      }
+
+      .floating-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .floating-card:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .floating-card:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      .floating-card:nth-child(3) {
+        animation-delay: 1s;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -52,13 +376,13 @@
   <div class="header-container">
     <div class="logo">Toolyfi</div>
     
-    <!-- Theme Toggle Button - ADDED -->
+    <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     
     <nav>
       <a href="#tools">Tools</a>
       <a href="#categories">Categories</a>
-<a href="updatesworld/updatesworld.html">🌍 Updates World</a>
+      <a href="updatesworld/updatesworld.html">🌍 Updates World</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="#" class="nav-cta">Get Started</a>
@@ -92,6 +416,114 @@
         <div style="font-size: 2rem;">📊</div>
         <div style="margin-top: 0.5rem; font-weight: 600; font-size: 0.9rem;">Converters</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS CAROUSEL WIDGET -->
+<section class="news-carousel-section">
+  <div class="news-carousel-container">
+    <div class="news-carousel-header">
+      <div>
+        <h2>🔥 Latest News</h2>
+        <p>Fresh updates from around the world</p>
+      </div>
+      <a href="updatesworld/updatesworld.html" class="news-link">
+        View All →
+      </a>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-container" id="newsCarousel">
+        <!-- News Card 1 -->
+        <div class="news-card">
+          <div class="news-card-image">🚀</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">BREAKING</span>
+            <h3>3 US Fighter Jets Shot Down</h3>
+            <p>Exclusive investigation reveals classified military details about the Kuwait incident.</p>
+            <div class="news-card-meta">
+              <span>2 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 2 -->
+        <div class="news-card">
+          <div class="news-card-image">🌍</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">ANALYSIS</span>
+            <h3>Global Geopolitical Shift</h3>
+            <p>How recent military incidents are changing international relations and defense strategies.</p>
+            <div class="news-card-meta">
+              <span>4 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 3 -->
+        <div class="news-card">
+          <div class="news-card-image">⚡</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">EXCLUSIVE</span>
+            <h3>Pentagon's Emergency Response</h3>
+            <p>Inside look at how US military is reshaping defense policies in light of recent events.</p>
+            <div class="news-card-meta">
+              <span>6 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 4 -->
+        <div class="news-card">
+          <div class="news-card-image">📡</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">UPDATES</span>
+            <h3>NATO Security Consultations</h3>
+            <p>Allied nations demand urgent meetings to address military vulnerabilities and coordination.</p>
+            <div class="news-card-meta">
+              <span>8 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 5 -->
+        <div class="news-card">
+          <div class="news-card-image">💼</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">BUSINESS</span>
+            <h3>Defense Industry Booming</h3>
+            <p>Military contractors see record stock surge as governments increase defense spending.</p>
+            <div class="news-card-meta">
+              <span>10 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card 6 -->
+        <div class="news-card">
+          <div class="news-card-image">🤝</div>
+          <div class="news-card-content">
+            <span class="news-card-tag">POLITICS</span>
+            <h3>International Diplomacy Surge</h3>
+            <p>World leaders convene for emergency talks to prevent further escalation of tensions.</p>
+            <div class="news-card-meta">
+              <span>12 hours ago</span>
+              <a href="updatesworld/updatesworld.html" class="read-more">Read →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="scrollCarousel(-300)">← Previous</button>
+      <button class="carousel-btn" onclick="scrollCarousel(300)">Next →</button>
     </div>
   </div>
 </section>
@@ -132,7 +564,7 @@
         <div class="tool-info">
           <h3>Image Resizer</h3>
           <p>Resize images to any size instantly. Upload and resize with ease.</p>
-          <a href="image-resizer.html" class="tool-link">Use Tool</a>
+          <a href="image-resizer.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -142,7 +574,7 @@
         <div class="tool-info">
           <h3>Image Compressor</h3>
           <p>Reduce image file size without losing quality. Download instantly.</p>
-          <a href="image-compressor.html" class="tool-link">Use Tool</a>
+          <a href="image-compressor.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -152,7 +584,7 @@
         <div class="tool-info">
           <h3>Scientific Calculator</h3>
           <p>Full-featured scientific calculator for advanced mathematics.</p>
-          <a href="scientific-calculator.html" class="tool-link">Use Tool</a>
+          <a href="scientific-calculator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -162,7 +594,7 @@
         <div class="tool-info">
           <h3>Age Calculator</h3>
           <p>Calculate your exact age in days, months and years.</p>
-          <a href="age-calculator.html" class="tool-link">Use Tool</a>
+          <a href="age-calculator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -172,7 +604,7 @@
         <div class="tool-info">
           <h3>BMI Calculator</h3>
           <p>Calculate your Body Mass Index instantly.</p>
-          <a href="bmi-calculator.html" class="tool-link">Use Tool</a>
+          <a href="bmi-calculator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -182,7 +614,7 @@
         <div class="tool-info">
           <h3>Loan Calculator</h3>
           <p>Calculate EMI, interest and total loan amount.</p>
-          <a href="loan-calculator.html" class="tool-link">Use Tool</a>
+          <a href="loan-calculator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -192,7 +624,7 @@
         <div class="tool-info">
           <h3>Percentage Calculator</h3>
           <p>Calculate percentages, discounts and growth instantly.</p>
-          <a href="percentage-calculator.html" class="tool-link">Use Tool</a>
+          <a href="percentage-calculator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -202,7 +634,7 @@
         <div class="tool-info">
           <h3>Word Counter</h3>
           <p>Count words, characters and lines instantly.</p>
-          <a href="word-counter.html" class="tool-link">Use Tool</a>
+          <a href="word-counter.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -212,7 +644,7 @@
         <div class="tool-info">
           <h3>Case Converter</h3>
           <p>Convert text between different cases easily.</p>
-          <a href="case-converter.html" class="tool-link">Use Tool</a>
+          <a href="case-converter.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -222,7 +654,7 @@
         <div class="tool-info">
           <h3>Password Generator</h3>
           <p>Generate strong and secure passwords instantly.</p>
-          <a href="password-generator.html" class="tool-link">Use Tool</a>
+          <a href="password-generator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -232,7 +664,7 @@
         <div class="tool-info">
           <h3>QR Code Generator</h3>
           <p>Create QR codes from text or URLs instantly.</p>
-          <a href="qr-code-generator.html" class="tool-link">Use Tool</a>
+          <a href="qr-code-generator.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
 
@@ -242,7 +674,7 @@
         <div class="tool-info">
           <h3>Color Picker</h3>
           <p>Pick colors and get HEX, RGB codes.</p>
-          <a href="color-picker.html" class="tool-link">Use Tool</a>
+          <a href="color-picker.html" class="tool-link">Use Tool →</a>
         </div>
       </div>
     </div>
@@ -309,6 +741,7 @@
     </div>
   </div>
 </footer>
+
 <!-- Tidio Chatbot -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
@@ -317,17 +750,15 @@
   // Auto year update
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Dark Mode Toggle - ADDED
+  // Dark Mode Toggle
   const themeToggle = document.getElementById('themeToggle');
   
-  // Check saved preference
   const savedTheme = localStorage.getItem('theme') || 'light';
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
     themeToggle.textContent = '☀️';
   }
   
-  // Toggle functionality
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     
@@ -339,6 +770,20 @@
       themeToggle.textContent = '🌙';
     }
   });
+
+  // Carousel Scroll Function
+  function scrollCarousel(amount) {
+    const carousel = document.getElementById('newsCarousel');
+    carousel.scrollBy({
+      left: amount,
+      behavior: 'smooth'
+    });
+  }
+
+  // Auto-rotate carousel every 8 seconds
+  setInterval(() => {
+    scrollCarousel(320);
+  }, 8000);
 
   // Category Pills Filter
   const categoryPills = document.querySelectorAll('.category-pill');
