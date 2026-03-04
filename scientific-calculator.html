@@ -12,527 +12,607 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Scientific Calculator Online Free | Toolyfi</title>
-<meta name="description" content="Free scientific calculator online. Calculate sin, cos, tan, log, sqrt, powers and more. No download needed."/>
-<meta name="keywords" content="scientific calculator, online calculator, free calculator, sin cos tan calculator, log calculator, math calculator, toolyfi"/>
+<meta name="description" content="Free online scientific calculator. Calculate sin, cos, tan, log, square root and more. Accurate results, no signup needed."/>
+<meta name="keywords" content="scientific calculator, online calculator, sin cos tan, log calculator, free calculator, toolyfi"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://toolyfi.com/scientific-calculator.html"/>
 <meta property="og:title" content="Scientific Calculator Online Free | Toolyfi"/>
-<meta property="og:description" content="Free scientific calculator with sin, cos, tan, log, sqrt and more. No download, no signup needed."/>
+<meta property="og:description" content="Free online scientific calculator with sin, cos, tan, log and more."/>
 <meta property="og:url" content="https://toolyfi.com/scientific-calculator.html"/>
 <meta property="og:type" content="website"/>
-<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #1a1a2e;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .top-nav {
+    background: #111120;
+    border-bottom: 1px solid #2a2a4e;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-nav .logo {
+    font-family: 'Orbitron', monospace;
+    color: #8b5cf6;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .top-nav .nav-links { display: flex; gap: 16px; }
+  .top-nav .nav-links a { color: #8080a0; text-decoration: none; font-size: 0.85rem; }
+
+  /* PAGE */
+  .calc-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 60px;
+  }
+
+  .breadcrumb {
+    color: #a0a0c0;
+    font-size: 0.82rem;
+    margin-bottom: 16px;
+    align-self: flex-start;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .breadcrumb a { color: #7c5cbf; text-decoration: none; }
+
+  /* CALCULATOR BODY */
+  .casio-body {
+    width: 100%;
+    max-width: 380px;
+    background: linear-gradient(160deg, #2a2a3e 0%, #1c1c2e 40%, #111120 100%);
+    border-radius: 18px 18px 30px 30px;
+    padding: 14px 14px 22px;
+    box-shadow:
+      0 0 0 2px #3a3a5e,
+      0 0 0 5px #0d0d1a,
+      0 25px 70px rgba(0,0,0,0.9),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .brand-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 4px 6px;
+  }
+
+  .brand-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #b0b0c8;
+    letter-spacing: 3px;
+  }
+
+  .model-name {
+    font-size: 0.65rem;
+    color: #6a6a8a;
+    letter-spacing: 1px;
+  }
+
+  .natural-vpam {
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.55rem;
+    color: #cc2222;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px rgba(204,34,34,0.4);
+  }
+
+  /* LCD */
+  .lcd-outer {
+    background: #111;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .lcd-screen {
+    background: #b4c49a;
+    border-radius: 5px;
+    padding: 8px 10px;
+    min-height: 75px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  .lcd-status {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.55rem;
+    color: #2a4a10;
+    margin-bottom: 2px;
+    opacity: 0.75;
+  }
+
+  .lcd-expr {
+    font-size: 0.78rem;
+    color: #2a4a10;
+    min-height: 18px;
+    opacity: 0.75;
+    word-break: break-all;
+  }
+
+  .lcd-result {
+    font-size: 1.6rem;
+    color: #162808;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 2px;
+    letter-spacing: -1px;
+  }
+
+  /* TOP PURPLE BUTTONS */
+  .nav-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 2px;
+  }
+
+  .nav-group { display: flex; gap: 5px; }
+
+  .nav-btn {
+    background: linear-gradient(145deg, #6040b0, #3a2080);
+    border: none;
+    border-radius: 6px;
+    color: #e0d0ff;
+    font-size: 0.5rem;
+    font-weight: 700;
+    padding: 5px 7px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #1a0850, 0 4px 6px rgba(0,0,0,0.5);
+    transition: all 0.08s;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #1a0850; }
+
+  .replay-btn {
+    background: linear-gradient(145deg, #7050c0, #4a2898);
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    color: #e0d0ff;
+    font-size: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #1a0850, 0 5px 10px rgba(0,0,0,0.6);
+    transition: all 0.08s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.3;
+  }
+
+  /* BUTTON GRIDS */
+  .func-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.07s;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .btn-sub {
+    font-size: 0.38rem;
+    color: #ffcc00;
+    font-weight: 400;
+    margin-bottom: 1px;
+    display: block;
+  }
+
+  /* DARK FUNC */
+  .btn-func {
+    background: linear-gradient(145deg, #28284a, #181830);
+    color: #d0d0ff;
+    box-shadow: 0 3px 0 #080818, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-func:active { transform: translateY(2px); box-shadow: 0 1px 0 #080818; }
+
+  /* NUMBERS */
+  .btn-num {
+    background: linear-gradient(145deg, #383838, #222222);
+    color: #ffffff;
+    font-size: 1rem;
+    box-shadow: 0 3px 0 #080808, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-num:active { transform: translateY(2px); box-shadow: 0 1px 0 #080808; }
+
+  /* OPERATORS */
+  .btn-op {
+    background: linear-gradient(145deg, #282848, #181830);
+    color: #b0b0ee;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 0 #080818, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-op:active { transform: translateY(2px); box-shadow: 0 1px 0 #080818; }
+
+  /* DEL - orange */
+  .btn-del {
+    background: linear-gradient(145deg, #d07018, #a05010);
+    color: white;
+    box-shadow: 0 3px 0 #602800, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-del:active { transform: translateY(2px); box-shadow: 0 1px 0 #602800; }
+
+  /* AC - orange */
+  .btn-ac {
+    background: linear-gradient(145deg, #d07018, #a05010);
+    color: white;
+    font-size: 0.85rem;
+    box-shadow: 0 3px 0 #602800, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-ac:active { transform: translateY(2px); box-shadow: 0 1px 0 #602800; }
+
+  /* EQUALS */
+  .btn-eq {
+    background: linear-gradient(145deg, #282848, #181830);
+    color: #b0b0ee;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 0 #080818, 0 3px 5px rgba(0,0,0,0.5);
+  }
+  .btn-eq:active { transform: translateY(2px); box-shadow: 0 1px 0 #080818; }
+
+  /* SEO + RELATED */
+  .seo-article {
+    max-width: 380px;
+    width: 100%;
+    margin-top: 24px;
+    color: #7070a0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    font-family: sans-serif;
+  }
+
+  .seo-article h2 { color: #9080c0; font-size: 0.95rem; margin-bottom: 8px; }
+
+  .related-tools { max-width: 380px; width: 100%; margin-top: 20px; }
+  .related-tools h2 { color: #9080c0; font-size: 0.9rem; margin-bottom: 10px; font-family: sans-serif; }
+  .related-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .related-card {
+    background: #22223a;
+    color: #b0a0e0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    text-decoration: none;
+    border: 1px solid #33335a;
+    transition: all 0.2s;
+    font-family: sans-serif;
+  }
+
+  .related-card:hover { background: #6c3de8; color: white; border-color: #6c3de8; }
+
+  /* FOOTER */
+  .calc-footer {
+    background: #111120;
+    border-top: 1px solid #222240;
+    padding: 20px;
+    text-align: center;
+    color: #5050a0;
+    font-size: 0.78rem;
+    margin-top: 40px;
+    width: 100%;
+    font-family: sans-serif;
+  }
+
+  .calc-footer a { color: #7050b0; text-decoration: none; margin: 0 8px; }
+
+  @media (max-width: 380px) {
+    .casio-body { padding: 10px 10px 18px; }
+    .btn { height: 32px; font-size: 0.6rem; }
+    .btn-num { font-size: 0.88rem; }
+    .func-grid, .main-grid { gap: 3px; }
+    .lcd-result { font-size: 1.3rem; }
+  }
+</style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="index.html">Home</a></li></ul></nav>
-<div class="tool-page">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Scientific Calculator</div>
-  <div class="tool-header"><h1>🧮 Scientific Calculator</h1><p>Full scientific calculator with advanced functions including trigonometry, logarithms, and more.</p></div>
-  <div class="tool-box">
-    <div class="calc-display">
-      <div class="calc-expr" id="expr"></div>
-      <div class="calc-screen" id="screen">0</div>
+
+<nav class="top-nav">
+  <a href="index.html" class="logo">⚡ Toolyfi</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#tools">Tools</a>
+  </div>
+</nav>
+
+<div class="calc-page">
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> → Scientific Calculator
+  </div>
+
+  <div class="casio-body">
+
+    <div class="brand-bar">
+      <span class="brand-name">TOOLYFI</span>
+      <span class="model-name">fx-SCIENTIFIC</span>
     </div>
-    <div class="calc-grid">
-      <button class="calc-key" onclick="kp('sin(')">sin</button>
-      <button class="calc-key" onclick="kp('cos(')">cos</button>
-      <button class="calc-key" onclick="kp('tan(')">tan</button>
-      <button class="calc-key op" onclick="kp('/')">÷</button>
-      <button class="calc-key" onclick="kp('log(')">log</button>
-      <button class="calc-key" onclick="kp('sqrt(')">√</button>
-      <button class="calc-key" onclick="kp('Math.PI')">π</button>
-      <button class="calc-key op" onclick="kp('*')">×</button>
-      <button class="calc-key" onclick="kp('7')">7</button>
-      <button class="calc-key" onclick="kp('8')">8</button>
-      <button class="calc-key" onclick="kp('9')">9</button>
-      <button class="calc-key op" onclick="kp('-')">−</button>
-      <button class="calc-key" onclick="kp('4')">4</button>
-      <button class="calc-key" onclick="kp('5')">5</button>
-      <button class="calc-key" onclick="kp('6')">6</button>
-      <button class="calc-key op" onclick="kp('+')">+</button>
-      <button class="calc-key" onclick="kp('1')">1</button>
-      <button class="calc-key" onclick="kp('2')">2</button>
-      <button class="calc-key" onclick="kp('3')">3</button>
-      <button class="calc-key" onclick="kp('(')"> ( </button>
-      <button class="calc-key" onclick="kp('0')">0</button>
-      <button class="calc-key" onclick="kp('.')">.</button>
-      <button class="calc-key" onclick="del()">DEL</button>
-      <button class="calc-key" onclick="kp(')')"> ) </button>
-      <button class="calc-key" onclick="clr()" style="color:var(--c6)">C</button>
-      <button class="calc-key" onclick="kp('**2')">x²</button>
-      <button class="calc-key" onclick="kp('%')">%</button>
-      <button class="calc-key eq" onclick="calc()">=</button>
-    </div>
-  </div>
-</div>
-<div class="seo-article">
-  <h2>Free Scientific Calculator Online</h2>
-  <p>Our <strong>scientific calculator online</strong> supports all standard and advanced mathematical operations. Use it for school homework, college assignments, or professional calculations — completely free with no installation needed.</p>
-  <h2>Supported Functions</h2>
-  <ul>
-    <li>Basic: addition, subtraction, multiplication, division</li>
-    <li>Trigonometry: sin, cos, tan</li>
-    <li>Logarithm and square root</li>
-    <li>Powers and percentages</li>
-    <li>Pi (π) constant</li>
-    <li>Parentheses for complex expressions</li>
-  </ul>
-</div>
-<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="age-calculator.html" class="related-card">🎂 Age Calculator</a><a href="bmi-calculator.html" class="related-card">⚖️ BMI Calculator</a><a href="percentage-calculator.html" class="related-card">💯 Percentage</a><a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a></div></div>
-<footer><div class="footer-links"><a href="index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>Privacy Policy - Toolyfi | Your Data is Safe</title>
-  <meta name="description" content="Toolyfi Privacy Policy - We respect your privacy. Learn how we protect your data and what information we collect.">
-  <meta name="keywords" content="privacy policy, data protection, user privacy, toolyfi">
-  <meta name="author" content="Toolyfi">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Privacy Policy - Toolyfi">
-  <meta property="og:description" content="Learn about Toolyfi's privacy practices and data protection policies">
-  <meta property="og:url" content="https://toolyfi.com/privacy.html">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  
-  <style>
-    /* Privacy Page Specific Styles */
-    .privacy-hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
 
-    .privacy-hero h1 {
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
+    <div class="natural-vpam">NATURAL · V.P.A.M.</div>
 
-    .privacy-hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .privacy-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .privacy-section {
-      margin-bottom: 3rem;
-    }
-
-    .privacy-section h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.75rem;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 0.75rem;
-    }
-
-    body.dark-mode .privacy-section h2 {
-      color: #A78BFA;
-      border-bottom-color: #A78BFA;
-    }
-
-    .privacy-section h3 {
-      color: var(--text-primary);
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-    }
-
-    body.dark-mode .privacy-section h3 {
-      color: #F9FAFB;
-    }
-
-    .privacy-section p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    body.dark-mode .privacy-section p {
-      color: #D1D5DB;
-    }
-
-    .privacy-section ul {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-left: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    body.dark-mode .privacy-section ul {
-      color: #D1D5DB;
-    }
-
-    .privacy-section li {
-      margin-bottom: 0.75rem;
-    }
-
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
-      border-left: 4px solid #22C55E;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
-    }
-
-    body.dark-mode .highlight-box {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
-    }
-
-    .highlight-box p {
-      color: #16A34A;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    body.dark-mode .highlight-box p {
-      color: #86EFAC;
-    }
-
-    .contact-box {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--white);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .contact-box h3 {
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-box p {
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 0;
-    }
-
-    .contact-box a {
-      color: var(--white);
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    .last-updated {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-style: italic;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--medium-gray);
-    }
-
-    body.dark-mode .last-updated {
-      color: #D1D5DB;
-      border-top-color: #4B5563;
-    }
-
-    @media (max-width: 768px) {
-      .privacy-section h2 {
-        font-size: 1.5rem;
-      }
-
-      .privacy-container {
-        padding: 2rem 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<!-- HEADER -->
-<header>
-  <div class="header-container">
-    <div class="logo">Toolyfi</div>
-    
-    <!-- Theme Toggle Button - ADDED -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
-    
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#" class="nav-cta">Get Started</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="privacy-hero">
-  <h1>Privacy Policy</h1>
-  <p>Your privacy is important to us. Learn how we protect your data and what information we collect.</p>
-</section>
-
-<!-- PRIVACY CONTENT -->
-<section class="privacy-container">
-
-  <!-- Introduction -->
-  <div class="privacy-section">
-    <h2>Introduction</h2>
-    <p>Welcome to Toolyfi ("we," "us," "our," or "Company"). Toolyfi is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
-    
-    <div class="highlight-box">
-      <p>✓ We respect your privacy and never sell your data to third parties</p>
-    </div>
-  </div>
-
-  <!-- Information We Collect -->
-  <div class="privacy-section">
-    <h2>Information We Collect</h2>
-    
-    <h3>1. Information You Provide Directly</h3>
-    <ul>
-      <li><strong>Contact Information:</strong> When you contact us, we collect your name, email address, and message content</li>
-      <li><strong>Feedback:</strong> Any feedback, suggestions, or feature requests you provide</li>
-      <li><strong>User-Generated Content:</strong> Files or data you upload to use our tools (processed locally)</li>
-    </ul>
-
-    <h3>2. Information Collected Automatically</h3>
-    <ul>
-      <li><strong>Usage Data:</strong> Pages visited, time spent on pages, clicks, scroll depth</li>
-      <li><strong>Device Information:</strong> Browser type, operating system, device type</li>
-      <li><strong>Location Data:</strong> General location based on IP address (country level)</li>
-      <li><strong>Analytics:</strong> How you interact with our tools and features</li>
-    </ul>
-
-    <h3>3. Cookies and Tracking</h3>
-    <p>We use cookies and similar technologies to enhance your experience:</p>
-    <ul>
-      <li><strong>Essential Cookies:</strong> Required for basic website functionality</li>
-      <li><strong>Analytics Cookies:</strong> Help us understand user behavior (Google Analytics)</li>
-      <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
-    </ul>
-  </div>
-
-  <!-- How We Use Your Information -->
-  <div class="privacy-section">
-    <h2>How We Use Your Information</h2>
-    <p>We use collected information for the following purposes:</p>
-    <ul>
-      <li>To provide and maintain our services</li>
-      <li>To improve and optimize our tools and website</li>
-      <li>To respond to your inquiries and support requests</li>
-      <li>To send you updates and announcements (with your consent)</li>
-      <li>To analyze usage patterns and user behavior</li>
-      <li>To detect and prevent fraud or abuse</li>
-      <li>To comply with legal obligations</li>
-    </ul>
-  </div>
-
-  <!-- Data Storage and Security -->
-  <div class="privacy-section">
-    <h2>Data Storage & Security</h2>
-    <p>Your data security is our priority:</p>
-    
-    <h3>Local Processing</h3>
-    <p>Most of your data (files, inputs) is processed locally in your browser. We don't store or transmit this data to our servers unless you explicitly choose to.</p>
-
-    <h3>Transmission Security</h3>
-    <ul>
-      <li>All data transmitted over HTTPS (encrypted)</li>
-      <li>SSL certificates protect data in transit</li>
-      <li>Regular security audits and updates</li>
-    </ul>
-
-    <h3>Server Security</h3>
-    <ul>
-      <li>Industry-standard security measures</li>
-      <li>Limited access to personal data</li>
-      <li>Regular backups and disaster recovery</li>
-    </ul>
-
-    <div class="highlight-box">
-      <p>✓ We use GitHub Pages for hosting - one of the most secure platforms available</p>
-    </div>
-  </div>
-
-  <!-- Your Rights -->
-  <div class="privacy-section">
-    <h2>Your Privacy Rights</h2>
-    <p>Depending on your location, you may have the following rights:</p>
-    
-    <h3>Access</h3>
-    <p>You have the right to access personal information we hold about you</p>
-
-    <h3>Correction</h3>
-    <p>You can request correction of inaccurate or incomplete information</p>
-
-    <h3>Deletion</h3>
-    <p>You can request deletion of your personal data (right to be forgotten)</p>
-
-    <h3>Opt-Out</h3>
-    <p>You can opt-out of marketing communications and analytics tracking</p>
-
-    <h3>Data Portability</h3>
-    <p>You can request your data in a portable format</p>
-  </div>
-
-  <!-- Third-Party Services -->
-  <div class="privacy-section">
-    <h2>Third-Party Services</h2>
-    <p>We use the following third-party services:</p>
-    
-    <h3>Google Analytics</h3>
-    <p>Helps us understand user behavior and website performance. <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></p>
-
-    <h3>Google Search Console</h3>
-    <p>Monitors website search performance. Data processed according to Google's Privacy Policy</p>
-
-    <h3>Hosting (GitHub Pages)</h3>
-    <p>Website hosted on GitHub Pages. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">GitHub Privacy Policy</a></p>
-
-    <p><strong>Note:</strong> We do not share your personal data with third parties for marketing purposes.</p>
-  </div>
-
-  <!-- Children's Privacy -->
-  <div class="privacy-section">
-    <h2>Children's Privacy</h2>
-    <p>Toolyfi is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete such information and terminate the child's account.</p>
-  </div>
-
-  <!-- Changes to This Policy -->
-  <div class="privacy-section">
-    <h2>Changes to This Privacy Policy</h2>
-    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the bottom of this page. Your continued use of Toolyfi indicates your acceptance of these changes.</p>
-  </div>
-
-  <!-- Contact Us -->
-  <div class="contact-box">
-    <h3>Questions About Our Privacy Policy?</h3>
-    <p>Contact us at <a href="/cdn-cgi/l/email-protection#2a5a58435c4b49536a5e454546534c4304494547"><span class="__cf_email__" data-cfemail="a1d1d3c8d7c0c2d8e1d5cececdd8c7c88fc2cecc">[email&#160;protected]</span></a></p>
-    <p>We'll respond to your privacy inquiry within 30 days.</p>
-  </div>
-
-  <div class="last-updated">
-    <p>Last Updated: <span id="year"></span></p>
-    <p>This policy is effective immediately upon acceptance by users</p>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-column">
-        <h4>About Toolyfi</h4>
-        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">100+ Free Online Tools that make your daily digital tasks easy and efficient.</p>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="image-resizer.html">Image Resizer</a></li>
-          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-          <li><a href="password-generator.html">Password Generator</a></li>
-          <li><a href="unit-converter.html">Unit Converter</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms & Conditions</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="GitHub">⚙️</a>
-          <a href="#" title="LinkedIn">💼</a>
-          <a href="#" title="Facebook">f</a>
+    <!-- LCD DISPLAY -->
+    <div class="lcd-outer">
+      <div class="lcd-screen">
+        <div class="lcd-status">
+          <span>COMP</span>
+          <span>Math ▲</span>
         </div>
+        <div class="lcd-expr" id="expr"></div>
+        <div class="lcd-result" id="result">0</div>
       </div>
     </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Toolyfi. All rights reserved.</p>
-      <p>
-        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy</a> •
-        <a href="terms.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
-      </p>
+
+    <!-- TOP PURPLE NAV -->
+    <div class="nav-section">
+      <div class="nav-group">
+        <button class="nav-btn">SHIFT</button>
+        <button class="nav-btn" style="color:#e8a020;">ALPHA</button>
+      </div>
+      <div class="replay-btn">▲<br>REPLAY<br>▼</div>
+      <div class="nav-group">
+        <button class="nav-btn">MODE</button>
+        <button class="nav-btn">SETUP</button>
+        <button class="nav-btn" style="color:#44ee44;" onclick="pressAC()">ON</button>
+      </div>
+    </div>
+
+    <!-- ROW 1: Abs x³ ⁿ√ x⁻¹ log -->
+    <div class="func-grid">
+      <button class="btn btn-func" onclick="pressFunc('Math.abs(')"><span class="btn-sub">●</span>Abs</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.cbrt(')"><span class="btn-sub">●</span>x³</button>
+      <button class="btn btn-func" onclick="pressOp('**(1/3)')"><span class="btn-sub">ⁿ√</span>ⁿ√x</button>
+      <button class="btn btn-func" onclick="pressFunc('1/(')"><span class="btn-sub">10ˣ</span>x⁻¹</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.log10(')"><span class="btn-sub">eˣ</span>log</button>
+    </div>
+
+    <!-- ROW 2: ⌊x⌋ √x x² xⁿ ln -->
+    <div class="func-grid">
+      <button class="btn btn-func" onclick="pressFunc('Math.floor(')"><span class="btn-sub">A</span>⌊x⌋</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.sqrt(')"><span class="btn-sub">√</span>√x</button>
+      <button class="btn btn-func" onclick="pressOp('**2')"><span class="btn-sub">C</span>x²</button>
+      <button class="btn btn-func" onclick="pressOp('**')"><span class="btn-sub">D</span>xⁿ</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.log(')"><span class="btn-sub">eˣ</span>ln</button>
+    </div>
+
+    <!-- ROW 3: (-) hyp sin cos tan -->
+    <div class="func-grid">
+      <button class="btn btn-func" onclick="pressOp('*(-1)')"><span class="btn-sub">A</span>(−)</button>
+      <button class="btn btn-func" onclick="pressNum('π')"><span class="btn-sub">π</span>hyp</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.sin(')"><span class="btn-sub">sin⁻¹</span>sin</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.cos(')"><span class="btn-sub">cos⁻¹</span>cos</button>
+      <button class="btn btn-func" onclick="pressFunc('Math.tan(')"><span class="btn-sub">tan⁻¹</span>tan</button>
+    </div>
+
+    <!-- ROW 4: π e ( ) % -->
+    <div class="func-grid">
+      <button class="btn btn-func" onclick="pressNum('Math.PI')"><span class="btn-sub">RCL</span>π</button>
+      <button class="btn btn-func" onclick="pressNum('Math.E')"><span class="btn-sub">ENG</span>e</button>
+      <button class="btn btn-func" onclick="pressNum('(')"><span class="btn-sub">%</span>(</button>
+      <button class="btn btn-func" onclick="pressNum(')')"><span class="btn-sub">)</span>)</button>
+      <button class="btn btn-func" onclick="pressOp('/100')"><span class="btn-sub">M+</span>%</button>
+    </div>
+
+    <!-- MAIN GRID: 7 8 9 DEL AC / 4 5 6 × ÷ / 1 2 3 + − / 0 . ×10 Ans = -->
+    <div class="main-grid">
+      <button class="btn btn-num" onclick="pressNum('7')">7</button>
+      <button class="btn btn-num" onclick="pressNum('8')">8</button>
+      <button class="btn btn-num" onclick="pressNum('9')">9</button>
+      <button class="btn btn-del" onclick="pressDel()"><span class="btn-sub" style="color:#ffcc00;">CLR</span>DEL</button>
+      <button class="btn btn-ac" onclick="pressAC()"><span class="btn-sub" style="color:#ffcc00;">OFF</span>AC</button>
+
+      <button class="btn btn-num" onclick="pressNum('4')">4</button>
+      <button class="btn btn-num" onclick="pressNum('5')">5</button>
+      <button class="btn btn-num" onclick="pressNum('6')">6</button>
+      <button class="btn btn-op" onclick="pressOp('*')">×</button>
+      <button class="btn btn-op" onclick="pressOp('/')">÷</button>
+
+      <button class="btn btn-num" onclick="pressNum('1')">1</button>
+      <button class="btn btn-num" onclick="pressNum('2')">2</button>
+      <button class="btn btn-num" onclick="pressNum('3')">3</button>
+      <button class="btn btn-op" onclick="pressOp('+')">+</button>
+      <button class="btn btn-op" onclick="pressOp('-')">−</button>
+
+      <button class="btn btn-num" onclick="pressNum('0')">0</button>
+      <button class="btn btn-num" onclick="pressNum('.')">.</button>
+      <button class="btn btn-func" onclick="pressOp('*10**')"><span class="btn-sub">Rnd</span>×10ˣ</button>
+      <button class="btn btn-func" onclick="pressAns()">Ans</button>
+      <button class="btn btn-eq" onclick="calculate()">=</button>
+    </div>
+
+  </div>
+
+  <div class="seo-article">
+    <h2>Free Scientific Calculator Online</h2>
+    <p>Our scientific calculator supports sin, cos, tan, log, ln, square root, power functions and more. Use it for mathematics, physics, engineering and everyday calculations — completely free, no signup needed!</p>
+  </div>
+
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="percentage-calculator.html" class="related-card">💯 Percentage</a>
+      <a href="age-calculator.html" class="related-card">🎂 Age Calculator</a>
+      <a href="bmi-calculator.html" class="related-card">⚖️ BMI Calculator</a>
+      <a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a>
+      <a href="unit-converter.html" class="related-card">📏 Unit Converter</a>
     </div>
   </div>
+
+</div>
+
+<footer class="calc-footer">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+  <p style="margin-top:10px;">© <span id="yr"></span> Toolyfi.com — Free Online Tools</p>
 </footer>
 
 <!-- Tidio Chatbot -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Auto year update
-  const yearElements = document.querySelectorAll('#year');
-  const currentYear = new Date().getFullYear();
-  yearElements.forEach(el => el.textContent = currentYear);
-
-  // Dark Mode Toggle - ADDED
-  const themeToggle = document.getElementById('themeToggle');
-  
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️';
-  }
-  
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    
-    if (document.body.classList.contai
-<div class="toast" id="toast"></div>
-<script src="main.js"></script>
 <script>
-let expr='',cur='0';
-function kp(v){
-  if(['0','1','2','3','4','5','6','7','8','9','.'].includes(v)){cur=(cur==='0'&&v!=='.')?v:cur+v;}
-  else{expr+=cur+v;cur='0';}
-  update();
-}
-function update(){document.getElementById('screen').textContent=cur;document.getElementById('expr').textContent=expr;}
-function clr(){expr='';cur='0';update();}
-function del(){cur=cur.slice(0,-1)||'0';update();}
-function calc(){
-  try{
-    let e=expr+cur;
-    e=e.replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(').replace(/log\(/g,'Math.log10(').replace(/sqrt\(/g,'Math.sqrt(');
-    const r=eval(e);
-    document.getElementById('expr').textContent=expr+cur+' =';
-    cur=String(parseFloat(r.toFixed(10)));expr='';update();
-  }catch{cur='Error';update();}
-}
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  let current = '';
+  let expression = '';
+  let lastAnswer = '0';
+  let justCalc = false;
+
+  function updateDisplay() {
+    let showExpr = expression
+      .replace(/Math\.PI/g, 'π')
+      .replace(/Math\.E/g, 'e')
+      .replace(/Math\.sin\(/g, 'sin(')
+      .replace(/Math\.cos\(/g, 'cos(')
+      .replace(/Math\.tan\(/g, 'tan(')
+      .replace(/Math\.log10\(/g, 'log(')
+      .replace(/Math\.log\(/g, 'ln(')
+      .replace(/Math\.sqrt\(/g, '√(')
+      .replace(/Math\.abs\(/g, 'Abs(')
+      .replace(/Math\.cbrt\(/g, '³√(')
+      .replace(/Math\.floor\(/g, '⌊')
+      .replace(/\*\*/g, '^')
+      .replace(/\*/g, '×')
+      .replace(/\//g, '÷');
+    document.getElementById('expr').textContent = showExpr;
+    document.getElementById('result').textContent = current || '0';
+  }
+
+  function pressNum(val) {
+    if (justCalc) { current = ''; expression = ''; justCalc = false; }
+    current += val;
+    expression += val;
+    updateDisplay();
+  }
+
+  function pressOp(op) {
+    justCalc = false;
+    current += op;
+    expression += op;
+    updateDisplay();
+  }
+
+  function pressFunc(fn) {
+    justCalc = false;
+    current += fn;
+    expression += fn;
+    updateDisplay();
+  }
+
+  function pressDel() {
+    if (expression.length === 0) return;
+    // Remove last character from expression
+    expression = expression.slice(0, -1);
+    current = expression;
+    updateDisplay();
+  }
+
+  function pressAC() {
+    current = '';
+    expression = '';
+    document.getElementById('result').textContent = '0';
+    document.getElementById('expr').textContent = '';
+  }
+
+  function pressAns() {
+    if (justCalc) { current = ''; expression = ''; justCalc = false; }
+    current += lastAnswer;
+    expression += lastAnswer;
+    updateDisplay();
+  }
+
+  function calculate() {
+    if (!expression) return;
+    try {
+      const result = Function('"use strict"; return (' + expression + ')')();
+      if (!isFinite(result)) throw new Error('Infinity');
+      const formatted = parseFloat(result.toFixed(10)).toString();
+      lastAnswer = formatted;
+      document.getElementById('expr').textContent =
+        expression.replace(/Math\.PI/g,'π').replace(/Math\.E/g,'e')
+        .replace(/Math\.sin\(/g,'sin(').replace(/Math\.cos\(/g,'cos(')
+        .replace(/Math\.tan\(/g,'tan(').replace(/Math\.log10\(/g,'log(')
+        .replace(/Math\.log\(/g,'ln(').replace(/Math\.sqrt\(/g,'√(')
+        .replace(/\*\*/g,'^').replace(/\*/g,'×').replace(/\//g,'÷') + ' =';
+      document.getElementById('result').textContent = formatted;
+      current = formatted;
+      expression = formatted;
+      justCalc = true;
+    } catch(e) {
+      document.getElementById('result').textContent = 'Syntax Error';
+      current = '';
+      expression = '';
+      justCalc = false;
+    }
+  }
+
+  // Keyboard support
+  document.addEventListener('keydown', function(e) {
+    if (e.key >= '0' && e.key <= '9') pressNum(e.key);
+    else if (e.key === '.') pressNum('.');
+    else if (e.key === '+') pressOp('+');
+    else if (e.key === '-') pressOp('-');
+    else if (e.key === '*') pressOp('*');
+    else if (e.key === '/') { e.preventDefault(); pressOp('/'); }
+    else if (e.key === 'Enter' || e.key === '=') calculate();
+    else if (e.key === 'Backspace') pressDel();
+    else if (e.key === 'Escape') pressAC();
+    else if (e.key === '(') pressNum('(');
+    else if (e.key === ')') pressNum(')');
+  });
 </script>
+
 </body>
 </html>
