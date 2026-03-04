@@ -1,3 +1,52 @@
+# Robots.txt for Toolyfi
+# Controls search engine crawler access
+
 User-agent: *
 Allow: /
+Allow: /Toolyfi/
+Allow: /updatesworld/
+
+# Disallow unnecessary paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /node_modules/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://hitters999.github.io/sitemap.xml
 Sitemap: https://toolyfi.com/sitemap.xml
+
+# Allow access to all content for indexing
+User-agent: *
+Allow: /
+
+# Crawl-delay for all bots (in seconds)
+Crawl-delay: 1
+Request-rate: 30/60
+
+# Additional security
+User-agent: *
+Disallow: /*?
+Disallow: *?sort=
+Disallow: *?page=
