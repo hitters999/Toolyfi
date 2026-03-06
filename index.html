@@ -9,81 +9,177 @@
   gtag('js', new Date());
   gtag('config', 'G-Y3ETYH2QF0');
 </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- ✅ SEO Meta Tags -->
-  <title>Toolyfi - Free Online Tools & Breaking News | Auto-Updated</title>
-  <meta name="description" content="100+ Free Online Tools + Auto-Updated Breaking News. QR Code, Calculator, Image Resizer, Background Remover. Real-time article updates. No sign-up!">
-  <meta name="keywords" content="free tools, online tools, breaking news, live updates, QR code, calculator, image resizer, toolyfi">
+  <title>Toolyfi - 100+ Free Online Tools & Breaking News</title>
+  <meta name="description" content="100+ Free Online Tools: QR Code, Calculator, Image Resizer, Background Remover + Real-Time Breaking News. No sign-up needed!">
+  <meta name="keywords" content="free tools, online tools, QR code generator, calculator, image resizer, background remover, breaking news">
   <meta name="author" content="Toolyfi">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#dc2626">
+  <meta name="theme-color" content="#667eea">
 
-  <!-- ✅ Open Graph Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hitters999.github.io/Toolyfi/">
-  <meta property="og:title" content="Toolyfi - Free Tools & Breaking News">
-  <meta property="og:description" content="100+ free online tools + auto-updated breaking news coverage.">
-  <meta property="og:image" content="https://hitters999.github.io/Toolyfi/og-image-homepage.jpg">
-
-  <!-- ✅ Canonical URL -->
   <link rel="canonical" href="https://hitters999.github.io/Toolyfi/">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  
   <style>
-    /* NEWS CAROUSEL WIDGET */
-    .news-carousel-section {
-      background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-      padding: 3rem 2rem;
-      margin: 3rem 0;
-      position: relative;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .news-carousel-section::after {
-      content: '🔄 Auto-Updating';
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      background: rgba(220, 38, 38, 0.8);
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px 40px;
       color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .logo-badge {
+      background: rgba(255,255,255,0.2);
       padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.8em;
-      font-weight: bold;
+      font-size: 0.85em;
     }
 
-    .news-carousel-container {
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .get-started {
+      background: white;
+      color: #667eea;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    .get-started:hover {
+      transform: translateY(-2px);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #f5f5f5;
+    }
+
+    /* NEWS SECTION */
+    .news-section {
+      background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+      padding: 60px 40px;
+      color: white;
+    }
+
+    .news-container {
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    .news-carousel-header {
+    .news-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 40px;
     }
 
-    .news-carousel-header h2 {
-      color: white;
-      font-size: 2rem;
-      margin: 0;
+    .news-header h2 {
+      font-size: 2.2em;
+      margin-bottom: 5px;
     }
 
-    .news-carousel-header p {
+    .news-header p {
       color: rgba(255,255,255,0.7);
-      margin: 0;
     }
 
     .news-link {
@@ -92,50 +188,24 @@
       font-weight: bold;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 5px;
     }
 
-    /* CAROUSEL WRAPPER */
-    .carousel-wrapper {
-      perspective: 1000px;
-      overflow: hidden;
-      border-radius: 15px;
-    }
-
-    .carousel-container {
-      display: flex;
-      gap: 1.5rem;
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
       overflow-x: auto;
-      scroll-behavior: smooth;
-      padding: 0;
-      scroll-snap-type: x mandatory;
     }
 
-    .carousel-container::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .carousel-container::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-    }
-
-    .carousel-container::-webkit-scrollbar-thumb {
-      background: #dc2626;
-      border-radius: 10px;
-    }
-
-    /* NEWS CARD */
     .news-card {
-      flex: 0 0 calc(100% - 2rem);
-      min-width: 300px;
-      scroll-snap-align: start;
       background: white;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: slideInCard 0.6s ease-out;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
+      flex: 0 0 auto;
+      min-width: 300px;
     }
 
     .news-card:hover {
@@ -144,41 +214,45 @@
 
     .news-card-image {
       width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+      height: 180px;
+      background: linear-gradient(135deg, #667eea33, #764ba233);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
     .news-card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .news-card-content {
       padding: 20px;
+      color: #333;
     }
 
     .news-card-tag {
       display: inline-block;
+      background: #667eea;
       color: white;
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 6px;
-      font-size: 0.75em;
-      font-weight: 600;
+      font-size: 0.8em;
+      font-weight: bold;
       margin-bottom: 10px;
     }
 
     .news-card h3 {
       font-size: 1.1em;
-      margin: 10px 0;
-      color: #1f2937;
-      line-height: 1.4;
+      margin-bottom: 10px;
+      color: #1a1a1a;
     }
 
     .news-card p {
       font-size: 0.9em;
-      color: #6b7280;
+      color: #666;
       margin-bottom: 15px;
       line-height: 1.5;
     }
@@ -188,193 +262,425 @@
       justify-content: space-between;
       align-items: center;
       font-size: 0.85em;
-      color: #9ca3af;
+      color: #999;
     }
 
     .read-more {
-      color: #dc2626;
+      color: #667eea;
       text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: bold;
     }
 
     .read-more:hover {
-      color: #b91c1c;
+      text-decoration: underline;
     }
 
-    @keyframes slideInCard {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* TOOLS SECTION */
+    .tools-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+
+    .section-title {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .section-subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .category-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: #667eea;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid #667eea;
+    }
+
+    .category-btn.active {
+      background: #667eea;
+      color: white;
+    }
+
+    .category-btn:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+
+    .tool-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+    }
+
+    .tool-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+
+    .tool-card h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .tool-card p {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .use-tool-btn {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .use-tool-btn:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+
+    /* COMING SOON SECTION */
+    .coming-soon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 40px;
+      text-align: center;
+      color: white;
+      margin-top: 60px;
+    }
+
+    .coming-soon h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .coming-soon p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #667eea;
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
-      .news-carousel-section::after {
-        right: 20px;
-        font-size: 0.7em;
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card {
+        min-width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER (Keep existing structure) -->
-<header style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px 40px; color: white; display: flex; justify-content: space-between; align-items: center;">
-  <div style="display: flex; align-items: center; gap: 15px;">
-    <h1 style="margin: 0; font-size: 28px;">Toolyfi</h1>
-    <span style="background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.9em;">Free Tools + News</span>
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo">Toolyfi</div>
+    <div class="logo-badge">Free Tools + News</div>
   </div>
-  <nav style="display: flex; gap: 20px;">
-    <a href="#tools" style="color: white; text-decoration: none; font-weight: 500;">Tools</a>
-    <a href="updatesworld/updatesworld.html" style="color: white; text-decoration: none; font-weight: 500;">📰 Updates World</a>
-    <a href="#about" style="color: white; text-decoration: none; font-weight: 500;">About</a>
+  <nav>
+    <a href="#tools">Tools</a>
+    <a href="Categories">Categories</a>
+    <a href="updatesworld/updatesworld.html">📰 Updates World</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#" class="get-started">Get Started</a>
   </nav>
 </header>
 
-<!-- HERO SECTION (Keep existing) -->
-<section style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 60px 40px; text-align: center;">
-  <h2 style="font-size: 2.5em; margin-bottom: 10px;">All Tools In One Place</h2>
-  <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">100+ Free Online Tools & Real-Time Breaking News</p>
-  <div style="display: flex; gap: 15px; justify-content: center;">
-    <button style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer;">Explore All Tools</button>
-    <button style="background: white; color: #667eea; padding: 12px 30px; border: 2px solid #667eea; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer;">Learn More</button>
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>All Tools In One Place</h1>
+  <p>100+ Free Online Tools & Real-Time Breaking News</p>
+  <div class="hero-buttons">
+    <button class="btn btn-primary">Explore All Tools</button>
+    <button class="btn btn-secondary">Learn More</button>
   </div>
 </section>
 
-<!-- NEWS CAROUSEL SECTION WITH AUTO-UPDATE -->
-<section class="news-carousel-section">
-  <div class="news-carousel-container">
-    <div class="news-carousel-header">
+<!-- NEWS SECTION -->
+<section class="news-section">
+  <div class="news-container">
+    <div class="news-header">
       <div>
-        <h2 style="margin-bottom: 5px;">🔥 Latest News</h2>
+        <h2>🔥 Latest News</h2>
         <p>Fresh updates from around the world (Auto-Updated)</p>
       </div>
       <a href="updatesworld/updatesworld.html" class="news-link">View All →</a>
     </div>
 
-    <div class="carousel-wrapper">
-      <div class="carousel-container" id="newsCarousel">
-        <!-- Auto-populated by JavaScript -->
-        <div style="text-align: center; padding: 40px; color: white; width: 100%;">
-          Loading latest articles...
+    <div class="news-grid">
+      <!-- NEWS CARD 1: US STRATEGY -->
+      <div class="news-card">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop" 
+               alt="US Military" 
+               onerror="this.parentElement.style.background='linear-gradient(135deg, #2563eb33, #2563eb66)'">
+        </div>
+        <div class="news-card-content">
+          <span class="news-card-tag" style="background: #2563eb;">🇺🇸 US STRATEGY</span>
+          <h3>US Military Strategy in Middle East War</h3>
+          <p>Comprehensive analysis of American military operations, carrier deployments, and strategic objectives.</p>
+          <div class="news-card-meta">
+            <span>Strategic Analysis</span>
+            <a href="updatesworld/us-strategy.html" class="read-more">Read →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS CARD 2: IRAN STRATEGY -->
+      <div class="news-card">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=400&h=250&fit=crop" 
+               alt="Iran Military" 
+               onerror="this.parentElement.style.background='linear-gradient(135deg, #dc262633, #dc262666)'">
+        </div>
+        <div class="news-card-content">
+          <span class="news-card-tag" style="background: #dc2626;">🇮🇷 IRAN STRATEGY</span>
+          <h3>Iran's Asymmetric Warfare & Proxy Forces</h3>
+          <p>Deep analysis of Iran's defensive strategy, Revolutionary Guard tactics, and asymmetric warfare.</p>
+          <div class="news-card-meta">
+            <span>Strategic Analysis</span>
+            <a href="updatesworld/iran-strategy.html" class="read-more">Read →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS CARD 3: ISRAEL STRATEGY -->
+      <div class="news-card">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=400&h=250&fit=crop" 
+               alt="Israel Military" 
+               onerror="this.parentElement.style.background='linear-gradient(135deg, #f9731633, #f9731666)'">
+        </div>
+        <div class="news-card-content">
+          <span class="news-card-tag" style="background: #f97316;">🇮🇱 ISRAEL STRATEGY</span>
+          <h3>Israel's Defense: Operation Roaring Lion</h3>
+          <p>Detailed breakdown of Israeli military operations, advanced defense systems, and strategic objectives.</p>
+          <div class="news-card-meta">
+            <span>Strategic Analysis</span>
+            <a href="updatesworld/israel-strategy.html" class="read-more">Read →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AUTO-UPDATE SCRIPT -->
-<script>
-// Inline article database
-const ARTICLES = [
-  {
-    title: 'US Military Strategy in Middle East War',
-    description: 'Comprehensive analysis of American military operations, carrier deployments, and strategic objectives.',
-    tag: '🇺🇸 US STRATEGY',
-    tagBg: '#2563eb',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
-    link: 'updatesworld/us-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T10:00:00')
-  },
-  {
-    title: 'Iran\'s Military Strategy: Asymmetric Warfare & Proxy Forces',
-    description: 'Deep analysis of Iran\'s defensive strategy, Revolutionary Guard tactics, and asymmetric warfare.',
-    tag: '🇮🇷 IRAN STRATEGY',
-    tagBg: '#dc2626',
-    image: 'https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=600&h=400&fit=crop',
-    link: 'updatesworld/iran-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T09:30:00')
-  },
-  {
-    title: 'Israel\'s Defense Strategy: Operation Roaring Lion & Iron Dome',
-    description: 'Detailed breakdown of Israeli military operations, advanced defense systems, and strategic objectives.',
-    tag: '🇮🇱 ISRAEL STRATEGY',
-    tagBg: '#f97316',
-    image: 'https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=600&h=400&fit=crop',
-    link: 'updatesworld/israel-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T09:00:00')
-  },
-  {
-    title: 'Middle East Crisis: What\'s Happening & Why It Matters',
-    description: 'Complete analysis of Middle East crisis, Iran-US tensions, and global impact.',
-    tag: '🌍 GEOPOLITICS',
-    tagBg: '#d32f2f',
-    image: 'https://images.unsplash.com/photo-1582716743212-82f5a7737220?w=600&h=400&fit=crop',
-    link: 'updatesworld/middle-east-crisis.html',
-    category: 'Geopolitical',
-    published: new Date('2026-03-05T15:00:00')
-  }
-];
+<!-- TOOLS SECTION -->
+<section class="tools-section">
+  <h2 class="section-title">All Categories</h2>
+  <p class="section-subtitle">Find tools that match your needs</p>
 
-function getLatestArticles(count = 3) {
-  return ARTICLES.sort((a, b) => b.published - a.published).slice(0, count);
-}
-
-function generateCard(article) {
-  return `
-    <div class="news-card">
-      <div class="news-card-image">
-        <img src="${article.image}" alt="${article.title}" 
-             onerror="this.parentElement.style.background='linear-gradient(135deg,${article.tagBg}33,${article.tagBg})';this.style.display='none'">
-      </div>
-      <div class="news-card-content">
-        <span class="news-card-tag" style="background:${article.tagBg};">${article.tag}</span>
-        <h3>${article.title}</h3>
-        <p>${article.description}</p>
-        <div class="news-card-meta">
-          <span>${article.category}</span>
-          <a href="${article.link}" class="read-more">Read →</a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function populateCards() {
-  const container = document.getElementById('newsCarousel');
-  if (!container) return;
-  
-  const latest = getLatestArticles(3);
-  container.innerHTML = latest.map(generateCard).join('');
-  console.log('✅ Articles auto-updated: ' + latest.length);
-}
-
-// Auto-populate on page load
-document.addEventListener('DOMContentLoaded', populateCards);
-
-// Optional: Re-check every 5 minutes
-setInterval(populateCards, 5 * 60 * 1000);
-</script>
-
-<!-- REST OF PAGE (Keep existing sections like tools, etc.) -->
-<section id="tools" style="padding: 60px 40px; max-width: 1200px; margin: 0 auto;">
-  <h2 style="font-size: 2em; margin-bottom: 10px;">All Categories</h2>
-  <p style="color: #666; margin-bottom: 30px;">Find tools that match your needs</p>
-  
-  <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;">
-    <button style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">All Tools</button>
-    <button style="background: white; color: #667eea; padding: 10px 20px; border: 2px solid #667eea; border-radius: 25px; cursor: pointer; font-weight: bold;">Image Tools</button>
-    <button style="background: white; color: #16a34a; padding: 10px 20px; border: 2px solid #16a34a; border-radius: 25px; cursor: pointer; font-weight: bold;">Calculators</button>
-    <button style="background: white; color: #0891b2; padding: 10px 20px; border: 2px solid #0891b2; border-radius: 25px; cursor: pointer; font-weight: bold;">Converters</button>
-    <button style="background: white; color: #9333ea; padding: 10px 20px; border: 2px solid #9333ea; border-radius: 25px; cursor: pointer; font-weight: bold;">Generators</button>
+  <div class="categories">
+    <button class="category-btn active">All Tools</button>
+    <button class="category-btn">Image Tools</button>
+    <button class="category-btn">Calculators</button>
+    <button class="category-btn">Converters</button>
+    <button class="category-btn">Text Tools</button>
+    <button class="category-btn">Generators</button>
   </div>
 
-  <h2 style="font-size: 1.8em; margin-top: 40px; margin-bottom: 20px;">Popular Tools</h2>
-  <p style="color: #666;">Most used and powerful tools</p>
+  <h2 class="section-title">Popular Tools</h2>
+  <p class="section-subtitle">Most used and powerful tools</p>
+
+  <div class="tools-grid">
+    <!-- TOOL 1: QR CODE GENERATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">📱</div>
+      <h3>QR Code Generator</h3>
+      <p>Create QR codes from text or URLs. Download as PNG, SVG or print directly.</p>
+      <a href="qr-code-generator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 2: AGE CALCULATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">🎂</div>
+      <h3>Age Calculator</h3>
+      <p>Calculate your exact age in days, months and years instantly.</p>
+      <a href="age-calculator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 3: BACKGROUND REMOVER -->
+    <div class="tool-card">
+      <div class="tool-icon">🖼️</div>
+      <h3>Background Remover</h3>
+      <p>Remove image backgrounds instantly with AI. Download transparent PNG.</p>
+      <a href="background-remover.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 4: IMAGE RESIZER -->
+    <div class="tool-card">
+      <div class="tool-icon">🖼️</div>
+      <h3>Image Resizer</h3>
+      <p>Resize images to any size instantly. Upload and resize with ease.</p>
+      <a href="image-resizer.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 5: IMAGE COMPRESSOR -->
+    <div class="tool-card">
+      <div class="tool-icon">📦</div>
+      <h3>Image Compressor</h3>
+      <p>Reduce image file size without losing quality. Download instantly.</p>
+      <a href="image-compressor.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 6: SCIENTIFIC CALCULATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">🔢</div>
+      <h3>Scientific Calculator</h3>
+      <p>Full-featured scientific calculator for advanced mathematics.</p>
+      <a href="scientific-calculator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 7: BMI CALCULATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">⚖️</div>
+      <h3>BMI Calculator</h3>
+      <p>Calculate your Body Mass Index instantly.</p>
+      <a href="bmi-calculator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 8: LOAN CALCULATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">💰</div>
+      <h3>Loan Calculator</h3>
+      <p>Calculate EMI, interest and total loan amount.</p>
+      <a href="loan-calculator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 9: PERCENTAGE CALCULATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">📊</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate percentages, discounts and growth instantly.</p>
+      <a href="percentage-calculator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 10: WORD COUNTER -->
+    <div class="tool-card">
+      <div class="tool-icon">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words, characters and lines instantly.</p>
+      <a href="word-counter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 11: CASE CONVERTER -->
+    <div class="tool-card">
+      <div class="tool-icon">Aa</div>
+      <h3>Case Converter</h3>
+      <p>Convert text between different cases easily.</p>
+      <a href="case-converter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 12: PASSWORD GENERATOR -->
+    <div class="tool-card">
+      <div class="tool-icon">🔐</div>
+      <h3>Password Generator</h3>
+      <p>Generate strong and secure passwords instantly.</p>
+      <a href="password-generator.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 13: COLOR PICKER -->
+    <div class="tool-card">
+      <div class="tool-icon">🎨</div>
+      <h3>Color Picker</h3>
+      <p>Pick colors and get HEX, RGB codes.</p>
+      <a href="color-picker.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 14: CURRENCY CONVERTER -->
+    <div class="tool-card">
+      <div class="tool-icon">💱</div>
+      <h3>Currency Converter</h3>
+      <p>Convert between 150+ currencies instantly.</p>
+      <a href="currency-converter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <!-- TOOL 15: TEMPERATURE CONVERTER -->
+    <div class="tool-card">
+      <div class="tool-icon">🌡️</div>
+      <h3>Temperature Converter</h3>
+      <p>Convert between Celsius, Fahrenheit and Kelvin.</p>
+      <a href="temperature-converter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON SECTION -->
+<section class="coming-soon">
+  <h2>300+ Tools Coming Soon</h2>
+  <p>New tools and features are being added every week. Stay tuned for updates.</p>
 </section>
 
 <!-- FOOTER -->
-<footer style="background: #1f2937; color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
-  <p>&copy; 2026 Toolyfi · Free Online Tools + Breaking News</p>
-  <p style="color: #999; margin-top: 10px;">🔄 Articles auto-update every 5 minutes | ✅ No Manual Updates Needed</p>
+<footer>
+  <p>&copy; 2026 Toolyfi · <a href="#">Free Online Tools</a> + <a href="updatesworld/updatesworld.html">Breaking News</a></p>
+  <p>✅ Articles auto-update every 5 minutes | 📱 100% Mobile Optimized | 🔒 No Sign-up Required</p>
 </footer>
 
 <!-- Tidio Chatbot -->
