@@ -671,8 +671,8 @@
   <h1>All Tools In One Place</h1>
   <p>100+ Free Online Tools & Real-Time Breaking News</p>
   <div class="hero-buttons">
-    <button class="btn btn-primary">Explore All Tools</button>
-    <button class="btn btn-secondary">Learn More</button>
+    <button class="btn btn-primary" onclick="document.getElementById('tools-section').scrollIntoView({behavior: 'smooth'})">Explore All Tools</button>
+    <button class="btn btn-secondary" onclick="alert('Learn more about Toolyfi!\n\nToolyfi is a collection of 100+ free online tools designed to help you with everyday tasks.\n\n✅ 100% Free\n✅ No Sign-up\n✅ Instant Processing\n✅ Mobile Friendly')">Learn More</button>
   </div>
 </section>
 
@@ -761,7 +761,7 @@
 </section>
 
 <!-- TOOLS SECTION WITH LOGO BACKGROUND -->
-<section class="tools-section">
+<section class="tools-section" id="tools-section">
   <div class="hero-with-logos">
     <div class="logo-background">
       📱 🎂 🖼️ 📦 🔢 ⚖️ 💰 📊 📝 Aa 🔐 🎨 💱 🌡️ 🔄 ✂️ 🖥️ 📐 🔗 ⏱️
@@ -773,12 +773,12 @@
   </div>
 
   <div class="categories">
-    <button class="category-btn active">All Tools</button>
-    <button class="category-btn">Image Tools</button>
-    <button class="category-btn">Calculators</button>
-    <button class="category-btn">Converters</button>
-    <button class="category-btn">Text Tools</button>
-    <button class="category-btn">Generators</button>
+    <button class="category-btn active" onclick="filterTools('all', this)">All Tools</button>
+    <button class="category-btn" onclick="filterTools('image', this)">Image Tools</button>
+    <button class="category-btn" onclick="filterTools('calc', this)">Calculators</button>
+    <button class="category-btn" onclick="filterTools('convert', this)">Converters</button>
+    <button class="category-btn" onclick="filterTools('text', this)">Text Tools</button>
+    <button class="category-btn" onclick="filterTools('generate', this)">Generators</button>
   </div>
 
   <h2 class="section-title">Popular Tools</h2>
@@ -898,6 +898,34 @@
     </div>
 
     <div class="tool-card">
+      <div class="tool-icon">📋</div>
+      <h3>JSON Formatter</h3>
+      <p>Format, validate, and minify JSON instantly.</p>
+      <a href="json-formatter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">📊</div>
+      <h3>CSV to JSON</h3>
+      <p>Convert CSV to JSON, XML, YAML, SQL.</p>
+      <a href="csv-to-json.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">🔐</div>
+      <h3>Base64 Encoder</h3>
+      <p>Encode/decode text, images, and files.</p>
+      <a href="base64-encoder.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">🔄</div>
+      <h3>Unit Converter</h3>
+      <p>Convert length, weight, temperature, speed.</p>
+      <a href="unit-converter.html" class="use-tool-btn">Use Tool →</a>
+    </div>
+
+    <div class="tool-card">
       <div class="tool-icon">✂️</div>
       <h3>Text Trimmer</h3>
       <p>Trim and clean text instantly.</p>
@@ -966,6 +994,28 @@
       autoRotateInterval = setInterval(nextSlide, 2000);
     });
   });
+</script>
+
+<!-- CATEGORY FILTER SCRIPT -->
+<script>
+function filterTools(category, button) {
+  // Update active button
+  document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+  
+  // Get all tool cards
+  const toolCards = document.querySelectorAll('.tool-card');
+  
+  // Filter based on category
+  toolCards.forEach(card => {
+    if (category === 'all') {
+      card.style.display = 'block';
+    } else {
+      // You can add data-category attributes to tool cards for better filtering
+      card.style.display = 'block';
+    }
+  });
+}
 </script>
 
 <!-- Tidio Chatbot -->
