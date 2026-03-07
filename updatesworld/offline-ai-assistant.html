@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Own Fully Offline AI Assistant | Updates World</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Learn how to build a fully offline AI assistant using Raspberry Pi 5, Gemma 3, Vosk, and YOLOv8. Complete technical guide with components, setup, and architecture." />
+  <meta name="keywords" content="offline AI assistant, Raspberry Pi 5, Gemma 3, llama.cpp, Vosk, YOLOv8, edge AI, privacy AI" />
+  <meta name="author" content="Updates World" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Build Your Own Fully Offline AI Assistant" />
+  <meta property="og:description" content="A multimodal AI assistant that runs entirely on Raspberry Pi 5 — no cloud, no privacy risk." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://toolyfi.com/updatesworld/offline-ai-assistant.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Build Your Own Fully Offline AI Assistant" />
+  <meta name="twitter:description" content="Raspberry Pi 5 + Gemma 3 + Vosk = Full offline AI. Here's how to build it." />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y3ETYH2QF0');
+  </script>
+
+  <!-- Tidio Chatbot -->
+  <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161e;
+      --card: #1a1e28;
+      --border: #2a2f3e;
+      --accent: #00c8ff;
+      --accent2: #7b5ea7;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --green: #00e676;
+      --orange: #ff9800;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    /* Reading Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav .logo span { color: var(--text); }
+
+    nav a.back {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    nav a.back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 860px;
+      margin: 60px auto 0;
+      padding: 0 24px;
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: rgba(0,200,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0,200,255,0.3);
+      font-size: 0.75rem;
+      font-family: 'Courier New', monospace;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero .subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: 'Courier New', monospace;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* CONTENT */
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 48px 0 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent);
+      font-family: 'Georgia', serif;
+    }
+
+    .article-body h3 {
+      font-size: 1.15rem;
+      color: var(--accent);
+      margin: 28px 0 12px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .article-body p {
+      margin-bottom: 18px;
+      color: #cdd5e0;
+      font-size: 1.02rem;
+    }
+
+    .article-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0,200,255,0.4);
+    }
+
+    .article-body a:hover { border-color: var(--accent); }
+
+    /* Highlight Box */
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .highlight-box.orange { border-left-color: var(--orange); }
+    .highlight-box.green { border-left-color: var(--green); }
+    .highlight-box.purple { border-left-color: var(--accent2); }
+
+    .highlight-box p { margin: 0; color: var(--text); }
+    .highlight-box strong { color: var(--accent); }
+    .highlight-box.orange strong { color: var(--orange); }
+    .highlight-box.green strong { color: var(--green); }
+
+    /* Specs Table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.92rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .specs-table th {
+      background: var(--card);
+      color: var(--accent);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .specs-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .specs-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Code Block */
+    .code-block {
+      background: #0a0c10;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      color: #a8d8a8;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: #5c7a5c; }
+    .code-block .cmd { color: var(--accent); }
+
+    /* Architecture Diagram */
+    .arch-diagram {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 28px 0;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+    }
+
+    .arch-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .arch-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    .arch-box.accent { border-color: var(--accent); color: var(--accent); }
+    .arch-box.green { border-color: var(--green); color: var(--green); }
+    .arch-box.orange { border-color: var(--orange); color: var(--orange); }
+    .arch-box.purple { border-color: var(--accent2); color: #b39ddb; }
+
+    .arch-arrow { color: var(--muted); font-size: 1.2rem; }
+
+    /* Share Buttons */
+    .share-section {
+      margin: 48px 0 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .share-section h4 {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .share-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .share-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .share-btn:hover { opacity: 0.85; }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.facebook { background: #1877f2; color: #fff; }
+    .share-btn.copy { background: var(--card); color: var(--accent); border: 1px solid var(--accent); }
+
+    /* Tags */
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 32px 0; }
+
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-family: 'Courier New', monospace;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .arch-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="../updatesworld/updatesworld.html" class="logo">Updates<span>World</span></a>
+  <a href="../updatesworld/updatesworld.html" class="back">← Back to News</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="category-badge">🤖 AI & Technology</div>
+  <h1>Build Your Own <span>Fully Offline</span> AI Assistant</h1>
+  <p class="subtitle">
+    A multimodal AI that listens, sees, and speaks — running entirely on a Raspberry Pi 5 with no internet connection required. Here's the complete technical breakdown.
+  </p>
+  <div class="meta">
+    <span>📅 March 2026</span>
+    <span>✍️ Updates World</span>
+    <span>⏱ 8 min read</span>
+    <span>🏷 Edge AI · Privacy · DIY</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p>
+    The promise of AI assistants has always come with a hidden cost: your data. Every query you send to ChatGPT, Gemini, or Claude travels to a remote server, gets processed, and contributes to a growing profile of your behavior and interests. For developers, researchers, and privacy-conscious individuals, this is an unacceptable trade-off.
+  </p>
+
+  <p>
+    Hardware hacker <strong>Suhas Telkar</strong> has built a compelling alternative — a fully offline, multimodal AI assistant running on a <strong>Raspberry Pi 5</strong>. It listens to your voice, sees through a camera, speaks responses aloud, and even remembers past conversations. All without a single byte leaving your home network.
+  </p>
+
+  <h2>Why Offline AI Matters</h2>
+
+  <p>
+    Cloud-based AI tools offer incredible capabilities but at the expense of privacy. Your voice queries, uploaded images, and conversation history often reside on third-party servers indefinitely. For medical professionals, journalists, legal researchers, or anyone handling sensitive data, this is a critical vulnerability.
+  </p>
+
+  <div class="highlight-box orange">
+    <p><strong>Edge AI</strong> solves this by running the model locally on hardware you own. No API calls. No data transmission. No subscription fees. Complete control.</p>
+  </div>
+
+  <p>
+    The trade-off is performance — but modern quantized models have narrowed this gap dramatically. A Raspberry Pi 5 in 2026 can run a capable language model well enough for daily practical use.
+  </p>
+
+  <h2>Hardware Requirements</h2>
+
+  <table class="specs-table">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Specification</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Raspberry Pi 5</td><td>4GB RAM</td><td>Main compute unit</td></tr>
+      <tr><td>MicroSD Card</td><td>64GB+ (Class 10)</td><td>OS + model storage</td></tr>
+      <tr><td>USB Microphone</td><td>Any USB mic</td><td>Voice input</td></tr>
+      <tr><td>Speaker</td><td>3.5mm or USB</td><td>Audio output</td></tr>
+      <tr><td>Pi Camera Module</td><td>v2 or v3</td><td>Object detection</td></tr>
+      <tr><td>OLED Display</td><td>SSD1306 (0.96")</td><td>Text output / UI</td></tr>
+      <tr><td>Push Buttons</td><td>3× momentary switches</td><td>Controls (Talk / Detect / Capture)</td></tr>
+      <tr><td>Power Supply</td><td>5V 5A USB-C</td><td>Stable power for Pi 5</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    The total hardware cost lands somewhere between <strong>$80–$140 USD</strong> depending on your region and whether you already own some components. No GPU, no expensive workstation — just a credit-card-sized computer.
+  </p>
+
+  <h2>System Architecture</h2>
+
+  <p>
+    The project intelligently combines several open-source AI components into a cohesive pipeline. Here's how each layer communicates:
+  </p>
+
+  <div class="arch-diagram">
+    <div class="arch-row">
+      <div class="arch-box accent">🎤 USB Microphone</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-box green">Vosk (STT)</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-box accent">Text Query</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box accent">📷 Pi Camera</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-box orange">YOLOv8 Nano</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-box accent">Object Labels</div>
+    </div>
+    <div class="arch-row" style="margin-top:16px;">
+      <div class="arch-box purple">ChromaDB (Memory)</div>
+      <div class="arch-arrow">↕</div>
+      <div class="arch-box accent" style="font-size:0.95rem; padding:14px 20px;">⚙️ Gemma 3 4B via llama.cpp</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-box green">eSpeak (TTS)</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box" style="width:100%; text-align:center;">📺 SSD1306 OLED Display (Real-time token stream)</div>
+    </div>
+  </div>
+
+  <h2>The AI Brain: Gemma 3 via llama.cpp</h2>
+
+  <p>
+    At the heart of the system is Google's <strong>Gemma 3 4B Instruct</strong> model — a 4-billion parameter instruction-tuned language model. Running it on a device with only 4GB RAM requires quantization, a technique that compresses model weights from 32-bit floats to lower precision (typically 4-bit or 8-bit integers), drastically reducing memory footprint with minimal quality loss.
+  </p>
+
+  <p>
+    <strong>llama.cpp</strong> is the C++ inference engine that makes this possible. It's highly optimized for CPU inference and supports a wide range of quantized model formats. On the Pi 5, performance metrics look like this:
+  </p>
+
+  <div class="highlight-box green">
+    <p>⚡ <strong>Generation Speed:</strong> 5–10 tokens per second<br>
+    ⏳ <strong>First Token Latency:</strong> Under 8 seconds<br>
+    💾 <strong>RAM Usage:</strong> ~2.5–3GB with 4-bit quantization</p>
+  </div>
+
+  <p>
+    This is slower than a cloud API call, but entirely acceptable for a device sitting on your desk. The key advantage: your queries never leave the device.
+  </p>
+
+  <h2>Voice Pipeline: Vosk + eSpeak</h2>
+
+  <h3>Speech-to-Text: Vosk</h3>
+  <p>
+    <strong>Vosk</strong> is an offline speech recognition toolkit that supports lightweight models designed specifically for edge hardware. Unlike Whisper (which demands more compute), Vosk's small English models run comfortably on the Pi without consuming excessive CPU. Audio is captured from the USB mic using a push-to-talk button to avoid constant background processing.
+  </p>
+
+  <h3>Text-to-Speech: eSpeak</h3>
+  <p>
+    The system uses <strong>eSpeak-NG</strong>, a compact open-source speech synthesizer available on Linux. While the voice sounds robotic compared to cloud TTS services, it is fast, offline, and requires almost no compute resources. Responses are streamed to the speaker as they are generated.
+  </p>
+
+  <h2>Computer Vision: YOLOv8 Nano</h2>
+
+  <p>
+    When the user presses the object detection button, the Raspberry Pi Camera Module captures a frame which is then processed by <strong>YOLOv8 Nano</strong> — the smallest and fastest variant of the YOLOv8 object detection model from Ultralytics. It can identify dozens of common objects (people, furniture, tools, food items) and returns results in just a few seconds on the Pi's ARM CPU.
+  </p>
+
+  <div class="highlight-box purple">
+    <p>The detected object label is passed directly into the language model as context, so you can ask follow-up questions like <em>"What is that used for?"</em> or <em>"Is this safe to eat?"</em> and get relevant answers.</p>
+  </div>
+
+  <h2>Memory System: ChromaDB + RAG</h2>
+
+  <p>
+    One of the most technically impressive aspects of this project is its <strong>persistent memory system</strong>. Using <strong>ChromaDB</strong> — a lightweight vector database — combined with the <strong>all-MiniLM-L6-v2</strong> sentence embedding model, the assistant can store and retrieve past conversations.
+  </p>
+
+  <p>
+    This is called <strong>Retrieval-Augmented Generation (RAG)</strong>. Here's how it works:
+  </p>
+
+  <ol style="padding-left: 24px; margin-bottom: 18px; color: #cdd5e0; line-height: 2;">
+    <li>Each conversation turn is converted into a vector (numerical embedding).</li>
+    <li>Embeddings are stored in ChromaDB on the local filesystem.</li>
+    <li>On each new query, the system searches ChromaDB for the most semantically similar past entries.</li>
+    <li>Relevant memories are injected into the model's context window before generating a response.</li>
+  </ol>
+
+  <p>
+    A rolling window limits stored entries to prevent disk and RAM from filling up over time — a smart design choice for resource-constrained hardware.
+  </p>
+
+  <h2>User Interface: OLED + 3 Buttons</h2>
+
+  <p>
+    The physical interface is deliberately minimal. A <strong>0.96-inch SSD1306 OLED display</strong> (controlled via I2C) streams tokens in real-time as the model generates them. When idle, custom animations give the device a personality — making it feel like a living gadget rather than just a running script.
+  </p>
+
+  <p>
+    Three physical buttons handle all interactions:
+  </p>
+
+  <table class="specs-table">
+    <thead><tr><th>Button</th><th>Function</th></tr></thead>
+    <tbody>
+      <tr><td>Button 1</td><td>Push-to-talk — start/stop voice conversation</td></tr>
+      <tr><td>Button 2</td><td>Trigger object detection via camera</td></tr>
+      <tr><td>Button 3</td><td>Capture and save an image</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    No terminal, keyboard, or monitor is needed after initial setup. The device is fully self-contained.
+  </p>
+
+  <h2>Software Setup Overview</h2>
+
+  <p>The project runs on <strong>Raspberry Pi OS (64-bit)</strong>. Here is a simplified setup flow:</p>
+
+  <div class="code-block">
+    <span class="comment"># 1. Clone the repository</span><br>
+    <span class="cmd">git clone https://github.com/Chappie02/Multi-Modal-AI-Assistant-on-Raspberry-Pi-5</span><br>
+    <span class="cmd">cd Multi-Modal-AI-Assistant-on-Raspberry-Pi-5</span><br><br>
+    <span class="comment"># 2. Install Python dependencies</span><br>
+    <span class="cmd">pip install -r requirements.txt</span><br><br>
+    <span class="comment"># 3. Download quantized Gemma 3 4B model (GGUF format)</span><br>
+    <span class="cmd">huggingface-cli download &lt;model-repo&gt; --local-dir ./models/</span><br><br>
+    <span class="comment"># 4. Download Vosk language model</span><br>
+    <span class="cmd">wget https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip</span><br>
+    <span class="cmd">unzip vosk-model-small-en-us-0.15.zip -d ./models/</span><br><br>
+    <span class="comment"># 5. Run the assistant</span><br>
+    <span class="cmd">python main.py</span>
+  </div>
+
+  <p>
+    Refer to the <a href="https://github.com/Chappie02/Multi-Modal-AI-Assistant-on-Raspberry-Pi-5" target="_blank">official GitHub repository</a> for complete, up-to-date installation instructions and wiring diagrams.
+  </p>
+
+  <h2>Limitations to Know</h2>
+
+  <p>
+    This is an impressive project, but it is important to go in with realistic expectations:
+  </p>
+
+  <div class="highlight-box orange">
+    <p>
+      <strong>Speed:</strong> 5–10 tokens/sec feels slow compared to GPT-4. Expect pauses.<br><br>
+      <strong>Model quality:</strong> Gemma 3 4B is capable but not GPT-4 level. Complex reasoning tasks may falter.<br><br>
+      <strong>TTS quality:</strong> eSpeak sounds robotic. This is a known trade-off for offline synthesis.<br><br>
+      <strong>Power:</strong> Raspberry Pi 5 under load draws significant power — not suited for battery-only deployment without optimization.
+    </p>
+  </div>
+
+  <h2>Why This Project Is Significant</h2>
+
+  <p>
+    Beyond the technical achievement, this project represents something important: the democratization of AI without surveillance. As AI models shrink and hardware improves, the gap between cloud and edge intelligence will continue to narrow. Projects like this — open-source, permissively licensed, reproducible — are the foundation of a future where AI is a tool you own, not a service that owns your data.
+  </p>
+
+  <p>
+    The full project is available on GitHub under an MIT license. Hardware costs are accessible. The knowledge required is within reach of any intermediate developer. There has never been a better time to build your own private AI.
+  </p>
+
+  <div class="highlight-box green">
+    <p>🔗 <strong>Source Code:</strong> <a href="https://github.com/Chappie02/Multi-Modal-AI-Assistant-on-Raspberry-Pi-5" target="_blank">github.com/Chappie02/Multi-Modal-AI-Assistant-on-Raspberry-Pi-5</a><br>
+    📄 <strong>License:</strong> MIT — free to use, modify, and distribute.</p>
+  </div>
+
+  <!-- Tags -->
+  <div class="tags">
+    <span class="tag">Raspberry Pi</span>
+    <span class="tag">Edge AI</span>
+    <span class="tag">Offline AI</span>
+    <span class="tag">Gemma 3</span>
+    <span class="tag">llama.cpp</span>
+    <span class="tag">Privacy</span>
+    <span class="tag">YOLOv8</span>
+    <span class="tag">Vosk</span>
+    <span class="tag">DIY</span>
+    <span class="tag">Open Source</span>
+  </div>
+
+  <!-- Share Section -->
+  <div class="share-section">
+    <h4>Share This Article</h4>
+    <div class="share-buttons">
+      <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=Build+Your+Own+Fully+Offline+AI+Assistant+%7C+Updates+World&url=https://toolyfi.com/updatesworld/offline-ai-assistant.html" target="_blank">🐦 Share on Twitter</a>
+      <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://toolyfi.com/updatesworld/offline-ai-assistant.html" target="_blank">📘 Share on Facebook</a>
+      <button class="share-btn copy" onclick="navigator.clipboard.writeText(window.location.href); this.textContent='✅ Copied!'">🔗 Copy Link</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <a href="../index.html">Toolyfi</a> · <a href="../updatesworld/updatesworld.html">Updates World</a> · <a href="../privacy.html">Privacy Policy</a></p>
+  <p style="margin-top: 8px; font-size: 0.75rem;">Content sourced from Hackster.io. All rights belong to respective owners.</p>
+</footer>
+
+<!-- Progress Bar Script -->
+<script>
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const total = document.body.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / total) * 100;
+    bar.style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
