@@ -524,6 +524,76 @@
       }
     }
 
+    /* NEWS CAROUSEL STYLES */
+    .news-carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .news-carousel-wrapper {
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .news-carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .news-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .carousel-nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+      align-items: center;
+    }
+
+    .carousel-btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: #5568d3;
+      transform: scale(1.1);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: #667eea;
+      width: 30px;
+      border-radius: 5px;
+    }
+
     @media (max-width: 480px) {
       header {
         padding: 12px 15px;
@@ -566,6 +636,12 @@
       footer {
         padding: 20px 15px;
         font-size: 0.8em;
+      }
+
+      .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
       }
     }
   </style>
@@ -611,53 +687,74 @@
       <a href="updatesworld/updatesworld.html" class="news-link">View All →</a>
     </div>
 
-    <div class="news-grid">
-      <!-- NEWS CARD 1 -->
-      <div class="news-card">
-        <div class="news-card-image">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop" alt="US Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #2563eb33, #2563eb66)'">
-        </div>
-        <div class="news-card-content">
-          <span class="news-card-tag" style="background: #2563eb;">🇺🇸 US STRATEGY</span>
-          <h3>US Military Strategy in Middle East</h3>
-          <p>Comprehensive analysis of American military operations.</p>
-          <div class="news-card-meta">
-            <span>Analysis</span>
-            <a href="updatesworld/us-strategy.html" class="read-more">Read →</a>
+    <div class="news-carousel-container">
+      <div class="news-carousel-wrapper">
+        <div class="news-carousel" id="newsCarousel">
+          <!-- SLIDE 1 -->
+          <div class="news-slide">
+            <div class="news-card">
+              <div class="news-card-image">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop" alt="US Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #2563eb33, #2563eb66)'">
+              </div>
+              <div class="news-card-content">
+                <span class="news-card-tag" style="background: #2563eb;">🇺🇸 US STRATEGY</span>
+                <h3>US Military Strategy in Middle East</h3>
+                <p>Comprehensive analysis of American military operations.</p>
+                <div class="news-card-meta">
+                  <span>Analysis</span>
+                  <a href="updatesworld/us-strategy.html" class="read-more">Read →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 -->
+          <div class="news-slide">
+            <div class="news-card">
+              <div class="news-card-image">
+                <img src="https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=400&h=250&fit=crop" alt="Iran Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #dc262633, #dc262666)'">
+              </div>
+              <div class="news-card-content">
+                <span class="news-card-tag" style="background: #dc2626;">🇮🇷 IRAN STRATEGY</span>
+                <h3>Iran's Asymmetric Warfare Strategy</h3>
+                <p>Deep analysis of Iran's defensive tactics.</p>
+                <div class="news-card-meta">
+                  <span>Analysis</span>
+                  <a href="updatesworld/iran-strategy.html" class="read-more">Read →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="news-slide">
+            <div class="news-card">
+              <div class="news-card-image">
+                <img src="https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=400&h=250&fit=crop" alt="Israel Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #f9731633, #f9731666)'">
+              </div>
+              <div class="news-card-content">
+                <span class="news-card-tag" style="background: #f97316;">🇮🇱 ISRAEL STRATEGY</span>
+                <h3>Israel's Defense Operations</h3>
+                <p>Israeli military strategy and defense systems.</p>
+                <div class="news-card-meta">
+                  <span>Analysis</span>
+                  <a href="updatesworld/israel-strategy.html" class="read-more">Read →</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- NEWS CARD 2 -->
-      <div class="news-card">
-        <div class="news-card-image">
-          <img src="https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=400&h=250&fit=crop" alt="Iran Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #dc262633, #dc262666)'">
+      <!-- CAROUSEL CONTROLS -->
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn">←</button>
+        <div class="carousel-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
         </div>
-        <div class="news-card-content">
-          <span class="news-card-tag" style="background: #dc2626;">🇮🇷 IRAN STRATEGY</span>
-          <h3>Iran's Asymmetric Warfare Strategy</h3>
-          <p>Deep analysis of Iran's defensive tactics.</p>
-          <div class="news-card-meta">
-            <span>Analysis</span>
-            <a href="updatesworld/iran-strategy.html" class="read-more">Read →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- NEWS CARD 3 -->
-      <div class="news-card">
-        <div class="news-card-image">
-          <img src="https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=400&h=250&fit=crop" alt="Israel Military" onerror="this.parentElement.style.background='linear-gradient(135deg, #f9731633, #f9731666)'">
-        </div>
-        <div class="news-card-content">
-          <span class="news-card-tag" style="background: #f97316;">🇮🇱 ISRAEL STRATEGY</span>
-          <h3>Israel's Defense Operations</h3>
-          <p>Israeli military strategy and defense systems.</p>
-          <div class="news-card-meta">
-            <span>Analysis</span>
-            <a href="updatesworld/israel-strategy.html" class="read-more">Read →</a>
-          </div>
-        </div>
+        <button class="carousel-btn" id="nextBtn">→</button>
       </div>
     </div>
   </div>
@@ -813,6 +910,56 @@
   <p>&copy; 2026 Toolyfi · <a href="#">Free Online Tools</a> + <a href="updatesworld/updatesworld.html">Breaking News</a></p>
   <p>✅ Articles auto-update | 📱 100% Mobile Optimized | 🔒 No Sign-up Required</p>
 </footer>
+
+<!-- Carousel JavaScript -->
+<script>
+  let currentSlide = 0;
+  const carousel = document.getElementById('newsCarousel');
+  const slides = document.querySelectorAll('.news-slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+
+  function goToSlide(n) {
+    currentSlide = (n + totalSlides) % totalSlides;
+    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  // Auto-rotate every 2 seconds
+  let autoRotateInterval = setInterval(nextSlide, 2000);
+
+  // Navigation buttons
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    clearInterval(autoRotateInterval);
+    nextSlide();
+    autoRotateInterval = setInterval(nextSlide, 2000);
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    clearInterval(autoRotateInterval);
+    prevSlide();
+    autoRotateInterval = setInterval(nextSlide, 2000);
+  });
+
+  // Dot clicks
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      clearInterval(autoRotateInterval);
+      goToSlide(index);
+      autoRotateInterval = setInterval(nextSlide, 2000);
+    });
+  });
+</script>
 
 <!-- Tidio Chatbot -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
