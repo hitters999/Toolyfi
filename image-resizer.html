@@ -1,109 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Image Resizer – Resize Image Online Free | Toolyfi</title>
-<meta name="description" content="Free online image resizer. Resize JPG, PNG, WebP images to any dimension instantly. No signup, no watermark, no software needed."/>
-<meta name="keywords" content="image resizer, resize image online, free image resizer, resize image, online image resizer"/>
-<link rel="canonical" href="https://toolyfi.com/tools/image-resizer.html"/>
-<link rel="stylesheet" href="../assets/style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online image resizer. Resize images to any size instantly. Maintain quality, bulk resize, download as PNG/JPG. Fast and secure.">
+  <meta name="keywords" content="image resizer, resize image, online image resizer, bulk image resize, compress image">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <title>Free Image Resizer Online - Resize Images to Any Size | Toolyfi</title>
+  
+  <meta property="og:title" content="Free Image Resizer - Resize Images Online">
+  <meta property="og:description" content="Resize images instantly. Upload, set size, download. 100% free, no signup needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolyfi.com/image-resizer.html">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Resizer">
+  <meta name="twitter:description" content="Resize images instantly online. Fast, free, no signup.">
+  
+  <link rel="canonical" href="https://toolyfi.com/image-resizer.html">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Resizer",
+    "description": "Free online image resizer tool",
+    "url": "https://toolyfi.com/image-resizer.html",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header p {
+      font-size: 0.95em;
+      opacity: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.25);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: #f5f7ff;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      text-align: center;
+    }
+
+    .stat-label {
+      color: #999;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.6em;
+      font-weight: 800;
+      color: #667eea;
+    }
+
+    .upload-area {
+      border: 3px dashed #667eea;
+      border-radius: 15px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      background: #f8f9ff;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .upload-area:hover {
+      border-color: #764ba2;
+      background: #f0f2ff;
+    }
+
+    .upload-area.dragging {
+      border-color: #764ba2;
+      background: #e8ebff;
+    }
+
+    .upload-area-text {
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .options-card {
+      background: #f8f9ff;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #e0e7ff;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .options-card.show {
+      display: block;
+    }
+
+    .options-title {
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.9em;
+      transition: all 0.3s;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
+    }
+
+    .preview-area {
+      background: #f8f9ff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .preview-area.show {
+      display: block;
+    }
+
+    .preview-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .preview-info {
+      font-size: 0.85em;
+      color: #666;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 11px 0;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+      grid-column: 1 / 3;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #f8f9fa;
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: 500;
+      font-size: 0.9em;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-left: 4px solid #4caf50;
+    }
+
+    .message.error {
+      background: #ffebee;
+      color: #c62828;
+      border-left: 4px solid #f44336;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.5em;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .button-group {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-primary {
+        grid-column: 1 / 3;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav><a href="../index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="../index.html">Home</a></li></ul></nav>
-<div class="tool-page">
-  <div class="breadcrumb"><a href="../index.html">Home</a> → Image Resizer</div>
-  <div class="tool-header"><h1>🖼️ Image Resizer</h1><p>Resize any image to custom dimensions online for free. No software, no watermark, instant download.</p></div>
-  <div class="tool-box">
-    <div class="upload-zone" onclick="document.getElementById('imgFile').click()">
-      <input type="file" id="imgFile" accept="image/*" onchange="loadImg(event)"/>
-      <div style="font-size:2.5rem">📁</div>
-      <p>Click or drag & drop your image here</p>
-      <p>JPG, PNG, WebP, GIF supported</p>
+
+<div class="container">
+  <div class="header">
+    <h1>🖼️ Image Resizer</h1>
+    <p>Resize images to any size instantly. Maintain quality, download as PNG/JPG.</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">🖼️ Any Size</span>
+      <span class="badge">🔒 Secure</span>
     </div>
-    <img id="imgPreview" class="preview-img"/>
-    <div id="imgInfo" style="color:var(--muted);font-size:0.9rem;margin:10px 0"></div>
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">Width (px)</label><input type="number" class="form-input" id="rW" value="1280" oninput="updateRatio('w')"/></div>
-      <div class="form-group"><label class="form-label">Height (px)</label><input type="number" class="form-input" id="rH" value="720" oninput="updateRatio('h')"/></div>
+  </div>
+
+  <div class="content">
+    <div class="message" id="message"></div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">Original Size</div>
+        <div class="stat-value" id="originalSize">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">New Size</div>
+        <div class="stat-value" id="newSize">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Format</div>
+        <div class="stat-value" id="format">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value">Ready</div>
+      </div>
     </div>
-    <div class="check-row"><input type="checkbox" id="keepRatio" checked/><label>Keep aspect ratio</label></div>
-    <div style="margin:10px 0"><label class="form-label">Quality</label>
-      <div class="range-group"><input type="range" min="10" max="100" value="92" id="quality"/><span class="range-val" id="qv">92%</span></div>
+
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-area-text">📤</div>
+      <p style="font-weight: 600; color: #333; margin-bottom: 5px;">Upload Image</p>
+      <p style="color: #999; font-size: 0.9em;">Drag & drop or click to browse</p>
     </div>
-    <button class="btn-primary" onclick="resizeAndDownload()">⬇️ Resize & Download</button>
-    <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px" id="presetBtns">
-      <button class="btn-secondary" onclick="setPreset(1280,720)">YouTube 1280×720</button>
-      <button class="btn-secondary" onclick="setPreset(500,500)">WhatsApp DP 500×500</button>
-      <button class="btn-secondary" onclick="setPreset(1080,1080)">Instagram 1080×1080</button>
-      <button class="btn-secondary" onclick="setPreset(820,312)">Facebook Cover</button>
+    <input type="file" id="fileInput" accept="image/*" onchange="handleFile(event)">
+
+    <div class="options-card" id="optionsCard">
+      <div class="options-title">⚙️ Resize Options</div>
+      
+      <div class="option-grid">
+        <div>
+          <label for="width">📏 Width (px)</label>
+          <input type="number" id="width" placeholder="Width" oninput="updatePreview()">
+        </div>
+        <div>
+          <label for="height">📏 Height (px)</label>
+          <input type="number" id="height" placeholder="Height" oninput="updatePreview()">
+        </div>
+        <div>
+          <label for="format">📁 Format</label>
+          <select id="format" onchange="updatePreview()">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="webp">WebP</option>
+          </select>
+        </div>
+        <div>
+          <label for="quality">⭐ Quality</label>
+          <input type="number" id="quality" min="10" max="100" value="90" oninput="updatePreview()">
+        </div>
+      </div>
     </div>
-    <canvas id="canvas" style="display:none"></canvas>
+
+    <div class="preview-area" id="previewArea">
+      <img id="previewImg" class="preview-img" alt="Preview">
+      <div class="preview-info" id="previewInfo"></div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="resizeImage()">✂️ Resize</button>
+      <button class="btn btn-secondary" onclick="downloadImage()">📥 Download</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="resetSize()">↻ Reset</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • Supports PNG, JPG, WebP • Instant Processing</p>
   </div>
 </div>
-<div class="seo-article">
-  <h2>What is an Image Resizer?</h2>
-  <p>An <strong>image resizer</strong> is a free online tool that lets you change the width and height of any image. Whether you need to resize image online for social media, a website, or an email, this tool makes it fast and easy with no software installation needed.</p>
-  <h2>How to Resize Image Online?</h2>
-  <p>Upload your image by clicking the upload area or dragging it in. Enter your desired width and height in pixels. Use our presets for common sizes like YouTube thumbnails or WhatsApp profile pictures. Click Download and your resized image saves instantly.</p>
-  <h2>Common Image Sizes</h2>
-  <ul>
-    <li>YouTube Thumbnail: 1280 × 720 pixels</li>
-    <li>WhatsApp DP: 500 × 500 pixels</li>
-    <li>Instagram Post: 1080 × 1080 pixels</li>
-    <li>Facebook Cover: 820 × 312 pixels</li>
-    <li>LinkedIn Banner: 1584 × 396 pixels</li>
-    <li>Resume Photo: 300 × 300 pixels</li>
-  </ul>
-  <h2>Free Image Resizer — No Watermark</h2>
-  <p>Unlike many online tools, our <strong>free image resizer</strong> adds no watermarks to your images. You get clean, professional results every time, completely free.</p>
-</div>
-<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="image-compressor.html" class="related-card">📦 Image Compressor</a><a href="color-picker.html" class="related-card">🎨 Color Picker</a></div></div>
-<footer><div class="footer-links"><a href="../index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<div class="toast" id="toast"></div>
-<script src="../assets/main.js"></script>
+
 <script>
-let origW=0,origH=0,imgFile=null;
-document.getElementById('quality').oninput=function(){document.getElementById('qv').textContent=this.value+'%';};
-function loadImg(e){
-  imgFile=e.target.files[0];if(!imgFile)return;
-  const url=URL.createObjectURL(imgFile);
-  const img=document.getElementById('imgPreview');
-  img.src=url;img.style.display='block';
-  const i=new Image();i.onload=()=>{
-    origW=i.width;origH=i.height;
-    document.getElementById('rW').value=i.width;
-    document.getElementById('rH').value=i.height;
-    document.getElementById('imgInfo').textContent=`Original: ${i.width} × ${i.height}px | ${(imgFile.size/1024).toFixed(0)} KB`;
-  };i.src=url;
-}
-function updateRatio(changed){
-  if(!document.getElementById('keepRatio').checked||!origW)return;
-  if(changed==='w'){const w=+document.getElementById('rW').value;document.getElementById('rH').value=Math.round(w*origH/origW);}
-  else{const h=+document.getElementById('rH').value;document.getElementById('rW').value=Math.round(h*origW/origH);}
-}
-function setPreset(w,h){document.getElementById('rW').value=w;document.getElementById('rH').value=h;}
-function resizeAndDownload(){
-  if(!imgFile){showToast('⚠️ Please upload an image first');return;}
-  const w=+document.getElementById('rW').value,h=+document.getElementById('rH').value;
-  const q=+document.getElementById('quality').value/100;
-  const c=document.getElementById('canvas');c.width=w;c.height=h;
-  const img=new Image();img.onload=()=>{
-    c.getContext('2d').drawImage(img,0,0,w,h);
-    const a=document.createElement('a');a.download='resized-toolyfi.jpg';
-    a.href=c.toDataURL('image/jpeg',q);a.click();
-    showToast('✅ Image downloaded!');
-  };img.src=URL.createObjectURL(imgFile);
-}
+  let originalImage = null;
+  let resizedImage = null;
+
+  const uploadArea = document.getElementById('uploadArea');
+
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragging');
+  });
+
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragging');
+  });
+
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragging');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      loadImage(file);
+    } else {
+      showMessage('Please drop an image file', 'error');
+    }
+  });
+
+  function handleFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+      loadImage(file);
+    }
+  }
+
+  function loadImage(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      originalImage = new Image();
+      originalImage.onload = () => {
+        document.getElementById('width').value = originalImage.width;
+        document.getElementById('height').value = originalImage.height;
+        document.getElementById('originalSize').textContent = originalImage.width + 'x' + originalImage.height;
+        document.getElementById('optionsCard').classList.add('show');
+        updatePreview();
+        showMessage('✓ Image loaded successfully!', 'success');
+      };
+      originalImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function updatePreview() {
+    if (!originalImage) return;
+    
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = parseInt(document.getElementById('width').value) || originalImage.width;
+    const height = parseInt(document.getElementById('height').value) || originalImage.height;
+
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(originalImage, 0, 0, width, height);
+
+    resizedImage = canvas.toDataURL('image/png');
+    document.getElementById('previewImg').src = resizedImage;
+    document.getElementById('newSize').textContent = width + 'x' + height;
+    document.getElementById('previewArea').classList.add('show');
+  }
+
+  function resizeImage() {
+    if (!originalImage) {
+      showMessage('Please upload an image first', 'error');
+      return;
+    }
+    updatePreview();
+    showMessage('✓ Image resized successfully!', 'success');
+  }
+
+  function downloadImage() {
+    if (!resizedImage) {
+      showMessage('Please resize image first', 'error');
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = resizedImage;
+    link.download = `resized-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showMessage('✓ Downloaded successfully!', 'success');
+  }
+
+  function clearAll() {
+    originalImage = null;
+    resizedImage = null;
+    document.getElementById('fileInput').value = '';
+    document.getElementById('optionsCard').classList.remove('show');
+    document.getElementById('previewArea').classList.remove('show');
+    document.getElementById('originalSize').textContent = '-';
+    document.getElementById('newSize').textContent = '-';
+  }
+
+  function resetSize() {
+    if (originalImage) {
+      document.getElementById('width').value = originalImage.width;
+      document.getElementById('height').value = originalImage.height;
+      updatePreview();
+    }
+  }
+
+  function showMessage(msg, type) {
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
 </script>
+
 </body>
 </html>
