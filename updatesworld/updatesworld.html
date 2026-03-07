@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Updates World - Breaking News & Live Coverage | Toolyfi</title>
-    <meta name="description" content="Breaking news, live updates, and strategic analysis of Middle East conflict. Real-time coverage of US, Iran, and Israel military operations.">
-    <meta name="keywords" content="breaking news, live updates, Middle East, military strategy, geopolitical analysis">
+    <meta name="description" content="Breaking news, live updates, and strategic analysis of Middle East conflict. Real-time coverage of US, Iran, and Israel military operations. Plus expert analysis on global economy and AI jobs.">
+    <meta name="keywords" content="breaking news, live updates, Middle East, military strategy, geopolitical analysis, economy 2026, AI jobs">
     <meta name="robots" content="index, follow">
     
     <!-- Google Analytics -->
@@ -182,18 +182,11 @@
             border-left: 5px solid #d32f2f;
             position: relative;
             overflow: hidden;
-            animation: slideIn 0.6s ease;
         }
         
-        .animated-news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #d32f2f, #ff6f6f);
-            animation: pulse 2s ease-in-out infinite;
+        .animated-news-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
         }
         
         .news-card-icon {
@@ -202,17 +195,17 @@
         }
         
         .news-card-title {
-            font-size: 1.2em;
-            color: #d32f2f;
-            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 12px;
             font-weight: bold;
         }
         
         .news-card-content {
             color: #666;
             font-size: 0.95em;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
         
         .news-card-time {
@@ -220,131 +213,125 @@
             font-size: 0.85em;
         }
         
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* MAIN CONTENT */
+        /* MAIN CONTAINER */
         .container {
             max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 40px auto;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: 1fr 300px;
-            gap: 40px;
+            gap: 30px;
         }
         
         article {
             background: white;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 40px;
         }
         
         .article-header {
-            border-left: 5px solid #d32f2f;
-            padding-left: 20px;
-            margin-bottom: 30px;
+            border-bottom: 2px solid #d32f2f;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
         
         .article-badge {
             display: inline-block;
             background: #d32f2f;
             color: white;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.8em;
+            font-size: 0.85em;
+            font-weight: bold;
             margin-bottom: 10px;
         }
         
-        h1 {
-            color: #d32f2f;
+        article h1 {
             font-size: 2.2em;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            color: #333;
+            margin: 15px 0;
+            line-height: 1.3;
         }
         
         .meta {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 20px;
+            color: #999;
+            font-size: 0.95em;
+        }
+        
+        article h2 {
+            font-size: 1.6em;
+            color: #d32f2f;
+            margin: 30px 0 15px 0;
+        }
+        
+        article p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        article ul {
+            margin: 20px 0 20px 30px;
+            line-height: 2;
         }
         
         .featured-image {
             width: 100%;
             max-height: 400px;
-            border-radius: 8px;
-            margin: 20px 0;
             object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
         }
         
-        article h2 {
-            color: #d32f2f;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #d32f2f;
-            padding-bottom: 10px;
-        }
-        
-        article p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
+        /* SIDEBAR */
         .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
         }
         
         .widget {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
         .widget-header {
-            background: #0d0d0d;
+            background: #d32f2f;
             color: white;
-            padding: 15px 20px;
+            padding: 12px 20px;
             font-weight: bold;
+            font-size: 0.95em;
         }
         
         .widget-body {
             padding: 20px;
         }
         
-        .related-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+        .widget-body p {
             margin-bottom: 10px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .related-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
         }
         
         .related-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
         }
         
         .related-title {
             color: #d32f2f;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.95em;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
         
         .related-title:hover {
@@ -352,16 +339,22 @@
         }
         
         .related-tag {
-            color: #999;
-            font-size: 0.8em;
+            display: inline-block;
+            background: #f0f0f0;
+            color: #666;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
         }
         
+        /* FOOTER */
         footer {
             background: #0d0d0d;
             color: white;
             text-align: center;
             padding: 30px 20px;
-            margin-top: 50px;
+            margin-top: 40px;
+            border-top: 4px solid #d32f2f;
         }
         
         footer a {
@@ -369,34 +362,92 @@
             text-decoration: none;
         }
         
-        @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; }
-            h1 { font-size: 1.6em; }
-            .featured-cards { grid-template-columns: 1fr; }
-            .animated-cards-container { grid-template-columns: 1fr; }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            article {
+                padding: 20px;
+            }
+            
+            article h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
+
     <!-- HEADER -->
     <header>
         <div class="header-top">
-            <div class="logo">🌐 TOOLYFI UPDATES WORLD</div>
+            <div class="logo">📰 Updates World</div>
             <nav>
                 <a href="../index.html">Home</a>
                 <a href="updatesworld.html">Updates</a>
                 <a href="../index.html#tools">Tools</a>
+                <a href="gallery.html">Gallery</a>
             </nav>
         </div>
         <div class="breadcrumb">Home > Updates World > Breaking News & Analysis</div>
     </header>
 
-    <!-- FEATURED ARTICLES SECTION -->
+    <!-- FEATURED ARTICLES SECTION - NEW & UPDATED -->
     <section class="featured-section">
-        <h2 class="featured-title">🎯 Strategic Analysis - Featured</h2>
+        <h2 class="featured-title">🎯 Strategic Analysis & Global News - Featured</h2>
         
         <div class="featured-cards">
-            <!-- US Strategy Card -->
+            <!-- Iran Defense Strategy Card - MEGA SEO -->
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=200&fit=crop" alt="Iran Military Strategy" class="featured-card-image">
+                <div class="featured-card-content">
+                    <span class="featured-card-badge">🇮🇷 BREAKING ANALYSIS</span>
+                    <h3 class="featured-card-title">Iran's Defense Strategy: How Asymmetric Warfare Changes Middle East</h3>
+                    <p class="featured-card-desc">Expert military analysis of Iran's missile doctrine, drone strategy, and why this conflict marks a historic turning point in geopolitics.</p>
+                    <a href="iran-defense-seo.html" class="featured-card-link">Read MEGA Analysis →</a>
+                </div>
+            </div>
+            
+            <!-- Global Economy Card -->
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop" alt="Global Economy" class="featured-card-image">
+                <div class="featured-card-content">
+                    <span class="featured-card-badge">💰 ECONOMY 2026</span>
+                    <h3 class="featured-card-title">Global Economic Trends 2026: Inflation, Crypto & Markets</h3>
+                    <p class="featured-card-desc">Comprehensive economic analysis covering cryptocurrency mainstream adoption, emerging markets, trade wars, and investment opportunities.</p>
+                    <a href="economic-trends-ai.html" class="featured-card-link">Read Analysis →</a>
+                </div>
+            </div>
+            
+            <!-- AI Jobs Career Card -->
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop" alt="AI Jobs 2026" class="featured-card-image">
+                <div class="featured-card-content">
+                    <span class="featured-card-badge">🤖 CAREER GUIDE</span>
+                    <h3 class="featured-card-title">AI Revolution & Job Market 2026: Skills & Career Path</h3>
+                    <p class="featured-card-desc">Complete guide to AI-related jobs, skills in demand, salary trends, and career strategy for the AI era. 8-minute read with practical insights.</p>
+                    <a href="ai-jobs-2026.html" class="featured-card-link">Read Career Guide →</a>
+                </div>
+            </div>
+            
+            <!-- Photo Gallery Card -->
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=400&h=200&fit=crop" alt="Photo Gallery" class="featured-card-image">
+                <div class="featured-card-content">
+                    <span class="featured-card-badge">📸 GALLERY</span>
+                    <h3 class="featured-card-title">Photo Gallery: Real Images Auto-Updated</h3>
+                    <p class="featured-card-desc">Beautiful collection of real stock photos updated daily. Browse news, nature, business, technology, and lifestyle images in one place.</p>
+                    <a href="gallery.html" class="featured-card-link">View Gallery →</a>
+                </div>
+            </div>
+
+            <!-- US Strategy Card (Existing) -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=200&fit=crop" alt="US Military" class="featured-card-image">
                 <div class="featured-card-content">
@@ -407,18 +458,7 @@
                 </div>
             </div>
             
-            <!-- Iran Strategy Card -->
-            <div class="featured-card">
-                <img src="https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=400&h=200&fit=crop" alt="Iran Military" class="featured-card-image">
-                <div class="featured-card-content">
-                    <span class="featured-card-badge">🇮🇷 IRAN STRATEGY</span>
-                    <h3 class="featured-card-title">Iran's Asymmetric Warfare Doctrine</h3>
-                    <p class="featured-card-desc">Deep analysis of proxy forces, ballistic missiles, and Iran's defensive strategy against superior military power.</p>
-                    <a href="iran-strategy.html" class="featured-card-link">Read Full Analysis →</a>
-                </div>
-            </div>
-            
-            <!-- Israel Strategy Card -->
+            <!-- Israel Strategy Card (Existing) -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=400&h=200&fit=crop" alt="Israel Military" class="featured-card-image">
                 <div class="featured-card-content">
@@ -500,7 +540,7 @@
 
             <h2>📌 Key Points</h2>
 
-            <ul style="margin-left: 20px; line-height: 2;">
+            <ul>
                 <li>Conflict has expanded from Middle East to Indian Ocean region</li>
                 <li>Direct US-Iran naval engagement now confirmed</li>
                 <li>Global shipping lanes face new security threats</li>
@@ -516,9 +556,9 @@
             <div class="widget">
                 <div class="widget-header">⚡ Breaking News</div>
                 <div class="widget-body">
-                    <p style="margin-bottom: 10px;"><strong>🔴 LIVE:</strong> IRGC launches response operations</p>
-                    <p style="margin-bottom: 10px;"><strong>🔴 UPDATE:</strong> 80+ Iranian sailors casualties</p>
-                    <p style="margin-bottom: 10px;"><strong>🔴 ALERT:</strong> NATO emergency session called</p>
+                    <p><strong>🔴 LIVE:</strong> IRGC launches response operations</p>
+                    <p><strong>🔴 UPDATE:</strong> 80+ Iranian sailors casualties</p>
+                    <p><strong>🔴 ALERT:</strong> NATO emergency session called</p>
                     <p><strong>🔴 WATCH:</strong> Global markets react to escalation</p>
                 </div>
             </div>
@@ -527,20 +567,20 @@
                 <div class="widget-header">📰 Related Stories</div>
                 <div class="widget-body">
                     <div class="related-item">
-                        <a href="middle-east-crisis.html" class="related-title">🌍 Middle East Crisis Overview</a>
-                        <span class="related-tag">Geopolitics</span>
+                        <a href="iran-defense-seo.html" class="related-title">🇮🇷 Iran Defense Strategy</a>
+                        <span class="related-tag">Analysis</span>
                     </div>
                     <div class="related-item">
-                        <a href="us-assets-targeted.html" class="related-title">🎯 US Assets Targeted Analysis</a>
-                        <span class="related-tag">Military</span>
+                        <a href="economic-trends-ai.html" class="related-title">💰 Economic Trends 2026</a>
+                        <span class="related-tag">Economy</span>
                     </div>
                     <div class="related-item">
-                        <a href="iran-war.html" class="related-title">🔴 Iran-US War Day 5 Updates</a>
-                        <span class="related-tag">War</span>
+                        <a href="ai-jobs-2026.html" class="related-title">🤖 AI Jobs & Career</a>
+                        <span class="related-tag">Career</span>
                     </div>
                     <div class="related-item">
-                        <a href="f35-intercept.html" class="related-title">🛩️ F-15E Jets Intercept Drones</a>
-                        <span class="related-tag">Military</span>
+                        <a href="gallery.html" class="related-title">📸 Photo Gallery</a>
+                        <span class="related-tag">Images</span>
                     </div>
                 </div>
             </div>
@@ -548,9 +588,9 @@
             <div class="widget">
                 <div class="widget-header">🛠 Free Tools</div>
                 <div class="widget-body">
-                    <p style="margin-bottom: 10px;"><a href="../qr-code-generator.html" style="color: #d32f2f; text-decoration: none;">📱 QR Code Generator</a></p>
-                    <p style="margin-bottom: 10px;"><a href="../age-calculator.html" style="color: #d32f2f; text-decoration: none;">🎂 Age Calculator</a></p>
-                    <p style="margin-bottom: 10px;"><a href="../background-remover.html" style="color: #d32f2f; text-decoration: none;">🖼️ Background Remover</a></p>
+                    <p><a href="../qr-code-generator.html" style="color: #d32f2f; text-decoration: none;">📱 QR Code Generator</a></p>
+                    <p><a href="../age-calculator.html" style="color: #d32f2f; text-decoration: none;">🎂 Age Calculator</a></p>
+                    <p><a href="../image-resizer.html" style="color: #d32f2f; text-decoration: none;">🖼️ Image Resizer</a></p>
                     <p><a href="../index.html" style="color: #d32f2f; text-decoration: none;">🔧 See All Tools →</a></p>
                 </div>
             </div>
@@ -560,6 +600,7 @@
     <!-- FOOTER -->
     <footer>
         <p>© 2026 Toolyfi · Free Online Tools + World News · <a href="../index.html">toolyfi.com</a></p>
+        <p>Breaking News • Global Analysis • Strategic Insights • Photo Gallery</p>
     </footer>
 
     <!-- Tidio Chatbot -->
