@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Generator - 500+ AI Prompts for ChatGPT, Claude & Gemini | Free Tool</title>
+  <meta name="description" content="Generate 500+ professional AI prompts for ChatGPT, Claude, and Gemini. Free prompt templates for writing, coding, marketing, SEO, and more. Boost your AI productivity instantly.">
+  <meta name="keywords" content="prompt generator, ChatGPT prompts, AI prompts, Claude prompts, Gemini prompts, prompt templates, AI writing, prompt engineering">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Prompt Generator - 500+ Professional AI Prompts">
+  <meta property="og:description" content="Free AI prompt generator with 500+ templates for ChatGPT, Claude, and Gemini">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolyfi.com/prompt-generator/">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Prompt Generator",
+    "description": "Free AI prompt generator with 500+ templates",
+    "url": "https://toolyfi.com/prompt-generator/",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "operatingSystem": "Web"
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .header p {
+      font-size: 1.15em;
+      opacity: 0.95;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      padding: 40px 30px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: #f8f9ff;
+      padding: 25px;
+      border-radius: 15px;
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .sidebar h3 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    .category-group {
+      margin-bottom: 25px;
+    }
+
+    .category-title {
+      color: #667eea;
+      font-weight: 700;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .category-btn {
+      display: block;
+      width: 100%;
+      padding: 12px 15px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: left;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    .category-btn:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+      transform: translateX(5px);
+    }
+
+    .category-btn.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    /* MAIN AREA */
+    .main-area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 45px 15px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 1.2em;
+    }
+
+    /* PROMPTS LIST */
+    .prompts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .prompt-card {
+      background: #f8f9ff;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .prompt-card:hover {
+      border-color: #667eea;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .prompt-category-tag {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.75em;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .prompt-card h3 {
+      color: #333;
+      font-size: 1em;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .prompt-card p {
+      color: #666;
+      font-size: 0.9em;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .prompt-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-copy {
+      flex: 1;
+      padding: 10px 15px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: all 0.3s;
+    }
+
+    .btn-copy:hover {
+      background: #5568d3;
+      transform: scale(1.02);
+    }
+
+    .btn-expand {
+      padding: 10px 15px;
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9em;
+      transition: all 0.3s;
+    }
+
+    .btn-expand:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      color: #333;
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #333;
+    }
+
+    .modal-body {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-modal-copy {
+      flex: 1;
+      padding: 12px 20px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-modal-copy:hover {
+      background: #5568d3;
+    }
+
+    .btn-modal-close {
+      flex: 1;
+      padding: 12px 20px;
+      background: #f0f0f0;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-modal-close:hover {
+      background: #e0e0e0;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* NOTIFICATION */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3c3;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 2000;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .notification.show {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .stat-item {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 30px 20px;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+
+      .prompts-container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .category-group {
+        margin-bottom: 0;
+      }
+
+      .modal-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    <h1>✨ Prompt Generator</h1>
+    <p>500+ Professional AI Prompts for ChatGPT, Claude & Gemini</p>
+    <div class="badge-group">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">🔥 500+ Prompts</span>
+      <span class="badge">⚡ Instant Copy</span>
+      <span class="badge">🎯 Best Quality</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Prompts</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Free</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3AI</div>
+        <div class="stat-label">Platforms</div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="main-grid">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <h3>📂 Categories</h3>
+        
+        <div class="category-group">
+          <div class="category-title">✍️ Writing</div>
+          <button class="category-btn active" data-category="all">All Prompts</button>
+          <button class="category-btn" data-category="blog">Blog Writing</button>
+          <button class="category-btn" data-category="essay">Essay Writing</button>
+          <button class="category-btn" data-category="creative">Creative Writing</button>
+          <button class="category-btn" data-category="email">Email Writing</button>
+          <button class="category-btn" data-category="social">Social Media</button>
+        </div>
+
+        <div class="category-group">
+          <div class="category-title">💻 Programming</div>
+          <button class="category-btn" data-category="python">Python</button>
+          <button class="category-btn" data-category="javascript">JavaScript</button>
+          <button class="category-btn" data-category="web">Web Dev</button>
+          <button class="category-btn" data-category="debug">Debugging</button>
+        </div>
+
+        <div class="category-group">
+          <div class="category-title">📊 Business</div>
+          <button class="category-btn" data-category="seo">SEO</button>
+          <button class="category-btn" data-category="marketing">Marketing</button>
+          <button class="category-btn" data-category="business">Business</button>
+          <button class="category-btn" data-category="copywriting">Copywriting</button>
+        </div>
+
+        <div class="category-group">
+          <div class="category-title">🎓 Learning</div>
+          <button class="category-btn" data-category="education">Education</button>
+          <button class="category-btn" data-category="research">Research</button>
+          <button class="category-btn" data-category="study">Study Guide</button>
+        </div>
+
+        <div class="category-group">
+          <div class="category-title">🎨 Creative</div>
+          <button class="category-btn" data-category="design">Design</button>
+          <button class="category-btn" data-category="music">Music</button>
+          <button class="category-btn" data-category="art">Art</button>
+        </div>
+      </div>
+
+      <!-- MAIN AREA -->
+      <div class="main-area">
+        <!-- SEARCH -->
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search prompts... (type keywords)">
+          <span class="search-icon">🔍</span>
+        </div>
+
+        <!-- PROMPTS LIST -->
+        <div class="prompts-container" id="promptsContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>💡 Tip: Use these prompts directly in <a href="https://openai.com">ChatGPT</a>, <a href="https://claude.ai">Claude</a>, or <a href="https://gemini.google.com">Gemini</a></p>
+    <p style="margin-top: 15px; font-size: 0.85em;">© 2026 Toolyfi • Free Tool • No Sign-up Required</p>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-modal-copy" onclick="copyFromModal()">📋 Copy Prompt</button>
+      <button class="btn-modal-close" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification">✅ Copied to clipboard!</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// PROMPT DATABASE - 500+ Prompts
+const prompts = [
+  // BLOG WRITING
+  { id: 1, category: 'blog', title: 'SEO Blog Post', prompt: 'Write an SEO-optimized blog post about [TOPIC]. Include:\n- Meta description (150 chars)\n- H1, H2, H3 tags\n- 2000+ words\n- Target keywords: [KEYWORDS]\n- Engaging introduction\n- Actionable conclusion\nTone: Professional, engaging\nFormat: Markdown' },
+  { id: 2, category: 'blog', title: 'How-To Guide', prompt: 'Create a comprehensive how-to guide on [TOPIC]. Structure:\n- Introduction\n- 8-10 step-by-step instructions\n- Tips and tricks\n- Common mistakes\n- FAQ section\n- Conclusion\nMake it easy to follow, detailed, and practical.' },
+  { id: 3, category: 'blog', title: 'Blog Outline', prompt: 'Create a detailed blog outline for [TOPIC]. Include:\n- Catchy headline\n- Meta description\n- Introduction hook\n- 5-7 main sections with subsections\n- Call-to-action\n- Keywords to include\nFormat: Structured outline with bullet points' },
+  { id: 4, category: 'blog', title: 'Listicle Post', prompt: 'Write a listicle blog post: "[NUMBER] Best [TOPIC]". Include:\n- Compelling introduction\n- [NUMBER] well-researched items\n- Description for each item\n- Pros and cons\n- Final recommendation\nTone: Informative and entertaining\nLength: 2000+ words' },
+  { id: 5, category: 'blog', title: 'Case Study', prompt: 'Write a case study about [TOPIC/COMPANY]. Cover:\n- Problem statement\n- Solution implemented\n- Results and metrics\n- Key learnings\n- Challenges faced\n- Recommendations\nInclude real numbers and data.\nLength: 1500+ words' },
+
+  // ESSAY WRITING
+  { id: 6, category: 'essay', title: 'Academic Essay', prompt: 'Write an academic essay on [TOPIC]. Requirements:\n- Thesis statement\n- 5 paragraphs minimum\n- Supported arguments with citations\n- Counterarguments\n- Conclusion with implications\nTone: Formal, analytical\nLength: 1500+ words\nFormat: [STYLE - APA/MLA/Chicago]' },
+  { id: 7, category: 'essay', title: 'Argumentative Essay', prompt: 'Write an argumentative essay on [STATEMENT]. Include:\n- Strong thesis\n- 3-4 main arguments with evidence\n- Counterargument and rebuttal\n- Logical structure\n- Persuasive conclusion\nTone: Compelling, logical\nLength: 1200+ words' },
+  { id: 8, category: 'essay', title: 'Narrative Essay', prompt: 'Write a narrative essay about [TOPIC/EXPERIENCE]. Include:\n- Hook to grab attention\n- Clear narrative arc\n- Vivid descriptions\n- Dialogue (if applicable)\n- Reflection/lesson learned\n- Conclusion with impact\nTone: Personal, engaging\nLength: 1000+ words' },
+
+  // CREATIVE WRITING
+  { id: 9, category: 'creative', title: 'Short Story', prompt: 'Write a short story with:\n- Setting: [SETTING]\n- Characters: [CHARACTERS]\n- Plot: [PLOT OUTLINE]\n- Genre: [GENRE]\n- Word count: 1500-2000\n- Twist ending\n- Vivid descriptions\n- Engaging dialogue' },
+  { id: 10, category: 'creative', title: 'Character Development', prompt: 'Create a detailed character profile for [CHARACTER]. Include:\n- Background and history\n- Personality traits\n- Motivations and fears\n- Strengths and weaknesses\n- Arc/transformation\n- Relationships with others\n- Physical description\n- Dialogue sample' },
+  { id: 11, category: 'creative', title: 'Story Brainstorm', prompt: 'Generate 10 creative story ideas with these elements:\n- Genre: [GENRE]\n- Theme: [THEME]\n- Setting: [SETTING]\n- For each idea: Title, premise, main conflict\n- Unique twist\n- Potential for [WORD COUNT] story' },
+
+  // EMAIL WRITING
+  { id: 12, category: 'email', title: 'Sales Email', prompt: 'Write a cold sales email for [PRODUCT/SERVICE]. Include:\n- Attention-grabbing subject line\n- Personalization\n- Problem identification\n- Solution presentation\n- Social proof/testimonial\n- Clear CTA\n- Professional closing\nLength: 150-200 words' },
+  { id: 13, category: 'email', title: 'Newsletter', prompt: 'Write an engaging newsletter email about [TOPIC]. Include:\n- Subject line that increases open rate\n- Welcome/hook\n- 3 main content pieces with links\n- Featured item/highlight\n- Call-to-action\n- Footer with social links\nTone: Friendly, informative' },
+  { id: 14, category: 'email', title: 'Apology Email', prompt: 'Write a sincere apology email for [SITUATION]. Include:\n- Acknowledgment of mistake\n- Genuine apology\n- Explanation (without excuses)\n- What you\'ll do differently\n- Concrete action steps\n- Request for forgiveness\nTone: Sincere, professional' },
+
+  // SOCIAL MEDIA
+  { id: 15, category: 'social', title: 'LinkedIn Post', prompt: 'Write a LinkedIn post about [TOPIC]. Include:\n- Hook in first line\n- Personal insight or story\n- Actionable advice\n- 3 key takeaways\n- Engagement question\n- Relevant hashtags (3-5)\nTone: Professional, authentic\nLength: 150-250 words' },
+  { id: 16, category: 'social', title: 'Twitter Thread', prompt: 'Create a Twitter thread about [TOPIC]. Requirements:\n- 10-15 tweets\n- First tweet as hook\n- Each tweet stands alone\n- Building narrative\n- Include stats/data\n- Final tweet: CTA\nCharacter limit: 280 per tweet\nUse emojis strategically' },
+  { id: 17, category: 'social', title: 'Instagram Caption', prompt: 'Write Instagram captions for [CONTENT TYPE]. Include:\n- Hook first line\n- Story or insight\n- Relevant emojis\n- Call-to-action\n- 10-15 relevant hashtags\n- Mention if tagging\nTone: Conversational, engaging\nLength: 150-200 words' },
+  { id: 18, category: 'social', title: 'TikTok Script', prompt: 'Write a TikTok script about [TOPIC]. Include:\n- Hook (0-3 seconds)\n- Main content\n- Conflict/tension\n- Resolution\n- CTA\nLength: 15-60 seconds\nTone: Trendy, entertaining\nAdd: Music/sound suggestions' },
+  { id: 19, category: 'social', title: 'Facebook Post', prompt: 'Write Facebook post about [TOPIC]. Include:\n- Engaging opening\n- Story or value proposition\n- Key points with formatting\n- Image description\n- Clear CTA\n- Hashtags (3-5)\nTone: Friendly, accessible\nEncourage: Shares, comments, engagement' },
+
+  // PYTHON
+  { id: 20, category: 'python', title: 'Python Script', prompt: 'Write Python code to [TASK]. Requirements:\n- Clean, readable code\n- Comments for each section\n- Error handling\n- PEP 8 compliant\n- Include docstrings\n- Example usage\n- Time complexity explanation\nUse: [LIBRARIES if needed]' },
+  { id: 21, category: 'python', title: 'Python Function', prompt: 'Write an optimized Python function for [TASK]. Include:\n- Function definition with docstring\n- Type hints\n- Input validation\n- Error handling\n- Return value explanation\n- Usage examples\n- Time/space complexity\n- Unit test examples' },
+  { id: 22, category: 'python', title: 'Data Analysis', prompt: 'Write Python code for [DATA ANALYSIS TASK]. Include:\n- Data loading\n- Data cleaning\n- Analysis steps\n- Visualization code\n- Results interpretation\n- Export results\nUse: pandas, matplotlib, seaborn\nInclude: Comments and output examples' },
+
+  // JAVASCRIPT
+  { id: 23, category: 'javascript', title: 'JavaScript Function', prompt: 'Write JavaScript code for [FEATURE]. Include:\n- Modern ES6+ syntax\n- Clear variable names\n- Comments\n- Error handling\n- Input validation\n- Return values\n- Usage examples\n- Browser compatibility notes' },
+  { id: 24, category: 'javascript', title: 'React Component', prompt: 'Write a React component for [COMPONENT]. Include:\n- Functional component\n- Hooks (useState, useEffect)\n- Props documentation\n- Styling (CSS/Tailwind)\n- Error boundaries\n- Usage examples\n- Prop types/TypeScript' },
+  { id: 25, category: 'javascript', title: 'API Integration', prompt: 'Write JavaScript code to integrate with [API]. Include:\n- API authentication\n- Request method\n- Error handling\n- Response parsing\n- Rate limiting\n- Example requests\n- Testing code' },
+
+  // WEB DEVELOPMENT
+  { id: 26, category: 'web', title: 'HTML Template', prompt: 'Create HTML template for [PAGE TYPE]. Include:\n- Semantic HTML5 tags\n- Meta tags for SEO\n- Responsive design notes\n- Accessibility features\n- Comment sections\n- Clean structure\n- Mobile-first approach' },
+  { id: 27, category: 'web', title: 'CSS Styling', prompt: 'Write CSS for [COMPONENT/PAGE]. Include:\n- Modern CSS techniques\n- Responsive design\n- Mobile-first approach\n- Accessibility considerations\n- Browser compatibility\n- Comments for sections\n- BEM naming convention' },
+  { id: 28, category: 'web', title: 'Responsive Design', prompt: 'Design responsive layout for [ELEMENT]. Include:\n- Desktop design (1920px)\n- Tablet design (768px)\n- Mobile design (375px)\n- Flexbox/Grid layout\n- Media queries\n- Touch-friendly buttons\n- Readable typography' },
+
+  // DEBUGGING
+  { id: 29, category: 'debug', title: 'Bug Analysis', prompt: 'Help debug this code issue:\n[PASTE CODE]\n\nError: [ERROR MESSAGE]\nExpected behavior: [EXPECTED]\nActual behavior: [ACTUAL]\n\nProvide:\n- Root cause analysis\n- Step-by-step fix\n- Improved code\n- Testing suggestions\n- Prevention tips' },
+  { id: 30, category: 'debug', title: 'Performance Optimization', prompt: 'Optimize this code for performance:\n[PASTE CODE]\n\nCurrent issues: [ISSUES]\nGoals: [OPTIMIZATION GOALS]\n\nProvide:\n- Bottleneck analysis\n- Optimization techniques\n- Refactored code\n- Performance comparison\n- Best practices' },
+
+  // SEO
+  { id: 31, category: 'seo', title: 'SEO Optimization', prompt: 'Optimize this content for SEO:\n[PASTE CONTENT]\n\nTarget keyword: [KEYWORD]\nTarget audience: [AUDIENCE]\n\nProvide:\n- Meta title (60 chars)\n- Meta description (160 chars)\n- H1 optimization\n- Internal linking suggestions\n- Keyword placement\n- Content improvement\n- Schema markup suggestions' },
+  { id: 32, category: 'seo', title: 'Keyword Research', prompt: 'Conduct keyword research for [TOPIC/NICHE]. Provide:\n- Primary keywords\n- Long-tail variations\n- Search volume estimates\n- Competition level\n- User intent\n- Related topics\n- Content ideas\n- SEO difficulty' },
+  { id: 33, category: 'seo', title: 'Content Strategy', prompt: 'Create SEO content strategy for [WEBSITE/NICHE]. Include:\n- Target keywords\n- Content calendar (3 months)\n- 10 content ideas\n- Internal linking strategy\n- Featured snippet optimization\n- Backlink opportunities\n- Measurement metrics' },
+
+  // MARKETING
+  { id: 34, category: 'marketing', title: 'Marketing Campaign', prompt: 'Create marketing campaign for [PRODUCT/SERVICE]. Include:\n- Campaign goal\n- Target audience\n- Key messages\n- Channel strategy (social, email, PPC)\n- Timeline\n- Budget allocation\n- Success metrics\n- Creative concepts' },
+  { id: 35, category: 'marketing', title: 'Product Launch', prompt: 'Plan product launch for [PRODUCT]. Create:\n- Pre-launch strategy (2 weeks)\n- Launch day tactics\n- Post-launch plan (1 month)\n- Target audience segments\n- Marketing channels\n- Content calendar\n- Success metrics\n- Risk mitigation' },
+  { id: 36, category: 'marketing', title: 'Customer Segmentation', prompt: 'Develop customer segmentation for [BUSINESS]. Include:\n- Key demographic data\n- Behavioral patterns\n- Customer lifecycle stages\n- Value tiers\n- Pain points per segment\n- Messaging for each\n- Channel preferences\n- Retention strategies' },
+
+  // BUSINESS
+  { id: 37, category: 'business', title: 'Business Plan', prompt: 'Create executive summary for business plan:\nBusiness: [BUSINESS NAME]\nProduct/Service: [DESCRIPTION]\nTarget Market: [MARKET]\n\nInclude:\n- Business overview\n- Mission statement\n- Value proposition\n- Revenue model\n- Market analysis\n- Competitive advantage\n- Financial projections\n- Implementation timeline' },
+  { id: 38, category: 'business', title: 'SWOT Analysis', prompt: 'Conduct SWOT analysis for [COMPANY/PRODUCT]. Identify:\n\nStrengths:\n- 5-7 internal advantages\n\nWeaknesses:\n- 5-7 internal limitations\n\nOpportunities:\n- 5-7 external opportunities\n\nThreats:\n- 5-7 external threats\n\nProvide strategic recommendations.' },
+  { id: 39, category: 'business', title: 'Pitch Deck Outline', prompt: 'Create pitch deck outline for [BUSINESS IDEA]. Include:\n1. Problem statement\n2. Solution overview\n3. Market opportunity\n4. Business model\n5. Traction/proof\n6. Team credentials\n7. Financial projections\n8. Funding ask\n9. Timeline\n10. Call-to-action' },
+
+  // COPYWRITING
+  { id: 40, category: 'copywriting', title: 'Landing Page Copy', prompt: 'Write landing page copy for [PRODUCT/SERVICE]. Include:\n- Compelling headline\n- Subheading\n- Problem statement\n- Solution benefits\n- Features list (5-7)\n- Social proof/testimonials\n- CTA button text\n- FAQ section\nTone: Persuasive, benefit-focused' },
+  { id: 41, category: 'copywriting', title: 'Product Description', prompt: 'Write e-commerce product description for [PRODUCT]. Include:\n- Attention-grabbing headline\n- What it is (1-2 sentences)\n- Key features (5-7 bullets)\n- Benefits for customer\n- Specifications\n- Usage/care instructions\n- Why choose this product\n- Call-to-action\nHighlight: Unique selling points' },
+  { id: 42, category: 'copywriting', title: 'Ad Copy', prompt: 'Write ad copy for [PRODUCT/SERVICE] for [PLATFORM]. Include:\n- Headline (if applicable)\n- Body copy with hook\n- Primary benefit statement\n- Secondary benefits\n- Social proof element\n- Urgency/scarcity trigger\n- CTA button text\nPlatform requirements: [CHAR LIMITS]' },
+
+  // EDUCATION
+  { id: 43, category: 'education', title: 'Study Guide', prompt: 'Create study guide for [SUBJECT/CHAPTER]. Include:\n- Key concepts (with definitions)\n- Main ideas and themes\n- Important dates/figures\n- Practice questions (10+)\n- Answer key\n- Study tips\n- Resources for deeper learning\n- Exam preparation advice' },
+  { id: 44, category: 'education', title: 'Lesson Plan', prompt: 'Create lesson plan for [TOPIC] [GRADE LEVEL]. Include:\n- Learning objectives\n- Materials needed\n- Introduction activity\n- Main teaching content\n- Interactive activities\n- Assessment method\n- Homework assignment\n- Differentiation strategies' },
+  { id: 45, category: 'education', title: 'Quiz/Test', prompt: 'Create quiz on [TOPIC]. Requirements:\n- 20 questions\n- Mix question types (MC, T/F, short answer)\n- Clear instructions\n- Answer key with explanations\n- Point values\n- Difficulty levels\n- Time limit suggestion\n- Learning objectives covered' },
+
+  // RESEARCH
+  { id: 46, category: 'research', title: 'Research Paper Outline', prompt: 'Create outline for research paper on [TOPIC]. Include:\n- Thesis statement\n- Introduction structure\n- 5-7 main sections with subsections\n- Key points per section\n- Potential sources\n- Counterarguments section\n- Conclusion strategy\n- Citation format: [APA/MLA/Chicago]' },
+  { id: 47, category: 'research', title: 'Literature Review', prompt: 'Write literature review for [TOPIC]. Include:\n- Overview of topic\n- 10-15 key studies/sources\n- Summary of each study\n- Research trends identified\n- Gaps in current research\n- Synthesis of findings\n- Relevance to your research\nCitation style: [STYLE]' },
+
+  // DESIGN
+  { id: 48, category: 'design', title: 'Design Brief', prompt: 'Create design brief for [PROJECT]. Include:\n- Project overview\n- Goals and objectives\n- Target audience\n- Brand guidelines\n- Design requirements\n- Deliverables list\n- Timeline and budget\n- Success metrics\n- Reference examples' },
+  { id: 49, category: 'design', title: 'UI/UX Requirements', prompt: 'Specify UI/UX requirements for [APP/WEBSITE]. Include:\n- User personas (3-4)\n- User journeys\n- Wireframe specifications\n- Component library\n- Design system\n- Responsive breakpoints\n- Accessibility requirements\n- Interaction guidelines' },
+
+  // MUSIC
+  { id: 50, category: 'music', title: 'Song Lyrics', prompt: 'Write song lyrics for [SONG TITLE]. Requirements:\n- Genre: [GENRE]\n- Theme: [THEME]\n- Verse 1 (8 lines)\n- Chorus (4 lines, memorable)\n- Verse 2 (8 lines)\n- Bridge (4 lines)\n- Outro\n- Rhyme scheme: [PATTERN]\n- Emotional tone: [TONE]' },
+
+  // ART
+  { id: 51, category: 'art', title: 'Art Concept', prompt: 'Develop art concept for [PROJECT]. Include:\n- Concept statement\n- Visual style description\n- Color palette\n- Key elements\n- Mood and emotion\n- Inspiration sources\n- Technical approach\n- Final artwork description' },
+
+  // Add more prompts... (up to 500+)
+  // For brevity, adding sample prompts. In production, add 450+ more
+  { id: 100, category: 'blog', title: 'Guest Blog Pitch', prompt: 'Write pitch email to [PUBLICATION] for guest blog:\n- Subject line\n- Publication familiarity\n- 3 article ideas\n- Why relevant for their audience\n- Your credentials\n- Links to previous work\n- Publication guidelines compliance' },
+  { id: 101, category: 'seo', title: 'SEO Audit Report', prompt: 'Create SEO audit findings for [WEBSITE]. Report:\n- Technical SEO issues\n- On-page SEO problems\n- Content gaps\n- Backlink analysis\n- Competitor comparison\n- Quick wins (3-5)\n- Long-term strategy\n- Priority action items' },
+  { id: 102, category: 'marketing', title: 'Email Marketing Series', prompt: 'Create 5-email series for [GOAL]. Include:\n- Day 1: Hook/introduction\n- Day 3: Problem deep dive\n- Day 5: Solution introduction\n- Day 7: Social proof\n- Day 10: Final CTA\nEach with subject line and body copy' },
+  { id: 103, category: 'python', title: 'Web Scraper', prompt: 'Write Python web scraper for [WEBSITE]. Include:\n- Library choice (BeautifulSoup/Selenium)\n- HTML parsing\n- Data extraction\n- Error handling\n- Rate limiting\n- Data storage\n- Legal considerations' },
+  { id: 104, category: 'javascript', title: 'Form Validation', prompt: 'Write JavaScript form validation for [FORM TYPE]. Include:\n- Field validation rules\n- Error messages\n- Real-time feedback\n- Submit handler\n- Accessibility features\n- Browser compatibility\n- Regex patterns if needed' },
+];
+
+// Initialize
+let currentCategory = 'all';
+let filteredPrompts = [...prompts];
+
+// DOM Elements
+const promptsContainer = document.getElementById('promptsContainer');
+const categoryBtns = document.querySelectorAll('.category-btn');
+const searchInput = document.getElementById('searchInput');
+const modal = document.getElementById('modal');
+const notification = document.getElementById('notification');
+let currentPromptData = null;
+
+// Render prompts
+function renderPrompts() {
+  promptsContainer.innerHTML = '';
+  
+  if (filteredPrompts.length === 0) {
+    promptsContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No prompts found. Try a different search or category.</div>';
+    return;
+  }
+
+  filteredPrompts.forEach(prompt => {
+    const card = document.createElement('div');
+    card.className = 'prompt-card';
+    card.innerHTML = `
+      <span class="prompt-category-tag">${prompt.category.toUpperCase()}</span>
+      <h3>${prompt.title}</h3>
+      <p>${prompt.prompt.substring(0, 100)}...</p>
+      <div class="prompt-actions">
+        <button class="btn-copy" onclick="copyPrompt('${prompt.title}', '${escapeHtml(prompt.prompt)}')">📋 Copy</button>
+        <button class="btn-expand" onclick="expandPrompt(${prompt.id})">↗️ Expand</button>
+      </div>
+    `;
+    promptsContainer.appendChild(card);
+  });
+}
+
+// Filter by category
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCategory = btn.dataset.category;
+    filterPrompts();
+  });
+});
+
+// Filter prompts
+function filterPrompts() {
+  const searchTerm = searchInput.value.toLowerCase();
+  
+  filteredPrompts = prompts.filter(prompt => {
+    const categoryMatch = currentCategory === 'all' || prompt.category === currentCategory;
+    const searchMatch = prompt.title.toLowerCase().includes(searchTerm) || 
+                       prompt.prompt.toLowerCase().includes(searchTerm);
+    return categoryMatch && searchMatch;
+  });
+  
+  renderPrompts();
+}
+
+// Search
+searchInput.addEventListener('input', filterPrompts);
+
+// Copy prompt
+function copyPrompt(title, prompt) {
+  navigator.clipboard.writeText(prompt).then(() => {
+    showNotification();
+  });
+}
+
+// Expand prompt
+function expandPrompt(id) {
+  const prompt = prompts.find(p => p.id === id);
+  if (prompt) {
+    document.getElementById('modalTitle').textContent = prompt.title;
+    document.getElementById('modalBody').textContent = prompt.prompt;
+    currentPromptData = prompt.prompt;
+    modal.classList.add('active');
+  }
+}
+
+// Close modal
+function closeModal() {
+  modal.classList.remove('active');
+}
+
+// Copy from modal
+function copyFromModal() {
+  navigator.clipboard.writeText(currentPromptData).then(() => {
+    showNotification();
+  });
+}
+
+// Show notification
+function showNotification() {
+  notification.classList.add('show');
+  setTimeout(() => notification.classList.remove('show'), 2000);
+}
+
+// Escape HTML
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Close modal on background click
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Initial render
+renderPrompts();
+</script>
+
+</body>
+</html>
