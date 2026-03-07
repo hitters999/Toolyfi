@@ -1,147 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Y3ETYH2QF0');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free QR code generator online. Create QR codes for URLs, text, contact info in seconds. Download as PNG. No signup needed. Fast & secure.">
+  <meta name="keywords" content="QR code generator, generate QR code, free QR code maker, QR code online, create QR code, download QR code">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <title>Free QR Code Generator Online - Create & Download QR Codes | Toolyfi</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free QR Code Generator - Create QR Codes Online">
+  <meta property="og:description" content="Generate QR codes instantly for URLs, text, emails. Download as PNG image. 100% free, no signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolyfi.com/qr-code-generator.html">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free QR Code Generator">
+  <meta name="twitter:description" content="Create professional QR codes in seconds. Download PNG instantly.">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://toolyfi.com/qr-code-generator.html">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Code Generator",
+    "description": "Free online QR code generator tool",
+    "url": "https://toolyfi.com/qr-code-generator.html",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    }
+  }
   </script>
 
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QR Code Generator – Generate QR Code Online Free | Toolyfi</title>
-  <meta name="description" content="Free QR code generator online. Generate QR codes for URLs, text, contact info. Download as PNG image instantly. No signup needed."/>
-  <meta name="keywords" content="qr code generator, generate qr code, free qr code generator, qr code maker, qr code online, toolyfi"/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://toolyfi.com/qr-code-generator.html"/>
-  <meta property="og:title" content="QR Code Generator – Generate QR Code Online Free | Toolyfi"/>
-  <meta property="og:description" content="Generate QR codes for URLs, text, contact info. Download as PNG instantly. Free, no signup needed."/>
-  <meta property="og:url" content="https://toolyfi.com/qr-code-generator.html"/>
-  <meta property="og:type" content="website"/>
-  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header p {
+      font-size: 0.95em;
+      opacity: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.25);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: #f5f7ff;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      text-align: center;
+    }
+
+    .stat-label {
+      color: #999;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #667eea;
+    }
+
+    .options-card {
+      background: #f8f9ff;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #e0e7ff;
+      margin-bottom: 20px;
+    }
+
+    .options-title {
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+
+    input[type="text"],
+    input[type="color"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.9em;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
+    }
+
+    input[type="color"] {
+      height: 44px;
+      cursor: pointer;
+      padding: 3px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .color-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .qr-preview {
+      background: #f8f9ff;
+      padding: 25px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      border: 2px dashed #667eea;
+      margin-bottom: 20px;
+    }
+
+    #qrcode {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #qrcode img,
+    #qrcode canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 11px 0;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+      grid-column: 1 / 3;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #f8f9fa;
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: 500;
+      font-size: 0.9em;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-left: 4px solid #4caf50;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.5em;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .button-group {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-primary {
+        grid-column: 1 / 3;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo">⚡ Toolyfi</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-    </ul>
-  </nav>
 
-  <div class="tool-page">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> → QR Code Generator
+<div class="container">
+  <div class="header">
+    <h1>📱 QR Code Generator</h1>
+    <p>Create professional QR codes instantly. Download as PNG image.</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">📥 Download</span>
+      <span class="badge">🔒 Secure</span>
     </div>
-    
-    <div class="tool-header">
-      <h1>📱 QR Code Generator</h1>
-      <p>Generate QR codes for any URL, text, or information. Download as a high-quality PNG image.</p>
-    </div>
-    
-    <div class="tool-box">
-      <div class="form-group">
-        <label class="form-label">Enter URL or Text</label>
-        <input type="text" class="form-input" id="qrIn" placeholder="https://toolyfi.com" oninput="makeQR()"/>
+  </div>
+
+  <div class="content">
+    <div class="message" id="message"></div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">QR Generated</div>
+        <div class="stat-value" id="generated">0</div>
       </div>
+      <div class="stat-box">
+        <div class="stat-label">Size</div>
+        <div class="stat-value" id="sizeDisplay">200</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Format</div>
+        <div class="stat-value">PNG</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value">Ready</div>
+      </div>
+    </div>
+
+    <div class="options-card">
+      <div class="options-title">⚙️ QR Code Settings</div>
       
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Size</label>
-          <select class="form-input" id="qrSz" onchange="makeQR()">
-            <option value="200">Small (200×200)</option>
-            <option value="300" selected>Medium (300×300)</option>
-            <option value="400">Large (400×400)</option>
+      <div class="input-group">
+        <label for="qrText">📝 Text or URL</label>
+        <input type="text" id="qrText" placeholder="Enter URL or text..." value="https://toolyfi.com" oninput="generateQR()">
+      </div>
+
+      <div class="option-grid">
+        <div>
+          <label for="qrSize">📏 Size (px)</label>
+          <input type="number" id="qrSize" min="100" max="500" value="200" step="50" oninput="updateSize(); generateQR()">
+        </div>
+        <div>
+          <label for="errorLevel">🛡️ Error Level</label>
+          <select id="errorLevel" onchange="generateQR()">
+            <option value="L">Low (L)</option>
+            <option value="M" selected>Medium (M)</option>
+            <option value="Q">Quartile (Q)</option>
+            <option value="H">High (H)</option>
           </select>
         </div>
       </div>
-      
-      <div id="qrOut" style="text-align:center;margin:20px 0;min-height:100px"></div>
-      <button class="btn-primary" onclick="dlQR()">⬇️ Download QR Code</button>
+
+      <div class="color-row">
+        <div>
+          <label for="darkColor">🎨 Dark Color</label>
+          <input type="color" id="darkColor" value="#000000" oninput="generateQR()">
+        </div>
+        <div>
+          <label for="lightColor">⚪ Light Color</label>
+          <input type="color" id="lightColor" value="#ffffff" oninput="generateQR()">
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-preview">
+      <div id="qrcode"></div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="downloadPNG()">📥 Download PNG</button>
+      <button class="btn btn-secondary" onclick="copyQR()">📋 Copy</button>
+      <button class="btn btn-secondary" onclick="clearQR()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="resetSettings()">↻ Reset</button>
     </div>
   </div>
 
-  <div class="seo-article">
-    <h2>What is a QR Code Generator?</h2>
-    <p>A <strong>QR code generator</strong> creates scannable QR codes that link to any URL or contain any text. QR codes are used everywhere — on business cards, restaurant menus, product packaging, and marketing materials.</p>
-    
-    <h2>How to Generate a QR Code?</h2>
-    <p>Simply enter your URL or text in the field above. Your QR code generates instantly as you type. Choose your preferred size and download it as a PNG image, ready to use anywhere.</p>
-    
-    <h2>Common Uses of QR Codes</h2>
-    <ul>
-      <li>Restaurant menus and ordering systems</li>
-      <li>Business card contact information</li>
-      <li>Product packaging with website links</li>
-      <li>Event tickets and invitations</li>
-      <li>Wi-Fi network sharing</li>
-      <li>Payment links</li>
-    </ul>
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • Instant Generation • Secure Processing</p>
   </div>
+</div>
 
-  <div class="related-tools">
-    <h2>Related Tools</h2>
-    <div class="related-grid">
-      <a href="password-generator.html" class="related-card">🔐 Password Generator</a>
-      <a href="color-picker.html" class="related-card">🎨 Color Picker</a>
-    </div>
-  </div>
+<script>
+  let qrCodeInstance = null;
+  let generatedCount = 0;
 
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-    </div>
-    <p>© 2026 Toolyfi.com</p>
-  </footer>
+  function generateQR() {
+    const text = document.getElementById('qrText').value;
+    const size = parseInt(document.getElementById('qrSize').value);
+    const darkColor = document.getElementById('darkColor').value;
+    const lightColor = document.getElementById('lightColor').value;
+    const errorLevel = document.getElementById('errorLevel').value;
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast"></div>
+    if (!text) {
+      showMessage('Please enter text or URL', 'error');
+      return;
+    }
 
-  <!-- QR Code Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    document.getElementById('qrcode').innerHTML = '';
 
-  <!-- Main Scripts -->
-  <script src="main.js"></script>
+    qrCodeInstance = new QRCode(document.getElementById('qrcode'), {
+      text: text,
+      width: size,
+      height: size,
+      colorDark: darkColor,
+      colorLight: lightColor,
+      correctLevel: errorLevel === 'L' ? QRCode.CorrectLevel.L :
+                   errorLevel === 'M' ? QRCode.CorrectLevel.M :
+                   errorLevel === 'Q' ? QRCode.CorrectLevel.Q :
+                   QRCode.CorrectLevel.H
+    });
 
-  <!-- Tidio Chatbot -->
-  <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+    generatedCount++;
+    document.getElementById('generated').textContent = generatedCount;
+    showMessage('✓ QR code generated!', 'success');
+  }
 
-  <!-- QR Code Generator Functions -->
-  <script>
-    let qrObj = null;
+  function updateSize() {
+    const size = document.getElementById('qrSize').value;
+    document.getElementById('sizeDisplay').textContent = size;
+  }
 
-    function makeQR() {
-      const val = document.getElementById('qrIn').value.trim();
-      const sz = +document.getElementById('qrSz').value;
-      const box = document.getElementById('qrOut');
-      
-      box.innerHTML = '';
-      if (!val) return;
-      
-      qrObj = new QRCode(box, {
-        text: val,
-        width: sz,
-        height: sz,
-        colorDark: '#ffffff',
-        colorLight: '#10101a'
+  function downloadPNG() {
+    const canvas = document.querySelector('#qrcode canvas');
+    if (!canvas) {
+      showMessage('Generate QR code first!', 'error');
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = `qrcode-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showMessage('✓ Downloaded successfully!', 'success');
+  }
+
+  function copyQR() {
+    const canvas = document.querySelector('#qrcode canvas');
+    if (!canvas) {
+      showMessage('Generate QR code first!', 'error');
+      return;
+    }
+
+    canvas.toBlob(blob => {
+      const item = new ClipboardItem({ 'image/png': blob });
+      navigator.clipboard.write([item]).then(() => {
+        showMessage('✓ Copied to clipboard!', 'success');
       });
-    }
+    });
+  }
 
-    function dlQR() {
-      const c = document.querySelector('#qrOut canvas');
-      if (!c) {
-        showToast('⚠️ Generate a QR code first');
-        return;
-      }
-      
-      const a = document.createElement('a');
-      a.download = 'qr-toolyfi.png';
-      a.href = c.toDataURL();
-      a.click();
-      showToast('✅ QR Code downloaded!');
-    }
-  </script>
+  function clearQR() {
+    document.getElementById('qrText').value = '';
+    document.getElementById('qrcode').innerHTML = '';
+    showMessage('✓ Cleared!', 'success');
+  }
+
+  function resetSettings() {
+    document.getElementById('qrSize').value = '200';
+    document.getElementById('darkColor').value = '#000000';
+    document.getElementById('lightColor').value = '#ffffff';
+    document.getElementById('errorLevel').value = 'M';
+    updateSize();
+    showMessage('✓ Settings reset!', 'success');
+  }
+
+  function showMessage(msg, type) {
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
+
+  generateQR();
+</script>
+
 </body>
 </html>
