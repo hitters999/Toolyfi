@@ -1,85 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>BMI Calculator – Calculate Body Mass Index Free Online | Toolyfi</title>
-<meta name="description" content="Free BMI calculator online. Calculate your Body Mass Index instantly. Find out if you are underweight, normal, overweight or obese. No signup needed."/>
-<meta name="keywords" content="bmi calculator, body mass index calculator, bmi calculator online, free bmi calculator, calculate bmi, toolyfi"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/bmi-calculator.html"/>
-<meta property="og:title" content="BMI Calculator – Calculate Body Mass Index Free Online | Toolyfi"/>
-<meta property="og:description" content="Calculate your Body Mass Index instantly. Find out if you are underweight, normal, overweight or obese. Free, no signup needed."/>
-<meta property="og:url" content="https://toolyfi.com/bmi-calculator.html"/>
-<meta property="og:type" content="website"/>
-<link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free BMI calculator online. Calculate your Body Mass Index instantly. Get health classification, tips. Metric and imperial units. Fast and accurate.">
+  <meta name="keywords" content="BMI calculator, body mass index, calculate BMI, health calculator, weight calculator">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <title>Free BMI Calculator Online - Calculate Your Body Mass Index | Toolyfi</title>
+  
+  <meta property="og:title" content="Free BMI Calculator - Calculate Body Mass Index">
+  <meta property="og:description" content="Calculate BMI instantly. Get health classification and tips. 100% free, accurate results.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolyfi.com/bmi-calculator.html">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free BMI Calculator">
+  <meta name="twitter:description" content="Calculate BMI instantly. Fast, free, accurate.">
+  
+  <link rel="canonical" href="https://toolyfi.com/bmi-calculator.html">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BMI Calculator",
+    "description": "Free online BMI calculator tool",
+    "url": "https://toolyfi.com/bmi-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header p {
+      font-size: 0.95em;
+      opacity: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.25);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: #f5f7ff;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      text-align: center;
+    }
+
+    .stat-label {
+      color: #999;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #667eea;
+    }
+
+    .options-card {
+      background: #f8f9ff;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #e0e7ff;
+      margin-bottom: 20px;
+    }
+
+    .options-title {
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .unit-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .unit-btn {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.85em;
+    }
+
+    .unit-btn.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .unit-btn:hover {
+      border-color: #667eea;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.9em;
+      transition: all 0.3s;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
+    }
+
+    .results-card {
+      background: #f8f9ff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      display: none;
+      border: 2px solid #e0e7ff;
+    }
+
+    .results-card.show {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .bmi-display {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .bmi-number {
+      font-size: 3em;
+      font-weight: 800;
+      color: #667eea;
+      margin-bottom: 8px;
+    }
+
+    .bmi-category {
+      font-size: 1.2em;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .bmi-category.underweight {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .bmi-category.normal {
+      background: #e8f5e9;
+      color: #388e3c;
+    }
+
+    .bmi-category.overweight {
+      background: #fff3e0;
+      color: #f57c00;
+    }
+
+    .bmi-category.obese {
+      background: #ffebee;
+      color: #d32f2f;
+    }
+
+    .health-tips {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 0.85em;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 11px 0;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+      grid-column: 1 / 3;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #f8f9fa;
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: 500;
+      font-size: 0.9em;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.error {
+      background: #ffebee;
+      color: #c62828;
+      border-left: 4px solid #f44336;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.5em;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .button-group {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-primary {
+        grid-column: 1 / 3;
+      }
+
+      .bmi-number {
+        font-size: 2.5em;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="index.html">Home</a></li></ul></nav>
-<div class="tool-page">
-  <div class="breadcrumb"><a href="index.html">Home</a> → BMI Calculator</div>
-  <div class="tool-header"><h1>⚖️ BMI Calculator</h1><p>Calculate your Body Mass Index and find out your weight category instantly. Free, accurate and easy to use.</p></div>
-  <div class="tool-box">
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">Weight (kg)</label><input type="number" class="form-input" id="bW" placeholder="e.g. 70"/></div>
-      <div class="form-group"><label class="form-label">Height (cm)</label><input type="number" class="form-input" id="bH" placeholder="e.g. 175"/></div>
-    </div>
-    <button class="btn-primary" onclick="calcBMI()">⚖️ Calculate BMI</button>
-    <div id="bmiRes" style="display:none;margin-top:22px">
-      <div style="text-align:center;background:rgba(255,255,255,0.03);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px">
-        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:800" id="bmiNum"></div>
-        <div style="font-size:1.2rem;margin-top:8px;font-weight:600" id="bmiCat"></div>
-      </div>
-      <div class="bmi-bar"><div class="bmi-fill" id="bmiFill"></div></div>
-      <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:0.8rem;margin-top:6px">
-        <span>Underweight &lt;18.5</span><span>Normal 18.5–24.9</span><span>Overweight 25–29.9</span><span>Obese 30+</span>
-      </div>
+
+<div class="container">
+  <div class="header">
+    <h1>⚖️ BMI Calculator</h1>
+    <p>Calculate your Body Mass Index instantly. Get health classification and tips.</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">📊 Accurate</span>
+      <span class="badge">🔒 Secure</span>
     </div>
   </div>
+
+  <div class="content">
+    <div class="message" id="message"></div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">BMI Value</div>
+        <div class="stat-value" id="bmiValue">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value" id="bmiStatus">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Category</div>
+        <div class="stat-value" id="bmiCategory">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Age</div>
+        <div class="stat-value">Adult</div>
+      </div>
+    </div>
+
+    <div class="options-card">
+      <div class="options-title">⚙️ Body Measurements</div>
+      
+      <div style="margin-bottom: 15px;">
+        <label>📏 Unit System</label>
+        <div class="unit-selector">
+          <button class="unit-btn active" onclick="setUnit('metric')">Metric (kg, cm)</button>
+          <button class="unit-btn" onclick="setUnit('imperial')">Imperial (lb, in)</button>
+        </div>
+      </div>
+
+      <div class="option-grid">
+        <div>
+          <label for="weight">⚖️ Weight (<span id="weightUnit">kg</span>)</label>
+          <input type="number" id="weight" placeholder="Enter weight" oninput="calculateBMI()">
+        </div>
+        <div>
+          <label for="height">📏 Height (<span id="heightUnit">cm</span>)</label>
+          <input type="number" id="height" placeholder="Enter height" oninput="calculateBMI()">
+        </div>
+      </div>
+    </div>
+
+    <div class="results-card" id="resultsCard">
+      <div class="bmi-display">
+        <div class="bmi-number" id="bmiNumber">0</div>
+        <div class="bmi-category" id="bmiCategoryBadge">-</div>
+      </div>
+
+      <div class="health-tips" id="healthTips"></div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="calculateBMI()">📊 Calculate</button>
+      <button class="btn btn-secondary" onclick="copyResult()">📋 Copy</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="resetValues()">↻ Reset</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • Accurate Calculation • Metric & Imperial Units</p>
+  </div>
 </div>
-<div class="seo-article">
-  <h2>What is BMI?</h2>
-  <p>BMI stands for Body Mass Index. It is a measurement of body fat based on height and weight. Our free <strong>BMI calculator online</strong> gives you instant results and tells you whether your weight is in the healthy range.</p>
-  <h2>BMI Categories</h2>
-  <ul>
-    <li><strong>Below 18.5</strong> — Underweight</li>
-    <li><strong>18.5 to 24.9</strong> — Normal weight (healthy)</li>
-    <li><strong>25 to 29.9</strong> — Overweight</li>
-    <li><strong>30 and above</strong> — Obese</li>
-  </ul>
-  <h2>How to Calculate BMI?</h2>
-  <p>BMI is calculated by dividing your weight in kilograms by your height in meters squared. Our <strong>BMI calculator</strong> does this automatically — just enter your weight and height and click Calculate.</p>
-</div>
-<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="age-calculator.html" class="related-card">🎂 Age Calculator</a><a href="loan-calculator.html" class="related-card">💰 Loan Calculator</a><a href="percentage-calculator.html" class="related-card">💯 Percentage</a></div></div>
-<footer><div class="footer-links"><a href="index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<div class="toast" id="toast"></div>
-<script src="main.js"></script>
+
 <script>
-function calcBMI() {
-  const w=+document.getElementById('bW').value, h=+document.getElementById('bH').value/100;
-  if(!w||!h){showToast('⚠️ Enter weight and height');return;}
-  const bmi=(w/(h*h)).toFixed(1);
-  let cat,col,pct;
-  if(bmi<18.5){cat='Underweight';col='var(--c3)';pct=bmi/18.5*25;}
-  else if(bmi<25){cat='✅ Normal Weight';col='var(--c4)';pct=25+((bmi-18.5)/6.5)*30;}
-  else if(bmi<30){cat='⚠️ Overweight';col='var(--c5)';pct=55+((bmi-25)/5)*25;}
-  else{cat='🔴 Obese';col='var(--c6)';pct=Math.min(95,80+((bmi-30)/10)*15);}
-  document.getElementById('bmiRes').style.display='block';
-  document.getElementById('bmiNum').textContent=bmi;
-  document.getElementById('bmiNum').style.color=col;
-  document.getElementById('bmiCat').innerHTML=`<span style="color:${col}">${cat}</span>`;
-  const f=document.getElementById('bmiFill');f.style.background=col;f.style.width=pct+'%';
-}
+  let currentUnit = 'metric';
+
+  function setUnit(unit) {
+    currentUnit = unit;
+    const unitBtns = document.querySelectorAll('.unit-btn');
+    unitBtns.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if (unit === 'metric') {
+      document.getElementById('weightUnit').textContent = 'kg';
+      document.getElementById('heightUnit').textContent = 'cm';
+    } else {
+      document.getElementById('weightUnit').textContent = 'lb';
+      document.getElementById('heightUnit').textContent = 'in';
+    }
+    clearAll();
+  }
+
+  function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    if (!weight || !height) {
+      showMessage('Please enter both weight and height', 'error');
+      return;
+    }
+
+    let bmi;
+    if (currentUnit === 'metric') {
+      const heightM = height / 100;
+      bmi = weight / (heightM * heightM);
+    } else {
+      bmi = (weight / (height * height)) * 703;
+    }
+
+    bmi = bmi.toFixed(1);
+
+    let category = '';
+    let categoryBadge = '';
+    let tips = '';
+
+    if (bmi < 18.5) {
+      category = 'Underweight';
+      categoryBadge = 'underweight';
+      tips = '💡 <strong>Tips:</strong> Consider consulting a nutritionist to gain healthy weight. Eat nutrient-rich foods and stay active.';
+    } else if (bmi < 25) {
+      category = 'Normal Weight';
+      categoryBadge = 'normal';
+      tips = '✅ <strong>Great!</strong> You have a healthy BMI. Maintain your lifestyle with regular exercise and balanced diet.';
+    } else if (bmi < 30) {
+      category = 'Overweight';
+      categoryBadge = 'overweight';
+      tips = '⚠️ <strong>Tips:</strong> Increase physical activity and reduce calorie intake. Consult a healthcare professional.';
+    } else {
+      category = 'Obese';
+      categoryBadge = 'obese';
+      tips = '⚠️ <strong>Important:</strong> Consult a healthcare professional. Consider lifestyle changes and professional guidance.';
+    }
+
+    document.getElementById('bmiNumber').textContent = bmi;
+    document.getElementById('bmiValue').textContent = bmi;
+    document.getElementById('bmiStatus').textContent = category;
+    document.getElementById('bmiCategoryBadge').textContent = category;
+    document.getElementById('bmiCategoryBadge').className = 'bmi-category ' + categoryBadge;
+    document.getElementById('healthTips').innerHTML = tips;
+
+    document.getElementById('resultsCard').classList.add('show');
+  }
+
+  function copyResult() {
+    const bmi = document.getElementById('bmiNumber').textContent;
+    const category = document.getElementById('bmiStatus').textContent;
+    const text = `BMI: ${bmi} (${category})`;
+    navigator.clipboard.writeText(text).then(() => {
+      showMessage('✓ Copied!', 'success');
+    });
+  }
+
+  function clearAll() {
+    document.getElementById('weight').value = '';
+    document.getElementById('height').value = '';
+    document.getElementById('resultsCard').classList.remove('show');
+    document.getElementById('bmiValue').textContent = '-';
+    document.getElementById('bmiStatus').textContent = '-';
+  }
+
+  function resetValues() {
+    clearAll();
+    currentUnit = 'metric';
+    const unitBtns = document.querySelectorAll('.unit-btn');
+    unitBtns.forEach((btn, i) => {
+      if (i === 0) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+  }
+
+  function showMessage(msg, type) {
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
 </script>
+
 </body>
 </html>
