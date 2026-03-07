@@ -1,83 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Image Compressor – Compress Images Online Free No Watermark | Toolyfi</title>
-<meta name="description" content="Free online image compressor. Reduce JPG PNG image file size without losing quality. No watermark, no signup, instant download."/>
-<meta name="keywords" content="image compressor, compress image online, reduce image size, free image compressor, jpg compressor, png compressor, toolyfi"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/image-compressor.html"/>
-<meta property="og:title" content="Image Compressor – Compress Images Online Free | Toolyfi"/>
-<meta property="og:description" content="Reduce JPG, PNG image file size without losing quality. Free, no watermark, no signup required."/>
-<meta property="og:url" content="https://toolyfi.com/image-compressor.html"/>
-<meta property="og:type" content="website"/>
-<link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online image compressor. Reduce image size without quality loss. Compress PNG, JPG, WebP instantly. No signup required.">
+  <meta name="keywords" content="image compressor, compress image, reduce image size, image optimization, JPG compressor">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <title>Free Image Compressor Online - Compress Images Without Quality Loss | Toolyfi</title>
+  
+  <meta property="og:title" content="Free Image Compressor - Compress Images Online">
+  <meta property="og:description" content="Compress images instantly. Reduce size, maintain quality. 100% free, no signup needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolyfi.com/image-compressor.html">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Compressor">
+  <meta name="twitter:description" content="Compress images instantly. Fast, free, no signup.">
+  
+  <link rel="canonical" href="https://toolyfi.com/image-compressor.html">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Compressor",
+    "description": "Free online image compressor tool",
+    "url": "https://toolyfi.com/image-compressor.html",
+    "applicationCategory": "UtilityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header p {
+      font-size: 0.95em;
+      opacity: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.25);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75em;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 25px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: #f5f7ff;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      text-align: center;
+    }
+
+    .stat-label {
+      color: #999;
+      font-size: 0.8em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.6em;
+      font-weight: 800;
+      color: #667eea;
+    }
+
+    .upload-area {
+      border: 3px dashed #667eea;
+      border-radius: 15px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      background: #f8f9ff;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .upload-area:hover {
+      border-color: #764ba2;
+      background: #f0f2ff;
+    }
+
+    .upload-area.dragging {
+      border-color: #764ba2;
+      background: #e8ebff;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .options-card {
+      background: #f8f9ff;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #e0e7ff;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .options-card.show {
+      display: block;
+    }
+
+    .options-title {
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.9em;
+    }
+
+    input[type="range"],
+    select {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9em;
+    }
+
+    input[type="range"] {
+      cursor: pointer;
+      accent-color: #667eea;
+    }
+
+    select {
+      padding: 11px 14px;
+      border: 2px solid #e0e0e0;
+      transition: all 0.3s;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
+    }
+
+    .quality-display {
+      font-weight: 700;
+      color: #667eea;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 1.1em;
+    }
+
+    .preview-area {
+      background: #f8f9ff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .preview-area.show {
+      display: block;
+    }
+
+    .preview-img {
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .preview-info {
+      font-size: 0.85em;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .compression-bar {
+      background: #e0e0e0;
+      height: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .compression-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 11px 0;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+      grid-column: 1 / 3;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #f8f9fa;
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: none;
+      font-weight: 500;
+      font-size: 0.9em;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-left: 4px solid #4caf50;
+    }
+
+    .message.error {
+      background: #ffebee;
+      color: #c62828;
+      border-left: 4px solid #f44336;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.5em;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .button-group {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-primary {
+        grid-column: 1 / 3;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="index.html">Home</a></li></ul></nav>
-<div class="tool-page">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Image Compressor</div>
-  <div class="tool-header"><h1>📦 Image Compressor</h1><p>Reduce image file size without losing quality. Fast, free, no watermark, instant download.</p></div>
-  <div class="tool-box">
-    <div class="upload-zone" onclick="document.getElementById('cFile').click()">
-      <input type="file" id="cFile" accept="image/*" onchange="loadComp(event)"/>
-      <div style="font-size:2.5rem">📁</div>
-      <p>Click or drag & drop your image</p>
+
+<div class="container">
+  <div class="header">
+    <h1>🗜️ Image Compressor</h1>
+    <p>Compress images instantly. Reduce size, maintain quality. Download optimized images.</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">📉 Size Reduction</span>
+      <span class="badge">🔒 Secure</span>
     </div>
-    <img id="cPrev" class="preview-img"/>
-    <div id="cInfo" style="color:var(--muted);font-size:0.9rem;margin:10px 0"></div>
-    <div class="form-group" style="margin-top:14px">
-      <label class="form-label">Quality: <span id="qLbl">80</span>%</label>
-      <div class="range-group"><input type="range" min="10" max="100" value="80" id="cQ" oninput="document.getElementById('qLbl').textContent=this.value"/></div>
+  </div>
+
+  <div class="content">
+    <div class="message" id="message"></div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">Original</div>
+        <div class="stat-value" id="originalSize">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Compressed</div>
+        <div class="stat-value" id="compressedSize">-</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Saved</div>
+        <div class="stat-value" id="savedPercent">0%</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value">Ready</div>
+      </div>
     </div>
-    <div id="cResult" style="color:var(--c4);font-weight:600;margin:10px 0"></div>
-    <button class="btn-primary" onclick="compressImg()">📦 Compress & Download</button>
-    <canvas id="cCanvas" style="display:none"></canvas>
+
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+      <div style="font-size: 2em; margin-bottom: 10px;">📤</div>
+      <p style="font-weight: 600; color: #333; margin-bottom: 5px;">Upload Image</p>
+      <p style="color: #999; font-size: 0.9em;">Drag & drop or click to browse</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" onchange="handleFile(event)">
+
+    <div class="options-card" id="optionsCard">
+      <div class="options-title">⚙️ Compression Settings</div>
+      
+      <div>
+        <label for="quality">⭐ Quality Level</label>
+        <input type="range" id="quality" min="10" max="100" value="75" oninput="updateQuality()">
+        <div class="quality-display" id="qualityDisplay">75%</div>
+      </div>
+
+      <div class="option-grid" style="margin-top: 15px;">
+        <div>
+          <label for="format">📁 Format</label>
+          <select id="format" onchange="updatePreview()">
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WebP</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-area" id="previewArea">
+      <img id="previewImg" class="preview-img" alt="Preview">
+      <div class="preview-info" id="previewInfo"></div>
+      <div class="compression-bar">
+        <div class="compression-progress" id="compressionProgress"></div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="compressImage()">🗜️ Compress</button>
+      <button class="btn btn-secondary" onclick="downloadImage()">📥 Download</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="resetQuality()">↻ Reset</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • Supports JPEG, PNG, WebP • Instant Compression</p>
   </div>
 </div>
-<div class="seo-article">
-  <h2>Free Image Compressor Online</h2>
-  <p>Large image files slow down websites, fail to upload on forms, and take too long to send via email. Our free <strong>image compressor</strong> reduces file size significantly while maintaining visual quality. No software, no watermark, completely free.</p>
-  <h2>When Should You Compress Images?</h2>
-  <ul>
-    <li>Before uploading to a website or blog for faster page loading</li>
-    <li>When email attachments are too large to send</li>
-    <li>Before uploading to government forms with file size limits</li>
-    <li>To save storage space on your phone or computer</li>
-  </ul>
-</div>
-<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="image-resizer.html" class="related-card">🖼️ Image Resizer</a><a href="color-picker.html" class="related-card">🎨 Color Picker</a></div></div>
-<footer><div class="footer-links"><a href="index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<div class="toast" id="toast"></div>
-<script src="main.js"></script>
+
 <script>
-let cFile=null;
-function loadComp(e){cFile=e.target.files[0];if(!cFile)return;document.getElementById('cPrev').src=URL.createObjectURL(cFile);document.getElementById('cPrev').style.display='block';document.getElementById('cInfo').textContent=`Original: ${(cFile.size/1024).toFixed(1)} KB`;}
-function compressImg(){
-  if(!cFile){showToast('⚠️ Upload an image first');return;}
-  const q=+document.getElementById('cQ').value/100;
-  const img=new Image();img.onload=()=>{
-    const c=document.getElementById('cCanvas');c.width=img.width;c.height=img.height;
-    c.getContext('2d').drawImage(img,0,0);
-    c.toBlob(blob=>{
-      const saved=((1-blob.size/cFile.size)*100).toFixed(0);
-      document.getElementById('cResult').textContent=`✅ ${(cFile.size/1024).toFixed(1)} KB → ${(blob.size/1024).toFixed(1)} KB (${saved}% saved)`;
-      const a=document.createElement('a');a.download='compressed-toolyfi.jpg';a.href=URL.createObjectURL(blob);a.click();
-      showToast('✅ Downloaded!');
-    },'image/jpeg',q);
-  };img.src=URL.createObjectURL(cFile);
-}
+  let originalImage = null;
+  let compressedImage = null;
+  let originalSize = 0;
+
+  const uploadArea = document.getElementById('uploadArea');
+
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragging');
+  });
+
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragging');
+  });
+
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragging');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      loadImage(file);
+    } else {
+      showMessage('Please drop an image file', 'error');
+    }
+  });
+
+  function handleFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+      loadImage(file);
+    }
+  }
+
+  function loadImage(file) {
+    originalSize = file.size;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      originalImage = new Image();
+      originalImage.onload = () => {
+        document.getElementById('originalSize').textContent = formatBytes(originalSize);
+        document.getElementById('optionsCard').classList.add('show');
+        updatePreview();
+        showMessage('✓ Image loaded!', 'success');
+      };
+      originalImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function updateQuality() {
+    const quality = document.getElementById('quality').value;
+    document.getElementById('qualityDisplay').textContent = quality + '%';
+    updatePreview();
+  }
+
+  function updatePreview() {
+    if (!originalImage) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = originalImage.width;
+    canvas.height = originalImage.height;
+    ctx.drawImage(originalImage, 0, 0);
+
+    const quality = parseInt(document.getElementById('quality').value) / 100;
+    const format = document.getElementById('format').value;
+    const mimeType = format === 'jpeg' ? 'image/jpeg' : format === 'png' ? 'image/png' : 'image/webp';
+
+    compressedImage = canvas.toDataURL(mimeType, quality);
+    const compressedSize = Math.round((compressedImage.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+
+    document.getElementById('previewImg').src = compressedImage;
+    document.getElementById('compressedSize').textContent = formatBytes(compressedSize);
+    
+    const saved = ((1 - compressedSize / originalSize) * 100).toFixed(1);
+    document.getElementById('savedPercent').textContent = saved + '%';
+    document.getElementById('compressionProgress').style.width = saved + '%';
+
+    document.getElementById('previewArea').classList.add('show');
+  }
+
+  function compressImage() {
+    if (!originalImage) {
+      showMessage('Please upload an image first', 'error');
+      return;
+    }
+    updatePreview();
+    showMessage('✓ Image compressed!', 'success');
+  }
+
+  function downloadImage() {
+    if (!compressedImage) {
+      showMessage('Please compress image first', 'error');
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = compressedImage;
+    link.download = `compressed-${Date.now()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showMessage('✓ Downloaded!', 'success');
+  }
+
+  function clearAll() {
+    originalImage = null;
+    compressedImage = null;
+    document.getElementById('fileInput').value = '';
+    document.getElementById('optionsCard').classList.remove('show');
+    document.getElementById('previewArea').classList.remove('show');
+    document.getElementById('originalSize').textContent = '-';
+    document.getElementById('compressedSize').textContent = '-';
+    document.getElementById('savedPercent').textContent = '0%';
+  }
+
+  function resetQuality() {
+    document.getElementById('quality').value = '75';
+    updateQuality();
+  }
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+  }
+
+  function showMessage(msg, type) {
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
 </script>
+
 </body>
 </html>
