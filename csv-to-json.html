@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV to JSON Converter - Convert CSV to JSON, XML, YAML | Free Tool</title>
+  <meta name="description" content="Free online CSV to JSON converter. Convert CSV to JSON, XML, YAML, SQL instantly. No sign-up required. Fast and secure.">
+  <meta name="keywords" content="CSV to JSON, convert CSV, CSV converter, data conversion, CSV tool">
+  <meta name="author" content="Toolyfi">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .header p {
+      font-size: 1.05em;
+      opacity: 0.95;
+      margin-bottom: 15px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 40px 30px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95em;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .format-selector {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .format-btn {
+      padding: 10px 20px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .format-btn.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .format-btn:hover {
+      border-color: #667eea;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .editor-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .editor-label {
+      font-weight: 700;
+      color: #333;
+      font-size: 1.05em;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      resize: vertical;
+      min-height: 350px;
+      transition: all 0.3s;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .message {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #efe;
+      color: #3c3;
+      border-left: 4px solid #3c3;
+    }
+
+    .message.error {
+      background: #fee;
+      color: #c33;
+      border-left: 4px solid #c33;
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.95em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 25px 15px;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+
+      textarea {
+        min-height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>📊 CSV to JSON Converter</h1>
+    <p>Convert CSV to JSON, XML, YAML, and SQL instantly</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">📁 Large Files</span>
+      <span class="badge">🔒 Secure</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="message" id="message"></div>
+
+    <div class="controls">
+      <button class="btn btn-primary" onclick="convertData()">🔄 Convert</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
+      <button class="btn btn-secondary" onclick="loadSample()">📌 Sample</button>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <label style="font-weight: 600; color: #333;">Output Format:</label>
+      <div class="format-selector">
+        <button class="format-btn active" data-format="json" onclick="selectFormat('json', this)">JSON</button>
+        <button class="format-btn" data-format="xml" onclick="selectFormat('xml', this)">XML</button>
+        <button class="format-btn" data-format="yaml" onclick="selectFormat('yaml', this)">YAML</button>
+        <button class="format-btn" data-format="sql" onclick="selectFormat('sql', this)">SQL</button>
+      </div>
+    </div>
+
+    <div class="editor-grid">
+      <div class="editor-section">
+        <label class="editor-label">📥 Input CSV</label>
+        <textarea id="inputCSV" placeholder="Paste CSV data here...&#10;Name,Email,Age&#10;John,john@example.com,30&#10;Jane,jane@example.com,28"></textarea>
+      </div>
+      <div class="editor-section">
+        <label class="editor-label">📤 Output</label>
+        <textarea id="outputData" placeholder="Converted data will appear here..." readonly></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • Supports Large Files • Instant Processing</p>
+  </div>
+</div>
+
+<script>
+  const inputCSV = document.getElementById('inputCSV');
+  const outputData = document.getElementById('outputData');
+  const messageEl = document.getElementById('message');
+  let selectedFormat = 'json';
+
+  function selectFormat(format, button) {
+    selectedFormat = format;
+    document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+  }
+
+  function csvToArray(str) {
+    const arr = [];
+    let quote = false;
+    let current = '';
+    
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      const nextChar = str[i + 1];
+
+      if (char === '"') {
+        if (quote && nextChar === '"') {
+          current += char;
+          i++;
+        } else {
+          quote = !quote;
+        }
+      } else if (char === ',' && !quote) {
+        arr.push(current.trim());
+        current = '';
+      } else if ((char === '\n' || char === '\r') && !quote) {
+        if (current.trim().length > 0) {
+          arr.push(current.trim());
+        }
+        return arr;
+      } else {
+        current += char;
+      }
+    }
+
+    if (current.trim().length > 0) {
+      arr.push(current.trim());
+    }
+
+    return arr;
+  }
+
+  function csvToJSON(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = csvToArray(lines[0]);
+    const jsonArray = [];
+
+    for (let i = 1; i < lines.length; i++) {
+      const obj = {};
+      const row = csvToArray(lines[i]);
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = row[j] || '';
+      }
+      jsonArray.push(obj);
+    }
+
+    return JSON.stringify(jsonArray, null, 2);
+  }
+
+  function csvToXML(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = csvToArray(lines[0]);
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n';
+
+    for (let i = 1; i < lines.length; i++) {
+      const row = csvToArray(lines[i]);
+      xml += '  <record>\n';
+      for (let j = 0; j < headers.length; j++) {
+        xml += `    <${headers[j]}>${escapeXml(row[j] || '')}</${headers[j]}>\n`;
+      }
+      xml += '  </record>\n';
+    }
+
+    xml += '</root>';
+    return xml;
+  }
+
+  function csvToYAML(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = csvToArray(lines[0]);
+    let yaml = '';
+
+    for (let i = 1; i < lines.length; i++) {
+      const row = csvToArray(lines[i]);
+      yaml += '- ';
+      for (let j = 0; j < headers.length; j++) {
+        yaml += `${headers[j]}: ${row[j] || ''}\n  `;
+      }
+      yaml = yaml.slice(0, -3) + '\n';
+    }
+
+    return yaml;
+  }
+
+  function csvToSQL(csv) {
+    const lines = csv.trim().split('\n');
+    const headers = csvToArray(lines[0]);
+    const tableName = 'table_name';
+    let sql = `CREATE TABLE ${tableName} (\n`;
+
+    headers.forEach((header, i) => {
+      sql += `  ${header} VARCHAR(255)${i < headers.length - 1 ? ',' : ''}\n`;
+    });
+    sql += ');\n\n';
+
+    for (let i = 1; i < lines.length; i++) {
+      const row = csvToArray(lines[i]);
+      sql += `INSERT INTO ${tableName} (${headers.join(', ')}) VALUES (`;
+      sql += row.map(cell => `'${cell.replace(/'/g, "''")}'`).join(', ');
+      sql += ');\n';
+    }
+
+    return sql;
+  }
+
+  function escapeXml(str) {
+    return str.replace(/[<>&'"]/g, (c) => {
+      switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case "'": return '&apos;';
+        case '"': return '&quot;';
+      }
+    });
+  }
+
+  function convertData() {
+    try {
+      const csv = inputCSV.value.trim();
+      if (!csv) {
+        showMessage('Please enter CSV data', 'error');
+        return;
+      }
+
+      let result;
+      switch (selectedFormat) {
+        case 'json':
+          result = csvToJSON(csv);
+          break;
+        case 'xml':
+          result = csvToXML(csv);
+          break;
+        case 'yaml':
+          result = csvToYAML(csv);
+          break;
+        case 'sql':
+          result = csvToSQL(csv);
+          break;
+      }
+
+      outputData.value = result;
+      showMessage(`✓ Converted to ${selectedFormat.toUpperCase()} successfully!`, 'success');
+    } catch (e) {
+      showMessage(`✗ Error: ${e.message}`, 'error');
+    }
+  }
+
+  function clearAll() {
+    inputCSV.value = '';
+    outputData.value = '';
+    messageEl.classList.remove('show');
+  }
+
+  function copyOutput() {
+    if (!outputData.value) {
+      showMessage('Nothing to copy!', 'error');
+      return;
+    }
+    navigator.clipboard.writeText(outputData.value).then(() => {
+      showMessage('✓ Copied to clipboard!', 'success');
+    });
+  }
+
+  function loadSample() {
+    inputCSV.value = `Name,Email,Department,Salary
+John Doe,john@example.com,Engineering,85000
+Jane Smith,jane@example.com,Marketing,75000
+Bob Johnson,bob@example.com,Sales,70000
+Alice Williams,alice@example.com,Engineering,90000`;
+    showMessage('📌 Sample CSV loaded!', 'success');
+  }
+
+  function showMessage(msg, type) {
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
+</script>
+
+</body>
+</html>
