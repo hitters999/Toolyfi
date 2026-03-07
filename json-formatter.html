@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter & Validator - Format, Validate & Minify JSON Online | Free Tool</title>
+  <meta name="description" content="Free online JSON formatter and validator. Format, validate, minify, beautify, and convert JSON to CSV, XML, YAML. No sign-up required.">
+  <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, beautify JSON, format JSON, online JSON tool">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#667eea">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .header p {
+      font-size: 1.05em;
+      opacity: 0.95;
+      margin-bottom: 15px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 40px 30px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95em;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+      border: 2px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+      border-color: #999;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .editor-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .editor-label {
+      font-weight: 700;
+      color: #333;
+      font-size: 1.05em;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      resize: vertical;
+      min-height: 400px;
+      transition: all 0.3s;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .stat-box {
+      background: #f8f9ff;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+    }
+
+    .stat-label {
+      color: #999;
+      font-size: 0.85em;
+      margin-bottom: 5px;
+    }
+
+    .stat-value {
+      font-size: 1.5em;
+      font-weight: 800;
+      color: #667eea;
+    }
+
+    .message {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #efe;
+      color: #3c3;
+      border-left: 4px solid #3c3;
+    }
+
+    .message.error {
+      background: #fee;
+      color: #c33;
+      border-left: 4px solid #c33;
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #eee;
+      font-size: 0.95em;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 25px 15px;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+
+      textarea {
+        min-height: 300px;
+      }
+
+      .controls {
+        gap: 8px;
+      }
+
+      .btn {
+        padding: 10px 15px;
+        font-size: 0.85em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🔧 JSON Formatter & Validator</h1>
+    <p>Format, validate, minify, and convert JSON instantly</p>
+    <div class="badges">
+      <span class="badge">💰 100% Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">🔒 Secure</span>
+      <span class="badge">📱 Mobile</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">Characters</div>
+        <div class="stat-value" id="charCount">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Lines</div>
+        <div class="stat-value" id="lineCount">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Size</div>
+        <div class="stat-value" id="sizeCount">0 B</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Status</div>
+        <div class="stat-value" id="statusCount">Ready</div>
+      </div>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="message" id="message"></div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <button class="btn btn-primary" onclick="formatJSON()">✨ Format</button>
+      <button class="btn btn-primary" onclick="validateJSON()">✓ Validate</button>
+      <button class="btn btn-primary" onclick="minifyJSON()">📦 Minify</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="editor-grid">
+      <div class="editor-section">
+        <label class="editor-label">📥 Input JSON</label>
+        <textarea id="inputJSON" placeholder="Paste your JSON here..."></textarea>
+      </div>
+      <div class="editor-section">
+        <label class="editor-label">📤 Output JSON</label>
+        <textarea id="outputJSON" placeholder="Formatted JSON will appear here..." readonly></textarea>
+      </div>
+    </div>
+
+    <!-- SAMPLE DATA -->
+    <div style="text-align: center; margin-top: 30px;">
+      <button class="btn btn-secondary" onclick="loadSample()">📌 Load Sample JSON</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
+    <p>100% Free • No Sign-up • No Data Storage • Instant Processing</p>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+  const inputJSON = document.getElementById('inputJSON');
+  const outputJSON = document.getElementById('outputJSON');
+  const messageEl = document.getElementById('message');
+
+  // Update stats
+  inputJSON.addEventListener('input', updateStats);
+
+  function updateStats() {
+    const text = inputJSON.value;
+    document.getElementById('charCount').textContent = text.length;
+    document.getElementById('lineCount').textContent = text.split('\n').length;
+    const sizeInBytes = new Blob([text]).size;
+    document.getElementById('sizeCount').textContent = formatBytes(sizeInBytes);
+  }
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+  }
+
+  // Format JSON
+  function formatJSON() {
+    try {
+      const json = JSON.parse(inputJSON.value);
+      outputJSON.value = JSON.stringify(json, null, 2);
+      document.getElementById('statusCount').textContent = '✓ Valid';
+      showMessage('✓ JSON formatted successfully!', 'success');
+    } catch (e) {
+      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      document.getElementById('statusCount').textContent = '✗ Error';
+    }
+  }
+
+  // Validate JSON
+  function validateJSON() {
+    try {
+      JSON.parse(inputJSON.value);
+      document.getElementById('statusCount').textContent = '✓ Valid';
+      showMessage('✓ JSON is valid!', 'success');
+    } catch (e) {
+      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      document.getElementById('statusCount').textContent = '✗ Error';
+    }
+  }
+
+  // Minify JSON
+  function minifyJSON() {
+    try {
+      const json = JSON.parse(inputJSON.value);
+      outputJSON.value = JSON.stringify(json);
+      document.getElementById('statusCount').textContent = '✓ Valid';
+      showMessage('✓ JSON minified successfully!', 'success');
+    } catch (e) {
+      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      document.getElementById('statusCount').textContent = '✗ Error';
+    }
+  }
+
+  // Clear all
+  function clearAll() {
+    inputJSON.value = '';
+    outputJSON.value = '';
+    document.getElementById('charCount').textContent = '0';
+    document.getElementById('lineCount').textContent = '0';
+    document.getElementById('sizeCount').textContent = '0 B';
+    document.getElementById('statusCount').textContent = 'Ready';
+    messageEl.classList.remove('show');
+  }
+
+  // Copy output
+  function copyOutput() {
+    if (!outputJSON.value) {
+      showMessage('✗ Nothing to copy!', 'error');
+      return;
+    }
+    navigator.clipboard.writeText(outputJSON.value).then(() => {
+      showMessage('✓ Copied to clipboard!', 'success');
+    });
+  }
+
+  // Load sample
+  function loadSample() {
+    const sample = {
+      "name": "John Doe",
+      "age": 30,
+      "email": "john@example.com",
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "country": "USA"
+      },
+      "skills": ["JavaScript", "Python", "React"],
+      "isActive": true
+    };
+    inputJSON.value = JSON.stringify(sample);
+    updateStats();
+    showMessage('📌 Sample JSON loaded!', 'success');
+  }
+
+  // Show message
+  function showMessage(msg, type) {
+    messageEl.textContent = msg;
+    messageEl.className = 'message show ' + type;
+    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  }
+
+  // Initialize stats
+  updateStats();
+</script>
+
+</body>
+</html>
