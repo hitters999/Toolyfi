@@ -597,110 +597,17 @@
 
     <div class="tools-grid-bg">
       <div class="tools-categories">
-        <button class="category-btn active" onclick="filterTools('all')">All Tools</button>
-        <button class="category-btn" onclick="filterTools('image')">Image Tools</button>
-        <button class="category-btn" onclick="filterTools('calculator')">Calculators</button>
-        <button class="category-btn" onclick="filterTools('converter')">Converters</button>
-        <button class="category-btn" onclick="filterTools('text')">Text Tools</button>
-        <button class="category-btn" onclick="filterTools('generator')">Generators</button>
+        <button class="category-btn active" data-cat="all">All Tools</button>
+        <button class="category-btn" data-cat="image">Image Tools</button>
+        <button class="category-btn" data-cat="calculator">Calculators</button>
+        <button class="category-btn" data-cat="converter">Converters</button>
+        <button class="category-btn" data-cat="text">Text Tools</button>
+        <button class="category-btn" data-cat="generator">Generators</button>
       </div>
     </div>
 
-    <div class="tools-grid">
-      <!-- Row 1 -->
-      <div class="tool-card">
-        <div class="tool-icon">📱</div>
-        <h3 class="tool-name">QR Code Generator</h3>
-        <p class="tool-desc">Create QR codes instantly. Download as PNG or SVG.</p>
-        <a href="qr-code-generator.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">🎂</div>
-        <h3 class="tool-name">Age Calculator</h3>
-        <p class="tool-desc">Calculate exact age in days, months and years.</p>
-        <a href="age-calculator.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">🖼️</div>
-        <h3 class="tool-name">Background Remover</h3>
-        <p class="tool-desc">Remove backgrounds with AI. Download as PNG.</p>
-        <a href="https://bg.toolyfi.com" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">📐</div>
-        <h3 class="tool-name">Image Resizer</h3>
-        <p class="tool-desc">Resize images to any size instantly.</p>
-        <a href="image-resizer.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="tool-card">
-        <div class="tool-icon">🗜️</div>
-        <h3 class="tool-name">Image Compressor</h3>
-        <p class="tool-desc">Reduce image size without quality loss.</p>
-        <a href="image-compressor.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">🧮</div>
-        <h3 class="tool-name">Scientific Calculator</h3>
-        <p class="tool-desc">Advanced mathematics calculator.</p>
-        <a href="scientific-calculator.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">🎨</div>
-        <h3 class="tool-name">Color Picker</h3>
-        <p class="tool-desc">Pick colors and get HEX/RGB codes.</p>
-        <a href="color-picker.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">💱</div>
-        <h3 class="tool-name">Currency Converter</h3>
-        <p class="tool-desc">Real-time currency conversion.</p>
-        <a href="currency-converter.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <!-- Row 3 -->
-      <div class="tool-card">
-        <div class="tool-icon">🌡️</div>
-        <h3 class="tool-name">Temperature Converter</h3>
-        <p class="tool-desc">Convert between Celsius, Fahrenheit, Kelvin.</p>
-        <a href="temperature-converter.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">✂️</div>
-        <h3 class="tool-name">Text Trimmer</h3>
-        <p class="tool-desc">Remove extra spaces and format text.</p>
-        <a href="text-trimmer.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">📊</div>
-        <h3 class="tool-name">JSON Formatter</h3>
-        <p class="tool-desc">Format and validate JSON instantly.</p>
-        <a href="json-formatter.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">⚖️</div>
-        <h3 class="tool-name">BMI Calculator</h3>
-        <p class="tool-desc">Calculate Body Mass Index with health tips.</p>
-        <a href="bmi-calculator.html" class="tool-link">Use Tool →</a>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-icon">✨</div>
-        <h3 class="tool-name">Prompt Generator</h3>
-        <p class="tool-desc">500+ AI prompts for ChatGPT, Claude & Gemini. Free templates for writing, coding & more.</p>
-        <a href="prompt-generator.html" class="tool-link">Use Tool →</a>
-      </div>
-    </div>
+    <!-- AUTO GENERATED — tools-loader.js inject karta hai cards -->
+    <div class="tools-grid" id="auto-tools-grid"></div>
   </section>
 
   <!-- FOOTER -->
@@ -711,6 +618,8 @@
 
   <!-- Tidio Chatbot -->
   <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+  <!-- Auto Tools Loader -->
+  <script src="tools-loader.js"></script>
 
   <script>
     let currentNewsIndex = 0;
@@ -720,7 +629,6 @@
     function showNews(index) {
       newsItems.forEach(item => item.classList.remove('active'));
       newsDots.forEach(dot => dot.classList.remove('active'));
-      
       currentNewsIndex = index;
       newsItems[currentNewsIndex].classList.add('active');
       newsDots[currentNewsIndex].classList.add('active');
@@ -736,14 +644,7 @@
       showNews(currentNewsIndex);
     }
 
-    // Auto-rotate news every 5 seconds
     setInterval(nextNews, 5000);
-
-    function filterTools(category) {
-      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      // Add filtering logic here if needed
-    }
   </script>
 
 </body>
