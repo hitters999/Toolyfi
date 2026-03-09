@@ -125,6 +125,16 @@
             margin-bottom: 10px;
         }
         
+        .featured-card-badge.breaking {
+            background: #ff0000;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.8; }
+        }
+        
         .featured-card-title {
             font-size: 1.2em;
             color: #333;
@@ -180,6 +190,11 @@
             position: relative;
             overflow: hidden;
         }
+
+        .animated-news-card.breaking-news {
+            border-left: 5px solid #ff0000;
+            background: linear-gradient(135deg, #fff 0%, #ffe6e6 100%);
+        }
         
         .animated-news-card:hover {
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -196,6 +211,12 @@
             color: #333;
             margin-bottom: 12px;
             font-weight: bold;
+        }
+
+        .news-card-title.breaking {
+            color: #d32f2f;
+            text-transform: uppercase;
+            font-weight: 900;
         }
         
         .news-card-content {
@@ -256,10 +277,21 @@
     </header>
 
     <section class="featured-section">
-        <h2 class="featured-title">🎯 Featured Articles</h2>
+        <h2 class="featured-title">🎯 FEATURED ARTICLES</h2>
         <div class="featured-cards">
             
-            <!-- ARTICLE 1: Why Arabs Attack Iran -->
+            <!-- BREAKING: NORTH KOREA-IRAN -->
+            <div class="featured-card">
+                <img src="north-korea-iran-viral.png" alt="Kim Jong Un Iran Breaking News" class="featured-card-image">
+                <div class="featured-card-content">
+                    <span class="featured-card-badge breaking">🔴 BREAKING NEWS</span>
+                    <h3 class="featured-card-title">SHOCKING: Kim Jong Un Makes MASSIVE Move Supporting Iran's New Leader</h3>
+                    <p class="featured-card-desc">North Korea's Supreme Leader issues HUGE statement about Iran's new Supreme Leader Khamenei. This could reshape the entire global power balance.</p>
+                    <a href="north-korea-iran-complete.html" class="featured-card-link">→ Read Full Story</a>
+                </div>
+            </div>
+
+            <!-- ARTICLE 2: Why Arabs Attack Iran -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1569163139395-de4798aa62b8?w=400&h=200&fit=crop" alt="Arab Defense Strategy" class="featured-card-image">
                 <div class="featured-card-content">
@@ -270,7 +302,7 @@
                 </div>
             </div>
 
-            <!-- ARTICLE 2: Iran Defense -->
+            <!-- ARTICLE 3: Iran Defense -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=200&fit=crop" alt="Iran Defense" class="featured-card-image">
                 <div class="featured-card-content">
@@ -281,7 +313,7 @@
                 </div>
             </div>
 
-            <!-- ARTICLE 3: Economic Trends -->
+            <!-- ARTICLE 4: Economic Trends -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop" alt="Economy" class="featured-card-image">
                 <div class="featured-card-content">
@@ -292,7 +324,7 @@
                 </div>
             </div>
 
-            <!-- ARTICLE 4: AI Jobs -->
+            <!-- ARTICLE 5: AI Jobs -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop" alt="AI Jobs" class="featured-card-image">
                 <div class="featured-card-content">
@@ -303,7 +335,7 @@
                 </div>
             </div>
 
-            <!-- ARTICLE 5: Gallery -->
+            <!-- ARTICLE 6: Gallery -->
             <div class="featured-card">
                 <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=400&h=200&fit=crop" alt="Gallery" class="featured-card-image">
                 <div class="featured-card-content">
@@ -318,10 +350,18 @@
     </section>
 
     <section class="news-section">
-        <h2 class="news-title">📰 Latest Updates</h2>
+        <h2 class="news-title">📰 LATEST UPDATES</h2>
         <div class="animated-cards-container">
             
-            <!-- NEWS 1 -->
+            <!-- BREAKING NEWS 1: NORTH KOREA-IRAN -->
+            <div class="animated-news-card breaking-news">
+                <div class="news-card-icon">🔴</div>
+                <h3 class="news-card-title breaking">BREAKING: Kim Jong Un SHOCKING Move Supporting Iran</h3>
+                <p class="news-card-content"><strong>EXCLUSIVE:</strong> North Korea's Supreme Leader issues HUGE statement about Iran's new Supreme Leader. This could reshape global power balance. Full story with comments and engagement...</p>
+                <a href="north-korea-iran-complete.html" class="news-card-link">→ READ FULL BREAKING STORY</a>
+            </div>
+
+            <!-- NEWS 2 -->
             <div class="animated-news-card">
                 <div class="news-card-icon">🛡️</div>
                 <h3 class="news-card-title">Why Do Arab Nations Attack Iran?</h3>
@@ -329,7 +369,7 @@
                 <a href="why-arabs-attack-iran.html" class="news-card-link">→ Read Full Story</a>
             </div>
 
-            <!-- NEWS 2 -->
+            <!-- NEWS 3 -->
             <div class="animated-news-card">
                 <div class="news-card-icon">🇮🇷</div>
                 <h3 class="news-card-title">Iran Defense Strategy</h3>
@@ -337,7 +377,7 @@
                 <a href="iran-defense-seo.html" class="news-card-link">→ Read More</a>
             </div>
 
-            <!-- NEWS 3 -->
+            <!-- NEWS 4 -->
             <div class="animated-news-card">
                 <div class="news-card-icon">📈</div>
                 <h3 class="news-card-title">Economic Trends 2026</h3>
@@ -345,7 +385,7 @@
                 <a href="economic-trends-ai.html" class="news-card-link">→ Full Report</a>
             </div>
 
-            <!-- NEWS 4 -->
+            <!-- NEWS 5 -->
             <div class="animated-news-card">
                 <div class="news-card-icon">💼</div>
                 <h3 class="news-card-title">AI Jobs 2026</h3>
@@ -353,7 +393,7 @@
                 <a href="ai-jobs-2026.html" class="news-card-link">→ Career Guide</a>
             </div>
 
-            <!-- NEWS 5 -->
+            <!-- NEWS 6 -->
             <div class="animated-news-card">
                 <div class="news-card-icon">🖼️</div>
                 <h3 class="news-card-title">Photo Gallery</h3>
