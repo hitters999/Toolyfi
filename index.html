@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -13,20 +12,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toolyfi - 100+ Free Online Tools & Breaking News 2026</title>
-  <meta name="description" content="100+ Free Online Tools: QR Code, Calculator, Image Resizer, Background Remover, Markdown to HTML, and more + Real-Time Breaking News & Analysis. No sign-up needed!">
-  <meta name="keywords" content="free tools, online tools, QR code generator, calculator, image resizer, background remover, markdown to html, breaking news, updates world">
+  <meta name="description" content="100+ Free Online Tools: QR Code, Calculator, Image Resizer, Background Remover, Markdown to HTML, and more + Real-Time Breaking News. Dark mode supported!">
+  <meta name="keywords" content="free tools, online tools, dark mode, markdown to html, breaking news, updates world">
   <meta name="author" content="Toolyfi">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#667eea">
 
   <link rel="canonical" href="https://toolyfi.com/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
+    :root {
+      --bg-primary: #f8f9fa;
+      --bg-secondary: #ffffff;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --border-color: #e0e0e0;
+      --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    body.dark-mode {
+      --bg-primary: #1a1a2e;
+      --bg-secondary: #2a2a3e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --border-color: #404050;
+      --header-bg: linear-gradient(135deg, #2a2a3e 0%, #1f1f3a 100%);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -35,16 +49,19 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f8f9fa;
-      color: #333;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
     }
 
-    /* HEADER */
     header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--header-bg);
       padding: 15px 20px;
       color: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header nav {
@@ -65,11 +82,69 @@
       gap: 10px;
     }
 
-    .logo-badge {
+    .header-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* DARK MODE TOGGLE */
+    .theme-toggle {
+      width: 60px;
+      height: 30px;
       background: rgba(255,255,255,0.2);
-      padding: 4px 10px;
-      border-radius: 15px;
-      font-size: 0.75em;
+      border: 2px solid white;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .theme-toggle-circle {
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      left: 2px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .theme-toggle.active .theme-toggle-circle {
+      left: 32px;
+    }
+
+    /* GALLERY BUTTON */
+    .gallery-btn {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+    }
+
+    .gallery-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255,107,107,0.4);
     }
 
     .header-links {
@@ -91,32 +166,26 @@
       opacity: 0.8;
     }
 
-    .get-started {
-      background: white;
-      color: #667eea;
-      padding: 8px 16px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9em;
-    }
-
-    /* HERO SECTION */
     .hero {
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       padding: 50px 20px;
       text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .hero {
+      background: linear-gradient(135deg, #2a2a3e 0%, #1f1f3a 100%);
     }
 
     .hero h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
-      color: #1a1a1a;
+      color: var(--text-primary);
     }
 
     .hero p {
       font-size: 1em;
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 25px;
     }
 
@@ -148,7 +217,7 @@
     }
 
     .btn-secondary {
-      background: white;
+      background: var(--bg-secondary);
       color: #667eea;
       border: 2px solid #667eea;
     }
@@ -158,11 +227,11 @@
       color: white;
     }
 
-    /* LATEST NEWS SECTION */
     .latest-news {
       padding: 50px 20px;
-      background: white;
+      background: var(--bg-secondary);
       margin: 30px 0;
+      transition: all 0.3s ease;
     }
 
     .latest-news-container {
@@ -182,7 +251,7 @@
     .section-title {
       font-size: 1.8em;
       font-weight: 800;
-      color: #1a1a1a;
+      color: var(--text-primary);
     }
 
     .view-all {
@@ -200,13 +269,13 @@
       transform: translateX(5px);
     }
 
-    /* CAROUSEL */
     .news-carousel {
       position: relative;
-      background: #f8f9fa;
+      background: var(--bg-secondary);
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
 
     .carousel-item {
@@ -238,7 +307,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: white;
+      background: var(--bg-secondary);
     }
 
     .carousel-badge {
@@ -268,18 +337,13 @@
     .carousel-title {
       font-size: 1.5em;
       font-weight: 800;
-      color: #1a1a1a;
+      color: var(--text-primary);
       margin-bottom: 15px;
       line-height: 1.3;
     }
 
-    .carousel-title.breaking-title {
-      color: #d32f2f;
-      text-transform: uppercase;
-    }
-
     .carousel-desc {
-      color: #666;
+      color: var(--text-secondary);
       font-size: 0.95em;
       line-height: 1.6;
       margin-bottom: 20px;
@@ -293,10 +357,6 @@
       transition: all 0.3s;
     }
 
-    .carousel-link.breaking-link {
-      color: #d32f2f;
-    }
-
     .carousel-link:hover {
       color: #5568d3;
       text-decoration: underline;
@@ -308,14 +368,14 @@
       align-items: center;
       gap: 15px;
       padding: 15px;
-      background: white;
+      background: var(--bg-secondary);
     }
 
     .carousel-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #ddd;
+      background: var(--border-color);
       cursor: pointer;
       transition: all 0.3s;
     }
@@ -345,7 +405,6 @@
       transform: scale(1.1);
     }
 
-    /* ALL TOOLS SECTION */
     .all-tools {
       padding: 50px 20px;
       max-width: 1200px;
@@ -361,16 +420,15 @@
       font-size: 2.2em;
       font-weight: 800;
       margin-bottom: 10px;
-      color: #1a1a1a;
+      color: var(--text-primary);
     }
 
     .all-tools-subtitle {
-      color: #666;
+      color: var(--text-secondary);
       font-size: 1em;
       margin-bottom: 30px;
     }
 
-    /* GRADIENT BG WITH LOGOS */
     .tools-grid-bg {
       background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
       padding: 40px;
@@ -378,22 +436,11 @@
       margin-bottom: 40px;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    .tools-grid-bg::before {
-      content: '🔧 📊 📱 🖼️ 🎨 🧮 ✏️ 📐 💾 🔐';
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      right: -20px;
-      bottom: -20px;
-      font-size: 8em;
-      opacity: 0.08;
-      pointer-events: none;
-      transform: rotate(-15deg);
-      word-wrap: break-word;
-      overflow: hidden;
-      line-height: 1.2;
+    body.dark-mode .tools-grid-bg {
+      background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
     }
 
     .tools-categories {
@@ -408,7 +455,7 @@
     .category-btn {
       padding: 10px 20px;
       border: 2px solid #667eea;
-      background: white;
+      background: var(--bg-secondary);
       color: #667eea;
       border-radius: 25px;
       cursor: pointer;
@@ -423,7 +470,6 @@
       color: white;
     }
 
-    /* TOOLS GRID */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -432,7 +478,7 @@
     }
 
     .tool-card {
-      background: white;
+      background: var(--bg-secondary);
       padding: 25px;
       border-radius: 15px;
       text-align: center;
@@ -455,12 +501,12 @@
     .tool-name {
       font-size: 1.1em;
       font-weight: 700;
-      color: #1a1a1a;
+      color: var(--text-primary);
       margin-bottom: 10px;
     }
 
     .tool-desc {
-      color: #666;
+      color: var(--text-secondary);
       font-size: 0.9em;
       margin-bottom: 15px;
       line-height: 1.5;
@@ -479,13 +525,17 @@
       text-decoration: underline;
     }
 
-    /* FOOTER */
     footer {
       background: #1a1a2e;
       color: white;
       text-align: center;
       padding: 30px 20px;
       margin-top: 50px;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode footer {
+      background: #0a0a0a;
     }
 
     footer a {
@@ -524,24 +574,27 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo">
         📦 Toolyfi
-        <span class="logo-badge">Free Tools + News</span>
       </div>
-      <div class="header-links">
-        <a href="#tools">Tools</a>
-        <a href="updatesworld/updatesworld.html">📰 Updates</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="updatesworld/gallery.html" class="get-started">🖼️ Gallery</a>
+      <div class="header-controls">
+        <div class="header-links">
+          <a href="#tools">Tools</a>
+          <a href="updatesworld/updatesworld.html">📰 Updates</a>
+          <a href="#about">About</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleDarkMode()">
+          <div class="theme-toggle-circle">☀️</div>
+        </button>
+        <button class="gallery-btn" onclick="window.location.href='updatesworld/gallery.html'">
+          🖼️ Gallery
+        </button>
       </div>
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <h1>All Tools In One Place</h1>
     <p>100+ Free Online Tools & Real-Time Breaking News</p>
@@ -551,85 +604,74 @@
     </div>
   </section>
 
-  <!-- LATEST NEWS SECTION -->
   <section class="latest-news">
     <div class="latest-news-container">
       <div class="section-header">
-        <div class="section-title">
-          🔥 Latest News
-          <small style="font-size: 0.8em; opacity: 0.8;">(Fresh updates from around the world)</small>
-        </div>
+        <div class="section-title">🔥 Latest News</div>
         <a href="updatesworld/updatesworld.html" class="view-all">View All →</a>
       </div>
 
       <div class="news-carousel">
-        <!-- Carousel Item 0: BREAKING NEWS -->
         <div class="carousel-item active">
-          <img src="updatesworld/north-korea-iran-viral.png" alt="Kim Jong Un Iran Breaking News" class="carousel-item-image">
+          <img src="updatesworld/north-korea-iran-viral.png" alt="Breaking News" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge breaking">🔴 BREAKING NEWS</span>
-            <h3 class="carousel-title breaking-title">SHOCKING: Kim Jong Un Makes MASSIVE Move Supporting Iran's New Leader</h3>
-            <p class="carousel-desc">North Korea's Supreme Leader issues HUGE statement about Iran's new Supreme Leader Khamenei. This could reshape the entire global power balance.</p>
-            <a href="updatesworld/north-korea-iran-complete.html" class="carousel-link breaking-link">→ READ FULL BREAKING STORY</a>
+            <span class="carousel-badge breaking">🔴 BREAKING</span>
+            <h3 class="carousel-title">Kim Jong Un & Iran Alliance</h3>
+            <p class="carousel-desc">North Korea's major statement about Iran's new leadership. Historic geopolitical shift.</p>
+            <a href="updatesworld/north-korea-iran-complete.html" class="carousel-link">Read Story →</a>
           </div>
         </div>
 
-        <!-- Carousel Item 1 -->
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1569163139395-de4798aa62b8?w=500&h=300&fit=crop" alt="Arab Defense Strategy" class="carousel-item-image">
+          <img src="https://images.unsplash.com/photo-1569163139395-de4798aa62b8?w=500&h=300&fit=crop" alt="Arab Defense" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge">🛡️ ANALYSIS</span>
-            <h3 class="carousel-title">Why Do Arab Nations Attack Iran?</h3>
-            <p class="carousel-desc">Arab perspective: Regional security threats, proxy wars, and defensive operations against Iranian expansion.</p>
-            <a href="updatesworld/why-arabs-attack-iran.html" class="carousel-link">Read Analysis →</a>
+            <span class="carousel-badge">🛡️ Analysis</span>
+            <h3 class="carousel-title">Why Arab Nations Attack Iran</h3>
+            <p class="carousel-desc">Strategic military analysis and geopolitical perspectives.</p>
+            <a href="updatesworld/why-arabs-attack-iran.html" class="carousel-link">Read →</a>
           </div>
         </div>
 
-        <!-- Carousel Item 2 -->
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop" alt="Iran Defense" class="carousel-item-image">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop" alt="Iran Strategy" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge">🇮🇷 STRATEGY</span>
-            <h3 class="carousel-title">Iran Defense Strategy: Military Analysis</h3>
-            <p class="carousel-desc">Expert military analysis of Iran's missile doctrine and geopolitical positioning.</p>
-            <a href="updatesworld/iran-defense-seo.html" class="carousel-link">Read Strategy Analysis →</a>
+            <span class="carousel-badge">🇮🇷 Strategy</span>
+            <h3 class="carousel-title">Iran Defense Strategy</h3>
+            <p class="carousel-desc">Military analysis and geopolitical positioning.</p>
+            <a href="updatesworld/iran-defense-seo.html" class="carousel-link">Read →</a>
           </div>
         </div>
 
-        <!-- Carousel Item 3 -->
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Global Economy" class="carousel-item-image">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Economy" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge">💰 ECONOMY 2026</span>
+            <span class="carousel-badge">💰 Economy</span>
             <h3 class="carousel-title">Global Economic Trends 2026</h3>
-            <p class="carousel-desc">Comprehensive economic analysis covering cryptocurrency, emerging markets, and investment opportunities.</p>
-            <a href="updatesworld/economic-trends-ai.html" class="carousel-link">Read Analysis →</a>
+            <p class="carousel-desc">Markets, crypto, and investment analysis.</p>
+            <a href="updatesworld/economic-trends-ai.html" class="carousel-link">Read →</a>
           </div>
         </div>
 
-        <!-- Carousel Item 4 -->
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop" alt="AI Jobs 2026" class="carousel-item-image">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop" alt="AI Jobs" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge">🤖 CAREER GUIDE</span>
-            <h3 class="carousel-title">AI Revolution & Job Market 2026</h3>
-            <p class="carousel-desc">Complete guide to AI-related jobs, skills in demand, and career strategy for the AI era.</p>
-            <a href="updatesworld/ai-jobs-2026.html" class="carousel-link">Read Career Guide →</a>
+            <span class="carousel-badge">🤖 Career</span>
+            <h3 class="carousel-title">AI Jobs & Career Guide</h3>
+            <p class="carousel-desc">Opportunities and salary trends in AI sector.</p>
+            <a href="updatesworld/ai-jobs-2026.html" class="carousel-link">Read →</a>
           </div>
         </div>
 
-        <!-- Carousel Item 5 -->
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=500&h=300&fit=crop" alt="Photo Gallery" class="carousel-item-image">
+          <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=500&h=300&fit=crop" alt="Gallery" class="carousel-item-image">
           <div class="carousel-item-content">
-            <span class="carousel-badge">📸 GALLERY</span>
-            <h3 class="carousel-title">Photo Gallery: Real Images Auto-Updated Daily</h3>
-            <p class="carousel-desc">Beautiful collection of real stock photos updated automatically. Browse news, nature, business, and lifestyle images.</p>
-            <a href="updatesworld/gallery.html" class="carousel-link">View Gallery →</a>
+            <span class="carousel-badge">📸 Gallery</span>
+            <h3 class="carousel-title">Photo Gallery</h3>
+            <p class="carousel-desc">High-quality images from around the world.</p>
+            <a href="updatesworld/gallery.html" class="carousel-link">View →</a>
           </div>
         </div>
 
-        <!-- Carousel Controls -->
         <div class="carousel-controls">
           <button class="carousel-arrow" onclick="previousNews()">❮</button>
           <div class="carousel-dot active" onclick="showNews(0)"></div>
@@ -644,48 +686,69 @@
     </div>
   </section>
 
-  <!-- ALL TOOLS SECTION -->
   <section class="all-tools" id="tools">
     <div class="all-tools-header">
-      <h2 class="all-tools-title">All Categories</h2>
+      <h2 class="all-tools-title">All Tools</h2>
       <p class="all-tools-subtitle">Find tools that match your needs</p>
     </div>
 
     <div class="tools-grid-bg">
       <div class="tools-categories">
-        <button class="category-btn active" data-cat="all">All Tools</button>
-        <button class="category-btn" data-cat="image">Image Tools</button>
-        <button class="category-btn" data-cat="calculator">Calculators</button>
-        <button class="category-btn" data-cat="converter">Converters</button>
-        <button class="category-btn" data-cat="text">Text Tools</button>
-        <button class="category-btn" data-cat="generator">Generators</button>
+        <button class="category-btn active">All Tools</button>
+        <button class="category-btn">Image Tools</button>
+        <button class="category-btn">Calculators</button>
+        <button class="category-btn">Converters</button>
+        <button class="category-btn">Text Tools</button>
       </div>
     </div>
 
-    <!-- TOOLS GRID WITH AUTO-GENERATED CARDS -->
     <div class="tools-grid" id="auto-tools-grid">
-      <!-- NEW MARKDOWN TO HTML TOOL -->
       <div class="tool-card">
         <div class="tool-icon">📝</div>
         <h3 class="tool-name">Markdown to HTML</h3>
-        <p class="tool-desc">Convert Markdown syntax to clean HTML code instantly with live preview</p>
+        <p class="tool-desc">Convert Markdown to HTML instantly with live preview</p>
         <a href="markdown-to-html-seo.html" class="tool-link">Try Tool →</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 Toolyfi · Free Online Tools + World News · <a href="#">toolyfi.com</a></p>
-    <p>100+ Free Tools • Real-Time News • No Sign-up • Secure & Fast</p>
+    <p>100+ Free Tools • Real-Time News • Dark Mode • No Sign-up</p>
   </footer>
 
-  <!-- Tidio Chatbot -->
   <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-  <!-- Auto Tools Loader -->
-  <script src="tools-loader.js"></script>
 
   <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      const body = document.body;
+      const toggle = document.getElementById('themeToggle');
+      const circle = toggle.querySelector('.theme-toggle-circle');
+      
+      body.classList.toggle('dark-mode');
+      toggle.classList.toggle('active');
+      
+      if (body.classList.contains('dark-mode')) {
+        circle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        circle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Load saved theme
+    window.addEventListener('load', function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeToggle').classList.add('active');
+        document.querySelector('.theme-toggle-circle').textContent = '🌙';
+      }
+    });
+
+    // Carousel
     let currentNewsIndex = 0;
     const newsItems = document.querySelectorAll('.carousel-item');
     const newsDots = document.querySelectorAll('.carousel-dot');
