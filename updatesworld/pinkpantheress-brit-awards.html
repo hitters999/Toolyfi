@@ -24,8 +24,6 @@
   <meta property="og:description" content="At just 22, PinkPantheress became the youngest and first woman to win Producer of the Year in BRIT Awards' 50-year history. This is HUGE!">
   <meta property="og:url" content="https://toolyfi.com/updatesworld/pinkpantheress-brit-awards.html">
   <meta property="og:image" content="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&h=630&fit=crop">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
 
   <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
@@ -197,6 +195,154 @@
       color: #e0e0e0;
     }
 
+    /* ENGAGEMENT SECTION */
+    .engagement-section {
+      background: #2a2a3e;
+      padding: 30px;
+      border-radius: 15px;
+      margin: 40px 0;
+      border: 2px solid #667eea;
+    }
+
+    .engagement-header {
+      font-size: 1.5em;
+      color: #667eea;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .engagement-buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .like-btn, .dislike-btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 15px 20px;
+      border: 2px solid #667eea;
+      background: transparent;
+      color: #667eea;
+      border-radius: 10px;
+      font-size: 1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .like-btn:hover {
+      background: #28a745;
+      border-color: #28a745;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .dislike-btn:hover {
+      background: #dc3545;
+      border-color: #dc3545;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .like-btn.active {
+      background: #28a745;
+      border-color: #28a745;
+      color: white;
+    }
+
+    .dislike-btn.active {
+      background: #dc3545;
+      border-color: #dc3545;
+      color: white;
+    }
+
+    .counter {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+
+    .comments-section {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid #667eea;
+    }
+
+    .comment-form {
+      margin-bottom: 30px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      height: 100px;
+      padding: 15px;
+      background: #1a1a2e;
+      border: 2px solid #667eea;
+      border-radius: 10px;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+      resize: none;
+    }
+
+    .comment-form textarea:focus {
+      outline: none;
+      border-color: #764ba2;
+      box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .comment-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .comment-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .comments-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .comment-item {
+      background: #1a1a2e;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border-left: 4px solid #667eea;
+    }
+
+    .comment-author {
+      color: #667eea;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .comment-text {
+      color: #b0b0b0;
+      margin-bottom: 8px;
+    }
+
+    .comment-time {
+      font-size: 0.8em;
+      color: #666;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -221,6 +367,14 @@
 
       .article-image {
         height: 250px;
+      }
+
+      .engagement-buttons {
+        flex-direction: column;
+      }
+
+      .like-btn, .dislike-btn {
+        min-width: 100%;
       }
     }
   </style>
@@ -308,6 +462,49 @@
       <strong>📊 VIRAL IMPACT:</strong> This story is trending across TikTok, Twitter, Instagram, and YouTube with millions of views and reactions from fans and industry professionals worldwide.
     </div>
 
+    <!-- ENGAGEMENT SECTION -->
+    <div class="engagement-section">
+      <div class="engagement-header">👍 What do you think about this story?</div>
+      
+      <div class="engagement-buttons">
+        <button class="like-btn" onclick="toggleLike()">
+          👍 <span id="likeText">Like</span>
+          <span class="counter">(<span id="likeCount">1.2K</span>)</span>
+        </button>
+        <button class="dislike-btn" onclick="toggleDislike()">
+          👎 <span id="dislikeText">Dislike</span>
+          <span class="counter">(<span id="dislikeCount">45</span>)</span>
+        </button>
+      </div>
+
+      <div class="comments-section">
+        <div class="comment-form">
+          <textarea id="commentInput" placeholder="Share your thoughts about PinkPantheress's historic win..."></textarea>
+          <button class="comment-btn" onclick="addComment()">Post Comment</button>
+        </div>
+
+        <div class="comments-list" id="commentsList">
+          <div class="comment-item">
+            <div class="comment-author">🎵 MusicLover2026</div>
+            <div class="comment-text">This is absolutely incredible! She deserves this award. A true inspiration for young producers everywhere!</div>
+            <div class="comment-time">2 hours ago</div>
+          </div>
+
+          <div class="comment-item">
+            <div class="comment-author">🌟 ProducerVibes</div>
+            <div class="comment-text">Breaking barriers and setting records - this is what we needed to see in the music industry!</div>
+            <div class="comment-time">1 hour ago</div>
+          </div>
+
+          <div class="comment-item">
+            <div class="comment-author">🎧 SoundEnthusiast</div>
+            <div class="comment-text">Her production quality is unmatched. Well-deserved recognition!</div>
+            <div class="comment-time">45 minutes ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <footer>
@@ -315,6 +512,81 @@
     <p>Breaking News • Viral Stories • Real Analysis</p>
   </footer>
 </div>
+
+<script>
+  let liked = false;
+  let disliked = false;
+
+  function toggleLike() {
+    const btn = document.querySelector('.like-btn');
+    const likeCount = parseInt(document.getElementById('likeCount').textContent.replace('K', '000').replace(',', ''));
+    
+    if (!liked) {
+      liked = true;
+      disliked = false;
+      document.querySelector('.dislike-btn').classList.remove('active');
+      btn.classList.add('active');
+      document.getElementById('likeCount').textContent = (likeCount + 1) / 1000 > 1 ? ((likeCount + 1) / 1000).toFixed(1) + 'K' : (likeCount + 1);
+    } else {
+      liked = false;
+      btn.classList.remove('active');
+      document.getElementById('likeCount').textContent = likeCount / 1000 > 1 ? (likeCount / 1000).toFixed(1) + 'K' : likeCount;
+    }
+    localStorage.setItem('articleEngagement', JSON.stringify({liked, disliked}));
+  }
+
+  function toggleDislike() {
+    const btn = document.querySelector('.dislike-btn');
+    const dislikeCount = parseInt(document.getElementById('dislikeCount').textContent);
+    
+    if (!disliked) {
+      disliked = true;
+      liked = false;
+      document.querySelector('.like-btn').classList.remove('active');
+      btn.classList.add('active');
+      document.getElementById('dislikeCount').textContent = dislikeCount + 1;
+    } else {
+      disliked = false;
+      btn.classList.remove('active');
+      document.getElementById('dislikeCount').textContent = dislikeCount - 1;
+    }
+    localStorage.setItem('articleEngagement', JSON.stringify({liked, disliked}));
+  }
+
+  function addComment() {
+    const input = document.getElementById('commentInput');
+    const text = input.value.trim();
+    
+    if (!text) {
+      alert('Please write a comment!');
+      return;
+    }
+
+    const list = document.getElementById('commentsList');
+    const comment = document.createElement('div');
+    comment.className = 'comment-item';
+    comment.innerHTML = `
+      <div class="comment-author">👤 You</div>
+      <div class="comment-text">${text}</div>
+      <div class="comment-time">Just now</div>
+    `;
+
+    list.insertBefore(comment, list.firstChild);
+    input.value = '';
+
+    // Save to localStorage
+    let comments = JSON.parse(localStorage.getItem('articleComments') || '[]');
+    comments.unshift({author: 'You', text: text, time: 'Just now'});
+    localStorage.setItem('articleComments', JSON.stringify(comments.slice(0, 20)));
+  }
+
+  // Load saved engagement
+  window.addEventListener('load', function() {
+    const saved = JSON.parse(localStorage.getItem('articleEngagement') || '{}');
+    if (saved.liked) document.querySelector('.like-btn').classList.add('active');
+    if (saved.disliked) document.querySelector('.dislike-btn').classList.add('active');
+  });
+</script>
 
 </body>
 </html>
