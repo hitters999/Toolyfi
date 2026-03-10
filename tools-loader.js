@@ -44,6 +44,13 @@
     { name: "Random Number Generator", desc: "Generate random numbers in any range.",                 icon: "🎲", category: "generator",  href: "random-number-generator.html" },
     { name: "Prompt Generator",        desc: "500+ AI prompts for ChatGPT, Claude & Gemini.",         icon: "✨", category: "generator",  href: "prompt-generator.html" },
 
+    // AI & VIRAL TOOLS
+    { name: "AI Text Detector",    desc: "Detect if text is AI or human written. Free & instant.",  icon: "🤖", category: "ai",        href: "ai-text-detector.html" },
+    { name: "AI Image Generator",  desc: "Turn text into stunning AI images free. 9 styles.",        icon: "🎨", category: "ai",        href: "ai-image-generator.html" },
+    { name: "Invoice Generator",   desc: "Create professional PDF invoices free. No signup.",        icon: "📊", category: "generator", href: "invoice-generator.html" },
+    { name: "Resume / CV Builder", desc: "Build ATS-friendly resume, download as PDF. Free.",        icon: "📄", category: "generator", href: "resume-builder.html" },
+    { name: "Link Shortener",      desc: "Shorten any URL instantly. Custom alias, no signup.",      icon: "🔗", category: "general",   href: "link-shortener.html" },
+
     // Naya tool add karna ho — bas yahan ek line add karo:
     // { name: "Tool Name", desc: "Short description.", icon: "🔧", category: "general", href: "tool-file.html" },
   ];
