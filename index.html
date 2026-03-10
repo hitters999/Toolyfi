@@ -88,7 +88,6 @@
       align-items: center;
     }
 
-    /* DARK MODE TOGGLE */
     .theme-toggle {
       width: 60px;
       height: 30px;
@@ -125,7 +124,6 @@
       left: 32px;
     }
 
-    /* GALLERY BUTTON */
     .gallery-btn {
       background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
       color: white;
@@ -694,21 +692,17 @@
 
     <div class="tools-grid-bg">
       <div class="tools-categories">
-        <button class="category-btn active">All Tools</button>
-        <button class="category-btn">Image Tools</button>
-        <button class="category-btn">Calculators</button>
-        <button class="category-btn">Converters</button>
-        <button class="category-btn">Text Tools</button>
+        <button class="category-btn active" data-cat="all">All Tools</button>
+        <button class="category-btn" data-cat="image">Image Tools</button>
+        <button class="category-btn" data-cat="calculator">Calculators</button>
+        <button class="category-btn" data-cat="converter">Converters</button>
+        <button class="category-btn" data-cat="text">Text Tools</button>
+        <button class="category-btn" data-cat="generator">Generators</button>
       </div>
     </div>
 
     <div class="tools-grid" id="auto-tools-grid">
-      <div class="tool-card">
-        <div class="tool-icon">📝</div>
-        <h3 class="tool-name">Markdown to HTML</h3>
-        <p class="tool-desc">Convert Markdown to HTML instantly with live preview</p>
-        <a href="markdown-to-html-seo.html" class="tool-link">Try Tool →</a>
-      </div>
+      <!-- Tools will be loaded here by JavaScript -->
     </div>
   </section>
 
@@ -720,6 +714,63 @@
   <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
   <script>
+    // TOOLS DATA
+    const TOOLS = [
+      { name: "Background Remover", desc: "Remove backgrounds with AI. Download as PNG.", icon: "🖼️", category: "image", href: "https://bg.toolyfi.com" },
+      { name: "Image Resizer", desc: "Resize images to any size instantly.", icon: "📐", category: "image", href: "image-resizer.html" },
+      { name: "Image Compressor", desc: "Reduce image size without quality loss.", icon: "🗜️", category: "image", href: "image-compressor.html" },
+      { name: "Age Calculator", desc: "Calculate exact age in days, months and years.", icon: "🎂", category: "calculator", href: "age-calculator.html" },
+      { name: "Scientific Calculator", desc: "Advanced mathematics calculator.", icon: "🧮", category: "calculator", href: "scientific-calculator.html" },
+      { name: "BMI Calculator", desc: "Calculate Body Mass Index with health tips.", icon: "⚖️", category: "calculator", href: "bmi-calculator.html" },
+      { name: "Loan Calculator", desc: "Calculate loan EMI, interest and repayments.", icon: "🏦", category: "calculator", href: "loan-calculator.html" },
+      { name: "Percentage Calculator", desc: "Calculate percentages quickly and easily.", icon: "💯", category: "calculator", href: "percentage-calculator.html" },
+      { name: "Currency Converter", desc: "Real-time currency conversion.", icon: "💱", category: "converter", href: "currency-converter.html" },
+      { name: "Temperature Converter", desc: "Convert between Celsius, Fahrenheit, Kelvin.", icon: "🌡️", category: "converter", href: "temperature-converter.html" },
+      { name: "Unit Converter", desc: "Convert length, weight, volume and more.", icon: "📏", category: "converter", href: "unit-converter.html" },
+      { name: "Number to Words", desc: "Convert numbers to English words instantly.", icon: "🔢", category: "converter", href: "number-to-words.html" },
+      { name: "CSV to JSON", desc: "Convert CSV data to JSON format instantly.", icon: "🔄", category: "converter", href: "csv-to-json.html" },
+      { name: "Base64 Encoder", desc: "Encode and decode Base64 strings easily.", icon: "🔐", category: "converter", href: "base64-encoder.html" },
+      { name: "Text Trimmer", desc: "Remove extra spaces and format text.", icon: "✂️", category: "text", href: "text-trimmer.html" },
+      { name: "JSON Formatter", desc: "Format and validate JSON instantly.", icon: "📊", category: "text", href: "json-formatter.html" },
+      { name: "Word Counter", desc: "Count words, characters and sentences.", icon: "📝", category: "text", href: "word-counter.html" },
+      { name: "Case Converter", desc: "Convert text to UPPER, lower, Title Case.", icon: "🔡", category: "text", href: "case-converter.html" },
+      { name: "Markdown to HTML", desc: "Convert Markdown syntax to clean HTML instantly.", icon: "📄", category: "text", href: "markdown-to-html-seo.html" },
+      { name: "QR Code Generator", desc: "Create QR codes instantly. Download as PNG or SVG.", icon: "📱", category: "generator", href: "qr-code-generator.html" },
+      { name: "Password Generator", desc: "Generate strong secure passwords instantly.", icon: "🔑", category: "generator", href: "password-generator.html" },
+      { name: "Random Number Generator", desc: "Generate random numbers in any range.", icon: "🎲", category: "generator", href: "random-number-generator.html" },
+      { name: "Prompt Generator", desc: "500+ AI prompts for ChatGPT, Claude & Gemini.", icon: "✨", category: "generator", href: "prompt-generator.html" },
+    ];
+
+    // BUILD TOOLS
+    function buildCard(tool) {
+      return `
+        <div class="tool-card" data-category="${tool.category}">
+          <div class="tool-icon">${tool.icon}</div>
+          <h3 class="tool-name">${tool.name}</h3>
+          <p class="tool-desc">${tool.desc}</p>
+          <a href="${tool.href}" class="tool-link">Use Tool →</a>
+        </div>`;
+    }
+
+    function loadTools() {
+      const container = document.getElementById("auto-tools-grid");
+      container.innerHTML = TOOLS.map(buildCard).join("");
+      setupFilter();
+    }
+
+    function setupFilter() {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const cat = this.getAttribute('data-cat') || 'all';
+          document.querySelectorAll('.tool-card[data-category]').forEach(card => {
+            card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+          });
+        });
+      });
+    }
+
     // Dark Mode Toggle
     function toggleDarkMode() {
       const body = document.body;
@@ -746,6 +797,7 @@
         document.getElementById('themeToggle').classList.add('active');
         document.querySelector('.theme-toggle-circle').textContent = '🌙';
       }
+      loadTools();
     });
 
     // Carousel
