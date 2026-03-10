@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Free Invoice Generator - Create Professional PDF Invoices Online 2026 | Toolyfi</title>
+<meta content="Create professional invoices instantly with our free invoice generator. Download as PDF, add logo, tax, and custom colors. Perfect for freelancers and small businesses. No signup needed." name="description"/>
+<meta content="free invoice generator, invoice maker online, professional invoice creator, PDF invoice generator, freelancer invoice tool, create invoice free, invoice template 2026, small business invoice" name="keywords"/>
+<meta content="Toolyfi" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Invoice Generator" name="tool-name"/>
+<meta content="Create professional invoices instantly. Download as PDF. Free for freelancers &amp; businesses." name="tool-desc"/>
+<meta content="📊" name="tool-icon"/>
+<meta content="generator" name="tool-category"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+<script async="" src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --surface: #ffffff;
+      --bg: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: var(--primary); font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.82rem; border: 1px solid var(--border); padding: 6px 14px; border-radius: 6px; }
+    .nav-back:hover { color: var(--primary); border-color: var(--primary); }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+    .page-title { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+    .page-sub { color: var(--muted); margin-bottom: 32px; }
+
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:700px){ .layout { grid-template-columns: 1fr; } }
+
+    .card { background: var(--surface); border-radius: 14px; padding: 24px; border: 1px solid var(--border); margin-bottom: 20px; }
+    .card-title { font-size: 0.78rem; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+
+    label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-bottom: 5px; margin-top: 12px; }
+    input, textarea, select {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: inherit; font-size: 0.92rem; color: var(--text); outline: none; transition: border-color 0.2s; background: white;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--primary); }
+
+    /* Items Table */
+    .items-header {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 40px;
+      gap: 8px; font-size: 0.75rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px; padding: 0 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+    }
+    .item-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 40px; gap: 8px; margin-bottom: 8px; align-items: center; }
+    .item-total { text-align: right; font-size: 0.92rem; font-weight: 600; color: var(--text); padding: 10px 0; }
+
+    .remove-btn {
+      background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.1rem;
+      padding: 8px; border-radius: 6px; transition: background 0.15s;
+    }
+    .remove-btn:hover { background: #fef2f2; }
+
+    .add-item-btn {
+      width: 100%; padding: 10px; border: 2px dashed var(--border); background: none;
+      color: var(--muted); border-radius: 8px; cursor: pointer; font-size: 0.9rem;
+      font-family: inherit; font-weight: 600; transition: all 0.2s; margin-top: 8px;
+    }
+    .add-item-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+    /* Totals */
+    .totals { margin-top: 16px; border-top: 2px solid var(--border); padding-top: 16px; }
+    .total-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.92rem; }
+    .total-row.grand { font-size: 1.2rem; font-weight: 800; color: var(--primary); border-top: 2px solid var(--primary); margin-top: 8px; padding-top: 12px; }
+
+    /* Color selector */
+    .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .color-dot { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; }
+    .color-dot.active { border-color: var(--text); transform: scale(1.15); }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .btn-primary { padding: 13px 28px; background: var(--primary); color: white; border: none; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.25); }
+    .btn-secondary { padding: 13px 24px; background: white; color: var(--text); border: 1.5px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* INVOICE PREVIEW */
+    .preview-wrapper { background: var(--surface); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+    .preview-toolbar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 20px; font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .preview-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    #invoicePreview { padding: 32px; font-size: 0.9rem; }
+
+    /* Invoice Template */
+    .inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+    .inv-logo { font-size: 1.6rem; font-weight: 800; }
+    .inv-meta { text-align: right; }
+    .inv-meta .inv-number { font-size: 1.1rem; font-weight: 700; }
+    .inv-addresses { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .inv-addr h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; opacity: 0.5; }
+    .inv-addr p { font-size: 0.85rem; line-height: 1.6; }
+    .inv-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .inv-table th { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; padding: 10px 12px; text-align: left; color: white; }
+    .inv-table td { padding: 10px 12px; font-size: 0.86rem; border-bottom: 1px solid #f1f5f9; }
+    .inv-table tr:last-child td { border-bottom: none; }
+    .inv-totals { display: flex; justify-content: flex-end; }
+    .inv-totals-box { width: 260px; }
+    .inv-total-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 0.86rem; }
+    .inv-grand { font-size: 1.05rem; font-weight: 800; border-top: 2px solid currentColor; margin-top: 6px; padding-top: 10px; }
+    .inv-notes { margin-top: 24px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.82rem; color: var(--muted); }
+
+    footer { background: white; border-top: 1px solid var(--border); text-align: center; padding: 24px; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Invoice Generator",
+    "description": "Free online invoice generator. Create professional PDF invoices with line items, tax, and custom branding.",
+    "url": "https://toolyfi.com/invoice-generator.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "Toolyfi",
+      "url": "https://toolyfi.com"
+    },
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this invoice generator really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100% free with no hidden fees, no signup, and no watermarks on your PDF."
+        }
+      },{
+        "@type": "Question",
+        "name": "Can I download my invoice as PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Click the Download PDF button and your invoice downloads instantly."
+        }
+      },{
+        "@type": "Question",
+        "name": "Does it support multiple currencies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — USD, EUR, GBP, INR, PKR, JPY, AED and more are supported."
+        }
+      },{
+        "@type": "Question",
+        "name": "Can I add tax to my invoice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can add a custom tax percentage and it will calculate automatically."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://toolyfi.com/#tools"},
+      {"@type":"ListItem","position":3,"name":"Free Invoice Generator","item":"https://toolyfi.com/invoice-generator.html"}
+    ]
+  }
+  </script>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Toolyfi">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:title"       content="Free Invoice Generator – Create & Download PDF Invoices Instantly">
+  <meta property="og:description" content="Professional invoice maker with live preview, PDF download, tax calculation, and custom colors. Free for freelancers & businesses.">
+  <meta property="og:url"         content="https://toolyfi.com/invoice-generator.html">
+  <meta property="og:image"       content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height"content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@toolyfi">
+  <meta name="twitter:title"       content="Free Invoice Generator – Create & Download PDF Invoices Instantly">
+  <meta name="twitter:description" content="Professional invoice maker with live preview, PDF download, tax calculation, and custom colors. Free for freelancers & businesses.">
+  <meta name="twitter:image"       content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://toolyfi.com/invoice-generator.html">
+
+  <!-- Extra SEO meta -->
+  <meta name="theme-color"   content="#667eea">
+  <meta name="rating"        content="general">
+  <meta name="revisit-after" content="7 days">
+  <meta name="language"      content="English">
+</head>
+<body>
+<nav>
+<a class="nav-logo" href="index.html">📦 Toolyfi</a>
+<a class="nav-back" href="index.html">← All Tools</a>
+</nav>
+<div class="page">
+<h1 class="page-title">📊 Invoice Generator</h1>
+<p class="page-sub">Create professional invoices in seconds. Free, no signup required.</p>
+<div class="layout">
+<!-- LEFT: FORM -->
+<div>
+<!-- Business Info -->
+<div class="card">
+<div class="card-title">Your Business</div>
+<label>Business / Your Name</label>
+<input id="fromName" oninput="updatePreview()" placeholder="Acme Corp"/>
+<label>Email</label>
+<input id="fromEmail" oninput="updatePreview()" placeholder="hello@acmecorp.com"/>
+<label>Phone</label>
+<input id="fromPhone" oninput="updatePreview()" placeholder="+1 234 567 8900"/>
+<label>Address</label>
+<textarea id="fromAddress" oninput="updatePreview()" placeholder="123 Main St, New York, NY" rows="2"></textarea>
+</div>
+<!-- Client Info -->
+<div class="card">
+<div class="card-title">Bill To</div>
+<label>Client Name</label>
+<input id="toName" oninput="updatePreview()" placeholder="Client Name"/>
+<label>Client Email</label>
+<input id="toEmail" oninput="updatePreview()" placeholder="client@email.com"/>
+<label>Client Address</label>
+<textarea id="toAddress" oninput="updatePreview()" placeholder="456 Park Ave, Los Angeles, CA" rows="2"></textarea>
+</div>
+<!-- Invoice Details -->
+<div class="card">
+<div class="card-title">Invoice Details</div>
+<label>Invoice Number</label>
+<input id="invNumber" oninput="updatePreview()" value="INV-001"/>
+<label>Issue Date</label>
+<input id="invDate" oninput="updatePreview()" type="date"/>
+<label>Due Date</label>
+<input id="dueDate" oninput="updatePreview()" type="date"/>
+<label>Currency</label>
+<select id="currency" onchange="updatePreview()">
+<option value="$">USD ($)</option>
+<option value="€">EUR (€)</option>
+<option value="£">GBP (£)</option>
+<option value="₹">INR (₹)</option>
+<option value="PKR">PKR</option>
+<option value="¥">JPY (¥)</option>
+<option value="AED">AED</option>
+</select>
+<label>Tax (%)</label>
+<input id="taxRate" max="100" min="0" oninput="updatePreview()" type="number" value="0"/>
+<label>Accent Color</label>
+<div class="color-row" id="colorRow">
+<div class="color-dot active" data-color="#2563eb" onclick="setColor(this)" style="background:#2563eb"></div>
+<div class="color-dot" data-color="#7c3aed" onclick="setColor(this)" style="background:#7c3aed"></div>
+<div class="color-dot" data-color="#059669" onclick="setColor(this)" style="background:#059669"></div>
+<div class="color-dot" data-color="#dc2626" onclick="setColor(this)" style="background:#dc2626"></div>
+<div class="color-dot" data-color="#d97706" onclick="setColor(this)" style="background:#d97706"></div>
+<div class="color-dot" data-color="#0f172a" onclick="setColor(this)" style="background:#0f172a"></div>
+</div>
+</div>
+<!-- Items -->
+<div class="card">
+<div class="card-title">Items / Services</div>
+<div class="items-header">
+<span>Description</span><span>Qty</span><span>Rate</span><span>Amount</span><span></span>
+</div>
+<div id="itemsList"></div>
+<button class="add-item-btn" onclick="addItem()">+ Add Item</button>
+<div class="totals">
+<div class="total-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+<div class="total-row"><span>Tax (<span id="taxLabel">0</span>%)</span><span id="taxAmount">$0.00</span></div>
+<div class="total-row grand"><span>Total</span><span id="grandTotal">$0.00</span></div>
+</div>
+</div>
+<!-- Notes -->
+<div class="card">
+<div class="card-title">Notes (Optional)</div>
+<textarea id="notes" oninput="updatePreview()" placeholder="Payment terms, bank details, thank you message..." rows="3"></textarea>
+</div>
+<div class="btn-row">
+<button class="btn-primary" onclick="downloadPDF()">⬇ Download PDF</button>
+<button class="btn-secondary" onclick="window.print()">🖨 Print</button>
+</div>
+</div>
+<!-- RIGHT: PREVIEW -->
+<div>
+<div style="position: sticky; top: 20px;">
+<div class="preview-wrapper">
+<div class="preview-toolbar">
+<div class="preview-dots">
+<div class="dot" style="background:#ef4444"></div>
+<div class="dot" style="background:#f59e0b"></div>
+<div class="dot" style="background:#10b981"></div>
+</div>
+<span>Invoice Preview</span>
+</div>
+<div id="invoicePreview"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FAQ SECTION -->
+<section style="max-width:800px;margin:40px auto;padding:0 20px 60px;font-family:inherit">
+<h2 style="font-size:1.3rem;margin-bottom:20px;color:inherit;opacity:0.9">Frequently Asked Questions</h2>
+<details style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;background:rgba(255,255,255,0.03)">
+  <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">Is this invoice generator really free?</summary>
+  <p style="margin-top:10px;opacity:0.75;line-height:1.7;font-size:0.9rem">Yes, 100% free with no hidden fees, no signup, and no watermarks on your PDF.</p>
+</details>
+<details style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;background:rgba(255,255,255,0.03)">
+  <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">Can I download my invoice as PDF?</summary>
+  <p style="margin-top:10px;opacity:0.75;line-height:1.7;font-size:0.9rem">Yes. Click the Download PDF button and your invoice downloads instantly.</p>
+</details>
+<details style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;background:rgba(255,255,255,0.03)">
+  <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">Does it support multiple currencies?</summary>
+  <p style="margin-top:10px;opacity:0.75;line-height:1.7;font-size:0.9rem">Yes — USD, EUR, GBP, INR, PKR, JPY, AED and more are supported.</p>
+</details>
+<details style="border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;margin-bottom:10px;background:rgba(255,255,255,0.03)">
+  <summary style="font-weight:700;cursor:pointer;font-size:0.95rem">Can I add tax to my invoice?</summary>
+  <p style="margin-top:10px;opacity:0.75;line-height:1.7;font-size:0.9rem">Yes, you can add a custom tax percentage and it will calculate automatically.</p>
+</details>
+</section>
+<footer>© 2026 <a href="index.html">Toolyfi</a> · Free Invoice Generator · <a href="updatesworld/updatesworld.html">Updates World</a></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  let accentColor = '#2563eb';
+  let items = [{ desc: '', qty: 1, rate: 0 }];
+
+  // Set today and due date
+  const today = new Date().toISOString().split('T')[0];
+  const due = new Date(Date.now() + 30*86400000).toISOString().split('T')[0];
+  document.getElementById('invDate').value = today;
+  document.getElementById('dueDate').value = due;
+
+  function setColor(el) {
+    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+    el.classList.add('active');
+    accentColor = el.dataset.color;
+    updatePreview();
+  }
+
+  function addItem() {
+    items.push({ desc: '', qty: 1, rate: 0 });
+    renderItems();
+    updatePreview();
+  }
+
+  function removeItem(i) {
+    if (items.length === 1) return;
+    items.splice(i, 1);
+    renderItems();
+    updatePreview();
+  }
+
+  function renderItems() {
+    const list = document.getElementById('itemsList');
+    list.innerHTML = items.map((item, i) => `
+      <div class="item-row">
+        <input placeholder="Description" value="${item.desc}" oninput="items[${i}].desc=this.value;updatePreview()">
+        <input type="number" min="1" value="${item.qty}" oninput="items[${i}].qty=parseFloat(this.value)||0;updatePreview()">
+        <input type="number" min="0" step="0.01" value="${item.rate}" oninput="items[${i}].rate=parseFloat(this.value)||0;updatePreview()">
+        <div class="item-total">${getCurrency()}${(item.qty * item.rate).toFixed(2)}</div>
+        <button class="remove-btn" onclick="removeItem(${i})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  function getCurrency() { return document.getElementById('currency').value; }
+
+  function calcTotals() {
+    const sub = items.reduce((s, it) => s + it.qty * it.rate, 0);
+    const tax = sub * (parseFloat(document.getElementById('taxRate').value) || 0) / 100;
+    return { sub, tax, total: sub + tax };
+  }
+
+  function updatePreview() {
+    const { sub, tax, total } = calcTotals();
+    const cur = getCurrency();
+    const taxRate = document.getElementById('taxRate').value || 0;
+    document.getElementById('subtotal').textContent = cur + sub.toFixed(2);
+    document.getElementById('taxLabel').textContent = taxRate;
+    document.getElementById('taxAmount').textContent = cur + tax.toFixed(2);
+    document.getElementById('grandTotal').textContent = cur + total.toFixed(2);
+    renderItems();
+
+    const fromName = document.getElementById('fromName').value || 'Your Business';
+    const fromEmail = document.getElementById('fromEmail').value;
+    const fromPhone = document.getElementById('fromPhone').value;
+    const fromAddr = document.getElementById('fromAddress').value;
+    const toName = document.getElementById('toName').value || 'Client Name';
+    const toEmail = document.getElementById('toEmail').value;
+    const toAddr = document.getElementById('toAddress').value;
+    const invNum = document.getElementById('invNumber').value || 'INV-001';
+    const invDate = document.getElementById('invDate').value;
+    const dueDate = document.getElementById('dueDate').value;
+    const notes = document.getElementById('notes').value;
+
+    document.getElementById('invoicePreview').innerHTML = `
+      <div class="inv-header">
+        <div>
+          <div class="inv-logo" style="color:${accentColor}">${fromName}</div>
+          <div style="font-size:0.8rem;color:#64748b;margin-top:4px">${fromEmail}<br>${fromPhone}</div>
+          <div style="font-size:0.8rem;color:#64748b;margin-top:2px">${fromAddr}</div>
+        </div>
+        <div class="inv-meta">
+          <div class="inv-number" style="color:${accentColor}">INVOICE</div>
+          <div style="font-size:0.82rem;color:#64748b;margin-top:4px"># ${invNum}</div>
+          <div style="font-size:0.78rem;color:#94a3b8;margin-top:6px">Issue: ${invDate}</div>
+          <div style="font-size:0.78rem;color:#94a3b8">Due: ${dueDate}</div>
+        </div>
+      </div>
+      <div class="inv-addresses">
+        <div class="inv-addr">
+          <h4>Bill To</h4>
+          <p><strong>${toName}</strong><br>${toEmail}<br>${toAddr}</p>
+        </div>
+        <div class="inv-addr">
+          <h4>Payment Info</h4>
+          <p style="font-size:0.8rem;color:#94a3b8">Amount Due<br><strong style="font-size:1.2rem;color:${accentColor}">${cur}${total.toFixed(2)}</strong></p>
+        </div>
+      </div>
+      <table class="inv-table">
+        <thead><tr style="background:${accentColor}">
+          <th>Description</th><th>Qty</th><th>Rate</th><th style="text-align:right">Amount</th>
+        </tr></thead>
+        <tbody>
+          ${items.map(it => `<tr>
+            <td>${it.desc || '-'}</td>
+            <td>${it.qty}</td>
+            <td>${cur}${it.rate.toFixed(2)}</td>
+            <td style="text-align:right">${cur}${(it.qty*it.rate).toFixed(2)}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+      <div class="inv-totals">
+        <div class="inv-totals-box">
+          <div class="inv-total-row"><span>Subtotal</span><span>${cur}${sub.toFixed(2)}</span></div>
+          <div class="inv-total-row"><span>Tax (${taxRate}%)</span><span>${cur}${tax.toFixed(2)}</span></div>
+          <div class="inv-total-row inv-grand" style="color:${accentColor}"><span>Total</span><span>${cur}${total.toFixed(2)}</span></div>
+        </div>
+      </div>
+      ${notes ? `<div class="inv-notes"><strong>Notes:</strong> ${notes}</div>` : ''}
+    `;
+  }
+
+  function downloadPDF() {
+    const el = document.getElementById('invoicePreview');
+    const invNum = document.getElementById('invNumber').value || 'invoice';
+    html2pdf().set({
+      margin: 10,
+      filename: invNum + '.pdf',
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(el).save();
+  }
+
+  // Init
+  renderItems();
+  updatePreview();
+</script>
+</body>
+</html>
