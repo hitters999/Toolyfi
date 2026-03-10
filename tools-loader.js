@@ -36,6 +36,7 @@
     { name: "JSON Formatter",          desc: "Format and validate JSON instantly.",                    icon: "📊", category: "text",       href: "json-formatter.html" },
     { name: "Word Counter",            desc: "Count words, characters and sentences.",                 icon: "📝", category: "text",       href: "word-counter.html" },
     { name: "Case Converter",          desc: "Convert text to UPPER, lower, Title Case.",             icon: "🔡", category: "text",       href: "case-converter.html" },
+    { name: "Markdown to HTML",        desc: "Convert Markdown syntax to clean HTML instantly.",       icon: "📄", category: "text",       href: "markdown-to-html-seo.html" },
 
     // GENERATORS
     { name: "QR Code Generator",       desc: "Create QR codes instantly. Download as PNG or SVG.",    icon: "📱", category: "generator",  href: "qr-code-generator.html" },
