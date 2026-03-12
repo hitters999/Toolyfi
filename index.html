@@ -13,8 +13,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="27+ Free Online Tools — AI Text Detector, AI Image Generator, Invoice Generator, Resume Builder, Link Shortener & more. Plus Viral Breaking News. No sign-up needed!">
-  <meta name="keywords" content="free online tools, AI text detector, AI image generator, invoice generator, resume builder, link shortener, free tools no signup, toolyfi 2026">
+  <meta name="description" content="Toolyfi: 30+ Free Online Tools + Breaking News. AI Text Detector, Image Generator, Invoice Maker, Resume Builder & more. No signup needed!">
+  <meta name="keywords" content="free online tools, AI tools, generators, converters, calculators, invoice generator, resume builder, breaking news">
   <meta name="author" content="Toolyfi">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#667eea">
@@ -23,6 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <title>Toolyfi — 30+ Free Online Tools + Breaking News</title>
+
   <style>
     :root {
       --bg-primary: #f8f9fa;
@@ -30,6 +32,8 @@
       --text-primary: #333;
       --text-secondary: #666;
       --border-color: #e0e0e0;
+      --accent: #667eea;
+      --accent-alt: #764ba2;
     }
 
     body.dark-mode {
@@ -53,6 +57,7 @@
       transition: all 0.3s ease;
     }
 
+    /* HEADER */
     header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       padding: 15px 20px;
@@ -137,6 +142,7 @@
       align-items: center;
       gap: 8px;
       box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+      text-decoration: none;
     }
 
     .gallery-btn:hover {
@@ -163,6 +169,7 @@
       opacity: 0.8;
     }
 
+    /* HERO */
     .hero {
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       padding: 50px 20px;
@@ -193,766 +200,430 @@
       flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 10px 25px;
+    .hero-btn {
+      padding: 12px 30px;
       border: none;
-      border-radius: 8px;
-      font-size: 0.95em;
-      font-weight: bold;
+      border-radius: 25px;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
+      font-size: 0.95em;
     }
 
-    .btn-primary {
-      background: #667eea;
+    .hero-btn.primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
     }
 
-    .btn-primary:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
+    .hero-btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(102,126,234,0.4);
     }
 
-    .btn-secondary {
-      background: var(--bg-secondary);
+    .hero-btn.secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border-color);
+    }
+
+    .hero-btn.secondary:hover {
+      border-color: #667eea;
       color: #667eea;
-      border: 2px solid #667eea;
     }
 
-    .btn-secondary:hover {
-      background: #667eea;
-      color: white;
-    }
-
-    /* BREAKING NEWS CAROUSEL */
-    .latest-news {
-      padding: 50px 20px;
-      background: var(--bg-secondary);
-      margin: 30px 0;
-      transition: all 0.3s ease;
-    }
-
-    .latest-news-container {
+    /* SECTIONS */
+    .section {
       max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      gap: 20px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
     .section-title {
-      font-size: 1.8em;
-      font-weight: 800;
+      font-size: 2em;
+      margin-bottom: 10px;
       color: var(--text-primary);
+      font-weight: 800;
     }
 
-    .view-all {
-      background: #667eea;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s;
+    .section-subtitle {
+      font-size: 1em;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
     }
 
-    .view-all:hover {
-      background: #5568d3;
-      transform: translateX(5px);
+    /* FEATURED ARTICLES CARDS */
+    .featured-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
     }
 
-    .news-carousel {
-      position: relative;
+    .featured-card {
       background: var(--bg-secondary);
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
     }
 
-    .carousel-item {
-      display: none;
-      flex-direction: row;
-      align-items: stretch;
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
-    .carousel-item.active {
+    .featured-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       display: flex;
-      animation: slideIn 0.5s ease;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .carousel-item-image {
-      flex: 0 0 45%;
-      height: 350px;
-      object-fit: cover;
-      background: #ddd;
-    }
-
-    .carousel-item-content {
-      flex: 1;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      background: var(--bg-secondary);
+      font-size: 3.5em;
+      color: white;
     }
 
-    .carousel-badge {
+    .featured-card-content {
+      padding: 25px;
+    }
+
+    .featured-badge {
       display: inline-block;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.85em;
-      font-weight: 700;
-      margin-bottom: 15px;
-      width: fit-content;
-    }
-
-    .carousel-badge.breaking {
-      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-      animation: blink 1s infinite;
+      font-size: 0.75em;
+      font-weight: 600;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      font-weight: 900;
+      letter-spacing: 1px;
     }
 
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.8; }
-    }
-
-    .carousel-title {
-      font-size: 1.5em;
-      font-weight: 800;
+    .featured-card-title {
+      font-size: 1.3em;
+      margin-bottom: 12px;
       color: var(--text-primary);
-      margin-bottom: 15px;
-      line-height: 1.3;
+      font-weight: 700;
+      line-height: 1.4;
     }
 
-    .carousel-desc {
+    .featured-card-desc {
       color: var(--text-secondary);
       font-size: 0.95em;
+      margin-bottom: 16px;
       line-height: 1.6;
-      margin-bottom: 20px;
     }
 
-    .carousel-link {
+    .featured-card-link {
+      display: inline-block;
       color: #667eea;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 0.95em;
       transition: all 0.3s;
     }
 
-    .carousel-link:hover {
-      color: #5568d3;
-      text-decoration: underline;
+    .featured-card-link:hover {
+      color: #764ba2;
+      transform: translateX(3px);
     }
 
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: var(--bg-secondary);
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--border-color);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .carousel-dot.active {
-      background: #667eea;
-      transform: scale(1.3);
-    }
-
-    .carousel-arrow {
-      background: #667eea;
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      transition: all 0.3s;
-    }
-
-    .carousel-arrow:hover {
-      background: #5568d3;
-      transform: scale(1.1);
-    }
-
-    /* VIRAL ARTICLES SECTION */
-    .viral-articles {
+    /* TOOLS SECTION */
+    .tools-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       padding: 50px 20px;
-      background: var(--bg-primary);
-      margin: 30px 0;
+      margin: 60px 0;
+      color: white;
     }
 
-    .viral-articles-container {
+    .tools-section-inner {
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    .viral-title {
-      font-size: 1.8em;
+    .tools-title {
+      font-size: 2em;
+      margin-bottom: 10px;
       font-weight: 800;
-      color: var(--text-primary);
-      margin-bottom: 30px;
-      text-align: center;
     }
 
-    .viral-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .viral-card {
-      background: var(--bg-secondary);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-      border: 2px solid transparent;
-    }
-
-    .viral-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      border-color: #667eea;
-    }
-
-    .viral-card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: #ddd;
-    }
-
-    .viral-card-content {
-      padding: 20px;
-    }
-
-    .viral-badge {
-      display: inline-block;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 15px;
-      font-size: 0.8em;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .viral-badge.pinkpantheress { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .viral-badge.jenna { background: linear-gradient(135deg, #d32f2f 0%, #c41e3a 100%); }
-    .viral-badge.nostalgia { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); }
-    .viral-badge.olympics { background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); }
-
-    .viral-card-title {
-      font-size: 1.1em;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .viral-card-desc {
-      color: var(--text-secondary);
-      font-size: 0.9em;
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-
-    .viral-card-link {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9em;
-      transition: all 0.3s;
-    }
-
-    .viral-card-link:hover {
-      color: #5568d3;
-      text-decoration: underline;
-    }
-
-    /* ALL TOOLS SECTION */
-    .all-tools {
-      padding: 50px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .all-tools-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .all-tools-title {
-      font-size: 2.2em;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-
-    .all-tools-subtitle {
-      color: var(--text-secondary);
+    .tools-subtitle {
       font-size: 1em;
-      margin-bottom: 30px;
-    }
-
-    .tools-grid-bg {
-      background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-      padding: 40px;
-      border-radius: 20px;
       margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    body.dark-mode .tools-grid-bg {
-      background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+      opacity: 0.9;
     }
 
     .tools-categories {
-      position: relative;
-      z-index: 1;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
+      margin-bottom: 30px;
       justify-content: center;
     }
 
     .category-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
       padding: 10px 20px;
-      border: 2px solid #667eea;
-      background: var(--bg-secondary);
-      color: #667eea;
       border-radius: 25px;
       cursor: pointer;
-      font-weight: 600;
       transition: all 0.3s;
+      font-weight: 600;
       font-size: 0.9em;
     }
 
     .category-btn:hover,
     .category-btn.active {
-      background: #667eea;
-      color: white;
+      background: white;
+      color: #667eea;
+      border-color: white;
     }
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      margin-bottom: 40px;
     }
 
     .tool-card {
-      background: var(--bg-secondary);
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
       padding: 25px;
-      border-radius: 15px;
       text-align: center;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
       transition: all 0.3s;
-      border: 2px solid transparent;
+      backdrop-filter: blur(10px);
     }
 
     .tool-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 25px rgba(102,126,234,0.2);
-      border-color: #667eea;
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-5px);
     }
 
     .tool-icon {
-      font-size: 3em;
-      margin-bottom: 15px;
+      font-size: 2.5em;
+      margin-bottom: 12px;
     }
 
     .tool-name {
       font-size: 1.1em;
+      margin-bottom: 8px;
       font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 10px;
     }
 
     .tool-desc {
-      color: var(--text-secondary);
       font-size: 0.9em;
       margin-bottom: 15px;
+      opacity: 0.9;
       line-height: 1.5;
     }
 
     .tool-link {
+      display: inline-block;
+      background: white;
       color: #667eea;
       text-decoration: none;
-      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
       font-size: 0.9em;
       transition: all 0.3s;
     }
 
     .tool-link:hover {
-      color: #5568d3;
-      text-decoration: underline;
+      background: #f0f0f0;
+      transform: translateX(3px);
     }
 
+    /* FOOTER */
     footer {
-      background: #1a1a2e;
-      color: white;
+      background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+      color: #ccc;
       text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
+      padding: 40px 20px;
+      margin-top: 60px;
+      border-top: 2px solid #667eea;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+      font-size: 0.95em;
     }
 
     footer a {
       color: #667eea;
       text-decoration: none;
+      font-weight: 600;
     }
 
-    @media (max-width: 768px) {
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
       .hero h1 {
         font-size: 1.8em;
       }
 
-      .carousel-item {
-        flex-direction: column;
+      .section-title {
+        font-size: 1.5em;
       }
 
-      .carousel-item-image {
-        flex: 0 0 auto;
-        height: 200px;
+      .featured-cards-grid {
+        grid-template-columns: 1fr;
       }
 
-      .carousel-item-content {
-        padding: 20px;
+      .tools-categories {
+        justify-content: flex-start;
       }
 
       .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-      }
-
-      .tool-card {
-        padding: 15px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <nav>
-      <div class="logo">
-        📦 Toolyfi
+      <div class="logo">🛠️ Toolyfi</div>
+      <div class="header-links">
+        <a href="#tools">Tools</a>
+        <a href="updatesworld/updatesworld.html">News</a>
+        <a href="#">About</a>
       </div>
       <div class="header-controls">
-        <div class="header-links">
-          <a href="#tools">Tools</a>
-          <a href="updatesworld/updatesworld.html">📰 Updates</a>
-          <a href="#about">About</a>
-        </div>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleDarkMode()">
+        <a href="updatesworld/updatesworld.html" class="gallery-btn">📰 Latest News</a>
+        <div class="theme-toggle" id="themeToggle" onclick="toggleDarkMode()">
           <div class="theme-toggle-circle">☀️</div>
-        </button>
-        <button class="gallery-btn" onclick="window.location.href='updatesworld/gallery.html'">
-          🖼️ Gallery
-        </button>
+        </div>
       </div>
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <h1>All Tools In One Place</h1>
-    <p>100+ Free Online Tools & Real-Time Breaking News</p>
+    <h1>🚀 Free Tools + Breaking News</h1>
+    <p>30+ powerful online tools + Real-time viral stories. No signup needed, 100% free.</p>
     <div class="hero-buttons">
-      <button class="btn btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Explore All Tools</button>
-      <button class="btn btn-secondary" onclick="alert('Click on any tool to learn more!')">Learn More</button>
+      <button class="hero-btn primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Explore Tools</button>
+      <a href="updatesworld/updatesworld.html" class="hero-btn secondary">Read Breaking News →</a>
     </div>
   </section>
 
-  <section class="latest-news">
-    <div class="latest-news-container">
-      <div class="section-header">
-        <div class="section-title">🔥 Latest Breaking News</div>
-        <a href="updatesworld/updatesworld.html" class="view-all">View All →</a>
-      </div>
-
-      <div class="news-carousel">
-        <div class="carousel-item active">
-          <img src="updatesworld/north-korea-iran-viral.png" alt="Breaking News" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge breaking">🔴 BREAKING</span>
-            <h3 class="carousel-title">Kim Jong Un & Iran Alliance</h3>
-            <p class="carousel-desc">North Korea's major statement about Iran's new leadership. Historic geopolitical shift affecting global power balance.</p>
-            <a href="updatesworld/north-korea-iran-complete.html" class="carousel-link">Read Story →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=300&fit=crop" alt="PinkPantheress" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge">🏆 VIRAL</span>
-            <h3 class="carousel-title">PinkPantheress BRIT Awards History</h3>
-            <p class="carousel-desc">First woman & youngest ever Producer of the Year! Breaking 50-year record. Millions celebrating globally.</p>
-            <a href="updatesworld/pinkpantheress-brit-awards.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=500&h=300&fit=crop" alt="Jenna Ortega" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge">🎬 EXCLUSIVE</span>
-            <h3 class="carousel-title">Jenna Ortega Scream 7 Exit - EXPOSED!</h3>
-            <p class="carousel-desc">Real reason revealed! Not scheduling - solidarity with Melissa Barrera. Protests at premiere.</p>
-            <a href="updatesworld/jenna-ortega-scream-7.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500&h=300&fit=crop" alt="2016 Trend" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge">📱 TRENDING</span>
-            <h3 class="carousel-title">'2026 is the New 2016' VIRAL!</h3>
-            <p class="carousel-desc">1M+ TikTok posts! 37M+ Instagram! Massive nostalgia wave. Celebrities joining.</p>
-            <a href="updatesworld/2016-nostalgia-trend-viral.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=500&h=300&fit=crop" alt="Hahna" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge">⛷️ OLYMPICS</span>
-            <h3 class="carousel-title">Hahna Norman BREAKS INTERNET!</h3>
-            <p class="carousel-desc">Team USA snowboarder's viral Olympic Village content. 50M+ views. Trending worldwide.</p>
-            <a href="updatesworld/hahna-norman-olympics-viral.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1569163139395-de4798aa62b8?w=500&h=300&fit=crop" alt="Arab Defense" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge">🛡️ ANALYSIS</span>
-            <h3 class="carousel-title">Why Do Arab Nations Attack Iran?</h3>
-            <p class="carousel-desc">Strategic military analysis and geopolitical perspectives from Arab nations.</p>
-            <a href="updatesworld/why-arabs-attack-iran.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=500&h=300&fit=crop" alt="Best Free AI Tools 2026" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge" style="background:#00b894;">🤖 AI GUIDE</span>
-            <h3 class="carousel-title">15 Best Free AI Tools in 2026</h3>
-            <p class="carousel-desc">ChatGPT, Gemini, Claude & more — complete list, tested & ranked. No credit card needed.</p>
-            <a href="updatesworld/best-free-ai-tools-2026.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=500&h=300&fit=crop" alt="Best Free AI Image Generators 2026" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge" style="background:#6c5ce7;">🎨 AI GUIDE</span>
-            <h3 class="carousel-title">10 Best Free AI Image Generators 2026</h3>
-            <p class="carousel-desc">Leonardo AI, DALL-E 3, Canva, FLUX — create stunning AI images free, no watermarks.</p>
-            <a href="updatesworld/best-free-ai-image-generators-2026.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=300&fit=crop" alt="Best Free AI Writing Tools 2026" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge" style="background:#0984e3;">✍️ AI GUIDE</span>
-            <h3 class="carousel-title">10 Best Free AI Writing Tools 2026</h3>
-            <p class="carousel-desc">Write blogs, emails & essays 10x faster — ChatGPT, Claude, Grammarly, QuillBot, all free.</p>
-            <a href="updatesworld/best-free-ai-writing-tools-2026.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop" alt="Best Free AI Tools for Students 2026" class="carousel-item-image">
-          <div class="carousel-item-content">
-            <span class="carousel-badge" style="background:#00b894;">🎓 AI GUIDE</span>
-            <h3 class="carousel-title">10 Best Free AI Tools for Students 2026</h3>
-            <p class="carousel-desc">NotebookLM, Perplexity, Wolfram Alpha — study smarter, ace exams, all free.</p>
-            <a href="updatesworld/best-free-ai-tools-students-2026.html" class="carousel-link">Read →</a>
-          </div>
-        </div>
-
-        <div class="carousel-controls">
-          <button class="carousel-arrow" onclick="previousNews()">❮</button>
-          <div class="carousel-dot active" onclick="showNews(0)"></div>
-          <div class="carousel-dot" onclick="showNews(1)"></div>
-          <div class="carousel-dot" onclick="showNews(2)"></div>
-          <div class="carousel-dot" onclick="showNews(3)"></div>
-          <div class="carousel-dot" onclick="showNews(4)"></div>
-          <div class="carousel-dot" onclick="showNews(5)"></div>
-          <div class="carousel-dot" onclick="showNews(6)"></div>
-          <div class="carousel-dot" onclick="showNews(7)"></div>
-          <div class="carousel-dot" onclick="showNews(8)"></div>
-          <div class="carousel-dot" onclick="showNews(9)"></div>
-          <button class="carousel-arrow" onclick="nextNews()">❯</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIRAL ARTICLES SECTION -->
-  <section class="viral-articles">
-    <div class="viral-articles-container">
-      <h2 class="viral-title">🚀 VIRAL STORIES - HOT TRENDING</h2>
+  <!-- FEATURED ARTICLES -->
+  <section class="section">
+    <h2 class="section-title">🔥 Top Stories This Week</h2>
+    <p class="section-subtitle">Breaking news, viral trends & geopolitical analysis</p>
+    
+    <div class="featured-cards-grid">
       
-      <div class="viral-grid">
-        <!-- 1. PinkPantheress -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=200&fit=crop" alt="PinkPantheress BRIT Awards">
-          <div class="viral-card-content">
-            <span class="viral-badge pinkpantheress">🏆 MUSIC</span>
-            <h3 class="viral-card-title">PinkPantheress Makes BRIT Awards HISTORY!</h3>
-            <p class="viral-card-desc">First woman & youngest ever to win Producer of the Year in 50 years! Breaking records & inspiring millions globally.</p>
-            <a href="updatesworld/pinkpantheress-brit-awards.html" class="viral-card-link">→ Read Full Story</a>
-          </div>
+      <!-- Article 1: Stryker Cyber Attack -->
+      <div class="featured-card">
+        <div class="featured-card-image">🔴 🔐</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">⚠️ Breaking</span>
+          <h3 class="featured-card-title">Iran Hackers Destroy 200,000 Devices at Stryker</h3>
+          <p class="featured-card-desc">Pro-Iran Handala group launches devastating cyberattack on medical giant. 79 countries affected. Hospitals in crisis.</p>
+          <a href="updatesworld/stryker-cyber-attack-2026.html" class="featured-card-link">Read Full Story →</a>
         </div>
-
-        <!-- 2. Jenna Ortega -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=200&fit=crop" alt="Jenna Ortega Scream 7">
-          <div class="viral-card-content">
-            <span class="viral-badge jenna">🎬 HOLLYWOOD</span>
-            <h3 class="viral-card-title">EXPOSED: Jenna Ortega Scream 7 Real Reason!</h3>
-            <p class="viral-card-desc">Not scheduling conflicts - solidarity with Melissa Barrera! Massive protests erupted at premiere. Industry uproar continues.</p>
-            <a href="updatesworld/jenna-ortega-scream-7.html" class="viral-card-link">→ Read Full Story</a>
-          </div>
-        </div>
-
-        <!-- 3. 2016 Nostalgia -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=200&fit=crop" alt="2016 Nostalgia Trend">
-          <div class="viral-card-content">
-            <span class="viral-badge nostalgia">📱 SOCIAL MEDIA</span>
-            <h3 class="viral-card-title">'2026 is the NEW 2016' EXPLODES!</h3>
-            <p class="viral-card-desc">1M+ TikTok posts! 37M+ Instagram posts! Global nostalgia wave. Celebrities sharing throwbacks. Trending #1 worldwide!</p>
-            <a href="updatesworld/2016-nostalgia-trend-viral.html" class="viral-card-link">→ Read Full Story</a>
-          </div>
-        </div>
-
-        <!-- 4. Hahna Norman -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&h=200&fit=crop" alt="Hahna Norman Olympics">
-          <div class="viral-card-content">
-            <span class="viral-badge olympics">⛷️ OLYMPICS 2026</span>
-            <h3 class="viral-card-title">Hahna Norman BREAKS THE INTERNET!</h3>
-            <p class="viral-card-desc">Team USA snowboarder's behind-the-scenes Olympic Village clips go VIRAL! 50M+ views. Trending in 145 countries.</p>
-            <a href="updatesworld/hahna-norman-olympics-viral.html" class="viral-card-link">→ Read Full Story</a>
-          </div>
-        </div>
-
-        <!-- 5. Viral Trends March 2026 -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=200&fit=crop" alt="Viral Trends March 2026">
-          <div class="viral-card-content">
-            <span class="viral-badge" style="background:linear-gradient(135deg,#ff6b6b,#ff8e53);color:white">🔥 VIRAL TRENDS</span>
-            <h3 class="viral-card-title">Viral Trends March 2026: Everything Blowing Up Online!</h3>
-            <p class="viral-card-desc">Skeleton memes, 2016 nostalgia wave, Bad Bunny Super Bowl, AI content wars — here's what's blowing up online right now.</p>
-            <a href="updatesworld/viral-trends-2026.html" class="viral-card-link">→ Read Full Story</a>
-          </div>
-        </div>
-        <!-- 6. Best Free AI Tools 2026 -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&h=200&fit=crop" alt="Best Free AI Tools 2026">
-          <div class="viral-card-content">
-            <span class="viral-badge" style="background:#00b894;color:white">🤖 AI GUIDE</span>
-            <h3 class="viral-card-title">15 Best Free AI Tools in 2026 — Complete List</h3>
-            <p class="viral-card-desc">ChatGPT, Gemini, Claude, Leonardo AI & more. Tested & ranked — no credit card needed.</p>
-            <a href="updatesworld/best-free-ai-tools-2026.html" class="viral-card-link">→ Read Full Guide</a>
-          </div>
-        </div>
-
-        <!-- 7. Best Free AI Image Generators -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=400&h=200&fit=crop" alt="Best Free AI Image Generators 2026">
-          <div class="viral-card-content">
-            <span class="viral-badge" style="background:#6c5ce7;color:white">🎨 AI GUIDE</span>
-            <h3 class="viral-card-title">10 Best Free AI Image Generators in 2026</h3>
-            <p class="viral-card-desc">Leonardo AI, DALL-E 3, Canva, FLUX & more — create stunning AI images free, no watermarks.</p>
-            <a href="updatesworld/best-free-ai-image-generators-2026.html" class="viral-card-link">→ Read Full Guide</a>
-          </div>
-        </div>
-
-        <!-- 8. Best Free AI Writing Tools -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=200&fit=crop" alt="Best Free AI Writing Tools 2026">
-          <div class="viral-card-content">
-            <span class="viral-badge" style="background:#0984e3;color:white">✍️ AI GUIDE</span>
-            <h3 class="viral-card-title">10 Best Free AI Writing Tools in 2026</h3>
-            <p class="viral-card-desc">Write 10x faster with ChatGPT, Claude, Grammarly & QuillBot — all free, no credit card.</p>
-            <a href="updatesworld/best-free-ai-writing-tools-2026.html" class="viral-card-link">→ Read Full Guide</a>
-          </div>
-        </div>
-
-        <!-- 9. Best Free AI Tools for Students -->
-        <div class="viral-card">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop" alt="Best Free AI Tools for Students 2026">
-          <div class="viral-card-content">
-            <span class="viral-badge" style="background:#e17055;color:white">🎓 AI GUIDE</span>
-            <h3 class="viral-card-title">10 Best Free AI Tools for Students in 2026</h3>
-            <p class="viral-card-desc">NotebookLM, Perplexity, Wolfram Alpha, Quizlet — study smarter, ace exams, all free.</p>
-            <a href="updatesworld/best-free-ai-tools-students-2026.html" class="viral-card-link">→ Read Full Guide</a>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Article 2: PinkPantheress BRIT Awards -->
+      <div class="featured-card">
+        <div class="featured-card-image">🏆 🎤</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">🎵 Viral</span>
+          <h3 class="featured-card-title">PinkPantheress Makes BRIT Awards History</h3>
+          <p class="featured-card-desc">First woman ever to win Producer of the Year. Youngest recipient in award history. Viral sensation with 1M+ shares.</p>
+          <a href="updatesworld/pinkpantheress-brit-awards.html" class="featured-card-link">Read Full Story →</a>
+        </div>
+      </div>
+
+      <!-- Article 3: Jenna Ortega Scream 7 -->
+      <div class="featured-card">
+        <div class="featured-card-image">🎬 🎭</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">🎬 Exclusive</span>
+          <h3 class="featured-card-title">Jenna Ortega's Scream 7 Exit Truth Revealed</h3>
+          <p class="featured-card-desc">Exclusive revelation about her shocking exit. Solidarity with Melissa Barrera. Hollywood in uproar over controversial decision.</p>
+          <a href="updatesworld/jenna-ortega-scream-7.html" class="featured-card-link">Read Full Story →</a>
+        </div>
+      </div>
+
+      <!-- Article 4: 2016 Nostalgia Trend -->
+      <div class="featured-card">
+        <div class="featured-card-image">📱 🔄</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">📱 Trending</span>
+          <h3 class="featured-card-title">"2026 is the New 2016" Goes Viral</h3>
+          <p class="featured-card-desc">37M+ Instagram posts, 1M+ TikTok videos. Global nostalgia phenomenon. Celebrities & brands jumping on trend worldwide.</p>
+          <a href="updatesworld/2016-nostalgia-trend-viral.html" class="featured-card-link">Read Full Story →</a>
+        </div>
+      </div>
+
+      <!-- Article 5: Hahna Norman Olympics -->
+      <div class="featured-card">
+        <div class="featured-card-image">⛷️ 🏅</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">🏅 Olympics</span>
+          <h3 class="featured-card-title">Hahna Norman's Olympic Village Goes Viral</h3>
+          <p class="featured-card-desc">Team USA snowboarder's behind-the-scenes content breaks internet. 50M+ views. Trending in 145 countries worldwide.</p>
+          <a href="updatesworld/hahna-norman-olympics-viral.html" class="featured-card-link">Read Full Story →</a>
+        </div>
+      </div>
+
+      <!-- Article 6: Why Arabs Attack Iran -->
+      <div class="featured-card">
+        <div class="featured-card-image">🛡️ 🌍</div>
+        <div class="featured-card-content">
+          <span class="featured-badge">🌍 Analysis</span>
+          <h3 class="featured-card-title">Why Do Arab Nations Attack Iran?</h3>
+          <p class="featured-card-desc">Comprehensive geopolitical analysis. Arab perspective on regional security, proxy wars & defensive military operations.</p>
+          <a href="updatesworld/why-arabs-attack-iran.html" class="featured-card-link">Read Full Analysis →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="updatesworld/updatesworld.html" class="hero-btn primary" style="display: inline-block;">View All Breaking News →</a>
     </div>
   </section>
-    <div class="all-tools-header">
-      <h2 class="all-tools-title">All Tools</h2>
-      <p class="all-tools-subtitle">Find tools that match your needs</p>
-    </div>
 
-    <div class="tools-grid-bg">
+  <!-- TOOLS SECTION -->
+  <section class="tools-section" id="tools">
+    <div class="tools-section-inner">
+      <h2 class="tools-title">⚙️ 30+ Free Online Tools</h2>
+      <p class="tools-subtitle">Powerful utilities for productivity, conversion, generation & more — no signup required</p>
+      
       <div class="tools-categories">
         <button class="category-btn active" data-cat="all">All Tools</button>
         <button class="category-btn" data-cat="ai">🤖 AI Tools</button>
-        <button class="category-btn" data-cat="image">Image Tools</button>
-        <button class="category-btn" data-cat="calculator">Calculators</button>
-        <button class="category-btn" data-cat="converter">Converters</button>
-        <button class="category-btn" data-cat="text">Text Tools</button>
-        <button class="category-btn" data-cat="generator">Generators</button>
-        <button class="category-btn" data-cat="general">General</button>
+        <button class="category-btn" data-cat="generator">📋 Generators</button>
+        <button class="category-btn" data-cat="image">🖼️ Image</button>
+        <button class="category-btn" data-cat="converter">🔄 Converters</button>
+        <button class="category-btn" data-cat="calculator">🧮 Calculators</button>
+        <button class="category-btn" data-cat="text">📝 Text</button>
       </div>
-    </div>
 
-    <div class="tools-grid" id="auto-tools-grid">
-      <!-- Tools loaded via JavaScript -->
+      <div class="tools-grid" id="auto-tools-grid">
+        <!-- Tools loaded via JavaScript -->
+      </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2026 Toolyfi · Free Online Tools + Viral News · <a href="#">toolyfi.com</a></p>
-    <p>27+ Free Tools • AI Tools • Breaking News • Dark Mode • No Sign-up • Secure & Fast</p>
+    <p>© 2026 Toolyfi · Free Tools & Breaking News</p>
+    <p>30+ Tools • AI Utilities • Real-Time News • Dark Mode • No Sign-up • 100% Free & Secure</p>
+    <p><a href="updatesworld/updatesworld.html">Updates World</a> | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
   </footer>
 
   <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
@@ -960,37 +631,45 @@
   <script>
     // TOOLS DATA
     const TOOLS = [
-      { name: "Background Remover", desc: "Remove backgrounds with AI. Download as PNG.", icon: "🖼️", category: "image", href: "https://bg.toolyfi.com" },
-      { name: "Image Resizer", desc: "Resize images to any size instantly.", icon: "📐", category: "image", href: "image-resizer.html" },
-      { name: "Image Compressor", desc: "Reduce image size without quality loss.", icon: "🗜️", category: "image", href: "image-compressor.html" },
-      { name: "Age Calculator", desc: "Calculate exact age in days, months and years.", icon: "🎂", category: "calculator", href: "age-calculator.html" },
-      { name: "Scientific Calculator", desc: "Advanced mathematics calculator.", icon: "🧮", category: "calculator", href: "scientific-calculator.html" },
-      { name: "BMI Calculator", desc: "Calculate Body Mass Index with health tips.", icon: "⚖️", category: "calculator", href: "bmi-calculator.html" },
-      { name: "Loan Calculator", desc: "Calculate loan EMI, interest and repayments.", icon: "🏦", category: "calculator", href: "loan-calculator.html" },
-      { name: "Percentage Calculator", desc: "Calculate percentages quickly and easily.", icon: "💯", category: "calculator", href: "percentage-calculator.html" },
-      { name: "Currency Converter", desc: "Real-time currency conversion.", icon: "💱", category: "converter", href: "currency-converter.html" },
-      { name: "Temperature Converter", desc: "Convert between Celsius, Fahrenheit, Kelvin.", icon: "🌡️", category: "converter", href: "temperature-converter.html" },
-      { name: "Unit Converter", desc: "Convert length, weight, volume and more.", icon: "📏", category: "converter", href: "unit-converter.html" },
-      { name: "Number to Words", desc: "Convert numbers to English words instantly.", icon: "🔢", category: "converter", href: "number-to-words.html" },
-      { name: "CSV to JSON", desc: "Convert CSV data to JSON format instantly.", icon: "🔄", category: "converter", href: "csv-to-json.html" },
-      { name: "Base64 Encoder", desc: "Encode and decode Base64 strings easily.", icon: "🔐", category: "converter", href: "base64-encoder.html" },
-      { name: "Text Trimmer", desc: "Remove extra spaces and format text.", icon: "✂️", category: "text", href: "text-trimmer.html" },
-      { name: "JSON Formatter", desc: "Format and validate JSON instantly.", icon: "📊", category: "text", href: "json-formatter.html" },
-      { name: "Word Counter", desc: "Count words, characters and sentences.", icon: "📝", category: "text", href: "word-counter.html" },
-      { name: "Case Converter", desc: "Convert text to UPPER, lower, Title Case.", icon: "🔡", category: "text", href: "case-converter.html" },
-      { name: "Markdown to HTML", desc: "Convert Markdown syntax to clean HTML instantly.", icon: "📄", category: "text", href: "markdown-to-html-seo.html" },
-      { name: "QR Code Generator", desc: "Create QR codes instantly. Download as PNG or SVG.", icon: "📱", category: "generator", href: "qr-code-generator.html" },
-      { name: "Password Generator", desc: "Generate strong secure passwords instantly.", icon: "🔑", category: "generator", href: "password-generator.html" },
-      { name: "Random Number Generator", desc: "Generate random numbers in any range.", icon: "🎲", category: "generator", href: "random-number-generator.html" },
-      { name: "Prompt Generator", desc: "500+ AI prompts for ChatGPT, Claude & Gemini.", icon: "✨", category: "generator", href: "prompt-generator.html" },
       // AI TOOLS
-      { name: "AI Text Detector",    desc: "Detect if text is AI or human written. Free & instant.",  icon: "🤖", category: "ai",        href: "ai-text-detector.html" },
-      { name: "AI Image Generator",  desc: "Turn text into stunning AI images free. 9 styles.",        icon: "🎨", category: "ai",        href: "ai-image-generator.html" },
+      { name: "AI Text Detector",    desc: "Detect if text is AI-written. Instant, free & accurate.",  icon: "🤖", category: "ai",        href: "ai-text-detector.html" },
+      { name: "AI Image Generator",  desc: "Text-to-image AI tool. 9 styles, free & unlimited.",        icon: "🎨", category: "ai",        href: "ai-image-generator.html" },
+      
       // GENERATORS
-      { name: "Invoice Generator",   desc: "Create professional PDF invoices free. No signup.",        icon: "📊", category: "generator", href: "invoice-generator.html" },
-      { name: "Resume / CV Builder", desc: "Build ATS-friendly resume, download as PDF. Free.",        icon: "📄", category: "generator", href: "resume-builder.html" },
-      // GENERAL
-      { name: "Link Shortener",      desc: "Shorten any URL instantly. Custom alias, no signup.",      icon: "🔗", category: "general",   href: "link-shortener.html" },
+      { name: "Invoice Generator",   desc: "Create professional invoices. PDF download, no signup.",    icon: "📊", category: "generator", href: "invoice-generator.html" },
+      { name: "Resume Builder",      desc: "ATS-friendly resume creator. Download as PDF instantly.",   icon: "📄", category: "generator", href: "resume-builder.html" },
+      { name: "QR Code Generator",   desc: "Create QR codes instantly. PNG/SVG download available.",    icon: "📱", category: "generator", href: "qr-code-generator.html" },
+      { name: "Password Generator",  desc: "Generate strong secure passwords in seconds.",             icon: "🔑", category: "generator", href: "password-generator.html" },
+      { name: "Prompt Generator",    desc: "500+ AI prompts for ChatGPT, Claude & Gemini.",            icon: "✨", category: "generator", href: "prompt-generator.html" },
+      { name: "Random Number Gen",   desc: "Generate random numbers in any range instantly.",         icon: "🎲", category: "generator", href: "random-number-generator.html" },
+      
+      // IMAGE TOOLS
+      { name: "Background Remover",  desc: "Remove backgrounds with AI. PNG download.",               icon: "🖼️", category: "image",     href: "https://bg.toolyfi.com" },
+      { name: "Image Resizer",       desc: "Resize images to any dimensions instantly.",              icon: "📐", category: "image",     href: "image-resizer.html" },
+      { name: "Image Compressor",    desc: "Reduce image size without quality loss.",                 icon: "🗜️", category: "image",     href: "image-compressor.html" },
+      
+      // CONVERTERS
+      { name: "Currency Converter",  desc: "Real-time currency conversion with latest rates.",        icon: "💱", category: "converter", href: "currency-converter.html" },
+      { name: "Temperature Conv",    desc: "Convert Celsius, Fahrenheit, Kelvin instantly.",          icon: "🌡️", category: "converter", href: "temperature-converter.html" },
+      { name: "Unit Converter",      desc: "Length, weight, volume & more unit conversions.",         icon: "📏", category: "converter", href: "unit-converter.html" },
+      { name: "Number to Words",     desc: "Convert numbers to English words instantly.",             icon: "🔢", category: "converter", href: "number-to-words.html" },
+      { name: "CSV to JSON",         desc: "Convert CSV data to JSON format instantly.",              icon: "🔄", category: "converter", href: "csv-to-json.html" },
+      { name: "Base64 Encoder",      desc: "Encode & decode Base64 strings easily.",                  icon: "🔐", category: "converter", href: "base64-encoder.html" },
+      { name: "Markdown to HTML",    desc: "Convert Markdown to clean HTML instantly.",               icon: "📄", category: "converter", href: "markdown-to-html-seo.html" },
+      
+      // CALCULATORS
+      { name: "Age Calculator",      desc: "Calculate age in days, months & years precisely.",        icon: "🎂", category: "calculator", href: "age-calculator.html" },
+      { name: "BMI Calculator",      desc: "Calculate Body Mass Index with health insights.",         icon: "⚖️", category: "calculator", href: "bmi-calculator.html" },
+      { name: "Loan Calculator",     desc: "Calculate EMI, interest & loan repayments instantly.",    icon: "🏦", category: "calculator", href: "loan-calculator.html" },
+      { name: "Percentage Calc",     desc: "Calculate percentages quickly and easily.",               icon: "💯", category: "calculator", href: "percentage-calculator.html" },
+      { name: "Scientific Calc",     desc: "Advanced scientific calculator for complex math.",        icon: "🧮", category: "calculator", href: "scientific-calculator.html" },
+      
+      // TEXT TOOLS
+      { name: "Word Counter",        desc: "Count words, characters & sentences instantly.",          icon: "📝", category: "text",       href: "word-counter.html" },
+      { name: "Text Trimmer",        desc: "Remove extra spaces & format text perfectly.",            icon: "✂️", category: "text",       href: "text-trimmer.html" },
+      { name: "Case Converter",      desc: "Convert text to UPPER, lower or Title Case.",             icon: "🔡", category: "text",       href: "case-converter.html" },
+      { name: "JSON Formatter",      desc: "Format & validate JSON data instantly.",                 icon: "📊", category: "text",       href: "json-formatter.html" },
+      { name: "Link Shortener",      desc: "Shorten URLs with custom aliases. No signup needed.",     icon: "🔗", category: "text",       href: "link-shortener.html" },
     ];
 
     function buildCard(tool) {
@@ -999,7 +678,7 @@
           <div class="tool-icon">${tool.icon}</div>
           <h3 class="tool-name">${tool.name}</h3>
           <p class="tool-desc">${tool.desc}</p>
-          <a href="${tool.href}" class="tool-link">Try Tool →</a>
+          <a href="${tool.href}" class="tool-link">Try Now →</a>
         </div>`;
     }
 
@@ -1048,31 +727,6 @@
       }
       loadTools();
     });
-
-    // Carousel
-    let currentNewsIndex = 0;
-    const newsItems = document.querySelectorAll('.carousel-item');
-    const newsDots = document.querySelectorAll('.carousel-dot');
-
-    function showNews(index) {
-      newsItems.forEach(item => item.classList.remove('active'));
-      newsDots.forEach(dot => dot.classList.remove('active'));
-      currentNewsIndex = index;
-      newsItems[currentNewsIndex].classList.add('active');
-      newsDots[currentNewsIndex].classList.add('active');
-    }
-
-    function nextNews() {
-      currentNewsIndex = (currentNewsIndex + 1) % newsItems.length;
-      showNews(currentNewsIndex);
-    }
-
-    function previousNews() {
-      currentNewsIndex = (currentNewsIndex - 1 + newsItems.length) % newsItems.length;
-      showNews(currentNewsIndex);
-    }
-
-    setInterval(nextNews, 5000);
   </script>
 
 </body>
