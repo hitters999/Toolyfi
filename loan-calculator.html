@@ -21,22 +21,335 @@
 <meta property="og:url" content="https://toolyfi.com/loan-calculator.html"/>
 <meta property="og:type" content="website"/>
 <link rel="stylesheet" href="style.css"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    min-height: 100vh;
+  }
+
+  nav {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  }
+
+  .nav-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+  }
+
+  .nav-links a:hover {
+    opacity: 0.8;
+  }
+
+  .tool-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .breadcrumb a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .tool-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .tool-header h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    font-weight: 800;
+  }
+
+  .tool-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .tool-box {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  .form-input {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    margin-top: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    border: 2px dashed #667eea;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .num {
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #667eea;
+    margin-bottom: 8px;
+  }
+
+  .lbl {
+    font-size: 0.85rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  .seo-article {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  .seo-article h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin: 28px 0 16px;
+    font-weight: 800;
+  }
+
+  .seo-article h2:first-child {
+    margin-top: 0;
+  }
+
+  .seo-article p {
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+
+  .seo-article ul {
+    margin: 16px 0 16px 24px;
+    color: #666;
+    line-height: 1.9;
+  }
+
+  .seo-article li {
+    margin-bottom: 8px;
+  }
+
+  .related-tools {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+  }
+
+  .related-tools h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 24px;
+    font-weight: 800;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .related-card {
+    padding: 18px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  }
+
+  .related-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 28px 24px;
+    margin-top: 40px;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+  }
+
+  footer a:hover {
+    opacity: 0.8;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    font-weight: 600;
+  }
+
+  .toast.show {
+    display: block;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(400px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @media (max-width: 640px) {
+    .tool-header h1 {
+      font-size: 2rem;
+    }
+
+    .tool-box {
+      padding: 24px;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .num {
+      font-size: 1.4rem;
+    }
+  }
+</style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">⚡ Toolyfi</a><ul class="nav-links"><li><a href="index.html">Home</a></li></ul></nav>
+<nav><a href="index.html" class="nav-logo">💰 Toolyfi</a><ul class="nav-links"><li><a href="index.html">← All Tools</a></li></ul></nav>
 <div class="tool-page">
   <div class="breadcrumb"><a href="index.html">Home</a> → Loan / EMI Calculator</div>
-  <div class="tool-header"><h1>💰 Loan / EMI Calculator</h1><p>Calculate your monthly loan payment (EMI), total payment and total interest instantly.</p></div>
+  <div class="tool-header"><h1>💰 Loan / EMI Calculator</h1><p>Calculate your monthly loan payment (EMI), total payment and total interest instantly. Perfect for home loans, car loans, and personal loans.</p></div>
   <div class="tool-box">
     <div class="form-group"><label class="form-label">Loan Amount ($)</label><input type="number" class="form-input" id="lAmt" placeholder="e.g. 100000"/></div>
     <div class="form-group"><label class="form-label">Annual Interest Rate (%)</label><input type="number" class="form-input" id="lRate" placeholder="e.g. 8.5" step="0.1"/></div>
     <div class="form-group"><label class="form-label">Loan Term (Months)</label><input type="number" class="form-input" id="lTerm" placeholder="e.g. 60 for 5 years"/></div>
     <button class="btn-primary" onclick="calcLoan()">💰 Calculate EMI</button>
-    <div id="lRes" style="display:none;margin-top:22px">
+    <div id="lRes" style="margin-top:24px">
       <div class="stats-grid">
-        <div class="stat-card"><div class="num" style="font-size:1.4rem" id="emi"></div><div class="lbl">Monthly EMI</div></div>
-        <div class="stat-card"><div class="num" style="font-size:1.4rem" id="total"></div><div class="lbl">Total Payment</div></div>
-        <div class="stat-card"><div class="num" style="font-size:1.4rem;color:var(--c6)" id="interest"></div><div class="lbl">Total Interest</div></div>
+        <div class="stat-card"><div class="num" id="emi">$0</div><div class="lbl">Monthly EMI</div></div>
+        <div class="stat-card"><div class="num" id="total">$0</div><div class="lbl">Total Payment</div></div>
+        <div class="stat-card"><div class="num" id="interest">$0</div><div class="lbl">Total Interest</div></div>
       </div>
     </div>
   </div>
