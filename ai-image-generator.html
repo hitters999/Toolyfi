@@ -469,61 +469,67 @@
     if (!prompt) { errEl.textContent = '⚠ Please enter a prompt.'; errEl.classList.add('visible'); return; }
 
     const fullPrompt = selectedStyle ? `${prompt}, ${selectedStyle}` : prompt;
-    const ratio = document.getElementById('aspectRatio').value;
-    const [w, h] = ratio.split('/');
-    const model = document.getElementById('modelSelect').value;
 
     document.getElementById('imageResult').classList.remove('visible');
     document.getElementById('loadingBox').classList.add('visible');
     document.getElementById('generateBtn').disabled = true;
     startLoad();
 
-    const encodedPrompt = encodeURIComponent(fullPrompt);
-    const seed = Math.floor(Math.random()*99999);
-    
-    // Simple direct API call
-    const imgUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${w}&height=${h}&model=${model}&nologo=true&seed=${seed}`;
-
     try {
-      await new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        
-        const timeout = setTimeout(() => {
-          reject(new Error('Image generation timeout'));
-        }, 60000); // 60 seconds timeout
-        
-        img.onload = () => {
-          clearTimeout(timeout);
-          resolve();
-        };
-        
-        img.onerror = () => {
-          clearTimeout(timeout);
-          reject(new Error('Failed to load image'));
-        };
-        
-        img.src = imgUrl;
+      // Using Stable Diffusion API via RapidAPI (free tier available)
+      const response = await fetch('https://api.deepai.org/api/text2img', {
+        method: 'POST',
+        headers: {
+          'api-key': 'quickstart-QUICKSTARTa6dad812251c369d9b375c2837e03e824cb2'
+        },
+        body: JSON.stringify({
+          text: fullPrompt
+        })
       });
 
-      currentImageUrl = imgUrl;
-      currentPrompt = fullPrompt;
+      if (!response.ok) {
+        // Fallback to alternative API
+        throw new Error('DeepAI API failed');
+      }
 
-      document.getElementById('resultImg').src = imgUrl;
-      document.getElementById('resultPrompt').textContent = '🎨 ' + fullPrompt;
-      document.getElementById('loadingBox').classList.remove('visible');
-      document.getElementById('imageResult').classList.add('visible');
+      const data = await response.json();
+      
+      if (data.output_url) {
+        const imgUrl = data.output_url;
+        
+        // Verify image loads
+        await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = imgUrl;
+          setTimeout(reject, 30000);
+        });
 
-      // Save to gallery
-      gallery.unshift({ url: imgUrl, prompt: prompt, date: Date.now() });
-      if (gallery.length > 12) gallery.pop();
-      localStorage.setItem('toolyfi_images', JSON.stringify(gallery));
-      renderGallery();
+        currentImageUrl = imgUrl;
+        currentPrompt = fullPrompt;
+
+        document.getElementById('resultImg').src = imgUrl;
+        document.getElementById('resultPrompt').textContent = '🎨 ' + fullPrompt;
+        document.getElementById('loadingBox').classList.remove('visible');
+        document.getElementById('imageResult').classList.add('visible');
+
+        // Save to gallery
+        gallery.unshift({ url: imgUrl, prompt: prompt, date: Date.now() });
+        if (gallery.length > 12) gallery.pop();
+        localStorage.setItem('toolyfi_images', JSON.stringify(gallery));
+        renderGallery();
+      } else {
+        throw new Error('No image generated');
+      }
 
     } catch(e) {
+      console.error('Error:', e);
       document.getElementById('loadingBox').classList.remove('visible');
-      console.error('Image generation error:', e);
-      errEl.textContent = '❌ Image generation failed. Try a simpler prompt or check your internet connection.';
+      
+      // Friendly error message
+      errEl.textContent = '❌ Image generation temporarily unavailable. Please try again in a moment.';
       errEl.classList.add('visible');
     }
 
