@@ -1,3 +1,14 @@
+// ===== GOOGLE ADSENSE AUTO-INJECT =====
+(function(){
+  if (!document.querySelector('script[src*="adsbygoogle"]')) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689';
+    s.setAttribute('crossorigin', 'anonymous');
+    document.head.appendChild(s);
+  }
+})();
+
 // ===== SHARED UTILITIES =====
 
 function showToast(msg, color) {
