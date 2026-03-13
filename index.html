@@ -625,7 +625,7 @@
         <!-- Carousel Items -->
         <div id="toolsCarousel" style="min-height: 200px; position: relative;">
           <!-- Item 1: Salary to Hourly -->
-          <div id="carousel-tool-0" class="carousel-tool-item active" style="display:block; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-0" class="carousel-tool-item active" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">💼</div>
               <div style="flex: 1;">
@@ -641,7 +641,7 @@
           </div>
 
           <!-- Item 2: Tip Calculator -->
-          <div id="carousel-tool-1" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-1" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">🍽️</div>
               <div style="flex: 1;">
@@ -657,7 +657,7 @@
           </div>
 
           <!-- Item 3: Compound Interest -->
-          <div id="carousel-tool-2" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-2" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">📊</div>
               <div style="flex: 1;">
@@ -673,7 +673,7 @@
           </div>
 
           <!-- Item 4: Sales Tax -->
-          <div id="carousel-tool-3" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-3" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">🧾</div>
               <div style="flex: 1;">
@@ -689,7 +689,7 @@
           </div>
 
           <!-- Item 5: Profit Margin -->
-          <div id="carousel-tool-4" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-4" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">📈</div>
               <div style="flex: 1;">
@@ -705,7 +705,7 @@
           </div>
 
           <!-- Item 6: BMI Calculator -->
-          <div id="carousel-tool-5" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-5" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">⚖️</div>
               <div style="flex: 1;">
@@ -721,7 +721,7 @@
           </div>
 
           <!-- Item 7: QR Code Generator -->
-          <div id="carousel-tool-6" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-6" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">📱</div>
               <div style="flex: 1;">
@@ -737,7 +737,7 @@
           </div>
 
           <!-- Item 8: Password Generator -->
-          <div id="carousel-tool-7" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-7" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">🔑</div>
               <div style="flex: 1;">
@@ -753,7 +753,7 @@
           </div>
 
           <!-- Item 9: Age Calculator -->
-          <div id="carousel-tool-8" class="carousel-tool-item" style="display:none; animation: fadeInUp 0.8s ease;">
+          <div id="carousel-tool-8" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
               <div style="font-size: 5em; min-width: 80px; text-align: center;">🎂</div>
               <div style="flex: 1;">
@@ -792,8 +792,17 @@
   </section>
 
   <style>
-    .carousel-tool-item { opacity: 0; transition: opacity 0.7s ease; }
-    .carousel-tool-item.active { opacity: 1; }
+    .carousel-tool-item { 
+      opacity: 0; 
+      visibility: hidden;
+      position: absolute;
+      transition: opacity 0.7s ease, visibility 0.7s ease; 
+    }
+    .carousel-tool-item.active { 
+      opacity: 1; 
+      visibility: visible;
+      position: relative;
+    }
     @keyframes glow {
       0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 217, 61, 0.3)); }
       50% { filter: drop-shadow(0 0 20px rgba(255, 217, 61, 0.6)); }
