@@ -15,20 +15,20 @@
 
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Word Counter \u2013 Count Words & Characters Online Free | Toolyfi</title>
+<title>Word Counter – Count Words & Characters Online Free | Toolyfi</title>
 <meta name="description" content="Free online word counter. Count words, characters, sentences, paragraphs and reading time instantly. Real-time results, no signup required."/>
 <meta name="keywords" content="word counter, character counter, word count online, free word counter, count words online, sentence counter, paragraph counter, toolyfi"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://toolyfi.com/word-counter.html"/>
 
 <!-- Open Graph -->
-<meta property="og:title" content="Word Counter \u2013 Count Words & Characters Online Free | Toolyfi"/>
+<meta property="og:title" content="Word Counter – Count Words & Characters Online Free | Toolyfi"/>
 <meta property="og:description" content="Count words, characters, sentences, paragraphs and reading time instantly. Free, real-time, no signup required."/>
 <meta property="og:url" content="https://toolyfi.com/word-counter.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="https://toolyfi.com/og-image.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Word Counter \u2013 Toolyfi"/>
+<meta name="twitter:title" content="Word Counter – Toolyfi"/>
 <meta name="twitter:description" content="Free real-time word, character, sentence & paragraph counter. No signup needed."/>
 
 <!-- Schema.org Structured Data -->
@@ -53,7 +53,7 @@
     {
       "@type": "Question",
       "name": "How does the word counter work?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Simply paste or type your text in the box above. The tool instantly counts words, characters, sentences, paragraphs, and estimates reading time \u2014 all in real time."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Simply paste or type your text in the box above. The tool instantly counts words, characters, sentences, paragraphs, and estimates reading time — all in real time."}
     },
     {
       "@type": "Question",
@@ -63,7 +63,7 @@
     {
       "@type": "Question",
       "name": "Does it count characters with or without spaces?",
-      "acceptedAnswer": {"@type": "Answer", "text": "It shows both \u2014 characters with spaces and characters without spaces separately."}
+      "acceptedAnswer": {"@type": "Answer", "text": "It shows both — characters with spaces and characters without spaces separately."}
     }
   ]
 }
@@ -72,12 +72,12 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 
 <!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, runTransaction, onValue, push, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getDatabase, ref, set, runTransaction, onValue, push, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyExample",
@@ -101,6 +101,24 @@
   }
   const fp = getFingerprint();
 
+  // Helper functions exposed to window
+  window.escapeHtml = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  window.timeAgo = (ts) => {
+    const diff = Date.now() - ts;
+    const m = Math.floor(diff/60000);
+    if (m < 1) return 'just now';
+    if (m < 60) return m + 'm ago';
+    const h = Math.floor(m/60);
+    if (h < 24) return h + 'h ago';
+    return Math.floor(h/24) + 'd ago';
+  };
+  window.highlightStars = (n) => {
+    document.querySelectorAll('.star-btn').forEach((s, i) => s.classList.toggle('active', i < n));
+  };
+  window.renderStars = (avg) => {
+    document.querySelectorAll('.avg-star').forEach((s, i) => s.classList.toggle('filled', i < Math.round(avg)));
+  };
+
   // --- LIKES / DISLIKES ---
   const likeRef = ref(db, `tools/${TOOL_ID}/likes`);
   const dislikeRef = ref(db, `tools/${TOOL_ID}/dislikes`);
@@ -121,11 +139,10 @@
     if (prev === 'like') return;
     if (prev === 'dislike') runTransaction(dislikeRef, v => Math.max(0, (v||0)-1));
     runTransaction(likeRef, v => (v||0)+1);
-    const { set } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js");
     set(userVoteRef, 'like');
     document.getElementById('likeBtn').classList.add('voted');
     document.getElementById('dislikeBtn').classList.remove('voted');
-    showToast('Thanks for your feedback! \ud83d\udc4d');
+    showToast('Thanks for your feedback! 👍');
   };
 
   window.handleDislike = async () => {
@@ -134,11 +151,10 @@
     if (prev === 'dislike') return;
     if (prev === 'like') runTransaction(likeRef, v => Math.max(0, (v||0)-1));
     runTransaction(dislikeRef, v => (v||0)+1);
-    const { set } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js");
     set(userVoteRef, 'dislike');
     document.getElementById('dislikeBtn').classList.add('voted');
     document.getElementById('likeBtn').classList.remove('voted');
-    showToast('Thanks for your feedback! \ud83d\udc4e');
+    showToast('Thanks for your feedback! 👎');
   };
 
   // --- STAR RATING ---
@@ -148,37 +164,25 @@
   onValue(ratingRef, s => {
     const data = s.val() || {};
     const votes = Object.values(data);
-    if (votes.length === 0) { document.getElementById('avgRating').textContent = '0.0'; document.getElementById('ratingCount').textContent = '0 ratings'; return; }
+    if (votes.length === 0) {
+      document.getElementById('avgRating').textContent = '0.0';
+      document.getElementById('ratingCount').textContent = '0 ratings';
+      return;
+    }
     const avg = votes.reduce((a,b) => a+b, 0) / votes.length;
     document.getElementById('avgRating').textContent = avg.toFixed(1);
     document.getElementById('ratingCount').textContent = votes.length + ' rating' + (votes.length !== 1 ? 's' : '');
-    renderStars(avg);
+    window.renderStars(avg);
   });
 
-  get(userRatingRef).then(s => {
-    if (s.val()) highlightStars(s.val());
-  });
+  get(userRatingRef).then(s => { if (s.val()) window.highlightStars(s.val()); });
 
   window.submitRating = async (star) => {
-    const { set } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js");
     set(ref(db, `tools/${TOOL_ID}/ratings/${fp}`), star);
     set(userRatingRef, star);
-    highlightStars(star);
-    showToast(`You rated this tool ${star} star${star>1?'s':''}! \u2b50`);
+    window.highlightStars(star);
+    showToast(`You rated this tool ${star} star${star>1?'s':''}! ⭐`);
   };
-
-  function renderStars(avg) {
-    const stars = document.querySelectorAll('.avg-star');
-    stars.forEach((s, i) => {
-      s.classList.toggle('filled', i < Math.round(avg));
-    });
-  }
-
-  function highlightStars(n) {
-    document.querySelectorAll('.star-btn').forEach((s, i) => {
-      s.classList.toggle('active', i < n);
-    });
-  }
 
   // --- COMMENTS ---
   const commentsRef = ref(db, `tools/${TOOL_ID}/comments`);
@@ -192,9 +196,9 @@
       <div class="comment-item">
         <div class="comment-avatar">${v.name ? v.name[0].toUpperCase() : 'A'}</div>
         <div class="comment-body">
-          <span class="comment-name">${escapeHtml(v.name || 'Anonymous')}</span>
-          <span class="comment-time">${timeAgo(v.timestamp)}</span>
-          <p class="comment-text">${escapeHtml(v.text)}</p>
+          <span class="comment-name">${window.escapeHtml(v.name || 'Anonymous')}</span>
+          <span class="comment-time">${window.timeAgo(v.timestamp)}</span>
+          <p class="comment-text">${window.escapeHtml(v.text)}</p>
         </div>
       </div>`).join('');
   });
@@ -208,53 +212,36 @@
     await push(commentsRef, { name, text, timestamp: Date.now(), fp });
     nameEl.value = '';
     textEl.value = '';
-    showToast('Comment posted! \ud83d\udcac');
+    showToast('Comment posted! 💬');
   };
-
-  function escapeHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-
-  function timeAgo(ts) {
-    const diff = Date.now() - ts;
-    const m = Math.floor(diff/60000);
-    if (m < 1) return 'just now';
-    if (m < 60) return m + 'm ago';
-    const h = Math.floor(m/60);
-    if (h < 24) return h + 'h ago';
-    return Math.floor(h/24) + 'd ago';
-  }
 </script>
 
 <style>
 :root {
-  --bg: #0a0a0f;
-  --bg2: #111118;
-  --bg3: #16161f;
-  --card: #1a1a26;
-  --card2: #1f1f2e;
-  --border: #2a2a3d;
-  --accent: #7c3aed;
-  --accent2: #a855f7;
-  --accent3: #c084fc;
-  --green: #10b981;
-  --text: #f0f0ff;
-  --text2: #a0a0c0;
-  --text3: #6060a0;
+  --bg: #f5f6fa;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --card2: #f0f1f8;
+  --border: #e2e4f0;
+  --accent: #6d28d9;
+  --accent2: #7c3aed;
+  --accent3: #8b5cf6;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #9090b0;
   --radius: 14px;
-  --shadow: 0 8px 32px rgba(124,58,237,0.15);
+  --shadow: 0 4px 24px rgba(109,40,217,0.10);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124,58,237,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(168,85,247,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 60%);
 }
 
 /* NAV */
@@ -264,16 +251,17 @@ nav {
   justify-content: space-between;
   padding: 0 24px;
   height: 64px;
-  background: rgba(10,10,15,0.85);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 12px rgba(109,40,217,0.07);
 }
 
 .nav-logo {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--text);
@@ -296,7 +284,7 @@ nav {
   border-radius: 8px;
   transition: all 0.2s;
 }
-.nav-links a:hover { background: var(--card); color: var(--text); }
+.nav-links a:hover { background: var(--card2); color: var(--accent2); }
 
 /* MAIN WRAP */
 .main-wrap {
@@ -321,11 +309,11 @@ nav {
 }
 
 .tool-header h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
   letter-spacing: -1px;
-  background: linear-gradient(135deg, #fff 0%, var(--accent3) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -370,14 +358,14 @@ nav {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
 }
 
 .form-label {
   display: block;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text2);
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -387,19 +375,19 @@ nav {
 .form-textarea {
   width: 100%;
   min-height: 200px;
-  background: var(--bg2);
+  background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 12px;
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   padding: 16px;
   resize: vertical;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   line-height: 1.7;
 }
-.form-textarea:focus { border-color: var(--accent2); }
+.form-textarea:focus { border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(124,58,237,0.10); }
 .form-textarea::placeholder { color: var(--text3); }
 
 /* STATS GRID */
@@ -413,17 +401,17 @@ nav {
 @media(max-width:500px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
 
 .stat-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 16px 12px;
   text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-.stat-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.stat-card:hover { transform: translateY(-2px); border-color: var(--accent3); box-shadow: 0 4px 16px rgba(109,40,217,0.10); }
 
 .num {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   color: var(--accent2);
@@ -435,7 +423,7 @@ nav {
 .lbl {
   font-size: 0.75rem;
   color: var(--text3);
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -471,7 +459,7 @@ nav {
 }
 
 .engagement-section h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -494,7 +482,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg2);
+  background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 50px;
   padding: 10px 20px;
@@ -502,10 +490,10 @@ nav {
   font-weight: 600;
   color: var(--text2);
   cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: all 0.2s;
 }
-.vote-btn:hover { border-color: var(--accent2); color: var(--text); }
+.vote-btn:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(124,58,237,0.05); }
 .vote-btn.voted { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 /* STAR RATING */
@@ -550,18 +538,18 @@ nav {
 .comment-inputs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
 
 .comment-input {
-  background: var(--bg2);
+  background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 10px;
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   padding: 12px 16px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   width: 100%;
 }
-.comment-input:focus { border-color: var(--accent2); }
+.comment-input:focus { border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(124,58,237,0.08); }
 .comment-input::placeholder { color: var(--text3); }
 
 textarea.comment-input { min-height: 90px; resize: vertical; }
@@ -583,11 +571,12 @@ textarea.comment-input { min-height: 90px; resize: vertical; }
   justify-content: center;
   font-weight: 700;
   font-size: 0.9rem;
+  color: #fff;
   flex-shrink: 0;
 }
 
 .comment-body { flex: 1; }
-.comment-name { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-right: 8px; }
+.comment-name { font-weight: 700; font-size: 0.9rem; color: var(--text); margin-right: 8px; }
 .comment-time { font-size: 0.78rem; color: var(--text3); }
 .comment-text { font-size: 0.92rem; color: var(--text2); margin-top: 4px; line-height: 1.5; }
 .no-comments { color: var(--text3); font-size: 0.9rem; text-align: center; padding: 20px 0; }
@@ -599,11 +588,12 @@ textarea.comment-input { min-height: 90px; resize: vertical; }
   border-radius: 20px;
   padding: 32px;
   margin: 24px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 
 .seo-article h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text);
   margin: 24px 0 10px;
@@ -634,7 +624,7 @@ textarea.comment-input { min-height: 90px; resize: vertical; }
 }
 
 .seo-article ul li::before {
-  content: '\u25b8';
+  content: '▸';
   position: absolute;
   left: 0;
   color: var(--accent2);
@@ -646,7 +636,7 @@ textarea.comment-input { min-height: 90px; resize: vertical; }
 }
 
 .related-tools h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--text);
@@ -661,21 +651,22 @@ textarea.comment-input { min-height: 90px; resize: vertical; }
 
 .related-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   text-decoration: none;
   color: var(--text2);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.2s;
   text-align: center;
 }
 .related-card:hover {
   border-color: var(--accent2);
-  color: var(--text);
-  background: var(--card2);
+  color: var(--accent2);
+  background: rgba(124,58,237,0.04);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(109,40,217,0.10);
 }
 
 /* FOOTER */
@@ -686,10 +677,11 @@ footer {
   color: var(--text3);
   font-size: 0.85rem;
   margin-top: 20px;
+  background: #fff;
 }
 .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; }
 .footer-links a { color: var(--text3); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--accent3); }
+.footer-links a:hover { color: var(--accent2); }
 
 /* TOAST */
 .toast {
@@ -697,14 +689,15 @@ footer {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(80px);
-  background: var(--card2);
-  border: 1px solid var(--accent);
+  background: #fff;
+  border: 1.5px solid var(--accent);
   color: var(--text);
   padding: 12px 24px;
   border-radius: 50px;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   z-index: 9999;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.15);
   transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
   pointer-events: none;
 }
@@ -721,7 +714,7 @@ footer {
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">\u26a1 Tool<span>yfi</span></a>
+  <a href="index.html" class="nav-logo">⚡ Tool<span>yfi</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
   </ul>
@@ -729,11 +722,11 @@ footer {
 
 <div class="main-wrap">
 
-  <div class="breadcrumb"><a href="index.html">Home</a> \u2192 Word Counter</div>
+  <div class="breadcrumb"><a href="index.html">Home</a> → Word Counter</div>
 
   <div class="tool-header">
-    <h1>\u270d\ufe0f Word Counter</h1>
-    <p>Count words, characters, sentences, paragraphs and estimate reading time \u2014 all in real time as you type.</p>
+    <h1>✍️ Word Counter</h1>
+    <p>Count words, characters, sentences, paragraphs and estimate reading time — all in real time as you type.</p>
   </div>
 
   <!-- AdSense Top Banner -->
@@ -761,7 +754,7 @@ footer {
       <div class="stat-card"><div class="num" id="rt">0</div><div class="lbl">Min Read</div></div>
     </div>
 
-    <button class="btn-primary" onclick="clearText()">\ud83d\uddd1\ufe0f Clear Text</button>
+    <button class="btn-primary" onclick="clearText()">🗑️ Clear Text</button>
   </div>
 
   <!-- AdSense Mid -->
@@ -777,15 +770,15 @@ footer {
 
   <!-- ENGAGEMENT -->
   <div class="engagement-section">
-    <h3>\ud83d\udcac Was this tool helpful?</h3>
+    <h3>💬 Was this tool helpful?</h3>
 
     <!-- Like / Dislike -->
     <div class="vote-row">
       <button class="vote-btn" id="likeBtn" onclick="handleLike()">
-        \ud83d\udc4d Like <span id="likeCount">0</span>
+        👍 Like <span id="likeCount">0</span>
       </button>
       <button class="vote-btn" id="dislikeBtn" onclick="handleDislike()">
-        \ud83d\udc4e Dislike <span id="dislikeCount">0</span>
+        👎 Dislike <span id="dislikeCount">0</span>
       </button>
     </div>
 
@@ -795,20 +788,20 @@ footer {
     <div class="rating-section" style="margin-top:20px;">
       <div class="rating-label">Rate this tool</div>
       <div class="stars-row">
-        <button class="star-btn" onclick="submitRating(1)" onmouseover="hoverStars(1)" onmouseout="resetHover()">\u2605</button>
-        <button class="star-btn" onclick="submitRating(2)" onmouseover="hoverStars(2)" onmouseout="resetHover()">\u2605</button>
-        <button class="star-btn" onclick="submitRating(3)" onmouseover="hoverStars(3)" onmouseout="resetHover()">\u2605</button>
-        <button class="star-btn" onclick="submitRating(4)" onmouseover="hoverStars(4)" onmouseout="resetHover()">\u2605</button>
-        <button class="star-btn" onclick="submitRating(5)" onmouseover="hoverStars(5)" onmouseout="resetHover()">\u2605</button>
+        <button class="star-btn" onclick="submitRating(1)" onmouseover="hoverStars(1)" onmouseout="resetHover()">★</button>
+        <button class="star-btn" onclick="submitRating(2)" onmouseover="hoverStars(2)" onmouseout="resetHover()">★</button>
+        <button class="star-btn" onclick="submitRating(3)" onmouseover="hoverStars(3)" onmouseout="resetHover()">★</button>
+        <button class="star-btn" onclick="submitRating(4)" onmouseover="hoverStars(4)" onmouseout="resetHover()">★</button>
+        <button class="star-btn" onclick="submitRating(5)" onmouseover="hoverStars(5)" onmouseout="resetHover()">★</button>
       </div>
       <div class="rating-summary">
         <div class="avg-rating-num" id="avgRating">0.0</div>
         <div class="avg-stars">
-          <span class="avg-star" id="s1">\u2605</span>
-          <span class="avg-star" id="s2">\u2605</span>
-          <span class="avg-star" id="s3">\u2605</span>
-          <span class="avg-star" id="s4">\u2605</span>
-          <span class="avg-star" id="s5">\u2605</span>
+          <span class="avg-star" id="s1">★</span>
+          <span class="avg-star" id="s2">★</span>
+          <span class="avg-star" id="s3">★</span>
+          <span class="avg-star" id="s4">★</span>
+          <span class="avg-star" id="s5">★</span>
         </div>
         <div class="rating-count" id="ratingCount">0 ratings</div>
       </div>
@@ -824,7 +817,7 @@ footer {
           <input type="text" class="comment-input" id="commentName" placeholder="Your name (optional)"/>
           <textarea class="comment-input" id="commentText" placeholder="Write your comment here..."></textarea>
         </div>
-        <button class="btn-primary" onclick="submitComment()">\ud83d\udcac Post Comment</button>
+        <button class="btn-primary" onclick="submitComment()">💬 Post Comment</button>
       </div>
       <div id="commentsList"><p class="no-comments">Loading comments...</p></div>
     </div>
@@ -837,7 +830,104 @@ footer {
 
     <h2>Who Uses a Word Counter?</h2>
     <ul>
-      <li><strong>Students</strong> \u2014 checking essay word limits for assignments</li>
-      <li><strong>Bloggers</strong> \u2014 ensuring articles meet minimum SEO word count</li>
-      <li><strong>Writers</strong> \u2014 tracking progress on novels or scripts</li>
-      <li><strong>Social media managers</strong> \u2014 staying
+      <li><strong>Students</strong> — checking essay word limits for assignments</li>
+      <li><strong>Bloggers</strong> — ensuring articles meet minimum SEO word count</li>
+      <li><strong>Writers</strong> — tracking progress on novels or scripts</li>
+      <li><strong>Social media managers</strong> — staying within platform character limits</li>
+    </ul>
+
+    <h2>Count Words Online — Fast and Free</h2>
+    <p>Our <strong>online word counter</strong> updates in real time as you type or paste text. No button clicking, no waiting. It is the fastest and most accurate free word counter available.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h2>How does the word counter work?</h2>
+    <p>Simply paste or type your text in the box above. The tool instantly counts words, characters, sentences, paragraphs, and estimates reading time in real time — no button clicking required.</p>
+
+    <h2>Is the word counter free?</h2>
+    <p>Yes, Toolyfi's word counter is 100% free with no signup, no login, and no limits on usage.</p>
+
+    <h2>Does it count characters with or without spaces?</h2>
+    <p>It shows both separately — characters including spaces and characters excluding spaces — so you can meet any platform's specific character limit requirements.</p>
+  </div>
+
+  <!-- AdSense Bottom -->
+  <div class="ad-unit">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7111939247354689"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related-tools">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="case-converter.html" class="related-card">🔤 Case Converter</a>
+      <a href="number-to-words.html" class="related-card">🔢 Number to Words</a>
+    </div>
+  </div>
+
+</div><!-- end main-wrap -->
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms</a>
+  </div>
+  <p>© 2026 Toolyfi.com — Free Online Tools</p>
+</footer>
+
+<!-- Tidio Chatbot -->
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Word counter logic
+function count() {
+  const t = document.getElementById('wcText').value;
+  const nums = {
+    wc: t.trim() === '' ? 0 : t.trim().split(/\s+/).length,
+    cc: t.length,
+    ccns: t.replace(/\s/g,'').length,
+    sc: (t.match(/[.!?]+/g)||[]).length,
+    pc: t.split(/\n\n+/).filter(p=>p.trim()).length || (t.trim()?1:0),
+    rt: Math.ceil((t.trim()===''?0:t.trim().split(/\s+/).length)/200)
+  };
+  Object.entries(nums).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    el.textContent = val;
+    el.classList.add('pop');
+    setTimeout(() => el.classList.remove('pop'), 150);
+  });
+}
+
+function clearText() {
+  document.getElementById('wcText').value = '';
+  count();
+}
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Star hover
+function hoverStars(n) {
+  document.querySelectorAll('.star-btn').forEach((s,i) => {
+    s.style.color = i < n ? '#fbbf24' : '';
+  });
+}
+function resetHover() {
+  document.querySelectorAll('.star-btn').forEach(s => s.style.color = '');
+}
+</script>
+</body>
+</html>
