@@ -70,7 +70,7 @@
     .prompt-label { font-size:0.72rem; font-weight:700; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
 
     textarea.prompt-input {
-      width:100%; min-height:100px; padding:14px 16px; background:#080810;
+      width:100%; min-height:100px; padding:14px 16px; background:white;
       border:2px solid var(--border); border-radius:12px; color:var(--text); font-family:inherit;
       font-size:0.97rem; line-height:1.6; resize:vertical; outline:none; transition:border-color 0.2s;
     }
@@ -88,7 +88,7 @@
     .controls-row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:18px; }
     .select-wrap { display:flex; flex-direction:column; gap:4px; flex:1; min-width:130px; }
     .select-wrap label { font-size:0.72rem; color:var(--muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; }
-    select.ctrl-select { padding:9px 12px; background:#080810; border:1.5px solid var(--border); border-radius:9px; color:var(--text); font-family:inherit; font-size:0.88rem; outline:none; transition:border-color 0.2s; }
+    select.ctrl-select { padding:9px 12px; background:white; border:1.5px solid var(--border); border-radius:9px; color:var(--text); font-family:inherit; font-size:0.88rem; outline:none; transition:border-color 0.2s; }
     select.ctrl-select:focus { border-color:var(--accent2); }
 
     .generate-btn {
@@ -118,7 +118,7 @@
     .image-result.visible { display:block; animation:fadeUp 0.4s ease; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 
-    .result-img { width:100%; display:block; max-height:600px; object-fit:contain; background:#080810; }
+    .result-img { width:100%; display:block; max-height:600px; object-fit:contain; background:#f0f0f0; }
     .result-actions { padding:16px 20px; display:flex; gap:10px; flex-wrap:wrap; }
     .act-btn { padding:10px 20px; border-radius:9px; font-family:inherit; font-size:0.88rem; font-weight:700; cursor:pointer; transition:all 0.2s; border:none; }
     .act-primary { background:var(--accent2); color:white; }
@@ -481,61 +481,49 @@
     const encodedPrompt = encodeURIComponent(fullPrompt);
     const seed = Math.floor(Math.random()*99999);
     
-    // Try primary API first, then fallback
-    const imgUrls = [
-      `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${w}&height=${h}&model=${model}&nologo=true&seed=${seed}`,
-      `https://pollinations.ai/p/${encodedPrompt}?width=${w}&height=${h}`
-    ];
-
-    let imgUrl = '';
-    let success = false;
-
-    for (let url of imgUrls) {
-      try {
-        await new Promise((resolve, reject) => {
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
-          img.onload = () => { 
-            imgUrl = url; 
-            success = true;
-            resolve(); 
-          };
-          img.onerror = reject;
-          img.src = url;
-          
-          // Timeout
-          const timeout = setTimeout(reject, 15000);
-          img.onload = () => { clearTimeout(timeout); resolve(); };
-        });
-        
-        if (success) break;
-      } catch(e) {
-        console.log('API failed, trying alternative...');
-        continue;
-      }
-    }
+    // Simple direct API call
+    const imgUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${w}&height=${h}&model=${model}&nologo=true&seed=${seed}`;
 
     try {
-      if (success && imgUrl) {
-        currentImageUrl = imgUrl;
-        currentPrompt = fullPrompt;
+      await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        
+        const timeout = setTimeout(() => {
+          reject(new Error('Image generation timeout'));
+        }, 60000); // 60 seconds timeout
+        
+        img.onload = () => {
+          clearTimeout(timeout);
+          resolve();
+        };
+        
+        img.onerror = () => {
+          clearTimeout(timeout);
+          reject(new Error('Failed to load image'));
+        };
+        
+        img.src = imgUrl;
+      });
 
-        document.getElementById('resultImg').src = imgUrl;
-        document.getElementById('resultPrompt').textContent = '🎨 ' + fullPrompt;
-        document.getElementById('loadingBox').classList.remove('visible');
-        document.getElementById('imageResult').classList.add('visible');
+      currentImageUrl = imgUrl;
+      currentPrompt = fullPrompt;
 
-        // Save to gallery
-        gallery.unshift({ url: imgUrl, prompt: prompt, date: Date.now() });
-        if (gallery.length > 12) gallery.pop();
-        localStorage.setItem('toolyfi_images', JSON.stringify(gallery));
-        renderGallery();
-      } else {
-        throw new Error('Image generation failed');
-      }
+      document.getElementById('resultImg').src = imgUrl;
+      document.getElementById('resultPrompt').textContent = '🎨 ' + fullPrompt;
+      document.getElementById('loadingBox').classList.remove('visible');
+      document.getElementById('imageResult').classList.add('visible');
+
+      // Save to gallery
+      gallery.unshift({ url: imgUrl, prompt: prompt, date: Date.now() });
+      if (gallery.length > 12) gallery.pop();
+      localStorage.setItem('toolyfi_images', JSON.stringify(gallery));
+      renderGallery();
+
     } catch(e) {
       document.getElementById('loadingBox').classList.remove('visible');
-      errEl.textContent = '❌ Image generation failed. Try a different prompt or check your internet connection.';
+      console.error('Image generation error:', e);
+      errEl.textContent = '❌ Image generation failed. Try a simpler prompt or check your internet connection.';
       errEl.classList.add('visible');
     }
 
