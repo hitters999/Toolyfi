@@ -544,6 +544,82 @@
     </div>
   </section>
 
+  <!-- NEWS TICKER -->
+  <div id="newsTicker" style="background:#fff; border-top:1px solid #e8e8f0; border-bottom:3px solid #667eea; padding:14px 20px; text-align:center; min-height:54px; display:flex; align-items:center; justify-content:center; gap:12px; overflow:hidden;">
+    <span style="background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; font-size:0.72rem; font-weight:800; padding:4px 10px; border-radius:20px; white-space:nowrap; letter-spacing:1px; flex-shrink:0;">📰 LATEST</span>
+    <div id="tickerText" style="font-family:'Georgia',serif; font-size:1.05rem; font-weight:700; color:#1a1a2e; letter-spacing:0.2px; opacity:1; transition:opacity 0.6s ease, transform 0.6s ease; transform:translateY(0); cursor:pointer; max-width:700px; line-height:1.4;"></div>
+  </div>
+
+  <script>
+  (function(){
+    const GITHUB_USER = "hitters999";
+    const GITHUB_REPO = "Toolyfi";
+    const FOLDER = "updatesworld";
+    const BRANCH = "main";
+    const SKIP = ["updatesworld.html","gallery.html","articles-loader.js","article-feed-auto.js"];
+
+    let articles = [];
+    let current = 0;
+
+    async function fetchArticles() {
+      try {
+        const res = await fetch("https://api.github.com/repos/" + GITHUB_USER + "/" + GITHUB_REPO + "/contents/" + FOLDER + "?ref=" + BRANCH);
+        if (!res.ok) throw new Error();
+        const files = await res.json();
+        const htmlFiles = files.filter(f => f.name.endsWith(".html") && !SKIP.includes(f.name));
+
+        const metas = await Promise.all(htmlFiles.map(async f => {
+          try {
+            const r = await fetch("https://raw.githubusercontent.com/" + GITHUB_USER + "/" + GITHUB_REPO + "/" + BRANCH + "/" + FOLDER + "/" + f.name);
+            const html = await r.text();
+            const getM = (name) => {
+              const m = html.match(new RegExp("<meta[^>]+name=[\"\']" + name + "[\"\'][^>]+content=[\"\']([^\"\']+)[\"\']","i"))
+                      || html.match(new RegExp("<meta[^>]+content=[\"\']([^\"\']+)[\"\'][^>]+name=[\"\']" + name + "[\"\']","i"));
+              return m ? m[1] : null;
+            };
+            const titleTag = html.match(/<title>([^<]+)<\/title>/i);
+            const ogTitle = html.match(/<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)["\'][^>]*>/i);
+            return {
+              title: getM("uw-title") || (ogTitle ? ogTitle[1] : null) || (titleTag ? titleTag[1].split("–")[0].split("|")[0].trim() : f.name.replace(/-/g," ").replace(".html","")),
+              href: "updatesworld/" + f.name
+            };
+          } catch(e){ return null; }
+        }));
+
+        articles = metas.filter(Boolean);
+        if (articles.length) startTicker();
+        else document.getElementById("newsTicker").style.display = "none";
+      } catch(e){
+        document.getElementById("newsTicker").style.display = "none";
+      }
+    }
+
+    function showArticle(i) {
+      const el = document.getElementById("tickerText");
+      el.style.opacity = "0";
+      el.style.transform = "translateY(-10px)";
+      setTimeout(() => {
+        const a = articles[i];
+        el.textContent = a.title;
+        el.onclick = () => window.location.href = a.href;
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, 600);
+    }
+
+    function startTicker() {
+      articles = articles.sort(() => Math.random() - 0.5);
+      showArticle(0);
+      setInterval(() => {
+        current = (current + 1) % articles.length;
+        showArticle(current);
+      }, 3500);
+    }
+
+    fetchArticles();
+  })();
+  <\/script>
+
   <!-- FEATURED TOOLS SECTION - 4 COLUMNS -->
   <section class="section">
     <h2 class="section-title">⭐ Featured Tools</h2>
