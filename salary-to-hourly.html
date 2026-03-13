@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y3ETYH2QF0');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Salary to Hourly Calculator – Convert Annual Salary to Hourly Rate Free | Toolyfi</title>
+<meta name="description" content="Convert your annual salary to hourly wage instantly. Free salary to hourly calculator with monthly, weekly, and daily breakdowns. No signup required."/>
+<meta name="keywords" content="salary to hourly calculator, annual salary to hourly, salary converter, hourly wage calculator, salary calculator, toolyfi"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://toolyfi.com/salary-to-hourly.html"/>
+<meta property="og:title" content="Salary to Hourly Calculator – Convert Annual Salary to Hourly Rate Free | Toolyfi"/>
+<meta property="og:description" content="Convert annual salary to hourly wage instantly. Free, with monthly, weekly and daily breakdowns."/>
+<meta property="og:url" content="https://toolyfi.com/salary-to-hourly.html"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Salary to Hourly Calculator – Convert Annual Salary Free | Toolyfi"/>
+<meta name="twitter:description" content="Convert annual salary to hourly wage instantly. Full income breakdown. Free, no signup."/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Salary to Hourly Calculator","url":"https://toolyfi.com/salary-to-hourly.html","description":"Free salary to hourly rate converter with full income breakdown.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  :root {
+    --bg: #fffbeb;
+    --card: #ffffff;
+    --border: rgba(245,158,11,0.18);
+    --accent: #d97706;
+    --accent2: #f59e0b;
+    --accent3: #fcd34d;
+    --text: #451a03;
+    --muted: #92745a;
+    --success: #059669;
+    --danger: #ef4444;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'DM Sans',sans-serif;
+    background:var(--bg); color:var(--text);
+    min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:''; position:fixed;
+    top:-150px; left:50%; transform:translateX(-50%);
+    width:700px; height:600px;
+    background:radial-gradient(ellipse,rgba(245,158,11,0.12) 0%,rgba(252,211,77,0.06) 40%,transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+  body::after {
+    content:''; position:fixed;
+    bottom:-100px; right:-100px; width:400px; height:400px;
+    background:radial-gradient(ellipse,rgba(217,119,6,0.08) 0%,transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+  nav {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; border-bottom:1px solid var(--border);
+    background:rgba(255,251,235,0.92); backdrop-filter:blur(16px);
+    position:sticky; top:0; z-index:100;
+  }
+  .nav-logo {
+    font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem;
+    text-decoration:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .nav-links { list-style:none; display:flex; gap:24px; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent); }
+
+  .pg-wrap { max-width:700px; margin:0 auto; padding:48px 20px 100px; position:relative; z-index:1; }
+
+  .breadcrumb { font-size:0.78rem; color:var(--muted); margin-bottom:32px; }
+  .breadcrumb a { color:var(--muted); text-decoration:none; }
+  .breadcrumb a:hover { color:var(--accent); }
+
+  /* HEADER */
+  .tool-header { text-align:center; margin-bottom:40px; }
+  .header-icon {
+    font-size:3.5rem; display:block; margin-bottom:14px;
+    filter:drop-shadow(0 0 20px rgba(245,158,11,0.45));
+    animation:float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-10px); }
+  }
+  .tool-header h1 {
+    font-family:'Clash Display',sans-serif;
+    font-size:clamp(1.8rem,5vw,2.9rem);
+    font-weight:700; letter-spacing:-0.03em;
+    background:linear-gradient(135deg,var(--accent) 10%,var(--accent2) 80%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom:10px;
+  }
+  .tool-header p { color:var(--muted); font-size:0.97rem; max-width:440px; margin:0 auto 20px; line-height:1.65; }
+  .badge-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .badge {
+    background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.28);
+    color:var(--accent); font-size:0.72rem; padding:4px 13px;
+    border-radius:100px; font-weight:600;
+  }
+
+  /* BIG HOURLY DISPLAY */
+  .hourly-hero {
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    border-radius:24px; padding:36px 28px;
+    text-align:center; margin-bottom:16px;
+    box-shadow:0 8px 40px rgba(217,119,6,0.25);
+    position:relative; overflow:hidden;
+  }
+  .hourly-hero::before {
+    content:''; position:absolute;
+    top:-60px; right:-60px; width:200px; height:200px;
+    background:rgba(255,255,255,0.08); border-radius:50%;
+  }
+  .hourly-hero::after {
+    content:''; position:absolute;
+    bottom:-40px; left:-40px; width:150px; height:150px;
+    background:rgba(255,255,255,0.06); border-radius:50%;
+  }
+  .hero-label {
+    font-size:0.72rem; color:rgba(255,255,255,0.7);
+    text-transform:uppercase; letter-spacing:0.12em; font-weight:700;
+    margin-bottom:12px; position:relative; z-index:1;
+  }
+  .hero-number {
+    font-family:'Clash Display',sans-serif;
+    font-size:clamp(3.5rem,12vw,5.5rem);
+    font-weight:700; color:#fff; line-height:1;
+    position:relative; z-index:1;
+    animation:none;
+  }
+  .hero-number.pop { animation:popIn 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes popIn {
+    0% { transform:scale(0.8); opacity:0; }
+    100% { transform:scale(1); opacity:1; }
+  }
+  .hero-sub {
+    font-size:0.9rem; color:rgba(255,255,255,0.75);
+    margin-top:8px; position:relative; z-index:1;
+  }
+
+  /* BREAKDOWN GRID */
+  .breakdown-grid {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:10px; margin-bottom:20px;
+  }
+  .bd-card {
+    background:var(--card); border:1.5px solid var(--border);
+    border-radius:16px; padding:16px 12px; text-align:center;
+    box-shadow:0 2px 12px rgba(217,119,6,0.07);
+    transition:all 0.3s;
+  }
+  .bd-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(217,119,6,0.12); }
+  .bd-label { font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:8px; }
+  .bd-val {
+    font-family:'Clash Display',sans-serif; font-size:1.3rem; font-weight:700;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .bd-val.dash { color:var(--muted); -webkit-text-fill-color:var(--muted); background:none; font-size:1.1rem; }
+  .bd-period { font-size:0.68rem; color:var(--muted); margin-top:3px; }
+
+  /* CALC CARD */
+  .calc-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; padding:28px 24px; margin-bottom:16px;
+    box-shadow:0 2px 16px rgba(217,119,6,0.07);
+  }
+  .sec-title {
+    font-family:'Syne',sans-serif; font-size:0.72rem; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.1em; font-weight:700;
+    margin-bottom:20px; display:flex; align-items:center; gap:8px;
+  }
+
+  /* INPUTS */
+  .input-2col { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  .input-group { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+  .input-group.no-mb { margin-bottom:0; }
+  .input-label { font-size:0.8rem; color:var(--muted); font-weight:600; }
+  .input-wrap { position:relative; display:flex; align-items:center; }
+  .input-prefix { position:absolute; left:14px; font-size:1rem; color:var(--accent); font-weight:700; pointer-events:none; }
+  .input-field {
+    width:100%; background:#fffbeb;
+    border:1.5px solid rgba(245,158,11,0.2);
+    border-radius:12px; padding:13px 14px 13px 36px;
+    font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600;
+    color:var(--text); outline:none; transition:all 0.2s;
+    -moz-appearance:textfield;
+  }
+  .input-field.no-prefix { padding-left:14px; }
+  .input-field::-webkit-outer-spin-button,
+  .input-field::-webkit-inner-spin-button { -webkit-appearance:none; }
+  .input-field:focus {
+    border-color:var(--accent); background:#fff;
+    box-shadow:0 0 0 3px rgba(245,158,11,0.12);
+  }
+
+  /* WORK HOURS PRESETS */
+  .hours-presets { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .hp-btn {
+    background:#fffbeb; border:1px solid rgba(245,158,11,0.25);
+    border-radius:8px; padding:6px 12px;
+    font-size:0.78rem; color:var(--accent); cursor:pointer;
+    font-family:'DM Sans',sans-serif; font-weight:600; transition:all 0.2s;
+  }
+  .hp-btn:hover { background:rgba(245,158,11,0.12); border-color:var(--accent); }
+  .hp-btn.sel { background:var(--accent); color:#fff; border-color:transparent; }
+
+  /* BUTTONS */
+  .btn-calc {
+    width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2));
+    border:none; border-radius:14px; padding:16px;
+    font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
+    color:#fff; cursor:pointer; transition:all 0.2s;
+    box-shadow:0 4px 20px rgba(217,119,6,0.3); margin-bottom:10px;
+    position:relative; overflow:hidden;
+  }
+  .btn-calc::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg,transparent,rgba(255,255,255,0.15),transparent);
+    transform:translateX(-100%); transition:transform 0.4s;
+  }
+  .btn-calc:hover::after { transform:translateX(100%); }
+  .btn-calc:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(217,119,6,0.4); }
+  .btn-row { display:flex; gap:10px; }
+  .btn-sec {
+    flex:1; background:#fffbeb;
+    border:1.5px solid rgba(245,158,11,0.22); border-radius:12px;
+    padding:12px; font-family:'DM Sans',sans-serif;
+    font-size:0.86rem; color:var(--accent); cursor:pointer;
+    transition:all 0.2s; font-weight:600;
+  }
+  .btn-sec:hover { background:rgba(245,158,11,0.12); border-color:var(--accent); }
+
+  /* COMPARISON TABLE */
+  .compare-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; padding:24px; margin-bottom:16px;
+    box-shadow:0 2px 16px rgba(217,119,6,0.07);
+    display:none;
+  }
+  .compare-card.show { display:block; animation:fadeUp 0.4s ease; }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(14px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .compare-table { width:100%; border-collapse:collapse; margin-top:14px; font-size:0.88rem; }
+  .compare-table th {
+    text-align:left; color:var(--muted); font-size:0.7rem;
+    text-transform:uppercase; letter-spacing:0.08em;
+    padding:0 0 10px; font-weight:700;
+  }
+  .compare-table td { padding:11px 0; border-top:1px solid var(--border); }
+  .compare-table td:last-child { text-align:right; font-family:'Syne',sans-serif; font-weight:700; color:var(--accent); }
+  .period-icon { margin-right:8px; }
+
+  /* SEO */
+  .seo-article { max-width:700px; margin:0 auto 40px; padding:0 20px; color:var(--muted); line-height:1.8; font-size:0.93rem; position:relative; z-index:1; }
+  .seo-article h2 { font-family:'Syne',sans-serif; color:var(--text); font-size:1.2rem; margin:28px 0 10px; font-weight:700; }
+  .seo-article h3 { font-family:'Syne',sans-serif; color:var(--accent); font-size:1rem; margin:20px 0 8px; font-weight:600; }
+  .seo-article ul { padding-left:20px; }
+  .seo-article li { margin-bottom:6px; }
+  .seo-article strong { color:var(--text); }
+
+  .related-tools { max-width:700px; margin:0 auto 60px; padding:0 20px; position:relative; z-index:1; }
+  .related-tools h2 { font-family:'Syne',sans-serif; font-size:0.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:14px; font-weight:700; }
+  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .related-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; font-size:0.84rem; color:var(--muted); text-decoration:none; transition:all 0.2s; font-weight:500; }
+  .related-card:hover { background:#fffbeb; color:var(--accent); border-color:rgba(245,158,11,0.3); transform:translateY(-2px); }
+
+  footer { background:var(--card); border-top:1px solid var(--border); padding:24px 32px; text-align:center; color:var(--muted); font-size:0.82rem; position:relative; z-index:1; }
+  .footer-links { display:flex; gap:20px; justify-content:center; margin-bottom:8px; }
+  .footer-links a { color:var(--muted); text-decoration:none; }
+  .footer-links a:hover { color:var(--accent); }
+
+  .toast { position:fixed; bottom:24px; right:24px; background:#fff; border:1px solid rgba(245,158,11,0.25); color:var(--text); padding:12px 20px; border-radius:12px; font-size:0.88rem; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:999; box-shadow:0 8px 24px rgba(217,119,6,0.15); }
+  .toast.show { opacity:1; transform:translateY(0); }
+
+  @media (max-width:560px) {
+    .breakdown-grid { grid-template-columns:1fr 1fr; }
+    .input-2col { grid-template-columns:1fr; }
+    nav { padding:14px 20px; }
+    .pg-wrap { padding:32px 16px 60px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert salary to hourly rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide your annual salary by total work hours per year. For standard 40hr/week x 52 weeks = 2080 hours. So $60,000 / 2080 = $28.85/hour."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is $50,000 a year per hour?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$50,000 per year equals $24.04 per hour based on a 40-hour work week and 52 weeks per year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is $100,000 a year hourly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$100,000 per year is approximately $48.08 per hour based on a standard 40hr/week, 52 weeks/year schedule."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">⚡ Toolyfi</a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li></ul>
+</nav>
+
+<div class="pg-wrap">
+  <div class="breadcrumb"><a href="index.html">Home</a> → Salary to Hourly Calculator</div>
+
+  <div class="tool-header">
+    <span class="header-icon">💼</span>
+    <h1>Salary to Hourly Calculator</h1>
+    <p>Convert your annual salary to hourly wage instantly. See monthly, weekly, daily & hourly breakdown.</p>
+    <div class="badge-row">
+      <span class="badge">💚 Free</span>
+      <span class="badge">⚡ Instant</span>
+      <span class="badge">📊 Full Breakdown</span>
+      <span class="badge">🔒 No Signup</span>
+    </div>
+  </div>
+
+  <!-- HERO HOURLY -->
+  <div class="hourly-hero">
+    <div class="hero-label">💰 Your Hourly Rate</div>
+    <div class="hero-number" id="heroNum">$0.00</div>
+    <div class="hero-sub" id="heroSub">Enter your salary below to calculate</div>
+  </div>
+
+  <!-- BREAKDOWN GRID -->
+  <div class="breakdown-grid">
+    <div class="bd-card">
+      <div class="bd-label">Annual</div>
+      <div class="bd-val dash" id="bd-annual">–</div>
+      <div class="bd-period">per year</div>
+    </div>
+    <div class="bd-card">
+      <div class="bd-label">Monthly</div>
+      <div class="bd-val dash" id="bd-monthly">–</div>
+      <div class="bd-period">per month</div>
+    </div>
+    <div class="bd-card">
+      <div class="bd-label">Weekly</div>
+      <div class="bd-val dash" id="bd-weekly">–</div>
+      <div class="bd-period">per week</div>
+    </div>
+    <div class="bd-card">
+      <div class="bd-label">Daily</div>
+      <div class="bd-val dash" id="bd-daily">–</div>
+      <div class="bd-period">per day</div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="calc-card">
+    <div class="sec-title">⚙️ Enter Your Details</div>
+
+    <div class="input-group">
+      <div class="input-label">Annual Salary</div>
+      <div class="input-wrap">
+        <span class="input-prefix">$</span>
+        <input type="number" id="annualSalary" class="input-field" placeholder="e.g. 60000" min="0" oninput="calculate()"/>
+      </div>
+    </div>
+
+    <div class="input-2col">
+      <div class="input-group no-mb">
+        <div class="input-label">Hours per Week</div>
+        <div class="input-wrap">
+          <input type="number" id="hoursPerWeek" class="input-field no-prefix" value="40" min="1" max="168" oninput="calculate()"/>
+        </div>
+        <div class="hours-presets">
+          <button class="hp-btn sel" onclick="setHours(40,this)">40h</button>
+          <button class="hp-btn" onclick="setHours(35,this)">35h</button>
+          <button class="hp-btn" onclick="setHours(45,this)">45h</button>
+          <button class="hp-btn" onclick="setHours(50,this)">50h</button>
+        </div>
+      </div>
+      <div class="input-group no-mb">
+        <div class="input-label">Weeks per Year</div>
+        <div class="input-wrap">
+          <input type="number" id="weeksPerYear" class="input-field no-prefix" value="52" min="1" max="52" oninput="calculate()"/>
+        </div>
+        <div class="hours-presets">
+          <button class="hp-btn sel" onclick="setWeeks(52,this)">52w</button>
+          <button class="hp-btn" onclick="setWeeks(50,this)">50w</button>
+          <button class="hp-btn" onclick="setWeeks(48,this)">48w</button>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <button class="btn-calc" onclick="calculate()">💼 Calculate Hourly Rate</button>
+    <div class="btn-row">
+      <button class="btn-sec" onclick="copyResult()">📋 Copy Result</button>
+      <button class="btn-sec" onclick="resetAll()">↺ Reset</button>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="compare-card" id="compareCard">
+    <div class="sec-title">📊 Full Income Breakdown</div>
+    <table class="compare-table">
+      <tr><th>Period</th><th></th><th>Amount</th></tr>
+      <tr><td><span class="period-icon">📅</span>Annual</td><td></td><td id="ct-annual">–</td></tr>
+      <tr><td><span class="period-icon">🗓️</span>Monthly</td><td></td><td id="ct-monthly">–</td></tr>
+      <tr><td><span class="period-icon">📆</span>Bi-Weekly</td><td></td><td id="ct-biweekly">–</td></tr>
+      <tr><td><span class="period-icon">🗒️</span>Weekly</td><td></td><td id="ct-weekly">–</td></tr>
+      <tr><td><span class="period-icon">📋</span>Daily</td><td></td><td id="ct-daily">–</td></tr>
+      <tr><td><span class="period-icon">⏰</span>Hourly</td><td></td><td id="ct-hourly">–</td></tr>
+      <tr><td><span class="period-icon">⏱️</span>Per Minute</td><td></td><td id="ct-minute">–</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- SEO -->
+<div class="seo-article">
+  <h2>How to Convert Salary to Hourly Rate</h2>
+  <p>Our <strong>salary to hourly calculator</strong> converts your annual salary to an hourly wage using the formula: <strong>Hourly Rate = Annual Salary ÷ (Hours per Week × Weeks per Year)</strong>. For a standard 40-hour work week and 52 weeks, divide your salary by 2,080.</p>
+
+  <h2>Salary to Hourly Examples</h2>
+  <ul>
+    <li><strong>$40,000/year</strong> = $19.23/hour</li>
+    <li><strong>$60,000/year</strong> = $28.85/hour</li>
+    <li><strong>$80,000/year</strong> = $38.46/hour</li>
+    <li><strong>$100,000/year</strong> = $48.08/hour</li>
+  </ul>
+
+  <h3>Why Use This Calculator?</h3>
+  <p>Comparing job offers, negotiating salary, or understanding your true hourly value — this tool gives you the complete picture with annual, monthly, weekly, daily and hourly breakdown instantly.</p>
+</div>
+
+
+<div class="faq-section" style="max-width:720px;margin:0 auto 40px;padding:0 20px;position:relative;z-index:1;">
+<h2 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text)">Frequently Asked Questions</h2>
+<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
+  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+    How do I convert salary to hourly rate? <span style="color:var(--accent);font-size:1.2rem;">+</span>
+  </summary>
+  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">Divide your annual salary by total work hours per year. For standard 40hr/week x 52 weeks = 2080 hours. So $60,000 / 2080 = $28.85/hour.</p>
+</details>
+<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
+  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+    How much is $50,000 a year per hour? <span style="color:var(--accent);font-size:1.2rem;">+</span>
+  </summary>
+  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">$50,000 per year equals $24.04 per hour based on a 40-hour work week and 52 weeks per year.</p>
+</details>
+<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
+  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+    How much is $100,000 a year hourly? <span style="color:var(--accent);font-size:1.2rem;">+</span>
+  </summary>
+  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">$100,000 per year is approximately $48.08 per hour based on a standard 40hr/week, 52 weeks/year schedule.</p>
+</details>
+</div>
+<div class="related-tools">
+  <h2>Related Tools</h2>
+  <div class="related-grid">
+    <a href="tip-calculator.html" class="related-card">🍽️ Tip Calculator</a>
+    <a href="profit-margin-calculator.html" class="related-card">📈 Profit Margin</a>
+    <a href="compound-interest-calculator.html" class="related-card">📊 Compound Interest</a>
+    <a href="sales-tax-calculator.html" class="related-card">🧾 Sales Tax</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links"><a href="index.html">Home</a><a href="privacy.html">Privacy</a></div>
+  <p>🚀 Made with ❤️ by <a href="https://toolyfi.com" style="color:var(--accent);text-decoration:none;">Toolyfi</a></p>
+  <p style="margin-top:6px;">© 2026 Toolyfi.com</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+<script src="main.js"></script>
+<script>
+const fmt = v => '$' + v.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+function setHours(h, btn) {
+  document.getElementById('hoursPerWeek').value = h;
+  document.querySelectorAll('.hours-presets .hp-btn').forEach(b => {
+    if (b.closest('.input-group') === btn.closest('.input-group')) b.classList.remove('sel');
+  });
+  btn.classList.add('sel');
+  calculate();
+}
+function setWeeks(w, btn) {
+  document.getElementById('weeksPerYear').value = w;
+  document.querySelectorAll('.input-group:nth-child(2) .hp-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  calculate();
+}
+
+function calculate() {
+  const annual = parseFloat(document.getElementById('annualSalary').value);
+  const hpw    = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
+  const wpy    = parseFloat(document.getElementById('weeksPerYear').value) || 52;
+
+  if (!annual || annual <= 0) return;
+
+  const totalHours = hpw * wpy;
+  const hourly   = annual / totalHours;
+  const daily    = hourly * hpw / 5;
+  const weekly   = annual / wpy;
+  const biweekly = weekly * 2;
+  const monthly  = annual / 12;
+  const perMin   = hourly / 60;
+
+  // Hero
+  const hero = document.getElementById('heroNum');
+  hero.textContent = fmt(hourly);
+  hero.classList.remove('pop');
+  void hero.offsetWidth;
+  hero.classList.add('pop');
+  document.getElementById('heroSub').textContent = `Based on ${hpw} hrs/week × ${wpy} weeks = ${totalHours.toLocaleString()} hrs/year`;
+
+  // Breakdown grid
+  const setVal = (id, v) => {
+    const el = document.getElementById(id);
+    el.textContent = fmt(v);
+    el.classList.remove('dash');
+  };
+  setVal('bd-annual',  annual);
+  setVal('bd-monthly', monthly);
+  setVal('bd-weekly',  weekly);
+  setVal('bd-daily',   daily);
+
+  // Table
+  document.getElementById('ct-annual').textContent   = fmt(annual);
+  document.getElementById('ct-monthly').textContent  = fmt(monthly);
+  document.getElementById('ct-biweekly').textContent = fmt(biweekly);
+  document.getElementById('ct-weekly').textContent   = fmt(weekly);
+  document.getElementById('ct-daily').textContent    = fmt(daily);
+  document.getElementById('ct-hourly').textContent   = fmt(hourly);
+  document.getElementById('ct-minute').textContent   = fmt(perMin);
+  document.getElementById('compareCard').classList.add('show');
+}
+
+function copyResult() {
+  const h = document.getElementById('heroNum').textContent;
+  if (h === '$0.00') { showToast('⚠️ Calculate first'); return; }
+  const annual = document.getElementById('bd-annual').textContent;
+  const text = `Hourly: ${h} | Annual: ${annual} | Toolyfi.com`;
+  navigator.clipboard.writeText(text).then(() => showToast('✅ Copied!'));
+}
+
+function resetAll() {
+  document.getElementById('annualSalary').value = '';
+  document.getElementById('hoursPerWeek').value = 40;
+  document.getElementById('weeksPerYear').value = 52;
+  document.getElementById('heroNum').textContent = '$0.00';
+  document.getElementById('heroSub').textContent = 'Enter your salary below to calculate';
+  ['bd-annual','bd-monthly','bd-weekly','bd-daily'].forEach(id => {
+    const el = document.getElementById(id);
+    el.textContent = '–'; el.classList.add('dash');
+  });
+  document.getElementById('compareCard').classList.remove('show');
+  showToast('↺ Reset done');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>
