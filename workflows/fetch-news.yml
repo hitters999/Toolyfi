@@ -1,0 +1,76 @@
+name: Toolyfi Auto News Fetch
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - run: |
+          mkdir -p scripts
+          cat > scripts/fetch-news.js << 'SCRIPT'
+          #!/usr/bin/env node
+          const https = require('https');
+          const fs = require('fs');
+          const path = require('path');
+          const NEWS_API_KEY = process.env.NEWS_API_KEY;
+          const NEWS_API_URL = 'https://newsapi.org/v2/everything';
+          const KEYWORDS = ['calculator OR salary OR financial tools', 'technology trends OR programming', 'sports statistics', 'currency converter OR forex', 'health calculator OR fitness'];
+          function fetchNews(q) {
+            return new Promise((resolve, reject) => {
+              const url = `${NEWS_API_URL}?q=${encodeURIComponent(q)}&sortBy=publishedAt&language=en&apiKey=${NEWS_API_KEY}&pageSize=5`;
+              https.get(url, (res) => {
+                let data = '';
+                res.on('data', chunk => data += chunk);
+                res.on('end', () => {
+                  try { resolve(JSON.parse(data).articles || []); } catch (e) { reject(e); }
+                });
+              }).on('error', reject);
+            });
+          }
+          async function main() {
+            if (!NEWS_API_KEY) { console.error('No API key'); process.exit(1); }
+            let all = [];
+            for (const kw of KEYWORDS) {
+              try {
+                const arts = await fetchNews(kw);
+                all = [...all, ...arts];
+              } catch(e) { console.error(kw, e.message); }
+            }
+            const unique = Array.from(new Map(all.map(a => [a.url, a])).values()).slice(0,10);
+            if (!fs.existsSync('./updatesworld')) fs.mkdirSync('./updatesworld');
+            let cnt = 0;
+            for (const a of unique) {
+              const slug = a.title.toLowerCase().replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-').substring(0,50);
+              const file = `./updatesworld/${slug}.html`;
+              if (fs.existsSync(file)) continue;
+              const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>${a.title} | Toolyfi</title><meta name="uw-title" content="${a.title}"><meta property="og:image" content="${a.urlToImage || 'https://toolyfi.com/images/default-og.jpg'}"><script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script><style>body{font-family:sans-serif;max-width:900px;margin:0 auto;padding:20px;background:#f5f7fa}img{max-width:100%;height:auto}.header{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:40px;border-radius:12px;margin-bottom:20px}h1{margin:0;font-size:2em}</style></head><body><div class="header"><h1>${a.title}</h1><p>${a.source.name} • ${new Date(a.publishedAt).toLocaleDateString()}</p></div><img src="${a.urlToImage||''}" onerror="this.style.display='none'"><p>${a.description}</p><a href="${a.url}" target="_blank">Read Full Article</a><hr><a href="/updatesworld/updatesworld.html">Back</a></body></html>`;
+              fs.writeFileSync(file, html);
+              cnt++;
+            }
+            console.log(`Created ${cnt} articles`);
+          }
+          main();
+          SCRIPT
+      
+      - env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: node scripts/fetch-news.js
+      
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Toolyfi Bot"
+          git add updatesworld/ || true
+          git commit -m "Auto: Fetch news" || true
+          git push origin main || true
