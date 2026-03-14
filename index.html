@@ -594,12 +594,23 @@
       }
     }
 
+    // Fallback articles if GitHub fetch fails
+    const fallbackArticles = [
+      { title: "Salary Calculator: Calculate Your Take-Home Pay in 2026", href: "/updatesworld/salary-calculator.html" },
+      { title: "BMI Calculator: Track Your Health & Fitness Goals", href: "/updatesworld/bmi-calculator.html" },
+      { title: "Currency Converter: USD, EUR, PKR Live Exchange Rates", href: "/updatesworld/currency-converter.html" },
+      { title: "Scientific Calculator: Advanced Math & Engineering Tools", href: "/updatesworld/scientific-calculator.html" },
+      { title: "Compound Interest Calculator: Grow Your Money Smart", href: "/updatesworld/compound-interest.html" },
+      { title: "Loan EMI Calculator: Plan Your Finances Better", href: "/updatesworld/loan-calculator.html" },
+      { title: "Tax Calculator 2026: Calculate Income Tax Instantly", href: "/updatesworld/tax-calculator.html" }
+    ];
+
     function showArticle(i) {
       const el = document.getElementById("tickerText");
       el.style.opacity = "0";
       el.style.transform = "translateY(-10px)";
       setTimeout(() => {
-        const a = articles[i];
+        const a = articles[i] || fallbackArticles[i % fallbackArticles.length];
         el.textContent = a.title;
         el.onclick = () => window.location.href = a.href;
         el.style.opacity = "1";
@@ -608,6 +619,10 @@
     }
 
     function startTicker() {
+      // Use fetched articles or fallback
+      if (!articles || articles.length === 0) {
+        articles = fallbackArticles;
+      }
       articles = articles.sort(() => Math.random() - 0.5);
       showArticle(0);
       setInterval(() => {
