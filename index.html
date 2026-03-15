@@ -642,7 +642,18 @@
     
     <div class="featured-cards-grid">
       
-      <!-- Tool 1: Background Remover -->
+      <!-- Tool 1: YouTube Transcript Extractor - NEW -->
+      <div class="featured-card">
+        <div class="featured-card-icon">🎬</div>
+        <div class="featured-card-content">
+          <span class="featured-badge" style="background: linear-gradient(135deg, #ff4d4d, #ff7b2e);">AI TOOL 🔥 NEW</span>
+          <h3 class="featured-card-title">YouTube Transcript Extractor</h3>
+          <p class="featured-card-desc">Extract transcript from any YouTube video instantly. AI-powered analysis, key points & summary. Free, no signup.</p>
+          <a href="youtube-transcript-extractor.html" class="featured-card-link">Try Now →</a>
+        </div>
+      </div>
+
+      <!-- Tool 2: Background Remover -->
       <div class="featured-card">
         <div class="featured-card-icon">🖼️</div>
         <div class="featured-card-content">
@@ -653,7 +664,7 @@
         </div>
       </div>
 
-      <!-- Tool 2: AI Image Generator -->
+      <!-- Tool 3: AI Image Generator -->
       <div class="featured-card">
         <div class="featured-card-icon">🎨</div>
         <div class="featured-card-content">
@@ -664,7 +675,7 @@
         </div>
       </div>
 
-      <!-- Tool 3: Salary to Hourly -->
+      <!-- Tool 4: Salary to Hourly -->
       <div class="featured-card">
         <div class="featured-card-icon">💼</div>
         <div class="featured-card-content">
@@ -672,17 +683,6 @@
           <h3 class="featured-card-title">Salary to Hourly</h3>
           <p class="featured-card-desc">Convert annual salary to hourly rate instantly. Perfect for freelancers & contractors.</p>
           <a href="salary-to-hourly.html" class="featured-card-link">Try Now →</a>
-        </div>
-      </div>
-
-      <!-- Tool 4: Tip Calculator -->
-      <div class="featured-card">
-        <div class="featured-card-icon">🍽️</div>
-        <div class="featured-card-content">
-          <span class="featured-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706);">CALCULATOR</span>
-          <h3 class="featured-card-title">Tip Calculator</h3>
-          <p class="featured-card-desc">Calculate tips & split bills easily. Perfect for restaurants & group payments.</p>
-          <a href="tip-calculator.html" class="featured-card-link">Try Now →</a>
         </div>
       </div>
 
@@ -858,6 +858,22 @@
               </div>
             </div>
           </div>
+
+          <!-- Item 10: YouTube Transcript Extractor - NEW -->
+          <div id="carousel-tool-9" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
+            <div style="display: flex; align-items: flex-start; gap: 30px;">
+              <div style="font-size: 5em; min-width: 80px; text-align: center;">🎬</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                  <span style="display: inline-block; background: linear-gradient(135deg, #ff4d4d, #ff7b2e); padding: 8px 16px; border-radius: 25px; font-size: 0.85em; font-weight: 900; letter-spacing: 1.5px; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); text-transform: uppercase;">AI TOOL</span>
+                  <span style="color: #ffd93d; font-weight: 700;">🔥 NEW</span>
+                </div>
+                <h3 style="color: #ff6b6b; margin: 0 0 12px 0; font-size: 1.9em; font-weight: 1000; line-height: 1.2; letter-spacing: 0.5px;">YouTube Transcript Extractor</h3>
+                <p style="color: rgba(255,255,255,0.85); margin: 0 0 20px 0; font-size: 1.05em; line-height: 1.7; font-weight: 500;">Extract transcript from any YouTube video instantly. Get AI-powered analysis, key points, strategy & action plan — 100% free, no signup needed.</p>
+                <a href="youtube-transcript-extractor.html" style="display: inline-block; color: white; background: linear-gradient(135deg, #ff4d4d, #ff7b2e); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 800; transition: all 0.3s; cursor: pointer; border: none; box-shadow: 0 10px 25px rgba(255,77,77,0.3);">→ Try Now</a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Navigation Buttons -->
@@ -877,6 +893,7 @@
           <div id="tool-dot-6" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(6)"></div>
           <div id="tool-dot-7" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(7)"></div>
           <div id="tool-dot-8" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(8)"></div>
+          <div id="tool-dot-9" style="width: 12px; height: 12px; background: rgba(255,77,77,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(9)"></div>
         </div>
       </div>
     </div>
@@ -904,7 +921,7 @@
     let carouselToolIndex = 0;
     
     function updateToolDots() {
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         const dot = document.getElementById('tool-dot-' + i);
         if (i === carouselToolIndex) {
           dot.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
@@ -931,14 +948,14 @@
 
     function carouselToolNext() {
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.remove('active');
-      carouselToolIndex = (carouselToolIndex + 1) % 9;
+      carouselToolIndex = (carouselToolIndex + 1) % 10;
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.add('active');
       updateToolDots();
     }
 
     function carouselToolPrev() {
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.remove('active');
-      carouselToolIndex = (carouselToolIndex - 1 + 9) % 9;
+      carouselToolIndex = (carouselToolIndex - 1 + 10) % 10;
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.add('active');
       updateToolDots();
     }
@@ -982,6 +999,7 @@
     // TOOLS DATA
     const TOOLS = [
       // AI TOOLS
+      { name: "YouTube Transcript",  desc: "Extract transcript from any YouTube video. Free AI analysis, key points & summary.",  icon: "🎬", category: "ai", href: "youtube-transcript-extractor.html" },
       { name: "AI Text Detector",    desc: "Detect if text is AI-written. Instant, free & accurate.",  icon: "🤖", category: "ai",        href: "ai-text-detector.html" },
       { name: "AI Image Generator",  desc: "Text-to-image AI tool. 9 styles, free & unlimited.",        icon: "🎨", category: "ai",        href: "ai-image-generator.html" },
       
