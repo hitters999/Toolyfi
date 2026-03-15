@@ -261,7 +261,7 @@
 </footer>
 
 <script>
-  const ANTHROPIC_KEY = "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";
+  const ANTHROPIC_KEY = "YOUR_API_KEY_HERE";
   let currentAnalysis = "", currentTranscript = "", currentVideoId = "";
 
   function extractVideoId(url) {
@@ -275,6 +275,37 @@
     if (id) document.getElementById(id).classList.add("show");
   }
 
+  async function fetchTranscriptFromAPI(vid) {
+    // API 1: youtubetranscript.com
+    try {
+      const res = await fetch(`https://api.youtubetranscript.com/?videoId=${vid}`);
+      const data = await res.json();
+      if (data && data.transcript && data.transcript.length > 0) {
+        return data.transcript.map(t => t.text).join(" ");
+      }
+    } catch(e) {}
+
+    // API 2: tactiq.io free proxy
+    try {
+      const res = await fetch(`https://tactiq-apps-prod.tactiq.io/transcript?videoUrl=https://www.youtube.com/watch?v=${vid}&lang=en`);
+      const data = await res.json();
+      if (data && data.captions && data.captions.length > 0) {
+        return data.captions.map(c => c.text).join(" ");
+      }
+    } catch(e) {}
+
+    // API 3: kome.ai proxy
+    try {
+      const res = await fetch(`https://yt-transcript-api.kome.ai/api/transcript?video_id=${vid}`);
+      const data = await res.json();
+      if (data && data.transcript && data.transcript.length > 0) {
+        return data.transcript.map(t => t.text).join(" ");
+      }
+    } catch(e) {}
+
+    return null;
+  }
+
   async function startAnalysis() {
     const url = document.getElementById("yt-url").value.trim();
     const vid = extractVideoId(url);
@@ -283,36 +314,36 @@
     document.getElementById("analyse-btn").disabled = true;
     document.getElementById("result-wrap").classList.remove("show");
     showStatus("s-fetch");
-    try {
-      const res = await fetch(`https://api.youtubetranscript.com/?videoId=${vid}`);
-      const data = await res.json();
-      if (!data || data.error || !data.transcript) { await analyzeWithClaude(vid, null); return; }
-      currentTranscript = data.transcript.map(t => t.text).join(" ");
-      await analyzeWithClaude(vid, currentTranscript);
-    } catch(e) { await analyzeWithClaude(vid, null); }
+
+    const transcriptText = await fetchTranscriptFromAPI(vid);
+    if (transcriptText) {
+      currentTranscript = transcriptText;
+    }
+    await analyzeWithClaude(vid, currentTranscript || null);
   }
 
   async function analyzeWithClaude(vid, transcript) {
     showStatus("s-analyze");
     const prompt = transcript
       ? `Analyze this YouTube transcript and provide:\n1. 📌 **Main Topic & Summary**\n2. 🎯 **Core Strategy / Key Message**\n3. 🔑 **Top 7 Key Points** (bullets)\n4. 💡 **Actionable Tips & Lessons**\n5. 📋 **Step-by-step Action Plan**\n6. 🌟 **One-line Conclusion**\n\nTranscript:\n${transcript.slice(0,8000)}`
-      : `YouTube Video ID: ${vid}. Transcript not available. Guide user to get it manually from YouTube (click "..." → "Open transcript").`;
+      : `YouTube Video ID: ${vid}. Transcript could not be fetched automatically. Please tell the user:\n1. The transcript was not available automatically\n2. They can get it from YouTube manually: click "..." below the video → "Open transcript" → copy all text and paste it here\n3. Ask them what the video is about so you can still help them`;
     try {
       const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
-        headers: { 
-  "Content-Type": "application/json",
-  "x-api-key": ANTHROPIC_KEY,
-  "anthropic-version": "2023-06-01",
-  "anthropic-dangerous-direct-browser-access": "true"
-},
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": ANTHROPIC_KEY,
+          "anthropic-version": "2023-06-01",
+          "anthropic-dangerous-direct-browser-access": "true"
+        },
         body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, messages: [{ role: "user", content: prompt }] })
       });
       const result = await response.json();
       currentAnalysis = result.content?.map(c => c.text || "").join("") || "";
+      if (!currentAnalysis) throw new Error("Empty response");
       showResult(vid);
     } catch(e) {
-      document.getElementById("error-msg").textContent = "⚠️ Analysis failed. Please try again.";
+      document.getElementById("error-msg").textContent = "⚠️ Analysis failed. Please check your API key and try again.";
       showStatus("s-error");
       document.getElementById("analyse-btn").disabled = false;
     }
