@@ -261,6 +261,7 @@
 </footer>
 
 <script>
+  const GROQ_KEY = "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";
   let currentAnalysis = "", currentTranscript = "", currentVideoId = "";
 
   function extractVideoId(url) {
@@ -275,33 +276,21 @@
   }
 
   async function fetchTranscriptFromAPI(vid) {
-    // API 1: youtubetranscript.com
     try {
       const res = await fetch(`https://api.youtubetranscript.com/?videoId=${vid}`);
       const data = await res.json();
-      if (data && data.transcript && data.transcript.length > 0) {
-        return data.transcript.map(t => t.text).join(" ");
-      }
+      if (data && data.transcript && data.transcript.length > 0) return data.transcript.map(t => t.text).join(" ");
     } catch(e) {}
-
-    // API 2: tactiq.io free proxy
     try {
       const res = await fetch(`https://tactiq-apps-prod.tactiq.io/transcript?videoUrl=https://www.youtube.com/watch?v=${vid}&lang=en`);
       const data = await res.json();
-      if (data && data.captions && data.captions.length > 0) {
-        return data.captions.map(c => c.text).join(" ");
-      }
+      if (data && data.captions && data.captions.length > 0) return data.captions.map(c => c.text).join(" ");
     } catch(e) {}
-
-    // API 3: kome.ai proxy
     try {
       const res = await fetch(`https://yt-transcript-api.kome.ai/api/transcript?video_id=${vid}`);
       const data = await res.json();
-      if (data && data.transcript && data.transcript.length > 0) {
-        return data.transcript.map(t => t.text).join(" ");
-      }
+      if (data && data.transcript && data.transcript.length > 0) return data.transcript.map(t => t.text).join(" ");
     } catch(e) {}
-
     return null;
   }
 
@@ -313,16 +302,15 @@
     document.getElementById("analyse-btn").disabled = true;
     document.getElementById("result-wrap").classList.remove("show");
     showStatus("s-fetch");
-
     const transcriptText = await fetchTranscriptFromAPI(vid);
     if (transcriptText) currentTranscript = transcriptText;
-    await analyzeWithAI(vid, currentTranscript || null);
+    await analyzeWithGroq(vid, currentTranscript || null);
   }
 
-  async function analyzeWithAI(vid, transcript) {
+  async function analyzeWithGroq(vid, transcript) {
     showStatus("s-analyze");
     const prompt = transcript
-      ? `You are an expert content analyst. Analyze this YouTube video transcript and provide a detailed breakdown:
+      ? `You are an expert content analyst. Analyze this YouTube video transcript and provide:
 
 1. 📌 **Main Topic & Summary** (3-4 lines)
 2. 🎯 **Core Strategy / Key Message**
@@ -333,47 +321,33 @@
 
 Transcript:
 ${transcript.slice(0, 6000)}`
-      : `A user tried to extract the transcript from YouTube video ID: ${vid} but it was not available automatically.
-
-Please:
-1. Tell them the transcript could not be fetched automatically
-2. Guide them: Go to YouTube → click "..." below the video → "Open transcript" → copy all text → paste it here
-3. Offer to analyze it once they paste the transcript manually`;
+      : `YouTube Video ID: ${vid}. Transcript not available. Tell the user to get it manually: YouTube → "..." → "Open transcript" → copy and paste here.`;
 
     try {
-      // Using Pollinations.AI - 100% free, no API key needed
-      const response = await fetch("https://text.pollinations.ai/openai", {
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${GROQ_KEY}`
+        },
         body: JSON.stringify({
-          model: "openai",
+          model: "llama3-8b-8192",
           messages: [
-            { role: "system", content: "You are an expert content analyst and strategist. Provide clear, structured, actionable analysis." },
+            { role: "system", content: "You are an expert content analyst. Provide clear, structured, actionable analysis." },
             { role: "user", content: prompt }
           ],
           max_tokens: 1500,
           temperature: 0.7
         })
       });
-
       const result = await response.json();
       currentAnalysis = result.choices?.[0]?.message?.content || "";
-
-      if (!currentAnalysis) throw new Error("Empty response");
+      if (!currentAnalysis) throw new Error("Empty");
       showResult(vid);
     } catch(e) {
-      // Fallback: try Pollinations direct endpoint
-      try {
-        const encodedPrompt = encodeURIComponent(prompt);
-        const res = await fetch(`https://text.pollinations.ai/${encodedPrompt}?model=openai&system=You+are+an+expert+content+analyst`);
-        currentAnalysis = await res.text();
-        if (!currentAnalysis) throw new Error("Empty");
-        showResult(vid);
-      } catch(e2) {
-        document.getElementById("error-msg").textContent = "⚠️ Analysis failed. Please try again in a moment.";
-        showStatus("s-error");
-        document.getElementById("analyse-btn").disabled = false;
-      }
+      document.getElementById("error-msg").textContent = "⚠️ Analysis failed. Please try again.";
+      showStatus("s-error");
+      document.getElementById("analyse-btn").disabled = false;
     }
   }
 
