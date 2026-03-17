@@ -526,7 +526,7 @@
       <div class="header-links">
         <a href="#tools">Tools</a>
         <a href="blog/how-to-get-youtube-transcript-free.html">Blog</a>
-        <a href="#">About</a>
+        <a href="about.html">About</a>
       </div>
       <div class="header-controls">
         <div class="theme-toggle" id="themeToggle" onclick="toggleDarkMode()">
@@ -555,9 +555,9 @@
   (function(){
     const GITHUB_USER = "hitters999";
     const GITHUB_REPO = "Toolyfi";
-    const FOLDER = "updatesworld";
+    const FOLDER = "blog";
     const BRANCH = "main";
-    const SKIP = ["updatesworld.html","gallery.html","articles-loader.js","article-feed-auto.js"];
+    const SKIP = [];
 
     let articles = [];
     let current = 0;
@@ -573,37 +573,25 @@
           try {
             const r = await fetch("https://raw.githubusercontent.com/" + GITHUB_USER + "/" + GITHUB_REPO + "/" + BRANCH + "/" + FOLDER + "/" + f.name);
             const html = await r.text();
-            const getM = (name) => {
-              const m = html.match(new RegExp("<meta[^>]+name=[\"\']" + name + "[\"\'][^>]+content=[\"\']([^\"\']+)[\"\']","i"))
-                      || html.match(new RegExp("<meta[^>]+content=[\"\']([^\"\']+)[\"\'][^>]+name=[\"\']" + name + "[\"\']","i"));
-              return m ? m[1] : null;
-            };
             const titleTag = html.match(/<title>([^<]+)<\/title>/i);
-            const ogTitle = html.match(/<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)["\'][^>]*>/i);
+            const ogTitle = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i);
             return {
-              title: getM("uw-title") || (ogTitle ? ogTitle[1] : null) || (titleTag ? titleTag[1].split("–")[0].split("|")[0].trim() : f.name.replace(/-/g," ").replace(".html","")),
-              href: "updatesworld/" + f.name
+              title: (ogTitle ? ogTitle[1] : null) || (titleTag ? titleTag[1].split("|")[0].trim() : f.name.replace(/-/g," ").replace(".html","")),
+              href: "blog/" + f.name
             };
           } catch(e){ return null; }
         }));
 
         articles = metas.filter(Boolean);
         if (articles.length) startTicker();
-        else document.getElementById("newsTicker").style.display = "none";
+        else startFallback();
       } catch(e){
-        document.getElementById("newsTicker").style.display = "none";
+        startFallback();
       }
     }
 
-    // Fallback articles if GitHub fetch fails
     const fallbackArticles = [
-      { title: "Salary Calculator: Calculate Your Take-Home Pay in 2026", href: "/updatesworld/salary-calculator.html" },
-      { title: "BMI Calculator: Track Your Health & Fitness Goals", href: "/updatesworld/bmi-calculator.html" },
-      { title: "Currency Converter: USD, EUR, PKR Live Exchange Rates", href: "/updatesworld/currency-converter.html" },
-      { title: "Scientific Calculator: Advanced Math & Engineering Tools", href: "/updatesworld/scientific-calculator.html" },
-      { title: "Compound Interest Calculator: Grow Your Money Smart", href: "/updatesworld/compound-interest.html" },
-      { title: "Loan EMI Calculator: Plan Your Finances Better", href: "/updatesworld/loan-calculator.html" },
-      { title: "Tax Calculator 2026: Calculate Income Tax Instantly", href: "/updatesworld/tax-calculator.html" }
+      { title: "How to Get YouTube Transcript Free — Full Guide 2026", href: "blog/how-to-get-youtube-transcript-free.html" }
     ];
 
     function showArticle(i) {
@@ -619,11 +607,13 @@
       }, 600);
     }
 
+    function startFallback() {
+      articles = fallbackArticles;
+      startTicker();
+    }
+
     function startTicker() {
-      // Use fetched articles or fallback
-      if (!articles || articles.length === 0) {
-        articles = fallbackArticles;
-      }
+      if (!articles || articles.length === 0) articles = fallbackArticles;
       articles = articles.sort(() => Math.random() - 0.5);
       showArticle(0);
       setInterval(() => {
