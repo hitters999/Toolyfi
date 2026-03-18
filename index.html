@@ -979,18 +979,247 @@
 
   <!-- BLOG SECTION -->
   <section class="section" style="margin-bottom: 60px;">
-    <h2 class="section-title">📝 Latest Articles</h2>
-    <p class="section-subtitle">Free guides, tips & tutorials to help you get more done</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 10px;">
+    <div style="text-align:center; margin-bottom: 40px;">
+      <h2 class="section-title">📝 Latest Articles</h2>
+      <p class="section-subtitle">Free guides, tips & tutorials for every tool</p>
+    </div>
 
-      <!-- Article 1 -->
-      <a href="blog/how-to-get-youtube-transcript-free.html" style="text-decoration:none;">
-        <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.06);" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 8px 25px rgba(102,126,234,0.2)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 10px rgba(0,0,0,0.06)'">
-          <div style="font-size: 2.5em; margin-bottom: 14px;">🎬</div>
-          <div style="display:inline-block; background: linear-gradient(135deg, #ff4d4d, #ff7b2e); color: white; font-size: 0.72em; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase;">FREE GUIDE</div>
-          <h3 style="font-size: 1.1em; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; line-height: 1.4;">How to Get YouTube Transcript Free — 3 Easy Methods (2026)</h3>
-          <p style="font-size: 0.9em; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">Learn 3 proven ways to extract transcript from any YouTube video for free. No software, no signup needed.</p>
-          <span style="color: #667eea; font-weight: 600; font-size: 0.9em;">Read Article →</span>
+    <style>
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 640px)  { .blog-grid { grid-template-columns: 1fr; } }
+
+      .blog-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      }
+      .blog-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(102,126,234,0.18);
+        border-color: #667eea;
+      }
+      .blog-card-top {
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3em;
+        flex-shrink: 0;
+      }
+      .blog-card-body {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-badge {
+        display: inline-block;
+        font-size: 0.68em;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: white;
+        margin-bottom: 10px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+      .blog-card-title {
+        font-size: 0.98em;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        line-height: 1.45;
+      }
+      .blog-card-desc {
+        font-size: 0.85em;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        flex: 1;
+        margin-bottom: 14px;
+      }
+      .blog-card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.78em;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border-color);
+        padding-top: 12px;
+        margin-top: auto;
+      }
+      .blog-read-more {
+        color: #667eea;
+        font-weight: 700;
+        font-size: 0.85em;
+        white-space: nowrap;
+      }
+    </style>
+
+    <div class="blog-grid">
+
+      <!-- 1. YouTube Transcript -->
+      <a href="blog/how-to-get-youtube-transcript-free.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #ff4d4d, #ff7b2e);">🎬</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #ff4d4d, #ff7b2e);">AI GUIDE</span>
+          <h3 class="blog-card-title">How to Get YouTube Transcript Free — 3 Easy Methods (2026)</h3>
+          <p class="blog-card-desc">Learn 3 proven ways to extract transcript from any YouTube video. No software, no signup needed.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 5 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2. Word Counter -->
+      <a href="blog/word-counter-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #6366f1, #7c3aed);">📝</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #6366f1, #7c3aed);">TEXT TOOLS</span>
+          <h3 class="blog-card-title">Free Word Counter Online — Count Words, Characters & Sentences Instantly</h3>
+          <p class="blog-card-desc">Count words, characters, sentences and reading time instantly. No login required.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 5 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3. AI Text Detector -->
+      <a href="blog/ai-text-detector-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">🤖</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">AI TOOL</span>
+          <h3 class="blog-card-title">Free AI Text Detector — Is It Written by ChatGPT or Human? (2026)</h3>
+          <p class="blog-card-desc">Detect AI-written content instantly. Check ChatGPT, Claude & Gemini text. Free, no login.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 6 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4. Invoice Generator -->
+      <a href="blog/invoice-generator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #10b981, #059669);">📊</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #10b981, #059669);">GENERATOR</span>
+          <h3 class="blog-card-title">Free Invoice Generator Online — Create Professional PDF Invoice (No Login)</h3>
+          <p class="blog-card-desc">Create professional PDF invoices in 2 minutes. Add logo, tax & items. No signup needed.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 5 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5. BMI Calculator -->
+      <a href="blog/bmi-calculator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #ef4444, #dc2626);">⚖️</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #ef4444, #dc2626);">HEALTH</span>
+          <h3 class="blog-card-title">Free BMI Calculator Online — Check Your Body Mass Index Instantly</h3>
+          <p class="blog-card-desc">Calculate BMI free online. Check underweight, normal, overweight or obese. Instant results.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 4 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 6. Resume Builder -->
+      <a href="blog/resume-builder-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">📄</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">CAREER</span>
+          <h3 class="blog-card-title">Free ATS Resume Builder Online — Download PDF in Minutes (2026)</h3>
+          <p class="blog-card-desc">Build ATS-friendly resume & download PDF instantly. No login required. Perfect for job seekers.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 5 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 7. Password Generator -->
+      <a href="blog/password-generator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #a855f7, #9333ea);">🔑</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #a855f7, #9333ea);">SECURITY</span>
+          <h3 class="blog-card-title">Free Strong Password Generator — Secure & Instant (No Login)</h3>
+          <p class="blog-card-desc">Generate strong secure passwords instantly. Customize length & symbols. Protect your accounts.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 4 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8. QR Code Generator -->
+      <a href="blog/qr-code-generator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">📱</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">GENERATOR</span>
+          <h3 class="blog-card-title">Free QR Code Generator Online — Create & Download PNG Instantly</h3>
+          <p class="blog-card-desc">Create QR codes free online. Download as PNG or SVG. No login required. Works for any URL.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 4 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 9. Currency Converter -->
+      <a href="blog/currency-converter-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #f59e0b, #d97706);">💱</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #f59e0b, #d97706);">CONVERTER</span>
+          <h3 class="blog-card-title">Live Currency Converter Free — USD, EUR, PKR Real-Time Rates (2026)</h3>
+          <p class="blog-card-desc">Convert 150+ currencies with real-time rates. USD to PKR, EUR to USD. No login required.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 5 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 10. Age Calculator -->
+      <a href="blog/age-calculator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #f97316, #ea580c);">🎂</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #f97316, #ea580c);">CALCULATOR</span>
+          <h3 class="blog-card-title">Free Age Calculator Online — Calculate Exact Age in Days, Months & Years</h3>
+          <p class="blog-card-desc">Calculate exact age in years, months, days & hours. No login required. Instant results.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 4 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 11. Scientific Calculator -->
+      <a href="blog/scientific-calculator-guide.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">🧮</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">CALCULATOR</span>
+          <h3 class="blog-card-title">CASIO fx-82ES Scientific Calculator Online Free — No Download Needed</h3>
+          <p class="blog-card-desc">Full CASIO scientific calculator online. Trig, logs, exponentials & more. No download needed.</p>
+          <div class="blog-card-meta">
+            <span>⏱️ 4 min read</span>
+            <span class="blog-read-more">Read Article →</span>
+          </div>
         </div>
       </a>
 
