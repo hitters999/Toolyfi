@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Word Counter Online — Count Words, Chars & SEO Reading Time | Toolyfi</title>
+  <meta name="description" content="Use Toolyfi's free word counter online. Instantly count words, characters, and sentences. Optimize your blog posts and essays for SEO with real-time tracking.">
+  <link rel="canonical" href="https://toolyfi.com/blog/word-counter-guide.html">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b14;
+      --bg2: #161625;
+      --accent: #6366f1;
+      --accent-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --text: #f8fafc;
+      --text2: #94a3b8;
+      --border: #2d2d3f;
+      --glass: rgba(30, 30, 45, 0.7);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
+
+    header { background: rgba(11, 11, 20, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    nav a { color: var(--text2); text-decoration: none; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+    nav a:hover { color: var(--accent); }
+
+    .hero-section { max-width: 900px; margin: 60px auto 40px; text-align: center; padding: 0 20px; }
+    .badge { background: var(--accent-grad); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; }
+    .hero-p { color: var(--text2); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    /* THE MINI TOOL */
+    .tool-card { background: var(--glass); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin: 40px auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px); }
+    #text-input { width: 100%; height: 220px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 16px; padding: 20px; color: white; font-size: 1rem; resize: none; margin-bottom: 20px; transition: 0.3s; outline: none; }
+    #text-input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+    
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+    .stat-item { background: var(--bg2); padding: 15px; border-radius: 12px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
+    .stat-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .stat-val { display: block; font-size: 1.8rem; font-family: 'Syne', sans-serif; color: var(--accent); font-weight: 800; }
+    .stat-label { font-size: 0.7rem; text-transform: uppercase; color: var(--text2); font-weight: 700; letter-spacing: 1px; }
+
+    /* CONTENT STYLING */
+    .article-body { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
+    h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin: 50px 0 20px; color: #fff; }
+    p { margin-bottom: 20px; color: var(--text2); font-size: 1.05rem; }
+    .highlight { color: var(--accent); font-weight: 700; }
+
+    /* VIRAL TABLE */
+    .seo-table-container { overflow-x: auto; margin: 30px 0; border-radius: 12px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; background: var(--bg2); }
+    th { background: var(--border); color: var(--text); padding: 15px; text-align: left; }
+    td { padding: 15px; border-bottom: 1px solid var(--border); color: var(--text2); }
+
+    .cta-box { background: var(--accent-grad); border-radius: 20px; padding: 40px; text-align: center; margin: 50px 0; }
+    .cta-box h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 10px; }
+    .cta-btn { display: inline-block; background: white; color: var(--accent); padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: 700; margin-top: 15px; transition: 0.3s; }
+    .cta-btn:hover { transform: scale(1.05); }
+
+    footer { padding: 40px; border-top: 1px solid var(--border); text-align: center; color: var(--text2); font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-section { margin-top: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">🛠️ Toolyfi</a>
+  <nav>
+    <a href="#">Tools</a>
+    <a href="#">Blog</a>
+  </nav>
+</header>
+
+<div class="hero-section">
+  <span class="badge">UPDATED FOR 2026</span>
+  <h1>Master Your Content with our <span class="highlight">Smart Word Counter</span></h1>
+  <p class="hero-p">Don't just count words—optimize them. Our real-time tool helps you hit SEO targets and readability goals instantly.</p>
+</div>
+
+<div class="article-body">
+  <div class="tool-card">
+    <textarea id="text-input" placeholder="Paste your content here to start analyzing..."></textarea>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-val" id="word-count">0</span>
+        <span class="stat-label">Words</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="char-count">0</span>
+        <span class="stat-label">Characters</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="sent-count">0</span>
+        <span class="stat-label">Sentences</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val" id="read-time">0m</span>
+        <span class="stat-label">Read Time</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Why Every Writer Needs a Reliable Word Counter</h2>
+  <p>In the digital age, attention is the most valuable currency. Whether you're writing a <strong>Twitter thread</strong>, a <strong>university essay</strong>, or a <strong>cornerstone SEO blog post</strong>, knowing your exact word count is the difference between engagement and being ignored.</p>
+  
+  <p>A word counter does more than just tally numbers. It acts as a mirror for your writing style. Are your paragraphs too long? Is your character count exceeding social media limits? Our tool provides instant clarity.</p>
+
+  <h2>SEO Content Cheat Sheet (2026 Edition)</h2>
+  <p>To rank on the first page of Google, you need to understand <span class="highlight">Search Intent</span>. Here is the data-driven guide to content length:</p>
+
+  <div class="seo-table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Content Type</th>
+          <th>Goal Length</th>
+          <th>SEO Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pillar Blog Post</td>
+          <td>2,500+ Words</td>
+          <td>Authority & Backlinks</td>
+        </tr>
+        <tr>
+          <td>Standard Article</td>
+          <td>1,200 - 1,500</td>
+          <td>Topic Coverage</td>
+        </tr>
+        <tr>
+          <td>Social Captions</td>
+          <td>50 - 150 Words</td>
+          <td>Engagement / CTR</td>
+        </tr>
+        <tr>
+          <td>Meta Descriptions</td>
+          <td>155 Characters</td>
+          <td>Search Snippet</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>3 Ways to Improve Your Writing Quality</h2>
+  <p>1. <strong>The "20-Word" Rule:</strong> Aim for an average of 15–20 words per sentence. If our sentence counter shows a high word-to-sentence ratio, your text may be too hard to read on mobile.</p>
+  <p>2. <strong>Whitespace is King:</strong> For web content, keep paragraphs under 4 lines. This reduces "eye fatigue" and keeps readers scrolling.</p>
+  <p>3. <strong>Check the Reading Time:</strong> Most readers drop off after 7 minutes. Use our <span class="highlight">Read Time</span> metric to ensure your content is punchy and efficient.</p>
+
+  <div class="cta-box">
+    <h3>Ready to reach your word goals?</h3>
+    <p>Bookmark this page for your next writing project. No signup, no fees, just precision.</p>
+    <a href="#" class="cta-btn">Check Full Tool Version →</a>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+  <p><strong>Is this word counter free?</strong><br>Yes! Toolyfi is 100% free and requires no login.</p>
+  <p><strong>Does it work on mobile?</strong><br>Absolutely. Our UI is fully responsive, making it the perfect companion for mobile writers.</p>
+</div>
+
+<footer>
+  <p>© 2026 Toolyfi. Built for Creators & SEO Professionals.</p>
+</footer>
+
+<script>
+  const input = document.getElementById('text-input');
+  const wCount = document.getElementById('word-count');
+  const cCount = document.getElementById('char-count');
+  const sCount = document.getElementById('sent-count');
+  const rTime = document.getElementById('read-time');
+
+  input.addEventListener('input', () => {
+    const text = input.value.trim();
+    
+    // Word Count
+    const words = text ? text.split(/\s+/).length : 0;
+    
+    // Sentence Count (regex looks for . ! ?)
+    const sentences = text ? (text.match(/[.!?]+(\s+|$)/g) || []).length : 0;
+    
+    // Reading Time (225 wpm average)
+    const time = Math.ceil(words / 225);
+
+    wCount.innerText = words;
+    cCount.innerText = text.length;
+    sCount.innerText = sentences || (text ? 1 : 0);
+    rTime.innerText = time + 'm';
+  });
+</script>
+
+</body>
+</html>
