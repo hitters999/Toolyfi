@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Free Tool Guides, Tips & Tutorials | Toolyfi</title>
+  <meta name="description" content="Free guides, tutorials and tips for every Toolyfi tool. Learn how to use AI tools, generators, calculators and more. No signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://toolyfi.com/blog/">
+  <meta property="og:title" content="Blog — Free Tool Guides & Tutorials | Toolyfi">
+  <meta property="og:description" content="Free guides for AI tools, calculators, generators and more. Learn everything for free.">
+  <meta property="og:type" content="website">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y3ETYH2QF0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap">
+
+  <style>
+    :root {
+      --bg: #f8f9ff;
+      --white: #ffffff;
+      --accent: #667eea;
+      --accent2: #764ba2;
+      --accent-light: #ede9fe;
+      --text: #1e1b4b;
+      --text2: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(102,126,234,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0 5%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(102,126,234,0.3);
+    }
+
+    header nav {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+    .nav-cta {
+      background: white !important;
+      color: var(--accent2) !important;
+      font-weight: 700 !important;
+    }
+
+    /* ===== NEWS TICKER ===== */
+    #newsTicker {
+      background: white;
+      border-bottom: 3px solid var(--accent);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      overflow: hidden;
+      min-height: 50px;
+    }
+
+    .ticker-label {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-size: .7rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    #tickerText {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.2px;
+      cursor: pointer;
+      transition: opacity .5s, transform .5s;
+      max-width: 700px;
+      line-height: 1.4;
+    }
+
+    #tickerText:hover { color: var(--accent); }
+
+    /* ===== HERO ===== */
+    .blog-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 20px 50px;
+      text-align: center;
+      color: white;
+    }
+
+    .blog-hero h1 {
+      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .blog-hero p {
+      font-size: 1.05rem;
+      opacity: .88;
+      max-width: 520px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    /* ===== AD ===== */
+    .ad-wrap {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .ad-label {
+      font-size: .65rem;
+      color: #cbd5e1;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    /* ===== CATEGORY FILTER ===== */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--border);
+      color: var(--text2);
+      padding: 9px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all .25s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 4px 14px rgba(102,126,234,0.35);
+    }
+
+    /* ===== SECTION HEADING ===== */
+    .section-label {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--border), transparent);
+      border-radius: 2px;
+    }
+
+    /* ===== BLOG GRID ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .blog-grid { grid-template-columns: 1fr; } }
+
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: all .3s;
+      box-shadow: var(--shadow);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(102,126,234,0.15);
+      border-color: var(--accent);
+    }
+
+    .blog-card[style*="display: none"] { display: none !important; }
+
+    .card-top {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: .68em;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      color: white;
+      margin-bottom: 10px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .card-title {
+      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.45;
+      letter-spacing: -0.2px;
+    }
+
+    .card-desc {
+      font-size: .84rem;
+      color: var(--text2);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: var(--text2);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    .read-more {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ===== NO RESULTS ===== */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text2);
+      grid-column: 1/-1;
+    }
+
+    .no-results p { font-size: 1rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+      color: #ccc;
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 2px solid var(--accent);
+    }
+
+    footer p { margin-bottom: 8px; font-size: .9rem; }
+    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .blog-hero h1 { font-size: 1.8rem; }
+      .container { padding: 30px 15px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
+      <div class="nav-links">
+        <a href="https://toolyfi.com">Home</a>
+        <a href="https://toolyfi.com/#tools">Tools</a>
+        <a href="https://toolyfi.com/blog/" class="active">Blog</a>
+        <a href="https://toolyfi.com/ai-text-detector.html" class="nav-cta">Try Free →</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- NEWS TICKER -->
+  <div id="newsTicker">
+    <span class="ticker-label">📰 LATEST</span>
+    <div id="tickerText"></div>
+  </div>
+
+  <script>
+  (function(){
+    const articles = [
+      { title: "How to Get YouTube Transcript Free — 3 Easy Methods (2026)", href: "how-to-get-youtube-transcript-free.html" },
+      { title: "Free AI Text Detector — Is It Written by ChatGPT or Human?", href: "ai-text-detector-guide.html" },
+      { title: "Free Invoice Generator — Create Professional PDF (No Login)", href: "invoice-generator-guide.html" },
+      { title: "Free BMI Calculator — Check Your Body Mass Index Instantly", href: "bmi-calculator-guide.html" },
+      { title: "Free ATS Resume Builder — Download PDF in Minutes (2026)", href: "resume-builder-guide.html" },
+      { title: "Free Strong Password Generator — Secure & Instant", href: "password-generator-guide.html" },
+      { title: "Free QR Code Generator — Create & Download PNG Instantly", href: "qr-code-generator-guide.html" },
+      { title: "Live Currency Converter — USD, EUR, PKR Real-Time Rates", href: "currency-converter-guide.html" },
+      { title: "Free Age Calculator — Calculate Exact Age in Days, Months & Years", href: "age-calculator-guide.html" },
+      { title: "CASIO fx-82ES Scientific Calculator Online — No Download", href: "scientific-calculator-guide.html" },
+      { title: "Free Word Counter Online — Count Words, Characters & Sentences", href: "word-counter-guide.html" },
+    ];
+    let i = 0;
+    function show(idx) {
+      const el = document.getElementById('tickerText');
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-8px)';
+      setTimeout(() => {
+        el.textContent = articles[idx].title;
+        el.onclick = () => window.location.href = articles[idx].href;
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 500);
+    }
+    show(0);
+    setInterval(() => { i = (i + 1) % articles.length; show(i); }, 3500);
+  })();
+  </script>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <h1>📝 Toolyfi Blog</h1>
+    <p>Free guides, tutorials & tips for every tool. Learn how to use AI tools, calculators, generators and more.</p>
+    <div class="hero-stats">
+      <span class="hero-stat">📚 11+ Articles</span>
+      <span class="hero-stat">⚡ Always Free</span>
+      <span class="hero-stat">🔍 Step-by-Step Guides</span>
+    </div>
+  </section>
+
+  <!-- AD TOP -->
+  <div class="ad-wrap">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+
+    <!-- CATEGORY FILTER -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All Articles</button>
+      <button class="filter-btn" onclick="filterCards('ai', this)">🤖 AI Tools</button>
+      <button class="filter-btn" onclick="filterCards('generator', this)">📋 Generators</button>
+      <button class="filter-btn" onclick="filterCards('calculator', this)">🧮 Calculators</button>
+      <button class="filter-btn" onclick="filterCards('text', this)">📝 Text Tools</button>
+      <button class="filter-btn" onclick="filterCards('converter', this)">🔄 Converters</button>
+    </div>
+
+    <p class="section-label">All Articles</p>
+
+    <!-- BLOG GRID -->
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- 1. YouTube Transcript -->
+      <a href="how-to-get-youtube-transcript-free.html" class="blog-card" data-cat="ai">
+        <div class="card-top" style="background:linear-gradient(135deg,#ff4d4d,#ff7b2e);">🎬</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#ff4d4d,#ff7b2e);">AI GUIDE</span>
+          <h3 class="card-title">How to Get YouTube Transcript Free — 3 Easy Methods (2026)</h3>
+          <p class="card-desc">Learn 3 proven ways to extract transcript from any YouTube video. No software, no signup needed.</p>
+          <div class="card-meta"><span>⏱️ 5 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 2. Word Counter -->
+      <a href="word-counter-guide.html" class="blog-card" data-cat="text">
+        <div class="card-top" style="background:linear-gradient(135deg,#6366f1,#7c3aed);">📝</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#6366f1,#7c3aed);">TEXT TOOLS</span>
+          <h3 class="card-title">Free Word Counter Online — Count Words, Characters & Sentences Instantly</h3>
+          <p class="card-desc">Count words, characters, sentences and reading time instantly. No login required.</p>
+          <div class="card-meta"><span>⏱️ 5 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 3. AI Text Detector -->
+      <a href="ai-text-detector-guide.html" class="blog-card" data-cat="ai">
+        <div class="card-top" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">🤖</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">AI TOOL</span>
+          <h3 class="card-title">Free AI Text Detector — Is It Written by ChatGPT or Human? (2026)</h3>
+          <p class="card-desc">Detect AI-written content instantly. Check ChatGPT, Claude & Gemini text. Free, no login.</p>
+          <div class="card-meta"><span>⏱️ 6 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 4. Invoice Generator -->
+      <a href="invoice-generator-guide.html" class="blog-card" data-cat="generator">
+        <div class="card-top" style="background:linear-gradient(135deg,#10b981,#059669);">📊</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#10b981,#059669);">GENERATOR</span>
+          <h3 class="card-title">Free Invoice Generator Online — Create Professional PDF Invoice (No Login)</h3>
+          <p class="card-desc">Create professional PDF invoices in 2 minutes. Add logo, tax & items. No signup needed.</p>
+          <div class="card-meta"><span>⏱️ 5 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 5. BMI Calculator -->
+      <a href="bmi-calculator-guide.html" class="blog-card" data-cat="calculator">
+        <div class="card-top" style="background:linear-gradient(135deg,#ef4444,#dc2626);">⚖️</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#ef4444,#dc2626);">HEALTH</span>
+          <h3 class="card-title">Free BMI Calculator Online — Check Your Body Mass Index Instantly</h3>
+          <p class="card-desc">Calculate BMI free online. Check underweight, normal, overweight or obese. Instant results.</p>
+          <div class="card-meta"><span>⏱️ 4 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 6. Resume Builder -->
+      <a href="resume-builder-guide.html" class="blog-card" data-cat="generator">
+        <div class="card-top" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">📄</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">CAREER</span>
+          <h3 class="card-title">Free ATS Resume Builder Online — Download PDF in Minutes (2026)</h3>
+          <p class="card-desc">Build ATS-friendly resume & download PDF instantly. No login required. Perfect for job seekers.</p>
+          <div class="card-meta"><span>⏱️ 5 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 7. Password Generator -->
+      <a href="password-generator-guide.html" class="blog-card" data-cat="generator">
+        <div class="card-top" style="background:linear-gradient(135deg,#a855f7,#9333ea);">🔑</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#a855f7,#9333ea);">SECURITY</span>
+          <h3 class="card-title">Free Strong Password Generator — Secure & Instant (No Login)</h3>
+          <p class="card-desc">Generate strong secure passwords instantly. Customize length & symbols. Protect your accounts.</p>
+          <div class="card-meta"><span>⏱️ 4 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 8. QR Code Generator -->
+      <a href="qr-code-generator-guide.html" class="blog-card" data-cat="generator">
+        <div class="card-top" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">📱</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">GENERATOR</span>
+          <h3 class="card-title">Free QR Code Generator Online — Create & Download PNG Instantly</h3>
+          <p class="card-desc">Create QR codes free online. Download as PNG or SVG. No login required. Works for any URL.</p>
+          <div class="card-meta"><span>⏱️ 4 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 9. Currency Converter -->
+      <a href="currency-converter-guide.html" class="blog-card" data-cat="converter">
+        <div class="card-top" style="background:linear-gradient(135deg,#f59e0b,#d97706);">💱</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#f59e0b,#d97706);">CONVERTER</span>
+          <h3 class="card-title">Live Currency Converter Free — USD, EUR, PKR Real-Time Rates (2026)</h3>
+          <p class="card-desc">Convert 150+ currencies with real-time rates. USD to PKR, EUR to USD. No login required.</p>
+          <div class="card-meta"><span>⏱️ 5 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 10. Age Calculator -->
+      <a href="age-calculator-guide.html" class="blog-card" data-cat="calculator">
+        <div class="card-top" style="background:linear-gradient(135deg,#f97316,#ea580c);">🎂</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#f97316,#ea580c);">CALCULATOR</span>
+          <h3 class="card-title">Free Age Calculator Online — Calculate Exact Age in Days, Months & Years</h3>
+          <p class="card-desc">Calculate exact age in years, months, days & hours. No login required. Instant results.</p>
+          <div class="card-meta"><span>⏱️ 4 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- 11. Scientific Calculator -->
+      <a href="scientific-calculator-guide.html" class="blog-card" data-cat="calculator">
+        <div class="card-top" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">🧮</div>
+        <div class="card-body">
+          <span class="card-badge" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">CALCULATOR</span>
+          <h3 class="card-title">CASIO fx-82ES Scientific Calculator Online Free — No Download Needed</h3>
+          <p class="card-desc">Full CASIO scientific calculator online. Trig, logs, exponentials & more. No download needed.</p>
+          <div class="card-meta"><span>⏱️ 4 min read</span><span class="read-more">Read Article →</span></div>
+        </div>
+      </a>
+
+      <!-- NO RESULTS -->
+      <div class="no-results" id="noResults">
+        <p>😕 No articles in this category yet. Check back soon!</p>
+      </div>
+
+    </div><!-- /blog-grid -->
+
+    <!-- AD BOTTOM -->
+    <div class="ad-wrap" style="padding:0; margin: 20px 0 0;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
+    <p style="margin-top:6px;"><a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p>
+  </footer>
+
+  <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+  <script>
+    function filterCards(cat, btn) {
+      // Update buttons
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter cards
+      const cards = document.querySelectorAll('.blog-card[data-cat]');
+      let visible = 0;
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update section label
+      const labels = {
+        all: 'All Articles',
+        ai: '🤖 AI Tool Guides',
+        generator: '📋 Generator Guides',
+        calculator: '🧮 Calculator Guides',
+        text: '📝 Text Tool Guides',
+        converter: '🔄 Converter Guides'
+      };
+      document.querySelector('.section-label').textContent = labels[cat] || 'All Articles';
+
+      // No results
+      document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+</html>
