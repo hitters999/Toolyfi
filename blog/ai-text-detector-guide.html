@@ -14,387 +14,221 @@
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free AI Text Detector — Is It Written by ChatGPT or Human? (2026)">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Free AI Text Detector — Is It Written by ChatGPT or Human? (2026)","description":"Detect AI-written text instantly. Check if content was written by ChatGPT, Claude, or Gemini. Free, no login, accurate results in seconds.","author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"publisher":{"@type":"Organization","name":"Toolyfi"},"datePublished":"2026-03-18","dateModified":"2026-03-18"}</script>
 
-  <!-- FONTS: Clash Display (eye-catchy headings) + Plus Jakarta Sans (clean body) -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap">
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, runTransaction, onValue, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "toolyfi-208b8.firebaseapp.com",
+      databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com",
+      projectId: "toolyfi-208b8",
+      storageBucket: "toolyfi-208b8.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const id = "ai-text-detector";
+    const likesRef    = ref(db, `articles/${id}/likes`);
+    const dislikesRef = ref(db, `articles/${id}/dislikes`);
+    const starsRef    = ref(db, `articles/${id}/stars`);
+    const commentsRef = ref(db, `articles/${id}/comments`);
+    onValue(likesRef,    s => { document.getElementById('like-count').textContent = s.val()||0; });
+    onValue(dislikesRef, s => { document.getElementById('dislike-count').textContent = s.val()||0; });
+    onValue(starsRef, s => {
+      const d = s.val()||{total:0,count:0};
+      document.getElementById('star-avg').textContent = d.count>0?(d.total/d.count).toFixed(1):"0.0";
+      document.getElementById('star-count').textContent = d.count;
+    });
+    onValue(commentsRef, s => {
+      const c = document.getElementById('comments-list');
+      c.innerHTML = '';
+      const data = s.val();
+      if(data){ Object.values(data).reverse().forEach(x=>{ const d=document.createElement('div'); d.className='comment-item'; d.innerHTML=`<div class="comment-author">${x.name}</div><div class="comment-text">${x.text}</div>`; c.appendChild(d); }); }
+      else { c.innerHTML='<p style="color:#94a3b8;font-size:.9em;">No comments yet. Be the first!</p>'; }
+    });
+    window.handleLike    = () => runTransaction(likesRef,    v=>(v||0)+1);
+    window.handleDislike = () => runTransaction(dislikesRef, v=>(v||0)+1);
+    window.handleStar    = (val) => {
+      runTransaction(starsRef, d=>{ if(!d)d={total:0,count:0}; d.total+=val; d.count+=1; return d; });
+      document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('active',i<val));
+    };
+    window.submitComment = () => {
+      const name = document.getElementById('comment-name').value.trim()||'Anonymous';
+      const text = document.getElementById('comment-text').value.trim();
+      if(!text) return;
+      push(commentsRef,{name,text,timestamp:serverTimestamp()});
+      document.getElementById('comment-name').value='';
+      document.getElementById('comment-text').value='';
+    };
+  </script>
 
   <style>
     :root {
       --bg: #f8f9ff;
       --white: #ffffff;
-      --accent: #6366f1;
-      --accent2: #7c3aed;
+      --accent: #667eea;
+      --accent2: #764ba2;
       --accent-light: #ede9fe;
       --text: #1e1b4b;
       --text2: #64748b;
       --border: #e2e8f0;
-      --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(99,102,241,0.06);
+      --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(102,126,234,0.08);
     }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans','Inter',sans-serif; line-height:1.8; font-size:17px; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.7;
-    }
-
-    /* ===== HEADER ===== */
+    /* HEADER — exact match with index.html */
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5%;
-      height: 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0 5%; height: 64px;
+      display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 15px rgba(102,126,234,0.3);
     }
-
+    header nav {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 15px;
+    }
     .logo {
-      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: -0.3px;
+      font-family: 'Clash Display','Inter',sans-serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: white; text-decoration: none; letter-spacing: -0.3px;
     }
+    .nav-links { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration:none;
+      padding:7px 14px; border-radius:8px;
+      font-size:.9rem; font-weight:500; transition:all .2s;
+    }
+    .nav-links a:hover { background:rgba(255,255,255,0.2); color:white; }
+    .nav-cta { background:white!important; color:var(--accent2)!important; font-weight:700!important; border-radius:20px!important; }
 
-    nav { display: flex; align-items: center; gap: 6px; }
-    nav a {
-      color: var(--text2);
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: .9rem;
-      font-weight: 500;
-      transition: all .2s;
-    }
-    nav a:hover { color: var(--accent); background: var(--accent-light); }
-    .nav-cta {
-      background: var(--accent) !important;
-      color: white !important;
-      font-weight: 600 !important;
-    }
+    /* BREADCRUMB */
+    .breadcrumb { max-width:860px; margin:20px auto 0; padding:0 20px; font-size:.82rem; color:var(--text2); display:flex; align-items:center; gap:6px; }
+    .breadcrumb a { color:var(--text2); text-decoration:none; }
+    .breadcrumb a:hover { color:var(--accent); }
+    .breadcrumb span { color:#cbd5e1; }
 
-    /* ===== BREADCRUMB ===== */
-    .breadcrumb {
-      max-width: 860px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-      font-size: .82rem;
-      color: var(--text2);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .breadcrumb a { color: var(--text2); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb span { color: #cbd5e1; }
+    /* ADS */
+    .ad-wrap { max-width:860px; margin:16px auto; padding:0 20px; }
+    .ad-label { font-size:.65rem; color:#cbd5e1; text-align:center; margin-bottom:3px; letter-spacing:1px; }
 
-    /* ===== ADS ===== */
-    .ad-wrap {
-      max-width: 860px;
-      margin: 14px auto;
-      padding: 0 20px;
-    }
-    .ad-label {
-      font-size: .68rem;
-      color: #cbd5e1;
-      text-align: center;
-      margin-bottom: 3px;
-      letter-spacing: 1px;
-    }
+    /* ARTICLE */
+    .article-wrap { max-width:860px; margin:0 auto; padding:0 20px 80px; }
+    .article-hero { padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:28px; }
+    .badge { display:inline-flex; align-items:center; gap:6px; background:var(--accent-light); color:var(--accent2); font-size:.72rem; font-weight:700; padding:5px 12px; border-radius:20px; letter-spacing:.5px; margin-bottom:16px; }
 
-    /* ===== ARTICLE ===== */
-    .article-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-    }
+    h1 { font-family:'Plus Jakarta Sans','Inter',sans-serif; font-size:1.75rem; font-weight:700; line-height:1.3; color:#111827; margin-bottom:14px; letter-spacing:-0.2px; }
+    h1 .hl { color:var(--accent); }
+    .article-meta { display:flex; gap:16px; flex-wrap:wrap; font-size:.85rem; color:var(--text2); margin-bottom:20px; }
 
-    .article-hero {
-      padding: 32px 0 24px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 28px;
-    }
+    .quick-answer { background:var(--white); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:18px 20px; margin-bottom:24px; box-shadow:var(--shadow); }
+    .quick-answer p { color:var(--text2); font-size:.95rem; margin:6px 0 0; }
+    .quick-answer a { color:var(--accent); text-decoration:none; font-weight:600; }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-light);
-      color: var(--accent2);
-      font-size: .72rem;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 20px;
-      letter-spacing: .5px;
-      margin-bottom: 16px;
-    }
+    .toc { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:32px; box-shadow:var(--shadow); }
+    .toc-title { font-family:'Clash Display',sans-serif; font-size:.8rem; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+    .toc ol { padding-left:20px; }
+    .toc li { margin-bottom:8px; }
+    .toc a { color:var(--accent); text-decoration:none; font-size:.93rem; font-weight:500; }
 
-    /* ===== HEADINGS — THE KEY FIX ===== */
-    h1 {
-      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.05rem;
-      font-weight: 600;           /* was 800 — too heavy */
-      line-height: 1.25;
-      color: var(--text);
-      margin-bottom: 14px;
-      letter-spacing: -0.5px;    /* tight tracking = premium feel */
-    }
+    .content h2 { font-family:'Plus Jakarta Sans','Inter',sans-serif; font-size:1.3rem; font-weight:700; color:#111827; margin:44px 0 16px; padding-left:14px; border-left:3px solid var(--accent); letter-spacing:-0.1px; }
+    .content h3 { font-size:1.05rem; font-weight:700; color:#111827; margin:22px 0 8px; }
+    .content p { color:#374151; margin-bottom:18px; font-size:1rem; line-height:1.85; }
+    .content ul, .content ol { color:#374151; padding-left:22px; margin-bottom:18px; }
+    .content li { margin-bottom:10px; font-size:1rem; line-height:1.75; }
+    .content strong { color:#111827; }
+    .content a { color:var(--accent); text-decoration:none; font-weight:600; }
 
-    h1 .hl { color: var(--accent); }
+    .takeaway { background:var(--accent-light); border-radius:12px; padding:18px 22px; margin:22px 0; }
+    .takeaway-label { font-size:.72rem; font-weight:700; color:var(--accent2); letter-spacing:1px; margin-bottom:8px; }
+    .takeaway p { color:#1e1b4b; font-size:1rem; margin:0; font-weight:500; line-height:1.75; }
 
-    .content h2 {
-      font-family: 'Clash Display', 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;           /* was 800 */
-      color: var(--text);
-      margin: 40px 0 16px;
-      padding-left: 14px;
-      border-left: 3px solid var(--accent);
-      letter-spacing: -0.3px;
-    }
+    .steps { margin:20px 0; }
+    .step { display:flex; gap:16px; margin-bottom:14px; background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); }
+    .step-num { width:32px; height:32px; min-width:32px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Clash Display',sans-serif; font-weight:600; font-size:.85rem; margin-top:2px; }
+    .step-body h3 { font-size:1rem; color:#111827; margin-bottom:5px; font-weight:700; }
+    .step-body p { color:#374151; font-size:.95rem; margin:0; line-height:1.7; }
 
-    .content h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;           /* was 700 */
-      color: var(--text);
-      margin: 22px 0 8px;
-    }
+    .cta-box { background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%); border-radius:16px; padding:32px; text-align:center; margin:36px 0; }
+    .cta-box h3 { font-family:'Clash Display',sans-serif; font-size:1.3rem; font-weight:600; color:white; margin-bottom:8px; }
+    .cta-box p { color:rgba(255,255,255,.85); margin-bottom:18px; font-size:.93rem; }
+    .cta-btn { display:inline-block; background:white; color:var(--accent2); font-weight:700; font-family:'Clash Display',sans-serif; padding:12px 28px; border-radius:25px; text-decoration:none; transition:transform .2s; }
+    .cta-btn:hover { transform:translateY(-2px); }
 
-    /* ===== META ===== */
-    .article-meta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: .83rem;
-      color: var(--text2);
-      margin-bottom: 20px;
-    }
+    .faq-item { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:12px; box-shadow:var(--shadow); }
+    .faq-q { font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem; font-weight:700; color:#111827; margin-bottom:10px; }
+    .faq-a { color:#374151; font-size:.97rem; line-height:1.75; }
 
-    /* ===== QUICK ANSWER ===== */
-    .quick-answer {
-      background: var(--white);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 12px 12px 0;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
-    }
-    .quick-answer p { color: var(--text2); font-size: .95rem; margin: 6px 0 0; }
-    .quick-answer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:12px; margin:20px 0; }
+    .related-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px; text-decoration:none; transition:all .2s; box-shadow:var(--shadow); }
+    .related-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+    .related-card .icon { font-size:1.4rem; margin-bottom:8px; }
+    .related-card h4 { font-size:.88rem; color:var(--text); margin-bottom:4px; font-family:'Clash Display',sans-serif; font-weight:600; }
+    .related-card p { font-size:.78rem; color:var(--text2); margin:0; }
 
-    /* ===== TOC ===== */
-    .toc {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 24px;
-      margin-bottom: 32px;
-      box-shadow: var(--shadow);
-    }
-    .toc-title {
-      font-family: 'Clash Display', sans-serif;
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--text2);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 14px;
-    }
-    .toc ol { padding-left: 20px; }
-    .toc li { margin-bottom: 8px; }
-    .toc a { color: var(--accent); text-decoration: none; font-size: .93rem; font-weight: 500; }
+    /* ENGAGEMENT */
+    .engagement-section { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:30px; margin:30px 0; box-shadow:var(--shadow); }
+    .engagement-section h3 { font-family:'Clash Display',sans-serif; font-size:1.1rem; font-weight:600; color:var(--text); margin-bottom:22px; }
+    .like-dislike { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
+    .eng-btn { background:var(--bg); border:2px solid var(--border); color:var(--text2); padding:9px 20px; border-radius:50px; cursor:pointer; font-size:.92rem; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; transition:all .25s; display:flex; align-items:center; gap:7px; }
+    .eng-btn:hover { background:var(--accent-light); border-color:var(--accent); color:var(--accent); }
+    .star-row { margin-bottom:24px; }
+    .star-row p { color:var(--text2); font-size:.88rem; margin-bottom:8px; }
+    .stars { display:flex; gap:6px; margin-bottom:6px; }
+    .star-btn { background:none; border:none; font-size:1.7em; cursor:pointer; color:#d1d5db; transition:color .2s,transform .2s; }
+    .star-btn:hover, .star-btn.active { color:#f59e0b; transform:scale(1.15); }
+    .star-info { color:var(--text2); font-size:.82rem; }
+    .comment-box > p { color:var(--text2); font-size:.88rem; margin-bottom:10px; }
+    .comment-input { width:100%; padding:11px 15px; background:var(--bg); border:1.5px solid var(--border); border-radius:10px; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; font-size:.93rem; margin-bottom:10px; resize:vertical; transition:border-color .2s; }
+    .comment-input:focus { outline:none; border-color:var(--accent); }
+    .submit-btn { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border:none; padding:10px 26px; border-radius:50px; cursor:pointer; font-family:'Clash Display',sans-serif; font-weight:600; font-size:.92rem; transition:opacity .3s; }
+    .submit-btn:hover { opacity:.85; }
+    #comments-list { margin-top:20px; }
+    .comment-item { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:13px 16px; margin-bottom:10px; }
+    .comment-author { font-weight:700; color:var(--accent); font-size:.85rem; margin-bottom:4px; }
+    .comment-text { color:var(--text2); font-size:.9rem; }
 
-    /* ===== CONTENT ===== */
-    .content p { color: var(--text2); margin-bottom: 16px; font-size: .97rem; }
-    .content ul, .content ol { color: var(--text2); padding-left: 22px; margin-bottom: 16px; }
-    .content li { margin-bottom: 8px; font-size: .97rem; }
-    .content strong { color: var(--text); }
-    .content a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    /* FOOTER — exact match with index.html */
+    footer { background:linear-gradient(135deg,#2a2a3e 0%,#1a1a2e 100%); color:#ccc; text-align:center; padding:35px 20px; margin-top:60px; border-top:2px solid var(--accent); }
+    footer p { margin-bottom:8px; font-size:.9rem; }
+    footer a { color:var(--accent); text-decoration:none; font-weight:600; }
+    footer a:hover { text-decoration:underline; }
 
-    /* ===== TAKEAWAY ===== */
-    .takeaway {
-      background: var(--accent-light);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 20px 0;
-    }
-    .takeaway-label {
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--accent2);
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-    .takeaway p { color: var(--text); font-size: .93rem; margin: 0; font-weight: 500; }
-
-    /* ===== STEPS ===== */
-    .steps { margin: 20px 0; }
-    .step {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 14px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-    .step-num {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      background: var(--accent);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-      font-size: .85rem;
-      margin-top: 2px;
-    }
-    .step-body h3 { font-size: .95rem; color: var(--text); margin-bottom: 4px; font-weight: 600; }
-    .step-body p { color: var(--text2); font-size: .88rem; margin: 0; }
-
-    /* ===== TABLE ===== */
-    .table-wrap {
-      overflow-x: auto;
-      margin: 20px 0;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-    table { width: 100%; border-collapse: collapse; }
-    thead th {
-      background: var(--accent);
-      color: white;
-      padding: 12px 16px;
-      text-align: left;
-      font-size: .85rem;
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-    }
-    tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: .9rem; color: var(--text2); }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover { background: var(--bg); }
-
-    /* ===== CTA BOX ===== */
-    .cta-box {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
-      margin: 36px 0;
-    }
-    .cta-box h3 {
-      font-family: 'Clash Display', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
-    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: 18px; font-size: .93rem; }
-    .cta-btn {
-      display: inline-block;
-      background: white;
-      color: var(--accent2);
-      font-weight: 700;
-      font-family: 'Clash Display', sans-serif;
-      padding: 12px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform .2s;
-      font-size: .95rem;
-    }
-    .cta-btn:hover { transform: translateY(-2px); }
-
-    /* ===== FAQ ===== */
-    .faq-item {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 12px;
-      box-shadow: var(--shadow);
-    }
-    .faq-q {
-      font-family: 'Clash Display', sans-serif;
-      font-size: .97rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-      letter-spacing: -0.2px;
-    }
-    .faq-a { color: var(--text2); font-size: .92rem; }
-
-    /* ===== RELATED GRID ===== */
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
-    }
-    .related-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      text-decoration: none;
-      transition: all .2s;
-      box-shadow: var(--shadow);
-    }
-    .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .related-card .icon { font-size: 1.4rem; margin-bottom: 8px; }
-    .related-card h4 {
-      font-size: .88rem;
-      color: var(--text);
-      margin-bottom: 4px;
-      font-family: 'Clash Display', sans-serif;
-      font-weight: 600;
-    }
-    .related-card p { font-size: .78rem; color: var(--text2); margin: 0; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 28px;
-      text-align: center;
-      color: var(--text2);
-      font-size: .85rem;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.5rem; }
-      .content h2 { font-size: 1.2rem; }
-      .article-hero { padding: 20px 0; }
+    @media(max-width:600px) {
+      h1 { font-size:1.45rem; }
+      .content h2 { font-size:1.15rem; }
+      .content p, .content li { font-size:.97rem; }
+      .article-hero { padding:20px 0; }
+      .engagement-section { padding:20px; }
+      .article-wrap { padding:0 16px 60px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
   <nav>
-    <a href="https://toolyfi.com">Home</a>
-    <a href="https://toolyfi.com/#tools">Tools</a>
-    <a href="https://toolyfi.com/ai-text-detector.html" class="nav-cta">Try Tool Free</a>
+    <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
+    <div class="nav-links">
+      <a href="https://toolyfi.com">Home</a>
+      <a href="https://toolyfi.com/#tools">Tools</a>
+      <a href="https://toolyfi.com/blog/">Blog</a>
+      <a href="https://toolyfi.com/ai-text-detector.html" class="nav-cta">Try Tool Free</a>
+    </div>
   </nav>
 </header>
 
@@ -437,6 +271,7 @@
   </div>
 
   <div class="content">
+
     <h2 id="what">What is an AI Text Detector?</h2>
     <p>An <strong>AI text detector</strong> analyzes written content and determines the probability it was generated by artificial intelligence like ChatGPT, Claude, or Gemini — rather than written by a human.</p>
     <p>As AI writing tools become more common, detecting AI-generated content has become critical for teachers, editors, HR managers, and content managers.</p>
@@ -456,22 +291,17 @@
 
     <h2 id="how">How to Use — Step by Step</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body"><h3>Open AI Text Detector</h3><p>Go to toolyfi.com/ai-text-detector.html — no login needed.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body"><h3>Paste Your Text</h3><p>Copy the text you want to check and paste it. Minimum 100 words recommended.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body"><h3>Click Detect</h3><p>Hit the detect button and wait a moment for the analysis.</p></div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body"><h3>Read Your Results</h3><p>View the AI probability score — higher percentage means more likely AI-generated.</p></div>
-      </div>
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open AI Text Detector</h3><p>Go to toolyfi.com/ai-text-detector.html — no login needed.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Paste Your Text</h3><p>Copy the text you want to check and paste it. Minimum 100 words recommended.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Click Detect</h3><p>Hit the detect button and wait a moment for the analysis.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Read Your Results</h3><p>View the AI probability score — higher percentage means more likely AI-generated.</p></div></div>
+    </div>
+
+    <!-- AD MID -->
+    <div class="ad-wrap" style="padding:0;margin:24px 0;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
 
     <h2 id="tips">Pro Tips for Better Results</h2>
@@ -483,28 +313,10 @@
     </ul>
 
     <h2 id="faq">Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <div class="faq-q">How does AI text detection work?</div>
-      <div class="faq-a">AI detectors analyze perplexity and burstiness. AI writing is very predictable (low perplexity) and uniform (low burstiness). Human writing is more varied and natural.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Is Toolyfi AI Text Detector free?</div>
-      <div class="faq-a">Yes, completely free. No account, no signup, no credits needed.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can it detect ChatGPT, Claude, and Gemini?</div>
-      <div class="faq-a">Yes, the tool detects content from major AI models including ChatGPT, Claude, Gemini and other LLMs.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How accurate is the AI detector?</div>
-      <div class="faq-a">The tool provides a reliable probability score. For best results use at least 150 words. No detector is 100% accurate — always combine with human review.</div>
-    </div>
-
-    <div class="ad-wrap" style="padding:0;margin:24px 0">
-      <div class="ad-label">ADVERTISEMENT</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-    </div>
+    <div class="faq-item"><div class="faq-q">How does AI text detection work?</div><div class="faq-a">AI detectors analyze perplexity and burstiness. AI writing is very predictable (low perplexity) and uniform (low burstiness). Human writing is more varied and natural.</div></div>
+    <div class="faq-item"><div class="faq-q">Is Toolyfi AI Text Detector free?</div><div class="faq-a">Yes, completely free. No account, no signup, no credits needed.</div></div>
+    <div class="faq-item"><div class="faq-q">Can it detect ChatGPT, Claude, and Gemini?</div><div class="faq-a">Yes, the tool detects content from major AI models including ChatGPT, Claude, Gemini and other LLMs.</div></div>
+    <div class="faq-item"><div class="faq-q">How accurate is the AI detector?</div><div class="faq-a">The tool provides a reliable probability score. For best results use at least 150 words. No detector is 100% accurate — always combine with human review.</div></div>
 
     <div class="cta-box">
       <h3>✅ Try AI Text Detector — 100% Free</h3>
@@ -516,21 +328,58 @@
     <div class="related-grid">
       <a href="https://toolyfi.com/word-counter.html" class="related-card"><div class="icon">📝</div><h4>Word Counter</h4><p>Count words & characters free</p></a>
       <a href="https://toolyfi.com/ai-image-generator.html" class="related-card"><div class="icon">🎨</div><h4>AI Image Generator</h4><p>Generate AI images instantly</p></a>
-      <a href="https://toolyfi.com/prompt-generator.html" class="related-card"><div class="icon">✨</div><h4>Prompt Generator</h4><p>500+ AI prompts for ChatGPT</p></a>
-      <a href="https://toolyfi.com/claude-10x.html" class="related-card"><div class="icon">🚀</div><h4>Claude 10x Tips</h4><p>Master Claude AI with prompts</p></a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="related-card"><div class="icon">📊</div><h4>Invoice Generator</h4><p>Create professional PDF invoices</p></a>
+      <a href="https://toolyfi.com/resume-builder.html" class="related-card"><div class="icon">📄</div><h4>Resume Builder</h4><p>ATS-friendly resume, PDF download</p></a>
     </div>
 
-    <div class="ad-wrap" style="padding:0;margin-top:32px">
+    <!-- AD BOTTOM -->
+    <div class="ad-wrap" style="padding:0;margin:24px 0;">
       <div class="ad-label">ADVERTISEMENT</div>
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
+
+    <!-- FIREBASE ENGAGEMENT -->
+    <div class="engagement-section">
+      <h3>💬 Rate & Review This Article</h3>
+      <div class="like-dislike">
+        <button class="eng-btn" onclick="handleLike()">👍 Like <span id="like-count">0</span></button>
+        <button class="eng-btn" onclick="handleDislike()">👎 Dislike <span id="dislike-count">0</span></button>
+      </div>
+      <div class="star-row">
+        <p>Rate this article:</p>
+        <div class="stars">
+          <button class="star-btn" onclick="handleStar(1)">★</button>
+          <button class="star-btn" onclick="handleStar(2)">★</button>
+          <button class="star-btn" onclick="handleStar(3)">★</button>
+          <button class="star-btn" onclick="handleStar(4)">★</button>
+          <button class="star-btn" onclick="handleStar(5)">★</button>
+        </div>
+        <div class="star-info">⭐ <span id="star-avg">0.0</span> / 5 &nbsp;|&nbsp; <span id="star-count">0</span> ratings</div>
+      </div>
+      <div class="comment-box">
+        <p>Leave a comment:</p>
+        <input type="text" id="comment-name" class="comment-input" placeholder="Your name (optional)" style="resize:none;height:44px;">
+        <textarea id="comment-text" class="comment-input" rows="3" placeholder="Share your thoughts..."></textarea>
+        <button class="submit-btn" onclick="submitComment()">Post Comment →</button>
+        <div id="comments-list"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <footer>
-  <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p>
+  <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
+  <p style="margin-top:6px;">
+    <a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/blog/">Blog</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/TERMS.HTML">Terms</a>
+  </p>
 </footer>
 
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 </body>
 </html>
