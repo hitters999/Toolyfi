@@ -10,113 +10,149 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://toolyfi.com/blog/word-counter-guide.html">
   <meta property="og:title" content="Free Word Counter Online — Count Words, Characters & Sentences Instantly">
-  <meta property="og:description" content="Free word counter online. Count words, characters & reading time instantly. No login required.">
+  <meta property="og:description" content="Free word counter online tool. Count words, characters, sentences, paragraphs & reading time instantly. No login required. Fast & accurate results.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://toolyfi.com/blog/word-counter-guide.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Word Counter Online — Instant Results">
-  <meta name="twitter:description" content="Count words, characters & reading time free. No login needed.">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Free Word Counter Online — Count Words, Characters & Sentences Instantly","description":"Free word counter online. Count words, characters, sentences & reading time instantly. No login required.","author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"publisher":{"@type":"Organization","name":"Toolyfi"},"datePublished":"2026-03-18","dateModified":"2026-03-18","mainEntityOfPage":{"@type":"WebPage","@id":"https://toolyfi.com/blog/word-counter-guide.html"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I count words online for free?","acceptedAnswer":{"@type":"Answer","text":"Go to Toolyfi Word Counter, paste your text, and get instant word count, characters, sentences and reading time. Completely free, no login needed."}},{"@type":"Question","name":"Is Toolyfi Word Counter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. No account, no signup, no hidden charges."}},{"@type":"Question","name":"What is the ideal word count for a blog post?","acceptedAnswer":{"@type":"Answer","text":"For SEO, 1000–2000 words is recommended. Google ranks longer content higher."}},{"@type":"Question","name":"How many words is 1 page?","acceptedAnswer":{"@type":"Answer","text":"One double-spaced page contains about 250–300 words. Single-spaced has 500–600 words."}}]}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, runTransaction, onValue, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "toolyfi-208b8.firebaseapp.com",
+      databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com",
+      projectId: "toolyfi-208b8",
+      storageBucket: "toolyfi-208b8.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const id = "word-counter";
+    const likesRef=ref(db,`articles/${id}/likes`);
+    const dislikesRef=ref(db,`articles/${id}/dislikes`);
+    const starsRef=ref(db,`articles/${id}/stars`);
+    const commentsRef=ref(db,`articles/${id}/comments`);
+    onValue(likesRef,s=>{document.getElementById('like-count').textContent=s.val()||0;});
+    onValue(dislikesRef,s=>{document.getElementById('dislike-count').textContent=s.val()||0;});
+    onValue(starsRef,s=>{const d=s.val()||{total:0,count:0};document.getElementById('star-avg').textContent=d.count>0?(d.total/d.count).toFixed(1):"0.0";document.getElementById('star-count').textContent=d.count;});
+    onValue(commentsRef,s=>{const c=document.getElementById('comments-list');c.innerHTML='';const data=s.val();if(data){Object.values(data).reverse().forEach(x=>{const d=document.createElement('div');d.className='comment-item';d.innerHTML=`<div class="comment-author">${x.name}</div><div class="comment-text">${x.text}</div>`;c.appendChild(d);});}else{c.innerHTML='<p style="color:#94a3b8;font-size:.9em;">No comments yet. Be the first!</p>';}});
+    window.handleLike=()=>runTransaction(likesRef,v=>(v||0)+1);
+    window.handleDislike=()=>runTransaction(dislikesRef,v=>(v||0)+1);
+    window.handleStar=(val)=>{runTransaction(starsRef,d=>{if(!d)d={total:0,count:0};d.total+=val;d.count+=1;return d;});document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('active',i<val));};
+    window.submitComment=()=>{const name=document.getElementById('comment-name').value.trim()||'Anonymous';const text=document.getElementById('comment-text').value.trim();if(!text)return;push(commentsRef,{name,text,timestamp:serverTimestamp()});document.getElementById('comment-name').value='';document.getElementById('comment-text').value='';};
+  </script>
   <style>
-    :root{--bg:#f8f9ff;--white:#ffffff;--accent:#6366f1;--accent2:#7c3aed;--accent-light:#ede9fe;--text:#1e1b4b;--text2:#64748b;--border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,0.07),0 4px 16px rgba(99,102,241,0.06)}
+    :root{--bg:#f9fafb;--white:#ffffff;--accent:#667eea;--accent2:#764ba2;--accent-light:#ede9fe;--text:#111827;--text2:#4b5563;--text3:#6b7280;--border:#e5e7eb;--shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(102,126,234,0.07)}
     *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7}
-    header{background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;height:64px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
-    .logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:8px}
-    nav{display:flex;align-items:center;gap:6px}
-    nav a{color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:8px;font-size:.9rem;font-weight:500;transition:all .2s}
-    nav a:hover{color:var(--accent);background:var(--accent-light)}
-    .nav-cta{background:var(--accent)!important;color:white!important;font-weight:600!important}
-    .nav-cta:hover{background:var(--accent2)!important;color:white!important}
-    .breadcrumb{max-width:860px;margin:20px auto 0;padding:0 20px;font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:6px}
-    .breadcrumb a{color:var(--text2);text-decoration:none}
-    .breadcrumb a:hover{color:var(--accent)}
-    .breadcrumb span{color:#cbd5e1}
-    .ad-wrap{max-width:860px;margin:14px auto;padding:0 20px}
-    .ad-label{font-size:.68rem;color:#cbd5e1;text-align:center;margin-bottom:3px;letter-spacing:1px}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.9}
+    header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:0 5%;height:64px;display:flex;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 15px rgba(102,126,234,0.3);font-family:'Inter',sans-serif}
+    header nav{width:100%;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .logo{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;text-decoration:none}
+    .nav-links{display:flex;gap:6px;align-items:center}
+    .nav-links a{color:rgba(255,255,255,0.88);text-decoration:none;padding:7px 14px;border-radius:8px;font-size:.88rem;font-weight:500;transition:all .2s;font-family:'Inter',sans-serif}
+    .nav-links a:hover{background:rgba(255,255,255,0.2);color:white}
+    .nav-cta{background:white!important;color:var(--accent2)!important;font-weight:700!important;border-radius:20px!important}
+    .breadcrumb{max-width:860px;margin:18px auto 0;padding:0 20px;font-size:.82rem;color:var(--text3);display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+    .breadcrumb a{color:var(--text3);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}.breadcrumb span{color:#d1d5db}
+    .ad-wrap{max-width:860px;margin:16px auto;padding:0 20px}
+    .ad-label{font-size:.65rem;color:#d1d5db;text-align:center;margin-bottom:3px;letter-spacing:1px;font-family:'Inter',sans-serif}
     .article-wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
-    .article-hero{padding:32px 0 24px;border-bottom:1px solid var(--border);margin-bottom:28px}
-    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent2);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:16px}
-    h1{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;line-height:1.2;color:var(--text);margin-bottom:14px}
+    .article-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent2);font-size:.7rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.8px;margin-bottom:18px;font-family:'Inter',sans-serif;text-transform:uppercase}
+    h1{font-family:'Inter',sans-serif;font-size:1.85rem;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:16px;letter-spacing:-0.3px}
     h1 .hl{color:var(--accent)}
-    .article-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.83rem;color:var(--text2);margin-bottom:20px}
-    .quick-answer{background:var(--white);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:24px;box-shadow:var(--shadow)}
-    .quick-answer p{color:var(--text2);font-size:.95rem;margin:6px 0 0}
+    .article-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--text3);margin-bottom:22px;font-family:'Inter',sans-serif}
+    .quick-answer{background:var(--white);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px;box-shadow:var(--shadow)}
+    .quick-answer strong{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text)}
+    .quick-answer p{color:var(--text2);font-size:.97rem;margin:6px 0 0;line-height:1.7;font-family:'Inter',sans-serif}
     .quick-answer a{color:var(--accent);text-decoration:none;font-weight:600}
-    .toc{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:32px;box-shadow:var(--shadow)}
-    .toc-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
-    .toc ol{padding-left:20px}
-    .toc li{margin-bottom:8px}
-    .toc a{color:var(--accent);text-decoration:none;font-size:.93rem;font-weight:500}
-    .toc a:hover{text-decoration:underline}
-    .tool-embed{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;margin:28px 0;box-shadow:var(--shadow)}
-    .tool-embed h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px}
-    #text-input{width:100%;height:170px;background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;resize:vertical;outline:none;transition:border-color .2s}
-    #text-input:focus{border-color:var(--accent)}
-    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
-    .stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
-    .stat-val{display:block;font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--accent)}
-    .stat-label{font-size:.68rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-    .tool-link{display:block;text-align:center;margin-top:12px;font-size:.85rem;font-weight:600;color:var(--accent);text-decoration:none}
-    .tool-link:hover{text-decoration:underline}
-    .content h2{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;color:var(--text);margin:40px 0 16px;padding-left:14px;border-left:4px solid var(--accent)}
-    .content h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin:22px 0 8px}
-    .content p{color:var(--text2);margin-bottom:16px;font-size:.97rem}
-    .content ul,.content ol{color:var(--text2);padding-left:22px;margin-bottom:16px}
-    .content li{margin-bottom:8px;font-size:.97rem}
-    .content strong{color:var(--text)}
+    .toc{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:36px;box-shadow:var(--shadow)}
+    .toc-title{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px}
+    .toc ol{padding-left:20px}.toc li{margin-bottom:9px}
+    .toc a{color:var(--accent);text-decoration:none;font-size:.95rem;font-weight:500;font-family:'Inter',sans-serif}
+    .content h2{font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:700;color:var(--text);margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--accent);letter-spacing:-0.2px;line-height:1.35}
+    .content h3{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin:26px 0 10px}
+    .content p{color:var(--text2);margin-bottom:20px;font-size:1rem;line-height:1.9}
+    .content ul,.content ol{color:var(--text2);padding-left:24px;margin-bottom:20px}
+    .content li{margin-bottom:12px;font-size:1rem;line-height:1.8}
+    .content strong{color:var(--text);font-weight:700}
     .content a{color:var(--accent);text-decoration:none;font-weight:600}
-    .takeaway{background:var(--accent-light);border-radius:12px;padding:16px 20px;margin:20px 0}
-    .takeaway-label{font-size:.7rem;font-weight:700;color:var(--accent2);letter-spacing:1px;margin-bottom:6px}
-    .takeaway p{color:var(--text);font-size:.93rem;margin:0;font-weight:500}
-    .steps{margin:20px 0}
-    .step{display:flex;gap:16px;margin-bottom:18px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
-    .step-num{width:32px;height:32px;min-width:32px;background:var(--accent);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;margin-top:2px}
-    .step-body h3{font-size:.95rem;color:var(--text);margin-bottom:4px;font-weight:600}
-    .step-body p{color:var(--text2);font-size:.88rem;margin:0}
+    .takeaway{background:var(--accent-light);border-radius:12px;padding:20px 24px;margin:24px 0;border-left:3px solid var(--accent2)}
+    .takeaway-label{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;color:var(--accent2);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+    .takeaway p{color:#3b3273;font-size:.97rem;margin:0;font-weight:500;line-height:1.75;font-family:'Inter',sans-serif}
+    .steps{margin:24px 0}
+    .step{display:flex;gap:18px;margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+    .step-num{width:34px;height:34px;min-width:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;margin-top:2px}
+    .step-body h3{font-family:'Inter',sans-serif;font-size:1rem;color:var(--text);margin-bottom:5px;font-weight:700}
+    .step-body p{color:var(--text2);font-size:.93rem;margin:0;line-height:1.7;font-family:'Inter',sans-serif}
     .table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
     table{width:100%;border-collapse:collapse}
-    thead th{background:var(--accent);color:white;padding:12px 16px;text-align:left;font-size:.85rem;font-family:'Syne',sans-serif}
-    tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text2)}
-    tbody tr:last-child td{border-bottom:none}
-    tbody tr:hover{background:var(--bg)}
-    .cta-box{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:32px;text-align:center;margin:36px 0}
-    .cta-box h3{font-family:'Syne',sans-serif;font-size:1.4rem;color:white;margin-bottom:8px}
-    .cta-box p{color:rgba(255,255,255,.85);margin-bottom:18px;font-size:.93rem}
-    .cta-btn{display:inline-block;background:white;color:var(--accent2);font-weight:700;font-family:'Syne',sans-serif;padding:12px 28px;border-radius:8px;text-decoration:none;transition:transform .2s}
+    thead th{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;padding:12px 16px;text-align:left;font-size:.88rem;font-family:'Inter',sans-serif;font-weight:700}
+    tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.93rem;color:var(--text2);font-family:'Inter',sans-serif}
+    tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:var(--bg)}
+    .cta-box{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:36px;text-align:center;margin:40px 0}
+    .cta-box h3{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:10px}
+    .cta-box p{color:rgba(255,255,255,.88);margin-bottom:20px;font-size:.97rem;font-family:'Inter',sans-serif;line-height:1.6}
+    .cta-btn{display:inline-block;background:white;color:var(--accent2);font-weight:700;font-family:'Inter',sans-serif;padding:13px 30px;border-radius:25px;text-decoration:none;transition:transform .2s;font-size:.97rem}
     .cta-btn:hover{transform:translateY(-2px)}
-    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px;box-shadow:var(--shadow)}
-    .faq-q{font-family:'Syne',sans-serif;font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:8px}
-    .faq-a{color:var(--text2);font-size:.92rem}
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin:20px 0}
-    .related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;transition:all .2s;box-shadow:var(--shadow)}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .faq-q{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:10px}
+    .faq-a{color:var(--text2);font-size:.97rem;line-height:1.8;font-family:'Inter',sans-serif}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0}
+    .related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:all .2s;box-shadow:var(--shadow)}
     .related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-    .related-card .icon{font-size:1.4rem;margin-bottom:8px}
-    .related-card h4{font-size:.88rem;color:var(--text);margin-bottom:4px;font-family:'Syne',sans-serif;font-weight:700}
-    .related-card p{font-size:.78rem;color:var(--text2);margin:0}
-    footer{background:var(--white);border-top:1px solid var(--border);padding:28px;text-align:center;color:var(--text2);font-size:.85rem}
-    footer a{color:var(--accent);text-decoration:none}
-    @media(max-width:600px){h1{font-size:1.55rem}.stats-row{grid-template-columns:repeat(2,1fr)}.article-hero{padding:20px 0}}
+    .related-card .icon{font-size:1.5rem;margin-bottom:10px}
+    .related-card h4{font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);margin-bottom:5px;font-weight:700}
+    .related-card p{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text3);margin:0}
+    .engagement-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;box-shadow:var(--shadow)}
+    .engagement-section h3{font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:24px}
+    .like-dislike{display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap}
+    .eng-btn{background:var(--bg);border:2px solid var(--border);color:var(--text2);padding:10px 22px;border-radius:50px;cursor:pointer;font-size:.92rem;font-family:'Inter',sans-serif;font-weight:600;transition:all .25s;display:flex;align-items:center;gap:7px}
+    .eng-btn:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+    .star-row{margin-bottom:26px}
+    .star-row p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
+    .stars{display:flex;gap:6px;margin-bottom:6px}
+    .star-btn{background:none;border:none;font-size:1.8em;cursor:pointer;color:#e5e7eb;transition:color .2s,transform .2s}
+    .star-btn:hover,.star-btn.active{color:#f59e0b;transform:scale(1.15)}
+    .star-info{color:var(--text3);font-size:.82rem;font-family:'Inter',sans-serif}
+    .comment-box>p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
+    .comment-input{width:100%;padding:12px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.95rem;margin-bottom:10px;resize:vertical;transition:border-color .2s}
+    .comment-input:focus{outline:none;border-color:var(--accent)}
+    .submit-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border:none;padding:11px 28px;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;font-size:.92rem;transition:opacity .3s}
+    .submit-btn:hover{opacity:.85}
+    #comments-list{margin-top:20px}
+    .comment-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+    .comment-author{font-family:'Inter',sans-serif;font-weight:700;color:var(--accent);font-size:.85rem;margin-bottom:4px}
+    .comment-text{color:var(--text2);font-size:.93rem;font-family:'Inter',sans-serif;line-height:1.6}
+    footer{background:linear-gradient(135deg,#2a2a3e 0%,#1a1a2e 100%);color:#9ca3af;text-align:center;padding:36px 20px;margin-top:60px;border-top:2px solid var(--accent);font-family:'Inter',sans-serif}
+    footer p{margin-bottom:8px;font-size:.88rem}
+    footer a{color:var(--accent);text-decoration:none;font-weight:600}
+    footer a:hover{text-decoration:underline}
+    @media(max-width:600px){body{font-size:17px}h1{font-size:1.5rem}.content h2{font-size:1.18rem}.article-hero{padding:22px 0}.article-wrap{padding:0 16px 60px}.engagement-section{padding:22px}}
   </style>
 </head>
 <body>
 <header>
-  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
   <nav>
-    <a href="https://toolyfi.com">Home</a>
-    <a href="https://toolyfi.com/#tools">Tools</a>
-    <a href="https://toolyfi.com/word-counter.html" class="nav-cta">Try Tool Free</a>
+    <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
+    <div class="nav-links">
+      <a href="https://toolyfi.com">Home</a>
+      <a href="https://toolyfi.com/#tools">Tools</a>
+      <a href="https://toolyfi.com/blog/">Blog</a>
+      <a href="https://toolyfi.com/word-counter.html" class="nav-cta">Try Tool Free</a>
+    </div>
   </nav>
 </header>
-
 <div class="ad-wrap"><div class="ad-label">ADVERTISEMENT</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-
-<div class="breadcrumb"><a href="https://toolyfi.com">Home</a><span>›</span><a href="https://toolyfi.com/blog/how-to-get-youtube-transcript-free.html">Blog</a><span>›</span>Free Word Counter Online</div>
-
+<div class="breadcrumb"><a href="https://toolyfi.com">Home</a><span>›</span><a href="https://toolyfi.com/blog/">Blog</a><span>›</span>Word Counter</div>
 <div class="article-wrap">
+
   <div class="article-hero">
     <div class="badge">📝 FREE GUIDE · 2026</div>
     <h1>Free <span class="hl">Word Counter</span> Online — Count Words, Characters & Sentences Instantly</h1>
@@ -222,21 +258,38 @@
   </div>
 </div>
 
-<footer><p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p></footer>
 
-<script>
-  const input = document.getElementById('text-input');
-  input.addEventListener('input', () => {
-    const text = input.value.trim();
-    const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
-    const chars = input.value.length;
-    const sentences = text ? (text.match(/[.!?]+(\s+|$)/g) || [text]).length : 0;
-    const readTime = Math.ceil(words / 225) || 0;
-    document.getElementById('word-count').textContent = words;
-    document.getElementById('char-count').textContent = chars;
-    document.getElementById('sent-count').textContent = sentences;
-    document.getElementById('read-time').textContent = readTime + 'm';
-  });
-</script>
+  <!-- FIREBASE ENGAGEMENT -->
+  <div class="engagement-section">
+    <h3>💬 Rate & Review This Article</h3>
+    <div class="like-dislike">
+      <button class="eng-btn" onclick="handleLike()">👍 Like <span id="like-count">0</span></button>
+      <button class="eng-btn" onclick="handleDislike()">👎 Dislike <span id="dislike-count">0</span></button>
+    </div>
+    <div class="star-row">
+      <p>Rate this article:</p>
+      <div class="stars">
+        <button class="star-btn" onclick="handleStar(1)">★</button>
+        <button class="star-btn" onclick="handleStar(2)">★</button>
+        <button class="star-btn" onclick="handleStar(3)">★</button>
+        <button class="star-btn" onclick="handleStar(4)">★</button>
+        <button class="star-btn" onclick="handleStar(5)">★</button>
+      </div>
+      <div class="star-info">⭐ <span id="star-avg">0.0</span> / 5 &nbsp;|&nbsp; <span id="star-count">0</span> ratings</div>
+    </div>
+    <div class="comment-box">
+      <p>Leave a comment:</p>
+      <input type="text" id="comment-name" class="comment-input" placeholder="Your name (optional)" style="resize:none;height:46px;">
+      <textarea id="comment-text" class="comment-input" rows="3" placeholder="Share your thoughts..."></textarea>
+      <button class="submit-btn" onclick="submitComment()">Post Comment →</button>
+      <div id="comments-list"></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
+  <p style="margin-top:6px;"><a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/blog/">Blog</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p>
+</footer>
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 </body>
 </html>
