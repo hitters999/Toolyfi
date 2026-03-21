@@ -1,407 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to Get YouTube Transcript Free (2026) — 3 Easy Methods | Toolyfi</title>
-  <meta name="description" content="Get YouTube transcript free in seconds. 3 proven methods — no software, no signup needed. Extract full transcript + AI summary from any YouTube video instantly." />
-  <meta name="keywords" content="how to get youtube transcript, youtube transcript free, extract youtube transcript, youtube video to text, youtube transcript download, get transcript from youtube video, youtube to text free" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Toolyfi" />
-  <link rel="canonical" href="https://toolyfi.com/blog/how-to-get-youtube-transcript-free" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="How to Get YouTube Transcript Free (2026) — 3 Easy Methods" />
-  <meta property="og:description" content="3 proven methods to extract transcript from any YouTube video for free — no software, no signup needed." />
-  <meta property="og:url" content="https://toolyfi.com/blog/how-to-get-youtube-transcript-free" />
-  <meta property="og:site_name" content="Toolyfi" />
+  <meta name="description" content="Get YouTube transcript free in seconds. 3 proven methods — no software, no signup needed. Extract full transcript + AI summary from any YouTube video instantly.">
+  <meta name="keywords" content="how to get youtube transcript, youtube transcript free, extract youtube transcript, youtube video to text, youtube transcript download, get transcript from youtube video, youtube to text free">
+  <meta name="author" content="Toolyfi">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://toolyfi.com/blog/how-to-get-youtube-transcript-free">
+  <meta property="og:title" content="How to Get YouTube Transcript Free (2026) — 3 Easy Methods">
+  <meta property="og:description" content="Get YouTube transcript free in seconds. 3 proven methods — no software, no signup needed. Extract full transcript + AI summary from any YouTube video instantly.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Get YouTube Transcript Free (2026) — 3 Easy Methods","description":"3 proven methods to extract transcript from any YouTube video for free.","author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"publisher":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"datePublished":"2026-01-01","dateModified":"2026-03-16","mainEntityOfPage":{"@type":"WebPage","@id":"https://toolyfi.com/blog/how-to-get-youtube-transcript-free"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://toolyfi.com/blog"},{"@type":"ListItem","position":3,"name":"How to Get YouTube Transcript Free","item":"https://toolyfi.com/blog/how-to-get-youtube-transcript-free"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I get a YouTube transcript for free?","acceptedAnswer":{"@type":"Answer","text":"The fastest way is to use Toolyfi's free YouTube Transcript Extractor. Paste the video URL, click Extract, and get the full transcript plus AI analysis in seconds — no signup needed."}},{"@type":"Question","name":"Can I download a YouTube transcript as a text file?","acceptedAnswer":{"@type":"Answer","text":"Yes. After extracting the transcript on Toolyfi, click Copy Transcript and paste it into any text editor like Notepad or Google Docs, then save it as a file."}},{"@type":"Question","name":"Does YouTube have a built-in transcript feature?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click the three-dot menu below any YouTube video and select Open transcript. However, this method requires manual copying and offers no AI analysis."}},{"@type":"Question","name":"Are YouTube auto-generated transcripts accurate?","acceptedAnswer":{"@type":"Answer","text":"Auto-generated transcripts are typically 85–95% accurate for clear English speech. Accuracy drops for strong accents or poor audio quality."}}]}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, runTransaction, onValue, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY", authDomain: "toolyfi-208b8.firebaseapp.com",
+      databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com",
+      projectId: "toolyfi-208b8", storageBucket: "toolyfi-208b8.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID", appId: "YOUR_APP_ID"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const id = "youtube-transcript";
+    const likesRef=ref(db,`articles/${id}/likes`);
+    const dislikesRef=ref(db,`articles/${id}/dislikes`);
+    const starsRef=ref(db,`articles/${id}/stars`);
+    const commentsRef=ref(db,`articles/${id}/comments`);
+    onValue(likesRef,s=>{document.getElementById('like-count').textContent=s.val()||0;});
+    onValue(dislikesRef,s=>{document.getElementById('dislike-count').textContent=s.val()||0;});
+    onValue(starsRef,s=>{const d=s.val()||{total:0,count:0};document.getElementById('star-avg').textContent=d.count>0?(d.total/d.count).toFixed(1):"0.0";document.getElementById('star-count').textContent=d.count;});
+    onValue(commentsRef,s=>{const c=document.getElementById('comments-list');c.innerHTML='';const data=s.val();if(data){Object.values(data).reverse().forEach(x=>{const d=document.createElement('div');d.className='comment-item';d.innerHTML=`<div class="comment-author">${x.name}</div><div class="comment-text">${x.text}</div>`;c.appendChild(d);});}else{c.innerHTML='<p style="color:#94a3b8;font-size:.9em;">No comments yet. Be the first!</p>';}});
+    window.handleLike=()=>runTransaction(likesRef,v=>(v||0)+1);
+    window.handleDislike=()=>runTransaction(dislikesRef,v=>(v||0)+1);
+    window.handleStar=(val)=>{runTransaction(starsRef,d=>{if(!d)d={total:0,count:0};d.total+=val;d.count+=1;return d;});document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('active',i<val));};
+    window.submitComment=()=>{const name=document.getElementById('comment-name').value.trim()||'Anonymous';const text=document.getElementById('comment-text').value.trim();if(!text)return;push(commentsRef,{name,text,timestamp:serverTimestamp()});document.getElementById('comment-name').value='';document.getElementById('comment-text').value='';};
+  </script>
   <style>
-    :root{--purple:#6c47ff;--purple2:#8b6fff;--purple-light:#ede9ff;--bg:#f8f7ff;--white:#fff;--text:#1a1a2e;--muted:#6b7280;--border:#e5e7eb;--shadow:0 4px 24px rgba(108,71,255,.10);--font-head:'Nunito',sans-serif;--font-body:'Inter',sans-serif;--radius:16px}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;line-height:1.7}
-    /* NAV */
-    nav.topnav{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-    .nav-logo{font-family:var(--font-head);font-weight:900;font-size:20px;color:var(--text);text-decoration:none}
-    .nav-logo span{color:var(--purple)}
-    .nav-right{display:flex;align-items:center;gap:20px}
-    .nav-right a{color:var(--muted);font-size:14px;text-decoration:none;font-weight:500}
-    .nav-right a:hover{color:var(--purple)}
-    .nav-btn{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff!important;padding:8px 18px;border-radius:99px;font-size:13px;font-weight:700;font-family:var(--font-head)}
-    /* LAYOUT */
-    .page-wrap{max-width:820px;margin:0 auto;padding:40px 24px 80px}
-    /* BREADCRUMB */
-    .breadcrumb{font-size:12px;color:var(--muted);margin-bottom:20px}
-    .breadcrumb a{color:var(--muted);text-decoration:none}
-    .breadcrumb a:hover{color:var(--purple)}
-    .breadcrumb span{margin:0 6px}
-    /* ARTICLE HEADER */
-    .article-tag{display:inline-block;background:var(--purple-light);color:var(--purple);font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:14px}
-    h1{font-family:var(--font-head);font-size:clamp(26px,4.5vw,40px);font-weight:900;line-height:1.2;margin-bottom:16px;color:var(--text)}
-    h1 span{background:linear-gradient(135deg,var(--purple),#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .article-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
-    .intro-text{font-size:16px;color:#374151;line-height:1.8;margin-bottom:32px;padding:20px 24px;background:var(--white);border-radius:var(--radius);border-left:4px solid var(--purple);box-shadow:var(--shadow)}
-    /* TOC */
-    .toc{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin-bottom:40px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-    .toc-title{font-family:var(--font-head);font-weight:800;font-size:14px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-    .toc ol{padding-left:20px;display:flex;flex-direction:column;gap:8px}
-    .toc li{font-size:14px}
-    .toc a{color:var(--purple);text-decoration:none;font-weight:600}
-    .toc a:hover{text-decoration:underline}
-    /* HEADINGS */
-    h2{font-family:var(--font-head);font-size:clamp(18px,3vw,26px);font-weight:900;color:var(--text);margin:44px 0 16px;scroll-margin-top:80px;display:flex;align-items:center;gap:10px}
-    h2::before{content:'';display:block;width:4px;height:28px;background:linear-gradient(180deg,var(--purple),var(--purple2));border-radius:99px;flex-shrink:0}
-    h3{font-family:var(--font-head);font-size:17px;font-weight:800;color:var(--text);margin:28px 0 12px}
-    /* BODY TEXT */
-    p{font-size:15px;line-height:1.8;color:#374151;margin-bottom:16px}
-    strong{color:var(--text);font-weight:700}
-    a{color:var(--purple);text-decoration:none;font-weight:600}
-    a:hover{text-decoration:underline}
-    ul,ol{padding-left:0;margin-bottom:20px;display:flex;flex-direction:column;gap:10px;list-style:none}
-    li{font-size:15px;line-height:1.7;color:#374151;padding-left:24px;position:relative}
-    ul li::before{content:'▸';position:absolute;left:0;color:var(--purple);font-weight:700}
-    ol{counter-reset:ol-counter}
-    ol li{counter-increment:ol-counter}
-    ol li::before{content:counter(ol-counter);position:absolute;left:0;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);top:2px}
-    /* STEP BOXES */
-    .step-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin:12px 0;display:flex;gap:16px;align-items:flex-start;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:box-shadow .2s,transform .2s}
-    .step-box:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-    .step-n{background:linear-gradient(135deg,var(--purple),var(--purple2));min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:900;font-size:14px;color:#fff;box-shadow:0 4px 12px rgba(108,71,255,.3)}
-    .step-content h4{font-family:var(--font-head);font-weight:800;font-size:15px;margin-bottom:5px;color:var(--text)}
-    .step-content p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
-    /* CALLOUT BOXES */
-    .callout{border-radius:var(--radius);padding:18px 22px;margin:24px 0}
-    .callout p{margin:0;font-size:14px;line-height:1.6}
-    .callout-tip{background:#f0fdf4;border:1px solid #86efac}
-    .callout-tip p{color:#166534}
-    .callout-info{background:#ede9ff;border:1px solid #c4b5fd}
-    .callout-info p{color:#4c1d95}
-    .callout-warn{background:#fef3c7;border:1px solid #fcd34d}
-    .callout-warn p{color:#92400e}
-    /* CTA BOX */
-    .cta-box{background:linear-gradient(135deg,var(--purple),var(--purple2));border-radius:20px;padding:32px;margin:36px 0;text-align:center;box-shadow:0 8px 32px rgba(108,71,255,.3)}
-    .cta-box h3{font-family:var(--font-head);font-weight:900;font-size:22px;color:#fff;margin-bottom:10px}
-    .cta-box p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:22px}
-    .cta-btn{display:inline-block;background:#fff;color:var(--purple);font-family:var(--font-head);font-weight:800;font-size:15px;padding:14px 32px;border-radius:13px;text-decoration:none;transition:transform .2s,box-shadow .2s}
-    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15);text-decoration:none;color:var(--purple)}
-    /* COMPARISON TABLE */
-    .table-wrap{overflow-x:auto;margin:20px 0;border-radius:var(--radius);border:1px solid var(--border)}
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    th{background:var(--purple-light);padding:12px 16px;text-align:left;font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--purple);border-bottom:1px solid var(--border)}
-    td{padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.04);color:#374151;line-height:1.5}
-    tr:last-child td{border-bottom:none}
-    tr.best td{background:#faf9ff;font-weight:600}
-    .yes{color:#16a34a;font-weight:700}
-    .no{color:#dc2626}
-    /* KEY TAKEAWAY */
-    .key-takeaway{background:var(--white);border:2px solid var(--purple);border-radius:var(--radius);padding:20px 24px;margin:28px 0}
-    .kt-label{font-family:var(--font-head);font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:8px}
-    .key-takeaway p{margin:0;font-size:15px;color:var(--text);font-weight:600;line-height:1.6}
-    /* FAQ */
-    .faq-item{border-bottom:1px solid var(--border);padding:18px 0}
-    .faq-q{font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--text);margin-bottom:8px}
-    .faq-a{color:var(--muted);font-size:14px;line-height:1.65}
-    /* RELATED */
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:20px}
-    .related-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-decoration:none;display:block;transition:box-shadow .2s,transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-    .related-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-    .r-icon{font-size:22px;margin-bottom:8px}
-    .r-name{font-family:var(--font-head);font-weight:800;font-size:13px;color:var(--text);margin-bottom:4px}
-    .r-desc{font-size:12px;color:var(--muted)}
-    /* FOOTER */
-    footer{background:var(--white);border-top:1px solid var(--border);text-align:center;padding:28px 20px;color:var(--muted);font-size:13px}
-    footer a{color:var(--purple);font-weight:600;text-decoration:none}
-    .footer-kw{font-size:11px;color:#d1d5db;margin-top:6px}
-    /* DIVIDER */
-    .divider{height:1px;background:var(--border);margin:40px 0}
-    @media(max-width:600px){.nav-right a:not(.nav-btn){display:none}.page-wrap{padding:24px 16px 60px}}
+    :root{--bg:#f9fafb;--white:#ffffff;--accent:#667eea;--accent2:#764ba2;--accent-light:#ede9fe;--text:#111827;--text2:#4b5563;--text3:#6b7280;--border:#e5e7eb;--shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(102,126,234,0.07)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.9}
+    header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:0 5%;height:64px;display:flex;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 15px rgba(102,126,234,0.3)}
+    header nav{width:100%;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .logo{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;text-decoration:none}
+    .nav-links{display:flex;gap:6px;align-items:center}
+    .nav-links a{color:rgba(255,255,255,0.88);text-decoration:none;padding:7px 14px;border-radius:8px;font-size:.88rem;font-weight:500;font-family:'Inter',sans-serif;transition:all .2s}
+    .nav-links a:hover{background:rgba(255,255,255,0.2);color:white}
+    .nav-cta{background:white!important;color:var(--accent2)!important;font-weight:700!important;border-radius:20px!important}
+    .breadcrumb{max-width:860px;margin:18px auto 0;padding:0 20px;font-size:.82rem;color:var(--text3);display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+    .breadcrumb a{color:var(--text3);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}.breadcrumb span{color:#d1d5db}
+    .ad-wrap{max-width:860px;margin:16px auto;padding:0 20px}
+    .ad-label{font-size:.65rem;color:#d1d5db;text-align:center;margin-bottom:3px;letter-spacing:1px;font-family:'Inter',sans-serif}
+    .article-wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+    .article-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent2);font-size:.7rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.8px;margin-bottom:18px;font-family:'Inter',sans-serif;text-transform:uppercase}
+    h1{font-family:'Inter',sans-serif;font-size:1.85rem;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:16px;letter-spacing:-0.3px}
+    h1 .hl{color:var(--accent)}
+    .article-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--text3);margin-bottom:22px;font-family:'Inter',sans-serif}
+    .quick-answer{background:var(--white);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px;box-shadow:var(--shadow)}
+    .quick-answer p,.quick-answer div{color:var(--text2);font-size:.97rem;margin:6px 0 0;line-height:1.7;font-family:'Inter',sans-serif}
+    .quick-answer strong{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text)}
+    .quick-answer a{color:var(--accent);text-decoration:none;font-weight:600}
+    .toc,.toc-box{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:36px;box-shadow:var(--shadow)}
+    .toc-title,.toc-label{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px}
+    .toc ol,.toc-box ol{padding-left:20px}.toc li,.toc-box li{margin-bottom:9px}
+    .toc a,.toc-box a{color:var(--accent);text-decoration:none;font-size:.95rem;font-weight:500;font-family:'Inter',sans-serif}
+    .content h2{font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:700;color:var(--text);margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--accent);letter-spacing:-0.2px;line-height:1.35}
+    .content h3{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin:26px 0 10px}
+    .content p{color:var(--text2);margin-bottom:20px;font-size:1rem;line-height:1.9}
+    .content ul,.content ol{color:var(--text2);padding-left:24px;margin-bottom:20px}
+    .content li{margin-bottom:12px;font-size:1rem;line-height:1.8}
+    .content strong{color:var(--text);font-weight:700}
+    .content a{color:var(--accent);text-decoration:none;font-weight:600}
+    .takeaway,.tip-box,.info-box{background:var(--accent-light);border-radius:12px;padding:20px 24px;margin:24px 0;border-left:3px solid var(--accent2)}
+    .takeaway-label,.tip-label{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;color:var(--accent2);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+    .takeaway p,.tip-box p,.info-box p{color:#3b3273;font-size:.97rem;margin:0;font-weight:500;line-height:1.75;font-family:'Inter',sans-serif}
+    .steps{margin:24px 0}
+    .step{display:flex;gap:18px;margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+    .step-num{width:34px;height:34px;min-width:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;margin-top:2px}
+    .step-body h3{font-family:'Inter',sans-serif;font-size:1rem;color:var(--text);margin-bottom:5px;font-weight:700}
+    .step-body p{color:var(--text2);font-size:.93rem;margin:0;line-height:1.7;font-family:'Inter',sans-serif}
+    .method-card,.feature-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+    .method-card h3,.feature-card h3{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:10px}
+    .table-wrap{overflow-x:auto;margin:24px 0;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    table{width:100%;border-collapse:collapse}
+    thead th{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;padding:12px 16px;text-align:left;font-size:.88rem;font-family:'Inter',sans-serif;font-weight:700}
+    tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.93rem;color:var(--text2);font-family:'Inter',sans-serif}
+    tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:var(--bg)}
+    .cta-box{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:36px;text-align:center;margin:40px 0}
+    .cta-box h3{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:10px}
+    .cta-box p{color:rgba(255,255,255,.88);margin-bottom:20px;font-size:.97rem;font-family:'Inter',sans-serif;line-height:1.6}
+    .cta-btn{display:inline-block;background:white;color:var(--accent2);font-weight:700;font-family:'Inter',sans-serif;padding:13px 30px;border-radius:25px;text-decoration:none;transition:transform .2s;font-size:.97rem}
+    .cta-btn:hover{transform:translateY(-2px)}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .faq-q{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:10px}
+    .faq-a{color:var(--text2);font-size:.97rem;line-height:1.8;font-family:'Inter',sans-serif}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0}
+    .related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:all .2s;box-shadow:var(--shadow)}
+    .related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .related-card .icon{font-size:1.5rem;margin-bottom:10px}
+    .related-card h4{font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);margin-bottom:5px;font-weight:700}
+    .related-card p{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text3);margin:0}
+    .engagement-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;box-shadow:var(--shadow)}
+    .engagement-section h3{font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:24px}
+    .like-dislike{display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap}
+    .eng-btn{background:var(--bg);border:2px solid var(--border);color:var(--text2);padding:10px 22px;border-radius:50px;cursor:pointer;font-size:.92rem;font-family:'Inter',sans-serif;font-weight:600;transition:all .25s;display:flex;align-items:center;gap:7px}
+    .eng-btn:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+    .star-row{margin-bottom:26px}
+    .star-row p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
+    .stars{display:flex;gap:6px;margin-bottom:6px}
+    .star-btn{background:none;border:none;font-size:1.8em;cursor:pointer;color:#e5e7eb;transition:color .2s,transform .2s}
+    .star-btn:hover,.star-btn.active{color:#f59e0b;transform:scale(1.15)}
+    .star-info{color:var(--text3);font-size:.82rem;font-family:'Inter',sans-serif}
+    .comment-box>p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
+    .comment-input{width:100%;padding:12px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.95rem;margin-bottom:10px;resize:vertical;transition:border-color .2s}
+    .comment-input:focus{outline:none;border-color:var(--accent)}
+    .submit-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border:none;padding:11px 28px;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;font-size:.92rem;transition:opacity .3s}
+    .submit-btn:hover{opacity:.85}
+    #comments-list{margin-top:20px}
+    .comment-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+    .comment-author{font-family:'Inter',sans-serif;font-weight:700;color:var(--accent);font-size:.85rem;margin-bottom:4px}
+    .comment-text{color:var(--text2);font-size:.93rem;font-family:'Inter',sans-serif;line-height:1.6}
+    footer{background:linear-gradient(135deg,#2a2a3e 0%,#1a1a2e 100%);color:#9ca3af;text-align:center;padding:36px 20px;margin-top:60px;border-top:2px solid var(--accent);font-family:'Inter',sans-serif}
+    footer p{margin-bottom:8px;font-size:.88rem}
+    footer a{color:var(--accent);text-decoration:none;font-weight:600}
+    footer a:hover{text-decoration:underline}
+    @media(max-width:600px){body{font-size:17px}h1{font-size:1.5rem}.content h2{font-size:1.18rem}.article-hero{padding:22px 0}.article-wrap{padding:0 16px 60px}.engagement-section{padding:22px}}
   </style>
 </head>
 <body>
 
-<nav class="topnav">
-  <a href="https://toolyfi.com" class="nav-logo">🛠️ Tool<span>yfi</span></a>
-  <div class="nav-right">
-    <a href="https://toolyfi.com">Home</a>
-    <a href="https://toolyfi.com/#tools">Tools</a>
-    <a href="https://toolyfi.com/youtube-transcript-extractor" class="nav-btn">Try Tool Free</a>
-  </div>
-</nav>
-
-<div class="page-wrap">
-
-  <!-- BREADCRUMB -->
-  <nav aria-label="Breadcrumb">
-    <p class="breadcrumb">
-      <a href="https://toolyfi.com">Home</a><span>›</span>
-      <a href="https://toolyfi.com/blog">Blog</a><span>›</span>
-      How to Get YouTube Transcript Free
-    </p>
+<header>
+  <nav>
+    <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
+    <div class="nav-links">
+      <a href="https://toolyfi.com">Home</a>
+      <a href="https://toolyfi.com/#tools">Tools</a>
+      <a href="https://toolyfi.com/blog/">Blog</a>
+      <a href="https://toolyfi.com/youtube-transcript-extractor.html" class="nav-cta">Try Tool Free</a>
+    </div>
   </nav>
+</header>
 
-  <!-- HEADER -->
-  <header>
-    <div class="article-tag">📋 Free Guide · 2026</div>
-    <h1>How to Get <span>YouTube Transcript</span> Free — 3 Easy Methods (2026)</h1>
+<div class="ad-wrap">
+  <div class="ad-label">ADVERTISEMENT</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<div class="breadcrumb">
+  <a href="https://toolyfi.com">Home</a><span>›</span>
+  <a href="https://toolyfi.com/blog/">Blog</a><span>›</span>
+  YouTube Transcript
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-hero">
+    <div class="badge">🎬 Free Guide · 2026</div>
+    <h1>How to Get <span class="hl">YouTube Transcript</span> Free — 3 Easy Methods (2026)</h1>
     <div class="article-meta">
       <span>📅 Updated: March 2026</span>
-      <span>⏱ 5 min read</span>
+      <span>⏱️ 5 min read</span>
       <span>✍️ Toolyfi Team</span>
-      <span>👁 Beginner Friendly</span>
+      <span>🟢 Beginner Friendly</span>
     </div>
-    <div class="intro-text">
-      <strong>Short answer:</strong> The fastest way to get a YouTube transcript is to use <a href="https://toolyfi.com/youtube-transcript-extractor">Toolyfi's free YouTube Transcript Extractor</a>. Paste the URL, click Extract, and get the full transcript + AI summary in under 10 seconds — no signup, no software.
+    <div class="quick-answer">
+      <strong>Short answer:</strong>
+      <p>The fastest way to get a YouTube transcript is to use <a href="https://toolyfi.com/youtube-transcript-extractor.html">Toolyfi YouTube Transcript Extractor</a> — paste the video URL and get the full transcript in seconds. Free, no login needed.</p>
     </div>
-  </header>
+    <div class="toc">
+      <div class="toc-title">📋 In This Article</div>
+      <ol>
+        <li><a href="#what">What is a YouTube Transcript?</a></li>
+        <li><a href="#method1">Method 1: Free Online Tool</a></li>
+        <li><a href="#method2">Method 2: YouTube Built-in Feature</a></li>
+        <li><a href="#method3">Method 3: Google Docs</a></li>
+        <li><a href="#compare">Method Comparison</a></li>
+        <li><a href="#uses">10 Ways to Use Transcripts</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+      </ol>
+    </div>
+  </div>
 
-  <!-- TOC -->
-  <nav class="toc" aria-label="Table of Contents">
-    <div class="toc-title">📋 In This Article</div>
-    <ol>
-      <li><a href="#what-is">What is a YouTube Transcript?</a></li>
-      <li><a href="#method-1">Method 1: Free Online Tool (Fastest ⚡)</a></li>
-      <li><a href="#method-2">Method 2: YouTube's Built-in Feature</a></li>
-      <li><a href="#method-3">Method 3: Google Docs Voice Typing</a></li>
-      <li><a href="#comparison">Method Comparison Table</a></li>
-      <li><a href="#use-cases">10 Ways to Use a YouTube Transcript</a></li>
-      <li><a href="#faq">Frequently Asked Questions</a></li>
-    </ol>
-  </nav>
+  <div class="content">
 
-  <article itemscope itemtype="https://schema.org/Article">
-    <meta itemprop="headline" content="How to Get YouTube Transcript Free — 3 Easy Methods (2026)" />
-
-    <!-- SECTION 1 -->
-    <h2 id="what-is">What is a YouTube Transcript?</h2>
-    <p>A <strong>YouTube transcript</strong> is the complete written text of everything spoken in a video. YouTube automatically generates captions for most videos using speech recognition. These captions can be saved as a text transcript.</p>
-    <p>Transcripts are used for note-taking, creating blog posts, translation, SEO, and accessibility. Instead of watching a 30-minute video twice, you can read its transcript in 3 minutes.</p>
-
-    <div class="key-takeaway">
-      <div class="kt-label">💡 Key Takeaway</div>
-      <p>Most YouTube videos have auto-generated captions — which means their transcript is available for free, right now, using the methods below.</p>
+    <h2 id="what">What is a YouTube Transcript?</h2>
+    <p>A <strong>YouTube transcript</strong> is the full text version of everything spoken in a video. It includes timestamps and can be used for studying, content creation, accessibility, and more.</p>
+    <div class="takeaway">
+      <div class="takeaway-label">💡 Key Takeaway</div>
+      <p>Transcripts save hours of manual note-taking. You can extract key insights, quotes, and summaries from any YouTube video in seconds.</p>
     </div>
 
-    <!-- CTA 1 -->
-    <div class="cta-box">
-      <h3>🎬 Extract Any YouTube Transcript Free</h3>
-      <p>Paste a URL. Get the full transcript + AI analysis in seconds. No account needed.</p>
-      <a href="https://toolyfi.com/youtube-transcript-extractor" class="cta-btn">Try Free Now →</a>
+    <h2 id="method1">Method 1: Free Online Tool — Fastest Way ⚡</h2>
+    <p>The easiest and fastest method is using <a href="https://toolyfi.com/youtube-transcript-extractor.html">Toolyfi YouTube Transcript Extractor</a>. No login, no download — just paste and go.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Copy the YouTube URL</h3><p>Open any YouTube video and copy the URL from your browser.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Paste into Toolyfi</h3><p>Go to toolyfi.com/youtube-transcript-extractor.html and paste the URL.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Get Transcript Instantly</h3><p>Click Extract and get the full transcript with timestamps in seconds.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy or Download</h3><p>Copy the text or download it. Use AI analysis for key insights.</p></div></div>
     </div>
 
-    <!-- SECTION 2 -->
-    <h2 id="method-1">Method 1: Free Online Tool — Fastest Way ⚡</h2>
-    <p>The easiest and fastest method is using <a href="https://toolyfi.com/youtube-transcript-extractor"><strong>Toolyfi's YouTube Transcript Extractor</strong></a>. It takes less than 10 seconds and requires zero setup.</p>
-
-    <h3>Step-by-Step Instructions</h3>
-
-    <div class="step-box">
-      <div class="step-n">1</div>
-      <div class="step-content">
-        <h4>Open the YouTube video</h4>
-        <p>Find the video you want to transcribe and copy its URL from the address bar. Example: <strong>https://youtu.be/xxxxx</strong></p>
-      </div>
+    <h2 id="method2">Method 2: YouTube's Built-in Transcript Feature</h2>
+    <p>YouTube has a built-in transcript feature — but it's hidden and only works on videos that have captions enabled.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open the Video</h3><p>Go to YouTube and open the video you want the transcript for.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Click Three Dots (···)</h3><p>Below the video title, click the three-dot menu icon.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Select "Show Transcript"</h3><p>Click "Show transcript" from the dropdown menu.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Copy the Text</h3><p>The transcript panel opens on the right — select all and copy.</p></div></div>
     </div>
-    <div class="step-box">
-      <div class="step-n">2</div>
-      <div class="step-content">
-        <h4>Go to Toolyfi Transcript Extractor</h4>
-        <p>Visit <a href="https://toolyfi.com/youtube-transcript-extractor">toolyfi.com/youtube-transcript-extractor</a> — no account or signup needed.</p>
-      </div>
-    </div>
-    <div class="step-box">
-      <div class="step-n">3</div>
-      <div class="step-content">
-        <h4>Paste URL and click Extract</h4>
-        <p>Paste the URL in the input box and press the Extract button. Supports all YouTube URL formats including Shorts.</p>
-      </div>
-    </div>
-    <div class="step-box">
-      <div class="step-n">4</div>
-      <div class="step-content">
-        <h4>Get transcript + AI analysis instantly</h4>
-        <p>In seconds you get: full transcript, summary, key points, strategy breakdown, and action plan — all in one place.</p>
-      </div>
+    <div class="takeaway">
+      <div class="takeaway-label">⚠️ Limitation</div>
+      <p>This only works if the video creator has enabled captions. Many videos don't have this option available.</p>
     </div>
 
-    <div class="callout callout-tip">
-      <p>✅ <strong>Pro Tip:</strong> Use the "Copy Analysis" button to instantly save AI-generated key points. Perfect for creating blog posts, study notes, or meeting summaries from any video.</p>
+    <!-- AD MID -->
+    <div class="ad-wrap" style="padding:0;margin:28px 0;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
 
-    <!-- SECTION 3 -->
-    <h2 id="method-2">Method 2: YouTube's Built-in Transcript Feature</h2>
-    <p>YouTube has a hidden built-in transcript feature. It is free but requires manual copying and has no AI analysis.</p>
-
-    <ol>
-      <li>Open the YouTube video in your browser</li>
-      <li>Click the <strong>three-dot menu (…)</strong> below the video</li>
-      <li>Select <strong>"Open transcript"</strong> from the dropdown</li>
-      <li>The transcript panel appears on the right side</li>
-      <li>Click inside the panel, select all (Ctrl+A), then copy (Ctrl+C)</li>
-      <li>Paste into Notepad, Google Docs, or anywhere you need it</li>
-    </ol>
-
-    <div class="callout callout-warn">
-      <p>⚠️ <strong>Limitation:</strong> YouTube's built-in transcript includes timestamps and messy formatting. It also provides no summary or AI analysis. For a cleaner result, use <a href="https://toolyfi.com/youtube-transcript-extractor">Toolyfi's extractor</a> instead.</p>
+    <h2 id="method3">Method 3: Google Docs Voice Typing</h2>
+    <p>This method is manual but works for any video — even those without captions.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Google Docs</h3><p>Go to docs.google.com and create a new document.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Enable Voice Typing</h3><p>Go to Tools → Voice Typing and click the microphone icon.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Play the YouTube Video</h3><p>Play the video — Google Docs will transcribe the audio in real-time.</p></div></div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-label">⚠️ Limitation</div>
+      <p>Accuracy depends on audio quality. Background noise and accents can affect results. This is the slowest of the 3 methods.</p>
     </div>
 
-    <!-- SECTION 4 -->
-    <h2 id="method-3">Method 3: Google Docs Voice Typing</h2>
-    <p>This method works for videos with <strong>no captions</strong>. Google Docs can transcribe audio in real time using your microphone.</p>
-
-    <ol>
-      <li>Open a new <strong>Google Doc</strong></li>
-      <li>Go to <strong>Tools → Voice typing</strong> (or press Ctrl+Shift+S)</li>
-      <li>Play the YouTube video out loud through your speakers</li>
-      <li>Google Docs will type the spoken words in real time</li>
-      <li>Review and clean up the text when done</li>
-    </ol>
-
-    <div class="callout callout-info">
-      <p>💡 <strong>Best used as a last resort.</strong> This method is slower, less accurate, and requires manual cleanup. Use Method 1 for any video that has YouTube captions.</p>
-    </div>
-
-    <!-- COMPARISON TABLE -->
-    <h2 id="comparison">Method Comparison Table</h2>
-    <p>Here is a quick comparison of all three methods so you can choose the right one:</p>
-
+    <h2 id="compare">Method Comparison Table</h2>
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Speed</th>
-            <th>Free</th>
-            <th>AI Analysis</th>
-            <th>No Signup</th>
-            <th>Mobile</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Method</th><th>Speed</th><th>Accuracy</th><th>Works Without Captions</th><th>Free</th></tr></thead>
         <tbody>
-          <tr class="best">
-            <td>⭐ Toolyfi Extractor</td>
-            <td>⚡ Instant</td>
-            <td class="yes">✓ Yes</td>
-            <td class="yes">✓ Yes</td>
-            <td class="yes">✓ Yes</td>
-            <td class="yes">✓ Yes</td>
-          </tr>
-          <tr>
-            <td>YouTube Built-in</td>
-            <td>Medium</td>
-            <td class="yes">✓ Yes</td>
-            <td class="no">✗ No</td>
-            <td class="yes">✓ Yes</td>
-            <td class="no">✗ Limited</td>
-          </tr>
-          <tr>
-            <td>Google Docs Voice</td>
-            <td>Slow</td>
-            <td class="yes">✓ Yes</td>
-            <td class="no">✗ No</td>
-            <td class="no">Account needed</td>
-            <td class="no">✗ No</td>
-          </tr>
+          <tr><td><strong>Toolyfi Tool</strong></td><td>⚡ Instant</td><td>✅ High</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+          <tr><td>YouTube Built-in</td><td>🕐 Fast</td><td>✅ High</td><td>❌ No</td><td>✅ Yes</td></tr>
+          <tr><td>Google Docs</td><td>🐢 Slow</td><td>⚠️ Medium</td><td>✅ Yes</td><td>✅ Yes</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="key-takeaway">
-      <div class="kt-label">🏆 Winner</div>
-      <p>Toolyfi's YouTube Transcript Extractor wins on every metric — fastest, free, AI-powered, no signup, and works on mobile.</p>
-    </div>
-
-    <!-- USE CASES -->
-    <h2 id="use-cases">10 Ways to Use a YouTube Transcript</h2>
-    <p>Once you have the transcript, here is what you can do with it:</p>
-
+    <h2 id="uses">10 Ways to Use a YouTube Transcript</h2>
     <ul>
-      <li><strong>Create blog posts</strong> — Turn a 10-minute video into a 1,500-word SEO article</li>
-      <li><strong>Study notes</strong> — Extract key points from lectures without rewatching</li>
-      <li><strong>Social media content</strong> — Pull quotes for Twitter, LinkedIn, Instagram</li>
-      <li><strong>Video subtitles</strong> — Edit the transcript into accurate subtitle files</li>
-      <li><strong>Translation</strong> — Paste into Google Translate for multilingual content</li>
-      <li><strong>Podcast show notes</strong> — Convert video episodes into written summaries</li>
-      <li><strong>SEO keyword research</strong> — Find keywords competitors use in their videos</li>
-      <li><strong>Email newsletters</strong> — Repurpose video content into weekly emails</li>
-      <li><strong>Book summaries</strong> — Extract insights from long educational videos</li>
-      <li><strong>Training materials</strong> — Turn tutorial videos into written guides for teams</li>
+      <li><strong>Study & Research</strong> — Extract key points from lectures and educational videos</li>
+      <li><strong>Content Creation</strong> — Repurpose video content into blog posts or articles</li>
+      <li><strong>SEO</strong> — Use transcript keywords to improve your own content</li>
+      <li><strong>Accessibility</strong> — Help hearing-impaired viewers follow along</li>
+      <li><strong>Translation</strong> — Translate content into other languages easily</li>
+      <li><strong>Quotes</strong> — Extract exact quotes from interviews or speeches</li>
+      <li><strong>Podcast Notes</strong> — Create show notes from podcast videos</li>
+      <li><strong>Learning Languages</strong> — Read along while listening in a foreign language</li>
+      <li><strong>Fact-checking</strong> — Verify what was actually said in a video</li>
+      <li><strong>AI Summarization</strong> — Feed the transcript to AI for instant summaries</li>
     </ul>
 
-    <!-- CTA 2 -->
     <div class="cta-box">
-      <h3>🚀 Ready to Extract Your First Transcript?</h3>
-      <p>Free, instant, no signup. Paste any YouTube URL and get results in seconds.</p>
-      <a href="https://toolyfi.com/youtube-transcript-extractor" class="cta-btn">Extract Free Now →</a>
+      <h3>🎬 Try YouTube Transcript Extractor — 100% Free</h3>
+      <p>No signup. No download. Get full transcript + AI analysis in seconds.</p>
+      <a href="https://toolyfi.com/youtube-transcript-extractor.html" class="cta-btn">Extract Transcript Now →</a>
     </div>
 
-    <div class="divider"></div>
-
-    <!-- FAQ -->
     <h2 id="faq">Frequently Asked Questions</h2>
-    <div itemscope itemtype="https://schema.org/FAQPage">
-
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-q" itemprop="name">How do I get a YouTube transcript for free?</div>
-        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">The fastest way is <a href="https://toolyfi.com/youtube-transcript-extractor">Toolyfi's free YouTube Transcript Extractor</a>. Paste the video URL, click Extract, and get the full transcript plus AI analysis in seconds — no signup needed.</span>
-        </div>
-      </div>
-
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-q" itemprop="name">Can I download a YouTube transcript as a text file?</div>
-        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">Yes. After extracting on Toolyfi, click Copy Transcript and paste it into Notepad or Google Docs, then save as a .txt or .doc file.</span>
-        </div>
-      </div>
-
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-q" itemprop="name">Are YouTube auto-generated transcripts accurate?</div>
-        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">Auto-generated transcripts are typically 85–95% accurate for clear English speech. Accuracy drops for strong accents, technical terms, or poor audio. Always review before publishing.</span>
-        </div>
-      </div>
-
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-q" itemprop="name">Does it work for YouTube Shorts?</div>
-        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">Yes. Toolyfi's extractor fully supports YouTube Shorts URLs (youtube.com/shorts/...) alongside regular video links.</span>
-        </div>
-      </div>
-
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <div class="faq-q" itemprop="name">Is it legal to use YouTube transcripts?</div>
-        <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">Extracting transcripts for personal use, research, and note-taking is generally fair use. Always credit the original creator if you publish content based on someone else's video.</span>
-        </div>
-      </div>
-
+    <div class="faq-item">
+      <div class="faq-q">Can I get a transcript from any YouTube video?</div>
+      <div class="faq-a">With Toolyfi's tool, yes — it works on most public YouTube videos even without built-in captions enabled.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is the YouTube transcript extractor free?</div>
+      <div class="faq-a">Yes, completely free. No account, no login, no credits needed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does it work on private or age-restricted videos?</div>
+      <div class="faq-a">No, the tool only works on public YouTube videos that are accessible without login.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I download the transcript?</div>
+      <div class="faq-a">Yes, you can copy the transcript text or use the download option to save it as a text file.</div>
     </div>
 
-    <div class="divider"></div>
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="https://toolyfi.com/ai-text-detector.html" class="related-card"><div class="icon">🤖</div><h4>AI Text Detector</h4><p>Detect AI-written content</p></a>
+      <a href="https://toolyfi.com/word-counter.html" class="related-card"><div class="icon">📝</div><h4>Word Counter</h4><p>Count words & characters</p></a>
+      <a href="https://toolyfi.com/ai-image-generator.html" class="related-card"><div class="icon">🎨</div><h4>AI Image Generator</h4><p>Generate images from text</p></a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="related-card"><div class="icon">📊</div><h4>Invoice Generator</h4><p>Create professional PDFs</p></a>
+    </div>
 
-    <!-- RELATED TOOLS -->
-    <section aria-labelledby="rel-h">
-      <h2 id="rel-h" style="margin-top:0">More Free Tools on Toolyfi</h2>
-      <div class="related-grid">
-        <a href="https://toolyfi.com/youtube-transcript-extractor" class="related-card"><div class="r-icon">🎬</div><div class="r-name">Transcript Extractor</div><div class="r-desc">Extract + AI analyze any YouTube video</div></a>
-        <a href="https://toolyfi.com/word-counter" class="related-card"><div class="r-icon">📝</div><div class="r-name">Word Counter</div><div class="r-desc">Count words, characters & reading time</div></a>
-        <a href="https://toolyfi.com/ai-image-generator.html" class="related-card"><div class="r-icon">🎨</div><div class="r-name">AI Image Generator</div><div class="r-desc">Text to image — 9 styles, free</div></a>
-        <a href="https://toolyfi.com/password-generator.html" class="related-card"><div class="r-icon">🔑</div><div class="r-name">Password Generator</div><div class="r-desc">Strong secure passwords instantly</div></a>
+    <!-- AD BOTTOM -->
+    <div class="ad-wrap" style="padding:0;margin:28px 0;">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+
+    <!-- FIREBASE ENGAGEMENT -->
+    <div class="engagement-section">
+      <h3>💬 Rate & Review This Article</h3>
+      <div class="like-dislike">
+        <button class="eng-btn" onclick="handleLike()">👍 Like <span id="like-count">0</span></button>
+        <button class="eng-btn" onclick="handleDislike()">👎 Dislike <span id="dislike-count">0</span></button>
       </div>
-    </section>
+      <div class="star-row">
+        <p>Rate this article:</p>
+        <div class="stars">
+          <button class="star-btn" onclick="handleStar(1)">★</button>
+          <button class="star-btn" onclick="handleStar(2)">★</button>
+          <button class="star-btn" onclick="handleStar(3)">★</button>
+          <button class="star-btn" onclick="handleStar(4)">★</button>
+          <button class="star-btn" onclick="handleStar(5)">★</button>
+        </div>
+        <div class="star-info">⭐ <span id="star-avg">0.0</span> / 5 &nbsp;|&nbsp; <span id="star-count">0</span> ratings</div>
+      </div>
+      <div class="comment-box">
+        <p>Leave a comment:</p>
+        <input type="text" id="comment-name" class="comment-input" placeholder="Your name (optional)" style="resize:none;height:46px;">
+        <textarea id="comment-text" class="comment-input" rows="3" placeholder="Share your thoughts..."></textarea>
+        <button class="submit-btn" onclick="submitComment()">Post Comment →</button>
+        <div id="comments-list"></div>
+      </div>
+    </div>
 
-  </article>
+  </div>
 </div>
 
 <footer>
-  <p>🚀 By <a href="https://toolyfi.com">Toolyfi</a> — 100+ Free Tools · No Signup Required</p>
-  <p class="footer-kw">how to get youtube transcript free · youtube transcript extractor · youtube to text · extract transcript from youtube</p>
+  <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
+  <p style="margin-top:6px;"><a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/blog/">Blog</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p>
 </footer>
-
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 </body>
 </html>
