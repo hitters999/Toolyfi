@@ -1,3 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Transcript Extractor — Free Online Tool | Toolyfi</title>
+  <meta name="description" content="Extract transcript from any YouTube video instantly. Free YouTube transcript extractor with AI-powered analysis, key points & summary. No signup needed." />
+  <meta name="keywords" content="youtube transcript extractor, youtube transcript, extract transcript from youtube, youtube to text, youtube video transcript, free transcript tool, youtube summary" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Toolyfi" />
+  <link rel="canonical" href="https://toolyfi.com/youtube-transcript-extractor" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="YouTube Transcript Extractor — Free Tool | Toolyfi" />
+  <meta property="og:description" content="Paste any YouTube URL and get the full transcript + AI analysis instantly. 100% free, no signup." />
+  <meta property="og:url" content="https://toolyfi.com/youtube-transcript-extractor" />
+  <meta property="og:site_name" content="Toolyfi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YouTube Transcript Extractor — Free Tool" />
+  <meta name="twitter:description" content="Extract any YouTube video transcript in seconds. Free AI analysis included." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube Transcript Extractor","url":"https://toolyfi.com/youtube-transcript-extractor","description":"Free AI-powered YouTube transcript extractor.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I extract a YouTube transcript?","acceptedAnswer":{"@type":"Answer","text":"Paste your YouTube video URL and click Extract. Our tool automatically fetches the transcript and provides AI analysis within seconds."}},{"@type":"Question","name":"Is this YouTube transcript extractor free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No account, no signup, no payment required."}},{"@type":"Question","name":"What YouTube URLs are supported?","acceptedAnswer":{"@type":"Answer","text":"All formats: youtube.com/watch?v=, youtu.be/, youtube.com/shorts/, and youtube.com/embed/ links."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"YouTube Transcript Extractor","item":"https://toolyfi.com/youtube-transcript-extractor"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--purple:#6c47ff;--purple2:#8b6fff;--purple-light:#ede9ff;--bg:#f8f7ff;--white:#ffffff;--text:#1a1a2e;--muted:#6b7280;--border:#e5e7eb;--shadow:0 4px 24px rgba(108,71,255,.10);--shadow-lg:0 8px 40px rgba(108,71,255,.18);--font-head:'Nunito',sans-serif;--font-body:'Inter',sans-serif;--radius:16px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh}
+    nav.topnav{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+    .nav-logo{font-family:var(--font-head);font-weight:900;font-size:20px;color:var(--text);text-decoration:none}
+    .nav-logo span{color:var(--purple)}
+    .nav-right{display:flex;align-items:center;gap:20px}
+    .nav-right a{color:var(--muted);font-size:14px;text-decoration:none;font-weight:500;transition:color .2s}
+    .nav-right a:hover{color:var(--purple)}
+    .nav-btn{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff!important;padding:8px 18px;border-radius:99px;font-size:13px;font-weight:700;font-family:var(--font-head)}
+    .hero{text-align:center;padding:52px 20px 36px;background:linear-gradient(180deg,#ede9ff 0%,#f8f7ff 100%)}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid #d4caff;color:var(--purple);font-family:var(--font-head);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:20px;box-shadow:0 2px 8px rgba(108,71,255,.1)}
+    .hero h1{font-family:var(--font-head);font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.15;margin-bottom:14px;color:var(--text)}
+    .hero h1 span{background:linear-gradient(135deg,var(--purple),#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{color:var(--muted);font-size:16px;max-width:520px;margin:0 auto 20px;line-height:1.65}
+    .hero-checks{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+    .hero-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}
+    .hero-check .tick{color:var(--purple);font-size:15px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:700px;margin:0 auto 48px;padding:0 20px}
+    .stat-card{background:linear-gradient(135deg,var(--purple),var(--purple2));border-radius:var(--radius);padding:20px 14px;text-align:center;color:#fff;box-shadow:var(--shadow)}
+    .stat-num{font-family:var(--font-head);font-weight:900;font-size:clamp(20px,3.5vw,28px);margin-bottom:4px}
+    .stat-label{font-size:12px;font-weight:600;opacity:.85}
+    .tool-wrap{max-width:760px;margin:0 auto;padding:0 20px 60px}
+    .tool-card{background:var(--white);border-radius:22px;padding:36px;box-shadow:var(--shadow-lg);border:1px solid #ede9ff;margin-bottom:20px}
+    .input-label{font-family:var(--font-head);font-weight:700;font-size:15px;color:var(--text);display:block;margin-bottom:12px}
+    .input-row{display:flex;gap:12px;flex-wrap:wrap}
+    #yt-url{flex:1;min-width:200px;background:var(--bg);border:2px solid var(--border);border-radius:13px;padding:14px 18px;color:var(--text);font-family:var(--font-body);font-size:14px;outline:none;transition:border .2s,box-shadow .2s}
+    #yt-url:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(108,71,255,.1)}
+    #yt-url::placeholder{color:#b0b8c1}
+    .btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple2));border:none;border-radius:13px;padding:14px 28px;color:#fff;font-family:var(--font-head);font-weight:800;font-size:15px;cursor:pointer;transition:opacity .2s,transform .15s,box-shadow .2s;white-space:nowrap;box-shadow:0 4px 16px rgba(108,71,255,.3)}
+    .btn-primary:hover:not(:disabled){opacity:.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,71,255,.4)}
+    .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+    .btn-outline{background:transparent;border:2px solid var(--border);border-radius:13px;color:var(--muted);padding:10px 18px;font-size:13px;font-family:var(--font-head);font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-outline:hover{border-color:var(--purple);color:var(--purple)}
+    .status{margin-top:20px;padding:16px 20px;border-radius:13px;border:1px solid;display:none}
+    .status.show{display:block}
+    .s-fetch{background:#fffbeb;border-color:#fcd34d}
+    .s-analyze{background:#ede9ff;border-color:#c4b5fd}
+    .s-error{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
+    .s-label{font-family:var(--font-head);font-size:13px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+    .s-fetch .s-label{color:#d97706}
+    .s-analyze .s-label{color:var(--purple)}
+    .s-sub{font-size:12px;color:var(--muted)}
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+    #result-wrap{display:none}
+    #result-wrap.show{display:block;animation:fadeUp .4s ease}
+    .result-card{background:var(--white);border-radius:22px;padding:30px;box-shadow:var(--shadow);border:1px solid #ede9ff;margin-bottom:16px}
+    .thumb{border-radius:14px;overflow:hidden;margin-bottom:14px}
+    .thumb img{width:100%;height:auto;display:block}
+    .yt-link{display:inline-flex;align-items:center;gap:6px;color:var(--purple);font-weight:600;font-size:13px;text-decoration:none}
+    .yt-link:hover{text-decoration:underline}
+    .r-title{font-family:var(--font-head);font-weight:800;font-size:16px;color:var(--text);margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--purple-light);display:flex;align-items:center;gap:8px}
+    #analysis-output p{font-size:14px;line-height:1.75;margin:4px 0;color:#374151}
+    #analysis-output p.a-hd{font-family:var(--font-head);font-weight:800;color:var(--text);font-size:15px;margin:18px 0 8px;padding:8px 14px;background:var(--purple-light);border-radius:8px;border-left:3px solid var(--purple)}
+    #analysis-output p.a-bl{color:#374151;padding:6px 12px 6px 16px;border-left:2px solid #d4caff;margin:4px 0;background:#faf9ff;border-radius:0 8px 8px 0}
+    details{margin-top:16px;border-top:1px solid var(--border);padding-top:12px}
+    details summary{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;list-style:none}
+    details summary::-webkit-details-marker{display:none}
+    #raw-transcript{margin-top:12px;background:var(--bg);border-radius:10px;padding:16px;color:var(--muted);font-size:13px;line-height:1.7;max-height:200px;overflow-y:auto;border:1px solid var(--border)}
+    .actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .section{max-width:760px;margin:0 auto 56px;padding:0 20px}
+    .sec-head{text-align:center;margin-bottom:32px}
+    .sec-head h2{font-family:var(--font-head);font-weight:900;font-size:clamp(20px,3.5vw,30px);color:var(--text);margin-bottom:8px}
+    .sec-head p{color:var(--muted);font-size:14px}
+    .steps{display:flex;flex-direction:column;gap:14px}
+    .step{display:flex;gap:18px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:box-shadow .2s,transform .2s}
+    .step:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+    .step-num{background:linear-gradient(135deg,var(--purple),var(--purple2));width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:900;font-size:14px;color:#fff;flex-shrink:0;box-shadow:0 4px 12px rgba(108,71,255,.3)}
+    .step-body h3{font-family:var(--font-head);font-weight:800;font-size:15px;margin-bottom:5px;color:var(--text)}
+    .step-body p{color:var(--muted);font-size:13px;line-height:1.6}
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+    .feat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;text-align:center;transition:box-shadow .2s,transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .feat-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+    .feat-icon{font-size:30px;margin-bottom:10px}
+    .feat-title{font-family:var(--font-head);font-weight:800;font-size:14px;margin-bottom:6px;color:var(--text)}
+    .feat-desc{color:var(--muted);font-size:12px;line-height:1.55}
+    .use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+    .use-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .use-card h3{font-family:var(--font-head);font-weight:800;font-size:14px;margin-bottom:7px;color:var(--text)}
+    .use-card p{color:var(--muted);font-size:13px;line-height:1.55}
+    .faq-list{display:flex;flex-direction:column}
+    .faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+    .faq-q{font-family:var(--font-head);font-weight:800;font-size:14px;color:var(--text);margin-bottom:8px}
+    .faq-a{color:var(--muted);font-size:13px;line-height:1.65}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+    .related-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-decoration:none;transition:box-shadow .2s,transform .2s;display:block;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .related-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+    .r-icon{font-size:22px;margin-bottom:8px}
+    .r-name{font-family:var(--font-head);font-weight:800;font-size:13px;color:var(--text);margin-bottom:4px}
+    .r-desc{font-size:12px;color:var(--muted)}
+    footer{background:var(--white);border-top:1px solid var(--border);text-align:center;padding:28px 20px;color:var(--muted);font-size:13px}
+    footer a{color:var(--purple);text-decoration:none;font-weight:600}
+    .footer-kw{font-size:11px;color:#d1d5db;margin-top:6px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.tool-card{padding:22px 18px}.result-card{padding:20px 16px}.nav-right a:not(.nav-btn){display:none}}
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://toolyfi.com" class="nav-logo">🛠️ Tool<span>yfi</span></a>
+  <div class="nav-right">
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/#tools">Tools</a>
+    <a href="https://toolyfi.com" class="nav-btn">All Tools</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <nav aria-label="Breadcrumb" style="margin-bottom:16px">
+    <p style="font-size:12px;color:var(--muted)">
+      <a href="https://toolyfi.com" style="color:var(--muted);text-decoration:none">Home</a>
+      <span style="margin:0 6px">›</span>YouTube Transcript Extractor
+    </p>
+  </nav>
+  <div class="hero-badge">🎬 Free AI-Powered Tool</div>
+  <h1>YouTube <span>Transcript</span> Extractor</h1>
+  <p class="hero-sub">Paste any YouTube URL and get the full transcript + AI-powered analysis instantly. No signup, no watermark, completely free.</p>
+  <div class="hero-checks">
+    <span class="hero-check"><span class="tick">✓</span> 100% Free</span>
+    <span class="hero-check"><span class="tick">✓</span> AI Analysis</span>
+    <span class="hero-check"><span class="tick">✓</span> Instant Results</span>
+    <span class="hero-check"><span class="tick">✓</span> No Signup</span>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-num">100K+</div><div class="stat-label">Videos Processed</div></div>
+  <div class="stat-card"><div class="stat-num">AI</div><div class="stat-label">Powered Analysis</div></div>
+  <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+  <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Available</div></div>
+</div>
+
+<div class="tool-wrap">
+  <article class="tool-card">
+    <label class="input-label" for="yt-url">🔗 Paste YouTube Video URL</label>
+    <div class="input-row">
+      <input id="yt-url" type="url" placeholder="https://youtu.be/... or https://youtube.com/watch?v=..." autocomplete="url" />
+      <button class="btn-primary" id="analyse-btn" onclick="startAnalysis()">Extract ▶</button>
+    </div>
+    <div class="status s-fetch" id="s-fetch" role="status" aria-live="polite">
+      <div class="s-label"><span class="spinner"></span> Fetching Transcript...</div>
+      <div class="s-sub">Retrieving data from YouTube — please wait</div>
+    </div>
+    <div class="status s-analyze" id="s-analyze" role="status" aria-live="polite">
+      <div class="s-label"><span class="spinner"></span> AI Analyzing...</div>
+      <div class="s-sub">Extracting key points, strategy & insights</div>
+    </div>
+    <div class="status s-error" id="s-error" role="alert">
+      <div class="s-label">⚠️ Error</div>
+      <div id="error-msg" class="s-sub"></div>
+    </div>
+  </article>
+
+  <section id="result-wrap">
+    <div class="result-card" id="thumb-card">
+      <div class="thumb"><img id="thumb-img" src="" alt="YouTube video thumbnail" width="1280" height="720" loading="lazy" /></div>
+      <a id="yt-link" class="yt-link" href="#" target="_blank" rel="noopener noreferrer">▶ Watch original video on YouTube →</a>
+    </div>
+    <div class="result-card">
+      <div class="r-title">🤖 AI Analysis — Key Points & Strategy</div>
+      <div id="analysis-output"></div>
+      <details>
+        <summary>📄 View / Hide Raw Transcript</summary>
+        <div id="raw-transcript"></div>
+      </details>
+      <div class="actions">
+        <button class="btn-primary" style="padding:10px 20px;font-size:13px" onclick="copyAnalysis()" id="copy-btn">📋 Copy Analysis</button>
+        <button class="btn-outline" onclick="copyTranscript()" id="copy-tx-btn" style="display:none">📝 Copy Transcript</button>
+        <button class="btn-outline" onclick="resetTool()">🔄 New Video</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>How to Extract YouTube Transcript</h2><p>Get any video's transcript in 3 simple steps — completely free</p></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Copy the YouTube URL</h3><p>Open any YouTube video and copy the URL. Works with youtube.com/watch, youtu.be short links, YouTube Shorts, and embed links.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Paste & Click Extract</h3><p>Paste the URL above and click Extract. Our tool automatically detects the video and fetches the available transcript.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Get Transcript + AI Analysis</h3><p>Within seconds you'll receive the full transcript plus AI-generated summary, key points, strategy, and action plan.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>Why Use Toolyfi Transcript Extractor?</h2><p>The most powerful free YouTube transcript tool online</p></div>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Instant Extraction</div><div class="feat-desc">Get transcript from any YouTube URL in seconds</div></div>
+      <div class="feat-card"><div class="feat-icon">🤖</div><div class="feat-title">AI Analysis</div><div class="feat-desc">Claude AI extracts strategy, key points & insights</div></div>
+      <div class="feat-card"><div class="feat-icon">🌍</div><div class="feat-title">All Languages</div><div class="feat-desc">Works with any language YouTube provides captions for</div></div>
+      <div class="feat-card"><div class="feat-icon">🔒</div><div class="feat-title">100% Free</div><div class="feat-desc">No account, no credits, no watermarks. Always free.</div></div>
+      <div class="feat-card"><div class="feat-icon">📋</div><div class="feat-title">Copy & Export</div><div class="feat-desc">One-click copy for transcript or AI analysis</div></div>
+      <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title">Mobile Friendly</div><div class="feat-desc">Works perfectly on phone, tablet and desktop</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>Who Uses YouTube Transcript Extractor?</h2><p>Trusted by students, creators, marketers and researchers</p></div>
+    <div class="use-grid">
+      <div class="use-card"><h3>🎓 Students & Researchers</h3><p>Extract lecture transcripts for notes and study guides without rewatching entire videos.</p></div>
+      <div class="use-card"><h3>✍️ Content Creators</h3><p>Repurpose one YouTube video into blog posts, social captions, and newsletters.</p></div>
+      <div class="use-card"><h3>📈 Marketers & SEOs</h3><p>Analyze competitor video strategy and extract keywords for content planning.</p></div>
+      <div class="use-card"><h3>🌐 Translators</h3><p>Get the full text of any video to translate into other languages quickly.</p></div>
+      <div class="use-card"><h3>👩‍💼 Professionals</h3><p>Extract key takeaways from webinars, conference talks, and tutorials.</p></div>
+      <div class="use-card"><h3>📰 Journalists</h3><p>Accurately quote speakers from video interviews without manual transcription.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>Frequently Asked Questions</h2><p>Everything about extracting YouTube transcripts</p></div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">How do I extract a YouTube transcript?</div><div class="faq-a">Paste your YouTube URL above and click "Extract". Our tool automatically fetches the transcript and AI analysis within seconds.</div></div>
+      <div class="faq-item"><div class="faq-q">Is this YouTube transcript extractor free?</div><div class="faq-a">Yes, completely free. No account, no signup, no payment — ever.</div></div>
+      <div class="faq-item"><div class="faq-q">What YouTube URLs are supported?</div><div class="faq-a">All formats: youtube.com/watch?v=, youtu.be/ short links, youtube.com/shorts/, and youtube.com/embed/ URLs.</div></div>
+      <div class="faq-item"><div class="faq-q">What if the video has no transcript?</div><div class="faq-a">Click "..." under the YouTube video → "Open transcript" → copy and paste the text for AI analysis.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it work for YouTube Shorts?</div><div class="faq-a">Yes! YouTube Shorts URLs are fully supported alongside regular videos.</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>More Free Tools on Toolyfi</h2><p>Explore our full collection of free online utilities</p></div>
+    <div class="related-grid">
+      <a href="https://toolyfi.com/word-counter" class="related-card"><div class="r-icon">📝</div><div class="r-name">Word Counter</div><div class="r-desc">Count words, characters & reading time</div></a>
+      <a href="https://toolyfi.com/ai-image-generator.html" class="related-card"><div class="r-icon">🎨</div><div class="r-name">AI Image Generator</div><div class="r-desc">Text to image — 9 styles, free</div></a>
+      <a href="https://toolyfi.com/password-generator.html" class="related-card"><div class="r-icon">🔑</div><div class="r-name">Password Generator</div><div class="r-desc">Strong secure passwords instantly</div></a>
+      <a href="https://toolyfi.com/qr-code-generator.html" class="related-card"><div class="r-icon">📱</div><div class="r-name">QR Code Generator</div><div class="r-desc">Create QR codes for any URL</div></a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>🚀 By <a href="https://toolyfi.com">Toolyfi</a> — 100+ Free Tools · No Signup Required</p>
+  <p class="footer-kw">youtube transcript extractor · youtube to text · extract transcript from youtube · free transcript tool</p>
+</footer>
+
+
 <script>
   let currentAnalysis = "", currentTranscript = "", currentVideoId = "";
 
@@ -16,7 +279,7 @@
   }
 
   async function fetchTranscript(vid) {
-    // Same as before (3 methods) – unchanged
+    // Method 1: YouTube timedtext via corsproxy
     try {
       const url = `https://corsproxy.io/?${encodeURIComponent("https://www.youtube.com/api/timedtext?lang=en&v="+vid+"&fmt=json3")}`;
       const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
@@ -29,6 +292,7 @@
       }
     } catch(e) {}
 
+    // Method 2: allorigins proxy
     try {
       const inner = encodeURIComponent("https://www.youtube.com/api/timedtext?lang=en&v="+vid+"&fmt=json3");
       const res = await fetch("https://api.allorigins.win/get?url="+inner, { signal: AbortSignal.timeout(8000) });
@@ -42,6 +306,7 @@
       }
     } catch(e) {}
 
+    // Method 3: youtubetranscript.com
     try {
       const res = await fetch("https://api.youtubetranscript.com/?videoId="+vid, { signal: AbortSignal.timeout(8000) });
       const data = await res.json();
@@ -55,7 +320,7 @@
     const url = document.getElementById("yt-url").value.trim();
     const vid = extractVideoId(url);
     if (!vid) {
-      document.getElementById("error-msg").textContent = "Please enter a valid YouTube URL";
+      document.getElementById("error-msg").textContent = "Please enter a valid YouTube URL (youtube.com or youtu.be)";
       showStatus("s-error");
       return;
     }
@@ -76,42 +341,89 @@
 
     const prompt = transcript
       ? `You are an expert content analyst. Analyze this YouTube video transcript and provide:\n\n1. Main Topic & Summary (3-4 sentences)\n2. Core Strategy / Key Message\n3. Top 7 Key Points (bullet points)\n4. Actionable Tips & Lessons\n5. Step-by-step Action Plan\n6. One-line Conclusion\n\nTranscript:\n${transcript.slice(0, 7000)}`
-      : `The YouTube video ID is: ${vid}. Transcript could not be automatically fetched... (same as before)`;
+      : `The YouTube video ID is: ${vid}. Transcript could not be automatically fetched. Please tell the user:\n1. The transcript could not be extracted automatically\n2. How to get it manually: YouTube → open video → click "..." menu below video → click "Open transcript" → copy the text\n3. Common reasons: captions disabled, private video, age-restricted\n\nBe helpful and friendly.`;
 
     try {
       const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": "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",                    // ← YAHAN APNI KEY PASTE KARO
           "anthropic-version": "2023-06-01",
           "anthropic-dangerous-direct-browser-access": "true"
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-6",                          // ← Latest 2026 model
+          model: "claude-sonnet-4-20250514",
           max_tokens: 1500,
           messages: [{ role: "user", content: prompt }]
         })
       });
 
-      if (!response.ok) throw new Error("API Error: " + response.status);
       const result = await response.json();
-      currentAnalysis = result.content?.[0]?.text || "Analysis failed. Try again.";
+      currentAnalysis = result.content?.[0]?.text || "";
+      if (!currentAnalysis) throw new Error("Empty");
       showResult(vid);
     } catch(e) {
-      document.getElementById("error-msg").textContent = "Analysis failed. Check your API key or try again.";
+      document.getElementById("error-msg").textContent = "Analysis failed. Please try again.";
       showStatus("s-error");
       document.getElementById("analyse-btn").disabled = false;
     }
   }
 
-  // Baaki functions (showResult, copy, reset etc.) same hain – unchanged
-  function showResult(vid) { /* original code yahan paste kar do */ }
-  function copyAnalysis() { /* original */ }
-  function copyTranscript() { /* original */ }
-  function resetTool() { /* original */ }
+  function showResult(vid) {
+    showStatus(null);
+    const img = document.getElementById("thumb-img");
+    img.src = "https://img.youtube.com/vi/"+vid+"/maxresdefault.jpg";
+    img.onerror = () => { img.src = "https://img.youtube.com/vi/"+vid+"/hqdefault.jpg"; };
+    document.getElementById("yt-link").href = "https://youtube.com/watch?v="+vid;
+    const out = document.getElementById("analysis-output");
+    out.innerHTML = "";
+    currentAnalysis.split("\n").forEach(line => {
+      const p = document.createElement("p");
+      if (line.match(/^\*\*.*\*\*$/) || line.match(/^#{1,3} /) || line.match(/^\d+\.\s/)) {
+        p.className = "a-hd"; p.textContent = line.replace(/\*\*/g,"").replace(/^#+\s/,"");
+      } else if (line.startsWith("- ") || line.startsWith("* ") || line.startsWith("• ")) {
+        p.className = "a-bl"; p.textContent = "▸ " + line.slice(2);
+      } else if (line.trim() === "") {
+        p.innerHTML = "<br>";
+      } else {
+        p.textContent = line.replace(/\*\*/g,"");
+      }
+      out.appendChild(p);
+    });
+    if (currentTranscript) {
+      document.getElementById("raw-transcript").textContent = currentTranscript;
+      document.getElementById("copy-tx-btn").style.display = "inline-flex";
+    }
+    document.getElementById("result-wrap").classList.add("show");
+    document.getElementById("analyse-btn").disabled = false;
+    document.getElementById("result-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function copyAnalysis() {
+    navigator.clipboard.writeText(currentAnalysis);
+    const btn = document.getElementById("copy-btn"); btn.textContent = "✅ Copied!";
+    setTimeout(() => btn.textContent = "📋 Copy Analysis", 2000);
+  }
+
+  function copyTranscript() {
+    navigator.clipboard.writeText(currentTranscript);
+    const btn = document.getElementById("copy-tx-btn"); btn.textContent = "✅ Copied!";
+    setTimeout(() => btn.textContent = "📝 Copy Transcript", 2000);
+  }
+
+  function resetTool() {
+    document.getElementById("yt-url").value = "";
+    document.getElementById("result-wrap").classList.remove("show");
+    showStatus(null);
+    currentAnalysis = ""; currentTranscript = ""; currentVideoId = "";
+    document.getElementById("copy-tx-btn").style.display = "none";
+    document.getElementById("analyse-btn").disabled = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   document.getElementById("yt-url").addEventListener("keydown", e => {
     if (e.key === "Enter") startAnalysis();
   });
 </script>
+</body>
+</html>
