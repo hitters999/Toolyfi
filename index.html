@@ -252,24 +252,16 @@
       margin-bottom: 40px;
     }
 
-    /* FEATURED ARTICLES CARDS */
+    /* FEATURED TOOLS - 4 FIXED CARDS */
     .featured-cards-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 25px;
       margin-bottom: 50px;
     }
 
-    @media (max-width: 1024px) {
-      .featured-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media (max-width: 640px) {
-      .featured-cards-grid {
-        grid-template-columns: 1fr;
-      }
+      .featured-cards-grid { grid-template-columns: 1fr; }
     }
 
     .featured-card {
@@ -277,8 +269,9 @@
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
       border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      min-height: 220px;
     }
 
     .featured-card:hover {
@@ -286,19 +279,20 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
-    .featured-card-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5em;
-      color: white;
-    }
-
     .featured-card-content {
       padding: 25px;
+      opacity: 1;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .featured-card-content.fade-out {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .featured-card-content.fade-in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .featured-card-icon {
@@ -626,57 +620,15 @@
   })();
   </script>
 
-  <!-- FEATURED TOOLS SECTION - 4 COLUMNS -->
+  <!-- FEATURED TOOLS - 4 FIXED SHUFFLING CARDS -->
   <section class="section">
     <h2 class="section-title">⭐ Featured Tools</h2>
     <p class="section-subtitle">Most popular & powerful utilities</p>
-    
     <div class="featured-cards-grid">
-      
-      <!-- Tool 1: YouTube Transcript Extractor - NEW -->
-      <div class="featured-card">
-        <div class="featured-card-icon">🎬</div>
-        <div class="featured-card-content">
-          <span class="featured-badge" style="background: linear-gradient(135deg, #ff4d4d, #ff7b2e);">AI TOOL 🔥 NEW</span>
-          <h3 class="featured-card-title">YouTube Transcript Extractor</h3>
-          <p class="featured-card-desc">Extract transcript from any YouTube video instantly. AI-powered analysis, key points & summary. Free, no signup.</p>
-          <a href="youtube-transcript-extractor.html" class="featured-card-link">Try Now →</a>
-        </div>
-      </div>
-
-      <!-- Tool 2: Background Remover -->
-      <div class="featured-card">
-        <div class="featured-card-icon">🖼️</div>
-        <div class="featured-card-content">
-          <span class="featured-badge" style="background: linear-gradient(135deg, #667eea, #764ba2);">AI IMAGE</span>
-          <h3 class="featured-card-title">Background Remover</h3>
-          <p class="featured-card-desc">Remove backgrounds with AI instantly. PNG download ready. Perfect for photos & designs.</p>
-          <a href="https://bg.toolyfi.com" class="featured-card-link">Try Now →</a>
-        </div>
-      </div>
-
-      <!-- Tool 3: AI Image Generator -->
-      <div class="featured-card">
-        <div class="featured-card-icon">🎨</div>
-        <div class="featured-card-content">
-          <span class="featured-badge" style="background: linear-gradient(135deg, #764ba2, #667eea);">AI TOOL</span>
-          <h3 class="featured-card-title">AI Image Generator</h3>
-          <p class="featured-card-desc">Text-to-image AI with 9 stunning styles. Generate unlimited images, 100% free.</p>
-          <a href="ai-image-generator.html" class="featured-card-link">Try Now →</a>
-        </div>
-      </div>
-
-      <!-- Tool 4: Salary to Hourly -->
-      <div class="featured-card">
-        <div class="featured-card-icon">💼</div>
-        <div class="featured-card-content">
-          <span class="featured-badge" style="background: linear-gradient(135deg, #10b981, #059669);">CALCULATOR</span>
-          <h3 class="featured-card-title">Salary to Hourly</h3>
-          <p class="featured-card-desc">Convert annual salary to hourly rate instantly. Perfect for freelancers & contractors.</p>
-          <a href="salary-to-hourly.html" class="featured-card-link">Try Now →</a>
-        </div>
-      </div>
-
+      <div class="featured-card" id="fc-0"><div class="featured-card-content"></div></div>
+      <div class="featured-card" id="fc-1"><div class="featured-card-content"></div></div>
+      <div class="featured-card" id="fc-2"><div class="featured-card-content"></div></div>
+      <div class="featured-card" id="fc-3"><div class="featured-card-content"></div></div>
     </div>
   </section>
 
@@ -1234,6 +1186,85 @@
   </footer>
 
   <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+  <script>
+    // ===== FEATURED TOOLS SHUFFLE =====
+    (function() {
+      const TOOLS = [
+        { icon:'🎬', badge:'AI TOOL 🔥 NEW', badgeColor:'linear-gradient(135deg,#ff4d4d,#ff7b2e)', title:'YouTube Transcript Extractor', desc:'Extract transcript from any YouTube video instantly. AI-powered analysis, key points & summary. Free, no signup.', href:'youtube-transcript-extractor.html' },
+        { icon:'🖼️', badge:'AI IMAGE', badgeColor:'linear-gradient(135deg,#667eea,#764ba2)', title:'Background Remover', desc:'Remove backgrounds with AI instantly. PNG download ready. Perfect for photos & designs.', href:'https://bg.toolyfi.com' },
+        { icon:'🎨', badge:'AI TOOL', badgeColor:'linear-gradient(135deg,#764ba2,#667eea)', title:'AI Image Generator', desc:'Text-to-image AI with 9 stunning styles. Generate unlimited images, 100% free.', href:'ai-image-generator.html' },
+        { icon:'💼', badge:'CALCULATOR', badgeColor:'linear-gradient(135deg,#10b981,#059669)', title:'Salary to Hourly', desc:'Convert annual salary to hourly rate instantly. Perfect for freelancers & contractors.', href:'salary-to-hourly.html' },
+        { icon:'📊', badge:'GENERATOR', badgeColor:'linear-gradient(135deg,#10b981,#059669)', title:'Invoice Generator', desc:'Create professional PDF invoices in minutes. Add logo, tax & items. No signup needed.', href:'invoice-generator.html' },
+        { icon:'📄', badge:'CAREER', badgeColor:'linear-gradient(135deg,#8b5cf6,#7c3aed)', title:'Resume Builder', desc:'Build ATS-friendly resume & download PDF instantly. No login required.', href:'resume-builder.html' },
+        { icon:'🤖', badge:'AI TOOL', badgeColor:'linear-gradient(135deg,#0ea5e9,#0284c7)', title:'AI Text Detector', desc:'Detect AI-written content instantly. Check ChatGPT, Claude & Gemini text free.', href:'ai-text-detector.html' },
+        { icon:'📱', badge:'GENERATOR', badgeColor:'linear-gradient(135deg,#3b82f6,#1d4ed8)', title:'QR Code Generator', desc:'Create QR codes instantly. Download PNG/SVG. Works for any URL or text.', href:'qr-code-generator.html' },
+        { icon:'🔑', badge:'SECURITY', badgeColor:'linear-gradient(135deg,#a855f7,#9333ea)', title:'Password Generator', desc:'Generate strong secure passwords instantly. Customize length & symbols.', href:'password-generator.html' },
+        { icon:'💱', badge:'CONVERTER', badgeColor:'linear-gradient(135deg,#f59e0b,#d97706)', title:'Currency Converter', desc:'Convert 150+ currencies with real-time rates. USD to PKR, EUR to USD instantly.', href:'currency-converter.html' },
+        { icon:'🎂', badge:'CALCULATOR', badgeColor:'linear-gradient(135deg,#f97316,#ea580c)', title:'Age Calculator', desc:'Calculate exact age in years, months, days & hours. Instant results, no login.', href:'age-calculator.html' },
+        { icon:'⚖️', badge:'HEALTH', badgeColor:'linear-gradient(135deg,#ef4444,#dc2626)', title:'BMI Calculator', desc:'Calculate BMI free online. Check underweight, normal or overweight instantly.', href:'bmi-calculator.html' },
+        { icon:'📈', badge:'FINANCE', badgeColor:'linear-gradient(135deg,#667eea,#764ba2)', title:'Profit Margin Calc', desc:'Calculate profit margin and markup for your business instantly.', href:'profit-margin-calculator.html' },
+        { icon:'🧮', badge:'CALCULATOR', badgeColor:'linear-gradient(135deg,#06b6d4,#0891b2)', title:'Scientific Calculator', desc:'Full CASIO fx-82ES online. Trig, logs, exponentials & more. No download.', href:'scientific-calculator.html' },
+        { icon:'📝', badge:'TEXT TOOL', badgeColor:'linear-gradient(135deg,#6366f1,#7c3aed)', title:'Word Counter', desc:'Count words, characters, sentences and reading time instantly. Free.', href:'word-counter.html' },
+        { icon:'🔗', badge:'UTILITY', badgeColor:'linear-gradient(135deg,#667eea,#764ba2)', title:'Link Shortener', desc:'Shorten URLs with custom aliases. No signup needed, instant results.', href:'link-shortener.html' },
+      ];
+
+      // Shuffle array
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length-1; i > 0; i--) {
+          const j = Math.floor(Math.random()*(i+1));
+          [a[i],a[j]] = [a[j],a[i]];
+        }
+        return a;
+      }
+
+      function renderTool(el, tool) {
+        el.innerHTML = `
+          <div class="featured-card-icon">${tool.icon}</div>
+          <span class="featured-badge" style="background:${tool.badgeColor}">${tool.badge}</span>
+          <h3 class="featured-card-title">${tool.title}</h3>
+          <p class="featured-card-desc">${tool.desc}</p>
+          <a href="${tool.href}" class="featured-card-link">Try Now →</a>`;
+      }
+
+      function updateCard(cardIdx, tool) {
+        const card = document.getElementById('fc-' + cardIdx);
+        if (!card) return;
+        const inner = card.querySelector('.featured-card-content');
+        // fade out
+        inner.classList.add('fade-out');
+        setTimeout(() => {
+          renderTool(inner, tool);
+          inner.classList.remove('fade-out');
+        }, 300);
+      }
+
+      let shuffled = shuffle(TOOLS);
+      let toolIdx = 0;
+      const ORDER = [0, 1, 2, 3]; // top-left, top-right, bottom-left, bottom-right
+
+      // Initial fill all 4 cards
+      ORDER.forEach((cardIdx, i) => {
+        const inner = document.querySelector('#fc-' + cardIdx + ' .featured-card-content');
+        if (inner) renderTool(inner, shuffled[(toolIdx + i) % shuffled.length]);
+      });
+      toolIdx = 4;
+
+      // One card updates at a time in order: 0→1→2→3→0→1...
+      let rotateIdx = 0;
+      setInterval(() => {
+        const cardToUpdate = ORDER[rotateIdx % 4];
+        if (toolIdx >= shuffled.length) {
+          shuffled = shuffle(TOOLS);
+          toolIdx = 0;
+        }
+        updateCard(cardToUpdate, shuffled[toolIdx % shuffled.length]);
+        toolIdx++;
+        rotateIdx++;
+      }, 2000);
+    })();
+  </script>
 
   <script>
     // TOOLS DATA
