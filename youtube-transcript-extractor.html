@@ -279,38 +279,15 @@
   }
 
   async function fetchTranscript(vid) {
-    // Method 1: YouTube timedtext via corsproxy
+    // Cloudflare Worker
     try {
-      const url = `https://corsproxy.io/?${encodeURIComponent("https://www.youtube.com/api/timedtext?lang=en&v="+vid+"&fmt=json3")}`;
-      const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      const res = await fetch("https://late-field-4819.hitters999.workers.dev/?videoId=" + vid, {
+        signal: AbortSignal.timeout(10000)
+      });
       if (res.ok) {
         const data = await res.json();
-        if (data && data.events) {
-          const text = data.events.filter(e => e.segs).map(e => e.segs.map(s => s.utf8 || "").join("")).join(" ").replace(/\s+/g, " ").trim();
-          if (text.length > 50) return text;
-        }
+        if (data && data.transcript && data.transcript.length > 50) return data.transcript;
       }
-    } catch(e) {}
-
-    // Method 2: allorigins proxy
-    try {
-      const inner = encodeURIComponent("https://www.youtube.com/api/timedtext?lang=en&v="+vid+"&fmt=json3");
-      const res = await fetch("https://api.allorigins.win/get?url="+inner, { signal: AbortSignal.timeout(8000) });
-      if (res.ok) {
-        const raw = await res.json();
-        const data = JSON.parse(raw.contents || "{}");
-        if (data && data.events) {
-          const text = data.events.filter(e => e.segs).map(e => e.segs.map(s => s.utf8 || "").join("")).join(" ").replace(/\s+/g, " ").trim();
-          if (text.length > 50) return text;
-        }
-      }
-    } catch(e) {}
-
-    // Method 3: youtubetranscript.com
-    try {
-      const res = await fetch("https://api.youtubetranscript.com/?videoId="+vid, { signal: AbortSignal.timeout(8000) });
-      const data = await res.json();
-      if (data && data.transcript && data.transcript.length > 0) return data.transcript.map(t => t.text).join(" ");
     } catch(e) {}
 
     return null;
