@@ -715,8 +715,8 @@
     });
   }
 
-  // Calculator
-  function calculateGold() {
+  // Calculator - Fetch from Backend API (API logic on backend)
+  async function calculateGold() {
     const karat = parseFloat(document.getElementById('calc-karat').value);
     const unit = document.getElementById('calc-unit').value;
     const amount = parseFloat(document.getElementById('calc-amount').value);
@@ -727,30 +727,73 @@
       return;
     }
 
-    // PKR base price per unit
-    const basePerTola = GOLD_24K_TOLA * karat;
-    let pricePerUnit;
-    if (unit === 'tola') pricePerUnit = basePerTola;
-    else if (unit === 'gram') pricePerUnit = basePerTola / TOLA_TO_GRAM;
-    else if (unit === '10gram') pricePerUnit = (basePerTola / TOLA_TO_GRAM) * 10;
-    else if (unit === 'ounce') pricePerUnit = basePerTola / TOLA_TO_OUNCE;
+    const BACKEND_URL = 'https://your-railway-backend.com'; // UPDATE: Change to actual Railway URL
 
-    let totalPKR = pricePerUnit * amount;
-    let resultText, subText;
+    try {
+      // Fetch live rates from Backend
+      const response = await fetch(`${BACKEND_URL}/api/gold-rates`);
+      
+      if (!response.ok) {
+        throw new Error('Backend API error');
+      }
 
-    if (currency === 'PKR') {
-      resultText = 'PKR ' + Math.round(totalPKR).toLocaleString();
-    } else {
-      const curr = CURRENCIES.find(c => c.code === currency);
-      const converted = totalPKR / curr.rate;
-      resultText = currency + ' ' + converted.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      subText = `= PKR ${Math.round(totalPKR).toLocaleString()}`;
+      const ratesData = await response.json();
+
+      // Send calculation request to Backend
+      const calcResponse = await fetch(`${BACKEND_URL}/api/calculate-gold`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          karat: karat.toString() + 'k',
+          amount: amount,
+          unit: unit,
+          currency: currency,
+          rates: ratesData
+        })
+      });
+
+      if (!calcResponse.ok) {
+        throw new Error('Calculation error');
+      }
+
+      const result = await calcResponse.json();
+
+      // Display result
+      const unitLabels = { tola: 'Tola', gram: 'Gram', '10gram': '10 Gram', ounce: 'Ounce' };
+      document.getElementById('calc-result-amount').textContent = `${result.currency} ${result.totalPrice}`;
+      document.getElementById('calc-result-sub').textContent = `Breakdown: ${result.breakdown.weightInGrams.toFixed(2)}g @ ${result.breakdown.karatPurity}% purity`;
+      document.getElementById('calc-result').classList.add('show');
+
+    } catch (error) {
+      console.error('Calculator error:', error);
+      
+      // Fallback: Use static CURRENCIES data
+      const basePerTola = GOLD_24K_TOLA * karat;
+      let pricePerUnit;
+      
+      if (unit === 'tola') pricePerUnit = basePerTola;
+      else if (unit === 'gram') pricePerUnit = basePerTola / TOLA_TO_GRAM;
+      else if (unit === '10gram') pricePerUnit = (basePerTola / TOLA_TO_GRAM) * 10;
+      else if (unit === 'ounce') pricePerUnit = basePerTola / TOLA_TO_OUNCE;
+
+      let totalPKR = pricePerUnit * amount;
+      let resultText, subText;
+
+      if (currency === 'PKR') {
+        resultText = 'PKR ' + Math.round(totalPKR).toLocaleString();
+      } else {
+        const curr = CURRENCIES.find(c => c.code === currency);
+        const rate = curr ? curr.rate : 1;
+        const converted = totalPKR / rate;
+        resultText = currency + ' ' + converted.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        subText = `= PKR ${Math.round(totalPKR).toLocaleString()} (Fallback)`;
+      }
+
+      const unitLabels = { tola: 'Tola', gram: 'Gram', '10gram': '10 Gram', ounce: 'Ounce' };
+      document.getElementById('calc-result-amount').textContent = resultText;
+      document.getElementById('calc-result-sub').textContent = subText || `${amount} ${unitLabels[unit]} × ${Math.round(karat*100)}% purity`;
+      document.getElementById('calc-result').classList.add('show');
     }
-
-    const unitLabels = { tola: 'Tola', gram: 'Gram', '10gram': '10 Gram', ounce: 'Ounce' };
-    document.getElementById('calc-result-amount').textContent = resultText;
-    document.getElementById('calc-result-sub').textContent = subText || `${amount} ${unitLabels[unit]} × ${karat*100/1}% purity`;
-    document.getElementById('calc-result').classList.add('show');
   }
 
   // FAQ
