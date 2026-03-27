@@ -278,16 +278,38 @@
     if (id) document.getElementById(id).classList.add("show");
   }
 
+  const BACKEND = "https://toolyfi-backend-production.up.railway.app";
+
   async function fetchTranscript(vid) {
-    // Cloudflare Worker
+    // Method 1: Railway backend (most reliable)
     try {
-      const res = await fetch("https://late-field-4819.hitters999.workers.dev/?videoId=" + vid, {
-        signal: AbortSignal.timeout(10000)
+      const res = await fetch(BACKEND + "/api/transcript?url=https://youtube.com/watch?v=" + vid, {
+        signal: AbortSignal.timeout(12000)
       });
       if (res.ok) {
         const data = await res.json();
         if (data && data.transcript && data.transcript.length > 50) return data.transcript;
       }
+    } catch(e) {}
+
+    // Method 2: corsproxy fallback
+    try {
+      const url = "https://corsproxy.io/?" + encodeURIComponent("https://www.youtube.com/api/timedtext?lang=en&v="+vid+"&fmt=json3");
+      const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.events) {
+          const text = data.events.filter(e => e.segs).map(e => e.segs.map(s => s.utf8 || "").join("")).join(" ").replace(/\s+/g, " ").trim();
+          if (text.length > 50) return text;
+        }
+      }
+    } catch(e) {}
+
+    // Method 3: youtubetranscript.com
+    try {
+      const res = await fetch("https://api.youtubetranscript.com/?videoId="+vid, { signal: AbortSignal.timeout(8000) });
+      const data = await res.json();
+      if (data && data.transcript && data.transcript.length > 0) return data.transcript.map(t => t.text).join(" ");
     } catch(e) {}
 
     return null;
@@ -317,33 +339,30 @@
     showStatus("s-analyze");
 
     const prompt = transcript
-      ? `You are an expert content analyst. Analyze this YouTube video transcript and provide:\n\n1. Main Topic & Summary (3-4 sentences)\n2. Core Strategy / Key Message\n3. Top 7 Key Points (bullet points)\n4. Actionable Tips & Lessons\n5. Step-by-step Action Plan\n6. One-line Conclusion\n\nTranscript:\n${transcript.slice(0, 7000)}`
-      : `The YouTube video ID is: ${vid}. Transcript could not be automatically fetched. Please tell the user:\n1. The transcript could not be extracted automatically\n2. How to get it manually: YouTube → open video → click "..." menu below video → click "Open transcript" → copy the text\n3. Common reasons: captions disabled, private video, age-restricted\n\nBe helpful and friendly.`;
+      ? "You are an expert content analyst. Analyze this YouTube video transcript and provide:\n\n1. Main Topic & Summary (3-4 sentences)\n2. Core Strategy / Key Message\n3. Top 7 Key Points (bullet points)\n4. Actionable Tips & Lessons\n5. Step-by-step Action Plan\n6. One-line Conclusion\n\nTranscript:\n" + transcript.slice(0, 7000)
+      : "YouTube Video ID: " + vid + ". Transcript not available. Tell the user: 1) Transcript could not be fetched automatically. 2) How to get it manually: YouTube → open video → click three dots (...) → Open transcript → copy text. 3) Common reasons: captions disabled, private video. Be helpful and friendly.";
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      // Use backend for AI analysis
+      const response = await fetch(BACKEND + "/api/analyze", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "anthropic-version": "2023-06-01",
-          "anthropic-dangerous-direct-browser-access": "true"
-        },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1500,
-          messages: [{ role: "user", content: prompt }]
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: prompt }),
+        signal: AbortSignal.timeout(30000)
       });
 
-      const result = await response.json();
-      currentAnalysis = result.content?.[0]?.text || "";
-      if (!currentAnalysis) throw new Error("Empty");
-      showResult(vid);
-    } catch(e) {
-      document.getElementById("error-msg").textContent = "Analysis failed. Please try again.";
-      showStatus("s-error");
-      document.getElementById("analyse-btn").disabled = false;
-    }
+      if (response.ok) {
+        const result = await response.json();
+        currentAnalysis = result.text || result.analysis || "";
+        if (currentAnalysis) { showResult(vid); return; }
+      }
+    } catch(e) {}
+
+    // Fallback: show manual instructions
+    currentAnalysis = transcript
+      ? "Analysis service temporarily unavailable. Here is your raw transcript — you can paste it into ChatGPT or Claude for analysis."
+      : "Transcript could not be fetched automatically.\n\nHow to get it manually:\n1. Open the YouTube video\n2. Click the three dots (...) below the video\n3. Click Open transcript\n4. Copy all the text\n\nThen paste it here or use it with any AI tool for analysis.";
+    showResult(vid);
   }
 
   function showResult(vid) {
