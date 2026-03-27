@@ -745,11 +745,11 @@
       return;
     }
 
-    const BACKEND_URL = 'https://your-railway-backend.com'; // UPDATE: Change to actual Railway URL
+    const BACKEND_URL = 'https://toolyfi-backend-production.up.railway.app';
 
     try {
       // Fetch live rates from Backend
-      const response = await fetch(`${BACKEND_URL}/api/gold-rates`);
+      const response = await fetch(`${BACKEND_URL}/api/gold`);
       
       if (!response.ok) {
         throw new Error('Backend API error');
@@ -758,7 +758,7 @@
       const ratesData = await response.json();
 
       // Send calculation request to Backend
-      const calcResponse = await fetch(`${BACKEND_URL}/api/calculate-gold`, {
+      const calcResponse = await fetch(`${BACKEND_URL}/api/gold`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -860,7 +860,7 @@
   // LIVE API FUNCTION
   async function refreshLiveRates() {
     try {
-      const response = await fetch('https://toolyfi-backend.railway.app/api/gold-rates');
+      const response = await fetch('https://toolyfi-backend-production.up.railway.app/api/gold');
       const data = await response.json();
       
       if (data.success) {
