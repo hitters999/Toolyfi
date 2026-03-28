@@ -306,7 +306,7 @@
 <!-- ======== IMPORTANT: Update this section daily ======== -->
 <script>
   // ✅ DAILY UPDATE — Change ONLY this number every day!
-  const GOLD_24K_TOLA = 475100; // PKR per tola (24K)
+  const GOLD_24K_TOLA = 496000; // PKR per tola (24K) - Updated
 
   // ✅ Currency rates — update weekly
   const CURRENCIES = [
@@ -749,37 +749,39 @@
 
     try {
       // Fetch live rates from Backend
-      const response = await fetch(`${BACKEND_URL}/api/gold`);
+      const liveRes = await fetch(`${BACKEND_URL}/api/gold`);
+      const liveData = await liveRes.json();
       
-      if (!response.ok) {
-        throw new Error('Backend API error');
+      if (!liveData || !liveData.goldPKRperTola) throw new Error('No data');
+      
+      const gold24Tola = liveData.goldPKRperTola;
+      const gold24Gram = liveData.goldPKRperGram;
+      const karatPurity = { 24:1, 22:22/24, 21:21/24, 18:18/24 };
+      const purity = karatPurity[karat] || 1;
+      
+      let pricePerUnit;
+      if (unit === 'tola') pricePerUnit = gold24Tola * purity;
+      else if (unit === 'gram') pricePerUnit = gold24Gram * purity;
+      else if (unit === '10gram') pricePerUnit = gold24Gram * purity * 10;
+      else pricePerUnit = (liveData.goldPKRperOunce || gold24Gram * 31.1) * purity;
+      
+      const totalPKR = pricePerUnit * amount;
+      let resultText, subText;
+      
+      if (currency === 'PKR') {
+        resultText = 'PKR ' + Math.round(totalPKR).toLocaleString();
+        subText = amount + ' ' + unit + ' × ' + Math.round(purity*100) + '% purity';
+      } else {
+        const curr = (liveData.currencies||[]).find(c => c.code === currency);
+        const rate = curr ? curr.rate : 1;
+        const converted = (totalPKR / rate).toFixed(2);
+        resultText = currency + ' ' + converted;
+        subText = '= PKR ' + Math.round(totalPKR).toLocaleString();
       }
-
-      const ratesData = await response.json();
-
-      // Send calculation request to Backend
-      const calcResponse = await fetch(`${BACKEND_URL}/api/gold`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          karat: karat.toString() + 'k',
-          amount: amount,
-          unit: unit,
-          currency: currency,
-          rates: ratesData
-        })
-      });
-
-      if (!calcResponse.ok) {
-        throw new Error('Calculation error');
-      }
-
-      const result = await calcResponse.json();
-
-      // Display result
-      const unitLabels = { tola: 'Tola', gram: 'Gram', '10gram': '10 Gram', ounce: 'Ounce' };
-      document.getElementById('calc-result-amount').textContent = `${result.currency} ${result.totalPrice}`;
-      document.getElementById('calc-result-sub').textContent = `Breakdown: ${result.breakdown.weightInGrams.toFixed(2)}g @ ${result.breakdown.karatPurity}% purity`;
+      
+      const unitLabels = { tola:'Tola', gram:'Gram', '10gram':'10 Gram', ounce:'Ounce' };
+      document.getElementById('calc-result-amount').textContent = resultText;
+      document.getElementById('calc-result-sub').textContent = subText;
       document.getElementById('calc-result').classList.add('show');
 
     } catch (error) {
@@ -863,25 +865,17 @@
       const response = await fetch('https://toolyfi-backend-production.up.railway.app/api/gold');
       const data = await response.json();
       
-      if (data.success) {
-        // Update GOLD_24K_TOLA with live data
-        const goldUSD = parseFloat(data.rates.perOunceUSD);
-        const usdPkr = 280; // Convert to PKR
-        const goldPKR = goldUSD * usdPkr;
-        const goldPerTola = goldPKR / 2.43;
-        
-        window.GOLD_24K_TOLA = Math.round(goldPerTola);
-        
-        // Refresh all displays
+      if (data && data.goldPKRperTola) {
+        window.GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
+        if (data.currencies && data.currencies.length > 0) {
+          window.LIVE_CURRENCIES = data.currencies;
+        }
         buildHero();
         buildKaratPanels();
         buildCityTable();
         buildCurrencyTable();
-        
-        // Update timestamp
-        document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' (Live Updated)';
-        
-        console.log('✅ Live rates updated successfully!');
+        document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' (Live)';
+        console.log('Live rate: PKR ' + window.GOLD_24K_TOLA);
       }
     } catch (error) {
       console.error('❌ Error fetching live rates:', error);
