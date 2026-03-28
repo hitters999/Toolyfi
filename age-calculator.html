@@ -1,524 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free age calculator online. Calculate your exact age in years, months, days, hours. Find birthday countdown. Fast and accurate.">
-  <meta name="keywords" content="age calculator, calculate age, how old am I, birthday calculator, age in days">
-  <meta name="author" content="Toolyfi">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#667eea">
-  
-  <title>Free Age Calculator - Calculate Your Exact Age in Years, Months & Days | Toolyfi</title>
-  
-  <meta property="og:title" content="Free Age Calculator - Calculate Your Exact Age">
-  <meta property="og:description" content="Calculate your exact age in years, months, days, hours. Find birthday countdown instantly. 100% free.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolyfi.com/age-calculator.html">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Age Calculator">
-  <meta name="twitter:description" content="Calculate exact age in seconds. Fast, accurate, free.">
-  
-  <link rel="canonical" href="https://toolyfi.com/age-calculator.html">
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Age Calculator",
-    "description": "Free online age calculator tool",
-    "url": "https://toolyfi.com/age-calculator.html",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Age Calculator online — calculate your exact age in years, months, days, hours and minutes instantly. Find your next birthday countdown. No signup, 100% free.">
+<meta name="keywords" content="age calculator, calculate age, how old am I, birthday calculator, age in days, exact age, age finder, date of birth calculator">
+<meta name="author" content="Toolyfi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2563eb">
+<title>Free Age Calculator — Calculate Exact Age in Years, Months & Days | Toolyfi</title>
+<meta property="og:title" content="Free Age Calculator — Calculate Your Exact Age | Toolyfi">
+<meta property="og:description" content="Calculate your exact age in years, months, days, hours. Find birthday countdown instantly. 100% free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolyfi.com/age-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Age Calculator | Toolyfi">
+<meta name="twitter:description" content="Calculate exact age in seconds. Fast, accurate, free.">
+<link rel="canonical" href="https://toolyfi.com/age-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Age Calculator",
+  "description": "Free online age calculator — calculate exact age in years, months, days, hours and minutes",
+  "url": "https://toolyfi.com/age-calculator.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "creator": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How do I calculate my exact age?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your date of birth in the age calculator above. It will instantly show your exact age in years, months, days, hours, and even minutes."}},
+    {"@type": "Question", "name": "Is this age calculator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Toolyfi Age Calculator is 100% free. No signup, no subscription, no hidden charges."}},
+    {"@type": "Question", "name": "How many days old am I?", "acceptedAnswer": {"@type": "Answer", "text": "Our calculator shows your total age in days along with years, months, and hours. Just enter your date of birth and click Calculate."}},
+    {"@type": "Question", "name": "When is my next birthday?", "acceptedAnswer": {"@type": "Answer", "text": "The calculator automatically shows how many days are left until your next birthday."}}
+  ]
+}
+</script>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #dbeafe;
+  --accent: #f59e0b;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --success: #10b981;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(37,99,235,0.10);
+  --shadow-lg: 0 12px 48px rgba(37,99,235,0.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* HEADER */
+header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 15px;
-    }
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 50%, rgba(37,99,235,0.3) 0%, transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)}
+.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600;backdrop-filter:blur(8px)}
+.trust-pill span{color:var(--accent)}
 
-    .container {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
+/* TOOL SECTION */
+.tool-section{max-width:860px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
+.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
+.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.tool-card-header h2{color:#fff;font-size:1.25rem;font-weight:700}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,0.15);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.stat-chip .val{font-size:1.1rem;font-weight:800}
+.tool-body{padding:32px}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.inp-group label{display:block;font-weight:700;font-size:.85rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.inp-group input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--dark);transition:all .2s;background:#f8fafc}
+.inp-group input:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,0.08)}
+.btn-row{display:flex;gap:12px;margin-bottom:28px}
+.btn-calc{flex:1;background:var(--primary);color:#fff;border:none;padding:15px 28px;border-radius:12px;font-size:1rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-calc:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
+.btn-clear{background:#f1f5f9;color:var(--gray);border:none;padding:15px 20px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-clear:hover{background:#e2e8f0;color:var(--dark)}
+.results{display:none;animation:fadeUp .35s ease-out}
+.results.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.res-box{background:var(--light);border:2px solid var(--border);border-radius:14px;padding:20px 12px;text-align:center;transition:all .2s}
+.res-box:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.res-box .num{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1;margin-bottom:6px}
+.res-box .lbl{font-size:.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-item{background:var(--light);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.info-item .ico{font-size:1.4rem}
+.info-item .info-label{font-size:.78rem;color:var(--gray);font-weight:600;margin-bottom:2px}
+.info-item .info-val{font-size:.95rem;font-weight:700;color:var(--dark)}
+.msg{padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:600;margin-bottom:16px;display:none}
+.msg.show{display:block}
+.msg.error{background:#fef2f2;color:#dc2626;border-left:4px solid #dc2626}
+.copy-btn{width:100%;margin-top:20px;background:var(--light);border:2px solid var(--border);color:var(--primary);padding:12px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.copy-btn:hover{background:var(--primary-light);border-color:var(--primary)}
 
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 35px 25px;
-      text-align: center;
-    }
+/* STATS BAR */
+.stats-bar{background:var(--dark);padding:40px 20px}
+.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.sbar-item .sval{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px}
+.sbar-item .slbl{color:rgba(255,255,255,0.6);font-size:.85rem;font-weight:600}
 
-    .header h1 {
-      font-size: 1.8em;
-      margin-bottom: 8px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+/* SECTIONS */
+.section{max-width:980px;margin:0 auto;padding:80px 24px}
+.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
 
-    .header p {
-      font-size: 0.95em;
-      opacity: 0.95;
-      margin-bottom: 12px;
-    }
+/* MORE THAN JUST */
+.more-section{background:var(--light);padding:80px 24px}
+.more-inner{max-width:980px;margin:0 auto}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.more-text h3{font-size:1.5rem;font-weight:800;color:var(--dark);margin-bottom:12px}
+.more-text p{color:var(--gray);line-height:1.8;margin-bottom:24px}
+.more-features{display:flex;flex-direction:column;gap:12px}
+.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
+.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.more-feat-text p{font-size:.85rem;color:var(--gray)}
+.more-visual{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.mini-result{background:#fff;border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.mini-result .lbl{font-size:.85rem;color:var(--gray);font-weight:600}
+.mini-result .val{font-size:1.4rem;font-weight:800;color:var(--primary)}
 
-    .badges {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
+.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
+.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
 
-    .badge {
-      background: rgba(255,255,255,0.25);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.75em;
-      font-weight: 600;
-    }
+/* WHO BENEFITS */
+.who-section{background:var(--dark);padding:80px 24px}
+.who-inner{max-width:980px;margin:0 auto}
+.who-section .section-title{color:#fff}
+.who-section .section-sub{color:rgba(255,255,255,0.6)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
+.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.25);transform:translateY(-2px)}
+.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
+.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.who-card p{color:rgba(255,255,255,0.55);font-size:.88rem;line-height:1.7}
 
-    .content {
-      padding: 25px;
-    }
+/* FAQ */
+.faq-section{background:var(--light);padding:80px 24px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
+.faq-item.open{border-color:var(--primary)}
+.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.98rem}
+.faq-q .arrow{font-size:1.1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.93rem}
+.faq-item.open .faq-a{display:block}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 25px;
-    }
+/* ARTICLE */
+.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
+.article-section h2{font-size:1.9rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
+.article-section h3{font-size:1.3rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
+.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
+.article-section ul,.article-section ol{margin:16px 0 20px 28px}
+.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
+.article-section strong{color:var(--primary);font-weight:700}
+.article-section a{color:var(--primary);font-weight:600;text-decoration:none}
+.article-section a:hover{text-decoration:underline}
+.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
 
-    .stat-box {
-      background: #f5f7ff;
-      padding: 15px;
-      border-radius: 12px;
-      border-left: 4px solid #667eea;
-      text-align: center;
-    }
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#fff;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:36px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
 
-    .stat-label {
-      color: #999;
-      font-size: 0.8em;
-      margin-bottom: 8px;
-    }
+/* TOOLS GRID */
+.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
+.tools-footer-inner{max-width:980px;margin:0 auto}
+.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s;display:flex;align-items:center;gap:8px}
+.tool-link:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 
-    .stat-value {
-      font-size: 1.8em;
-      font-weight: 800;
-      color: #667eea;
-    }
+/* SITE FOOTER */
+footer{background:var(--dark);padding:32px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.45);font-size:.85rem;margin-bottom:6px}
+footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
+footer a:hover{color:#fff}
 
-    .options-card {
-      background: #f8f9ff;
-      padding: 18px;
-      border-radius: 15px;
-      border: 1px solid #e0e7ff;
-      margin-bottom: 20px;
-    }
-
-    .options-title {
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 12px;
-      font-size: 0.95em;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 0.9em;
-    }
-
-    input[type="date"] {
-      width: 100%;
-      padding: 11px 14px;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 0.9em;
-      transition: all 0.3s;
-    }
-
-    input[type="date"]:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
-    }
-
-    .results-card {
-      background: #f8f9ff;
-      padding: 18px;
-      border-radius: 15px;
-      border: 1px solid #e0e7ff;
-      margin-bottom: 20px;
-      display: none;
-    }
-
-    .results-card.show {
-      display: block;
-      animation: slideDown 0.3s ease-out;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .result-item {
-      background: white;
-      padding: 12px;
-      border-radius: 10px;
-      border-left: 3px solid #667eea;
-    }
-
-    .result-label {
-      color: #999;
-      font-size: 0.8em;
-      margin-bottom: 4px;
-    }
-
-    .result-value {
-      font-size: 1.6em;
-      font-weight: 800;
-      color: #667eea;
-    }
-
-    .info-section {
-      background: white;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 0.85em;
-      color: #666;
-    }
-
-    .info-section p {
-      margin-bottom: 6px;
-    }
-
-    .button-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      padding: 11px 0;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.85em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .btn-primary {
-      background: #667eea;
-      color: white;
-      grid-column: 1 / 3;
-    }
-
-    .btn-primary:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #333;
-      border: 2px solid #ddd;
-    }
-
-    .btn-secondary:hover {
-      background: #f8f9fa;
-      border-color: #667eea;
-      color: #667eea;
-    }
-
-    .message {
-      padding: 12px 16px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: none;
-      font-weight: 500;
-      font-size: 0.9em;
-      animation: slideDown 0.3s ease-out;
-    }
-
-    .message.show {
-      display: block;
-    }
-
-    .message.error {
-      background: #ffebee;
-      color: #c62828;
-      border-left: 4px solid #f44336;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .footer {
-      background: #f8f9fa;
-      padding: 20px;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-    }
-
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 1.5em;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .results-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .button-group {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .btn-primary {
-        grid-column: 1 / 3;
-      }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{padding:0 16px}
+  nav a{padding:8px 10px;font-size:.82rem}
+  .input-row{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:repeat(2,1fr)}
+  .info-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .more-grid{grid-template-columns:1fr}
+  .more-visual{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-card-header{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .hero{padding:56px 16px 72px}
+  .tool-body{padding:20px}
+  .results-grid{grid-template-columns:repeat(2,1fr)}
+  .who-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <h1>🎂 Age Calculator</h1>
-    <p>Calculate your exact age in years, months, days and more</p>
-    <div class="badges">
-      <span class="badge">💰 100% Free</span>
-      <span class="badge">⚡ Instant</span>
-      <span class="badge">📅 Accurate</span>
-      <span class="badge">🔒 Secure</span>
-    </div>
+<header>
+  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+  <nav>
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/updatesworld">Updates</a>
+    <a href="https://toolyfi.com">Tools</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🎂 Age Calculator — Instant & Free</div>
+  <h1>Calculate Your <em>Exact Age</em><br>in Seconds</h1>
+  <p class="hero-sub">Find out precisely how old you are — in years, months, days, hours and minutes. Plus your next birthday countdown.</p>
+  <div class="trust-pills">
+    <div class="trust-pill"><span>✓</span> 100% Free</div>
+    <div class="trust-pill"><span>✓</span> Instant Results</div>
+    <div class="trust-pill"><span>✓</span> No Signup</div>
+    <div class="trust-pill"><span>✓</span> Works Offline</div>
   </div>
+</section>
 
-  <div class="content">
-    <div class="message" id="message"></div>
-
-    <div class="stats">
-      <div class="stat-box">
-        <div class="stat-label">Years</div>
-        <div class="stat-value" id="yearsDisplay">-</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Months</div>
-        <div class="stat-value" id="monthsDisplay">-</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Days</div>
-        <div class="stat-value" id="daysDisplay">-</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Status</div>
-        <div class="stat-value">Ready</div>
+<!-- TOOL -->
+<div class="tool-section">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <h2>🎂 Age Calculator</h2>
+      <div class="stat-chips">
+        <div class="stat-chip">⚡ Instant</div>
+        <div class="stat-chip">🔒 Private</div>
+        <div class="stat-chip">📅 Accurate</div>
       </div>
     </div>
-
-    <div class="options-card">
-      <div class="options-title">📅 Select Birth Date</div>
-      
-      <div class="input-group">
-        <label for="birthDate">Your Birth Date</label>
-        <input type="date" id="birthDate" onchange="calculateAge()">
-      </div>
-    </div>
-
-    <div class="results-card" id="resultsCard">
-      <div class="results-grid">
-        <div class="result-item">
-          <div class="result-label">Years</div>
-          <div class="result-value" id="resYears">0</div>
+    <div class="tool-body">
+      <div class="msg" id="msg"></div>
+      <div class="input-row">
+        <div class="inp-group">
+          <label for="birthDate">📅 Date of Birth</label>
+          <input type="date" id="birthDate" max="">
         </div>
-        <div class="result-item">
-          <div class="result-label">Months</div>
-          <div class="result-value" id="resMonths">0</div>
-        </div>
-        <div class="result-item">
-          <div class="result-label">Days</div>
-          <div class="result-value" id="resDays">0</div>
-        </div>
-        <div class="result-item">
-          <div class="result-label">Hours</div>
-          <div class="result-value" id="resHours">0</div>
+        <div class="inp-group">
+          <label for="toDate">📆 Calculate Age On</label>
+          <input type="date" id="toDate">
         </div>
       </div>
-
-      <div class="info-section">
-        <p>📅 <strong>Birth Day:</strong> <span id="birthDay">-</span></p>
-        <p>🎂 <strong>Next Birthday:</strong> <span id="nextBirthday">-</span></p>
-        <p>📊 <strong>Total Days:</strong> <span id="totalDays">-</span></p>
-        <p>⏰ <strong>Total Hours:</strong> <span id="totalHours">-</span></p>
+      <div class="btn-row">
+        <button class="btn-calc" onclick="calculateAge()">🧮 Calculate My Age</button>
+        <button class="btn-clear" onclick="clearAll()">🗑️ Clear</button>
+      </div>
+      <div class="results" id="results">
+        <div class="results-grid">
+          <div class="res-box"><div class="num" id="rYears">0</div><div class="lbl">Years</div></div>
+          <div class="res-box"><div class="num" id="rMonths">0</div><div class="lbl">Months</div></div>
+          <div class="res-box"><div class="num" id="rDays">0</div><div class="lbl">Days</div></div>
+          <div class="res-box"><div class="num" id="rHours">0</div><div class="lbl">Hours</div></div>
+        </div>
+        <div class="info-grid">
+          <div class="info-item"><div class="ico">📅</div><div><div class="info-label">Born On (Day)</div><div class="info-val" id="birthDay">—</div></div></div>
+          <div class="info-item"><div class="ico">🎉</div><div><div class="info-label">Next Birthday In</div><div class="info-val" id="nextBday">—</div></div></div>
+          <div class="info-item"><div class="ico">📊</div><div><div class="info-label">Total Days Lived</div><div class="info-val" id="totalDays">—</div></div></div>
+          <div class="info-item"><div class="ico">⏰</div><div><div class="info-label">Total Hours Lived</div><div class="info-val" id="totalHours">—</div></div></div>
+        </div>
+        <button class="copy-btn" onclick="copyResult()">📋 Copy Result</button>
       </div>
     </div>
-
-    <div class="button-group">
-      <button class="btn btn-primary" onclick="calculateAge()">🧮 Calculate</button>
-      <button class="btn btn-secondary" onclick="copyResult()">📋 Copy</button>
-      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
-      <button class="btn btn-secondary" onclick="setToday()">📆 Today</button>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
-    <p>100% Free • No Sign-up • Accurate Calculation • Instant Results</p>
   </div>
 </div>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="sbar-item"><div class="sval">1M+</div><div class="slbl">Ages Calculated</div></div>
+    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
+    <div class="sbar-item"><div class="sval">0</div><div class="slbl">Signups Required</div></div>
+    <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Results</div></div>
+  </div>
+</div>
+
+<!-- MORE THAN JUST -->
+<div class="more-section">
+  <div class="more-inner">
+    <div class="section-tag">Beyond Basic</div>
+    <h2 class="section-title">More than just an <em>age calculator</em></h2>
+    <p class="section-sub">Our age calculator doesn't just tell you your age — it gives you complete insights about your life in numbers.</p>
+    <div class="more-grid">
+      <div>
+        <div class="more-features">
+          <div class="more-feat">
+            <div class="more-feat-ico">📅</div>
+            <div class="more-feat-text"><h4>Exact Age on Any Date</h4><p>Calculate age between any two dates — past, present, or future.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">🎉</div>
+            <div class="more-feat-text"><h4>Birthday Countdown</h4><p>See exactly how many days until your next birthday celebration.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">📊</div>
+            <div class="more-feat-text"><h4>Total Life in Days & Hours</h4><p>See the grand total of days and hours you've been alive.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">🌍</div>
+            <div class="more-feat-text"><h4>Day of Birth</h4><p>Discover which day of the week you were born on.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="more-visual">
+        <div class="mini-result"><span class="lbl">Your Age</span><span class="val">25 years</span></div>
+        <div class="mini-result"><span class="lbl">Total Days Lived</span><span class="val">9,131</span></div>
+        <div class="mini-result"><span class="lbl">Next Birthday</span><span class="val">42 days</span></div>
+        <div class="mini-result"><span class="lbl">Born On</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">Features</div>
+  <h2 class="section-title">Everything you need in<br>one <em>free tool</em></h2>
+  <p class="section-sub">Built for accuracy, speed and privacy — no data ever leaves your device.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <span class="feat-icon">⚡</span>
+      <h3>Instant Calculation</h3>
+      <p>Results appear in milliseconds. No loading, no delays, no server calls. Pure client-side speed.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🎯</span>
+      <h3>Pinpoint Accuracy</h3>
+      <p>Accounts for leap years, varying month lengths, and time zones to give you the most accurate age.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔒</span>
+      <h3>100% Private</h3>
+      <p>Your date of birth is never sent to any server. All calculation happens locally in your browser.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📱</span>
+      <h3>Works on All Devices</h3>
+      <p>Perfectly responsive on mobile, tablet, and desktop. Same experience everywhere you go.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📋</span>
+      <h3>Copy Result Instantly</h3>
+      <p>One click to copy your age calculation. Paste it anywhere you need — forms, documents, chats.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🗓️</span>
+      <h3>Custom Date Range</h3>
+      <p>Calculate age between any two dates. Useful for historical research, legal documents, and more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="who-section">
+  <div class="who-inner">
+    <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
+    <h2 class="section-title">Who benefits from our<br><em>age calculator?</em></h2>
+    <p class="section-sub">From students to professionals — everyone needs to calculate age at some point.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <span class="who-emoji">👨‍💼</span>
+        <h3>HR Professionals</h3>
+        <p>Quickly verify employee age for retirement planning, benefits eligibility, and compliance checks.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">👨‍🎓</span>
+        <h3>Students</h3>
+        <p>Calculate age for biology assignments, history projects, or verifying eligibility for events and exams.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">👩‍⚕️</span>
+        <h3>Medical Professionals</h3>
+        <p>Accurate patient age is critical in healthcare. Calculate precise age for pediatric and geriatric records.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">⚖️</span>
+        <h3>Legal Professionals</h3>
+        <p>Verify age for legal documents, contracts, and court filings that require exact date-based calculations.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">👨‍👩‍👧</span>
+        <h3>Parents</h3>
+        <p>Track your child's exact age for school admissions, milestone tracking, and birthday planning.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">🎂</span>
+        <h3>Everyone!</h3>
+        <p>Curious about exactly how old you are in days? Just want to know when your next birthday falls? We've got you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Frequently asked <em>questions</em></h2>
+    <p class="section-sub">Everything you need to know about calculating age online.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I calculate my exact age? <span class="arrow">▼</span></div>
+        <div class="faq-a">Simply enter your date of birth in the calculator above and click "Calculate My Age." The tool instantly shows your exact age in years, months, days, and hours — along with your birthday countdown and total days lived.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this age calculator free? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes — 100% free, forever. No signup, no subscription, no hidden fees. Just open the page and start calculating.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many days old am I? <span class="arrow">▼</span></div>
+        <div class="faq-a">Our calculator shows your total age in days under "Total Days Lived." For example, a 25-year-old person is approximately 9,131 days old. The exact number depends on leap years in your lifetime.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I calculate age between two specific dates? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes! Use the "Calculate Age On" field to set a custom target date. This is useful for calculating someone's age on a past or future date — like a retirement date or historical event.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Does the calculator account for leap years? <span class="arrow">▼</span></div>
+        <div class="faq-a">Absolutely. Our algorithm accounts for every leap year between your birth date and the target date, ensuring your day-count is always accurate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my date of birth stored anywhere? <span class="arrow">▼</span></div>
+        <div class="faq-a">No. All calculations happen entirely in your browser. Your birth date is never sent to any server, never stored, and never shared. Your privacy is fully protected.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the most common reason to calculate age? <span class="arrow">▼</span></div>
+        <div class="faq-a">Common uses include school admissions, legal document verification, medical records, visa applications, job applications, retirement planning, and just satisfying curiosity about how many days you've been alive!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-section">
+  <h2>Free Age Calculator — Calculate Your Exact Age Online</h2>
+  <p>Whether you need to fill out a government form, calculate eligibility for a program, or simply satisfy your curiosity about how many days you have been alive, an <strong>age calculator</strong> is one of the most practical tools you can use online. Toolyfi's free age calculator gives you your exact age in years, months, days, hours, and even minutes — all instantly, privately, and without any signup.</p>
+  <p>Unlike basic calculators that only tell you the number of years, our tool breaks down your age into every meaningful unit. You also get your total days lived, total hours, which day of the week you were born, and how many days remain until your next birthday. It is a complete age analysis in one click.</p>
+
+  <h2>How to Calculate Your Age — Step by Step</h2>
+  <p>Calculating your age sounds simple, but getting it exactly right — accounting for leap years, varying month lengths, and partial months — requires careful logic. Here is how our age calculator works:</p>
+  <ol>
+    <li><strong>Enter your date of birth</strong> — Select your birth date using the date picker above.</li>
+    <li><strong>Set the target date</strong> — By default this is today, but you can change it to any date in the past or future.</li>
+    <li><strong>Click Calculate</strong> — The tool instantly computes your age in years, months, days, and hours.</li>
+    <li><strong>View your results</strong> — See your total days lived, birthday countdown, and the day you were born.</li>
+    <li><strong>Copy or share</strong> — Use the copy button to paste your result anywhere you need.</li>
+  </ol>
+  <div class="article-highlight"><p>💡 Tip: Use the "Calculate Age On" field to find someone's age on any specific date — useful for retirement calculations, legal verification, or historical research.</p></div>
+
+  <h2>Why Age Calculation Is Harder Than It Looks</h2>
+  <p>At first glance, calculating age seems as simple as subtracting birth year from current year. But that approach gives you the wrong answer most of the time. There are several factors that make accurate age calculation more complex:</p>
+  <ul>
+    <li><strong>Months have different lengths</strong> — February has 28 or 29 days, while other months have 30 or 31. A naive subtraction ignores this entirely.</li>
+    <li><strong>Leap years</strong> — Every four years (with some exceptions), there is an extra day in February. Over a lifetime, this adds up significantly. A person who is 30 years old has lived through roughly 7-8 leap years.</li>
+    <li><strong>Birthday hasn't occurred yet this year</strong> — If today is March 15 and your birthday is June 20, you are technically still one year younger than the simple subtraction suggests.</li>
+    <li><strong>Timezone differences</strong> — For very precise calculations, the timezone of birth and current timezone can create a one-day difference near midnight.</li>
+  </ul>
+  <p>Toolyfi's age calculator handles all of these edge cases automatically. You get the right answer every time, without needing to think about the math.</p>
+
+  <h2>How Old Am I in Days?</h2>
+  <p>One of the most interesting numbers our tool shows is your total age in days. Most people are surprised to see just how large this number is. Here is a quick reference:</p>
+  <ul>
+    <li><strong>10 years old:</strong> approximately 3,652 days</li>
+    <li><strong>18 years old:</strong> approximately 6,574 days</li>
+    <li><strong>25 years old:</strong> approximately 9,131 days</li>
+    <li><strong>30 years old:</strong> approximately 10,957 days</li>
+    <li><strong>40 years old:</strong> approximately 14,610 days</li>
+    <li><strong>50 years old:</strong> approximately 18,262 days</li>
+    <li><strong>60 years old:</strong> approximately 21,915 days</li>
+  </ul>
+  <p>These numbers vary slightly based on how many leap years fall within each person's lifetime. Our calculator accounts for all of them precisely.</p>
+
+  <h2>Age Calculation for Legal and Official Purposes</h2>
+  <p>Age calculation is often required for legal, administrative, and official purposes. Here are some common scenarios where getting the exact age matters:</p>
+  <h3>Passport and Visa Applications</h3>
+  <p>Many visa categories have strict age limits. For example, youth exchange programs may require applicants to be under 30 years old at the time of application or travel. An off-by-one-day error can lead to rejection. Our calculator ensures you know your exact age to the day.</p>
+  <h3>School Admissions</h3>
+  <p>Most schools have age cutoff dates — typically requiring children to reach a certain age before a specific date to enroll in a grade. Parents often need to verify this precisely. Our tool lets you check age on any specific date, not just today.</p>
+  <h3>Medical Records</h3>
+  <p>In healthcare, especially pediatrics and geriatrics, exact age matters for dosage calculations, developmental milestones, and eligibility for age-specific screenings. A calculator that accounts for months and days — not just years — is essential.</p>
+  <h3>Retirement and Pension Planning</h3>
+  <p>Many pension plans and retirement benefits activate at specific ages — 60, 65, or 67 depending on the country and plan. Knowing exactly when you will reach that age helps in planning ahead. You can enter a future date in our tool to find out exactly when you will become eligible.</p>
+  <h3>Legal Majority and Voting Age</h3>
+  <p>Turning 18 is a legal milestone in most countries — granting the right to vote, sign contracts, and be treated as an adult in legal proceedings. Our calculator can confirm exactly when that date arrives.</p>
+
+  <h2>Birthday Countdown — How Many Days Until My Birthday?</h2>
+  <p>Beyond calculating past age, our tool also shows your birthday countdown — the number of days remaining until your next birthday. This is calculated by finding the next occurrence of your birth month and day after today's date.</p>
+  <p>If your birthday falls on today's date, the countdown will show 0 — happy birthday! If your birthday has already passed this year, it counts forward to next year's date automatically.</p>
+  <p>This feature is popular for birthday planning, sending reminders, and just the fun of knowing exactly how far away your next celebration is.</p>
+
+  <h2>What Day of the Week Was I Born?</h2>
+  <p>This is a fun piece of trivia that surprisingly few people know about themselves. Our age calculator tells you which day of the week you were born on — Monday, Tuesday, Wednesday, and so on.</p>
+  <p>In some cultures, the day of birth carries significance. In others, it is just a fun fact to share. Either way, it is one of those things people find genuinely interesting to discover. There is even a classic poem — "Monday's child is fair of face..." — that assigns personality traits to each day of birth.</p>
+
+  <h2>Age Calculation Around the World</h2>
+  <p>Different cultures calculate and express age differently. In most Western countries, a person's age is the number of completed birthdays — so on the day before your 25th birthday, you are still 24. This is called the Western age system.</p>
+  <p>In some East Asian countries, particularly in traditional Korean and Chinese contexts, a different system exists. In the traditional Korean system (called "Korean age"), everyone is considered one year old at birth, and everyone ages one year on January 1st — not on their actual birthday. This means a Korean-age person can be one or two years older than their Western-age equivalent.</p>
+  <p>Japan historically used a similar system before adopting the Western standard officially in the 1950s.</p>
+  <p>Our tool calculates age using the standard international (Western) system — the number of completed years since birth. This is the system used in most official and legal contexts worldwide.</p>
+
+  <h2>Using Age Calculators for Historical Research</h2>
+  <p>The "Calculate Age On" feature makes our tool valuable for historical research. Want to know how old a historical figure was when a major event happened? Enter their birth date and set the target to the event date. For example:</p>
+  <ul>
+    <li>How old was Albert Einstein when he published his theory of relativity in 1905? (He was 26.)</li>
+    <li>How old was Muhammad Ali when he won his first world heavyweight title in 1964? (He was 22.)</li>
+    <li>How old was Malala Yousafzai when she won the Nobel Peace Prize in 2014? (She was 17.)</li>
+  </ul>
+  <p>For students, educators, historians, and curious minds, this feature turns the age calculator into a research tool.</p>
+
+  <h2>Tips for Getting the Most Out of Our Age Calculator</h2>
+  <ul>
+    <li><strong>Double-check your birth date input</strong> — A typo in the year is the most common cause of wrong results.</li>
+    <li><strong>Use the custom target date</strong> — If you need age on a specific future date (retirement, event, application deadline), set the target date instead of relying on today.</li>
+    <li><strong>Copy your result</strong> — Use the Copy button to save your result for forms, documents, or sharing.</li>
+    <li><strong>Bookmark this page</strong> — If you frequently need to calculate ages for work or research, bookmark Toolyfi's age calculator for quick access.</li>
+  </ul>
+
+  <h2>Privacy First — Your Data Never Leaves Your Browser</h2>
+  <p>We take privacy seriously. Your date of birth is sensitive personal information. Unlike many online tools that log user inputs or send them to servers for analytics, <strong>Toolyfi's age calculator performs all calculations entirely in your browser</strong>. No data is ever transmitted, stored, or shared.</p>
+  <p>This means you can use the tool confidently even on shared or public computers — nothing is retained after you close the tab.</p>
+
+  <h2>Related Age and Date Tools on Toolyfi</h2>
+  <p>If you found our age calculator useful, you might also need these related tools:</p>
+  <ul>
+    <li><a href="https://toolyfi.com/salary-to-hourly.html">Salary to Hourly Converter</a> — Convert annual salary to hourly, daily, weekly rates.</li>
+    <li><a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a> — Calculate Body Mass Index based on height and weight.</li>
+    <li><a href="https://toolyfi.com/tip-calculator.html">Tip Calculator</a> — Split bills and calculate tips instantly.</li>
+    <li><a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a> — Calculate EMI, interest, and total repayment for any loan.</li>
+    <li><a href="https://toolyfi.com/compound-interest-calculator.html">Compound Interest Calculator</a> — See how your savings grow over time.</li>
+  </ul>
+
+  <h2>Conclusion — The Smartest Free Age Calculator Online</h2>
+  <p>Toolyfi's free age calculator is built for accuracy, speed, and privacy. Whether you need a quick check of your age in years, a precise count of days lived, or a birthday countdown for your next celebration, this tool covers everything in one clean interface.</p>
+  <p>No ads cluttering the screen. No signup walls. No data collection. Just the fastest, most accurate age calculator available — completely free.</p>
+  <p><strong>Try it now</strong> — enter your date of birth above and discover exactly how old you are, down to the hour.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready to explore more free tools?</h2>
+  <p>Toolyfi has 40+ free tools — calculators, converters, generators and more. No signup required.</p>
+  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+</div>
+
+<!-- TOOLS GRID -->
+<div class="tools-footer">
+  <div class="tools-footer-inner">
+    <h3>More Free Tools on Toolyfi</h3>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
+      <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link">💼 Salary Converter</a>
+      <a href="https://toolyfi.com/compound-interest-calculator.html" class="tool-link">📈 Compound Interest</a>
+      <a href="https://toolyfi.com/percentage-calculator.html" class="tool-link">% Percentage Calc</a>
+      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
+      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
+      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
+      <a href="https://toolyfi.com/temperature-converter.html" class="tool-link">🌡️ Temp Converter</a>
+      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
+      <a href="https://toolyfi.com/image-compressor.html" class="tool-link">🖼️ Image Compressor</a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
+      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
+  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+</footer>
+
 <script>
-  function calculateAge() {
-    const birthDate = document.getElementById('birthDate').value;
+// Set defaults
+window.addEventListener('DOMContentLoaded', () => {
+  const today = new Date();
+  const fmt = d => d.toISOString().split('T')[0];
+  document.getElementById('toDate').value = fmt(today);
+  document.getElementById('toDate').max = fmt(new Date(today.getFullYear()+50,11,31));
+  document.getElementById('birthDate').max = fmt(today);
+});
 
-    if (!birthDate) {
-      showMessage('Please select your birth date', 'error');
-      return;
-    }
+function calculateAge() {
+  const birthVal = document.getElementById('birthDate').value;
+  const toVal = document.getElementById('toDate').value;
+  if (!birthVal) { showMsg('Please enter your date of birth.', 'error'); return; }
+  const birth = new Date(birthVal);
+  const target = toVal ? new Date(toVal) : new Date();
+  if (birth > target) { showMsg('Birth date cannot be after the target date.', 'error'); return; }
 
-    const birth = new Date(birthDate);
-    const today = new Date();
+  let years = target.getFullYear() - birth.getFullYear();
+  let months = target.getMonth() - birth.getMonth();
+  let days = target.getDate() - birth.getDate();
 
-    if (birth > today) {
-      showMessage('Birth date cannot be in the future!', 'error');
-      return;
-    }
-
-    let years = today.getFullYear() - birth.getFullYear();
-    let months = today.getMonth() - birth.getMonth();
-    let days = today.getDate() - birth.getDate();
-
-    if (days < 0) {
-      months--;
-      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-      days += prevMonth.getDate();
-    }
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-
-    const diff = today - birth;
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const totalHours = Math.floor(diff / (1000 * 60 * 60));
-
-    document.getElementById('yearsDisplay').textContent = years;
-    document.getElementById('monthsDisplay').textContent = months;
-    document.getElementById('daysDisplay').textContent = days;
-
-    document.getElementById('resYears').textContent = years;
-    document.getElementById('resMonths').textContent = months;
-    document.getElementById('resDays').textContent = days;
-    document.getElementById('resHours').textContent = hours;
-
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    document.getElementById('birthDay').textContent = dayNames[birth.getDay()];
-
-    const nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
-    if (nextBirthday < today) {
-      nextBirthday.setFullYear(today.getFullYear() + 1);
-    }
-    const daysUntil = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
-    document.getElementById('nextBirthday').textContent = `${daysUntil} days`;
-
-    document.getElementById('totalDays').textContent = totalDays.toLocaleString();
-    document.getElementById('totalHours').textContent = totalHours.toLocaleString();
-
-    document.getElementById('resultsCard').classList.add('show');
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+    days += prevMonth.getDate();
   }
+  if (months < 0) { years--; months += 12; }
 
-  function copyResult() {
-    const text = `Age: ${document.getElementById('resYears').textContent} years, ${document.getElementById('resMonths').textContent} months, ${document.getElementById('resDays').textContent} days`;
-    navigator.clipboard.writeText(text).then(() => {
-      showMessage('✓ Copied!', 'success');
-    });
-  }
+  const diff = target - birth;
+  const totalDays = Math.floor(diff / 86400000);
+  const totalHours = Math.floor(diff / 3600000);
+  const hoursToday = Math.floor((diff % 86400000) / 3600000);
 
-  function clearAll() {
-    document.getElementById('birthDate').value = '';
-    document.getElementById('resultsCard').classList.remove('show');
-    document.getElementById('yearsDisplay').textContent = '-';
-    document.getElementById('monthsDisplay').textContent = '-';
-    document.getElementById('daysDisplay').textContent = '-';
-  }
+  document.getElementById('rYears').textContent = years;
+  document.getElementById('rMonths').textContent = months;
+  document.getElementById('rDays').textContent = days;
+  document.getElementById('rHours').textContent = hoursToday;
 
-  function setToday() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    document.getElementById('birthDate').value = `${year}-${month}-${day}`;
-    calculateAge();
-  }
+  const days7 = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('birthDay').textContent = days7[birth.getDay()];
 
-  function showMessage(msg, type) {
-    const messageEl = document.getElementById('message');
-    messageEl.textContent = msg;
-    messageEl.className = 'message show ' + type;
-    setTimeout(() => messageEl.classList.remove('show'), 3000);
-  }
+  const now = new Date();
+  let nextBday = new Date(now.getFullYear(), birth.getMonth(), birth.getDate());
+  if (nextBday <= now) nextBday.setFullYear(now.getFullYear() + 1);
+  const daysLeft = Math.ceil((nextBday - now) / 86400000);
+  document.getElementById('nextBday').textContent = daysLeft === 0 ? '🎂 Today!' : `${daysLeft} days`;
+
+  document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+  document.getElementById('totalHours').textContent = totalHours.toLocaleString();
+
+  document.getElementById('results').classList.add('show');
+}
+
+function clearAll() {
+  document.getElementById('birthDate').value = '';
+  const fmt = d => d.toISOString().split('T')[0];
+  document.getElementById('toDate').value = fmt(new Date());
+  document.getElementById('results').classList.remove('show');
+}
+
+function copyResult() {
+  const y = document.getElementById('rYears').textContent;
+  const m = document.getElementById('rMonths').textContent;
+  const d = document.getElementById('rDays').textContent;
+  const td = document.getElementById('totalDays').textContent;
+  const nb = document.getElementById('nextBday').textContent;
+  const text = `My Age: ${y} years, ${m} months, ${d} days\nTotal Days Lived: ${td}\nNext Birthday: ${nb}`;
+  navigator.clipboard.writeText(text).then(() => showMsg('✓ Result copied to clipboard!', 'success'));
+}
+
+function showMsg(msg, type) {
+  const el = document.getElementById('msg');
+  el.textContent = msg;
+  el.className = 'msg show ' + type;
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 </script>
-
 </body>
 </html>
