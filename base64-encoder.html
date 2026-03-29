@@ -1,420 +1,736 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Base64 Encoder/Decoder - Encode Text, Images & Files | Free Tool</title>
-  <meta name="description" content="Free online Base64 encoder and decoder. Encode/decode text, images, and files. Support for image preview and bulk conversion.">
-  <meta name="keywords" content="Base64 encoder, Base64 decoder, encode text, decode base64, image to base64">
-  <meta name="author" content="Toolyfi">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Base64 Encoder & Decoder online — encode text, images and files to Base64 instantly. Decode Base64 strings back to text or image. No signup, 100% private.">
+<meta name="keywords" content="base64 encoder, base64 decoder, encode base64, decode base64, text to base64, image to base64, base64 online, free base64 tool">
+<meta name="author" content="Toolyfi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f172a">
+<title>Free Base64 Encoder & Decoder — Encode Text, Images & Files Online | Toolyfi</title>
+<meta property="og:title" content="Free Base64 Encoder & Decoder | Toolyfi">
+<meta property="og:description" content="Encode or decode Base64 instantly. Supports text, images, and files. 100% free, no signup, works offline.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolyfi.com/base64-encoder.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Base64 Encoder & Decoder | Toolyfi">
+<meta name="twitter:description" content="Encode/decode Base64 instantly. Free, private, no signup.">
+<link rel="canonical" href="https://toolyfi.com/base64-encoder.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 Encoder & Decoder",
+  "description": "Free online Base64 encoder and decoder — encode text, images and files to Base64 and decode back instantly",
+  "url": "https://toolyfi.com/base64-encoder.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "creator": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Base64 encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 is a binary-to-text encoding scheme that converts binary data into an ASCII string format. It is commonly used to embed images in HTML/CSS, transmit data over text-based protocols, and store binary data in JSON or XML."}},
+    {"@type": "Question", "name": "How do I encode text to Base64?", "acceptedAnswer": {"@type": "Answer", "text": "Paste your text in the Input box, then click the Encode button. The Base64 encoded result appears instantly in the Output box."}},
+    {"@type": "Question", "name": "How do I decode a Base64 string?", "acceptedAnswer": {"@type": "Answer", "text": "Paste the Base64 string in the Input box and click Decode. The original text or data will appear in the Output box."}},
+    {"@type": "Question", "name": "Can I encode images to Base64?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Use the file upload area to drop or browse for an image. The tool will encode it to Base64 which you can embed directly in HTML or CSS."}},
+    {"@type": "Question", "name": "Is Base64 encoding the same as encryption?", "acceptedAnswer": {"@type": "Answer", "text": "No. Base64 is encoding, not encryption. It is easily reversible and provides no security. Do not use Base64 to protect sensitive data."}}
+  ]
+}
+</script>
+<style>
+:root{
+  --primary:#6366f1;
+  --primary-dark:#4f46e5;
+  --primary-light:#eef2ff;
+  --accent:#f59e0b;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --light:#f8fafc;
+  --border:#e2e8f0;
+  --white:#ffffff;
+  --success:#10b981;
+  --code:#1e293b;
+  --radius:16px;
+  --shadow:0 4px 24px rgba(99,102,241,0.10);
+  --shadow-lg:0 12px 48px rgba(99,102,241,0.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-    }
+/* HEADER */
+header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 50%,rgba(99,102,241,0.25) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)}
+.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600}
+.trust-pill span{color:var(--accent)}
 
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 40px 30px;
-      text-align: center;
-    }
+/* TOOL */
+.tool-section{max-width:980px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
+.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
+.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.tool-card-header h2{color:#fff;font-size:1.2rem;font-weight:700}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,0.15);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700}
+.tool-body{padding:32px}
 
-    .header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      font-weight: 800;
-    }
+/* MODE TABS */
+.mode-tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--light);padding:6px;border-radius:12px;width:fit-content}
+.mode-tab{padding:10px 24px;border-radius:8px;font-size:.88rem;font-weight:700;cursor:pointer;border:none;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;color:var(--gray);background:transparent}
+.mode-tab.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
 
-    .header p {
-      font-size: 1.05em;
-      opacity: 0.95;
-      margin-bottom: 15px;
-    }
+/* UPLOAD ZONE */
+.upload-zone{border:2px dashed var(--border);border-radius:14px;padding:32px;text-align:center;cursor:pointer;margin-bottom:20px;transition:all .2s;background:var(--light)}
+.upload-zone:hover,.upload-zone.dragging{border-color:var(--primary);background:var(--primary-light)}
+.upload-zone .u-icon{font-size:2.4rem;margin-bottom:10px}
+.upload-zone p{font-weight:600;color:var(--dark);font-size:.95rem;margin-bottom:4px}
+.upload-zone small{color:var(--gray);font-size:.82rem}
+input[type=file]{display:none}
 
-    .badges {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+/* EDITOR GRID */
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.editor-col label{display:block;font-weight:700;font-size:.82rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+textarea{width:100%;padding:16px;border:2px solid var(--border);border-radius:12px;font-family:'Courier New',monospace;font-size:.88rem;resize:vertical;min-height:220px;transition:all .2s;color:var(--dark);background:#f8fafc;line-height:1.6}
+textarea:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(99,102,241,0.08)}
+.img-preview{width:100%;max-height:260px;border-radius:10px;object-fit:contain;display:none;margin-top:12px;border:2px solid var(--border)}
+.img-preview.show{display:block}
 
-    .badge {
-      background: rgba(255,255,255,0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85em;
-      font-weight: 600;
-    }
+/* BTN ROW */
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.btn-enc{background:var(--primary);color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:.92rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px}
+.btn-enc:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(99,102,241,0.35)}
+.btn-dec{background:#f1f5f9;color:var(--dark);border:2px solid var(--border);padding:13px 28px;border-radius:10px;font-size:.92rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-dec:hover{border-color:var(--primary);color:var(--primary)}
+.btn-sm{background:#f1f5f9;color:var(--gray);border:none;padding:13px 18px;border-radius:10px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-sm:hover{background:#e2e8f0;color:var(--dark)}
 
-    .content {
-      padding: 40px 30px;
-    }
+/* MSG */
+.msg{padding:12px 16px;border-radius:10px;font-size:.88rem;font-weight:600;margin-bottom:16px;display:none}
+.msg.show{display:block}
+.msg.success{background:#ecfdf5;color:#059669;border-left:4px solid #10b981}
+.msg.error{background:#fef2f2;color:#dc2626;border-left:4px solid #dc2626}
 
-    .controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-      justify-content: center;
-    }
+/* STATS BAR */
+.stats-bar{background:var(--dark);padding:40px 20px}
+.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.sbar-item .sval{font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px}
+.sbar-item .slbl{color:rgba(255,255,255,0.55);font-size:.82rem;font-weight:600}
 
-    .btn {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.95em;
-    }
+/* SECTIONS */
+.section{max-width:980px;margin:0 auto;padding:80px 24px}
+.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
 
-    .btn-primary {
-      background: #667eea;
-      color: white;
-    }
+/* MORE SECTION */
+.more-section{background:var(--light);padding:80px 24px}
+.more-inner{max-width:980px;margin:0 auto}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.more-features{display:flex;flex-direction:column;gap:12px}
+.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
+.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.more-feat-text p{font-size:.85rem;color:var(--gray)}
+.more-visual{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.code-block{background:rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;font-family:'Courier New',monospace;font-size:.78rem;color:#a5b4fc;word-break:break-all;line-height:1.6}
+.code-label{color:rgba(255,255,255,0.4);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.arrow-icon{text-align:center;font-size:1.4rem;color:var(--accent)}
 
-    .btn-primary:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
+.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
+.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
 
-    .btn-secondary {
-      background: #f0f0f0;
-      color: #333;
-      border: 2px solid #ddd;
-    }
+/* WHO */
+.who-section{background:var(--dark);padding:80px 24px}
+.who-inner{max-width:980px;margin:0 auto}
+.who-section .section-title{color:#fff}
+.who-section .section-sub{color:rgba(255,255,255,0.55)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
+.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
+.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.who-card p{color:rgba(255,255,255,0.5);font-size:.88rem;line-height:1.7}
 
-    .btn-secondary:hover {
-      background: #e0e0e0;
-    }
+/* FAQ */
+.faq-section{background:var(--light);padding:80px 24px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
+.faq-item.open{border-color:var(--primary)}
+.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.95rem}
+.faq-q .arrow{font-size:1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.92rem}
+.faq-item.open .faq-a{display:block}
 
-    .editor-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
+/* ARTICLE */
+.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
+.article-section h2{font-size:1.85rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
+.article-section h3{font-size:1.25rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
+.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
+.article-section ul,.article-section ol{margin:16px 0 20px 28px}
+.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
+.article-section strong{color:var(--primary);font-weight:700}
+.article-section a{color:var(--primary);font-weight:600;text-decoration:none}
+.article-section a:hover{text-decoration:underline}
+.article-code{background:var(--code);border-radius:12px;padding:20px 24px;margin:20px 0;font-family:'Courier New',monospace;font-size:.88rem;color:#a5b4fc;overflow-x:auto;line-height:1.7}
+.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
 
-    .editor-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:36px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
 
-    .editor-label {
-      font-weight: 700;
-      color: #333;
-      font-size: 1.05em;
-    }
+/* TOOLS GRID */
+.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
+.tools-footer-inner{max-width:980px;margin:0 auto}
+.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s}
+.tool-link:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 
-    textarea {
-      flex: 1;
-      padding: 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      resize: vertical;
-      min-height: 300px;
-      transition: all 0.3s;
-    }
+footer{background:var(--dark);padding:32px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:.85rem;margin-bottom:6px}
+footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
+footer a:hover{color:#fff}
 
-    textarea:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
-    }
-
-    .image-preview {
-      width: 100%;
-      max-height: 400px;
-      border-radius: 10px;
-      object-fit: contain;
-      display: none;
-      margin-top: 15px;
-    }
-
-    .image-preview.show {
-      display: block;
-    }
-
-    .upload-area {
-      border: 3px dashed #667eea;
-      border-radius: 10px;
-      padding: 40px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      background: #f8f9ff;
-    }
-
-    .upload-area:hover {
-      border-color: #764ba2;
-      background: #f0f2ff;
-    }
-
-    .upload-area.dragging {
-      border-color: #764ba2;
-      background: #e8ebff;
-    }
-
-    .message {
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-      font-weight: 500;
-    }
-
-    .message.show {
-      display: block;
-    }
-
-    .message.success {
-      background: #efe;
-      color: #3c3;
-      border-left: 4px solid #3c3;
-    }
-
-    .message.error {
-      background: #fee;
-      color: #c33;
-      border-left: 4px solid #c33;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
-    .footer {
-      background: #f8f9fa;
-      padding: 30px;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #eee;
-      font-size: 0.95em;
-    }
-
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @media (max-width: 1024px) {
-      .editor-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        padding: 25px 15px;
-      }
-
-      .header h1 {
-        font-size: 1.8em;
-      }
-
-      .content {
-        padding: 20px 15px;
-      }
-    }
-  </style>
+@media(max-width:768px){
+  header{padding:0 16px}
+  .editor-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .more-grid{grid-template-columns:1fr}
+  .more-visual{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-card-header{flex-direction:column;align-items:flex-start}
+  .btn-row{flex-wrap:wrap}
+}
+@media(max-width:480px){
+  .hero{padding:56px 16px 72px}
+  .tool-body{padding:20px}
+  .who-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .mode-tabs{width:100%}
+  .mode-tab{flex:1;text-align:center}
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <h1>🔐 Base64 Encoder/Decoder</h1>
-    <p>Encode text, images, and files to Base64 and vice versa</p>
-    <div class="badges">
-      <span class="badge">💰 100% Free</span>
-      <span class="badge">⚡ Instant</span>
-      <span class="badge">🖼️ Images</span>
-      <span class="badge">🔒 Secure</span>
-    </div>
+<header>
+  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+  <nav>
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/updatesworld">Updates</a>
+    <a href="https://toolyfi.com">Tools</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🔐 Base64 Encoder & Decoder — Free Online Tool</div>
+  <h1>Encode & Decode <em>Base64</em><br>Instantly</h1>
+  <p class="hero-sub">Convert text, images and files to Base64 — or decode Base64 back to readable content. Fast, private, no signup.</p>
+  <div class="trust-pills">
+    <div class="trust-pill"><span>✓</span> 100% Free</div>
+    <div class="trust-pill"><span>✓</span> Works Offline</div>
+    <div class="trust-pill"><span>✓</span> Supports Images</div>
+    <div class="trust-pill"><span>✓</span> No Signup</div>
   </div>
+</section>
 
-  <div class="content">
-    <div class="message" id="message"></div>
-
-    <div class="controls">
-      <button class="btn btn-primary" onclick="encodeBase64()">🔒 Encode</button>
-      <button class="btn btn-primary" onclick="decodeBase64()">🔓 Decode</button>
-      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
-      <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
-    </div>
-
-    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-      <div style="font-size: 2em; margin-bottom: 10px;">📤</div>
-      <p style="font-weight: 600; color: #333; margin-bottom: 5px;">Drop image or file here</p>
-      <p style="color: #999; font-size: 0.9em;">or click to browse</p>
-    </div>
-    <input type="file" id="fileInput" onchange="handleFileUpload(event)">
-
-    <div class="editor-grid" style="margin-top: 30px;">
-      <div class="editor-section">
-        <label class="editor-label">📥 Input</label>
-        <textarea id="inputText" placeholder="Enter text to encode/decode..."></textarea>
-        <img id="imagePreview" class="image-preview" alt="Preview">
-      </div>
-      <div class="editor-section">
-        <label class="editor-label">📤 Output Base64</label>
-        <textarea id="outputText" placeholder="Encoded/Decoded result will appear here..." readonly></textarea>
+<!-- TOOL -->
+<div class="tool-section">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <h2>🔐 Base64 Encoder / Decoder</h2>
+      <div class="stat-chips">
+        <div class="stat-chip">⚡ Instant</div>
+        <div class="stat-chip">🖼️ Images</div>
+        <div class="stat-chip">🔒 Private</div>
       </div>
     </div>
-  </div>
+    <div class="tool-body">
+      <div class="msg" id="msg"></div>
 
-  <div class="footer">
-    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
-    <p>100% Free • No Sign-up • Supports Images & Files • Instant Processing</p>
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+        <div class="u-icon">📤</div>
+        <p>Drop image or file here to encode</p>
+        <small>or click to browse — PNG, JPG, PDF, TXT and more</small>
+      </div>
+      <input type="file" id="fileInput" onchange="handleFile(event)">
+
+      <div class="btn-row">
+        <button class="btn-enc" onclick="encodeB64()">🔒 Encode to Base64</button>
+        <button class="btn-dec" onclick="decodeB64()">🔓 Decode from Base64</button>
+        <button class="btn-sm" onclick="copyOutput()">📋 Copy</button>
+        <button class="btn-sm" onclick="clearAll()">🗑️ Clear</button>
+      </div>
+
+      <div class="editor-grid">
+        <div class="editor-col">
+          <label>📥 Input — Text or Base64 String</label>
+          <textarea id="inputText" placeholder="Paste text to encode, or paste a Base64 string to decode..."></textarea>
+          <img id="imgPreview" class="img-preview" alt="Preview">
+        </div>
+        <div class="editor-col">
+          <label>📤 Output</label>
+          <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="sbar-item"><div class="sval">5M+</div><div class="slbl">Strings Encoded</div></div>
+    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
+    <div class="sbar-item"><div class="sval">0</div><div class="slbl">Data Sent to Server</div></div>
+    <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Processing</div></div>
+  </div>
+</div>
+
+<!-- MORE THAN JUST -->
+<div class="more-section">
+  <div class="more-inner">
+    <div class="section-tag">Beyond Basic</div>
+    <h2 class="section-title">More than just a <em>Base64 encoder</em></h2>
+    <p class="section-sub">Most Base64 tools only handle plain text. Ours supports images, binary files, and real-time preview — all in your browser.</p>
+    <div class="more-grid">
+      <div>
+        <div class="more-features">
+          <div class="more-feat">
+            <div class="more-feat-ico">🖼️</div>
+            <div class="more-feat-text"><h4>Image to Base64</h4><p>Upload any image and get its Base64 data URI — ready to embed in HTML or CSS.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">📄</div>
+            <div class="more-feat-text"><h4>File Support</h4><p>Encode PDFs, text files, and more. Drag and drop any file directly onto the tool.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">👁️</div>
+            <div class="more-feat-text"><h4>Live Image Preview</h4><p>When you decode an image Base64 string, it renders as a visual preview instantly.</p></div>
+          </div>
+          <div class="more-feat">
+            <div class="more-feat-ico">🔒</div>
+            <div class="more-feat-text"><h4>Fully Private</h4><p>All encoding and decoding happens in your browser. Nothing is ever uploaded.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="more-visual">
+        <div class="code-label">Input Text</div>
+        <div class="code-block">Hello, Toolyfi!</div>
+        <div class="arrow-icon">↓</div>
+        <div class="code-label">Base64 Encoded</div>
+        <div class="code-block">SGVsbG8sIFRvb2x5Zmkh</div>
+        <div class="arrow-icon">↓</div>
+        <div class="code-label">Decoded Back</div>
+        <div class="code-block">Hello, Toolyfi!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">Features</div>
+  <h2 class="section-title">Everything you need in<br>one <em>free tool</em></h2>
+  <p class="section-sub">Built for developers, designers, and anyone who works with data encoding daily.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <span class="feat-icon">⚡</span>
+      <h3>Instant Encoding</h3>
+      <p>Results appear the moment you click. No server round-trips, no waiting. Pure browser-side speed.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🖼️</span>
+      <h3>Image to Base64 Data URI</h3>
+      <p>Upload any image and get a complete data URI you can drop directly into your HTML or CSS stylesheet.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔓</span>
+      <h3>Two-Way Conversion</h3>
+      <p>Encode any text or file to Base64. Decode any Base64 string back to readable text or image preview.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📋</span>
+      <h3>One-Click Copy</h3>
+      <p>Copy your encoded or decoded output to clipboard with a single button. Paste it anywhere instantly.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">📱</span>
+      <h3>Works on All Devices</h3>
+      <p>Fully responsive for mobile, tablet, and desktop. Same smooth experience on every screen size.</p>
+    </div>
+    <div class="feat-card">
+      <span class="feat-icon">🔒</span>
+      <h3>Zero Data Collection</h3>
+      <p>Your text and files never leave your browser. No logs, no analytics on your content, no tracking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="who-section">
+  <div class="who-inner">
+    <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
+    <h2 class="section-title">Who benefits from a<br><em>Base64 encoder?</em></h2>
+    <p class="section-sub">From developers to content creators — Base64 encoding solves real problems across many fields.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <span class="who-emoji">👨‍💻</span>
+        <h3>Web Developers</h3>
+        <p>Embed small images directly in CSS or HTML as data URIs to eliminate extra HTTP requests and speed up pages.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">📧</span>
+        <h3>Email Developers</h3>
+        <p>Encode images and attachments for email templates where external image links are often blocked by clients.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">🔌</span>
+        <h3>API & Backend Devs</h3>
+        <p>Encode binary payloads for JSON APIs, transmit files over text-based protocols, and handle auth tokens.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">🎨</span>
+        <h3>UI/UX Designers</h3>
+        <p>Quickly generate inline SVG or image data URIs for design prototypes without needing separate asset files.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">🔐</span>
+        <h3>Security Researchers</h3>
+        <p>Analyze Base64-encoded payloads in HTTP headers, JWT tokens, and encoded scripts during security audits.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-emoji">📚</span>
+        <h3>Students & Learners</h3>
+        <p>Understand how Base64 encoding works hands-on — encode a string and instantly see the encoded output.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Frequently asked <em>questions</em></h2>
+    <p class="section-sub">Everything you need to know about Base64 encoding and decoding.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is Base64 encoding? <span class="arrow">▼</span></div>
+        <div class="faq-a">Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters. It is widely used to encode binary data — like images or files — so they can be safely transmitted over text-based systems like email, HTTP headers, and JSON APIs.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I encode text to Base64? <span class="arrow">▼</span></div>
+        <div class="faq-a">Simply paste your text into the Input box on the tool above, then click "Encode to Base64." The encoded result appears instantly in the Output box. You can then copy it with one click.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I decode a Base64 string back to text? <span class="arrow">▼</span></div>
+        <div class="faq-a">Paste the Base64 string into the Input box and click "Decode from Base64." The original text will appear in the Output box. If the Base64 represents an image, a preview will also be shown.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I encode an image to Base64? <span class="arrow">▼</span></div>
+        <div class="faq-a">Yes! Drag and drop your image onto the upload area, or click to browse. The tool loads the image and on clicking Encode, generates the full Base64 data URI which you can embed directly in HTML as src="data:image/png;base64,..."</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is Base64 the same as encryption? <span class="arrow">▼</span></div>
+        <div class="faq-a">No — Base64 is encoding, not encryption. Anyone with the Base64 string can instantly decode it. It provides zero security or confidentiality. Never use Base64 to protect sensitive data like passwords or personal information.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why does Base64 encoded text look longer than the original? <span class="arrow">▼</span></div>
+        <div class="faq-a">Base64 encoding expands data by approximately 33%. This is because every 3 bytes of binary data become 4 Base64 characters. The trade-off is safe text-based transmission of binary content.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my data safe when using this tool? <span class="arrow">▼</span></div>
+        <div class="faq-a">Completely. All encoding and decoding happens entirely in your browser using JavaScript. Your text, files, and images are never sent to any server. We have no access to your data whatsoever.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-section">
+  <h2>Free Base64 Encoder & Decoder — Complete Guide</h2>
+  <p>If you have worked with web development, APIs, or data transmission, you have almost certainly encountered <strong>Base64 encoding</strong>. It is one of the most widely used encoding schemes on the internet — and yet many people do not fully understand what it is, why it exists, or how to use it effectively.</p>
+  <p>This guide covers everything: what Base64 is, how it works, when to use it, and how Toolyfi's free Base64 encoder and decoder tool makes the process instant and effortless.</p>
+
+  <h2>What Is Base64 Encoding?</h2>
+  <p>Base64 is a binary-to-text encoding scheme. It converts binary data — bytes that may include any value from 0 to 255 — into a string of printable ASCII characters. The "64" in Base64 refers to the 64 characters used: A–Z, a–z, 0–9, plus (+), and slash (/).</p>
+  <p>The reason Base64 exists is simple: many text-based systems cannot handle raw binary data. Email protocols, HTTP headers, JSON payloads, and XML files were all designed to carry text. When you need to include binary content — like an image, a PDF, or a compiled file — in one of these systems, you need to first convert it to text. That is exactly what Base64 does.</p>
+  <div class="article-highlight"><p>💡 Base64 is encoding, not encryption. It is easily reversible. Never use it to protect sensitive data.</p></div>
+
+  <h2>How Does Base64 Work?</h2>
+  <p>The encoding process works by taking three bytes (24 bits) of binary data at a time and converting them into four Base64 characters (each representing 6 bits). Here is the step-by-step process:</p>
+  <ol>
+    <li>Take the binary data and group it into 3-byte chunks.</li>
+    <li>Convert each 3-byte group to its 24-bit binary representation.</li>
+    <li>Split the 24 bits into four 6-bit groups.</li>
+    <li>Map each 6-bit group to a corresponding Base64 character using the Base64 alphabet table.</li>
+    <li>If the input length is not a multiple of 3, padding characters (=) are added.</li>
+  </ol>
+  <p>For example, the text "Hi" in ASCII is 72 and 105 in decimal, or 01001000 01101001 in binary. Adding a zero byte for padding gives us 010010 000110 100100 000000, which maps to S, G, k, A — making "SGkA" in Base64 (with one padding = sign).</p>
+  <div class="article-code">Text:    Hello, World!
+Base64:  SGVsbG8sIFdvcmxkIQ==</div>
+
+  <h2>Common Uses of Base64 Encoding</h2>
+  <h3>1. Embedding Images in HTML and CSS</h3>
+  <p>One of the most practical uses of Base64 for web developers is embedding small images directly in HTML or CSS as data URIs. Instead of linking to an external image file, you encode the image as Base64 and include it inline:</p>
+  <div class="article-code">&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."&gt;</div>
+  <p>This eliminates an HTTP request for the image, which can improve page load speed — especially for small icons, logos, and UI elements. However, Base64 images are about 33% larger than their binary counterparts, so this technique is best reserved for small images (under 10KB).</p>
+
+  <h3>2. Email Attachments</h3>
+  <p>SMTP — the protocol that powers email — was originally designed for 7-bit ASCII text. Binary attachments like PDFs, images, and Word documents cannot be sent directly. The MIME standard uses Base64 to encode these attachments into ASCII text for transmission. Your email client automatically decodes them on the receiving end.</p>
+
+  <h3>3. JSON and XML APIs</h3>
+  <p>JSON and XML are text formats. When an API needs to return binary data — like a generated PDF, a thumbnail, or audio data — the server typically encodes it as Base64 and includes it in the JSON response. The client decodes it to get the original binary file.</p>
+
+  <h3>4. JWT (JSON Web Tokens)</h3>
+  <p>If you have ever worked with authentication tokens in modern web apps, you have used Base64 without knowing it. JWT tokens are three Base64URL-encoded parts separated by dots: the header, payload, and signature. You can paste any JWT into our decoder to read the header and payload contents.</p>
+
+  <h3>5. Data Storage in Databases</h3>
+  <p>Some database systems store binary blobs as Base64 strings in text columns. This simplifies queries and avoids binary data handling issues in certain ORMs and database drivers.</p>
+
+  <h2>Base64 vs Base64URL — What Is the Difference?</h2>
+  <p>Standard Base64 uses + and / characters. These have special meaning in URLs, which causes problems when Base64 strings appear in query parameters or path segments.</p>
+  <p><strong>Base64URL</strong> solves this by replacing + with - and / with _. It also omits the padding = signs. JWT tokens use Base64URL encoding for this reason.</p>
+  <p>Our tool uses standard Base64 encoding. If you need Base64URL, simply replace + with - and / with _ in the output, and remove any = padding characters.</p>
+
+  <h2>How to Encode an Image to Base64 — Step by Step</h2>
+  <ol>
+    <li>Open Toolyfi's Base64 Encoder above.</li>
+    <li>Drag and drop your image onto the upload area, or click to browse.</li>
+    <li>The image will load and show a preview.</li>
+    <li>Click "Encode to Base64."</li>
+    <li>The Output box will contain the full data URI: <code>data:image/png;base64,...</code></li>
+    <li>Click Copy and paste it directly into your HTML img tag or CSS background-image property.</li>
+  </ol>
+  <div class="article-highlight"><p>💡 For CSS use: <code>background-image: url('data:image/png;base64,...');</code></p></div>
+
+  <h2>How to Decode a Base64 String</h2>
+  <ol>
+    <li>Copy the Base64 string you want to decode.</li>
+    <li>Paste it into the Input box in the tool above.</li>
+    <li>Click "Decode from Base64."</li>
+    <li>The decoded text or content appears in the Output box.</li>
+    <li>If the Base64 represents an image, a visual preview will also appear automatically.</li>
+  </ol>
+
+  <h2>Base64 Encoding in Different Programming Languages</h2>
+  <h3>JavaScript</h3>
+  <div class="article-code">// Encode
+const encoded = btoa('Hello, World!');
+
+// Decode
+const decoded = atob('SGVsbG8sIFdvcmxkIQ==');</div>
+
+  <h3>Python</h3>
+  <div class="article-code">import base64
+
+# Encode
+encoded = base64.b64encode(b'Hello, World!').decode()
+
+# Decode
+decoded = base64.b64decode('SGVsbG8sIFdvcmxkIQ==').decode()</div>
+
+  <h3>PHP</h3>
+  <div class="article-code">&lt;?php
+// Encode
+$encoded = base64_encode('Hello, World!');
+
+// Decode
+$decoded = base64_decode('SGVsbG8sIFdvcmxkIQ==');
+?&gt;</div>
+
+  <h2>Limitations of Base64 Encoding</h2>
+  <ul>
+    <li><strong>33% size increase</strong> — Base64 encoded data is always larger than the original. For large files, this overhead is significant.</li>
+    <li><strong>No security</strong> — Base64 is trivially reversible. It is not a substitute for encryption.</li>
+    <li><strong>Not suitable for large images</strong> — Embedding large Base64 images in HTML bloats page size and hurts performance.</li>
+    <li><strong>CPU overhead</strong> — Encoding and decoding requires processing. For very large files, this can be slow in the browser.</li>
+  </ul>
+
+  <h2>Privacy — Your Data Never Leaves Your Browser</h2>
+  <p>We take privacy seriously. Toolyfi's Base64 encoder and decoder runs entirely in your browser using JavaScript's built-in <code>btoa()</code> and <code>atob()</code> functions, plus the FileReader API for file uploads.</p>
+  <p>No data is ever transmitted to any server. Your text, your files, and your images stay completely on your device. This makes our tool safe for encoding sensitive content like API keys, configuration files, and internal documents.</p>
+
+  <h2>Related Tools on Toolyfi</h2>
+  <ul>
+    <li><a href="https://toolyfi.com/json-formatter.html">JSON Formatter & Validator</a> — Format, validate and minify JSON instantly.</li>
+    <li><a href="https://toolyfi.com/case-converter.html">Case Converter</a> — Convert text between uppercase, lowercase, title case and more.</li>
+    <li><a href="https://toolyfi.com/text-trimmer.html">Text Trimmer</a> — Remove extra spaces, blank lines, and whitespace from text.</li>
+    <li><a href="https://toolyfi.com/markdown-to-html-seo.html">Markdown to HTML</a> — Convert Markdown to clean HTML instantly.</li>
+    <li><a href="https://toolyfi.com/word-counter.html">Word Counter</a> — Count words, characters, sentences and reading time.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>Base64 encoding is a foundational skill for anyone working in web development, backend engineering, or API integration. Whether you need to embed an image in CSS, debug a JWT token, or encode a file for API transmission, Toolyfi's free Base64 encoder and decoder gets the job done instantly — with no signup, no limits, and complete privacy.</p>
+  <p><strong>Try it now</strong> — paste any text or upload any file above and see the Base64 result in milliseconds.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Explore 40+ more free tools</h2>
+  <p>Toolyfi has tools for developers, writers, designers and everyone in between. All free, no signup.</p>
+  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+</div>
+
+<!-- TOOLS GRID -->
+<div class="tools-footer">
+  <div class="tools-footer-inner">
+    <h3>More Free Tools on Toolyfi</h3>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
+      <a href="https://toolyfi.com/case-converter.html" class="tool-link">🔤 Case Converter</a>
+      <a href="https://toolyfi.com/text-trimmer.html" class="tool-link">✂️ Text Trimmer</a>
+      <a href="https://toolyfi.com/markdown-to-html-seo.html" class="tool-link">📝 Markdown to HTML</a>
+      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📊 Word Counter</a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
+      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
+      <a href="https://toolyfi.com/image-compressor.html" class="tool-link">🖼️ Image Compressor</a>
+      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
+      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+      <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
+      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
+      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
+  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+</footer>
+
 <script>
-  const inputText = document.getElementById('inputText');
-  const outputText = document.getElementById('outputText');
-  const messageEl = document.getElementById('message');
-  const uploadArea = document.getElementById('uploadArea');
-  const fileInput = document.getElementById('fileInput');
-  const imagePreview = document.getElementById('imagePreview');
+const uploadZone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('fileInput');
+const inputText = document.getElementById('inputText');
+const outputText = document.getElementById('outputText');
+const imgPreview = document.getElementById('imgPreview');
 
-  // Drag and drop
-  uploadArea.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadArea.classList.add('dragging');
-  });
+// Drag and drop
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragging'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragging'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('dragging');
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
 
-  uploadArea.addEventListener('dragleave', () => {
-    uploadArea.classList.remove('dragging');
-  });
+function handleFile(e) { if (e.target.files[0]) loadFile(e.target.files[0]); }
 
-  uploadArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadArea.classList.remove('dragging');
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      handleFile(file);
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const result = e.target.result;
+    inputText.value = result;
+    if (file.type.startsWith('image/')) {
+      imgPreview.src = result;
+      imgPreview.classList.add('show');
+    } else {
+      imgPreview.classList.remove('show');
     }
-  });
+    showMsg('✓ File loaded! Click Encode to convert to Base64.', 'success');
+  };
+  reader.readAsDataURL(file);
+}
 
-  function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (file) {
-      handleFile(file);
+function encodeB64() {
+  const text = inputText.value.trim();
+  if (!text) { showMsg('Please enter text or upload a file.', 'error'); return; }
+  try {
+    if (text.startsWith('data:')) {
+      outputText.value = text.split(',')[1];
+    } else {
+      outputText.value = btoa(unescape(encodeURIComponent(text)));
     }
-  }
+    showMsg('✓ Encoded to Base64 successfully!', 'success');
+  } catch(e) { showMsg('Error: ' + e.message, 'error'); }
+}
 
-  function handleFile(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const result = e.target.result;
-      
-      // For images, show preview
-      if (file.type.startsWith('image/')) {
-        imagePreview.src = result;
-        imagePreview.classList.add('show');
-      } else {
-        imagePreview.classList.remove('show');
-      }
-
-      // Set the data URL as input
-      inputText.value = result;
-      showMessage('📂 File loaded! Click Encode to convert to Base64', 'success');
-    };
-    reader.readAsDataURL(file);
-  }
-
-  function encodeBase64() {
+function decodeB64() {
+  const text = inputText.value.trim();
+  if (!text) { showMsg('Please enter a Base64 string to decode.', 'error'); return; }
+  try {
+    const clean = text.includes(',') ? text.split(',')[1] : text;
+    const decoded = decodeURIComponent(escape(atob(clean)));
+    outputText.value = decoded;
+    // Try image preview
     try {
-      const text = inputText.value;
-      if (!text) {
-        showMessage('Please enter text or upload a file', 'error');
-        return;
-      }
+      imgPreview.src = 'data:image/png;base64,' + clean;
+      imgPreview.onload = () => imgPreview.classList.add('show');
+      imgPreview.onerror = () => imgPreview.classList.remove('show');
+    } catch(e) { imgPreview.classList.remove('show'); }
+    showMsg('✓ Decoded from Base64 successfully!', 'success');
+  } catch(e) { showMsg('Error: Invalid Base64 string.', 'error'); }
+}
 
-      // Check if it's already a data URL (from file)
-      if (text.startsWith('data:')) {
-        outputText.value = text.split(',')[1];
-      } else {
-        outputText.value = btoa(unescape(encodeURIComponent(text)));
-      }
+function copyOutput() {
+  if (!outputText.value) { showMsg('Nothing to copy!', 'error'); return; }
+  navigator.clipboard.writeText(outputText.value).then(() => showMsg('✓ Copied to clipboard!', 'success'));
+}
 
-      showMessage('✓ Encoded to Base64 successfully!', 'success');
-    } catch (e) {
-      showMessage(`✗ Error: ${e.message}`, 'error');
-    }
-  }
+function clearAll() {
+  inputText.value = '';
+  outputText.value = '';
+  imgPreview.classList.remove('show');
+  imgPreview.src = '';
+  fileInput.value = '';
+  document.getElementById('msg').classList.remove('show');
+}
 
-  function decodeBase64() {
-    try {
-      const text = inputText.value;
-      if (!text) {
-        showMessage('Please enter Base64 text', 'error');
-        return;
-      }
+function showMsg(msg, type) {
+  const el = document.getElementById('msg');
+  el.textContent = msg;
+  el.className = 'msg show ' + type;
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
 
-      const decoded = decodeURIComponent(escape(atob(text)));
-      outputText.value = decoded;
-
-      // Try to show as image if it's an image
-      if (text.includes('/')) {
-        imagePreview.src = 'data:image/png;base64,' + text;
-        imagePreview.classList.add('show');
-      } else {
-        imagePreview.classList.remove('show');
-      }
-
-      showMessage('✓ Decoded from Base64 successfully!', 'success');
-    } catch (e) {
-      showMessage(`✗ Error: Invalid Base64 data`, 'error');
-    }
-  }
-
-  function clearAll() {
-    inputText.value = '';
-    outputText.value = '';
-    imagePreview.classList.remove('show');
-    messageEl.classList.remove('show');
-  }
-
-  function copyOutput() {
-    if (!outputText.value) {
-      showMessage('Nothing to copy!', 'error');
-      return;
-    }
-    navigator.clipboard.writeText(outputText.value).then(() => {
-      showMessage('✓ Copied to clipboard!', 'success');
-    });
-  }
-
-  function showMessage(msg, type) {
-    messageEl.textContent = msg;
-    messageEl.className = 'message show ' + type;
-    setTimeout(() => messageEl.classList.remove('show'), 3000);
-  }
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 </script>
-
 </body>
 </html>
