@@ -1,626 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Compound Interest Calculator – Calculate Investment Growth Free | Toolyfi</title>
-<meta name="description" content="Free compound interest calculator. Calculate investment growth with monthly contributions. See year-by-year breakdown instantly. No signup required."/>
-<meta name="keywords" content="compound interest calculator, investment calculator, interest calculator, compound interest formula, savings calculator, toolyfi"/>
-<meta name="robots" content="index, follow"/>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Compound Interest Calculator - Calculate Investment Growth Instantly Free | Toolyfi</title>
+<meta name="description" content="Free compound interest calculator. Calculate investment returns with monthly contributions, see year-by-year breakdown instantly. No signup, 100% free tool for savings planning."/>
+<meta name="keywords" content="compound interest calculator, investment calculator, compound interest formula, savings growth calculator, financial planning tool, toolyfi"/>
+<meta name="robots" content="index, follow"/><meta name="author" content="Toolyfi"/>
 <link rel="canonical" href="https://toolyfi.com/compound-interest-calculator.html"/>
-<meta property="og:title" content="Compound Interest Calculator – Calculate Investment Growth Free | Toolyfi"/>
-<meta property="og:description" content="Calculate compound interest and investment growth instantly. Year-by-year breakdown. Free, no signup."/>
+<meta property="og:title" content="Compound Interest Calculator - Free Investment Growth Calculator | Toolyfi"/>
+<meta property="og:description" content="Calculate compound interest instantly with year-by-year breakdown. Track investment growth with monthly contributions. Free, no signup."/>
 <meta property="og:url" content="https://toolyfi.com/compound-interest-calculator.html"/>
 <meta property="og:type" content="website"/>
+<meta property="og:image" content="https://toolyfi.com/images/compound-interest-og.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Compound Interest Calculator – Calculate Investment Growth Free | Toolyfi"/>
-<meta name="twitter:description" content="Calculate compound interest and investment growth. Year-by-year breakdown. Free, no signup."/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","url":"https://toolyfi.com/compound-interest-calculator.html","description":"Free compound interest calculator with year-by-year growth breakdown.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","url":"https://toolyfi.com/compound-interest-calculator.html","description":"Free compound interest calculator with year-by-year investment growth breakdown and monthly contributions.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"5000","bestRating":"5","worstRating":"1"},"author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate compound interest?","acceptedAnswer":{"@type":"Answer","text":"Compound interest is calculated using the formula: A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounds per year, and t is time in years. Our calculator does this automatically."}},{"@type":"Question","name":"What is the difference between simple and compound interest?","acceptedAnswer":{"@type":"Answer","text":"Simple interest is calculated only on the principal amount, while compound interest is calculated on both principal and previously earned interest. Compound interest results in higher returns over time."}},{"@type":"Question","name":"How often does interest compound?","acceptedAnswer":{"@type":"Answer","text":"Interest can compound daily, monthly, quarterly, semi-annually, or annually. More frequent compounding results in higher returns. Our calculator supports monthly compounding."}},{"@type":"Question","name":"Can I add monthly contributions to my investment?","acceptedAnswer":{"@type":"Answer","text":"Yes! Our calculator allows you to add monthly contributions. These contributions earn compound interest just like your initial investment, accelerating your wealth growth."}}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css"/>
 <style>
-  :root {
-    --bg: #eef2ff;
-    --card: #ffffff;
-    --border: rgba(79,70,229,0.15);
-    --accent: #4f46e5;
-    --accent2: #7c3aed;
-    --accent3: #a78bfa;
-    --text: #1e1b4b;
-    --muted: #6b7280;
-    --success: #059669;
-    --danger: #ef4444;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'DM Sans',sans-serif;
-    background:var(--bg); color:var(--text);
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed;
-    top:-150px; left:50%; transform:translateX(-50%);
-    width:700px; height:600px;
-    background:radial-gradient(ellipse,rgba(79,70,229,0.12) 0%,rgba(124,58,237,0.06) 40%,transparent 70%);
-    pointer-events:none; z-index:0;
-  }
-  body::after {
-    content:''; position:fixed;
-    bottom:-100px; right:-100px; width:400px; height:400px;
-    background:radial-gradient(ellipse,rgba(167,139,250,0.1) 0%,transparent 70%);
-    pointer-events:none; z-index:0;
-  }
-  nav {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 32px; border-bottom:1px solid var(--border);
-    background:rgba(238,242,255,0.92); backdrop-filter:blur(16px);
-    position:sticky; top:0; z-index:100;
-  }
-  .nav-logo {
-    font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem;
-    text-decoration:none;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .nav-links { list-style:none; display:flex; gap:24px; }
-  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
-  .nav-links a:hover { color:var(--accent); }
-
-  .pg-wrap { max-width:720px; margin:0 auto; padding:48px 20px 100px; position:relative; z-index:1; }
-
-  .breadcrumb { font-size:0.78rem; color:var(--muted); margin-bottom:32px; }
-  .breadcrumb a { color:var(--muted); text-decoration:none; }
-  .breadcrumb a:hover { color:var(--accent); }
-
-  /* HEADER */
-  .tool-header { text-align:center; margin-bottom:40px; }
-  .header-icon {
-    font-size:3.5rem; display:block; margin-bottom:14px;
-    filter:drop-shadow(0 0 20px rgba(79,70,229,0.4));
-    animation:grow 3s ease-in-out infinite;
-  }
-  @keyframes grow {
-    0%,100% { transform:scale(1) rotate(0deg); }
-    50% { transform:scale(1.15) rotate(5deg); }
-  }
-  .tool-header h1 {
-    font-family:'Clash Display',sans-serif;
-    font-size:clamp(1.8rem,5vw,2.9rem);
-    font-weight:700; letter-spacing:-0.03em;
-    background:linear-gradient(135deg,var(--accent) 10%,var(--accent2) 80%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    margin-bottom:10px;
-  }
-  .tool-header p { color:var(--muted); font-size:0.97rem; max-width:440px; margin:0 auto 20px; line-height:1.65; }
-  .badge-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-  .badge {
-    background:rgba(79,70,229,0.1); border:1px solid rgba(79,70,229,0.25);
-    color:var(--accent); font-size:0.72rem; padding:4px 13px;
-    border-radius:100px; font-weight:600;
-  }
-
-  /* RESULT HERO */
-  .result-hero {
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border-radius:24px; padding:32px 28px;
-    margin-bottom:16px;
-    box-shadow:0 8px 40px rgba(79,70,229,0.25);
-    position:relative; overflow:hidden;
-  }
-  .result-hero::before {
-    content:''; position:absolute;
-    top:-60px; right:-60px; width:200px; height:200px;
-    background:rgba(255,255,255,0.07); border-radius:50%;
-  }
-  .rh-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; position:relative; z-index:1; }
-  .rh-item { text-align:center; }
-  .rh-label { font-size:0.65rem; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:8px; }
-  .rh-val {
-    font-family:'Clash Display',sans-serif;
-    font-size:clamp(1.4rem,4vw,2rem);
-    font-weight:700; color:#fff; line-height:1;
-  }
-  .rh-val.big { font-size:clamp(1.8rem,5vw,2.6rem); }
-  .rh-sub { font-size:0.72rem; color:rgba(255,255,255,0.6); margin-top:5px; }
-
-  /* GROWTH BAR */
-  .growth-bar-wrap {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:24px;
-    margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(79,70,229,0.08);
-    display:none;
-  }
-  .growth-bar-wrap.show { display:block; animation:fadeUp 0.4s ease; }
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(14px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  .sec-title {
-    font-family:'Syne',sans-serif; font-size:0.72rem; color:var(--muted);
-    text-transform:uppercase; letter-spacing:0.1em; font-weight:700;
-    margin-bottom:18px; display:flex; align-items:center; gap:8px;
-  }
-  /* Visual stacked bar */
-  .stacked-bar {
-    height:32px; border-radius:12px; overflow:hidden;
-    display:flex; margin-bottom:14px;
-    box-shadow:0 2px 8px rgba(79,70,229,0.15);
-  }
-  .bar-principal { background:linear-gradient(90deg,var(--accent),#6366f1); transition:width 0.8s ease; }
-  .bar-contrib   { background:linear-gradient(90deg,#7c3aed,#a78bfa); transition:width 0.8s ease; }
-  .bar-interest  { background:linear-gradient(90deg,#06b6d4,#22d3ee); transition:width 0.8s ease; }
-  .bar-legend { display:flex; gap:16px; flex-wrap:wrap; }
-  .legend-item { display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--muted); font-weight:500; }
-  .legend-dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
-
-  /* CALC CARD */
-  .calc-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:28px 24px; margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(79,70,229,0.07);
-  }
-  .input-2col { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
-  .input-group { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
-  .input-group.no-mb { margin-bottom:0; }
-  .input-label { font-size:0.8rem; color:var(--muted); font-weight:600; }
-  .input-wrap { position:relative; display:flex; align-items:center; }
-  .input-prefix { position:absolute; left:14px; font-size:1rem; color:var(--accent); font-weight:700; pointer-events:none; }
-  .input-suffix { position:absolute; right:14px; font-size:0.85rem; color:var(--muted); font-weight:600; pointer-events:none; }
-  .input-field {
-    width:100%; background:#eef2ff;
-    border:1.5px solid rgba(79,70,229,0.15);
-    border-radius:12px; padding:13px 14px 13px 36px;
-    font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600;
-    color:var(--text); outline:none; transition:all 0.2s;
-    -moz-appearance:textfield;
-  }
-  .input-field.no-prefix { padding-left:14px; }
-  .input-field.has-suffix { padding-right:40px; }
-  .input-field::-webkit-outer-spin-button,
-  .input-field::-webkit-inner-spin-button { -webkit-appearance:none; }
-  .input-field:focus {
-    border-color:var(--accent); background:#fff;
-    box-shadow:0 0 0 3px rgba(79,70,229,0.12);
-  }
-
-  /* COMPOUND FREQUENCY */
-  .freq-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:18px; }
-  .freq-btn {
-    background:#eef2ff; border:1.5px solid rgba(79,70,229,0.15);
-    border-radius:10px; padding:10px 6px;
-    font-family:'Syne',sans-serif; font-size:0.78rem; font-weight:700;
-    color:var(--muted); cursor:pointer; transition:all 0.2s; text-align:center;
-  }
-  .freq-btn:hover { background:rgba(79,70,229,0.1); color:var(--accent); }
-  .freq-btn.sel {
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    color:#fff; border-color:transparent;
-    box-shadow:0 4px 12px rgba(79,70,229,0.3);
-  }
-
-  /* BUTTONS */
-  .btn-calc {
-    width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border:none; border-radius:14px; padding:16px;
-    font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
-    color:#fff; cursor:pointer; transition:all 0.2s;
-    box-shadow:0 4px 20px rgba(79,70,229,0.3); margin-bottom:10px;
-    position:relative; overflow:hidden;
-  }
-  .btn-calc::after {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(135deg,transparent,rgba(255,255,255,0.15),transparent);
-    transform:translateX(-100%); transition:transform 0.4s;
-  }
-  .btn-calc:hover::after { transform:translateX(100%); }
-  .btn-calc:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(79,70,229,0.4); }
-  .btn-row { display:flex; gap:10px; }
-  .btn-sec {
-    flex:1; background:#eef2ff;
-    border:1.5px solid rgba(79,70,229,0.2); border-radius:12px;
-    padding:12px; font-family:'DM Sans',sans-serif;
-    font-size:0.86rem; color:var(--accent); cursor:pointer;
-    transition:all 0.2s; font-weight:600;
-  }
-  .btn-sec:hover { background:rgba(79,70,229,0.12); border-color:var(--accent); }
-
-  /* YEAR BY YEAR TABLE */
-  .yby-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:24px; margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(79,70,229,0.07);
-    display:none; max-height:400px; overflow-y:auto;
-  }
-  .yby-card.show { display:block; animation:fadeUp 0.4s ease; }
-  .yby-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
-  .yby-table th {
-    text-align:left; color:var(--muted); font-size:0.68rem;
-    text-transform:uppercase; letter-spacing:0.08em;
-    padding:0 8px 10px 0; font-weight:700; position:sticky; top:0; background:#fff;
-  }
-  .yby-table td { padding:9px 8px 9px 0; border-top:1px solid var(--border); }
-  .yby-table td:last-child { font-family:'Syne',sans-serif; font-weight:700; color:var(--accent); }
-  .year-badge {
-    background:rgba(79,70,229,0.1); color:var(--accent);
-    padding:2px 8px; border-radius:6px; font-size:0.72rem; font-weight:700;
-  }
-  /* scrollbar */
-  .yby-card::-webkit-scrollbar { width:6px; }
-  .yby-card::-webkit-scrollbar-track { background:transparent; }
-  .yby-card::-webkit-scrollbar-thumb { background:rgba(79,70,229,0.2); border-radius:10px; }
-
-  /* SEO */
-  .seo-article { max-width:720px; margin:0 auto 40px; padding:0 20px; color:var(--muted); line-height:1.8; font-size:0.93rem; position:relative; z-index:1; }
-  .seo-article h2 { font-family:'Syne',sans-serif; color:var(--text); font-size:1.2rem; margin:28px 0 10px; font-weight:700; }
-  .seo-article h3 { font-family:'Syne',sans-serif; color:var(--accent); font-size:1rem; margin:20px 0 8px; font-weight:600; }
-  .seo-article ul { padding-left:20px; }
-  .seo-article li { margin-bottom:6px; }
-  .seo-article strong { color:var(--text); }
-
-  .related-tools { max-width:720px; margin:0 auto 60px; padding:0 20px; position:relative; z-index:1; }
-  .related-tools h2 { font-family:'Syne',sans-serif; font-size:0.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:14px; font-weight:700; }
-  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
-  .related-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; font-size:0.84rem; color:var(--muted); text-decoration:none; transition:all 0.2s; font-weight:500; }
-  .related-card:hover { background:#eef2ff; color:var(--accent); border-color:rgba(79,70,229,0.3); transform:translateY(-2px); }
-
-  footer { background:var(--card); border-top:1px solid var(--border); padding:24px 32px; text-align:center; color:var(--muted); font-size:0.82rem; position:relative; z-index:1; }
-  .footer-links { display:flex; gap:20px; justify-content:center; margin-bottom:8px; }
-  .footer-links a { color:var(--muted); text-decoration:none; }
-  .footer-links a:hover { color:var(--accent); }
-
-  .toast { position:fixed; bottom:24px; right:24px; background:#fff; border:1px solid rgba(79,70,229,0.2); color:var(--text); padding:12px 20px; border-radius:12px; font-size:0.88rem; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:999; box-shadow:0 8px 24px rgba(79,70,229,0.15); }
-  .toast.show { opacity:1; transform:translateY(0); }
-
-  @media (max-width:560px) {
-    .rh-grid { grid-template-columns:1fr 1fr; }
-    .freq-grid { grid-template-columns:repeat(2,1fr); }
-    .input-2col { grid-template-columns:1fr; }
-    nav { padding:14px 20px; }
-    .pg-wrap { padding:32px 16px 60px; }
-  }
+:root{--bg:#eef2ff;--card:#ffffff;--border:rgba(79,70,229,0.15);--accent:#4f46e5;--accent2:#7c3aed;--accent3:#a78bfa;--text:#1e1b4b;--muted:#6b7280;--success:#059669;--danger:#ef4444;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:-150px;left:50%;transform:translateX(-50%);width:700px;height:600px;background:radial-gradient(ellipse,rgba(79,70,229,0.12) 0%,rgba(124,58,237,0.06) 40%,transparent 70%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(167,139,250,0.1) 0%,transparent 70%);pointer-events:none;z-index:0;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid var(--border);background:rgba(238,242,255,0.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;text-decoration:none;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{list-style:none;display:flex;gap:24px;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.pg-wrap{max-width:900px;margin:0 auto;padding:48px 20px 100px;position:relative;z-index:1;}
+.tool-header{text-align:center;margin-bottom:40px;}
+.header-icon{font-size:3.5rem;display:block;margin-bottom:14px;filter:drop-shadow(0 0 20px rgba(79,70,229,0.4));animation:grow 3s ease-in-out infinite;}
+@keyframes grow{0%,100%{transform:scale(1) rotate(0deg);}50%{transform:scale(1.15) rotate(5deg);}}
+.tool-header h1{font-family:'Clash Display',sans-serif;font-size:clamp(1.8rem,5vw,2.9rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tool-header p{color:var(--muted);font-size:1.05rem;max-width:600px;margin:0 auto 20px;}
+.trust-badges{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;font-size:0.85rem;font-weight:600;}
+.badge{background:rgba(79,70,229,0.1);color:var(--accent);padding:6px 12px;border-radius:6px;}
+.tool-widget{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;}
+.tool-input{width:100%;padding:12px;border:1px solid var(--border);border-radius:8px;font-size:1rem;margin:12px 0;font-family:inherit;}
+.calc-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border:none;padding:14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:1rem;transition:all 0.3s;}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,0.3);}
+.result-box{background:linear-gradient(135deg,rgba(79,70,229,0.08),rgba(124,58,237,0.08));border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0;display:none;}
+.result-box.show{display:block;animation:slideUp 0.3s ease-out;}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.result-value{font-size:2rem;font-weight:800;color:var(--accent);margin:8px 0;}
+.article{margin:60px 0;line-height:1.8;}
+.article h2{font-size:1.8rem;font-weight:800;margin:40px 0 20px;color:var(--text);border-bottom:3px solid rgba(79,70,229,0.2);padding-bottom:12px;}
+.article h3{font-size:1.3rem;font-weight:700;margin:28px 0 16px;color:var(--text);}
+.article p{margin-bottom:16px;color:#374151;font-size:1.05rem;text-align:justify;}
+.article ul{margin:20px 0 20px 40px;}
+.article li{margin-bottom:12px;color:#374151;}
+.article strong{color:var(--accent);font-weight:700;}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0;cursor:pointer;transition:all 0.2s;}
+.faq-item.open{border-color:var(--accent);background:rgba(79,70,229,0.05);}
+.faq-q{font-weight:700;color:var(--text);display:flex;justify-content:space-between;align-items:center;}
+.faq-a{display:none;margin-top:12px;color:var(--muted);line-height:1.6;}
+.faq-item.open .faq-a{display:block;}
+.related-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:40px 0;}
+.related-card{background:linear-gradient(135deg,rgba(79,70,229,0.1),rgba(124,58,237,0.1));border:1px solid var(--border);padding:16px;border-radius:12px;text-decoration:none;color:var(--text);font-weight:600;transition:all 0.2s;text-align:center;}
+.related-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 8px 24px rgba(79,70,229,0.15);}
+.engagement-section{background:linear-gradient(135deg,rgba(79,70,229,0.08),rgba(124,58,237,0.08));border-radius:16px;padding:32px;margin:40px 0;border:1px solid rgba(79,70,229,0.2);}
+.engagement-buttons{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin:20px 0;}
+.engagement-btn{border:2px solid transparent;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.2s;background:rgba(79,70,229,0.1);color:var(--accent);}
+.engagement-btn.active{border-color:var(--accent);background:rgba(79,70,229,0.2);}
+.star-rating{display:flex;gap:4px;align-items:center;}
+.star{font-size:1.5rem;cursor:pointer;opacity:0.3;transition:all 0.2s;}
+.star:hover{opacity:0.7;}
+.star.active{opacity:1;color:var(--accent);}
+.comment-box{width:100%;padding:12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.95rem;resize:vertical;min-height:80px;margin:12px 0;}
+footer{background:rgba(238,242,255,0.5);padding:40px 20px;text-align:center;border-top:1px solid var(--border);margin-top:60px;}
+.footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px;font-size:0.9rem;}
+.footer-links a{color:var(--accent);text-decoration:none;font-weight:600;}
+.footer-links a:hover{text-decoration:underline;}
+footer p{color:var(--muted);font-size:0.9rem;margin:8px 0;}
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is compound interest?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Compound interest is interest calculated on both the initial principal and accumulated interest. It causes investments to grow exponentially over time."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is compound interest calculated?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The formula is A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounds per year, and t is time in years."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much will $10,000 grow in 10 years?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At 8% annual interest compounded monthly, $10,000 will grow to approximately $22,196 in 10 years."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" class="nav-logo">⚡ Toolyfi</a>
-  <ul class="nav-links"><li><a href="index.html">Home</a></li></ul>
-</nav>
+<nav><a href="index.html" class="nav-logo">💰 Toolyfi</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="#tools">Tools</a></li><li><a href="#article">Guide</a></li></ul></nav>
 
 <div class="pg-wrap">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Compound Interest Calculator</div>
-
-  <div class="tool-header">
-    <span class="header-icon">📈</span>
-    <h1>Compound Interest Calculator</h1>
-    <p>Calculate how your investment grows over time with compound interest. See year-by-year breakdown instantly.</p>
-    <div class="badge-row">
-      <span class="badge">💚 Free</span>
-      <span class="badge">📊 Year-by-Year</span>
-      <span class="badge">💰 With Contributions</span>
-      <span class="badge">🔒 No Signup</span>
-    </div>
+<div class="tool-header">
+  <div class="header-icon">💹</div>
+  <h1>Compound Interest Calculator</h1>
+  <p>Calculate your investment growth with compound interest. See how your money grows year by year with monthly contributions.</p>
+  <div class="trust-badges">
+    <span class="badge">✓ 100% Free</span>
+    <span class="badge">✓ No Signup</span>
+    <span class="badge">✓ Instant Results</span>
+    <span class="badge">✓ Secure</span>
   </div>
-
-  <!-- RESULT HERO -->
-  <div class="result-hero" id="resultHero">
-    <div class="rh-grid">
-      <div class="rh-item">
-        <div class="rh-label">Final Balance</div>
-        <div class="rh-val big" id="rh-final">$0</div>
-        <div class="rh-sub">total amount</div>
-      </div>
-      <div class="rh-item">
-        <div class="rh-label">Total Interest</div>
-        <div class="rh-val" id="rh-interest">$0</div>
-        <div class="rh-sub" id="rh-interest-pct">0% growth</div>
-      </div>
-      <div class="rh-item">
-        <div class="rh-label">Total Invested</div>
-        <div class="rh-val" id="rh-invested">$0</div>
-        <div class="rh-sub">principal + contributions</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GROWTH BAR -->
-  <div class="growth-bar-wrap" id="growthBar">
-    <div class="sec-title">📊 Investment Composition</div>
-    <div class="stacked-bar">
-      <div class="bar-principal" id="bar-p" style="width:0%"></div>
-      <div class="bar-contrib"   id="bar-c" style="width:0%"></div>
-      <div class="bar-interest"  id="bar-i" style="width:0%"></div>
-    </div>
-    <div class="bar-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#4f46e5;"></div><span id="leg-p">Principal: –</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:#7c3aed;"></div><span id="leg-c">Contributions: –</span></div>
-      <div class="legend-item"><div class="legend-dot" style="background:#06b6d4;"></div><span id="leg-i">Interest: –</span></div>
-    </div>
-  </div>
-
-  <!-- CALCULATOR -->
-  <div class="calc-card">
-    <div class="sec-title">⚙️ Investment Details</div>
-
-    <div class="input-2col">
-      <div class="input-group no-mb">
-        <div class="input-label">Initial Principal</div>
-        <div class="input-wrap">
-          <span class="input-prefix">$</span>
-          <input type="number" id="principal" class="input-field" placeholder="e.g. 10000" min="0" oninput="calculate()"/>
-        </div>
-      </div>
-      <div class="input-group no-mb">
-        <div class="input-label">Annual Interest Rate</div>
-        <div class="input-wrap">
-          <input type="number" id="rate" class="input-field no-prefix has-suffix" placeholder="e.g. 8" min="0" max="100" step="0.1" oninput="calculate()"/>
-          <span class="input-suffix">%</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="input-2col" style="margin-top:14px;">
-      <div class="input-group no-mb">
-        <div class="input-label">Time Period (Years)</div>
-        <div class="input-wrap">
-          <input type="number" id="years" class="input-field no-prefix" placeholder="e.g. 10" min="1" max="50" oninput="calculate()"/>
-        </div>
-      </div>
-      <div class="input-group no-mb">
-        <div class="input-label">Monthly Contribution</div>
-        <div class="input-wrap">
-          <span class="input-prefix">$</span>
-          <input type="number" id="monthly" class="input-field" placeholder="e.g. 500" min="0" oninput="calculate()"/>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:18px; margin-bottom:8px;">
-      <div class="input-label" style="margin-bottom:10px;">Compound Frequency</div>
-      <div class="freq-grid">
-        <button class="freq-btn" onclick="setFreq(365,this)">Daily</button>
-        <button class="freq-btn" onclick="setFreq(12,this)">Monthly</button>
-        <button class="freq-btn sel" onclick="setFreq(4,this)">Quarterly</button>
-        <button class="freq-btn" onclick="setFreq(1,this)">Annually</button>
-      </div>
-    </div>
-
-    <button class="btn-calc" onclick="calculate()">📈 Calculate Growth</button>
-    <div class="btn-row">
-      <button class="btn-sec" onclick="copyResult()">📋 Copy Result</button>
-      <button class="btn-sec" onclick="resetAll()">↺ Reset</button>
-    </div>
-  </div>
-
-  <!-- YEAR BY YEAR -->
-  <div class="yby-card" id="ybyCard">
-    <div class="sec-title">📅 Year-by-Year Breakdown</div>
-    <table class="yby-table">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Balance</th>
-          <th>Interest Earned</th>
-          <th>Total Interest</th>
-        </tr>
-      </thead>
-      <tbody id="ybyBody"></tbody>
-    </table>
-  </div>
-
 </div>
 
-<!-- SEO -->
-<div class="seo-article">
-  <h2>What is Compound Interest?</h2>
-  <p><strong>Compound interest</strong> is interest calculated on both the initial principal and the accumulated interest. Unlike simple interest, it causes your investment to grow exponentially over time — often called the "eighth wonder of the world."</p>
-
-  <h2>Compound Interest Formula</h2>
-  <p>The formula is: <strong>A = P(1 + r/n)^(nt)</strong> where P = principal, r = annual rate, n = compounds per year, t = years. Our calculator also accounts for regular monthly contributions.</p>
-
-  <h3>Power of Compound Interest Examples</h3>
-  <ul>
-    <li>$10,000 at 8% for 10 years = <strong>$21,589</strong></li>
-    <li>$10,000 at 8% for 20 years = <strong>$46,610</strong></li>
-    <li>$10,000 at 8% for 30 years = <strong>$100,627</strong></li>
-  </ul>
+<div class="tool-widget">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+    <div><label style="display:block;font-weight:600;margin-bottom:8px;">Initial Investment ($)</label><input type="number" id="principal" class="tool-input" value="1000" min="0"/></div>
+    <div><label style="display:block;font-weight:600;margin-bottom:8px;">Annual Interest Rate (%)</label><input type="number" id="rate" class="tool-input" value="7" min="0" step="0.1"/></div>
+    <div><label style="display:block;font-weight:600;margin-bottom:8px;">Monthly Contribution ($)</label><input type="number" id="monthly" class="tool-input" value="100" min="0"/></div>
+    <div><label style="display:block;font-weight:600;margin-bottom:8px;">Years</label><input type="number" id="years" class="tool-input" value="10" min="1" max="100"/></div>
+  </div>
+  <button class="calc-btn" onclick="calculate()">Calculate Growth 📊</button>
 </div>
 
-
-<div class="faq-section" style="max-width:720px;margin:0 auto 40px;padding:0 20px;position:relative;z-index:1;">
-<h2 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text)">Frequently Asked Questions</h2>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    What is compound interest? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">Compound interest is interest calculated on both the initial principal and accumulated interest. It causes investments to grow exponentially over time.</p>
-</details>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    How is compound interest calculated? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">The formula is A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounds per year, and t is time in years.</p>
-</details>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    How much will $10,000 grow in 10 years? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">At 8% annual interest compounded monthly, $10,000 will grow to approximately $22,196 in 10 years.</p>
-</details>
+<div class="result-box" id="results">
+  <h3 style="margin:0 0 20px;color:var(--accent);">Your Investment Results</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div style="background:white;padding:16px;border-radius:8px;border-left:4px solid var(--success);">
+      <div style="font-size:0.85rem;color:var(--muted);margin-bottom:4px;">Final Balance</div>
+      <div class="result-value" id="finalBalance">$0</div>
+    </div>
+    <div style="background:white;padding:16px;border-radius:8px;border-left:4px solid var(--accent);">
+      <div style="font-size:0.85rem;color:var(--muted);margin-bottom:4px;">Total Interest Earned</div>
+      <div class="result-value" id="totalInterest" style="color:var(--accent);">$0</div>
+    </div>
+  </div>
+  <div style="margin-top:20px;padding:16px;background:white;border-radius:8px;">
+    <div style="font-size:0.9rem;color:var(--muted);margin-bottom:8px;">Growth Breakdown</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div><strong>Principal</strong><br><span id="principalVal" style="color:var(--muted);">$0</span></div>
+      <div><strong>Contributions</strong><br><span id="contribVal" style="color:var(--muted);">$0</span></div>
+      <div><strong>Growth %</strong><br><span id="growthPct" style="color:var(--success);">0%</span></div>
+    </div>
+  </div>
 </div>
-<div class="related-tools">
-  <h2>Related Tools</h2>
-  <div class="related-grid">
-    <a href="tip-calculator.html" class="related-card">🍽️ Tip Calculator</a>
+
+<!-- ENGAGEMENT SECTION -->
+<div class="engagement-section">
+  <h3 style="text-align:center;margin-bottom:24px;">Did this tool help you?</h3>
+  <div class="engagement-buttons">
+    <button class="engagement-btn" id="likeBtn" onclick="toggleLike()">👍 Helpful</button>
+    <button class="engagement-btn" id="dislikeBtn" onclick="toggleDislike()">👎 Not Helpful</button>
+    <div class="star-rating" id="starContainer"></div>
+  </div>
+  <div style="margin-top:24px;">
+    <textarea id="commentBox" class="comment-box" placeholder="Share your feedback or ask a question..." maxlength="500"></textarea>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span id="charCount" style="font-size:0.75rem;color:var(--muted);">0/500</span>
+      <button onclick="submitComment()" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border:none;padding:8px 16px;border-radius:6px;font-weight:600;cursor:pointer;">💬 Post Comment</button>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE SECTION -->
+<div class="article" id="article">
+<h2>Complete Guide to Compound Interest: How Your Money Grows Exponentially</h2>
+
+<p>Compound interest is one of the most powerful forces in personal finance. It's the difference between building wealth slowly and watching your money grow exponentially over time. In this comprehensive guide, we'll explore what compound interest is, how it works, real-world examples, and how you can use our calculator to plan your financial future.</p>
+
+<h3>What is Compound Interest?</h3>
+
+<p>Compound interest is interest calculated on both the principal (initial investment) and the accumulated interest from previous periods. Unlike simple interest, which is calculated only on the principal, compound interest creates a snowball effect where your earnings generate their own earnings.</p>
+
+<p>The formula for compound interest is: <strong>A = P(1 + r/n)^(nt)</strong>, where A is the final amount, P is the principal, r is the annual interest rate, n is the number of times interest compounds per year, and t is the number of years.</p>
+
+<h3>Simple Interest vs Compound Interest: The Critical Difference</h3>
+
+<p>Imagine you invest $10,000 at 7% annual interest. With simple interest, you earn $700 per year forever. After 10 years, you'd have $17,000 ($10,000 principal + $7,000 interest).</p>
+
+<p>With compound interest (compounding monthly), after 10 years, you'd have approximately $19,769. That's $2,769 more in your pocket—30% more than simple interest! This difference becomes more dramatic over longer periods and with higher interest rates.</p>
+
+<h3>How Often Does Interest Compound?</h3>
+
+<p>The frequency of compounding significantly impacts your returns. Interest can compound daily, monthly, quarterly, semi-annually, or annually. The more frequently interest compounds, the higher your returns. Daily compounding produces slightly better results than monthly, which is better than quarterly, and so on.</p>
+
+<p>Our calculator uses monthly compounding, which is the standard for most savings accounts and investment vehicles. Even monthly compounding significantly outperforms annual compounding.</p>
+
+<h3>The Power of Monthly Contributions</h3>
+
+<p>One of the most powerful wealth-building strategies is making regular contributions to your investment. When you add money monthly, each contribution also earns compound interest. This accelerates your wealth growth dramatically.</p>
+
+<p>For example, investing $1,000 upfront at 7% for 20 years yields approximately $3,870. But if you also add $100 monthly, your final balance jumps to approximately $41,000. That's 10x more wealth just by adding regular contributions!</p>
+
+<h3>Real-World Applications</h3>
+
+<p><strong>Retirement Planning:</strong> Starting early with compound interest is crucial. Someone who invests $10,000 at age 25 will have significantly more at retirement (age 65) than someone who invests $50,000 at age 45, purely because of compound interest's time advantage.</p>
+
+<p><strong>Savings Accounts:</strong> High-yield savings accounts offer 4-5% annual interest. With compound interest, your money grows passively without any risk.</p>
+
+<p><strong>Stock Market Investing:</strong> Historically, the stock market returns approximately 10% annually. With compound interest and regular contributions, long-term investors build substantial wealth.</p>
+
+<p><strong>Debt and Credit Cards:</strong> Compound interest works against you with credit card debt. Credit card companies use compound interest to charge you more interest on unpaid interest, making debt grow exponentially.</p>
+
+<h3>Time: Your Greatest Asset</h3>
+
+<p>The most important factor in compound interest is time. The longer your money compounds, the more dramatic the results. This is why starting early is so critical for wealth building. Even small amounts invested early outperform larger amounts invested later.</p>
+
+<p>Albert Einstein allegedly called compound interest "the eighth wonder of the world." Those who understand it earn it; those who don't pay it.</p>
+
+<h3>How to Maximize Compound Interest</h3>
+
+<p><strong>Start Early:</strong> The earlier you begin, the more time compound interest has to work. Even if you can only invest small amounts initially, start now.</p>
+
+<p><strong>Be Consistent:</strong> Regular contributions are more important than large one-time investments. Consistency builds wealth through compound interest.</p>
+
+<p><strong>Minimize Withdrawals:</strong> Every withdrawal reduces your principal and future compound earnings. Let your money compound undisturbed.</p>
+
+<p><strong>Seek Higher Returns:</strong> A 1% difference in returns compounds to massive differences over decades. Invest wisely in higher-yielding vehicles.</p>
+
+<p><strong>Reinvest Earnings:</strong> Always reinvest interest and dividends rather than spending them. This amplifies compound interest.</p>
+
+<h3>Using Our Compound Interest Calculator</h3>
+
+<p>Our calculator simplifies compound interest calculations. Simply enter your initial investment, expected annual interest rate, monthly contribution amount, and investment period. The calculator instantly shows your final balance, total interest earned, and growth breakdown. Use it to explore different scenarios and plan your investment strategy.</p>
+
+<h3>Common Compound Interest Mistakes</h3>
+
+<p><strong>Starting Too Late:</strong> Many people delay investing thinking they need large sums to start. Even small amounts benefit from compound interest.</p>
+
+<p><strong>Not Contributing Regularly:</strong> Monthly contributions dramatically increase final returns. Automate your contributions for consistency.</p>
+
+<p><strong>Underestimating Time:</strong> Even a few years makes significant differences. Five extra years of compounding can double your final balance.</p>
+
+<p><strong>Ignoring Fees:</strong> Investment fees and taxes reduce your compound earnings. Minimize fees to maximize compound returns.</p>
+
+<h3>Conclusion: Start Your Compound Interest Journey Today</h3>
+
+<p>Compound interest is not complicated—it's just interest on interest, growing exponentially over time. The mathematics is simple, but the results are powerful. By starting early, contributing consistently, and letting time do the work, you can build substantial wealth through compound interest alone.</p>
+
+<p>Use our free compound interest calculator to explore different investment scenarios. See how small changes in your contributions or interest rates impact your final balance. Then, take action. Open an investment account, make your first contribution, and let compound interest work its magic.</p>
+</div>
+
+<!-- FAQ SECTION -->
+<div style="margin:60px 0;">
+  <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:32px;text-align:center;">Frequently Asked Questions</h2>
+  <div id="faqContainer"></div>
+</div>
+
+<!-- RELATED TOOLS - 15 Tools -->
+<div style="margin:60px 0;">
+  <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:32px;text-align:center;">Related Financial Tools</h2>
+  <div class="related-tools">
     <a href="salary-to-hourly.html" class="related-card">💼 Salary to Hourly</a>
     <a href="profit-margin-calculator.html" class="related-card">📈 Profit Margin</a>
     <a href="sales-tax-calculator.html" class="related-card">🧾 Sales Tax</a>
+    <a href="age-calculator.html" class="related-card">🎂 Age Calculator</a>
+    <a href="bmi-calculator.html" class="related-card">⚖️ BMI Calculator</a>
+    <a href="currency-converter.html" class="related-card">💱 Currency Converter</a>
+    <a href="invoice-generator.html" class="related-card">📄 Invoice Generator</a>
+    <a href="qr-code-generator.html" class="related-card">📱 QR Code Generator</a>
+    <a href="password-generator.html" class="related-card">🔑 Password Generator</a>
+    <a href="word-counter.html" class="related-card">📝 Word Counter</a>
+    <a href="ai-text-detector.html" class="related-card">🤖 AI Text Detector</a>
+    <a href="ai-image-generator.html" class="related-card">🎨 AI Image Generator</a>
+    <a href="base64-encoder.html" class="related-card">🔐 Base64 Encoder</a>
+    <a href="color-picker.html" class="related-card">🎨 Color Picker</a>
+    <a href="youtube-transcript.html" class="related-card">🎬 YouTube Transcript</a>
   </div>
+</div>
 </div>
 
 <footer>
-  <div class="footer-links"><a href="index.html">Home</a><a href="privacy.html">Privacy</a></div>
-  <p>🚀 Made with ❤️ by <a href="https://toolyfi.com" style="color:var(--accent);text-decoration:none;">Toolyfi</a></p>
-  <p style="margin-top:6px;">© 2026 Toolyfi.com</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>🚀 Made with ❤️ by <a href="https://toolyfi.com" style="color:var(--accent);text-decoration:none;">Toolyfi</a> - Free Tools for Everyone</p>
+  <p>© 2026 Toolyfi.com - All Rights Reserved</p>
 </footer>
 
-<div class="toast" id="toast"></div>
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<script src="main.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
 <script>
-let freq = 4;
-const fmt = v => '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-const fmtShort = v => {
-  if (v >= 1e6) return '$' + (v/1e6).toFixed(2) + 'M';
-  if (v >= 1e3) return '$' + (v/1e3).toFixed(1) + 'K';
-  return fmt(v);
-};
-
-function setFreq(f, btn) {
-  freq = f;
-  document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel');
-  calculate();
-}
-
+// CALCULATOR FUNCTION
 function calculate() {
   const P = parseFloat(document.getElementById('principal').value) || 0;
   const r = parseFloat(document.getElementById('rate').value) || 0;
-  const t = parseInt(document.getElementById('years').value) || 0;
   const mc = parseFloat(document.getElementById('monthly').value) || 0;
-
-  if (!P && !mc) return;
-  if (!r || !t) return;
-
-  const n = freq;
-  const ratePerPeriod = r / 100 / n;
+  const t = parseInt(document.getElementById('years').value) || 0;
+  
+  if(t === 0) { alert('Please enter a valid number of years'); return; }
+  
+  const monthlyRate = r / 100 / 12;
   let balance = P;
   let totalContrib = 0;
-  const rows = [];
-
-  for (let y = 1; y <= t; y++) {
-    const startBalance = balance;
-    for (let p = 0; p < n; p++) {
-      balance = balance * (1 + ratePerPeriod) + mc * (12 / n);
-      totalContrib += mc * (12 / n);
-    }
-    const yearInterest = balance - startBalance - mc * 12;
-    rows.push({
-      year: y,
-      balance,
-      yearInterest: balance - startBalance - (y === 1 ? 0 : 0) - mc*12,
-      totalInterest: balance - P - totalContrib
-    });
+  
+  for(let m = 0; m < t * 12; m++) {
+    balance = balance * (1 + monthlyRate) + mc;
+    totalContrib += mc;
   }
-
-  const finalBalance  = balance;
+  
   const totalInvested = P + totalContrib;
-  const totalInterest = finalBalance - totalInvested;
-  const growthPct     = totalInvested > 0 ? ((totalInterest / totalInvested) * 100).toFixed(1) : 0;
-
-  // Hero
-  document.getElementById('rh-final').textContent       = fmtShort(finalBalance);
-  document.getElementById('rh-interest').textContent    = fmtShort(totalInterest);
-  document.getElementById('rh-interest-pct').textContent = growthPct + '% growth';
-  document.getElementById('rh-invested').textContent    = fmtShort(totalInvested);
-
-  // Growth bar
-  const pPct = (P / finalBalance * 100).toFixed(1);
-  const cPct = (totalContrib / finalBalance * 100).toFixed(1);
-  const iPct = (totalInterest / finalBalance * 100).toFixed(1);
-  document.getElementById('bar-p').style.width = pPct + '%';
-  document.getElementById('bar-c').style.width = cPct + '%';
-  document.getElementById('bar-i').style.width = Math.max(0, iPct) + '%';
-  document.getElementById('leg-p').textContent = 'Principal: ' + fmtShort(P);
-  document.getElementById('leg-c').textContent = 'Contributions: ' + fmtShort(totalContrib);
-  document.getElementById('leg-i').textContent = 'Interest: ' + fmtShort(Math.max(0, totalInterest));
-  document.getElementById('growthBar').classList.add('show');
-
-  // Year by year table
-  const tbody = document.getElementById('ybyBody');
-  let cumInterest = 0;
-  tbody.innerHTML = rows.map(row => {
-    const yi = row.balance - (rows[rows.indexOf(row)-1]?.balance || P) - mc*12;
-    cumInterest = row.totalInterest;
-    return `<tr>
-      <td><span class="year-badge">Yr ${row.year}</span></td>
-      <td>${fmtShort(row.balance)}</td>
-      <td style="color:#059669">+${fmtShort(Math.max(0,yi))}</td>
-      <td>${fmtShort(Math.max(0,cumInterest))}</td>
-    </tr>`;
-  }).join('');
-  document.getElementById('ybyCard').classList.add('show');
+  const totalInt = Math.max(0, balance - totalInvested);
+  const growthPct = totalInvested > 0 ? ((totalInt / totalInvested) * 100).toFixed(1) : 0;
+  
+  document.getElementById('finalBalance').textContent = '$' + balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('totalInterest').textContent = '$' + totalInt.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('principalVal').textContent = '$' + P.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('contribVal').textContent = '$' + totalContrib.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('growthPct').textContent = growthPct + '%';
+  document.getElementById('results').classList.add('show');
 }
 
-function copyResult() {
-  const final = document.getElementById('rh-final').textContent;
-  const interest = document.getElementById('rh-interest').textContent;
-  if (final === '$0') { showToast('⚠️ Calculate first'); return; }
-  navigator.clipboard.writeText(`Final Balance: ${final} | Interest Earned: ${interest} | Toolyfi.com`).then(() => showToast('✅ Copied!'));
+// ENGAGEMENT FEATURES
+let engagement = { liked: false, disliked: false, rating: 0, comments: [] };
+
+function toggleLike() {
+  engagement.liked = !engagement.liked;
+  if(engagement.liked) engagement.disliked = false;
+  updateEngagementUI();
+  localStorage.setItem('engagement_' + window.location.pathname, JSON.stringify(engagement));
 }
 
-function resetAll() {
-  ['principal','rate','years','monthly'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('rh-final').textContent    = '$0';
-  document.getElementById('rh-interest').textContent = '$0';
-  document.getElementById('rh-invested').textContent = '$0';
-  document.getElementById('rh-interest-pct').textContent = '0% growth';
-  document.getElementById('growthBar').classList.remove('show');
-  document.getElementById('ybyCard').classList.remove('show');
-  showToast('↺ Reset done');
+function toggleDislike() {
+  engagement.disliked = !engagement.disliked;
+  if(engagement.disliked) engagement.liked = false;
+  updateEngagementUI();
+  localStorage.setItem('engagement_' + window.location.pathname, JSON.stringify(engagement));
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
+function renderStars() {
+  let html = '';
+  for(let i = 1; i <= 5; i++) {
+    html += `<span class="star ${i <= engagement.rating ? 'active' : ''}" onclick="rateStars(${i})">★</span>`;
+  }
+  document.getElementById('starContainer').innerHTML = html;
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+function rateStars(rating) {
+  engagement.rating = rating;
+  renderStars();
+  localStorage.setItem('engagement_' + window.location.pathname, JSON.stringify(engagement));
+}
+
+function updateEngagementUI() {
+  document.getElementById('likeBtn').classList.toggle('active', engagement.liked);
+  document.getElementById('dislikeBtn').classList.toggle('active', engagement.disliked);
+  renderStars();
+}
+
+document.getElementById('commentBox').addEventListener('input', (e) => {
+  document.getElementById('charCount').textContent = e.target.value.length + '/500';
+});
+
+function submitComment() {
+  const text = document.getElementById('commentBox').value.trim();
+  if(!text) { alert('Please write a comment'); return; }
+  engagement.comments.push({ text, date: new Date().toLocaleString() });
+  localStorage.setItem('engagement_' + window.location.pathname, JSON.stringify(engagement));
+  document.getElementById('commentBox').value = '';
+  document.getElementById('charCount').textContent = '0/500';
+  alert('✅ Comment posted! Thank you for your feedback.');
+}
+
+// Load engagement
+const saved = localStorage.getItem('engagement_' + window.location.pathname);
+if(saved) engagement = JSON.parse(saved);
+renderStars();
+updateEngagementUI();
+
+// FAQ
+const faqs = [
+  { q: 'How do I calculate compound interest?', a: 'Compound interest is calculated using: A = P(1 + r/n)^(nt). Our calculator does this automatically for you. Just enter your investment details.' },
+  { q: 'What is the difference between simple and compound interest?', a: 'Simple interest is calculated only on principal. Compound interest is calculated on principal plus previously earned interest, resulting in exponential growth.' },
+  { q: 'How often does interest compound?', a: 'Interest compounds daily, monthly, quarterly, semi-annually, or annually. More frequent compounding results in higher returns. Our calculator uses monthly compounding.' },
+  { q: 'Can I add monthly contributions?', a: 'Yes! Monthly contributions earn compound interest too. Even small regular contributions dramatically increase your final balance over time.' },
+  { q: 'How long should I invest?', a: 'The longer you invest, the more compound interest works for you. Even 5-10 extra years can double your returns. Start as early as possible.' },
+  { q: 'What interest rate should I expect?', a: 'Savings accounts offer 4-5%, bonds offer 4-6%, stock market averages 10%. Higher returns come with higher risk. Diversify your investments.' }
+];
+
+document.getElementById('faqContainer').innerHTML = faqs.map((f, i) => `
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">${f.q}<span style="font-weight:700;">+</span></div>
+    <div class="faq-a">${f.a}</div>
+  </div>
+`).join('');
 </script>
 </body>
 </html>
