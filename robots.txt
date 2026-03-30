@@ -1,28 +1,91 @@
 # Robots.txt for Toolyfi
 # Controls search engine crawler access
+# Updated: 2026-03-31
 
+# Default rules for all bots
 User-agent: *
 Allow: /
-Allow: /Toolyfi/
+Allow: /blog/
 Allow: /updatesworld/
+Allow: /workflows/
 
 # Disallow unnecessary paths
 Disallow: /admin/
 Disallow: /private/
+Disallow: /temp/
+Disallow: /.git/
+Disallow: /.env
 Disallow: /*.json$
 Disallow: /node_modules/
+Disallow: /*?sort=
+Disallow: *?page=
+Disallow: /*?
 
-# Specific rules for Google
+# Crawl-delay for all bots (1 second)
+Crawl-delay: 1
+Request-rate: 30/60
+
+# ===== GOOGLE (Highest Priority) =====
 User-agent: Googlebot
 Allow: /
+Allow: /blog/
+Allow: /updatesworld/
+Disallow: /admin/
+Disallow: /private/
 Crawl-delay: 0
 
-# Specific rules for Bing
+# ===== BING/MICROSOFT =====
 User-agent: Bingbot
+Allow: /
+Allow: /blog/
+Allow: /updatesworld/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+# ===== YANDEX (Russian search) =====
+User-agent: YandexBot
+Allow: /
+Allow: /blog/
+Allow: /updatesworld/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+# ===== BAIDU (Chinese search) =====
+User-agent: Baiduspider
+Allow: /
+Allow: /blog/
+Allow: /updatesworld/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+# ===== DUCKDUCKGO =====
+User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# Block bad bots
+# ===== ECOSIA =====
+User-agent: Ecosia
+Allow: /
+Crawl-delay: 1
+
+# ===== ALLOW GOOD BOTS =====
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 5
+
+User-agent: DotBot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# ===== BLOCK BAD/AGGRESSIVE BOTS =====
 User-agent: AhrefsBot
 Disallow: /
 
@@ -32,20 +95,60 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Sitemap location
-Sitemap: https://hitters999.github.io/sitemap.xml
+User-agent: BadBot
+Disallow: /
+
+User-agent: EvilBot
+Disallow: /
+
+User-agent: BlackWidow
+Disallow: /
+
+User-agent: Bot mailto
+Disallow: /
+
+User-agent: ChinaCacheIp
+Disallow: /
+
+User-agent: Curious
+Disallow: /
+
+User-agent: DISCo
+Disallow: /
+
+User-agent: Download Wonder
+Disallow: /
+
+User-agent: Elmer
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: ExtractorPro
+Disallow: /
+
+User-agent: Gaisbot
+Disallow: /
+
+User-agent: GrapeFX
+Disallow: /
+
+# ===== SITEMAP LOCATIONS =====
 Sitemap: https://toolyfi.com/sitemap.xml
+Sitemap: https://hitters999.github.io/sitemap.xml
+Sitemap: https://toolyfi.com/blog/sitemap.xml
+Sitemap: https://toolyfi.com/updatesworld/sitemap.xml
 
-# Allow access to all content for indexing
+# ===== ADDITIONAL SETTINGS =====
+# Allow media crawling
 User-agent: *
-Allow: /
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.pdf$
 
-# Crawl-delay for all bots (in seconds)
-Crawl-delay: 1
-Request-rate: 30/60
-
-# Additional security
-User-agent: *
-Disallow: /*?
-Disallow: *?sort=
-Disallow: *?page=
+# End of robots.txt
