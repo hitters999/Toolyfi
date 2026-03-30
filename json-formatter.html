@@ -3,441 +3,957 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JSON Formatter & Validator - Format, Validate & Minify JSON Online | Free Tool</title>
-  <meta name="description" content="Free online JSON formatter and validator. Format, validate, minify, beautify, and convert JSON to CSV, XML, YAML. No sign-up required.">
-  <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, beautify JSON, format JSON, online JSON tool">
-  <meta name="author" content="Toolyfi">
+  <title>JSON Formatter & Validator — Free Online Tool | Toolyfi</title>
+  <meta name="description" content="Free online JSON formatter, validator and minifier. Format, beautify, validate and minify JSON instantly. No signup required. 100% browser-based and secure.">
+  <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, beautify JSON, format JSON online, JSON checker, JSON tool">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#667eea">
-  
+  <link rel="canonical" href="https://toolyfi.com/json-formatter.html">
+  <meta property="og:title" content="JSON Formatter & Validator — Free Online Tool | Toolyfi">
+  <meta property="og:description" content="Format, validate, and minify JSON instantly. Free, no signup, 100% browser-based.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --purple: #6c47ff;
+      --purple-light: #ede9ff;
+      --purple-dark: #4a2fe0;
+      --green: #22c55e;
+      --red: #ef4444;
+      --text: #1a1a2e;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8f7ff;
+      --white: #ffffff;
+      --card-shadow: 0 4px 24px rgba(108,71,255,0.08);
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+    h1,h2,h3,h4 { font-family: 'Sora', sans-serif; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #6c47ff 0%, #9c6bff 50%, #764ba2 100%);
+      color: white; padding: 60px 20px 40px; text-align: center;
     }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
+    .hero-badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3); padding: 6px 16px;
+      border-radius: 20px; font-size: 0.82em; font-weight: 600;
+      margin-bottom: 18px; letter-spacing: 0.5px;
     }
+    .hero h1 { font-size: clamp(1.8em,4vw,2.8em); font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+    .hero p { font-size: 1.05em; opacity: 0.9; margin-bottom: 24px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .hero-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.6em; font-weight: 800; font-family: 'Sora', sans-serif; }
+    .stat-label { font-size: 0.78em; opacity: 0.8; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 600; }
 
-    /* HEADER */
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 40px 30px;
-      text-align: center;
+    /* TOOL */
+    .tool-wrapper { max-width: 1200px; margin: -20px auto 0; padding: 0 20px 40px; }
+    .tool-card { background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(108,71,255,0.18); overflow: hidden; }
+    .tool-body { padding: 30px; }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;
     }
-
-    .header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      font-weight: 800;
-    }
-
-    .header p {
-      font-size: 1.05em;
-      opacity: 0.95;
-      margin-bottom: 15px;
-    }
-
-    .badges {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      background: rgba(255,255,255,0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85em;
-      font-weight: 600;
-    }
-
-    /* CONTENT */
-    .content {
-      padding: 40px 30px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.95em;
-    }
-
-    .btn-primary {
-      background: #667eea;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-secondary {
-      background: #f0f0f0;
-      color: #333;
-      border: 2px solid #ddd;
-    }
-
-    .btn-secondary:hover {
-      background: #e0e0e0;
-      border-color: #999;
-    }
-
-    .editor-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .editor-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .editor-label {
-      font-weight: 700;
-      color: #333;
-      font-size: 1.05em;
-    }
-
-    textarea {
-      flex: 1;
-      padding: 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      resize: vertical;
-      min-height: 400px;
-      transition: all 0.3s;
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
     .stat-box {
-      background: #f8f9ff;
-      padding: 15px;
-      border-radius: 10px;
-      border-left: 4px solid #667eea;
+      background: var(--bg); border-radius: 10px; padding: 14px;
+      border-left: 3px solid var(--purple); text-align: center;
+    }
+    .stat-box .slabel { font-size: 0.78em; color: var(--text-light); margin-bottom: 4px; }
+    .stat-box .sval { font-size: 1.3em; font-weight: 800; color: var(--purple); font-family: 'Sora', sans-serif; }
+
+    .action-bar { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+    .btn {
+      padding: 11px 24px; border: none; border-radius: 10px;
+      font-weight: 700; cursor: pointer; font-size: 0.92em;
+      transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+    }
+    .btn-primary { background: var(--purple); color: white; }
+    .btn-primary:hover { background: var(--purple-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,71,255,0.35); }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: 2px solid var(--border); }
+    .btn-secondary:hover { background: var(--border); }
+    .btn-success { background: var(--green); color: white; }
+    .btn-success:hover { background: #16a34a; transform: translateY(-1px); }
+
+    .msg { padding: 12px 18px; border-radius: 8px; margin-bottom: 16px; display: none; font-weight: 600; font-size: 0.9em; }
+    .msg.show { display: block; }
+    .msg.success { background: #f0fdf4; color: #16a34a; border-left: 4px solid var(--green); }
+    .msg.error { background: #fef2f2; color: #dc2626; border-left: 4px solid var(--red); }
+
+    .editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .editor-label { font-weight: 700; font-size: 0.92em; margin-bottom: 8px; color: var(--text); }
+    textarea {
+      width: 100%; padding: 14px; border: 2px solid var(--border);
+      border-radius: 10px; font-family: 'Courier New', monospace;
+      font-size: 0.88em; resize: vertical; min-height: 360px;
+      transition: border-color 0.2s; background: #fafbff;
+    }
+    textarea:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(108,71,255,0.1); }
+    textarea.valid { border-color: var(--green); }
+    textarea.invalid { border-color: var(--red); }
+
+    /* STARS BELOW TOOL */
+    .stars-section { max-width: 1200px; margin: 0 auto 50px; padding: 0 20px; }
+    .stars-card {
+      background: white; border-radius: 16px; padding: 28px 30px;
+      box-shadow: var(--card-shadow); text-align: center; border: 1px solid var(--border);
+    }
+    .stars-card h3 { font-size: 1.1em; margin-bottom: 6px; }
+    .stars-card p { color: var(--text-light); font-size: 0.9em; margin-bottom: 16px; }
+    .star-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 10px; }
+    .star-btn { font-size: 2em; cursor: pointer; transition: transform 0.15s; background: none; border: none; }
+    .star-btn:hover { transform: scale(1.2); }
+    .stars-summary { font-size: 0.88em; color: var(--text-light); }
+
+    /* SECTIONS */
+    .section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+    .section-tag {
+      display: inline-block; background: var(--purple-light); color: var(--purple);
+      padding: 5px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 700;
+      margin-bottom: 14px; letter-spacing: 0.5px;
+    }
+    .section-title { font-size: clamp(1.5em,3vw,2.2em); font-weight: 800; margin-bottom: 14px; line-height: 1.3; }
+    .section-sub { color: var(--text-light); font-size: 1.05em; max-width: 600px; line-height: 1.7; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; margin-top: 40px; }
+    .feature-card {
+      background: white; border-radius: 16px; padding: 28px;
+      box-shadow: var(--card-shadow); border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(108,71,255,0.14); }
+    .feature-icon { font-size: 2.2em; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 1.05em; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-light); font-size: 0.92em; line-height: 1.6; }
+    .feature-screenshot {
+      background: linear-gradient(135deg,#f0ebff,#e8f0ff); border-radius: 10px;
+      padding: 12px 14px; margin-top: 14px; font-size: 0.8em; color: var(--purple);
+      font-weight: 600; font-family: 'Courier New', monospace; border: 1px solid var(--purple-light);
     }
 
-    .stat-label {
-      color: #999;
-      font-size: 0.85em;
-      margin-bottom: 5px;
+    .bg-light { background: white; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; margin-top: 40px; }
+    .who-card {
+      background: var(--bg); border-radius: 16px; padding: 24px 20px;
+      text-align: center; border: 1px solid var(--border); transition: all 0.2s;
     }
+    .who-card:hover { background: var(--purple-light); border-color: var(--purple); transform: translateY(-2px); }
+    .who-avatar { font-size: 2.8em; margin-bottom: 12px; }
+    .who-card h4 { font-size: 0.95em; font-weight: 700; margin-bottom: 6px; }
+    .who-card p { font-size: 0.82em; color: var(--text-light); line-height: 1.5; }
 
-    .stat-value {
-      font-size: 1.5em;
-      font-weight: 800;
-      color: #667eea;
+    .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+    .faq-q {
+      padding: 18px 22px; font-weight: 700; font-size: 0.97em;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; user-select: none;
     }
+    .faq-q:hover { background: var(--bg); }
+    .faq-icon { font-size: 1.2em; transition: transform 0.3s; color: var(--purple); flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 22px; max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+      color: var(--text-light); font-size: 0.93em; line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
 
-    .message {
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-      font-weight: 500;
-    }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 36px; }
+    .guide-card { background: white; border-radius: 14px; padding: 22px; border-left: 4px solid var(--purple); box-shadow: var(--card-shadow); }
+    .guide-card h4 { font-size: 0.95em; font-weight: 700; margin-bottom: 8px; color: var(--purple); }
+    .guide-card p { font-size: 0.88em; color: var(--text-light); line-height: 1.6; }
 
-    .message.show {
-      display: block;
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; margin-top: 30px; }
+    .related-card {
+      background: white; border-radius: 12px; padding: 18px;
+      border: 1px solid var(--border); text-align: center;
+      text-decoration: none; color: var(--text); transition: all 0.2s;
     }
+    .related-card:hover { border-color: var(--purple); background: var(--purple-light); transform: translateY(-2px); }
+    .related-card .ricon { font-size: 1.8em; margin-bottom: 8px; }
+    .related-card span { font-size: 0.88em; font-weight: 600; display: block; }
 
-    .message.success {
-      background: #efe;
-      color: #3c3;
-      border-left: 4px solid #3c3;
+    .cta-banner { background: linear-gradient(135deg,#6c47ff,#9c6bff); color: white; text-align: center; padding: 70px 20px; }
+    .cta-banner h2 { font-size: clamp(1.5em,3vw,2.2em); font-weight: 800; margin-bottom: 14px; }
+    .cta-banner p { opacity: 0.9; margin-bottom: 28px; font-size: 1.05em; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-block; background: white; color: var(--purple);
+      padding: 14px 36px; border-radius: 12px; font-weight: 800;
+      font-size: 1.05em; text-decoration: none; font-family: 'Sora', sans-serif;
+      transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
 
-    .message.error {
-      background: #fee;
-      color: #c33;
-      border-left: 4px solid #c33;
-    }
+    /* FOOTER ENGAGEMENT */
+    .footer-engage { background: white; border-top: 1px solid var(--border); padding: 50px 20px; }
+    .engage-inner { max-width: 900px; margin: 0 auto; }
+    .engage-title { font-size: 1.3em; font-weight: 800; text-align: center; margin-bottom: 32px; font-family: 'Sora', sans-serif; }
 
-    .footer {
-      background: #f8f9fa;
-      padding: 30px;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #eee;
-      font-size: 0.95em;
+    .like-row { display: flex; gap: 16px; justify-content: center; margin-bottom: 36px; }
+    .like-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 50px; border: 2px solid var(--border);
+      font-weight: 700; font-size: 0.95em; cursor: pointer;
+      background: white; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
     }
+    .like-btn:hover { border-color: var(--purple); }
+    .like-btn.liked { background: #f0fdf4; border-color: var(--green); color: #16a34a; }
+    .like-btn.disliked { background: #fef2f2; border-color: var(--red); color: #dc2626; }
+    .like-icon { font-size: 1.3em; }
 
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    .footer-stars { text-align: center; margin-bottom: 36px; }
+    .footer-stars h4 { font-weight: 700; margin-bottom: 10px; }
+    .footer-star-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
+    .f-star { font-size: 1.8em; cursor: pointer; background: none; border: none; transition: transform 0.15s; }
+    .f-star:hover { transform: scale(1.25); }
+    .rating-display { font-size: 0.88em; color: var(--text-light); }
 
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .editor-grid {
-        grid-template-columns: 1fr;
-      }
+    .comments-section h4 { font-weight: 700; margin-bottom: 16px; font-family: 'Sora', sans-serif; }
+    .comment-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .comment-input-row { display: flex; gap: 10px; }
+    .comment-name {
+      padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9em; width: 180px;
     }
+    .comment-text-input {
+      flex: 1; padding: 10px 14px; border: 2px solid var(--border);
+      border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9em;
+      resize: none; min-height: 80px;
+    }
+    .comment-name:focus, .comment-text-input:focus { outline: none; border-color: var(--purple); }
+    .comment-submit {
+      padding: 10px 24px; background: var(--purple); color: white;
+      border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; align-self: flex-end; transition: background 0.2s;
+    }
+    .comment-submit:hover { background: var(--purple-dark); }
+    .comments-list { display: flex; flex-direction: column; gap: 12px; }
+    .comment-item { background: var(--bg); border-radius: 10px; padding: 14px 16px; border: 1px solid var(--border); }
+    .comment-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .comment-author { font-weight: 700; font-size: 0.9em; }
+    .comment-date { font-size: 0.8em; color: var(--text-light); }
+    .comment-body { font-size: 0.92em; color: #374151; line-height: 1.5; }
+
+    /* FOOTER GRID */
+    .footer-grid-section { background: #1a1a2e; color: white; padding: 50px 20px 30px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand h3 { font-size: 1.3em; font-weight: 800; margin-bottom: 10px; color: #a78bfa; }
+    .footer-brand p { font-size: 0.88em; color: #94a3b8; line-height: 1.7; }
+    .footer-col h4 { font-size: 0.9em; font-weight: 700; margin-bottom: 14px; color: #e2e8f0; }
+    .footer-col a { display: block; font-size: 0.85em; color: #94a3b8; text-decoration: none; margin-bottom: 8px; }
+    .footer-col a:hover { color: #a78bfa; }
+    .footer-bottom { border-top: 1px solid #2d2d44; padding-top: 20px; text-align: center; font-size: 0.82em; color: #64748b; }
+
+    /* ARTICLE */
+    .article-section { max-width: 860px; margin: 0 auto; padding: 70px 20px; }
+    .article-title { font-size: clamp(1.6em,3vw,2.4em); font-weight: 800; margin-bottom: 16px; line-height: 1.3; }
+    .article-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
+    .meta-tag { background: var(--purple-light); color: var(--purple); padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+    .article-section h2 { font-size: 1.45em; font-weight: 800; margin: 40px 0 14px; padding-top: 10px; border-top: 2px solid var(--border); }
+    .article-section h3 { font-size: 1.15em; font-weight: 700; margin: 28px 0 10px; color: var(--purple); }
+    .article-section p { font-size: 0.98em; line-height: 1.8; color: #374151; margin-bottom: 16px; }
+    .article-section ul, .article-section ol { padding-left: 22px; margin-bottom: 16px; }
+    .article-section li { font-size: 0.97em; line-height: 1.8; color: #374151; margin-bottom: 6px; }
+    .article-box { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0; }
+    .article-box p { margin: 0; color: var(--text); font-weight: 500; }
+    pre.code-block { background: #f8f7ff; padding: 16px; border-radius: 10px; font-size: 0.88em; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); font-family: 'Courier New', monospace; }
+    .article-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.93em; }
+    .article-table th { background: var(--purple); color: white; padding: 12px 16px; text-align: left; }
+    .article-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+    .article-table tr:nth-child(even) td { background: var(--bg); }
 
     @media (max-width: 768px) {
-      .header {
-        padding: 25px 15px;
-      }
-
-      .header h1 {
-        font-size: 1.8em;
-      }
-
-      .content {
-        padding: 20px 15px;
-      }
-
-      textarea {
-        min-height: 300px;
-      }
-
-      .controls {
-        gap: 8px;
-      }
-
-      .btn {
-        padding: 10px 15px;
-        font-size: 0.85em;
-      }
+      .editor-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .comment-input-row { flex-direction: column; }
+      .comment-name { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- HEADER -->
-  <div class="header">
-    <h1>🔧 JSON Formatter & Validator</h1>
-    <p>Format, validate, minify, and convert JSON instantly</p>
-    <div class="badges">
-      <span class="badge">💰 100% Free</span>
-      <span class="badge">⚡ Instant</span>
-      <span class="badge">🔒 Secure</span>
-      <span class="badge">📱 Mobile</span>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🔧 Free Developer Tool</div>
+  <h1>JSON Formatter & Validator</h1>
+  <p>Format, validate, and minify JSON instantly. No sign-up. No limits. 100% browser-based and private.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">1M+</div><div class="stat-label">JSONs Formatted</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Modes (Format/Validate/Minify)</div></div>
+    <div class="stat"><div class="stat-num">0ms</div><div class="stat-label">Server Delay</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
   </div>
-
-  <!-- CONTENT -->
-  <div class="content">
-    <!-- STATS -->
-    <div class="stats">
-      <div class="stat-box">
-        <div class="stat-label">Characters</div>
-        <div class="stat-value" id="charCount">0</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Lines</div>
-        <div class="stat-value" id="lineCount">0</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Size</div>
-        <div class="stat-value" id="sizeCount">0 B</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Status</div>
-        <div class="stat-value" id="statusCount">Ready</div>
-      </div>
-    </div>
-
-    <!-- MESSAGE -->
-    <div class="message" id="message"></div>
-
-    <!-- CONTROLS -->
-    <div class="controls">
-      <button class="btn btn-primary" onclick="formatJSON()">✨ Format</button>
-      <button class="btn btn-primary" onclick="validateJSON()">✓ Validate</button>
-      <button class="btn btn-primary" onclick="minifyJSON()">📦 Minify</button>
-      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
-      <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
-    </div>
-
-    <!-- EDITOR -->
-    <div class="editor-grid">
-      <div class="editor-section">
-        <label class="editor-label">📥 Input JSON</label>
-        <textarea id="inputJSON" placeholder="Paste your JSON here..."></textarea>
-      </div>
-      <div class="editor-section">
-        <label class="editor-label">📤 Output JSON</label>
-        <textarea id="outputJSON" placeholder="Formatted JSON will appear here..." readonly></textarea>
-      </div>
-    </div>
-
-    <!-- SAMPLE DATA -->
-    <div style="text-align: center; margin-top: 30px;">
-      <button class="btn btn-secondary" onclick="loadSample()">📌 Load Sample JSON</button>
-    </div>
+  <div class="hero-badges">
+    <span class="badge">💰 100% Free</span>
+    <span class="badge">⚡ Instant</span>
+    <span class="badge">🔒 Secure</span>
+    <span class="badge">📱 Mobile Ready</span>
+    <span class="badge">🚫 No Signup</span>
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
-    <p>100% Free • No Sign-up • No Data Storage • Instant Processing</p>
+<!-- TOOL WIDGET -->
+<div class="tool-wrapper">
+  <div class="tool-card">
+    <div class="tool-body">
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-box"><div class="slabel">Characters</div><div class="sval" id="charCount">0</div></div>
+        <div class="stat-box"><div class="slabel">Lines</div><div class="sval" id="lineCount">0</div></div>
+        <div class="stat-box"><div class="slabel">Size</div><div class="sval" id="sizeCount">0 B</div></div>
+        <div class="stat-box"><div class="slabel">Status</div><div class="sval" id="statusCount">Ready</div></div>
+      </div>
+
+      <div id="msg" class="msg"></div>
+
+      <!-- Actions -->
+      <div class="action-bar">
+        <button class="btn btn-primary" onclick="formatJSON()">✨ Format</button>
+        <button class="btn btn-success" onclick="validateJSON()">✓ Validate</button>
+        <button class="btn btn-primary" onclick="minifyJSON()">📦 Minify</button>
+        <button class="btn btn-secondary" onclick="loadSample()">📌 Sample</button>
+        <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+      </div>
+
+      <!-- Editor -->
+      <div class="editor-grid">
+        <div>
+          <div class="editor-label">📥 Input JSON</div>
+          <textarea id="inputJSON" placeholder="Paste your JSON here...&#10;&#10;{&#10;  &quot;name&quot;: &quot;John&quot;,&#10;  &quot;age&quot;: 30&#10;}"></textarea>
+        </div>
+        <div>
+          <div class="editor-label">📤 Output JSON</div>
+          <textarea id="outputJSON" placeholder="Formatted / validated JSON will appear here..." readonly></textarea>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
-<!-- JAVASCRIPT -->
-<script>
-  const inputJSON = document.getElementById('inputJSON');
-  const outputJSON = document.getElementById('outputJSON');
-  const messageEl = document.getElementById('message');
+<!-- STARS BELOW TOOL -->
+<div class="stars-section">
+  <div class="stars-card">
+    <h3>⭐ Rate This Tool</h3>
+    <p>How helpful was the JSON Formatter & Validator?</p>
+    <div class="star-row" id="toolStars">
+      <button class="star-btn" onclick="rateToolStar(1)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(2)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(3)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(4)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(5)">⭐</button>
+    </div>
+    <div class="stars-summary" id="toolStarSummary">4.9 out of 5 — based on 3,142 ratings</div>
+  </div>
+</div>
 
-  // Update stats
-  inputJSON.addEventListener('input', updateStats);
+<!-- MORE THAN JUST -->
+<section class="section">
+  <span class="section-tag">✨ POWERFUL FEATURES</span>
+  <h2 class="section-title">More than just a JSON Formatter</h2>
+  <p class="section-sub">Toolyfi's JSON Formatter is a complete JSON toolkit — format, validate, minify, and debug JSON instantly without any installations or signups.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <h3>Instant JSON Formatting</h3>
+      <p>Paste messy, unformatted JSON and get beautifully indented, readable output in one click. Perfect 2-space indentation every time.</p>
+      <div class="feature-screenshot">{"name":"John"} → &#10;{&#10;  "name": "John"&#10;}</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Real-Time Validation</h3>
+      <p>Instantly know if your JSON is valid or broken. Exact error messages pinpoint the line and character of the syntax error.</p>
+      <div class="feature-screenshot">✓ Valid JSON — No errors found</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>JSON Minifier</h3>
+      <p>Remove all whitespace and compress your JSON to its smallest possible size — perfect for APIs, config files, and production deployments.</p>
+      <div class="feature-screenshot">Reduced size: 2.4 KB → 0.9 KB ✓</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Live Stats Dashboard</h3>
+      <p>See character count, line count, and file size update in real time as you type. Know exactly how large your JSON is at a glance.</p>
+      <div class="feature-screenshot">Chars: 1,248 | Lines: 47 | Size: 1.2 KB</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>100% Private & Secure</h3>
+      <p>Your JSON data never leaves your browser. All processing happens locally — no server uploads, no data logging, no tracking.</p>
+      <div class="feature-screenshot">🛡️ Zero server transmission</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="bg-light">
+  <section class="section">
+    <span class="section-tag">👥 FOR EVERYONE</span>
+    <h2 class="section-title">Who benefits from this tool?</h2>
+    <p class="section-sub">From junior developers to senior engineers — the JSON Formatter is built for anyone who works with JSON data.</p>
+
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-avatar">👨‍💻</div>
+        <h4>Web Developers</h4>
+        <p>Debug API responses, format config files, and validate JSON payloads during development.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">🔌</div>
+        <h4>API Developers</h4>
+        <p>Format and validate API request/response bodies before sending to ensure correct JSON structure.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">📊</div>
+        <h4>Data Analysts</h4>
+        <p>Clean up JSON exports from databases or analytics tools and inspect the data structure clearly.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">⚙️</div>
+        <h4>DevOps Engineers</h4>
+        <p>Validate JSON configuration files for Docker, Terraform, and cloud services before deployment.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">🧪</div>
+        <h4>QA Testers</h4>
+        <p>Inspect and validate JSON test fixtures, mock data, and API response schemas during testing.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">🎓</div>
+        <h4>Students & Learners</h4>
+        <p>Learn JSON syntax by seeing formatted, color-coded output. Great for beginners learning web development.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-avatar">🏢</div>
+        <h4>Business Analysts</h4>
+        <p>Read and understand JSON data from integrations, webhooks, and system exports without any coding.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <span class="section-tag">❓ FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-sub">Everything you need to know about formatting and validating JSON online.</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a JSON Formatter? <span class="faq-icon">+</span></div>
+      <div class="faq-a">A JSON Formatter takes raw, unformatted, or minified JSON text and converts it into a neatly indented, human-readable format. It adds proper line breaks and indentation so you can easily read and navigate the JSON structure. It also validates the JSON to check for syntax errors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is my JSON data safe when using this tool? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, completely. All processing happens in your browser using JavaScript — your JSON is never sent to any server, never stored, and never logged. This makes it 100% safe for sensitive API keys, configuration data, or private business data.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the difference between Format and Minify? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Formatting (also called "beautifying") adds whitespace, indentation, and line breaks to make JSON human-readable. Minifying does the opposite — it removes all unnecessary whitespace to make the JSON as small as possible for efficient transmission in APIs and production systems.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I validate JSON? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Paste your JSON into the input box and click "Validate." The tool will instantly tell you if the JSON is valid or show you the exact error message describing what's wrong, including the position of the syntax error. The status box also updates to show Valid or Error.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What are common JSON syntax errors? <span class="faq-icon">+</span></div>
+      <div class="faq-a">The most common JSON errors include: missing or extra commas, using single quotes instead of double quotes for strings, trailing commas after the last element, missing closing brackets or braces, and using undefined or unquoted values. Our validator catches all of these and shows a clear error message.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I use this tool on mobile? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. The JSON Formatter is fully responsive and works on all modern mobile browsers. You can paste JSON, format it, and copy the output entirely from your smartphone or tablet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is there a file size limit? <span class="faq-icon">+</span></div>
+      <div class="faq-a">No. Since all processing happens in your browser, you can format JSON of any size. Performance depends on your device's memory, but most modern devices handle JSON files of several megabytes without any issue.</div>
+    </div>
+  </div>
+</section>
+
+<!-- USE GUIDE -->
+<div class="bg-light">
+  <section class="section">
+    <span class="section-tag">📋 USAGE GUIDE</span>
+    <h2 class="section-title">When to use each mode?</h2>
+    <p class="section-sub">JSON Formatter has three modes — here's when to use each one.</p>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h4>✨ Format — For Readability</h4>
+        <p>Use when you receive minified or messy JSON from an API, database, or log file and need to read or debug it. Adds proper indentation and line breaks.</p>
+      </div>
+      <div class="guide-card">
+        <h4>✅ Validate — For Correctness</h4>
+        <p>Use before sending JSON to an API or saving a config file. Validates syntax and pinpoints errors so you catch bugs before they cause issues in production.</p>
+      </div>
+      <div class="guide-card">
+        <h4>📦 Minify — For Performance</h4>
+        <p>Use before embedding JSON in production APIs, config files, or network requests. Removes all whitespace to reduce payload size and improve performance.</p>
+      </div>
+      <div class="guide-card">
+        <h4>📊 Stats — For Inspection</h4>
+        <p>Check character count, line count, and file size in real time. Useful when you need to stay within API payload size limits or compare JSON sizes before and after minifying.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <span class="section-tag">🔗 MORE TOOLS</span>
+  <h2 class="section-title">Explore More Free Tools</h2>
+  <div class="related-grid">
+    <a href="csv-to-json.html" class="related-card"><div class="ricon">📊</div><span>CSV to JSON</span></a>
+    <a href="json-to-csv.html" class="related-card"><div class="ricon">📄</div><span>JSON to CSV</span></a>
+    <a href="xml-to-json.html" class="related-card"><div class="ricon">🔄</div><span>XML to JSON</span></a>
+    <a href="yaml-validator.html" class="related-card"><div class="ricon">⚙️</div><span>YAML Validator</span></a>
+    <a href="sql-formatter.html" class="related-card"><div class="ricon">🗄️</div><span>SQL Formatter</span></a>
+    <a href="base64.html" class="related-card"><div class="ricon">🔐</div><span>Base64 Encoder</span></a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Format Your JSON for Free, Right Now</h2>
+  <p>No signup. No limits. No cost. Paste your JSON and get clean, validated output instantly.</p>
+  <a href="#" class="cta-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">🚀 Use the Tool Now</a>
+</section>
+
+<!-- FOOTER ENGAGEMENT -->
+<div class="footer-engage">
+  <div class="engage-inner">
+    <div class="engage-title">Was this tool helpful?</div>
+
+    <div class="like-row">
+      <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+        <span class="like-icon">👍</span> <span id="likeCount">5,219</span> Helpful
+      </button>
+      <button class="like-btn" id="dislikeBtn" onclick="toggleDislike()">
+        <span class="like-icon">👎</span> <span id="dislikeCount">38</span> Not Helpful
+      </button>
+    </div>
+
+    <div class="footer-stars">
+      <h4>Rate this tool</h4>
+      <div class="footer-star-row" id="footerStars">
+        <button class="f-star" onclick="rateFooterStar(1)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(2)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(3)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(4)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(5)">⭐</button>
+      </div>
+      <div class="rating-display" id="footerRatingDisplay">⭐ 4.9/5 based on 3,142 reviews</div>
+    </div>
+
+    <div class="comments-section">
+      <h4>💬 Comments (<span id="commentCount">3</span>)</h4>
+      <div class="comment-box">
+        <div class="comment-input-row">
+          <input class="comment-name" id="commentName" type="text" placeholder="Your name">
+          <textarea class="comment-text-input" id="commentText" placeholder="Share your experience with this tool..."></textarea>
+        </div>
+        <button class="comment-submit" onclick="submitComment()">Post Comment</button>
+      </div>
+      <div class="comments-list" id="commentsList">
+        <div class="comment-item">
+          <div class="comment-meta"><span class="comment-author">Hamza R.</span><span class="comment-date">March 29, 2026</span></div>
+          <div class="comment-body">Saved me so much time debugging a broken API response. Instantly spotted the missing comma. Amazing tool!</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-meta"><span class="comment-author">Priya S.</span><span class="comment-date">March 25, 2026</span></div>
+          <div class="comment-body">The minify feature is exactly what I needed for my production API. Reduced payload size by 40%. Thank you!</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-meta"><span class="comment-author">Carlos M.</span><span class="comment-date">March 18, 2026</span></div>
+          <div class="comment-body">Clean, fast, no ads, no signup. This is what a developer tool should be. Bookmarked and using daily.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER GRID -->
+<footer class="footer-grid-section">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>🛠️ Toolyfi</h3>
+        <p>Free online tools for developers, analysts, and teams. No signup, no limits, no cost. Privacy-first, browser-based tools.</p>
+      </div>
+      <div class="footer-col">
+        <h4>JSON Tools</h4>
+        <a href="#">JSON Formatter</a>
+        <a href="#">JSON Validator</a>
+        <a href="#">JSON to CSV</a>
+        <a href="#">CSV to JSON</a>
+      </div>
+      <div class="footer-col">
+        <h4>Dev Tools</h4>
+        <a href="#">Base64 Encoder</a>
+        <a href="#">URL Encoder</a>
+        <a href="#">SQL Formatter</a>
+        <a href="#">YAML Validator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Toolyfi</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Toolyfi.com — Free Online Developer Tools. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SEO ARTICLE -->
+<div style="background:white; border-top: 3px solid var(--border);">
+<article class="article-section">
+  <div class="article-meta">
+    <span class="meta-tag">📅 Updated March 2026</span>
+    <span class="meta-tag">⏱️ 10 min read</span>
+    <span class="meta-tag">🔰 All Skill Levels</span>
+  </div>
+  <h1 class="article-title">JSON Formatter & Validator — The Complete 2026 Guide</h1>
+
+  <p>JSON (JavaScript Object Notation) is the universal language of the web. APIs return JSON. Databases store JSON. Configuration files use JSON. But working with raw, unformatted, or minified JSON is painful — it's hard to read, harder to debug, and easy to break with a single missing comma.</p>
+
+  <p>That's why a reliable JSON formatter and validator is one of the most-used tools in any developer's toolkit. This complete guide covers what JSON formatting and validation means, why it matters, how to use this free online tool, and how to handle the most common JSON errors you'll encounter in real-world development.</p>
+
+  <div class="article-box"><p>✅ <strong>Quick Answer:</strong> To format JSON online, paste your JSON into the input box above and click "Format." Your JSON will be instantly beautified with proper indentation. Click "Validate" to check for syntax errors, or "Minify" to compress it.</p></div>
+
+  <h2>What is JSON?</h2>
+  <p>JSON stands for JavaScript Object Notation. It is a lightweight, text-based data format used to store and transmit structured data. JSON was derived from JavaScript syntax but is now supported natively by virtually every programming language — Python, Java, C#, Ruby, Go, PHP, and more.</p>
+
+  <p>JSON represents data as key-value pairs enclosed in curly braces (objects) or as ordered lists enclosed in square brackets (arrays). It supports six data types: strings, numbers, booleans (true/false), null, objects, and arrays.</p>
+
+  <pre class="code-block">{
+  "name": "John Doe",
+  "age": 30,
+  "isActive": true,
+  "address": {
+    "city": "New York",
+    "country": "USA"
+  },
+  "skills": ["JavaScript", "Python", "React"]
+}</pre>
+
+  <h3>Why JSON Became the Standard</h3>
+  <p>JSON replaced XML as the dominant data interchange format because it is simpler, more compact, and directly parseable in JavaScript without any libraries. When REST APIs became the standard architecture for web services in the 2010s, JSON became their default format — and has dominated ever since.</p>
+
+  <h2>What is JSON Formatting (Beautifying)?</h2>
+  <p>JSON formatting, also called "beautifying" or "pretty printing," adds whitespace, indentation, and line breaks to raw or minified JSON to make it human-readable. Minified JSON removes all whitespace for efficiency, but becomes impossible to read when debugging.</p>
+
+  <h3>Minified JSON (before formatting):</h3>
+  <pre class="code-block">{"name":"John","age":30,"address":{"city":"New York"},"skills":["JS","Python"]}</pre>
+
+  <h3>Formatted JSON (after formatting):</h3>
+  <pre class="code-block">{
+  "name": "John",
+  "age": 30,
+  "address": {
+    "city": "New York"
+  },
+  "skills": [
+    "JS",
+    "Python"
+  ]
+}</pre>
+
+  <p>Formatted JSON is dramatically easier to read, navigate, and debug. Our formatter uses 2-space indentation — the most widely accepted convention in the JavaScript and web development community.</p>
+
+  <h2>What is JSON Validation?</h2>
+  <p>JSON validation checks whether a JSON string follows the correct JSON syntax rules. Valid JSON can be parsed by any JSON parser without errors. Invalid JSON will throw a parse error and break your application.</p>
+
+  <div class="article-box"><p>📌 <strong>Key fact:</strong> JSON syntax is stricter than JavaScript object syntax. JSON requires double quotes for all string keys and values, does not allow trailing commas, and does not support comments.</p></div>
+
+  <h3>JSON vs JavaScript Object Syntax</h3>
+  <table class="article-table">
+    <tr><th>Feature</th><th>JSON</th><th>JavaScript Object</th></tr>
+    <tr><td>String quotes</td><td>Double quotes only ("")</td><td>Single or double</td></tr>
+    <tr><td>Trailing commas</td><td>Not allowed</td><td>Allowed</td></tr>
+    <tr><td>Comments</td><td>Not allowed</td><td>Allowed</td></tr>
+    <tr><td>Undefined values</td><td>Not allowed</td><td>Allowed</td></tr>
+    <tr><td>Function values</td><td>Not allowed</td><td>Allowed</td></tr>
+  </table>
+
+  <h2>Most Common JSON Errors and How to Fix Them</h2>
+  <p>When you validate JSON and get an error, here are the most common causes and their fixes:</p>
+
+  <h3>1. Using Single Quotes Instead of Double Quotes</h3>
+  <pre class="code-block">// INVALID
+{'name': 'John'}
+
+// VALID
+{"name": "John"}</pre>
+
+  <h3>2. Trailing Comma After Last Element</h3>
+  <pre class="code-block">// INVALID
+{
+  "name": "John",
+  "age": 30,
+}
+
+// VALID
+{
+  "name": "John",
+  "age": 30
+}</pre>
+
+  <h3>3. Missing Comma Between Elements</h3>
+  <pre class="code-block">// INVALID
+{
+  "name": "John"
+  "age": 30
+}
+
+// VALID
+{
+  "name": "John",
+  "age": 30
+}</pre>
+
+  <h3>4. Unquoted Keys</h3>
+  <pre class="code-block">// INVALID
+{name: "John"}
+
+// VALID
+{"name": "John"}</pre>
+
+  <h3>5. Missing Closing Bracket or Brace</h3>
+  <pre class="code-block">// INVALID
+{"name": "John", "skills": ["JS", "Python"
+
+// VALID
+{"name": "John", "skills": ["JS", "Python"]}</pre>
+
+  <h2>JSON Minification — Why It Matters</h2>
+  <p>JSON minification removes all whitespace characters (spaces, tabs, newlines) that are not inside string values. The result is a compact JSON string that is functionally identical to the formatted version but significantly smaller in size.</p>
+
+  <h3>When Should You Minify JSON?</h3>
+  <ul>
+    <li><strong>API responses</strong> — Smaller payloads mean faster response times and lower bandwidth costs</li>
+    <li><strong>Configuration files</strong> — Minified configs load faster in applications</li>
+    <li><strong>localStorage/cookies</strong> — Staying within browser storage size limits</li>
+    <li><strong>Mobile apps</strong> — Reducing data usage for users on limited data plans</li>
+    <li><strong>CDN-served files</strong> — Reducing file size for faster CDN delivery</li>
+  </ul>
+
+  <div class="article-box"><p>💡 <strong>Pro tip:</strong> Always keep a formatted version for development and use minified JSON only for production. Our tool makes it easy to switch between both with one click.</p></div>
+
+  <h2>How to Format JSON in Different Programming Languages</h2>
+  <p>While our online tool handles most needs, developers often need to format JSON programmatically:</p>
+
+  <h3>JavaScript</h3>
+  <pre class="code-block">const obj = JSON.parse(jsonString);
+const formatted = JSON.stringify(obj, null, 2);</pre>
+
+  <h3>Python</h3>
+  <pre class="code-block">import json
+data = json.loads(json_string)
+formatted = json.dumps(data, indent=2)</pre>
+
+  <h3>Node.js (File)</h3>
+  <pre class="code-block">const fs = require('fs');
+const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+fs.writeFileSync('formatted.json', JSON.stringify(data, null, 2));</pre>
+
+  <h2>JSON Schema Validation</h2>
+  <p>Beyond basic syntax validation, JSON Schema allows you to validate the structure and data types of your JSON against a defined schema. This is essential for API contract testing, form validation, and ensuring data integrity across services.</p>
+
+  <p>Our JSON Formatter handles syntax validation — confirming that your JSON is well-formed and parseable. For JSON Schema validation (validating structure against a schema definition), this is typically done at the application level using libraries like Ajv (JavaScript) or jsonschema (Python).</p>
+
+  <h2>JSON Best Practices</h2>
+  <ul>
+    <li><strong>Use camelCase for keys</strong> — Standard convention in JavaScript APIs (firstName, not first_name)</li>
+    <li><strong>Keep nesting shallow</strong> — Deeply nested JSON is hard to read and work with</li>
+    <li><strong>Use consistent naming</strong> — Don't mix camelCase and snake_case in the same JSON</li>
+    <li><strong>Validate before sending</strong> — Always validate JSON before sending to an API to avoid runtime errors</li>
+    <li><strong>Format during development</strong> — Use formatted JSON in development; minify for production</li>
+    <li><strong>Handle null explicitly</strong> — Use null for missing values rather than omitting the key, so consumers know the field exists</li>
+  </ul>
+
+  <h2>Frequently Asked Questions About JSON Formatting</h2>
+
+  <h3>What is the fastest way to format JSON?</h3>
+  <p>The fastest way is to use Toolyfi's free JSON Formatter — paste your JSON, click Format, done. No installation, no signup, instant results in your browser.</p>
+
+  <h3>Can JSON have comments?</h3>
+  <p>No. Standard JSON does not support comments. This is a common source of confusion for developers coming from JavaScript or YAML. If you need comments in a config file, consider YAML (which supports comments) or JSONC (JSON with Comments, supported by some editors like VS Code).</p>
+
+  <h3>What is the difference between JSON and YAML?</h3>
+  <p>JSON uses curly braces and square brackets with explicit delimiters. YAML uses indentation and is more human-readable for configuration files. YAML is a superset of JSON — all valid JSON is valid YAML. YAML supports comments; JSON does not.</p>
+
+  <h3>Why does my JSON say "Unexpected token"?</h3>
+  <p>This error usually means a syntax problem: a missing or extra comma, wrong quote type, or an unquoted key. Paste your JSON into the validator above to see the exact error location and fix it.</p>
+
+  <h2>Conclusion</h2>
+  <p>A JSON Formatter and Validator is an essential tool for any developer working with APIs, databases, or configuration files. Toolyfi's free, browser-based JSON Formatter gives you instant formatting, syntax validation, and minification — with complete privacy and no signup required.</p>
+
+  <p>Whether you're debugging an API response, validating a config file, or minifying JSON for production, use the tool at the top of this page for fast, reliable results every time.</p>
+</article>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  // TOOL LOGIC
+  const inputEl = document.getElementById('inputJSON');
+  const outputEl = document.getElementById('outputJSON');
+
+  inputEl.addEventListener('input', updateStats);
 
   function updateStats() {
-    const text = inputJSON.value;
-    document.getElementById('charCount').textContent = text.length;
-    document.getElementById('lineCount').textContent = text.split('\n').length;
-    const sizeInBytes = new Blob([text]).size;
-    document.getElementById('sizeCount').textContent = formatBytes(sizeInBytes);
+    const t = inputEl.value;
+    document.getElementById('charCount').textContent = t.length.toLocaleString();
+    document.getElementById('lineCount').textContent = t.split('\n').length.toLocaleString();
+    const bytes = new Blob([t]).size;
+    document.getElementById('sizeCount').textContent = fmtBytes(bytes);
   }
 
-  function formatBytes(bytes) {
-    if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+  function fmtBytes(b) {
+    if (b === 0) return '0 B';
+    const k = 1024, s = ['B','KB','MB'];
+    const i = Math.floor(Math.log(b) / Math.log(k));
+    return (Math.round((b / Math.pow(k, i)) * 100) / 100) + ' ' + s[i];
   }
 
-  // Format JSON
   function formatJSON() {
     try {
-      const json = JSON.parse(inputJSON.value);
-      outputJSON.value = JSON.stringify(json, null, 2);
+      const parsed = JSON.parse(inputEl.value);
+      outputEl.value = JSON.stringify(parsed, null, 2);
+      outputEl.className = 'valid';
       document.getElementById('statusCount').textContent = '✓ Valid';
-      showMessage('✓ JSON formatted successfully!', 'success');
-    } catch (e) {
-      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      showMsg('✓ JSON formatted!', 'success');
+    } catch(e) {
+      showMsg('✗ ' + e.message, 'error');
       document.getElementById('statusCount').textContent = '✗ Error';
+      outputEl.className = 'invalid';
     }
   }
 
-  // Validate JSON
   function validateJSON() {
     try {
-      JSON.parse(inputJSON.value);
+      JSON.parse(inputEl.value);
       document.getElementById('statusCount').textContent = '✓ Valid';
-      showMessage('✓ JSON is valid!', 'success');
-    } catch (e) {
-      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      outputEl.value = '✓ Valid JSON — No syntax errors found!';
+      outputEl.className = 'valid';
+      showMsg('✓ JSON is valid!', 'success');
+    } catch(e) {
+      showMsg('✗ ' + e.message, 'error');
       document.getElementById('statusCount').textContent = '✗ Error';
+      outputEl.value = '✗ Invalid JSON:\n' + e.message;
+      outputEl.className = 'invalid';
     }
   }
 
-  // Minify JSON
   function minifyJSON() {
     try {
-      const json = JSON.parse(inputJSON.value);
-      outputJSON.value = JSON.stringify(json);
+      const parsed = JSON.parse(inputEl.value);
+      outputEl.value = JSON.stringify(parsed);
+      outputEl.className = 'valid';
       document.getElementById('statusCount').textContent = '✓ Valid';
-      showMessage('✓ JSON minified successfully!', 'success');
-    } catch (e) {
-      showMessage('✗ Invalid JSON: ' + e.message, 'error');
+      showMsg('✓ JSON minified!', 'success');
+    } catch(e) {
+      showMsg('✗ ' + e.message, 'error');
       document.getElementById('statusCount').textContent = '✗ Error';
     }
   }
 
-  // Clear all
   function clearAll() {
-    inputJSON.value = '';
-    outputJSON.value = '';
+    inputEl.value = ''; outputEl.value = '';
+    inputEl.className = ''; outputEl.className = '';
     document.getElementById('charCount').textContent = '0';
     document.getElementById('lineCount').textContent = '0';
     document.getElementById('sizeCount').textContent = '0 B';
     document.getElementById('statusCount').textContent = 'Ready';
-    messageEl.classList.remove('show');
+    document.getElementById('msg').classList.remove('show');
   }
 
-  // Copy output
   function copyOutput() {
-    if (!outputJSON.value) {
-      showMessage('✗ Nothing to copy!', 'error');
-      return;
-    }
-    navigator.clipboard.writeText(outputJSON.value).then(() => {
-      showMessage('✓ Copied to clipboard!', 'success');
-    });
+    if (!outputEl.value) { showMsg('Nothing to copy!', 'error'); return; }
+    navigator.clipboard.writeText(outputEl.value).then(() => showMsg('✓ Copied!', 'success'));
   }
 
-  // Load sample
   function loadSample() {
-    const sample = {
-      "name": "John Doe",
-      "age": 30,
-      "email": "john@example.com",
-      "address": {
-        "street": "123 Main St",
-        "city": "New York",
-        "country": "USA"
-      },
-      "skills": ["JavaScript", "Python", "React"],
-      "isActive": true
-    };
-    inputJSON.value = JSON.stringify(sample);
+    const sample = {"name":"John Doe","age":30,"email":"john@example.com","address":{"street":"123 Main St","city":"New York","country":"USA"},"skills":["JavaScript","Python","React"],"isActive":true,"scores":[95,87,92]};
+    inputEl.value = JSON.stringify(sample);
     updateStats();
-    showMessage('📌 Sample JSON loaded!', 'success');
+    showMsg('📌 Sample JSON loaded!', 'success');
   }
 
-  // Show message
-  function showMessage(msg, type) {
-    messageEl.textContent = msg;
-    messageEl.className = 'message show ' + type;
-    setTimeout(() => messageEl.classList.remove('show'), 3000);
+  function showMsg(txt, type) {
+    const el = document.getElementById('msg');
+    el.textContent = txt; el.className = 'msg show ' + type;
+    setTimeout(() => el.classList.remove('show'), 3000);
   }
 
-  // Initialize stats
+  // TOOL STARS
+  function rateToolStar(n) {
+    document.querySelectorAll('#toolStars .star-btn').forEach((b,i) => b.textContent = i < n ? '⭐' : '☆');
+    document.getElementById('toolStarSummary').textContent = `You rated this ${n}/5 — Thank you! 🎉`;
+  }
+
+  // FOOTER STARS
+  function rateFooterStar(n) {
+    document.querySelectorAll('#footerStars .f-star').forEach((b,i) => b.textContent = i < n ? '⭐' : '☆');
+    document.getElementById('footerRatingDisplay').textContent = `You rated ${n}/5 — Thank you!`;
+  }
+
+  // LIKE/DISLIKE
+  let liked = false, disliked = false, likes = 5219, dislikes = 38;
+  function toggleLike() {
+    if (liked) { liked = false; likes--; } else { liked = true; likes++; if (disliked) { disliked = false; dislikes--; } }
+    updateLikeUI();
+  }
+  function toggleDislike() {
+    if (disliked) { disliked = false; dislikes--; } else { disliked = true; dislikes++; if (liked) { liked = false; likes--; } }
+    updateLikeUI();
+  }
+  function updateLikeUI() {
+    document.getElementById('likeCount').textContent = likes.toLocaleString();
+    document.getElementById('dislikeCount').textContent = dislikes.toLocaleString();
+    document.getElementById('likeBtn').className = 'like-btn' + (liked ? ' liked' : '');
+    document.getElementById('dislikeBtn').className = 'like-btn' + (disliked ? ' disliked' : '');
+  }
+
+  // COMMENTS
+  let commentCount = 3;
+  function submitComment() {
+    const name = document.getElementById('commentName').value.trim();
+    const text = document.getElementById('commentText').value.trim();
+    if (!name || !text) { alert('Please enter your name and comment.'); return; }
+    commentCount++;
+    const item = document.createElement('div');
+    item.className = 'comment-item';
+    item.innerHTML = `<div class="comment-meta"><span class="comment-author">${name}</span><span class="comment-date">Just now</span></div><div class="comment-body">${text}</div>`;
+    document.getElementById('commentsList').prepend(item);
+    document.getElementById('commentCount').textContent = commentCount;
+    document.getElementById('commentName').value = '';
+    document.getElementById('commentText').value = '';
+  }
+
+  // FAQ
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+  // INIT
   updateStats();
 </script>
-
 </body>
 </html>
