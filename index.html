@@ -464,6 +464,24 @@
       transform: translateX(3px);
     }
 
+    /* BLINKING RED INDICATOR */
+    .badge-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #ff0000;
+      border-radius: 50%;
+      margin-left: 6px;
+      animation: blink-red 1.2s infinite;
+      box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+      vertical-align: middle;
+    }
+
+    @keyframes blink-red {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.3; }
+    }
+
     /* FOOTER */
     footer {
       background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
@@ -1342,6 +1360,7 @@
       { name: "Markdown to HTML",    desc: "Convert Markdown to clean HTML instantly.",               icon: "📄", category: "converter", href: "markdown-to-html-seo.html" },
       
       // CALCULATORS
+      { name: "BISP 8171 Check",     desc: "Check your BISP 8171 eligibility status instantly.",     icon: "✅", category: "calculator", href: "bisp-8171-check.html", badge: true },
       { name: "Age Calculator",      desc: "Calculate age in days, months & years precisely.",        icon: "🎂", category: "calculator", href: "age-calculator.html" },
       { name: "BMI Calculator",      desc: "Calculate Body Mass Index with health insights.",         icon: "⚖️", category: "calculator", href: "bmi-calculator.html" },
       { name: "Loan Calculator",     desc: "Calculate EMI, interest & loan repayments instantly.",    icon: "🏦", category: "calculator", href: "loan-calculator.html" },
@@ -1368,7 +1387,7 @@
       return `
         <div class="tool-card" data-category="${tool.category}">
           <div class="tool-icon">${tool.icon}</div>
-          <h3 class="tool-name">${tool.name}</h3>
+          <h3 class="tool-name">${tool.name}${tool.badge ? '<span class="badge-indicator"></span>' : ''}</h3>
           <p class="tool-desc">${tool.desc}</p>
           <a href="${tool.href}" class="tool-link">Try Now →</a>
         </div>`;
