@@ -1,534 +1,828 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free QR code generator online. Create QR codes for URLs, text, contact info in seconds. Download as PNG. No signup needed. Fast & secure.">
-  <meta name="keywords" content="QR code generator, generate QR code, free QR code maker, QR code online, create QR code, download QR code">
-  <meta name="author" content="Toolyfi">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#667eea">
-  
-  <title>Free QR Code Generator Online - Create & Download QR Codes | Toolyfi</title>
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Free QR Code Generator - Create QR Codes Online">
-  <meta property="og:description" content="Generate QR codes instantly for URLs, text, emails. Download as PNG image. 100% free, no signup required.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolyfi.com/qr-code-generator.html">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free QR Code Generator">
-  <meta name="twitter:description" content="Create professional QR codes in seconds. Download PNG instantly.">
-  
-  <!-- Canonical -->
-  <link rel="canonical" href="https://toolyfi.com/qr-code-generator.html">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "QR Code Generator",
-    "description": "Free online QR code generator tool",
-    "url": "https://toolyfi.com/qr-code-generator.html",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "1250"
-    }
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free QR Code Generator online — create QR codes for URLs, text, email, phone and WiFi instantly. Download as PNG. No signup, no watermark, 100% free.">
+<meta name="keywords" content="QR code generator, generate QR code, free QR code maker, QR code online, create QR code, download QR code, URL to QR, WiFi QR code">
+<meta name="author" content="Toolyfi">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#0f172a">
+<title>Free QR Code Generator — Create & Download QR Codes Online | Toolyfi</title>
+<meta property="og:title" content="Free QR Code Generator | Toolyfi">
+<meta property="og:description" content="Create QR codes for URLs, text, email, WiFi instantly. Download PNG. 100% free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolyfi.com/qr-code-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free QR Code Generator | Toolyfi">
+<meta name="twitter:description" content="Create QR codes instantly. Free, no watermark, no signup.">
+<link rel="canonical" href="https://toolyfi.com/qr-code-generator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 15px;
-    }
+<!-- QR Code Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    .container {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 25px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
+<!-- Rating Schema -->
+<script id="rating-schema-script">
+(function(){
+  const PAGE_ID='qr-code-generator';
+  const data=JSON.parse(localStorage.getItem('tf_rating_'+PAGE_ID)||'{"total":0,"count":0}');
+  if(data.count<3)return;
+  const avg=(data.total/data.count).toFixed(1);
+  const s=document.createElement('script');s.type='application/ld+json';
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg,"ratingCount":data.count,"bestRating":"5","worstRating":"1"}});
+  document.head.appendChild(s);
+})();
+</script>
 
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 35px 25px;
-      text-align: center;
-    }
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","description":"Free online QR code generator — create QR codes for URLs, text, email and WiFi","url":"https://toolyfi.com/qr-code-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"How do I create a QR code?","acceptedAnswer":{"@type":"Answer","text":"Enter your URL, text, or other content in the tool above, customize size and colors, and click Generate. Download the QR code as a PNG image instantly."}},
+  {"@type":"Question","name":"Is this QR code generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no watermark, no limits on QR codes generated."}},
+  {"@type":"Question","name":"Can I create a QR code for WiFi?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select the WiFi type, enter your network name and password, and generate a scannable WiFi QR code."}},
+  {"@type":"Question","name":"What size should a QR code be?","acceptedAnswer":{"@type":"Answer","text":"For print use, minimum 2cm x 2cm. For screens, 200x200px is good. Higher error correction allows smaller sizes while remaining scannable."}},
+  {"@type":"Question","name":"Do QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"Static QR codes like those generated here never expire. The QR code will work as long as the destination URL or content exists."}}
+]}
+</script>
 
-    .header h1 {
-      font-size: 1.8em;
-      margin-bottom: 8px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+<style>
+:root{
+  --primary:#0ea5e9;
+  --primary-dark:#0284c7;
+  --primary-light:#e0f2fe;
+  --accent:#f59e0b;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --light:#f8fafc;
+  --border:#e2e8f0;
+  --white:#fff;
+  --shadow:0 4px 24px rgba(14,165,233,0.10);
+  --shadow-lg:0 12px 48px rgba(14,165,233,0.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
 
-    .header p {
-      font-size: 0.95em;
-      opacity: 0.95;
-      margin-bottom: 12px;
-    }
+header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
 
-    .badges {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.ad-top{background:var(--light);border-bottom:1px solid var(--border);padding:10px 0;text-align:center}
+.ad-label{font-size:.65rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
 
-    .badge {
-      background: rgba(255,255,255,0.25);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.75em;
-      font-weight: 600;
-    }
+.hero{background:linear-gradient(135deg,#0f172a 0%,#0c2a4a 60%,#0369a1 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 50%,rgba(14,165,233,0.2) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)}
+.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600}
+.trust-pill span{color:var(--accent)}
 
-    .content {
-      padding: 25px;
-    }
+.tool-section{max-width:900px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
+.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
+.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.tool-card-header h2{color:#fff;font-size:1.2rem;font-weight:700}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,0.2);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700}
+.tool-body{padding:32px}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 25px;
-    }
+/* TYPE TABS */
+.type-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.type-tab{padding:9px 18px;border-radius:100px;border:2px solid var(--border);font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;color:var(--gray);background:#fff}
+.type-tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.type-tab:hover:not(.active){border-color:var(--primary);color:var(--primary)}
 
-    .stat-box {
-      background: #f5f7ff;
-      padding: 15px;
-      border-radius: 12px;
-      border-left: 4px solid #667eea;
-      text-align: center;
-    }
+/* INPUTS */
+.input-panel{display:none}
+.input-panel.show{display:block}
+.inp-group{margin-bottom:16px}
+.inp-group label{display:block;font-weight:700;font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.inp-group input,.inp-group textarea,.inp-group select{width:100%;padding:13px 16px;border:2px solid var(--border);border-radius:12px;font-size:.95rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--dark);background:var(--light);transition:all .2s}
+.inp-group input:focus,.inp-group textarea:focus,.inp-group select:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(14,165,233,0.08)}
+.inp-group textarea{min-height:100px;resize:vertical}
 
-    .stat-label {
-      color: #999;
-      font-size: 0.8em;
-      margin-bottom: 8px;
-    }
+/* SETTINGS */
+.settings-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.color-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.inp-group input[type=color]{padding:6px;height:46px;cursor:pointer;border-radius:10px}
+.range-row{margin-bottom:20px}
+.range-row input[type=range]{width:100%;accent-color:var(--primary)}
 
-    .stat-value {
-      font-size: 1.8em;
-      font-weight: 800;
-      color: #667eea;
-    }
+/* QR PREVIEW */
+.qr-preview-wrap{display:flex;gap:28px;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap}
+.qr-box{background:var(--light);border:2px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;min-width:240px;min-height:240px;flex-shrink:0}
+#qrcode{display:flex;align-items:center;justify-content:center}
+#qrcode canvas,#qrcode img{border-radius:8px}
+.qr-placeholder{text-align:center;color:#94a3b8}
+.qr-placeholder .qr-ph-icon{font-size:4rem;margin-bottom:8px}
+.qr-placeholder p{font-size:.85rem;font-weight:600}
+.qr-info-panel{flex:1;min-width:180px}
+.qr-info-item{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:10px}
+.qr-info-item .qi-label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px}
+.qr-info-item .qi-val{font-size:.95rem;font-weight:700;color:var(--dark)}
 
-    .options-card {
-      background: #f8f9ff;
-      padding: 18px;
-      border-radius: 15px;
-      border: 1px solid #e0e7ff;
-      margin-bottom: 20px;
-    }
+/* BTNS */
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-gen{flex:1;background:var(--primary);color:#fff;border:none;padding:14px 24px;border-radius:12px;font-size:.95rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-gen:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.35)}
+.btn-dl{background:#10b981;color:#fff;border:none;padding:14px 20px;border-radius:12px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-dl:hover{background:#059669}
+.btn-sm{background:var(--light);border:2px solid var(--border);color:var(--gray);padding:14px 16px;border-radius:12px;font-size:.82rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-sm:hover{border-color:var(--primary);color:var(--primary)}
 
-    .options-title {
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 12px;
-      font-size: 0.95em;
-    }
+.msg{padding:11px 16px;border-radius:10px;font-size:.88rem;font-weight:600;margin-bottom:16px;display:none}
+.msg.show{display:block}
+.msg.success{background:#ecfdf5;color:#059669;border-left:4px solid #10b981}
+.msg.error{background:#fef2f2;color:#dc2626;border-left:4px solid #dc2626}
 
-    .option-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+.ad-mid{text-align:center;padding:20px;background:var(--light);border-top:1px solid var(--border);margin-top:24px;border-radius:12px}
 
-    label {
-      display: block;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 0.9em;
-    }
+.stats-bar{background:var(--dark);padding:40px 20px}
+.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.sbar-item .sval{font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px}
+.sbar-item .slbl{color:rgba(255,255,255,0.55);font-size:.82rem;font-weight:600}
 
-    input[type="text"],
-    input[type="color"],
-    input[type="number"],
-    select {
-      width: 100%;
-      padding: 11px 14px;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 0.9em;
-      transition: all 0.3s;
-    }
+.section{max-width:980px;margin:0 auto;padding:80px 24px}
+.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary-dark);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
 
-    input[type="text"]:focus,
-    select:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 12px rgba(102, 126, 234, 0.2);
-    }
+.more-section{background:var(--light);padding:80px 24px}
+.more-inner{max-width:980px;margin:0 auto}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.more-features{display:flex;flex-direction:column;gap:12px}
+.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
+.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.more-feat-text p{font-size:.85rem;color:var(--gray)}
+.qr-visual{background:linear-gradient(135deg,#0c2a4a,#0369a1);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.qr-vis-row{background:rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.qr-vis-type{font-size:.88rem;font-weight:700;color:#fff}
+.qr-vis-use{font-size:.78rem;color:rgba(255,255,255,0.6)}
+.qr-vis-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:6px;background:rgba(14,165,233,0.2);color:#7dd3fc}
 
-    input[type="color"] {
-      height: 44px;
-      cursor: pointer;
-      padding: 3px;
-    }
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
+.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
+.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
 
-    .input-group {
-      margin-bottom: 18px;
-    }
+.who-section{background:var(--dark);padding:80px 24px}
+.who-inner{max-width:980px;margin:0 auto}
+.who-section .section-title{color:#fff}
+.who-section .section-sub{color:rgba(255,255,255,0.55)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
+.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
+.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.who-card p{color:rgba(255,255,255,0.5);font-size:.88rem;line-height:1.7}
 
-    .color-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+.faq-section{background:var(--light);padding:80px 24px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
+.faq-item.open{border-color:var(--primary)}
+.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.95rem}
+.faq-q .arrow{font-size:1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.92rem}
+.faq-item.open .faq-a{display:block}
 
-    .qr-preview {
-      background: #f8f9ff;
-      padding: 25px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 280px;
-      border: 2px dashed #667eea;
-      margin-bottom: 20px;
-    }
+/* RATING WIDGET */
+.tf-widget{max-width:860px;margin:0 auto;padding:0 20px 60px}
+.tf-widget-card{background:#fff;border:2px solid var(--border);border-radius:20px;overflow:hidden}
+.tf-rating-bar{background:linear-gradient(135deg,#f8fafc,#f1f5f9);padding:28px 32px;border-bottom:1px solid var(--border)}
+.tf-rating-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.tf-rating-left h3{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:4px}
+.tf-rating-left p{font-size:.82rem;color:var(--gray);font-weight:600}
+.tf-avg-display{text-align:center}
+.tf-avg-num{font-size:3rem;font-weight:800;color:var(--dark);line-height:1}
+.tf-avg-stars{font-size:1.4rem;letter-spacing:2px;margin:4px 0}
+.tf-avg-count{font-size:.75rem;color:#94a3b8;font-weight:600}
+.tf-star-input{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tf-star-input span{font-size:.85rem;font-weight:700;color:var(--gray)}
+.tf-stars{display:flex;gap:4px;direction:rtl}
+.tf-stars input{display:none}
+.tf-stars label{font-size:2rem;cursor:pointer;color:#e2e8f0;transition:color .15s;line-height:1}
+.tf-stars:hover label,.tf-stars label:hover,.tf-stars label:hover~label,.tf-stars input:checked~label{color:#f59e0b}
+.tf-rating-bars{margin-top:16px}
+.tf-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.tf-bar-lbl{font-size:.75rem;font-weight:700;color:var(--gray);width:32px;text-align:right}
+.tf-bar-track{flex:1;height:8px;background:#e2e8f0;border-radius:100px;overflow:hidden}
+.tf-bar-fill{height:100%;background:#f59e0b;border-radius:100px;transition:width .5s ease}
+.tf-bar-cnt{font-size:.72rem;font-weight:700;color:#94a3b8;width:20px}
+.tf-reactions{display:flex;align-items:center;gap:12px;padding:16px 32px;border-bottom:1px solid var(--border);background:#fff;flex-wrap:wrap}
+.tf-react-label{font-size:.82rem;font-weight:700;color:var(--gray)}
+.tf-react-btn{display:flex;align-items:center;gap:6px;background:var(--light);border:2px solid var(--border);border-radius:100px;padding:8px 18px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;color:var(--gray)}
+.tf-react-btn:hover{border-color:#94a3b8;color:var(--dark)}
+.tf-react-btn.liked{background:#dcfce7;border-color:#10b981;color:#059669}
+.tf-react-btn.disliked{background:#fee2e2;border-color:#ef4444;color:#dc2626}
+.tf-react-count{font-weight:800}
+.tf-comments-section{padding:24px 32px}
+.tf-comments-title{font-size:.95rem;font-weight:800;color:var(--dark);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.tf-comment-form input,.tf-comment-form textarea{width:100%;border:2px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--dark);background:var(--light);transition:all .2s;margin-bottom:10px}
+.tf-comment-form input:focus,.tf-comment-form textarea:focus{outline:none;border-color:var(--primary);background:#fff}
+.tf-comment-form textarea{min-height:90px;resize:vertical}
+.tf-submit-btn{background:var(--primary);color:#fff;border:none;padding:11px 24px;border-radius:10px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.tf-submit-btn:hover{background:var(--primary-dark)}
+.tf-comments-list{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.tf-comment-item{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.tf-comment-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.tf-comment-name{font-weight:700;font-size:.88rem;color:var(--dark)}
+.tf-comment-date{font-size:.75rem;color:#94a3b8;font-weight:600}
+.tf-comment-stars{font-size:.85rem;color:#f59e0b;margin-bottom:6px}
+.tf-comment-text{font-size:.88rem;color:#374151;line-height:1.7}
+.tf-no-comments{text-align:center;color:#94a3b8;font-size:.88rem;font-weight:600;padding:20px 0}
 
-    #qrcode {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
+.article-section h2{font-size:1.85rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
+.article-section h3{font-size:1.25rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
+.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
+.article-section ul,.article-section ol{margin:16px 0 20px 28px}
+.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
+.article-section strong{color:var(--primary-dark);font-weight:700}
+.article-section a{color:var(--primary-dark);font-weight:600;text-decoration:none}
+.article-section a:hover{text-decoration:underline}
+.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
 
-    #qrcode img,
-    #qrcode canvas {
-      max-width: 100%;
-      height: auto;
-    }
+.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:36px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
 
-    .button-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
+.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
+.tools-footer-inner{max-width:980px;margin:0 auto}
+.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s}
+.tool-link:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
 
-    .btn {
-      padding: 11px 0;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.85em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:.88rem;font-weight:600;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{background:var(--dark);padding:32px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:.85rem;margin-bottom:6px}
+footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
+footer a:hover{color:#fff}
 
-    .btn-primary {
-      background: #667eea;
-      color: white;
-      grid-column: 1 / 3;
-    }
-
-    .btn-primary:hover {
-      background: #5568d3;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #333;
-      border: 2px solid #ddd;
-    }
-
-    .btn-secondary:hover {
-      background: #f8f9fa;
-      border-color: #667eea;
-      color: #667eea;
-    }
-
-    .message {
-      padding: 12px 16px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: none;
-      font-weight: 500;
-      font-size: 0.9em;
-      animation: slideDown 0.3s ease-out;
-    }
-
-    .message.show {
-      display: block;
-    }
-
-    .message.success {
-      background: #e8f5e9;
-      color: #2e7d32;
-      border-left: 4px solid #4caf50;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .footer {
-      background: #f8f9fa;
-      padding: 20px;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-    }
-
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 1.5em;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .button-group {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .btn-primary {
-        grid-column: 1 / 3;
-      }
-
-      .option-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media(max-width:768px){
+  header{padding:0 16px}
+  .settings-row{grid-template-columns:1fr 1fr}
+  .qr-preview-wrap{flex-direction:column}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .more-grid{grid-template-columns:1fr}
+  .qr-visual{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .tf-reactions{padding:16px 20px}
+  .tf-rating-bar,.tf-comments-section{padding:20px}
+}
+@media(max-width:480px){
+  .hero{padding:56px 16px 72px}
+  .tool-body{padding:20px}
+  .who-grid{grid-template-columns:1fr}
+  .settings-row{grid-template-columns:1fr}
+  .btn-row{flex-wrap:wrap}
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <h1>📱 QR Code Generator</h1>
-    <p>Create professional QR codes instantly. Download as PNG image.</p>
-    <div class="badges">
-      <span class="badge">💰 100% Free</span>
-      <span class="badge">⚡ Instant</span>
-      <span class="badge">📥 Download</span>
-      <span class="badge">🔒 Secure</span>
-    </div>
+<header>
+  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+  <nav>
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/updatesworld">Updates</a>
+    <a href="https://toolyfi.com">Tools</a>
+  </nav>
+</header>
+
+<!-- AD TOP -->
+<div class="ad-top">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📱 QR Code Generator — Free Online Tool</div>
+  <h1>Create <em>QR Codes</em><br>in Seconds</h1>
+  <p class="hero-sub">Generate QR codes for URLs, text, WiFi, email, and phone numbers. Download as PNG. No watermark, no signup, 100% free.</p>
+  <div class="trust-pills">
+    <div class="trust-pill"><span>✓</span> 100% Free</div>
+    <div class="trust-pill"><span>✓</span> No Watermark</div>
+    <div class="trust-pill"><span>✓</span> Custom Colors</div>
+    <div class="trust-pill"><span>✓</span> No Signup</div>
   </div>
+</section>
 
-  <div class="content">
-    <div class="message" id="message"></div>
-
-    <div class="stats">
-      <div class="stat-box">
-        <div class="stat-label">QR Generated</div>
-        <div class="stat-value" id="generated">0</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Size</div>
-        <div class="stat-value" id="sizeDisplay">200</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Format</div>
-        <div class="stat-value">PNG</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Status</div>
-        <div class="stat-value">Ready</div>
+<!-- TOOL -->
+<div class="tool-section">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <h2>📱 QR Code Generator</h2>
+      <div class="stat-chips">
+        <div class="stat-chip">⚡ Instant</div>
+        <div class="stat-chip">🎨 Custom Colors</div>
+        <div class="stat-chip">📥 PNG Download</div>
       </div>
     </div>
+    <div class="tool-body">
+      <div class="msg" id="msg"></div>
 
-    <div class="options-card">
-      <div class="options-title">⚙️ QR Code Settings</div>
-      
-      <div class="input-group">
-        <label for="qrText">📝 Text or URL</label>
-        <input type="text" id="qrText" placeholder="Enter URL or text..." value="https://toolyfi.com" oninput="generateQR()">
+      <!-- TYPE TABS -->
+      <div class="type-tabs">
+        <button class="type-tab active" onclick="setType('url')">🔗 URL</button>
+        <button class="type-tab" onclick="setType('text')">📝 Text</button>
+        <button class="type-tab" onclick="setType('email')">📧 Email</button>
+        <button class="type-tab" onclick="setType('phone')">📞 Phone</button>
+        <button class="type-tab" onclick="setType('wifi')">📶 WiFi</button>
       </div>
 
-      <div class="option-grid">
-        <div>
-          <label for="qrSize">📏 Size (px)</label>
-          <input type="number" id="qrSize" min="100" max="500" value="200" step="50" oninput="updateSize(); generateQR()">
-        </div>
-        <div>
-          <label for="errorLevel">🛡️ Error Level</label>
-          <select id="errorLevel" onchange="generateQR()">
-            <option value="L">Low (L)</option>
-            <option value="M" selected>Medium (M)</option>
-            <option value="Q">Quartile (Q)</option>
-            <option value="H">High (H)</option>
+      <!-- URL -->
+      <div class="input-panel show" id="panel-url">
+        <div class="inp-group"><label>🔗 Website URL</label><input type="url" id="inp-url" placeholder="https://toolyfi.com" oninput="generateQR()"></div>
+      </div>
+      <!-- TEXT -->
+      <div class="input-panel" id="panel-text">
+        <div class="inp-group"><label>📝 Text Content</label><textarea id="inp-text" placeholder="Enter any text..." oninput="generateQR()"></textarea></div>
+      </div>
+      <!-- EMAIL -->
+      <div class="input-panel" id="panel-email">
+        <div class="inp-group"><label>📧 Email Address</label><input type="email" id="inp-email" placeholder="hello@example.com" oninput="generateQR()"></div>
+        <div class="inp-group"><label>📋 Subject (optional)</label><input type="text" id="inp-email-sub" placeholder="Subject line" oninput="generateQR()"></div>
+      </div>
+      <!-- PHONE -->
+      <div class="input-panel" id="panel-phone">
+        <div class="inp-group"><label>📞 Phone Number</label><input type="tel" id="inp-phone" placeholder="+923001234567" oninput="generateQR()"></div>
+      </div>
+      <!-- WIFI -->
+      <div class="input-panel" id="panel-wifi">
+        <div class="inp-group"><label>📶 Network Name (SSID)</label><input type="text" id="inp-wifi-ssid" placeholder="MyWiFiNetwork" oninput="generateQR()"></div>
+        <div class="inp-group"><label>🔑 Password</label><input type="text" id="inp-wifi-pass" placeholder="WiFiPassword123" oninput="generateQR()"></div>
+        <div class="inp-group"><label>🔒 Security Type</label>
+          <select id="inp-wifi-sec" onchange="generateQR()">
+            <option value="WPA">WPA/WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">No Password</option>
           </select>
         </div>
       </div>
 
-      <div class="color-row">
-        <div>
-          <label for="darkColor">🎨 Dark Color</label>
+      <!-- SETTINGS -->
+      <div class="settings-row">
+        <div class="inp-group">
+          <label>📐 Size: <span id="sizeDisplay">250</span>px</label>
+          <input type="range" id="qrSize" min="150" max="500" value="250" oninput="updateSize()">
+        </div>
+        <div class="inp-group">
+          <label>🎨 Dark Color</label>
           <input type="color" id="darkColor" value="#000000" oninput="generateQR()">
         </div>
-        <div>
-          <label for="lightColor">⚪ Light Color</label>
+        <div class="inp-group">
+          <label>⚪ Light Color</label>
           <input type="color" id="lightColor" value="#ffffff" oninput="generateQR()">
         </div>
       </div>
-    </div>
+      <div class="inp-group" style="margin-bottom:20px">
+        <label>🛡️ Error Correction</label>
+        <select id="errorLevel" onchange="generateQR()">
+          <option value="L">Low (L) — 7% correction</option>
+          <option value="M" selected>Medium (M) — 15% correction</option>
+          <option value="Q">Quartile (Q) — 25% correction</option>
+          <option value="H">High (H) — 30% correction</option>
+        </select>
+      </div>
 
-    <div class="qr-preview">
-      <div id="qrcode"></div>
-    </div>
+      <!-- PREVIEW -->
+      <div class="qr-preview-wrap">
+        <div class="qr-box">
+          <div id="qrcode">
+            <div class="qr-placeholder"><div class="qr-ph-icon">📱</div><p>QR code appears here</p></div>
+          </div>
+        </div>
+        <div class="qr-info-panel">
+          <div class="qr-info-item"><div class="qi-label">Type</div><div class="qi-val" id="qi-type">URL</div></div>
+          <div class="qr-info-item"><div class="qi-label">Size</div><div class="qi-val" id="qi-size">250 × 250 px</div></div>
+          <div class="qr-info-item"><div class="qi-label">Error Correction</div><div class="qi-val" id="qi-ec">Medium (M)</div></div>
+          <div class="qr-info-item"><div class="qi-label">Format</div><div class="qi-val">PNG</div></div>
+        </div>
+      </div>
 
-    <div class="button-group">
-      <button class="btn btn-primary" onclick="downloadPNG()">📥 Download PNG</button>
-      <button class="btn btn-secondary" onclick="copyQR()">📋 Copy</button>
-      <button class="btn btn-secondary" onclick="clearQR()">🗑️ Clear</button>
-      <button class="btn btn-secondary" onclick="resetSettings()">↻ Reset</button>
-    </div>
-  </div>
+      <!-- BTNS -->
+      <div class="btn-row">
+        <button class="btn-gen" onclick="generateQR()">⚡ Generate QR Code</button>
+        <button class="btn-dl" onclick="downloadPNG()">📥 Download PNG</button>
+        <button class="btn-sm" onclick="clearQR()">🗑️ Clear</button>
+        <button class="btn-sm" onclick="resetSettings()">↻ Reset</button>
+      </div>
 
-  <div class="footer">
-    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
-    <p>100% Free • No Sign-up • Instant Generation • Secure Processing</p>
+      <!-- AD MID -->
+      <div class="ad-mid">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="sbar-item"><div class="sval">5M+</div><div class="slbl">QR Codes Created</div></div>
+    <div class="sbar-item"><div class="sval">5</div><div class="slbl">QR Types</div></div>
+    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
+    <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Download</div></div>
+  </div>
+</div>
+
+<!-- MORE THAN JUST -->
+<div class="more-section">
+  <div class="more-inner">
+    <div class="section-tag">Beyond Basic</div>
+    <h2 class="section-title">More than just a <em>QR generator</em></h2>
+    <p class="section-sub">Most QR tools only handle URLs. Ours supports 5 QR types — URL, text, email, phone and WiFi — with custom colors and error correction.</p>
+    <div class="more-grid">
+      <div>
+        <div class="more-features">
+          <div class="more-feat"><div class="more-feat-ico">📶</div><div class="more-feat-text"><h4>WiFi QR Codes</h4><p>Let guests scan to connect — no typing passwords. Enter SSID, password, and security type.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">🎨</div><div class="more-feat-text"><h4>Custom Colors</h4><p>Change dark and light colors to match your brand — create colored QR codes for print.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">🛡️</div><div class="more-feat-text"><h4>Error Correction</h4><p>Choose correction level — high correction lets you add logos over your QR code.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">📥</div><div class="more-feat-text"><h4>Instant PNG Download</h4><p>Download your QR code as a high-quality PNG — ready for print or digital use.</p></div></div>
+        </div>
+      </div>
+      <div class="qr-visual">
+        <div class="qr-vis-row"><span class="qr-vis-type">🔗 URL QR Code</span><span class="qr-vis-use">Website, social media</span><span class="qr-vis-badge">Most popular</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">📶 WiFi QR Code</span><span class="qr-vis-use">Guest network access</span><span class="qr-vis-badge">No typing</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">📧 Email QR Code</span><span class="qr-vis-use">Contact, newsletters</span><span class="qr-vis-badge">Instant email</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">📞 Phone QR Code</span><span class="qr-vis-use">Business cards</span><span class="qr-vis-badge">One tap call</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">📝 Text QR Code</span><span class="qr-vis-use">Any text message</span><span class="qr-vis-badge">Custom content</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">Features</div>
+  <h2 class="section-title">Everything you need in<br>one <em>free tool</em></h2>
+  <p class="section-sub">Built for businesses, marketers, developers, and anyone who needs QR codes fast.</p>
+  <div class="feat-grid">
+    <div class="feat-card"><span class="feat-icon">⚡</span><h3>Instant Generation</h3><p>QR codes generate as you type. No button required — just enter your content and see the result.</p></div>
+    <div class="feat-card"><span class="feat-icon">📶</span><h3>5 QR Code Types</h3><p>URL, plain text, email with subject, phone number, and WiFi network — all in one tool.</p></div>
+    <div class="feat-card"><span class="feat-icon">🎨</span><h3>Custom Colors</h3><p>Choose any color for QR dark and light areas. Create branded QR codes that match your identity.</p></div>
+    <div class="feat-card"><span class="feat-icon">🛡️</span><h3>Error Correction</h3><p>Four levels of error correction — Low to High. High level allows logo overlays while remaining scannable.</p></div>
+    <div class="feat-card"><span class="feat-icon">📥</span><h3>PNG Download</h3><p>Download your QR code as a high-resolution PNG file — perfect for print, digital, and web use.</p></div>
+    <div class="feat-card"><span class="feat-icon">🔒</span><h3>100% Private</h3><p>All QR generation happens in your browser. Your URLs, passwords, and content are never sent to any server.</p></div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="who-section">
+  <div class="who-inner">
+    <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
+    <h2 class="section-title">Who benefits from a<br><em>QR code generator?</em></h2>
+    <p class="section-sub">QR codes bridge the physical and digital world — everyone from restaurants to developers uses them.</p>
+    <div class="who-grid">
+      <div class="who-card"><span class="who-emoji">🍽️</span><h3>Restaurants & Cafes</h3><p>Create QR codes for digital menus, WiFi access, Google review links, and online ordering.</p></div>
+      <div class="who-card"><span class="who-emoji">💼</span><h3>Business Professionals</h3><p>Add QR codes to business cards linking to LinkedIn profiles, portfolios, or contact details.</p></div>
+      <div class="who-card"><span class="who-emoji">📣</span><h3>Marketers</h3><p>Link print ads, flyers, and posters to landing pages, discount codes, or social media profiles.</p></div>
+      <div class="who-card"><span class="who-emoji">👨‍💻</span><h3>Developers</h3><p>Generate QR codes for app download links, API endpoints, and testing mobile deep links.</p></div>
+      <div class="who-card"><span class="who-emoji">🏫</span><h3>Educators</h3><p>Share resources, assignments, and videos with students by scanning instead of typing long URLs.</p></div>
+      <div class="who-card"><span class="who-emoji">🎪</span><h3>Event Organizers</h3><p>Create QR codes for event registration, schedules, WiFi access, and feedback forms.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Frequently asked <em>questions</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I create a QR code? <span class="arrow">▼</span></div><div class="faq-a">Select the QR type (URL, Text, WiFi, etc.), enter your content, customize size and colors, and click "Generate QR Code." Download the PNG image with one click.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are these QR codes free? <span class="arrow">▼</span></div><div class="faq-a">Yes — completely free, with no watermark, no signup, and no limits on how many QR codes you create.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do QR codes expire? <span class="arrow">▼</span></div><div class="faq-a">Static QR codes like those generated here never expire. The QR code works as long as the destination URL or content exists. Dynamic QR codes (from paid services) can be updated and may expire, but our QR codes are static.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I create a WiFi QR code? <span class="arrow">▼</span></div><div class="faq-a">Click the "WiFi" tab, enter your network name (SSID), password, and security type (WPA/WEP). Generate and download the QR code. When guests scan it, their phone automatically prompts to join the network.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What size should my QR code be for print? <span class="arrow">▼</span></div><div class="faq-a">For print, minimum 2cm × 2cm at 300 DPI. For most print use, 400-500px download size works well. Use High error correction if you plan to add a logo over the QR code.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I add a logo to my QR code? <span class="arrow">▼</span></div><div class="faq-a">Yes — set error correction to High (H) which allows up to 30% of the QR code to be covered. Download the PNG, then add your logo using any image editor. The QR remains scannable.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AD BEFORE ARTICLE -->
+<div style="text-align:center;padding:24px;background:#fff;border-top:1px solid var(--border)">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-section">
+  <h2>Free QR Code Generator — Complete Guide</h2>
+  <p>QR codes have become one of the most universally recognized symbols in modern life. From restaurant menus to product packaging, from business cards to billboard advertisements — QR codes bridge the physical and digital world with a single scan. Toolyfi's free QR code generator lets you create professional QR codes for any purpose in seconds, with no watermark and no signup required.</p>
+
+  <h2>What Is a QR Code?</h2>
+  <p>QR stands for Quick Response. A QR code is a two-dimensional barcode that can store significantly more information than a traditional linear barcode. It was invented in 1994 by Denso Wave, a Japanese automotive components manufacturer, originally to track vehicles during manufacturing. Today, QR codes are used for an enormous variety of purposes — website links, contact information, payment systems, WiFi sharing, and more.</p>
+  <p>When you scan a QR code with your smartphone camera, the phone reads the pattern and translates it into the encoded data — typically opening a URL, connecting to WiFi, or displaying contact information.</p>
+
+  <h2>Types of QR Codes</h2>
+  <h3>URL QR Codes</h3>
+  <p>The most common type — encodes a website URL. When scanned, the phone's browser opens the URL directly. Used for restaurant menus, product pages, social media profiles, and landing pages.</p>
+  <h3>WiFi QR Codes</h3>
+  <p>Encodes network credentials (SSID, password, security type) so guests can connect without typing. Particularly useful for hotels, cafes, offices, and homes. Supported natively on iOS and Android.</p>
+  <h3>Email QR Codes</h3>
+  <p>Opens the phone's email app with a pre-filled recipient address and optional subject line. Great for business cards, feedback forms, and contact information.</p>
+  <h3>Phone QR Codes</h3>
+  <p>Encodes a phone number. Scanning prompts the user to call the number. Ideal for business cards, advertisements, and customer support materials.</p>
+  <h3>Text QR Codes</h3>
+  <p>Displays plain text when scanned. Useful for brief messages, instructions, or any content that doesn't fit other categories.</p>
+
+  <h2>QR Code Error Correction Explained</h2>
+  <p>Error correction is one of the most important but least understood aspects of QR codes. It determines how much of the QR code can be damaged, covered, or obscured while still remaining scannable.</p>
+  <ul>
+    <li><strong>Level L (Low)</strong> — 7% of data can be restored. Produces smaller, simpler QR codes. Best for clean digital environments.</li>
+    <li><strong>Level M (Medium)</strong> — 15% recovery. Good balance for most uses. The default in our generator.</li>
+    <li><strong>Level Q (Quartile)</strong> — 25% recovery. Good for environments where codes may get dirty or damaged.</li>
+    <li><strong>Level H (High)</strong> — 30% recovery. Allows you to overlay a logo over the center of the QR code while keeping it scannable.</li>
+  </ul>
+  <div class="article-highlight"><p>💡 Want to add your logo to a QR code? Use High error correction, download the PNG, then overlay your logo in the center using any image editor like Canva or Photoshop.</p></div>
+
+  <h2>Best Practices for QR Code Design</h2>
+  <ul>
+    <li><strong>Minimum size</strong> — For print, ensure QR codes are at least 2cm × 2cm. Smaller codes are difficult to scan.</li>
+    <li><strong>Contrast</strong> — High contrast between dark and light areas is essential. Avoid light-on-light or dark-on-dark combinations.</li>
+    <li><strong>Quiet zone</strong> — Always maintain white space (quiet zone) around the QR code — at least 4 modules wide.</li>
+    <li><strong>Test before printing</strong> — Always scan your QR code with multiple devices before mass printing.</li>
+    <li><strong>Shorten URLs</strong> — Shorter URLs create less complex QR codes that scan faster and can be printed smaller.</li>
+  </ul>
+
+  <h2>QR Codes for Business</h2>
+  <p>Businesses use QR codes in virtually every industry. Some of the most impactful use cases include contactless restaurant menus, product authentication, digital business cards, and payment collection. In Pakistan and other South Asian markets, QR codes for payments (JazzCash, Easypaisa) have become mainstream. Our generator supports all these use cases.</p>
+
+  <h2>Related Tools on Toolyfi</h2>
+  <ul>
+    <li><a href="https://toolyfi.com/image-resizer.html">Image Resizer</a> — Resize your downloaded QR code PNG to exact dimensions.</li>
+    <li><a href="https://toolyfi.com/image-compressor.html">Image Compressor</a> — Compress QR PNG for web use.</li>
+    <li><a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a> — Convert QR image to Base64 for embedding in HTML.</li>
+    <li><a href="https://toolyfi.com/link-shortener.html">Link Shortener</a> — Shorten URLs before creating QR codes for simpler patterns.</li>
+    <li><a href="https://toolyfi.com/password-generator.html">Password Generator</a> — Generate strong WiFi passwords for your QR codes.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>Toolyfi's free QR code generator covers every QR use case — URL, WiFi, email, phone, and text — with custom colors, error correction control, and instant PNG download. No watermark, no signup, no limits.</p>
+  <p><strong>Create your QR code now</strong> — select a type above, enter your content, and download in seconds.</p>
+</div>
+
+<!-- RATING WIDGET -->
+<div class="tf-widget">
+  <div class="tf-widget-card">
+    <div class="tf-rating-bar">
+      <div class="tf-rating-top">
+        <div class="tf-rating-left"><h3>⭐ Rate This Tool</h3><p>Your rating helps others find this tool on Google</p></div>
+        <div class="tf-avg-display"><div class="tf-avg-num" id="tf-avg-num">—</div><div class="tf-avg-stars" id="tf-avg-stars">☆☆☆☆☆</div><div class="tf-avg-count" id="tf-avg-count">No ratings yet</div></div>
+      </div>
+      <div class="tf-rating-bars">
+        <div class="tf-bar-row"><span class="tf-bar-lbl">5 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-5" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-5">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">4 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-4" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-4">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">3 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-3" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-3">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">2 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-2" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-2">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">1 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-1" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-1">0</span></div>
+      </div>
+      <div class="tf-star-input" style="margin-top:16px">
+        <span>Your rating:</span>
+        <div class="tf-stars">
+          <input type="radio" name="tf-star" id="tf-s5" value="5"><label for="tf-s5">★</label>
+          <input type="radio" name="tf-star" id="tf-s4" value="4"><label for="tf-s4">★</label>
+          <input type="radio" name="tf-star" id="tf-s3" value="3"><label for="tf-s3">★</label>
+          <input type="radio" name="tf-star" id="tf-s2" value="2"><label for="tf-s2">★</label>
+          <input type="radio" name="tf-star" id="tf-s1" value="1"><label for="tf-s1">★</label>
+        </div>
+        <span id="tf-rated-msg" style="font-size:.8rem;color:#10b981;font-weight:700;display:none">✓ Thanks!</span>
+      </div>
+    </div>
+    <div class="tf-reactions">
+      <span class="tf-react-label">Was this helpful?</span>
+      <button class="tf-react-btn" id="tf-like-btn" onclick="tfReact('like')"><span>👍</span><span class="tf-react-count" id="tf-like-count">0</span></button>
+      <button class="tf-react-btn" id="tf-dislike-btn" onclick="tfReact('dislike')"><span>👎</span><span class="tf-react-count" id="tf-dislike-count">0</span></button>
+    </div>
+    <div class="tf-comments-section">
+      <div class="tf-comments-title">💬 <span id="tf-comments-title">Comments</span></div>
+      <div class="tf-comment-form">
+        <input type="text" id="tf-name-input" placeholder="Your name (optional)" maxlength="40">
+        <textarea id="tf-comment-input" placeholder="Share your experience..." maxlength="500"></textarea>
+        <button class="tf-submit-btn" onclick="tfSubmitComment()">💬 Post Comment</button>
+      </div>
+      <div class="tf-comments-list" id="tf-comments-list">
+        <div class="tf-no-comments" id="tf-no-comments">No comments yet. Be the first!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Explore 40+ more free tools</h2>
+  <p>Image tools, calculators, converters — all free, no signup required.</p>
+  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+</div>
+
+<!-- TOOLS GRID -->
+<div class="tools-footer">
+  <div class="tools-footer-inner">
+    <h3>More Free Tools on Toolyfi</h3>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/image-resizer.html" class="tool-link">✂️ Image Resizer</a>
+      <a href="https://toolyfi.com/image-compressor.html" class="tool-link">🗜️ Image Compressor</a>
+      <a href="https://toolyfi.com/base64-encoder.html" class="tool-link">🔐 Base64 Encoder</a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
+      <a href="https://toolyfi.com/link-shortener.html" class="tool-link">🔗 Link Shortener</a>
+      <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
+      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
+      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
+      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
+      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
+      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+      <a href="https://toolyfi.com/number-to-words.html" class="tool-link">🔢 Number to Words</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
+  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
 <script>
-  let qrCodeInstance = null;
-  let generatedCount = 0;
+// ── QR TOOL ──
+let currentType = 'url';
+let qrInstance = null;
 
-  function generateQR() {
-    const text = document.getElementById('qrText').value;
-    const size = parseInt(document.getElementById('qrSize').value);
-    const darkColor = document.getElementById('darkColor').value;
-    const lightColor = document.getElementById('lightColor').value;
-    const errorLevel = document.getElementById('errorLevel').value;
-
-    if (!text) {
-      showMessage('Please enter text or URL', 'error');
-      return;
-    }
-
-    document.getElementById('qrcode').innerHTML = '';
-
-    qrCodeInstance = new QRCode(document.getElementById('qrcode'), {
-      text: text,
-      width: size,
-      height: size,
-      colorDark: darkColor,
-      colorLight: lightColor,
-      correctLevel: errorLevel === 'L' ? QRCode.CorrectLevel.L :
-                   errorLevel === 'M' ? QRCode.CorrectLevel.M :
-                   errorLevel === 'Q' ? QRCode.CorrectLevel.Q :
-                   QRCode.CorrectLevel.H
-    });
-
-    generatedCount++;
-    document.getElementById('generated').textContent = generatedCount;
-    showMessage('✓ QR code generated!', 'success');
-  }
-
-  function updateSize() {
-    const size = document.getElementById('qrSize').value;
-    document.getElementById('sizeDisplay').textContent = size;
-  }
-
-  function downloadPNG() {
-    const canvas = document.querySelector('#qrcode canvas');
-    if (!canvas) {
-      showMessage('Generate QR code first!', 'error');
-      return;
-    }
-
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL('image/png');
-    link.download = `qrcode-${Date.now()}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showMessage('✓ Downloaded successfully!', 'success');
-  }
-
-  function copyQR() {
-    const canvas = document.querySelector('#qrcode canvas');
-    if (!canvas) {
-      showMessage('Generate QR code first!', 'error');
-      return;
-    }
-
-    canvas.toBlob(blob => {
-      const item = new ClipboardItem({ 'image/png': blob });
-      navigator.clipboard.write([item]).then(() => {
-        showMessage('✓ Copied to clipboard!', 'success');
-      });
-    });
-  }
-
-  function clearQR() {
-    document.getElementById('qrText').value = '';
-    document.getElementById('qrcode').innerHTML = '';
-    showMessage('✓ Cleared!', 'success');
-  }
-
-  function resetSettings() {
-    document.getElementById('qrSize').value = '200';
-    document.getElementById('darkColor').value = '#000000';
-    document.getElementById('lightColor').value = '#ffffff';
-    document.getElementById('errorLevel').value = 'M';
-    updateSize();
-    showMessage('✓ Settings reset!', 'success');
-  }
-
-  function showMessage(msg, type) {
-    const messageEl = document.getElementById('message');
-    messageEl.textContent = msg;
-    messageEl.className = 'message show ' + type;
-    setTimeout(() => messageEl.classList.remove('show'), 3000);
-  }
-
+function setType(type) {
+  currentType = type;
+  document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.input-panel').forEach(p => p.classList.remove('show'));
+  document.getElementById('panel-' + type).classList.add('show');
+  document.getElementById('qi-type').textContent = type.toUpperCase();
   generateQR();
-</script>
+}
 
+function getContent() {
+  switch(currentType) {
+    case 'url':   return document.getElementById('inp-url').value.trim();
+    case 'text':  return document.getElementById('inp-text').value.trim();
+    case 'email': {
+      const e = document.getElementById('inp-email').value.trim();
+      const s = document.getElementById('inp-email-sub').value.trim();
+      return e ? 'mailto:' + e + (s ? '?subject=' + encodeURIComponent(s) : '') : '';
+    }
+    case 'phone': {
+      const p = document.getElementById('inp-phone').value.trim();
+      return p ? 'tel:' + p : '';
+    }
+    case 'wifi': {
+      const ssid = document.getElementById('inp-wifi-ssid').value.trim();
+      const pass = document.getElementById('inp-wifi-pass').value.trim();
+      const sec  = document.getElementById('inp-wifi-sec').value;
+      return ssid ? `WIFI:T:${sec};S:${ssid};P:${pass};;` : '';
+    }
+  }
+  return '';
+}
+
+function generateQR() {
+  const content = getContent();
+  const size = parseInt(document.getElementById('qrSize').value);
+  const dark = document.getElementById('darkColor').value;
+  const light = document.getElementById('lightColor').value;
+  const ecVal = document.getElementById('errorLevel').value;
+  const ecMap = {L:QRCode.CorrectLevel.L,M:QRCode.CorrectLevel.M,Q:QRCode.CorrectLevel.Q,H:QRCode.CorrectLevel.H};
+
+  document.getElementById('qi-size').textContent = size + ' × ' + size + ' px';
+  document.getElementById('qi-ec').textContent = {L:'Low (L)',M:'Medium (M)',Q:'Quartile (Q)',H:'High (H)'}[ecVal];
+
+  if (!content) {
+    document.getElementById('qrcode').innerHTML = '<div class="qr-placeholder"><div class="qr-ph-icon">📱</div><p>QR code appears here</p></div>';
+    return;
+  }
+
+  document.getElementById('qrcode').innerHTML = '';
+  try {
+    qrInstance = new QRCode(document.getElementById('qrcode'), {
+      text: content, width: size, height: size,
+      colorDark: dark, colorLight: light,
+      correctLevel: ecMap[ecVal] || QRCode.CorrectLevel.M
+    });
+  } catch(e) { showMsg('Error generating QR: ' + e.message, 'error'); }
+}
+
+function updateSize() {
+  const s = document.getElementById('qrSize').value;
+  document.getElementById('sizeDisplay').textContent = s;
+  generateQR();
+}
+
+function downloadPNG() {
+  const canvas = document.querySelector('#qrcode canvas');
+  if (!canvas) { showMsg('Generate a QR code first!', 'error'); return; }
+  const link = document.createElement('a');
+  link.href = canvas.toDataURL('image/png');
+  link.download = 'qrcode-toolyfi-' + Date.now() + '.png';
+  link.click();
+  showMsg('✓ Downloaded!', 'success');
+}
+
+function clearQR() {
+  document.querySelectorAll('.input-panel input, .input-panel textarea').forEach(i => i.value = '');
+  document.getElementById('qrcode').innerHTML = '<div class="qr-placeholder"><div class="qr-ph-icon">📱</div><p>QR code appears here</p></div>';
+}
+
+function resetSettings() {
+  document.getElementById('qrSize').value = 250;
+  document.getElementById('darkColor').value = '#000000';
+  document.getElementById('lightColor').value = '#ffffff';
+  document.getElementById('errorLevel').value = 'M';
+  document.getElementById('sizeDisplay').textContent = '250';
+  generateQR();
+}
+
+function showMsg(msg, type) {
+  const el = document.getElementById('msg');
+  el.textContent = msg; el.className = 'msg show ' + type;
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── RATING WIDGET ──
+(function(){
+  const PAGE_ID='qr-code-generator';
+  const K_RATING='tf_rating_'+PAGE_ID,K_REACT='tf_react_'+PAGE_ID,K_VOTED='tf_voted_'+PAGE_ID,K_REACTED='tf_reacted_'+PAGE_ID,K_COMMENTS='tf_comments_'+PAGE_ID;
+  let ratingData=JSON.parse(localStorage.getItem(K_RATING)||'{"total":0,"count":0,"dist":{"1":0,"2":0,"3":0,"4":0,"5":0}}');
+  let reactData=JSON.parse(localStorage.getItem(K_REACT)||'{"like":0,"dislike":0}');
+  let comments=JSON.parse(localStorage.getItem(K_COMMENTS)||'[]');
+  const userVoted=localStorage.getItem(K_VOTED),userReacted=localStorage.getItem(K_REACTED);
+  function starsStr(a){const f=Math.round(a);return'★'.repeat(f)+'☆'.repeat(5-f);}
+  function renderRatings(){
+    const avg=ratingData.count>0?(ratingData.total/ratingData.count):0;
+    document.getElementById('tf-avg-num').textContent=ratingData.count>0?avg.toFixed(1):'—';
+    document.getElementById('tf-avg-stars').textContent=ratingData.count>0?starsStr(avg):'☆☆☆☆☆';
+    document.getElementById('tf-avg-count').textContent=ratingData.count>0?ratingData.count+' rating'+(ratingData.count!==1?'s':''):'No ratings yet';
+    for(let i=1;i<=5;i++){const c=ratingData.dist[i]||0;const p=ratingData.count>0?(c/ratingData.count*100):0;document.getElementById('tf-bar-'+i).style.width=p+'%';document.getElementById('tf-cnt-'+i).textContent=c;}
+    if(ratingData.count>=3){let s=document.getElementById('tf-live-schema');if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='tf-live-schema';document.head.appendChild(s);}s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg.toFixed(1),"ratingCount":ratingData.count,"bestRating":"5","worstRating":"1"}});}
+  }
+  if(userVoted){document.querySelectorAll('.tf-stars label').forEach(l=>l.style.pointerEvents='none');const s=document.getElementById('tf-s'+userVoted);if(s)s.checked=true;document.getElementById('tf-rated-msg').style.display='inline';}
+  document.querySelectorAll('.tf-stars input').forEach(input=>{input.addEventListener('change',function(){if(localStorage.getItem(K_VOTED))return;const val=parseInt(this.value);ratingData.total+=val;ratingData.count+=1;ratingData.dist[val]=(ratingData.dist[val]||0)+1;localStorage.setItem(K_RATING,JSON.stringify(ratingData));localStorage.setItem(K_VOTED,val);document.getElementById('tf-rated-msg').style.display='inline';document.querySelectorAll('.tf-stars label').forEach(l=>l.style.pointerEvents='none');renderRatings();});});
+  function renderReactions(){document.getElementById('tf-like-count').textContent=reactData.like;document.getElementById('tf-dislike-count').textContent=reactData.dislike;if(userReacted==='like')document.getElementById('tf-like-btn').classList.add('liked');if(userReacted==='dislike')document.getElementById('tf-dislike-btn').classList.add('disliked');}
+  window.tfReact=function(type){if(localStorage.getItem(K_REACTED))return;reactData[type]+=1;localStorage.setItem(K_REACT,JSON.stringify(reactData));localStorage.setItem(K_REACTED,type);renderReactions();};
+  function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function renderComments(){const list=document.getElementById('tf-comments-list');const noC=document.getElementById('tf-no-comments');document.getElementById('tf-comments-title').textContent='Comments ('+comments.length+')';if(comments.length===0){noC.style.display='block';return;}noC.style.display='none';list.innerHTML='';[...comments].reverse().forEach(c=>{const div=document.createElement('div');div.className='tf-comment-item';div.innerHTML=`<div class="tf-comment-header"><span class="tf-comment-name">👤 ${escHtml(c.name||'Anonymous')}</span><span class="tf-comment-date">${c.date}</span></div>${c.rating?'<div class="tf-comment-stars">'+'★'.repeat(c.rating)+'☆'.repeat(5-c.rating)+'</div>':''}<div class="tf-comment-text">${escHtml(c.text)}</div>`;list.appendChild(div);});}
+  window.tfSubmitComment=function(){const name=document.getElementById('tf-name-input').value.trim();const text=document.getElementById('tf-comment-input').value.trim();const rEl=document.querySelector('.tf-stars input:checked');if(!text){alert('Please write a comment.');return;}comments.push({name:name||'Anonymous',text,rating:rEl?parseInt(rEl.value):null,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});localStorage.setItem(K_COMMENTS,JSON.stringify(comments));document.getElementById('tf-name-input').value='';document.getElementById('tf-comment-input').value='';renderComments();};
+  renderRatings();renderReactions();renderComments();
+})();
+</script>
 </body>
 </html>
