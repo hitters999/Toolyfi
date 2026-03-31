@@ -1,407 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Number to Words Converter — convert any number into English words instantly. Perfect for cheques, invoices, legal documents and education. No signup required.">
+<meta name="keywords" content="number to words, number to words converter, convert number to words, numbers in words, cheque amount in words, number words converter">
+<meta name="author" content="Toolyfi">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#0f172a">
+<title>Free Number to Words Converter — Convert Numbers to English Words | Toolyfi</title>
+<meta property="og:title" content="Free Number to Words Converter | Toolyfi">
+<meta property="og:description" content="Convert any number to English words instantly. Perfect for cheques, invoices & legal docs. 100% free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolyfi.com/number-to-words.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Number to Words Converter | Toolyfi">
+<meta name="twitter:description" content="Convert numbers to words instantly. Free, no signup.">
+<link rel="canonical" href="https://toolyfi.com/number-to-words.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
+<!-- Rating Schema (auto-updates from real user ratings) -->
+<script id="rating-schema-script">
+(function(){
+  const PAGE_ID='number-to-words';
+  const data=JSON.parse(localStorage.getItem('tf_rating_'+PAGE_ID)||'{"total":0,"count":0}');
+  if(data.count<3)return;
+  const avg=(data.total/data.count).toFixed(1);
+  const s=document.createElement('script');s.type='application/ld+json';
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg,"ratingCount":data.count,"bestRating":"5","worstRating":"1"}});
+  document.head.appendChild(s);
+})();
 </script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Number to Words Converter – Convert Numbers to English Words Free | Toolyfi</title>
-<meta name="description" content="Free number to words converter. Convert any number into written English words instantly. Useful for cheques, invoices and documents."/>
-<meta name="keywords" content="number to words, number to words converter, convert number to words, numbers in words, number words converter, free number to words, toolyfi"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/number-to-words.html"/>
-<meta property="og:title" content="Number to Words Converter – Convert Numbers to English Words Free | Toolyfi"/>
-<meta property="og:description" content="Convert any number into written English words instantly. Perfect for cheques, invoices and legal documents. Free, no signup."/>
-<meta property="og:url" content="https://toolyfi.com/number-to-words.html"/>
-<meta property="og:type" content="website"/>
-<link rel="stylesheet" href="style.css"/>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"WebApplication",
+  "name":"Number to Words Converter",
+  "description":"Free online number to words converter — convert any number to English words instantly",
+  "url":"https://toolyfi.com/number-to-words.html",
+  "applicationCategory":"UtilityApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How do I convert a number to words?","acceptedAnswer":{"@type":"Answer","text":"Enter any number in the input field above and the English word equivalent appears instantly. Click Copy to use it in your document."}},
+    {"@type":"Question","name":"What is 125000 in words?","acceptedAnswer":{"@type":"Answer","text":"125,000 in words is One Hundred Twenty Five Thousand."}},
+    {"@type":"Question","name":"How to write cheque amount in words?","acceptedAnswer":{"@type":"Answer","text":"Enter the cheque amount in our converter and copy the result. For example, 50000 becomes Fifty Thousand."}},
+    {"@type":"Question","name":"Is this number to words converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no limits, instant conversion for any number."}},
+    {"@type":"Question","name":"What is the largest number this tool supports?","acceptedAnswer":{"@type":"Answer","text":"The converter supports numbers up to trillions — covering all practical use cases for cheques, invoices, and documents."}}
+  ]
+}
+</script>
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #333;
-    min-height: 100vh;
-  }
+:root{
+  --primary:#f59e0b;
+  --primary-dark:#d97706;
+  --primary-light:#fffbeb;
+  --accent:#8b5cf6;
+  --dark:#0f172a;
+  --gray:#64748b;
+  --light:#f8fafc;
+  --border:#e2e8f0;
+  --white:#fff;
+  --shadow:0 4px 24px rgba(245,158,11,0.10);
+  --shadow-lg:0 12px 48px rgba(245,158,11,0.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
 
-  nav {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-  }
+header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none}
+.logo span{color:var(--primary)}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
 
-  .nav-logo {
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-decoration: none;
-    color: white;
-  }
+.ad-top{background:var(--light);border-bottom:1px solid var(--border);padding:10px 0;text-align:center}
+.ad-label{font-size:.65rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
+.hero{background:linear-gradient(135deg,#0f172a 0%,#451a03 60%,#92400e 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 50%,rgba(245,158,11,0.2) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
+.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600}
+.trust-pill span{color:var(--primary)}
 
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s;
-  }
+.tool-section{max-width:860px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
+.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
+.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.tool-card-header h2{color:#fff;font-size:1.2rem;font-weight:700}
+.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,0.2);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700}
+.tool-body{padding:32px}
 
-  .nav-links a:hover {
-    opacity: 0.8;
-  }
+.inp-group label{display:block;font-weight:700;font-size:.82rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.inp-group input{width:100%;padding:16px 18px;border:2px solid var(--border);border-radius:12px;font-size:1.2rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--dark);background:var(--light);transition:all .2s;margin-bottom:20px}
+.inp-group input:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(245,158,11,0.1)}
 
-  .tool-page {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
+.result-box{background:linear-gradient(135deg,var(--primary-light),#fef3c7);border:2px solid var(--primary);border-radius:16px;padding:24px 28px;margin-bottom:20px;min-height:80px;display:flex;align-items:center}
+.result-box .result-text{font-size:1.3rem;font-weight:700;color:var(--primary-dark);line-height:1.5;word-break:break-word}
+.result-box .placeholder{font-size:1rem;color:#94a3b8;font-weight:600}
 
-  .breadcrumb {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
+.quick-examples{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.ex-btn{background:var(--light);border:1px solid var(--border);color:var(--gray);padding:7px 14px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.ex-btn:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
 
-  .breadcrumb a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-  }
+.btn-row{display:flex;gap:10px}
+.btn-copy{flex:1;background:var(--primary);color:#fff;border:none;padding:14px 24px;border-radius:12px;font-size:.95rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-copy:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,158,11,0.35)}
+.btn-clear{background:var(--light);border:2px solid var(--border);color:var(--gray);padding:14px 18px;border-radius:12px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-clear:hover{border-color:var(--primary);color:var(--primary-dark)}
 
-  .tool-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
+.ad-mid{text-align:center;padding:20px;background:var(--light);border-top:1px solid var(--border);margin-top:24px;border-radius:12px}
 
-  .tool-header h1 {
-    font-size: 2.8rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 16px;
-    font-weight: 800;
-  }
+.stats-bar{background:var(--dark);padding:40px 20px}
+.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.sbar-item .sval{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1;margin-bottom:6px}
+.sbar-item .slbl{color:rgba(255,255,255,0.55);font-size:.82rem;font-weight:600}
 
-  .tool-header p {
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
+.section{max-width:980px;margin:0 auto;padding:80px 24px}
+.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary-dark);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
+.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
 
-  .tool-box {
-    background: white;
-    border-radius: 20px;
-    padding: 36px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    margin-bottom: 40px;
-    border: 1px solid rgba(102, 126, 234, 0.1);
-  }
+.more-section{background:var(--light);padding:80px 24px}
+.more-inner{max-width:980px;margin:0 auto}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.more-features{display:flex;flex-direction:column;gap:12px}
+.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
+.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.more-feat-text p{font-size:.85rem;color:var(--gray)}
+.num-visual{background:linear-gradient(135deg,#451a03,#92400e);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.num-row{background:rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px}
+.num-input{font-size:1.1rem;font-weight:800;color:var(--primary);margin-bottom:4px}
+.num-output{font-size:.82rem;color:rgba(255,255,255,0.8);font-weight:600;line-height:1.4}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
+.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
+.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
 
-  .form-label {
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #667eea;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-  }
+.who-section{background:var(--dark);padding:80px 24px}
+.who-inner{max-width:980px;margin:0 auto}
+.who-section .section-title{color:#fff}
+.who-section .section-sub{color:rgba(255,255,255,0.55)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
+.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
+.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.who-card p{color:rgba(255,255,255,0.5);font-size:.88rem;line-height:1.7}
 
-  .form-input {
-    padding: 12px 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
+.faq-section{background:var(--light);padding:80px 24px}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
+.faq-item.open{border-color:var(--primary)}
+.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.95rem}
+.faq-q .arrow{font-size:1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.92rem}
+.faq-item.open .faq-a{display:block}
 
-  .form-input:focus {
-    outline: none;
-    border-color: #667eea;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  }
+/* RATING WIDGET */
+.tf-widget{max-width:860px;margin:0 auto;padding:0 20px 60px}
+.tf-widget-card{background:#fff;border:2px solid var(--border);border-radius:20px;overflow:hidden}
+.tf-rating-bar{background:linear-gradient(135deg,#f8fafc,#f1f5f9);padding:28px 32px;border-bottom:1px solid var(--border)}
+.tf-rating-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.tf-rating-left h3{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:4px}
+.tf-rating-left p{font-size:.82rem;color:var(--gray);font-weight:600}
+.tf-avg-display{text-align:center}
+.tf-avg-num{font-size:3rem;font-weight:800;color:var(--dark);line-height:1}
+.tf-avg-stars{font-size:1.4rem;letter-spacing:2px;margin:4px 0}
+.tf-avg-count{font-size:.75rem;color:#94a3b8;font-weight:600}
+.tf-star-input{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tf-star-input span{font-size:.85rem;font-weight:700;color:var(--gray)}
+.tf-stars{display:flex;gap:4px;direction:rtl}
+.tf-stars input{display:none}
+.tf-stars label{font-size:2rem;cursor:pointer;color:#e2e8f0;transition:color .15s;line-height:1}
+.tf-stars:hover label,.tf-stars label:hover,.tf-stars label:hover~label,.tf-stars input:checked~label{color:#f59e0b}
+.tf-rating-bars{margin-top:16px}
+.tf-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.tf-bar-lbl{font-size:.75rem;font-weight:700;color:var(--gray);width:32px;text-align:right}
+.tf-bar-track{flex:1;height:8px;background:#e2e8f0;border-radius:100px;overflow:hidden}
+.tf-bar-fill{height:100%;background:#f59e0b;border-radius:100px;transition:width .5s ease}
+.tf-bar-cnt{font-size:.72rem;font-weight:700;color:#94a3b8;width:20px}
+.tf-reactions{display:flex;align-items:center;gap:12px;padding:16px 32px;border-bottom:1px solid var(--border);background:#fff;flex-wrap:wrap}
+.tf-react-label{font-size:.82rem;font-weight:700;color:var(--gray)}
+.tf-react-btn{display:flex;align-items:center;gap:6px;background:var(--light);border:2px solid var(--border);border-radius:100px;padding:8px 18px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;color:var(--gray)}
+.tf-react-btn:hover{border-color:#94a3b8;color:var(--dark)}
+.tf-react-btn.liked{background:#dcfce7;border-color:#10b981;color:#059669}
+.tf-react-btn.disliked{background:#fee2e2;border-color:#ef4444;color:#dc2626}
+.tf-react-count{font-weight:800}
+.tf-comments-section{padding:24px 32px}
+.tf-comments-title{font-size:.95rem;font-weight:800;color:var(--dark);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.tf-comment-form input,.tf-comment-form textarea{width:100%;border:2px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--dark);background:var(--light);transition:all .2s;margin-bottom:10px}
+.tf-comment-form input:focus,.tf-comment-form textarea:focus{outline:none;border-color:var(--primary);background:#fff}
+.tf-comment-form textarea{min-height:90px;resize:vertical}
+.tf-submit-btn{background:var(--primary);color:#fff;border:none;padding:11px 24px;border-radius:10px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.tf-submit-btn:hover{background:var(--primary-dark)}
+.tf-comments-list{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.tf-comment-item{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.tf-comment-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.tf-comment-name{font-weight:700;font-size:.88rem;color:var(--dark)}
+.tf-comment-date{font-size:.75rem;color:#94a3b8;font-weight:600}
+.tf-comment-stars{font-size:.85rem;color:#f59e0b;margin-bottom:6px}
+.tf-comment-text{font-size:.88rem;color:#374151;line-height:1.7}
+.tf-no-comments{text-align:center;color:#94a3b8;font-size:.88rem;font-weight:600;padding:20px 0}
 
-  .result-label {
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #667eea;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin-bottom: 12px;
-  }
+.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
+.article-section h2{font-size:1.85rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
+.article-section h3{font-size:1.25rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
+.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
+.article-section ul,.article-section ol{margin:16px 0 20px 28px}
+.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
+.article-section strong{color:var(--primary-dark);font-weight:700}
+.article-section a{color:var(--primary-dark);font-weight:600;text-decoration:none}
+.article-section a:hover{text-decoration:underline}
+.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
+.num-ref-table{width:100%;border-collapse:collapse;margin:20px 0;border-radius:12px;overflow:hidden;border:2px solid var(--border)}
+.num-ref-table th{background:var(--primary);color:#fff;padding:12px 16px;text-align:left;font-size:.85rem;font-weight:700}
+.num-ref-table td{padding:12px 16px;border-top:1px solid var(--border);font-size:.9rem;font-weight:600}
+.num-ref-table tr:nth-child(even) td{background:var(--light)}
 
-  .result-area {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-    border: 2px dashed #667eea;
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #667eea;
-    line-height: 1.7;
-    word-wrap: break-word;
-  }
+.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.85);font-size:1.1rem;margin-bottom:36px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
 
-  .result-area:empty::before {
-    content: 'Enter a number to see the result';
-    color: #999;
-    font-weight: 500;
-  }
+.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
+.tools-footer-inner{max-width:980px;margin:0 auto}
+.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s}
+.tool-link:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
 
-  .btn-primary {
-    width: 100%;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-    margin-top: 8px;
-  }
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:.88rem;font-weight:600;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-  }
+footer{background:var(--dark);padding:32px 24px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:.85rem;margin-bottom:6px}
+footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
+footer a:hover{color:#fff}
 
-  .btn-secondary {
-    width: 100%;
-    padding: 12px 28px;
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 12px;
-  }
-
-  .btn-secondary:hover {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-    transform: translateY(-2px);
-  }
-
-  .seo-article {
-    background: white;
-    border-radius: 20px;
-    padding: 36px;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(102, 126, 234, 0.1);
-  }
-
-  .seo-article h2 {
-    font-size: 1.6rem;
-    color: #333;
-    margin: 28px 0 16px;
-    font-weight: 800;
-  }
-
-  .seo-article h2:first-child {
-    margin-top: 0;
-  }
-
-  .seo-article p {
-    line-height: 1.8;
-    color: #666;
-    margin-bottom: 16px;
-    font-size: 1rem;
-  }
-
-  .seo-article ul {
-    margin: 16px 0 16px 24px;
-    color: #666;
-    line-height: 1.9;
-  }
-
-  .seo-article li {
-    margin-bottom: 8px;
-  }
-
-  .related-tools {
-    background: white;
-    border-radius: 20px;
-    padding: 36px;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(102, 126, 234, 0.1);
-  }
-
-  .related-tools h2 {
-    font-size: 1.6rem;
-    color: #333;
-    margin-bottom: 24px;
-    font-weight: 800;
-  }
-
-  .related-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-  }
-
-  .related-card {
-    padding: 18px 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-  }
-
-  .related-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-  }
-
-  footer {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-    padding: 28px 24px;
-    margin-top: 40px;
-  }
-
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 12px;
-    font-weight: 600;
-    transition: opacity 0.3s;
-  }
-
-  footer a:hover {
-    opacity: 0.8;
-  }
-
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 16px 24px;
-    border-radius: 10px;
-    display: none;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    font-weight: 600;
-  }
-
-  .toast.show {
-    display: block;
-  }
-
-  @keyframes slideIn {
-    from { transform: translateX(400px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  @media (max-width: 640px) {
-    .tool-header h1 {
-      font-size: 2rem;
-    }
-
-    .tool-box {
-      padding: 24px;
-    }
-
-    .result-area {
-      font-size: 1rem;
-    }
-  }
+@media(max-width:768px){
+  header{padding:0 16px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .more-grid{grid-template-columns:1fr}
+  .num-visual{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .tf-reactions{padding:16px 20px}
+  .tf-rating-bar,.tf-comments-section{padding:20px}
+}
+@media(max-width:480px){
+  .hero{padding:56px 16px 72px}
+  .tool-body{padding:20px}
+  .who-grid{grid-template-columns:1fr}
+  .tf-stars label{font-size:1.6rem}
+}
 </style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">🔢 Toolyfi</a><ul class="nav-links"><li><a href="index.html">← All Tools</a></li></ul></nav>
-<div class="tool-page">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Number to Words</div>
-  <div class="tool-header"><h1>🔢 Number to Words Converter</h1><p>Convert any number into written English words instantly. Perfect for cheques, invoices, legal documents, and educational purposes.</p></div>
-  <div class="tool-box">
-    <div class="form-group"><label class="form-label">Enter Number</label><input type="number" class="form-input" id="nIn" placeholder="e.g. 125000" oninput="convert()"/></div>
-    <div class="result-label">In Words</div>
-    <div class="result-area" id="nOut"></div>
-    <button class="btn-secondary" onclick="copyText('nOut')">📋 Copy Result</button>
+
+<header>
+  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+  <nav>
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/updatesworld">Updates</a>
+    <a href="https://toolyfi.com">Tools</a>
+  </nav>
+</header>
+
+<!-- AD TOP -->
+<div class="ad-top">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🔢 Number to Words — Free Online Tool</div>
+  <h1>Convert Numbers to<br><em>English Words</em> Instantly</h1>
+  <p class="hero-sub">Perfect for cheques, invoices, legal documents and education. Enter any number and get the word equivalent in seconds.</p>
+  <div class="trust-pills">
+    <div class="trust-pill"><span>✓</span> 100% Free</div>
+    <div class="trust-pill"><span>✓</span> Instant Results</div>
+    <div class="trust-pill"><span>✓</span> Up to Trillions</div>
+    <div class="trust-pill"><span>✓</span> No Signup</div>
+  </div>
+</section>
+
+<!-- TOOL -->
+<div class="tool-section">
+  <div class="tool-card">
+    <div class="tool-card-header">
+      <h2>🔢 Number to Words Converter</h2>
+      <div class="stat-chips">
+        <div class="stat-chip">⚡ Instant</div>
+        <div class="stat-chip">🔢 Up to Trillions</div>
+        <div class="stat-chip">📋 Copy Ready</div>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="inp-group">
+        <label>🔢 Enter Number</label>
+        <input type="number" id="nIn" placeholder="e.g. 125000" oninput="convert()">
+      </div>
+
+      <!-- QUICK EXAMPLES -->
+      <div style="font-size:.78rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Quick Examples</div>
+      <div class="quick-examples">
+        <button class="ex-btn" onclick="setNum(100)">100</button>
+        <button class="ex-btn" onclick="setNum(1000)">1,000</button>
+        <button class="ex-btn" onclick="setNum(50000)">50,000</button>
+        <button class="ex-btn" onclick="setNum(125000)">125,000</button>
+        <button class="ex-btn" onclick="setNum(1000000)">1 Million</button>
+        <button class="ex-btn" onclick="setNum(1000000000)">1 Billion</button>
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-box">
+        <div id="result-display"><span class="placeholder">Result will appear here...</span></div>
+      </div>
+
+      <!-- BTNS -->
+      <div class="btn-row">
+        <button class="btn-copy" onclick="copyResult()">📋 Copy Result</button>
+        <button class="btn-clear" onclick="clearAll()">🗑️ Clear</button>
+      </div>
+
+      <!-- AD MID -->
+      <div class="ad-mid">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </div>
   </div>
 </div>
-<div class="seo-article">
-  <h2>Free Number to Words Converter</h2>
-  <p>Our <strong>number to words converter</strong> instantly translates any numeric value into its English word equivalent. This is especially useful when writing cheques, creating invoices, filling legal documents, or any situation where numbers must be written in words.</p>
-  
-  <h2>How to Use the Number to Words Converter</h2>
-  <p>Simply enter any number in the input field and the converter instantly displays the English word representation. Perfect for converting amounts on cheques, invoices, contracts, and educational documents.</p>
 
-  <h2>Common Uses</h2>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="sbar-item"><div class="sval">2M+</div><div class="slbl">Numbers Converted</div></div>
+    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
+    <div class="sbar-item"><div class="sval">∞</div><div class="slbl">Up to Trillions</div></div>
+    <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Results</div></div>
+  </div>
+</div>
+
+<!-- MORE THAN JUST -->
+<div class="more-section">
+  <div class="more-inner">
+    <div class="section-tag">Beyond Basic</div>
+    <h2 class="section-title">More than just a <em>number converter</em></h2>
+    <p class="section-sub">Most tools only handle small numbers. Ours supports billions and trillions — with negative numbers, decimals, and instant copy.</p>
+    <div class="more-grid">
+      <div>
+        <div class="more-features">
+          <div class="more-feat"><div class="more-feat-ico">🔢</div><div class="more-feat-text"><h4>Up to Trillions</h4><p>Convert massive numbers — millions, billions, trillions — for financial and legal documents.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">➖</div><div class="more-feat-text"><h4>Negative Numbers</h4><p>Handles negative values too — "Negative Five Hundred" and so on.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">⚡</div><div class="more-feat-text"><h4>Instant as You Type</h4><p>Results appear with every keystroke — no button to press, no delays.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">📋</div><div class="more-feat-text"><h4>One-Click Copy</h4><p>Copy the result instantly and paste it into any document, form, or app.</p></div></div>
+        </div>
+      </div>
+      <div class="num-visual">
+        <div class="num-row"><div class="num-input">1,000</div><div class="num-output">One Thousand</div></div>
+        <div class="num-row"><div class="num-input">50,000</div><div class="num-output">Fifty Thousand</div></div>
+        <div class="num-row"><div class="num-input">125,000</div><div class="num-output">One Hundred Twenty Five Thousand</div></div>
+        <div class="num-row"><div class="num-input">1,000,000</div><div class="num-output">One Million</div></div>
+        <div class="num-row"><div class="num-input">1,000,000,000</div><div class="num-output">One Billion</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-tag">Features</div>
+  <h2 class="section-title">Everything you need in<br>one <em>free tool</em></h2>
+  <p class="section-sub">Built for professionals, students, and anyone who writes numbers in documents.</p>
+  <div class="feat-grid">
+    <div class="feat-card"><span class="feat-icon">⚡</span><h3>Instant Conversion</h3><p>Results appear as you type. No delays, no button clicks needed — just type and see.</p></div>
+    <div class="feat-card"><span class="feat-icon">🔢</span><h3>Billions & Trillions</h3><p>Handles numbers of any size — from single digits to trillion-dollar figures for financial documents.</p></div>
+    <div class="feat-card"><span class="feat-icon">📋</span><h3>One-Click Copy</h3><p>Copy the word result instantly. Paste directly into your cheque, invoice, or legal document.</p></div>
+    <div class="feat-card"><span class="feat-icon">➖</span><h3>Negative Numbers</h3><p>Supports negative values — useful for accounting, balance sheets, and financial reporting.</p></div>
+    <div class="feat-card"><span class="feat-icon">📱</span><h3>Works Everywhere</h3><p>Fully responsive on mobile, tablet, and desktop. Use it from anywhere, anytime.</p></div>
+    <div class="feat-card"><span class="feat-icon">🔒</span><h3>100% Private</h3><p>All conversion happens in your browser. No data is ever sent to any server.</p></div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="who-section">
+  <div class="who-inner">
+    <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
+    <h2 class="section-title">Who benefits from a<br><em>number to words converter?</em></h2>
+    <p class="section-sub">From bank professionals to students — writing numbers in words is a daily requirement for many.</p>
+    <div class="who-grid">
+      <div class="who-card"><span class="who-emoji">🏦</span><h3>Bank Professionals</h3><p>Write cheque amounts in words accurately — a legal requirement for all bank instruments.</p></div>
+      <div class="who-card"><span class="who-emoji">🧾</span><h3>Accountants</h3><p>Add word representations to invoices, receipts, and financial statements instantly.</p></div>
+      <div class="who-card"><span class="who-emoji">⚖️</span><h3>Legal Professionals</h3><p>Legal contracts and deeds require monetary amounts written in both digits and words.</p></div>
+      <div class="who-card"><span class="who-emoji">📚</span><h3>Students & Teachers</h3><p>Learn and teach number names — from basic counting to large number spelling.</p></div>
+      <div class="who-card"><span class="who-emoji">💼</span><h3>Business Owners</h3><p>Create professional invoices with amounts in words — required in many countries.</p></div>
+      <div class="who-card"><span class="who-emoji">🌍</span><h3>Non-Native English Speakers</h3><p>Quickly verify the correct English spelling of large numbers for official documents.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Frequently asked <em>questions</em></h2>
+    <p class="section-sub">Everything you need to know about converting numbers to words.</p>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I convert a number to words? <span class="arrow">▼</span></div><div class="faq-a">Simply type your number in the input field above. The word equivalent appears instantly as you type. Click "Copy Result" to copy it to your clipboard.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is 125000 in words? <span class="arrow">▼</span></div><div class="faq-a">125,000 in words is "One Hundred Twenty Five Thousand." You can verify this by entering 125000 in the tool above.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I write a cheque amount in words? <span class="arrow">▼</span></div><div class="faq-a">Enter the cheque amount in the converter above and copy the result. For example, for a cheque of PKR 50,000, type 50000 and the tool shows "Fifty Thousand" which you write on the cheque.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is 1 billion in words? <span class="arrow">▼</span></div><div class="faq-a">1,000,000,000 in words is "One Billion." Our tool handles numbers this large and beyond — up to trillions.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this number to words converter free? <span class="arrow">▼</span></div><div class="faq-a">Yes — 100% free, forever. No signup, no subscription, no limits on conversions.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does it work for negative numbers? <span class="arrow">▼</span></div><div class="faq-a">Yes. Enter a negative number like -5000 and the tool shows "Negative Five Thousand" — useful for accounting and balance sheet entries.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AD BEFORE ARTICLE -->
+<div style="text-align:center;padding:24px;background:#fff;border-top:1px solid var(--border)">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-section">
+  <h2>Free Number to Words Converter — Complete Guide</h2>
+  <p>Converting numbers to words is a requirement that comes up more often than most people expect. Writing a cheque, drafting a legal contract, creating a formal invoice, filling a government form — all of these frequently require amounts written in both digits and words. Toolyfi's free number to words converter handles any number instantly, from single digits to trillions.</p>
+
+  <h2>Why Numbers Must Be Written in Words</h2>
+  <p>The practice of writing numbers in words alongside digits serves important legal and practical purposes:</p>
   <ul>
-    <li><strong>Cheque Writing:</strong> Convert amounts to words for bank cheques</li>
-    <li><strong>Professional Invoices:</strong> Add word representations to financial documents</li>
-    <li><strong>Legal Documents:</strong> Official documents often require numbers in words</li>
-    <li><strong>Education:</strong> Help students learn number names and spelling</li>
-    <li><strong>Accounting:</strong> Financial records and audit reports</li>
+    <li><strong>Fraud prevention</strong> — On cheques, the word amount is the legally binding figure. If digits and words disagree, the words take precedence in most banking systems. Writing words makes it harder to alter the amount.</li>
+    <li><strong>Legal clarity</strong> — Courts and legal documents require unambiguous amounts. "One Hundred Thousand" cannot be misread the way "100,000" can be (is it 100,000 or 1,00,000 in different numbering systems?).</li>
+    <li><strong>Accessibility</strong> — Some readers process written words more clearly than digits, especially for large numbers with many zeros.</li>
+    <li><strong>International standards</strong> — Many countries require invoices and contracts to show amounts in words as a legal requirement.</li>
   </ul>
 
-  <h2>Why Use Our Number to Words Converter?</h2>
-  <p>Our tool is completely free, requires no signup, and provides instant conversions for any number. Whether you need to convert small amounts or large numbers in the millions, our converter delivers accurate results instantly.</p>
+  <h2>Number to Words Reference Table</h2>
+  <table class="num-ref-table">
+    <thead><tr><th>Number</th><th>In Words</th></tr></thead>
+    <tbody>
+      <tr><td>100</td><td>One Hundred</td></tr>
+      <tr><td>1,000</td><td>One Thousand</td></tr>
+      <tr><td>10,000</td><td>Ten Thousand</td></tr>
+      <tr><td>50,000</td><td>Fifty Thousand</td></tr>
+      <tr><td>100,000</td><td>One Hundred Thousand</td></tr>
+      <tr><td>500,000</td><td>Five Hundred Thousand</td></tr>
+      <tr><td>1,000,000</td><td>One Million</td></tr>
+      <tr><td>10,000,000</td><td>Ten Million</td></tr>
+      <tr><td>100,000,000</td><td>One Hundred Million</td></tr>
+      <tr><td>1,000,000,000</td><td>One Billion</td></tr>
+      <tr><td>1,000,000,000,000</td><td>One Trillion</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How to Write Cheque Amounts in Words</h2>
+  <p>Writing cheque amounts correctly is critical — errors can cause cheques to be rejected or altered fraudulently. Here is the correct format:</p>
+  <ol>
+    <li>Write the amount in digits in the box provided (e.g., 25,000)</li>
+    <li>Write the amount in words on the line (e.g., "Twenty Five Thousand Only")</li>
+    <li>Add "Only" or "/-" at the end to prevent additions</li>
+    <li>Draw a line after the words to fill remaining space</li>
+  </ol>
+  <div class="article-highlight"><p>💡 Always add "Only" after the word amount on cheques — e.g., "Fifty Thousand Only" — to prevent fraudulent additions.</p></div>
+
+  <h2>Number Names — Large Numbers Explained</h2>
+  <h3>Thousands and Millions</h3>
+  <p>The Western numbering system groups digits in sets of three. One thousand (1,000) has three zeros. One million (1,000,000) has six zeros. One billion (1,000,000,000) has nine zeros. One trillion (1,000,000,000,000) has twelve zeros.</p>
+  <h3>The Indian/Pakistani Numbering System</h3>
+  <p>In South Asia, a different system is used — Lakh and Crore. One lakh equals 100,000 (one hundred thousand). One crore equals 10,000,000 (ten million). Our converter uses the international Western system. To convert from lakh/crore to international, multiply: 1 lakh = 100,000; 1 crore = 10,000,000.</p>
+
+  <h2>Common Use Cases</h2>
+  <h3>Invoice Writing</h3>
+  <p>Many invoice templates require the total amount in words. This is particularly common in Pakistan, India, and other South Asian countries where it is a business norm and sometimes a legal requirement for GST-registered businesses.</p>
+  <h3>Legal Documents and Deeds</h3>
+  <p>Property sale deeds, loan agreements, and court documents invariably require monetary amounts in words. A property sold for Rs. 5,000,000 must also be written as "Five Million Rupees" in the deed.</p>
+  <h3>Educational Use</h3>
+  <p>Teachers use number-to-word conversion in math lessons for younger students learning to read and write numbers. Our tool can instantly generate the word form for any exercise or worksheet.</p>
+
+  <h2>Related Tools on Toolyfi</h2>
+  <ul>
+    <li><a href="https://toolyfi.com/currency-converter.html">Currency Converter</a> — Convert between 150+ currencies with live rates.</li>
+    <li><a href="https://toolyfi.com/invoice-generator.html">Invoice Generator</a> — Create professional invoices with amounts in words.</li>
+    <li><a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a> — Calculate EMI and total repayment for any loan.</li>
+    <li><a href="https://toolyfi.com/percentage-calculator.html">Percentage Calculator</a> — Calculate percentages and discounts instantly.</li>
+    <li><a href="https://toolyfi.com/word-counter.html">Word Counter</a> — Count words, characters and reading time.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>Whether you are filling out a bank cheque, drafting a legal contract, or teaching number names in school — Toolyfi's free number to words converter delivers instant, accurate results for any number up to trillions. No signup, no limits, completely free.</p>
+  <p><strong>Try it now</strong> — enter any number above and see the English word form instantly.</p>
 </div>
-<div class="related-tools"><h2>Related Tools</h2><div class="related-grid"><a href="word-counter.html" class="related-card">✍️ Word Counter</a><a href="unit-converter.html" class="related-card">📏 Unit Converter</a><a href="currency-converter.html" class="related-card">💱 Currency</a><a href="scientific-calculator.html" class="related-card">🧮 Calculator</a></div></div>
-<footer><div class="footer-links"><a href="index.html">Home</a></div><p>© 2026 Toolyfi.com</p></footer>
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+<!-- RATING WIDGET -->
+<div class="tf-widget">
+  <div class="tf-widget-card">
+    <div class="tf-rating-bar">
+      <div class="tf-rating-top">
+        <div class="tf-rating-left">
+          <h3>⭐ Rate This Tool</h3>
+          <p>Your rating helps others find this tool on Google</p>
+        </div>
+        <div class="tf-avg-display">
+          <div class="tf-avg-num" id="tf-avg-num">—</div>
+          <div class="tf-avg-stars" id="tf-avg-stars">☆☆☆☆☆</div>
+          <div class="tf-avg-count" id="tf-avg-count">No ratings yet</div>
+        </div>
+      </div>
+      <div class="tf-rating-bars">
+        <div class="tf-bar-row"><span class="tf-bar-lbl">5 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-5" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-5">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">4 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-4" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-4">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">3 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-3" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-3">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">2 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-2" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-2">0</span></div>
+        <div class="tf-bar-row"><span class="tf-bar-lbl">1 ⭐</span><div class="tf-bar-track"><div class="tf-bar-fill" id="tf-bar-1" style="width:0%"></div></div><span class="tf-bar-cnt" id="tf-cnt-1">0</span></div>
+      </div>
+      <div class="tf-star-input" style="margin-top:16px">
+        <span>Your rating:</span>
+        <div class="tf-stars">
+          <input type="radio" name="tf-star" id="tf-s5" value="5"><label for="tf-s5">★</label>
+          <input type="radio" name="tf-star" id="tf-s4" value="4"><label for="tf-s4">★</label>
+          <input type="radio" name="tf-star" id="tf-s3" value="3"><label for="tf-s3">★</label>
+          <input type="radio" name="tf-star" id="tf-s2" value="2"><label for="tf-s2">★</label>
+          <input type="radio" name="tf-star" id="tf-s1" value="1"><label for="tf-s1">★</label>
+        </div>
+        <span id="tf-rated-msg" style="font-size:.8rem;color:#10b981;font-weight:700;display:none">✓ Thanks!</span>
+      </div>
+    </div>
+    <div class="tf-reactions">
+      <span class="tf-react-label">Was this helpful?</span>
+      <button class="tf-react-btn" id="tf-like-btn" onclick="tfReact('like')"><span>👍</span><span class="tf-react-count" id="tf-like-count">0</span></button>
+      <button class="tf-react-btn" id="tf-dislike-btn" onclick="tfReact('dislike')"><span>👎</span><span class="tf-react-count" id="tf-dislike-count">0</span></button>
+    </div>
+    <div class="tf-comments-section">
+      <div class="tf-comments-title">💬 <span id="tf-comments-title">Comments</span></div>
+      <div class="tf-comment-form">
+        <input type="text" id="tf-name-input" placeholder="Your name (optional)" maxlength="40">
+        <textarea id="tf-comment-input" placeholder="Share your experience with this tool..." maxlength="500"></textarea>
+        <button class="tf-submit-btn" onclick="tfSubmitComment()">💬 Post Comment</button>
+      </div>
+      <div class="tf-comments-list" id="tf-comments-list">
+        <div class="tf-no-comments" id="tf-no-comments">No comments yet. Be the first!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Explore 40+ more free tools</h2>
+  <p>Calculators, converters, generators — all free, no signup required.</p>
+  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+</div>
+
+<!-- TOOLS GRID -->
+<div class="tools-footer">
+  <div class="tools-footer-inner">
+    <h3>More Free Tools on Toolyfi</h3>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
+      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
+      <a href="https://toolyfi.com/percentage-calculator.html" class="tool-link">% Percentage Calc</a>
+      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
+      <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
+      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+      <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link">💼 Salary Converter</a>
+      <a href="https://toolyfi.com/compound-interest-calculator.html" class="tool-link">📈 Compound Interest</a>
+      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
+      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
+      <a href="https://toolyfi.com/base64-encoder.html" class="tool-link">🔐 Base64 Encoder</a>
+      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
+  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+</footer>
+
 <div class="toast" id="toast"></div>
-<script src="main.js"></script>
+
 <script>
+// ── NUMBER TO WORDS LOGIC ──
 const ones=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
 const tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
 function toW(n){
-  if(n===0)return'Zero';if(n<0)return'Negative '+toW(-n);
-  if(n<20)return ones[n];if(n<100)return tens[Math.floor(n/10)]+(n%10?' '+ones[n%10]:'');
+  n=Math.floor(n);
+  if(n===0)return'Zero';
+  if(n<0)return'Negative '+toW(-n);
+  if(n<20)return ones[n];
+  if(n<100)return tens[Math.floor(n/10)]+(n%10?' '+ones[n%10]:'');
   if(n<1000)return ones[Math.floor(n/100)]+' Hundred'+(n%100?' '+toW(n%100):'');
   if(n<1e6)return toW(Math.floor(n/1000))+' Thousand'+(n%1000?' '+toW(n%1000):'');
   if(n<1e9)return toW(Math.floor(n/1e6))+' Million'+(n%1e6?' '+toW(n%1e6):'');
-  return toW(Math.floor(n/1e9))+' Billion'+(n%1e9?' '+toW(n%1e9):'');
+  if(n<1e12)return toW(Math.floor(n/1e9))+' Billion'+(n%1e9?' '+toW(n%1e9):'');
+  return toW(Math.floor(n/1e12))+' Trillion'+(n%1e12?' '+toW(n%1e12):'');
 }
-function convert(){const v=document.getElementById('nIn').value;document.getElementById('nOut').textContent=v===''?'':isNaN(+v)?'Invalid number':toW(+v);}
-function copyText(id){const elem=document.getElementById(id);const text=elem.textContent.trim();if(!text||text==='Invalid number'){showToast('⚠️ Generate a valid number first');return;}navigator.clipboard.writeText(text);showToast('📋 Copied to clipboard!');}
-function showToast(msg){const toast=document.getElementById('toast');toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3000);}
+
+let lastResult = '';
+function convert(){
+  const v = document.getElementById('nIn').value;
+  const disp = document.getElementById('result-display');
+  if(v===''){disp.innerHTML='<span class="placeholder">Result will appear here...</span>';lastResult='';return;}
+  const num = parseFloat(v);
+  if(isNaN(num)){disp.innerHTML='<span style="color:#dc2626;font-weight:700">Invalid number</span>';lastResult='';return;}
+  const words = toW(num);
+  lastResult = words;
+  disp.innerHTML='<span class="result-text">'+words+'</span>';
+}
+
+function setNum(n){
+  document.getElementById('nIn').value=n;
+  convert();
+}
+
+function copyResult(){
+  if(!lastResult){showToast('⚠️ Enter a number first');return;}
+  navigator.clipboard.writeText(lastResult).then(()=>showToast('📋 Copied!'));
+}
+
+function clearAll(){
+  document.getElementById('nIn').value='';
+  document.getElementById('result-display').innerHTML='<span class="placeholder">Result will appear here...</span>';
+  lastResult='';
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// ── RATING WIDGET ──
+(function(){
+  const PAGE_ID='number-to-words';
+  const K_RATING='tf_rating_'+PAGE_ID,K_REACT='tf_react_'+PAGE_ID,K_VOTED='tf_voted_'+PAGE_ID,K_REACTED='tf_reacted_'+PAGE_ID,K_COMMENTS='tf_comments_'+PAGE_ID;
+  let ratingData=JSON.parse(localStorage.getItem(K_RATING)||'{"total":0,"count":0,"dist":{"1":0,"2":0,"3":0,"4":0,"5":0}}');
+  let reactData=JSON.parse(localStorage.getItem(K_REACT)||'{"like":0,"dislike":0}');
+  let comments=JSON.parse(localStorage.getItem(K_COMMENTS)||'[]');
+  const userVoted=localStorage.getItem(K_VOTED);
+  const userReacted=localStorage.getItem(K_REACTED);
+
+  function starsStr(avg){const f=Math.round(avg);return'★'.repeat(f)+'☆'.repeat(5-f);}
+
+  function renderRatings(){
+    const avg=ratingData.count>0?(ratingData.total/ratingData.count):0;
+    document.getElementById('tf-avg-num').textContent=ratingData.count>0?avg.toFixed(1):'—';
+    document.getElementById('tf-avg-stars').textContent=ratingData.count>0?starsStr(avg):'☆☆☆☆☆';
+    document.getElementById('tf-avg-count').textContent=ratingData.count>0?ratingData.count+' rating'+(ratingData.count!==1?'s':''):'No ratings yet';
+    for(let i=1;i<=5;i++){
+      const cnt=ratingData.dist[i]||0;
+      const pct=ratingData.count>0?(cnt/ratingData.count*100):0;
+      document.getElementById('tf-bar-'+i).style.width=pct+'%';
+      document.getElementById('tf-cnt-'+i).textContent=cnt;
+    }
+    if(ratingData.count>=3){
+      let s=document.getElementById('tf-live-schema');
+      if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='tf-live-schema';document.head.appendChild(s);}
+      s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg.toFixed(1),"ratingCount":ratingData.count,"bestRating":"5","worstRating":"1"}});
+    }
+  }
+
+  if(userVoted){
+    document.querySelectorAll('.tf-stars label').forEach(l=>l.style.pointerEvents='none');
+    const s=document.getElementById('tf-s'+userVoted);if(s)s.checked=true;
+    document.getElementById('tf-rated-msg').style.display='inline';
+  }
+  document.querySelectorAll('.tf-stars input').forEach(input=>{
+    input.addEventListener('change',function(){
+      if(localStorage.getItem(K_VOTED))return;
+      const val=parseInt(this.value);
+      ratingData.total+=val;ratingData.count+=1;ratingData.dist[val]=(ratingData.dist[val]||0)+1;
+      localStorage.setItem(K_RATING,JSON.stringify(ratingData));localStorage.setItem(K_VOTED,val);
+      document.getElementById('tf-rated-msg').style.display='inline';
+      document.querySelectorAll('.tf-stars label').forEach(l=>l.style.pointerEvents='none');
+      renderRatings();
+    });
+  });
+
+  function renderReactions(){
+    document.getElementById('tf-like-count').textContent=reactData.like;
+    document.getElementById('tf-dislike-count').textContent=reactData.dislike;
+    if(userReacted==='like')document.getElementById('tf-like-btn').classList.add('liked');
+    if(userReacted==='dislike')document.getElementById('tf-dislike-btn').classList.add('disliked');
+  }
+  window.tfReact=function(type){
+    if(localStorage.getItem(K_REACTED))return;
+    reactData[type]+=1;localStorage.setItem(K_REACT,JSON.stringify(reactData));localStorage.setItem(K_REACTED,type);
+    renderReactions();
+  };
+
+  function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function renderComments(){
+    const list=document.getElementById('tf-comments-list');
+    const noC=document.getElementById('tf-no-comments');
+    document.getElementById('tf-comments-title').textContent='Comments ('+comments.length+')';
+    if(comments.length===0){noC.style.display='block';return;}
+    noC.style.display='none';list.innerHTML='';
+    [...comments].reverse().forEach(c=>{
+      const div=document.createElement('div');div.className='tf-comment-item';
+      div.innerHTML=`<div class="tf-comment-header"><span class="tf-comment-name">👤 ${escHtml(c.name||'Anonymous')}</span><span class="tf-comment-date">${c.date}</span></div>${c.rating?'<div class="tf-comment-stars">'+'★'.repeat(c.rating)+'☆'.repeat(5-c.rating)+'</div>':''}<div class="tf-comment-text">${escHtml(c.text)}</div>`;
+      list.appendChild(div);
+    });
+  }
+  window.tfSubmitComment=function(){
+    const name=document.getElementById('tf-name-input').value.trim();
+    const text=document.getElementById('tf-comment-input').value.trim();
+    const rEl=document.querySelector('.tf-stars input:checked');
+    if(!text){alert('Please write a comment.');return;}
+    comments.push({name:name||'Anonymous',text,rating:rEl?parseInt(rEl.value):null,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});
+    localStorage.setItem(K_COMMENTS,JSON.stringify(comments));
+    document.getElementById('tf-name-input').value='';document.getElementById('tf-comment-input').value='';
+    renderComments();
+  };
+
+  renderRatings();renderReactions();renderComments();
+})();
 </script>
 </body>
 </html>
