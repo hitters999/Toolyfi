@@ -1,566 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Essential Scripts & Analytics (Retained from original) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"></script>
-
-<!-- SEO Meta Tags -->
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Markdown to HTML Converter - Convert Instantly Free Online | Toolyfi</title>
-<meta name="description" content="Free Markdown to HTML converter. Convert Markdown syntax to clean HTML instantly with live preview. No signup, 100% free. Perfect for developers, bloggers & writers."/>
-<meta name="keywords" content="markdown to html, markdown converter, html converter, markdown editor, convert markdown, markdown tool, text to html, markdown syntax, commonmark"/>
-<meta name="robots" content="index, follow"/>
-<meta name="author" content="Toolyfi"/>
-<link rel="canonical" href="https://toolyfi.com/markdown-to-html.html"/>
-
-<!-- Open Graph / Social -->
-<meta property="og:title" content="Markdown to HTML Converter - Free Instant Conversion Tool | Toolyfi"/>
-<meta property="og:description" content="Convert Markdown to HTML instantly. Free online tool with live preview. No signup. Perfect for developers & content creators."/>
-<meta property="og:url" content="https://toolyfi.com/markdown-to-html.html"/>
-<meta property="og:image" content="https://toolyfi.com/images/markdown-og.jpg"/>
-<meta name="twitter:card" content="summary_large_image"/>
-
-<!-- Schema.org Data -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown to HTML Converter","url":"https://toolyfi.com/markdown-to-html.html","description":"Free Markdown to HTML converter with live preview.","applicationCategory":"UtilityApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"5000"},"author":{"@type":"Organization","name":"Toolyfi"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Markdown?","acceptedAnswer":{"@type":"Answer","text":"Markdown is a lightweight markup language using simple syntax for formatting. Created in 2004, it's widely used for documentation, blogs, and content creation."}},{"@type":"Question","name":"Why convert Markdown to HTML?","acceptedAnswer":{"@type":"Answer","text":"Browsers and web platforms require HTML to render content. Conversion enables publishing on websites, blogs, and email newsletters."}}]}
-</script>
-
-<!-- Fonts & External Libraries for Pro Features -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resize Images to JPG Instantly - Premium Converter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* --- MODERN CSS RESET & VARIABLES --- */
+/* --- DESIGN TOKENS & VARIABLES --- */
 :root {
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --secondary: #ec4899;
-  --bg-body: #f1f5f9;
+  --primary: #7c3aed; /* Vibrant Purple */
+  --primary-hover: #6d28d9;
+  --primary-light: #f3e8ff;
+  --secondary: #1e1b4b; /* Dark Navy/Indigo for dark sections */
+  --secondary-card: #312e81;
+  
+  --bg-main: #f8fafc;
   --bg-card: #ffffff;
-  --text-main: #0f172a;
+  
+  --text-dark: #0f172a;
   --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-  --radius-lg: 16px;
+  --text-light: #f8fafc;
+  
+  --border-color: #e2e8f0;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-purple: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+  
   --radius-md: 12px;
-  --editor-bg: #1e293b;
-  --editor-text: #f8fafc;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
 /* --- HEADER --- */
 header {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  padding: 16px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid var(--border);
+  position: absolute; top: 0; left: 0; width: 100%; padding: 20px 5%;
+  display: flex; justify-content: space-between; align-items: center; z-index: 10;
 }
-.logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-nav a {
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-left: 24px;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-nav a:hover { color: var(--primary); }
+.logo { color: white; font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; gap: 8px; }
+.nav-links { display: flex; gap: 24px; color: white; font-weight: 500; font-size: 0.95rem; }
+.nav-links a:hover { opacity: 0.8; }
+.menu-btn { display: none; color: white; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 
-/* --- HERO --- */
+/* --- HERO SECTION --- */
 .hero {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+  padding: 120px 5% 200px;
   text-align: center;
-  padding: 80px 20px 40px;
-  background: radial-gradient(circle at top, #ffffff 0%, var(--bg-body) 100%);
+  color: white;
+  position: relative;
 }
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-  color: var(--text-main);
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
+.hero h1 span { color: #facc15; } /* Highlight word */
+.hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
+.hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(4px); }
+
+/* --- FLOATING TOOL INTERFACE --- */
+.tool-container {
+  max-width: 800px; margin: -150px auto 60px; padding: 0 20px; position: relative; z-index: 5;
 }
-.hero p {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto 30px;
+.tool-card {
+  background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden;
 }
+.tool-tabs { display: flex; background: #f8fafc; border-bottom: 1px solid var(--border-color); }
+.tool-tab { flex: 1; text-align: center; padding: 16px; font-weight: 600; cursor: pointer; color: var(--text-muted); font-size: 0.95rem; transition: 0.3s; }
+.tool-tab.active { color: var(--primary); background: white; border-bottom: 2px solid var(--primary); }
 
-/* --- PRO CONVERTER APP UI --- */
-.app-container {
-  max-width: 1400px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
+.tool-body { padding: 40px; }
+.dropzone {
+  border: 2px dashed #cbd5e1; border-radius: var(--radius-md); padding: 50px 20px; text-align: center; background: #f8fafc; cursor: pointer; transition: 0.3s;
 }
-.toolbar-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 10px;
+.dropzone:hover, .dropzone.dragover { border-color: var(--primary); background: var(--primary-light); }
+.drop-icon { width: 64px; height: 64px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: var(--shadow-sm); color: var(--primary); }
+.dropzone h3 { font-size: 1.2rem; margin-bottom: 8px; font-weight: 700; }
+.dropzone p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+.btn-primary {
+  background: var(--primary); color: white; border: none; padding: 14px 32px; border-radius: var(--radius-full); font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: var(--shadow-purple); display: inline-flex; align-items: center; gap: 8px;
 }
-.action-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  color: var(--text-main);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s;
-  box-shadow: var(--shadow-sm);
-}
-.action-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
-.action-btn.primary { background: var(--primary); color: white; border: none; }
-.action-btn.primary:hover { background: var(--primary-hover); color: white; }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-.editor-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  height: 600px;
-}
+/* --- STATS BAR --- */
+.stats-bar { background: var(--secondary); color: white; padding: 40px 5%; }
+.stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+.stat-item h4 { font-size: 2rem; font-weight: 800; color: #facc15; margin-bottom: 5px; }
+.stat-item p { font-size: 0.9rem; opacity: 0.8; font-weight: 500; }
 
-/* Editor Panel */
-.panel {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.panel-header {
-  padding: 12px 20px;
-  background: #f8fafc;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.panel-title { font-weight: 700; color: var(--text-main); font-size: 0.95rem;}
+/* --- INFO/FEATURES SECTIONS --- */
+.section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-tag { color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+.section-title { font-size: 2.5rem; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
 
-.format-toolbar { display: flex; gap: 4px; }
-.format-btn {
-  background: none; border: none; padding: 6px; border-radius: 4px;
-  cursor: pointer; color: var(--text-muted); font-size: 1.1rem; transition: 0.2s;
-}
-.format-btn:hover { background: #e2e8f0; color: var(--primary); }
+/* Split Feature Box */
+.feature-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+.feature-list li { display: flex; gap: 16px; margin-bottom: 24px; }
+.feature-list-icon { width: 40px; height: 40px; background: var(--primary-light); color: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.feature-list h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.feature-list p { color: var(--text-muted); font-size: 0.95rem; }
+.feature-graphic { background: var(--secondary); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-lg); color: white; position: relative; }
+.graphic-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.graphic-row:last-child { border-bottom: none; }
+.graphic-badge { background: var(--primary); padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
 
-textarea {
-  flex: 1;
-  width: 100%;
-  padding: 20px;
-  border: none;
-  resize: none;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.95rem;
-  color: var(--text-main);
-  background: var(--bg-card);
-  line-height: 1.6;
-}
-textarea:focus { outline: none; }
+/* Grid Features */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.f-card { background: white; padding: 30px; border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: 0.3s; }
+.f-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+.f-card-icon { width: 50px; height: 50px; margin-bottom: 20px; }
+.f-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.f-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-.panel-footer {
-  padding: 8px 20px;
-  background: #f8fafc;
-  border-top: 1px solid var(--border);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  display: flex;
-  justify-content: space-between;
-}
+/* --- WHO IS THIS FOR (Dark Section) --- */
+.dark-section { background: var(--secondary); color: white; padding: 100px 5%; }
+.dark-section .section-title { color: white; }
+.audience-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.audience-card { background: var(--secondary-card); padding: 30px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); }
+.audience-card h4 { font-size: 1.1rem; margin: 15px 0 10px; font-weight: 700; }
+.audience-card p { font-size: 0.9rem; color: #94a3b8; }
 
-/* Output Panel */
-.tabs { display: flex; gap: 8px; background: #e2e8f0; padding: 4px; border-radius: 8px; }
-.tab-btn {
-  padding: 6px 16px; border: none; background: transparent; border-radius: 6px;
-  font-weight: 600; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; transition: 0.2s;
-}
-.tab-btn.active { background: white; color: var(--primary); box-shadow: var(--shadow-sm); }
-
-.output-area { flex: 1; overflow-y: auto; background: var(--bg-card); position: relative; }
-.preview-content { padding: 20px; line-height: 1.6; color: var(--text-main); display: none; }
-.preview-content.active { display: block; }
-.code-content { margin: 0 !important; border-radius: 0 !important; height: 100%; display: none; }
-.code-content.active { display: block; }
-
-/* Markdown Preview Styles */
-.preview-content h1, .preview-content h2 { border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 24px 0 16px; }
-.preview-content p { margin-bottom: 16px; }
-.preview-content a { color: var(--primary); text-decoration: none; }
-.preview-content a:hover { text-decoration: underline; }
-.preview-content ul, .preview-content ol { padding-left: 24px; margin-bottom: 16px; }
-.preview-content blockquote { border-left: 4px solid var(--primary); padding-left: 16px; color: var(--text-muted); margin-bottom: 16px; background: #f8fafc; padding: 10px 16px; border-radius: 0 8px 8px 0;}
-.preview-content code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em; color: var(--secondary); }
-.preview-content pre code { background: none; color: inherit; padding: 0; }
-.preview-content pre { background: var(--editor-bg); color: var(--editor-text); padding: 16px; border-radius: 8px; overflow-x: auto; margin-bottom: 16px; }
-.preview-content table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-.preview-content th, .preview-content td { border: 1px solid var(--border); padding: 8px 12px; }
-.preview-content th { background: #f8fafc; font-weight: 600; }
-.preview-content img { max-width: 100%; border-radius: 8px; }
-
-/* --- SECTIONS (Features, Guide, FAQ) --- */
-.section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-.section-title { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; }
-
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-.feature-card { background: white; padding: 32px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: 0.3s; }
-.feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
-.f-icon { width: 50px; height: 50px; background: #e0e7ff; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; }
-.feature-card h3 { margin-bottom: 8px; font-weight: 700; }
-.feature-card p { color: var(--text-muted); font-size: 0.95rem; }
-
-.article-box { background: white; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); margin: 0 auto; max-width: 900px;}
-.article-box h2 { margin: 32px 0 16px; color: var(--primary); }
-.article-box p { margin-bottom: 16px; color: var(--text-muted); }
-
-.faq-item { background: white; border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 16px; overflow: hidden; transition: 0.3s; }
-.faq-q { padding: 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+/* --- FAQ SECTION --- */
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 16px; overflow: hidden; transition: 0.3s; }
+.faq-q { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text-dark); }
 .faq-q:hover { background: #f8fafc; }
-.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: var(--text-muted); }
-.faq-item.open { border-color: var(--primary); box-shadow: var(--shadow-sm); }
-.faq-item.open .faq-a { padding: 0 20px 20px; max-height: 200px; }
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: var(--text-muted); }
+.faq-item.open { border-color: var(--primary); }
+.faq-item.open .faq-a { padding: 0 20px 20px; max-height: 300px; }
 .faq-icon { transition: transform 0.3s; }
-.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--primary); }
+.faq-item.open .faq-icon { transform: rotate(180deg); color: var(--primary); }
 
-/* --- RELATED & FOOTER --- */
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-.related-card { background: white; border: 1px solid var(--border); padding: 16px; border-radius: 8px; text-align: center; text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;}
-.related-card:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+/* --- SEO ARTICLE SECTION --- */
+.article-section { max-width: 900px; margin: 0 auto; padding: 80px 5%; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-bottom: 80px; }
+.article-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
+.article-section h3 { font-size: 1.4rem; font-weight: 700; margin: 30px 0 15px; color: var(--text-dark); }
+.article-section p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem; }
+.article-alert { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 30px 0; color: var(--primary-hover); font-weight: 500; }
 
-footer { background: var(--text-main); color: white; padding: 40px 20px; text-align: center; }
-footer a { color: #818cf8; text-decoration: none; }
+/* Beautiful Table inside Article */
+.custom-table { width: 100%; border-collapse: collapse; margin: 30px 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+.custom-table th { background: var(--primary); color: white; text-align: left; padding: 15px 20px; font-weight: 600; }
+.custom-table td { padding: 15px 20px; border-bottom: 1px solid var(--border-color); color: var(--text-dark); }
+.custom-table tr:last-child td { border-bottom: none; }
+.custom-table tr:nth-child(even) { background-color: #f8fafc; }
 
-/* Responsive */
-@media(max-width: 992px) {
-  .editor-grid { grid-template-columns: 1fr; height: auto; }
-  textarea, .output-area { min-height: 400px; }
+/* --- CTA SECTION --- */
+.cta-section { background: var(--primary); padding: 80px 5%; text-align: center; color: white; }
+.cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+.cta-section p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
+.btn-white { background: white; color: var(--primary); border: none; padding: 15px 40px; border-radius: var(--radius-full); font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+/* --- FOOTER --- */
+footer { background: #0f172a; color: #94a3b8; padding: 60px 5% 30px; }
+.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 40px; margin-bottom: 40px; }
+.footer-col h4 { color: white; font-weight: 600; margin-bottom: 20px; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a:hover { color: white; }
+.footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .feature-split { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .hero { padding: 100px 5% 150px; }
+  .tool-container { margin-top: -100px; }
+  .tool-body { padding: 20px; }
+  .section-title { font-size: 2rem; }
+  .custom-table { display: block; overflow-x: auto; white-space: nowrap; }
 }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
   <div class="logo">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-    Toolyfi
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    ImageTool
   </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#converter">Converter</a>
-    <a href="#guide">Guide</a>
+  <nav class="nav-links">
+    <a href="#">Tools</a>
+    <a href="#">Pricing</a>
+    <a href="#">API</a>
+    <a href="#">Contact</a>
   </nav>
+  <button class="menu-btn">☰</button>
 </header>
 
+<!-- Hero Section -->
 <section class="hero">
-  <h1>Markdown to HTML Converter</h1>
-  <p>Professional grade tool to convert Markdown syntax into clean, sanitized HTML instantly. Features live preview, syntax highlighting, and CommonMark support.</p>
+  <div class="hero-badges">
+    <span class="badge">HEIC to JPG</span>
+    <span class="badge">PNG to JPG</span>
+    <span class="badge">WEBP to JPG</span>
+    <span class="badge">SVG to JPG</span>
+  </div>
+  <h1>Resize Images to <span>JPG Instantly</span></h1>
+  <p>Fast, secure, and 100% free online tool to convert and compress your images without losing quality. Trusted by millions.</p>
 </section>
 
-<!-- MAIN APP UI -->
-<main class="app-container" id="converter">
-  <div class="toolbar-top">
-    <div style="display:flex; gap:10px;">
-      <button class="action-btn" onclick="document.getElementById('fileInput').click()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Upload .md
-      </button>
-      <input type="file" id="fileInput" accept=".md,.txt" style="display:none" onchange="handleFileUpload(event)">
-      <button class="action-btn" onclick="clearEditor()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> Clear
-      </button>
+<!-- Floating Tool Card -->
+<div class="tool-container">
+  <div class="tool-card">
+    <div class="tool-tabs">
+      <div class="tool-tab active">Image to JPG</div>
+      <div class="tool-tab">Compress</div>
+      <div class="tool-tab">Resize</div>
     </div>
-    <div style="display:flex; gap:10px;">
-      <button class="action-btn primary" onclick="downloadHTML()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download HTML
-      </button>
-      <button class="action-btn primary" onclick="copyHTML()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy HTML
-      </button>
-    </div>
-  </div>
-
-  <div class="editor-grid">
-    <!-- LEFT: EDITOR -->
-    <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title">Markdown Input</span>
-        <div class="format-toolbar">
-          <button class="format-btn" onclick="insertFormat('**', '**')" title="Bold"><b>B</b></button>
-          <button class="format-btn" onclick="insertFormat('*', '*')" title="Italic"><i>I</i></button>
-          <button class="format-btn" onclick="insertFormat('# ', '')" title="Heading 1">H1</button>
-          <button class="format-btn" onclick="insertFormat('## ', '')" title="Heading 2">H2</button>
-          <button class="format-btn" onclick="insertFormat('- ', '')" title="List">•</button>
-          <button class="format-btn" onclick="insertFormat('> ', '')" title="Quote">”</button>
-          <button class="format-btn" onclick="insertFormat('[', '](url)')" title="Link">🔗</button>
-          <button class="format-btn" onclick="insertFormat('```\n', '\n```')" title="Code">&lt;/&gt;</button>
-        </div>
-      </div>
-      <textarea id="markdown" placeholder="Type or paste your Markdown here...&#10;&#10;# Hello World&#10;**Bold Text** and *Italic*&#10;&#10;- List item 1&#10;- List item 2&#10;&#10;[Toolyfi](https://toolyfi.com)"></textarea>
-      <div class="panel-footer">
-        <span id="wordCount">0 words</span>
-        <span id="charCount">0 characters</span>
-      </div>
-    </div>
-
-    <!-- RIGHT: OUTPUT -->
-    <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title">Output</span>
-        <div class="tabs">
-          <button class="tab-btn active" onclick="switchTab('preview')" id="btn-preview">Visual Preview</button>
-          <button class="tab-btn" onclick="switchTab('code')" id="btn-code">HTML Code</button>
-        </div>
-      </div>
-      <div class="output-area">
-        <div id="preview-box" class="preview-content active"></div>
-        <pre id="code-box" class="code-content language-markup"><code id="code-inner"></code></pre>
-      </div>
-    </div>
-  </div>
-</main>
-
-<section class="section" style="background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <h2 class="section-title">Why Choose Our Pro Converter?</h2>
-  <div class="features-grid">
-    <div class="feature-card"><div class="f-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg></div><h3>GitHub Flavored</h3><p>Powered by Marked.js. Supports tables, task lists, and advanced CommonMark specifications perfectly.</p></div>
-    <div class="feature-card"><div class="f-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>XSS Secure</h3><p>Outputs are thoroughly sanitized using DOMPurify, ensuring no malicious scripts enter your HTML.</p></div>
-    <div class="feature-card"><div class="f-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div><h3>Real-time Engine</h3><p>Instant parsing with zero server lag. Everything runs securely and instantly inside your local browser.</p></div>
-  </div>
-</section>
-
-<section class="section" id="guide">
-  <div class="article-box">
-    <h2 style="margin-top:0; font-size: 2rem;">Complete Guide to Markdown & HTML</h2>
-    <p>Markdown has revolutionized how developers, writers, and content creators produce web content. Its simplicity and readability make it ideal for documentation, blogs, and digital publishing. However, the web runs on HTML. Understanding how to convert Markdown to HTML efficiently is fundamental to modern web development.</p>
     
-    <h2>Understanding Markdown Syntax</h2>
-    <p>Markdown supports all essential text formatting without the clutter of traditional HTML tags:</p>
-    <ul>
-      <li><strong>Headings:</strong> Use `#` for H1, `##` for H2, etc.</li>
-      <li><strong>Emphasis:</strong> Wrap text in `**` for bold, or `*` for italic.</li>
-      <li><strong>Lists:</strong> Use `-` or `*` for bullets, and `1.` for numbers.</li>
-      <li><strong>Links & Images:</strong> `[Text](URL)` for links, `![Alt](URL)` for images.</li>
-      <li><strong>Code:</strong> Use backticks ` ` ` for inline code, and triple backticks for blocks.</li>
+    <div class="tool-body">
+      <div class="dropzone" id="dropzone">
+        <div class="drop-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <h3>Choose files or drag & drop</h3>
+        <p>Supports PNG, HEIC, WEBP, GIF (Max 50MB)</p>
+        <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+          Select Images
+        </button>
+        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item"><h4>5M+</h4><p>Files Converted</p></div>
+    <div class="stat-item"><h4>100%</h4><p>Secure & Private</p></div>
+    <div class="stat-item"><h4>0</h4><p>Data Stored</p></div>
+    <div class="stat-item"><h4>Free</h4><p>Unlimited Uses</p></div>
+  </div>
+</section>
+
+<!-- Feature Split Section -->
+<section class="section">
+  <div class="feature-split">
+    <div>
+      <span class="section-tag">High Quality</span>
+      <h2 class="section-title" style="margin-bottom: 30px;">Your images are completely secure.</h2>
+      <ul class="feature-list">
+        <li>
+          <div class="feature-list-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <h4>Auto Delete</h4>
+            <p>All files are permanently deleted from our servers after 1 hour. Nobody has access to your files.</p>
+          </div>
+        </li>
+        <li>
+          <div class="feature-list-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div>
+            <h4>Lightning Fast</h4>
+            <p>Powered by global CDN and high-performance servers, your conversions finish in seconds.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="feature-graphic">
+      <h3 style="margin-bottom: 20px;">Live Conversion</h3>
+      <div class="graphic-row">
+        <span>IMG_4921.heic</span> <span class="graphic-badge">Done</span>
+      </div>
+      <div class="graphic-row">
+        <span>Screenshot_web.png</span> <span class="graphic-badge">Done</span>
+      </div>
+      <div class="graphic-row">
+        <span>Vector_logo.svg</span> <span style="color:#facc15; font-weight:600; font-size:0.8rem;">Processing...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grid Features -->
+<section class="section" style="background: white;">
+  <div class="section-header">
+    <span class="section-tag">Features</span>
+    <h2 class="section-title">Everything you need is<br>built right in.</h2>
+  </div>
+  <div class="features-grid">
+    <div class="f-card">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='2'/><circle cx='8.5' cy='8.5' r='1.5'/><path d='M21 15l-5-5L5 21'/></svg>" class="f-card-icon" alt="High Quality">
+      <h3>High Quality</h3>
+      <p>We use state-of-the-art algorithms to ensure your JPGs retain perfect visual quality while minimizing file size.</p>
+    </div>
+    <div class="f-card">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><polyline points='10 9 9 9 8 9'/></svg>" class="f-card-icon" alt="Batch Processing">
+      <h3>Batch Processing</h3>
+      <p>Upload up to 50 images at once. Convert entire folders to JPG with a single click and download as a ZIP.</p>
+    </div>
+    <div class="f-card">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'/><line x1='8' y1='21' x2='16' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/></svg>" class="f-card-icon" alt="All Devices">
+      <h3>Works on all devices</h3>
+      <p>Whether you are on Mac, Windows, iPhone, or Android, our cloud tool works perfectly inside your browser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Audience Section -->
+<section class="dark-section">
+  <div class="section-header">
+    <span class="section-tag" style="color: #facc15;">Top Rated</span>
+    <h2 class="section-title">Who is this tool for?</h2>
+    <p style="color: #94a3b8; margin-top:10px;">Built for professionals and everyday users alike.</p>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <h4 style="color:#60a5fa">📸 Photographers</h4>
+      <p>Convert RAW or HEIC formats from your camera/iPhone directly to standard JPGs for easy client sharing.</p>
+    </div>
+    <div class="audience-card">
+      <h4 style="color:#34d399">💻 Web Developers</h4>
+      <p>Optimize large PNG assets into lightweight JPGs to improve website loading speeds and SEO scores.</p>
+    </div>
+    <div class="audience-card">
+      <h4 style="color:#f87171">🎨 Designers</h4>
+      <p>Flatten complex multi-layer designs into solid JPG format for presentations and email delivery.</p>
+    </div>
+    <div class="audience-card">
+      <h4 style="color:#c084fc">🏢 Businesses</h4>
+      <p>Standardize employee headshots and document scans into universally accepted JPG formats.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section bg-main">
+  <div class="section-header">
+    <span class="section-tag">FAQ</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-container">
+    <div class="faq-item">
+      <div class="faq-q">Is this tool really free to use? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a"><br>Yes, our standard image converter is 100% free with no hidden costs. You don't even need to create an account to use it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will I lose image quality? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a"><br>No. We use intelligent compression algorithms that maintain visual fidelity while changing the file format to JPG.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are my files kept secure? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a"><br>Absolutely. All files are encrypted during transfer and automatically purged from our servers within one hour of conversion.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I convert HEIC photos from my iPhone? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a"><br>Yes! We fully support Apple's HEIC format. Just upload your iPhone photos and we will convert them to universally readable JPGs instantly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Article Section -->
+<section class="section" style="padding-top: 0;">
+  <div class="article-section">
+    <h2>The Ultimate Guide to Converting Images to JPG</h2>
+    <p>In the modern digital landscape, image formats play a crucial role in how we share, store, and display visual content. While PNGs offer transparency and HEICs offer great compression for Apple devices, the **JPG (or JPEG)** remains the undisputed king of web images. It provides the perfect balance between high visual quality and minimal file size.</p>
+    
+    <div class="article-alert">
+      💡 Pro Tip: When uploading images to websites, social media, or government portals, JPG is required 99% of the time.
+    </div>
+
+    <h3>Why convert to JPG?</h3>
+    <p>Converting your images to JPG solves several common digital problems:</p>
+    <ul style="list-style-type: disc; margin-left: 20px; color: var(--text-muted); margin-bottom: 20px;">
+      <li style="margin-bottom: 8px;"><strong>Compatibility:</strong> JPGs can be opened natively on every device, browser, and operating system without special software.</li>
+      <li style="margin-bottom: 8px;"><strong>File Size:</strong> PNGs and TIFFs are massive. Converting them to JPG can reduce their file size by up to 80%, saving your storage space.</li>
+      <li style="margin-bottom: 8px;"><strong>Web Performance:</strong> Smaller images mean your website loads faster, improving user experience and SEO rankings.</li>
     </ul>
 
-    <h2>Why Converting is Essential</h2>
-    <p>While Markdown is excellent for writing, browsers don't understand it; they need HTML to render pages. Email clients require HTML to format messages. Content management systems like WordPress, Gatsby, and Jekyll all convert Markdown to HTML behind the scenes. If you're publishing content online, this conversion process is mandatory.</p>
+    <h3>Comparing Image Formats</h3>
+    <p>Not sure if you should convert? Look at how JPG stacks up against other common formats in this detailed breakdown:</p>
 
-    <h2>Security Considerations</h2>
-    <p>When converting user-generated Markdown, security is paramount. Our tool utilizes <strong>DOMPurify</strong> to sanitize the generated HTML. This strips out malicious `<script>` tags or inline event handlers that could lead to Cross-Site Scripting (XSS) attacks, ensuring your output is 100% safe to embed on any website.</p>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Best Used For</th>
+          <th>Transparency</th>
+          <th>File Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>JPG / JPEG</strong></td>
+          <td>Photographs, Web Images, Sharing</td>
+          <td>❌ No</td>
+          <td>Small (Compressed)</td>
+        </tr>
+        <tr>
+          <td><strong>PNG</strong></td>
+          <td>Logos, Graphics, Overlays</td>
+          <td>✅ Yes</td>
+          <td>Large (Lossless)</td>
+        </tr>
+        <tr>
+          <td><strong>HEIC</strong></td>
+          <td>iPhone Photos</td>
+          <td>✅ Yes</td>
+          <td>Small (But limited compatibility)</td>
+        </tr>
+        <tr>
+          <td><strong>WEBP</strong></td>
+          <td>Next-gen Web Design</td>
+          <td>✅ Yes</td>
+          <td>Very Small</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>How to use our free converter tool</h3>
+    <p>Using our tool is remarkably simple. You don't need to download any heavy software like Photoshop. Just follow these steps:</p>
+    <ol style="list-style-type: decimal; margin-left: 20px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8;">
+      <li>Scroll up to the converter box at the top of this page.</li>
+      <li>Click "Select Images" or drag and drop your files into the dashed box.</li>
+      <li>Our servers will instantly process the images.</li>
+      <li>Click the "Download" button to save your new JPGs to your device!</li>
+    </ol>
   </div>
 </section>
 
-<section class="section">
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  <div style="max-width: 800px; margin: 0 auto;">
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does this tool support GitHub Flavored Markdown (GFM)? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-      <div class="faq-a"><br>Yes! We use the industry-standard Marked.js parsing engine with GFM enabled. This means tables, strikethrough, task lists, and autolinks will convert perfectly just like they do on GitHub.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data sent to your servers? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-      <div class="faq-a"><br>No. The entire conversion process happens locally within your browser using JavaScript. No text or files are ever uploaded or stored on our servers, ensuring total privacy.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I convert large Markdown files? <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-      <div class="faq-a"><br>Absolutely. You can paste large documents or use the "Upload .md" button. The engine is highly optimized and can parse thousands of lines of Markdown into HTML in milliseconds.</div>
-    </div>
-  </div>
+<!-- Bottom CTA -->
+<section class="cta-section">
+  <h2>Ready to convert your images?</h2>
+  <p>Join millions of users who trust our platform for fast, secure conversions.</p>
+  <button class="btn-white" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Try it out now — It's Free</button>
 </section>
 
-<section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border);">
-  <h2 class="section-title">Explore More Developer Tools</h2>
-  <div class="related-grid">
-    <a href="base64-encoder.html" class="related-card">🔐 Base64 Encoder</a>
-    <a href="json-formatter.html" class="related-card">📋 JSON Formatter</a>
-    <a href="qr-code-generator.html" class="related-card">📱 QR Generator</a>
-    <a href="password-generator.html" class="related-card">🔑 Password Gen</a>
-    <a href="color-picker.html" class="related-card">🎨 Color Picker</a>
-    <a href="link-shortener.html" class="related-card">🔗 Link Shortener</a>
-  </div>
-</section>
-
+<!-- Footer -->
 <footer>
-  <p>🚀 Crafted for developers by <a href="https://toolyfi.com">Toolyfi</a> | © 2026 All Rights Reserved</p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="#">Image to JPG</a></li>
+        <li><a href="#">Image Compress</a></li>
+        <li><a href="#">Crop Image</a></li>
+        <li><a href="#">Resize Image</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Developer API</a></li>
+        <li><a href="#">Help Center</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ImageTool Platform. All rights reserved.</p>
+  </div>
 </footer>
 
-<!-- Chat Widget (Retained from original) -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-
-<!-- Tool Logic -->
 <script>
-// Configure Marked.js for GitHub Flavored Markdown
-marked.setOptions({
-  gfm: true,
-  breaks: true,
-  headerIds: false
-});
+  // FAQ Toggle Logic
+  document.querySelectorAll('.faq-q').forEach(item => {
+    item.addEventListener('click', event => {
+      const parent = item.parentElement;
+      const isOpen = parent.classList.contains('open');
+      
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('open');
+      });
 
-const editor = document.getElementById('markdown');
-const previewBox = document.getElementById('preview-box');
-const codeInner = document.getElementById('code-inner');
-const wordCountNode = document.getElementById('wordCount');
-const charCountNode = document.getElementById('charCount');
-
-// Main Parsing Function
-function updateOutput() {
-  const mdText = editor.value;
-  
-  // 1. Parse Markdown to HTML
-  const rawHtml = marked.parse(mdText);
-  
-  // 2. Sanitize HTML to prevent XSS
-  const cleanHtml = DOMPurify.sanitize(rawHtml);
-  
-  // 3. Update Visual Preview
-  previewBox.innerHTML = cleanHtml;
-  
-  // 4. Update Code View (Escape HTML for display)
-  codeInner.textContent = cleanHtml;
-  
-  // 5. Apply Syntax Highlighting to Code View
-  Prism.highlightElement(codeInner);
-
-  // 6. Update Stats
-  charCountNode.textContent = `${mdText.length} characters`;
-  const words = mdText.trim() === '' ? 0 : mdText.trim().split(/\s+/).length;
-  wordCountNode.textContent = `${words} words`;
-}
-
-// Event Listeners
-editor.addEventListener('input', updateOutput);
-window.addEventListener('DOMContentLoaded', updateOutput); // Init on load
-
-// Toolbar Formatting
-function insertFormat(prefix, suffix) {
-  const start = editor.selectionStart;
-  const end = editor.selectionEnd;
-  const text = editor.value;
-  const selectedText = text.substring(start, end);
-  
-  editor.value = text.substring(0, start) + prefix + selectedText + suffix + text.substring(end);
-  
-  // Re-focus and position cursor
-  editor.focus();
-  if (selectedText.length === 0) {
-    editor.selectionStart = editor.selectionEnd = start + prefix.length;
-  } else {
-    editor.selectionStart = start;
-    editor.selectionEnd = start + prefix.length + selectedText.length + suffix.length;
-  }
-  updateOutput();
-}
-
-// Tab Switching
-function switchTab(tab) {
-  document.getElementById('btn-preview').classList.remove('active');
-  document.getElementById('btn-code').classList.remove('active');
-  document.getElementById('preview-box').classList.remove('active');
-  document.getElementById('code-box').classList.remove('active');
-
-  document.getElementById(`btn-${tab}`).classList.add('active');
-  document.getElementById(`${tab}-box`).classList.add('active');
-}
-
-// Action Buttons
-function clearEditor() {
-  if(confirm('Are you sure you want to clear the editor?')) {
-    editor.value = '';
-    updateOutput();
-  }
-}
-
-function copyHTML() {
-  const htmlToCopy = codeInner.textContent;
-  if(!htmlToCopy) return alert('Nothing to copy!');
-  
-  navigator.clipboard.writeText(htmlToCopy).then(() => {
-    alert('✅ HTML Code copied to clipboard!');
-  }).catch(() => {
-    alert('❌ Failed to copy.');
+      // Open clicked if it wasn't already open
+      if (!isOpen) {
+        parent.classList.add('open');
+      }
+    });
   });
-}
 
-function downloadHTML() {
-  const htmlContent = codeInner.textContent;
-  if(!htmlContent) return alert('Nothing to download!');
-
-  // Create a proper HTML boilerplate for the download
-  const fullHtml = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>Exported Markdown</title>\n</head>\n<body>\n${htmlContent}\n</body>\n</html>`;
+  // Drag and Drop Visual Logic
+  const dropzone = document.getElementById('dropzone');
   
-  const blob = new Blob([fullHtml], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'converted-document.html';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-function handleFileUpload(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    editor.value = e.target.result;
-    updateOutput();
-  };
-  reader.readAsText(file);
-  event.target.value = ''; // Reset input
-}
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropzone.addEventListener(eventName, preventDefaults, false);
+  });
+  
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropzone.addEventListener(eventName, () => dropzone.classList.add('dragover'), false);
+  });
+  
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropzone.addEventListener(eventName, () => dropzone.classList.remove('dragover'), false);
+  });
+  
+  dropzone.addEventListener('drop', (e) => {
+    let dt = e.dataTransfer;
+    let files = dt.files;
+    // In a real app, you would process the files here
+    alert(files.length + " file(s) dropped! Ready for conversion.");
+  }, false);
 </script>
+
 </body>
 </html>
