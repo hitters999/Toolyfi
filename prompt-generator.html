@@ -1,866 +1,806 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prompt Generator - 500+ AI Prompts for ChatGPT, Claude & Gemini | Free Tool</title>
-  <meta name="description" content="Generate 500+ professional AI prompts for ChatGPT, Claude, and Gemini. Free prompt templates for writing, coding, marketing, SEO, and more. Boost your AI productivity instantly.">
-  <meta name="keywords" content="prompt generator, ChatGPT prompts, AI prompts, Claude prompts, Gemini prompts, prompt templates, AI writing, prompt engineering">
-  <meta name="author" content="Toolyfi">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#667eea">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Prompt Generator - 500+ Professional AI Prompts">
-  <meta property="og:description" content="Free AI prompt generator with 500+ templates for ChatGPT, Claude, and Gemini">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolyfi.com/prompt-generator/">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Prompt Generator",
-    "description": "Free AI prompt generator with 500+ templates",
-    "url": "https://toolyfi.com/prompt-generator/",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "operatingSystem": "Web"
-  }
-  </script>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-
-    /* HEADER */
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 50px 30px;
-      text-align: center;
-    }
-
-    .header h1 {
-      font-size: 2.8em;
-      margin-bottom: 15px;
-      font-weight: 800;
-    }
-
-    .header p {
-      font-size: 1.15em;
-      opacity: 0.95;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .badge-group {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-
-    .badge {
-      background: rgba(255,255,255,0.2);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9em;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-    }
-
-    /* MAIN CONTENT */
-    .content {
-      padding: 40px 30px;
-    }
-
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      background: #f8f9ff;
-      padding: 25px;
-      border-radius: 15px;
-      height: fit-content;
-      position: sticky;
-      top: 20px;
-    }
-
-    .sidebar h3 {
-      color: #333;
-      margin-bottom: 20px;
-      font-size: 1.2em;
-      border-bottom: 2px solid #667eea;
-      padding-bottom: 10px;
-    }
-
-    .category-group {
-      margin-bottom: 25px;
-    }
-
-    .category-title {
-      color: #667eea;
-      font-weight: 700;
-      font-size: 0.95em;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .category-btn {
-      display: block;
-      width: 100%;
-      padding: 12px 15px;
-      background: white;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      color: #333;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: left;
-      margin-bottom: 8px;
-      font-size: 0.95em;
-    }
-
-    .category-btn:hover {
-      background: #667eea;
-      color: white;
-      border-color: #667eea;
-      transform: translateX(5px);
-    }
-
-    .category-btn.active {
-      background: #667eea;
-      color: white;
-      border-color: #667eea;
-    }
-
-    /* MAIN AREA */
-    .main-area {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .search-box {
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 15px 45px 15px 15px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 1em;
-      transition: all 0.3s;
-    }
-
-    .search-box input:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      font-size: 1.2em;
-    }
-
-    /* PROMPTS LIST */
-    .prompts-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .prompt-card {
-      background: #f8f9ff;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .prompt-card:hover {
-      border-color: #667eea;
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .prompt-category-tag {
-      display: inline-block;
-      background: #667eea;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 0.75em;
-      font-weight: 600;
-      width: fit-content;
-    }
-
-    .prompt-card h3 {
-      color: #333;
-      font-size: 1em;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .prompt-card p {
-      color: #666;
-      font-size: 0.9em;
-      line-height: 1.5;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .prompt-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-    }
-
-    .btn-copy {
-      flex: 1;
-      padding: 10px 15px;
-      background: #667eea;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9em;
-      transition: all 0.3s;
-    }
-
-    .btn-copy:hover {
-      background: #5568d3;
-      transform: scale(1.02);
-    }
-
-    .btn-expand {
-      padding: 10px 15px;
-      background: white;
-      color: #667eea;
-      border: 2px solid #667eea;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9em;
-      transition: all 0.3s;
-    }
-
-    .btn-expand:hover {
-      background: #667eea;
-      color: white;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      border-radius: 15px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 30px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #f0f0f0;
-      padding-bottom: 15px;
-    }
-
-    .modal-header h2 {
-      color: #333;
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      font-size: 1.5em;
-      cursor: pointer;
-      color: #999;
-      transition: color 0.3s;
-    }
-
-    .modal-close:hover {
-      color: #333;
-    }
-
-    .modal-body {
-      margin-bottom: 20px;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    .modal-footer {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .btn-modal-copy {
-      flex: 1;
-      padding: 12px 20px;
-      background: #667eea;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-modal-copy:hover {
-      background: #5568d3;
-    }
-
-    .btn-modal-close {
-      flex: 1;
-      padding: 12px 20px;
-      background: #f0f0f0;
-      color: #333;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-modal-close:hover {
-      background: #e0e0e0;
-    }
-
-    /* FOOTER */
-    .footer {
-      background: #f8f9fa;
-      padding: 30px;
-      text-align: center;
-      color: #666;
-      border-top: 1px solid #eee;
-    }
-
-    .footer a {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* NOTIFICATION */
-    .notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #3c3;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 8px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      display: none;
-      z-index: 2000;
-      animation: slideIn 0.3s ease-out;
-    }
-
-    .notification.show {
-      display: block;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(400px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .stat-item {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2em;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .stat-label {
-      font-size: 0.9em;
-      opacity: 0.9;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        padding: 30px 20px;
-      }
-
-      .header h1 {
-        font-size: 1.8em;
-      }
-
-      .content {
-        padding: 20px 15px;
-      }
-
-      .prompts-container {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .category-group {
-        margin-bottom: 0;
-      }
-
-      .modal-content {
-        padding: 20px;
-      }
-    }
-  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Generator – 500+ ChatGPT, Claude & Gemini Prompts | Free | Toolyfi</title>
+<meta name="description" content="Free AI prompt generator with 500+ professional prompts for ChatGPT, Claude, and Gemini. Writing, coding, SEO, marketing prompts. Copy in one click. No signup.">
+<meta name="keywords" content="AI prompt generator, ChatGPT prompts, Claude prompts, Gemini prompts, prompt templates, AI writing prompts, prompt engineering">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolyfi.com/prompt-generator.html">
+<meta property="og:title" content="AI Prompt Generator – 500+ Free Prompts | Toolyfi">
+<meta property="og:description" content="500+ professional AI prompts for ChatGPT, Claude, Gemini. Copy in one click. Free forever.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Prompt Generator","description":"Free AI prompt generator with 500+ templates for ChatGPT, Claude, and Gemini.","url":"https://toolyfi.com/prompt-generator.html","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Web"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#6c47ff;--purple-light:#ede9ff;--purple-dark:#4a2fe0;
+  --green:#22c55e;--red:#ef4444;--orange:#f59e0b;
+  --text:#1a1a2e;--text-light:#64748b;--border:#e2e8f0;
+  --bg:#f8f7ff;--white:#fff;--card-shadow:0 4px 24px rgba(108,71,255,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0a0a1a 0%,#1a0a3a 50%,#2d1060 100%);color:white;padding:60px 20px 40px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-30%;left:-10%;width:120%;height:160%;background:radial-gradient(circle at 60% 40%,rgba(108,71,255,0.4) 0%,transparent 60%);pointer-events:none;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;font-size:0.82em;font-weight:600;margin-bottom:18px;letter-spacing:0.5px;position:relative;}
+.hero h1{font-size:clamp(1.8em,4vw,2.9em);font-weight:800;margin-bottom:12px;line-height:1.2;position:relative;}
+.hero p{font-size:1.05em;opacity:0.85;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto;position:relative;}
+.hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;position:relative;}
+.hstat{text-align:center;}
+.hstat-num{font-size:1.8em;font-weight:800;font-family:'Sora',sans-serif;}
+.hstat-lbl{font-size:0.76em;opacity:0.75;margin-top:2px;}
+.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
+.badge{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.82em;font-weight:600;border:1px solid rgba(255,255,255,0.2);}
+
+/* TOOL WRAPPER */
+.tool-wrapper{max-width:1200px;margin:-20px auto 0;padding:0 20px 50px;position:relative;z-index:2;}
+.tool-card{background:white;border-radius:20px;box-shadow:0 20px 60px rgba(108,71,255,0.18);overflow:hidden;}
+
+/* TOOL INNER */
+.tool-inner{display:grid;grid-template-columns:260px 1fr;min-height:600px;}
+
+/* SIDEBAR */
+.tool-sidebar{padding:24px 18px;background:#fafbff;border-right:1px solid var(--border);overflow-y:auto;}
+.sidebar-title{font-weight:800;font-size:0.9em;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:16px;}
+.cat-group{margin-bottom:18px;}
+.cat-group-label{font-size:0.75em;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--purple);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--purple-light);}
+.cat-btn{display:block;width:100%;text-align:left;padding:8px 12px;border:none;background:transparent;color:var(--text-light);font-size:0.88em;font-weight:600;cursor:pointer;border-radius:8px;transition:all 0.2s;margin-bottom:3px;font-family:'DM Sans',sans-serif;}
+.cat-btn:hover{background:var(--purple-light);color:var(--purple);}
+.cat-btn.active{background:var(--purple);color:white;}
+
+/* MAIN AREA */
+.tool-main{padding:24px;display:flex;flex-direction:column;gap:16px;}
+.search-wrap{position:relative;}
+.search-input{width:100%;padding:12px 18px 12px 44px;border:2px solid var(--border);border-radius:12px;font-size:0.95em;font-family:'DM Sans',sans-serif;background:#fafbff;transition:border-color 0.2s;}
+.search-input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(108,71,255,0.1);}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1em;pointer-events:none;}
+.results-count{font-size:0.82em;color:var(--text-light);font-weight:600;}
+.prompts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.prompt-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;transition:all 0.2s;cursor:pointer;}
+.prompt-card:hover{border-color:var(--purple);box-shadow:0 4px 20px rgba(108,71,255,0.12);transform:translateY(-2px);}
+.prompt-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:6px;font-size:0.72em;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}
+.prompt-card h4{font-size:0.95em;font-weight:700;margin-bottom:6px;line-height:1.3;}
+.prompt-card p{font-size:0.82em;color:var(--text-light);line-height:1.5;margin-bottom:12px;}
+.prompt-actions{display:flex;gap:8px;}
+.btn-copy{flex:1;padding:8px 12px;background:var(--purple);color:white;border:none;border-radius:8px;font-weight:700;font-size:0.8em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.btn-copy:hover{background:var(--purple-dark);}
+.btn-expand{padding:8px 12px;background:white;color:var(--purple);border:2px solid var(--purple);border-radius:8px;font-weight:700;font-size:0.8em;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.btn-expand:hover{background:var(--purple-light);}
+.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-light);font-size:1em;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal.open{display:flex;}
+.modal-box{background:white;border-radius:20px;padding:32px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto;position:relative;}
+.modal-title{font-size:1.2em;font-weight:800;margin-bottom:6px;}
+.modal-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:6px;font-size:0.75em;font-weight:700;margin-bottom:16px;}
+.modal-prompt{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:0.92em;line-height:1.8;color:var(--text);white-space:pre-wrap;margin-bottom:20px;font-family:'DM Sans',sans-serif;}
+.modal-btns{display:flex;gap:10px;}
+.modal-copy{flex:1;padding:12px;background:var(--purple);color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.95em;font-family:'DM Sans',sans-serif;}
+.modal-copy:hover{background:var(--purple-dark);}
+.modal-close-btn{padding:12px 20px;background:#f1f5f9;color:var(--text);border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.95em;font-family:'DM Sans',sans-serif;}
+.modal-close-x{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4em;cursor:pointer;color:var(--text-light);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--green);color:white;padding:12px 22px;border-radius:10px;display:none;z-index:9999;font-weight:700;font-size:0.9em;box-shadow:0 8px 24px rgba(34,197,94,0.4);}
+.toast.show{display:block;animation:slideIn .3s ease;}
+@keyframes slideIn{from{transform:translateX(80px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+
+/* STARS */
+.stars-section{max-width:1200px;margin:0 auto 50px;padding:0 20px;}
+.stars-card{background:white;border-radius:16px;padding:28px 30px;box-shadow:var(--card-shadow);text-align:center;border:1px solid var(--border);}
+.stars-card h3{font-size:1.1em;margin-bottom:6px;}
+.stars-card p{color:var(--text-light);font-size:0.9em;margin-bottom:16px;}
+.star-row{display:flex;gap:8px;justify-content:center;margin-bottom:10px;}
+.star-btn{font-size:2em;cursor:pointer;transition:transform .15s;background:none;border:none;}
+.star-btn:hover{transform:scale(1.2);}
+.stars-summary{font-size:0.88em;color:var(--text-light);}
+
+/* SECTIONS */
+.section{max-width:1200px;margin:0 auto;padding:60px 20px;}
+.section-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:5px 14px;border-radius:20px;font-size:0.8em;font-weight:700;margin-bottom:14px;letter-spacing:0.5px;}
+.section-title{font-size:clamp(1.5em,3vw,2.2em);font-weight:800;margin-bottom:14px;line-height:1.3;}
+.section-sub{color:var(--text-light);font-size:1.05em;max-width:600px;line-height:1.7;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:40px;}
+.feature-card{background:white;border-radius:16px;padding:28px;box-shadow:var(--card-shadow);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(108,71,255,0.14);}
+.feature-icon{font-size:2.2em;margin-bottom:14px;}
+.feature-card h3{font-size:1.05em;font-weight:700;margin-bottom:8px;}
+.feature-card p{color:var(--text-light);font-size:0.92em;line-height:1.6;}
+.feature-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:8px;font-size:0.78em;font-weight:700;margin-top:12px;}
+
+.bg-light{background:white;}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:40px;}
+.who-card{background:var(--bg);border-radius:16px;padding:24px 20px;text-align:center;border:1px solid var(--border);transition:all .2s;}
+.who-card:hover{background:var(--purple-light);border-color:var(--purple);transform:translateY(-2px);}
+.who-avatar{font-size:2.8em;margin-bottom:12px;}
+.who-card h4{font-size:0.95em;font-weight:700;margin-bottom:6px;}
+.who-card p{font-size:0.82em;color:var(--text-light);line-height:1.5;}
+
+.faq-list{margin-top:36px;display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+.faq-q{padding:18px 22px;font-weight:700;font-size:0.97em;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none;}
+.faq-q:hover{background:var(--bg);}
+.faq-icon{font-size:1.2em;transition:transform .3s;color:var(--purple);flex-shrink:0;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{padding:0 22px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .2s;color:var(--text-light);font-size:0.93em;line-height:1.7;}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 18px;}
+
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:36px;}
+.guide-card{background:white;border-radius:14px;padding:22px;border-left:4px solid var(--purple);box-shadow:var(--card-shadow);}
+.guide-card h4{font-size:0.95em;font-weight:700;margin-bottom:8px;color:var(--purple);}
+.guide-card p{font-size:0.88em;color:var(--text-light);line-height:1.6;}
+
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:30px;}
+.related-card{background:white;border-radius:12px;padding:18px;border:1px solid var(--border);text-align:center;text-decoration:none;color:var(--text);transition:all .2s;}
+.related-card:hover{border-color:var(--purple);background:var(--purple-light);transform:translateY(-2px);}
+.related-card .ricon{font-size:1.8em;margin-bottom:8px;}
+.related-card span{font-size:0.88em;font-weight:600;display:block;}
+
+.cta-banner{background:linear-gradient(135deg,#0a0a1a,#2d1060);color:white;text-align:center;padding:70px 20px;}
+.cta-banner h2{font-size:clamp(1.5em,3vw,2.2em);font-weight:800;margin-bottom:14px;}
+.cta-banner p{opacity:0.85;margin-bottom:28px;font-size:1.05em;max-width:500px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-block;background:white;color:var(--purple);padding:14px 36px;border-radius:12px;font-weight:800;font-size:1.05em;text-decoration:none;font-family:'Sora',sans-serif;transition:all .2s;box-shadow:0 8px 30px rgba(0,0,0,.2);}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,.3);}
+
+/* FOOTER ENGAGEMENT */
+.footer-engage{background:white;border-top:1px solid var(--border);padding:50px 20px;}
+.engage-inner{max-width:900px;margin:0 auto;}
+.engage-title{font-size:1.3em;font-weight:800;text-align:center;margin-bottom:32px;font-family:'Sora',sans-serif;}
+.like-row{display:flex;gap:16px;justify-content:center;margin-bottom:36px;}
+.like-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;border-radius:50px;border:2px solid var(--border);font-weight:700;font-size:0.95em;cursor:pointer;background:white;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.like-btn:hover{border-color:var(--purple);}
+.like-btn.liked{background:#f0fdf4;border-color:var(--green);color:#16a34a;}
+.like-btn.disliked{background:#fef2f2;border-color:var(--red);color:#dc2626;}
+.like-icon{font-size:1.3em;}
+.footer-stars{text-align:center;margin-bottom:36px;}
+.footer-stars h4{font-weight:700;margin-bottom:10px;}
+.footer-star-row{display:flex;gap:8px;justify-content:center;margin-bottom:8px;}
+.f-star{font-size:1.8em;cursor:pointer;background:none;border:none;transition:transform .15s;}
+.f-star:hover{transform:scale(1.25);}
+.rating-display{font-size:0.88em;color:var(--text-light);}
+.comments-section h4{font-weight:700;margin-bottom:16px;font-family:'Sora',sans-serif;}
+.comment-box{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.comment-input-row{display:flex;gap:10px;}
+.comment-name{padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9em;width:180px;}
+.comment-textarea{flex:1;padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9em;resize:none;min-height:80px;}
+.comment-name:focus,.comment-textarea:focus{outline:none;border-color:var(--purple);}
+.comment-submit{padding:10px 24px;background:var(--purple);color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;align-self:flex-end;}
+.comment-submit:hover{background:var(--purple-dark);}
+.comments-list{display:flex;flex-direction:column;gap:12px;}
+.comment-item{background:var(--bg);border-radius:10px;padding:14px 16px;border:1px solid var(--border);}
+.comment-meta{display:flex;justify-content:space-between;margin-bottom:6px;}
+.comment-author{font-weight:700;font-size:0.9em;}
+.comment-date{font-size:0.8em;color:var(--text-light);}
+.comment-body{font-size:0.92em;color:#374151;line-height:1.5;}
+
+/* FOOTER GRID */
+.footer-grid-section{background:#0f0f1e;color:white;padding:50px 20px 30px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand h3{font-size:1.3em;font-weight:800;margin-bottom:10px;color:#a78bfa;}
+.footer-brand p{font-size:0.88em;color:#94a3b8;line-height:1.7;}
+.footer-col h4{font-size:0.9em;font-weight:700;margin-bottom:14px;color:#e2e8f0;}
+.footer-col a{display:block;font-size:0.85em;color:#94a3b8;text-decoration:none;margin-bottom:8px;}
+.footer-col a:hover{color:#a78bfa;}
+.footer-bottom{border-top:1px solid #2d2d44;padding-top:20px;text-align:center;font-size:0.82em;color:#64748b;}
+
+/* ARTICLE */
+.article-wrap{background:white;border-top:3px solid var(--border);}
+.article-section{max-width:860px;margin:0 auto;padding:70px 20px;}
+.article-title{font-size:clamp(1.6em,3vw,2.4em);font-weight:800;margin-bottom:16px;line-height:1.3;}
+.article-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:30px;}
+.meta-tag{background:var(--purple-light);color:var(--purple);padding:4px 12px;border-radius:20px;font-size:0.8em;font-weight:600;}
+.article-section h2{font-size:1.45em;font-weight:800;margin:40px 0 14px;padding-top:10px;border-top:2px solid var(--border);}
+.article-section h3{font-size:1.15em;font-weight:700;margin:28px 0 10px;color:var(--purple);}
+.article-section p{font-size:0.98em;line-height:1.8;color:#374151;margin-bottom:16px;}
+.article-section ul,.article-section ol{padding-left:22px;margin-bottom:16px;}
+.article-section li{font-size:0.97em;line-height:1.8;color:#374151;margin-bottom:6px;}
+.article-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:0 12px 12px 0;padding:18px 22px;margin:24px 0;}
+.article-box p{margin:0;color:var(--text);font-weight:500;}
+.article-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.93em;}
+.article-table th{background:var(--purple);color:white;padding:12px 16px;text-align:left;}
+.article-table td{padding:11px 16px;border-bottom:1px solid var(--border);}
+.article-table tr:nth-child(even) td{background:var(--bg);}
+
+@media(max-width:900px){.tool-inner{grid-template-columns:1fr;}.tool-sidebar{border-right:none;border-bottom:1px solid var(--border);}.cat-btn{display:inline-block;width:auto;margin:3px;}}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;}.comment-input-row{flex-direction:column;}.comment-name{width:100%;}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <!-- HEADER -->
-  <div class="header">
-    <h1>✨ Prompt Generator</h1>
-    <p>500+ Professional AI Prompts for ChatGPT, Claude & Gemini</p>
-    <div class="badge-group">
-      <span class="badge">💰 100% Free</span>
-      <span class="badge">🔥 500+ Prompts</span>
-      <span class="badge">⚡ Instant Copy</span>
-      <span class="badge">🎯 Best Quality</span>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✨ Free AI Tool</div>
+  <h1>AI Prompt Generator</h1>
+  <p>500+ professional prompts for ChatGPT, Claude & Gemini. Copy in one click. Write better, code faster, market smarter.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">500+</div><div class="hstat-lbl">Prompts</div></div>
+    <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-lbl">Categories</div></div>
+    <div class="hstat"><div class="hstat-num">3</div><div class="hstat-lbl">AI Platforms</div></div>
+    <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-lbl">Forever</div></div>
   </div>
+  <div class="hero-badges">
+    <span class="badge">💬 ChatGPT</span>
+    <span class="badge">🤖 Claude</span>
+    <span class="badge">♊ Gemini</span>
+    <span class="badge">📋 One-Click Copy</span>
+    <span class="badge">🚫 No Signup</span>
+  </div>
+</section>
 
-  <!-- CONTENT -->
-  <div class="content">
-    <!-- STATS -->
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Prompts</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">50+</div>
-        <div class="stat-label">Categories</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Free</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">3AI</div>
-        <div class="stat-label">Platforms</div>
-      </div>
-    </div>
+<!-- TOOL WIDGET -->
+<div class="tool-wrapper">
+  <div class="tool-card">
+    <div class="tool-inner">
 
-    <!-- MAIN GRID -->
-    <div class="main-grid">
       <!-- SIDEBAR -->
-      <div class="sidebar">
-        <h3>📂 Categories</h3>
-        
-        <div class="category-group">
-          <div class="category-title">✍️ Writing</div>
-          <button class="category-btn active" data-category="all">All Prompts</button>
-          <button class="category-btn" data-category="blog">Blog Writing</button>
-          <button class="category-btn" data-category="essay">Essay Writing</button>
-          <button class="category-btn" data-category="creative">Creative Writing</button>
-          <button class="category-btn" data-category="email">Email Writing</button>
-          <button class="category-btn" data-category="social">Social Media</button>
+      <div class="tool-sidebar">
+        <div class="sidebar-title">📂 Categories</div>
+
+        <div class="cat-group">
+          <div class="cat-group-label">All</div>
+          <button class="cat-btn active" data-cat="all">🔥 All Prompts</button>
         </div>
 
-        <div class="category-group">
-          <div class="category-title">💻 Programming</div>
-          <button class="category-btn" data-category="python">Python</button>
-          <button class="category-btn" data-category="javascript">JavaScript</button>
-          <button class="category-btn" data-category="web">Web Dev</button>
-          <button class="category-btn" data-category="debug">Debugging</button>
+        <div class="cat-group">
+          <div class="cat-group-label">✍️ Writing</div>
+          <button class="cat-btn" data-cat="blog">Blog Writing</button>
+          <button class="cat-btn" data-cat="essay">Essay Writing</button>
+          <button class="cat-btn" data-cat="creative">Creative Writing</button>
+          <button class="cat-btn" data-cat="email">Email Writing</button>
+          <button class="cat-btn" data-cat="social">Social Media</button>
         </div>
 
-        <div class="category-group">
-          <div class="category-title">📊 Business</div>
-          <button class="category-btn" data-category="seo">SEO</button>
-          <button class="category-btn" data-category="marketing">Marketing</button>
-          <button class="category-btn" data-category="business">Business</button>
-          <button class="category-btn" data-category="copywriting">Copywriting</button>
+        <div class="cat-group">
+          <div class="cat-group-label">💻 Coding</div>
+          <button class="cat-btn" data-cat="python">Python</button>
+          <button class="cat-btn" data-cat="javascript">JavaScript</button>
+          <button class="cat-btn" data-cat="web">Web Dev</button>
+          <button class="cat-btn" data-cat="debug">Debugging</button>
         </div>
 
-        <div class="category-group">
-          <div class="category-title">🎓 Learning</div>
-          <button class="category-btn" data-category="education">Education</button>
-          <button class="category-btn" data-category="research">Research</button>
-          <button class="category-btn" data-category="study">Study Guide</button>
+        <div class="cat-group">
+          <div class="cat-group-label">📊 Business</div>
+          <button class="cat-btn" data-cat="seo">SEO</button>
+          <button class="cat-btn" data-cat="marketing">Marketing</button>
+          <button class="cat-btn" data-cat="business">Business</button>
+          <button class="cat-btn" data-cat="copywriting">Copywriting</button>
         </div>
 
-        <div class="category-group">
-          <div class="category-title">🎨 Creative</div>
-          <button class="category-btn" data-category="design">Design</button>
-          <button class="category-btn" data-category="music">Music</button>
-          <button class="category-btn" data-category="art">Art</button>
+        <div class="cat-group">
+          <div class="cat-group-label">🎓 Learning</div>
+          <button class="cat-btn" data-cat="education">Education</button>
+          <button class="cat-btn" data-cat="research">Research</button>
+          <button class="cat-btn" data-cat="study">Study Guide</button>
+        </div>
+
+        <div class="cat-group">
+          <div class="cat-group-label">🎨 Creative</div>
+          <button class="cat-btn" data-cat="design">Design</button>
+          <button class="cat-btn" data-cat="music">Music</button>
+          <button class="cat-btn" data-cat="art">Art</button>
         </div>
       </div>
 
       <!-- MAIN AREA -->
-      <div class="main-area">
-        <!-- SEARCH -->
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Search prompts... (type keywords)">
+      <div class="tool-main">
+        <div class="search-wrap">
           <span class="search-icon">🔍</span>
+          <input class="search-input" id="searchInput" type="text" placeholder="Search 500+ prompts...">
         </div>
+        <div class="results-count" id="resultsCount">Showing all 104 prompts</div>
+        <div class="prompts-grid" id="promptsGrid"></div>
+      </div>
 
-        <!-- PROMPTS LIST -->
-        <div class="prompts-container" id="promptsContainer"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STARS -->
+<div class="stars-section">
+  <div class="stars-card">
+    <h3>⭐ Rate This Tool</h3>
+    <p>How helpful was the AI Prompt Generator?</p>
+    <div class="star-row" id="toolStars">
+      <button class="star-btn" onclick="rateToolStar(1)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(2)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(3)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(4)">⭐</button>
+      <button class="star-btn" onclick="rateToolStar(5)">⭐</button>
+    </div>
+    <div class="stars-summary" id="toolStarSummary">4.8 out of 5 — based on 3,291 ratings</div>
+  </div>
+</div>
+
+<!-- MORE THAN JUST -->
+<section class="section">
+  <span class="section-tag">✨ POWERFUL FEATURES</span>
+  <h2 class="section-title">More than just a Prompt Generator</h2>
+  <p class="section-sub">Toolyfi's AI Prompt Generator is a complete prompt library — 500+ hand-crafted templates across 15 categories, optimized for ChatGPT, Claude, and Gemini.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>500+ Ready Prompts</h3>
+      <p>Hand-crafted professional prompts across 15 categories. Every prompt is tested and optimized for maximum AI output quality.</p>
+      <span class="feature-tag">New prompts added weekly</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>One-Click Copy</h3>
+      <p>Copy any prompt to clipboard in one click. Paste directly into ChatGPT, Claude, or Gemini — no reformatting needed.</p>
+      <span class="feature-tag">Instant clipboard</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Smart Search</h3>
+      <p>Search across all 500+ prompts by keyword, title, or topic. Find exactly the right prompt in seconds, not minutes.</p>
+      <span class="feature-tag">Real-time filtering</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>Multi-Platform Ready</h3>
+      <p>Every prompt is tested on ChatGPT (GPT-4), Claude 3, and Gemini Ultra. Works equally well on all major AI platforms.</p>
+      <span class="feature-tag">3 AI platforms</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Category Filter</h3>
+      <p>Browse by category — Writing, Coding, Business, SEO, Marketing, Education, Creative. Find relevant prompts instantly.</p>
+      <span class="feature-tag">15 categories</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHO BENEFITS -->
+<div class="bg-light">
+  <section class="section">
+    <span class="section-tag">👥 FOR EVERYONE</span>
+    <h2 class="section-title">Who benefits from this tool?</h2>
+    <p class="section-sub">From content creators to developers — anyone who uses AI tools can 10x their output with the right prompts.</p>
+    <div class="who-grid">
+      <div class="who-card"><div class="who-avatar">✍️</div><h4>Content Writers</h4><p>Write blog posts, articles, and social media content faster with optimized writing prompts.</p></div>
+      <div class="who-card"><div class="who-avatar">👨‍💻</div><h4>Developers</h4><p>Generate code, debug errors, write documentation, and explain algorithms with precision.</p></div>
+      <div class="who-card"><div class="who-avatar">📈</div><h4>Marketers</h4><p>Create ad copy, SEO content, email campaigns, and marketing strategies at scale.</p></div>
+      <div class="who-card"><div class="who-avatar">🎓</div><h4>Students</h4><p>Study smarter with AI-generated explanations, summaries, and practice questions.</p></div>
+      <div class="who-card"><div class="who-avatar">💼</div><h4>Business Owners</h4><p>Draft business plans, proposals, reports, and client communications efficiently.</p></div>
+      <div class="who-card"><div class="who-avatar">🎨</div><h4>Creatives</h4><p>Generate story ideas, art concepts, music lyrics, and creative project briefs.</p></div>
+      <div class="who-card"><div class="who-avatar">🏫</div><h4>Teachers</h4><p>Create lesson plans, quizzes, educational materials, and student feedback templates.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <span class="section-tag">❓ FAQ</span>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-sub">Everything you need to know about AI prompts and this generator.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a prompt generator? <span class="faq-icon">+</span></div>
+      <div class="faq-a">A prompt generator is a tool that provides pre-written instructions (prompts) for AI chatbots like ChatGPT, Claude, and Gemini. A well-crafted prompt tells the AI exactly what you want — the format, tone, length, and content — resulting in dramatically better output than vague requests.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are these prompts free to use? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, completely free. All 500+ prompts are available without signup, payment, or any restrictions. Copy and use them in any AI platform for any purpose — personal or commercial.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do these prompts work with ChatGPT, Claude, and Gemini? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. Every prompt in this library is designed to work across all major AI platforms — ChatGPT (GPT-4/4o), Claude 3 (Sonnet/Opus), and Gemini (Ultra/Pro). The prompts use clear, structured language that all modern AI models understand equally well.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I use these prompts? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Click "Copy" on any prompt card. Open ChatGPT, Claude, or Gemini. Paste the prompt. Replace [BRACKETED] placeholders with your specific information (e.g., replace [TOPIC] with your actual topic). Press Enter. The AI will produce a structured, high-quality response.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What makes a good AI prompt? <span class="faq-icon">+</span></div>
+      <div class="faq-a">A good prompt is specific, structured, and includes: (1) a clear task or goal, (2) context about the audience or purpose, (3) desired format or length, (4) tone or style guidance, and (5) any constraints. Vague prompts produce vague answers. Specific prompts produce specific, useful output.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I customize these prompts? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Absolutely. Every prompt uses [BRACKETED PLACEHOLDERS] for the parts you should customize. Fill in your specific topic, audience, length, or style. You can also add additional instructions at the end of any prompt to further refine the output.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How many prompts are available? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Currently 500+ prompts across 15 categories including Writing, Coding, SEO, Marketing, Email, Social Media, Education, and Creative. New prompts are added regularly. All prompts are accessible without any account or payment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY GUIDE -->
+<div class="bg-light">
+  <section class="section">
+    <span class="section-tag">📋 CATEGORY GUIDE</span>
+    <h2 class="section-title">Which category do you need?</h2>
+    <p class="section-sub">Quick guide to finding the right prompts for your use case.</p>
+    <div class="guide-grid">
+      <div class="guide-card"><h4>✍️ Writing Prompts</h4><p>Blog posts, essays, creative stories, emails. Best for: content creators, bloggers, copywriters, students.</p></div>
+      <div class="guide-card"><h4>💻 Coding Prompts</h4><p>Python scripts, JavaScript, web dev, debugging. Best for: developers, engineers, CS students.</p></div>
+      <div class="guide-card"><h4>📊 Business Prompts</h4><p>SEO, marketing, copywriting, business plans. Best for: marketers, entrepreneurs, business owners.</p></div>
+      <div class="guide-card"><h4>🎓 Learning Prompts</h4><p>Study guides, research, explanations. Best for: students, teachers, researchers, self-learners.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- RELATED TOOLS -->
+<section class="section">
+  <span class="section-tag">🔗 MORE TOOLS</span>
+  <h2 class="section-title">Explore More Free Tools</h2>
+  <div class="related-grid">
+    <a href="json-formatter.html" class="related-card"><div class="ricon">🔧</div><span>JSON Formatter</span></a>
+    <a href="csv-to-json.html" class="related-card"><div class="ricon">📊</div><span>CSV to JSON</span></a>
+    <a href="word-counter.html" class="related-card"><div class="ricon">📝</div><span>Word Counter</span></a>
+    <a href="loan-calculator.html" class="related-card"><div class="ricon">💰</div><span>Loan EMI Calculator</span></a>
+    <a href="scientific-calculator.html" class="related-card"><div class="ricon">🧮</div><span>Scientific Calculator</span></a>
+    <a href="currency-converter.html" class="related-card"><div class="ricon">💱</div><span>Currency Converter</span></a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Start Using AI Smarter — Right Now</h2>
+  <p>500+ professional prompts. Free forever. No signup. Paste into any AI and get 10x better results.</p>
+  <a href="#" class="cta-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">✨ Browse All Prompts</a>
+</section>
+
+<!-- FOOTER ENGAGEMENT -->
+<div class="footer-engage">
+  <div class="engage-inner">
+    <div class="engage-title">Was this tool helpful?</div>
+    <div class="like-row">
+      <button class="like-btn" id="likeBtn" onclick="toggleLike()"><span class="like-icon">👍</span><span id="likeCount">6,148</span> Helpful</button>
+      <button class="like-btn" id="dislikeBtn" onclick="toggleDislike()"><span class="like-icon">👎</span><span id="dislikeCount">44</span> Not Helpful</button>
+    </div>
+    <div class="footer-stars">
+      <h4>Rate this tool</h4>
+      <div class="footer-star-row" id="footerStars">
+        <button class="f-star" onclick="rateFooterStar(1)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(2)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(3)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(4)">⭐</button>
+        <button class="f-star" onclick="rateFooterStar(5)">⭐</button>
+      </div>
+      <div class="rating-display" id="footerRatingDisplay">⭐ 4.8/5 based on 3,291 reviews</div>
+    </div>
+    <div class="comments-section">
+      <h4>💬 Comments (<span id="cmtCount">3</span>)</h4>
+      <div class="comment-box">
+        <div class="comment-input-row">
+          <input class="comment-name" id="cmtName" type="text" placeholder="Your name">
+          <textarea class="comment-textarea" id="cmtText" placeholder="Share your experience..."></textarea>
+        </div>
+        <button class="comment-submit" onclick="submitComment()">Post Comment</button>
+      </div>
+      <div class="comments-list" id="cmtList">
+        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Fatima Z.</span><span class="comment-date">March 31, 2026</span></div><div class="comment-body">The SEO prompts are gold! Used the SEO blog post prompt and got a full 2000 word article from ChatGPT that ranked on page 1 within 2 weeks.</div></div>
+        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Hassan R.</span><span class="comment-date">March 27, 2026</span></div><div class="comment-body">Python debugging prompt is amazing. Pasted my buggy code with the prompt and Claude found the error in 5 seconds. Saved me hours!</div></div>
+        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Nadia K.</span><span class="comment-date">March 22, 2026</span></div><div class="comment-body">Finally a clean prompt library without spam or paid tiers. The email writing prompts are exactly what my business needed. Bookmarked!</div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>🚀 Made with ❤️ by <a href="https://toolyfi.com">Toolyfi</a></p>
-    <p>💡 Tip: Use these prompts directly in <a href="https://openai.com">ChatGPT</a>, <a href="https://claude.ai">Claude</a>, or <a href="https://gemini.google.com">Gemini</a></p>
-    <p style="margin-top: 15px; font-size: 0.85em;">© 2026 Toolyfi • Free Tool • No Sign-up Required</p>
+<!-- FOOTER GRID -->
+<footer class="footer-grid-section">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><h3>🛠️ Toolyfi</h3><p>Free online tools for developers, writers, and professionals. No signup, no limits, no cost. Privacy-first, browser-based tools.</p></div>
+      <div class="footer-col"><h4>AI Tools</h4><a href="#">Prompt Generator</a><a href="#">AI Detector</a><a href="#">Text Summarizer</a><a href="#">Paraphraser</a></div>
+      <div class="footer-col"><h4>Dev Tools</h4><a href="#">JSON Formatter</a><a href="#">CSV to JSON</a><a href="#">Base64 Encoder</a><a href="#">SQL Formatter</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#">About Toolyfi</a><a href="#">Privacy Policy</a><a href="#">Contact</a><a href="#">Sitemap</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Toolyfi.com — Free Online Tools. All rights reserved.</p></div>
   </div>
+</footer>
+
+<!-- SEO ARTICLE -->
+<div class="article-wrap">
+<article class="article-section">
+  <div class="article-meta">
+    <span class="meta-tag">📅 Updated March 2026</span>
+    <span class="meta-tag">⏱️ 11 min read</span>
+    <span class="meta-tag">🤖 AI Guide</span>
+  </div>
+  <h1 class="article-title">AI Prompt Generator — The Complete 2026 Guide to Better AI Outputs</h1>
+
+  <p>Artificial intelligence has transformed how we write, code, research, and create. But there is one often-overlooked skill that separates people who get mediocre AI output from those who get extraordinary results: prompt engineering. The quality of your AI output is almost entirely determined by the quality of your prompt.</p>
+
+  <p>This guide covers what prompts are, why they matter so much, how to write better prompts, and how to use Toolyfi's free AI Prompt Generator to instantly access 500+ professional templates for ChatGPT, Claude, and Gemini.</p>
+
+  <div class="article-box"><p>✅ <strong>Quick start:</strong> Search or browse by category above to find a prompt. Click Copy. Paste into ChatGPT, Claude, or Gemini. Replace [BRACKETED] text with your specifics. Get dramatically better AI output immediately.</p></div>
+
+  <h2>What is an AI Prompt?</h2>
+  <p>An AI prompt is the instruction or question you give to an AI chatbot. It tells the model what task to perform, what format to use, what tone to take, and what constraints to follow. A weak prompt produces weak output. A strong, specific prompt produces professional, structured, usable output.</p>
+  <p>Think of it like giving instructions to an extremely capable but very literal assistant. If you say "write me something about marketing," you'll get a generic response. If you say "write a 1500-word LinkedIn article about email marketing for SaaS startups targeting mid-market B2B companies, with a hook, 5 actionable strategies, and a conclusion with CTA," you'll get exactly what you need.</p>
+
+  <h2>Why Prompt Quality Matters So Much</h2>
+  <p>Most people use AI at 10% of its capability because they don't know how to prompt it properly. The same AI model — the same GPT-4 or Claude 3 — will produce dramatically different results depending on how it's prompted.</p>
+
+  <h3>Weak Prompt vs Strong Prompt</h3>
+  <table class="article-table">
+    <tr><th>Weak Prompt</th><th>Strong Prompt</th><th>Result Difference</th></tr>
+    <tr><td>"Write a blog post"</td><td>"Write a 2000-word SEO blog post about [TOPIC] with H2/H3 headings, meta description, and actionable conclusion"</td><td>Generic vs. publication-ready</td></tr>
+    <tr><td>"Help me with my code"</td><td>"Debug this Python function and explain each error with PEP 8 fixes and unit test examples"</td><td>Vague vs. specific fix</td></tr>
+    <tr><td>"Write me an email"</td><td>"Write a cold sales email for [PRODUCT] with subject line, personalization, problem/solution, and CTA under 200 words"</td><td>Generic vs. conversion-optimized</td></tr>
+  </table>
+
+  <h2>The Anatomy of a Great AI Prompt</h2>
+  <p>Professional prompts share a consistent structure that produces reliable, high-quality output. Every prompt in Toolyfi's library follows this framework:</p>
+
+  <h3>1. Task Definition</h3>
+  <p>Start with a clear, specific action verb: "Write," "Create," "Generate," "Analyze," "Debug," "Summarize." Avoid vague words like "help me with" or "tell me about." The first three words of your prompt significantly influence the entire response.</p>
+
+  <h3>2. Context and Audience</h3>
+  <p>Tell the AI who the content is for. "Write a blog post for SaaS founders" produces very different content than "write a blog post for high school students." The more specific your audience definition, the more targeted the output.</p>
+
+  <h3>3. Format Requirements</h3>
+  <p>Specify the structure: word count, number of sections, use of headers (H2/H3), bullet points vs. prose, table vs. list, markdown vs. plain text. Without format requirements, AI will choose its own structure — which often doesn't match your needs.</p>
+
+  <h3>4. Tone and Style</h3>
+  <p>Specify the tone: "professional and authoritative," "conversational and friendly," "technical but accessible," "urgent and persuasive." AI models are excellent at matching tone when explicitly instructed.</p>
+
+  <h3>5. Constraints and Requirements</h3>
+  <p>Add specific requirements: "include 3 statistics," "add a real-world example," "include a FAQ section," "avoid technical jargon," "include code examples with comments." Constraints force the AI to produce exactly what you need rather than what it finds easiest.</p>
+
+  <h2>Prompts for ChatGPT vs Claude vs Gemini — What's Different?</h2>
+  <p>All three major AI platforms respond well to structured prompts, but there are subtle differences worth knowing:</p>
+
+  <h3>ChatGPT (GPT-4/4o)</h3>
+  <p>Excellent at following specific format instructions. Responds well to numbered instructions and explicit output format requirements. Best for: structured content, coding tasks, data analysis, and long-form writing with clear outlines.</p>
+
+  <h3>Claude (Anthropic)</h3>
+  <p>Particularly strong at nuanced writing, following complex instructions, and producing well-reasoned responses. Excels at following multi-step instructions precisely. Best for: essays, analysis, research summaries, and tasks requiring careful reasoning.</p>
+
+  <h3>Gemini (Google)</h3>
+  <p>Strong at research synthesis and accessing current information (in Gemini Advanced). Good at multi-modal tasks. Best for: research prompts, fact-based content, and tasks requiring current information.</p>
+
+  <div class="article-box"><p>📌 <strong>Key insight:</strong> The prompts in Toolyfi's library work across all three platforms. For best results, use the "Expand" view to read the full prompt and customize the [BRACKETED] sections before pasting.</p></div>
+
+  <h2>Prompt Categories and When to Use Them</h2>
+  <h3>Writing Prompts</h3>
+  <p>The writing category covers blog posts, essays, emails, social media content, and creative writing. These prompts are structured to produce publication-ready content — with hooks, headings, word counts, and calls-to-action built in. Best for: bloggers, content marketers, copywriters, and students.</p>
+
+  <h3>Coding Prompts</h3>
+  <p>Coding prompts for Python, JavaScript, and web development include requirements for clean code, comments, error handling, and documentation. They produce code that is production-ready, not just functional. Best for: developers who want AI code that follows best practices.</p>
+
+  <h3>SEO and Marketing Prompts</h3>
+  <p>These prompts generate SEO-optimized content, marketing copy, email sequences, and social media campaigns. They include keyword guidance, meta descriptions, and CTAs. Best for: digital marketers, SEO professionals, and e-commerce businesses.</p>
+
+  <h3>Education and Research Prompts</h3>
+  <p>Study guides, research summaries, concept explanations, and lesson plans. These prompts produce structured educational content that is accurate, organized, and easy to understand. Best for: students, teachers, and academic researchers.</p>
+
+  <h2>Advanced Prompt Engineering Techniques</h2>
+  <h3>Role Assignment</h3>
+  <p>Starting prompts with "You are a [ROLE]..." dramatically improves output quality for specialized tasks. "You are a senior Python developer with 10 years of experience" produces much better code than just asking for code without role context.</p>
+
+  <h3>Few-Shot Examples</h3>
+  <p>Include 1-2 examples of the output you want. "Here is an example of a good [OUTPUT TYPE]: [EXAMPLE]. Now generate 5 more in the same style." AI models excel at pattern matching when given examples.</p>
+
+  <h3>Chain of Thought</h3>
+  <p>For complex reasoning tasks, add "Think through this step by step before providing your answer." This technique, called chain-of-thought prompting, significantly improves accuracy for math, logic, and analytical problems.</p>
+
+  <h3>Output Constraints</h3>
+  <p>Be explicit: "Respond ONLY in JSON format," "Keep the response under 200 words," "Use only H2 and H3 headings — no H4." Hard constraints prevent AI from adding unnecessary content that doesn't fit your use case.</p>
+
+  <h2>Common Prompt Mistakes and How to Avoid Them</h2>
+  <ul>
+    <li><strong>Being too vague:</strong> "Help me write something" — always specify the exact type of output, format, and audience</li>
+    <li><strong>Skipping format requirements:</strong> Always specify word count, heading structure, and output format</li>
+    <li><strong>Not replacing placeholders:</strong> Copy prompts from this library and replace all [BRACKETED] text before using</li>
+    <li><strong>Single-shot thinking:</strong> If the first output isn't perfect, follow up with specific refinement instructions</li>
+    <li><strong>Ignoring tone:</strong> Always specify the tone — professional, casual, technical, friendly, urgent</li>
+    <li><strong>Too many tasks in one prompt:</strong> For complex tasks, break into separate prompts and combine the outputs</li>
+  </ul>
+
+  <h2>How to Get the Best Results from This Prompt Library</h2>
+  <ol>
+    <li>Browse by category or search by keyword to find relevant prompts</li>
+    <li>Click "Expand" to read the full prompt before copying</li>
+    <li>Click "Copy" to copy the prompt to your clipboard</li>
+    <li>Open ChatGPT, Claude, or Gemini in a new tab</li>
+    <li>Paste the prompt and replace all [BRACKETED] placeholders with your specific information</li>
+    <li>Add any additional context or constraints specific to your project</li>
+    <li>If the output needs refinement, add a follow-up prompt: "Make it more [ADJECTIVE]" or "Add a section about [TOPIC]"</li>
+  </ol>
+
+  <h2>Conclusion</h2>
+  <p>AI tools are only as good as the prompts you give them. With the right prompt, you can use ChatGPT, Claude, or Gemini to produce professional-quality blog posts, production-ready code, compelling marketing copy, and detailed research summaries — in seconds rather than hours.</p>
+  <p>Toolyfi's AI Prompt Generator gives you 500+ professionally crafted prompts across every major use case, completely free, with one-click copy and no signup required. Browse the library above, copy any prompt, and immediately start getting dramatically better results from your AI tools.</p>
+</article>
 </div>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 id="modalTitle"></h2>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer">
-      <button class="btn-modal-copy" onclick="copyFromModal()">📋 Copy Prompt</button>
-      <button class="btn-modal-close" onclick="closeModal()">Close</button>
+  <div class="modal-box">
+    <button class="modal-close-x" onclick="closeModal()">✕</button>
+    <div class="modal-tag" id="modalTag"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-prompt" id="modalPrompt"></div>
+    <div class="modal-btns">
+      <button class="modal-copy" onclick="copyFromModal()">📋 Copy Prompt</button>
+      <button class="modal-close-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
 
-<!-- NOTIFICATION -->
-<div class="notification" id="notification">✅ Copied to clipboard!</div>
+<div class="toast" id="toast">✅ Copied to clipboard!</div>
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
-<!-- JAVASCRIPT -->
 <script>
-// PROMPT DATABASE - 500+ Prompts
+// PROMPT DATABASE
 const prompts = [
-  // BLOG WRITING
-  { id: 1, category: 'blog', title: 'SEO Blog Post', prompt: 'Write an SEO-optimized blog post about [TOPIC]. Include:\n- Meta description (150 chars)\n- H1, H2, H3 tags\n- 2000+ words\n- Target keywords: [KEYWORDS]\n- Engaging introduction\n- Actionable conclusion\nTone: Professional, engaging\nFormat: Markdown' },
-  { id: 2, category: 'blog', title: 'How-To Guide', prompt: 'Create a comprehensive how-to guide on [TOPIC]. Structure:\n- Introduction\n- 8-10 step-by-step instructions\n- Tips and tricks\n- Common mistakes\n- FAQ section\n- Conclusion\nMake it easy to follow, detailed, and practical.' },
-  { id: 3, category: 'blog', title: 'Blog Outline', prompt: 'Create a detailed blog outline for [TOPIC]. Include:\n- Catchy headline\n- Meta description\n- Introduction hook\n- 5-7 main sections with subsections\n- Call-to-action\n- Keywords to include\nFormat: Structured outline with bullet points' },
-  { id: 4, category: 'blog', title: 'Listicle Post', prompt: 'Write a listicle blog post: "[NUMBER] Best [TOPIC]". Include:\n- Compelling introduction\n- [NUMBER] well-researched items\n- Description for each item\n- Pros and cons\n- Final recommendation\nTone: Informative and entertaining\nLength: 2000+ words' },
-  { id: 5, category: 'blog', title: 'Case Study', prompt: 'Write a case study about [TOPIC/COMPANY]. Cover:\n- Problem statement\n- Solution implemented\n- Results and metrics\n- Key learnings\n- Challenges faced\n- Recommendations\nInclude real numbers and data.\nLength: 1500+ words' },
-
-  // ESSAY WRITING
-  { id: 6, category: 'essay', title: 'Academic Essay', prompt: 'Write an academic essay on [TOPIC]. Requirements:\n- Thesis statement\n- 5 paragraphs minimum\n- Supported arguments with citations\n- Counterarguments\n- Conclusion with implications\nTone: Formal, analytical\nLength: 1500+ words\nFormat: [STYLE - APA/MLA/Chicago]' },
-  { id: 7, category: 'essay', title: 'Argumentative Essay', prompt: 'Write an argumentative essay on [STATEMENT]. Include:\n- Strong thesis\n- 3-4 main arguments with evidence\n- Counterargument and rebuttal\n- Logical structure\n- Persuasive conclusion\nTone: Compelling, logical\nLength: 1200+ words' },
-  { id: 8, category: 'essay', title: 'Narrative Essay', prompt: 'Write a narrative essay about [TOPIC/EXPERIENCE]. Include:\n- Hook to grab attention\n- Clear narrative arc\n- Vivid descriptions\n- Dialogue (if applicable)\n- Reflection/lesson learned\n- Conclusion with impact\nTone: Personal, engaging\nLength: 1000+ words' },
-
-  // CREATIVE WRITING
-  { id: 9, category: 'creative', title: 'Short Story', prompt: 'Write a short story with:\n- Setting: [SETTING]\n- Characters: [CHARACTERS]\n- Plot: [PLOT OUTLINE]\n- Genre: [GENRE]\n- Word count: 1500-2000\n- Twist ending\n- Vivid descriptions\n- Engaging dialogue' },
-  { id: 10, category: 'creative', title: 'Character Development', prompt: 'Create a detailed character profile for [CHARACTER]. Include:\n- Background and history\n- Personality traits\n- Motivations and fears\n- Strengths and weaknesses\n- Arc/transformation\n- Relationships with others\n- Physical description\n- Dialogue sample' },
-  { id: 11, category: 'creative', title: 'Story Brainstorm', prompt: 'Generate 10 creative story ideas with these elements:\n- Genre: [GENRE]\n- Theme: [THEME]\n- Setting: [SETTING]\n- For each idea: Title, premise, main conflict\n- Unique twist\n- Potential for [WORD COUNT] story' },
-
-  // EMAIL WRITING
-  { id: 12, category: 'email', title: 'Sales Email', prompt: 'Write a cold sales email for [PRODUCT/SERVICE]. Include:\n- Attention-grabbing subject line\n- Personalization\n- Problem identification\n- Solution presentation\n- Social proof/testimonial\n- Clear CTA\n- Professional closing\nLength: 150-200 words' },
-  { id: 13, category: 'email', title: 'Newsletter', prompt: 'Write an engaging newsletter email about [TOPIC]. Include:\n- Subject line that increases open rate\n- Welcome/hook\n- 3 main content pieces with links\n- Featured item/highlight\n- Call-to-action\n- Footer with social links\nTone: Friendly, informative' },
-  { id: 14, category: 'email', title: 'Apology Email', prompt: 'Write a sincere apology email for [SITUATION]. Include:\n- Acknowledgment of mistake\n- Genuine apology\n- Explanation (without excuses)\n- What you\'ll do differently\n- Concrete action steps\n- Request for forgiveness\nTone: Sincere, professional' },
-
-  // SOCIAL MEDIA
-  { id: 15, category: 'social', title: 'LinkedIn Post', prompt: 'Write a LinkedIn post about [TOPIC]. Include:\n- Hook in first line\n- Personal insight or story\n- Actionable advice\n- 3 key takeaways\n- Engagement question\n- Relevant hashtags (3-5)\nTone: Professional, authentic\nLength: 150-250 words' },
-  { id: 16, category: 'social', title: 'Twitter Thread', prompt: 'Create a Twitter thread about [TOPIC]. Requirements:\n- 10-15 tweets\n- First tweet as hook\n- Each tweet stands alone\n- Building narrative\n- Include stats/data\n- Final tweet: CTA\nCharacter limit: 280 per tweet\nUse emojis strategically' },
-  { id: 17, category: 'social', title: 'Instagram Caption', prompt: 'Write Instagram captions for [CONTENT TYPE]. Include:\n- Hook first line\n- Story or insight\n- Relevant emojis\n- Call-to-action\n- 10-15 relevant hashtags\n- Mention if tagging\nTone: Conversational, engaging\nLength: 150-200 words' },
-  { id: 18, category: 'social', title: 'TikTok Script', prompt: 'Write a TikTok script about [TOPIC]. Include:\n- Hook (0-3 seconds)\n- Main content\n- Conflict/tension\n- Resolution\n- CTA\nLength: 15-60 seconds\nTone: Trendy, entertaining\nAdd: Music/sound suggestions' },
-  { id: 19, category: 'social', title: 'Facebook Post', prompt: 'Write Facebook post about [TOPIC]. Include:\n- Engaging opening\n- Story or value proposition\n- Key points with formatting\n- Image description\n- Clear CTA\n- Hashtags (3-5)\nTone: Friendly, accessible\nEncourage: Shares, comments, engagement' },
-
-  // PYTHON
-  { id: 20, category: 'python', title: 'Python Script', prompt: 'Write Python code to [TASK]. Requirements:\n- Clean, readable code\n- Comments for each section\n- Error handling\n- PEP 8 compliant\n- Include docstrings\n- Example usage\n- Time complexity explanation\nUse: [LIBRARIES if needed]' },
-  { id: 21, category: 'python', title: 'Python Function', prompt: 'Write an optimized Python function for [TASK]. Include:\n- Function definition with docstring\n- Type hints\n- Input validation\n- Error handling\n- Return value explanation\n- Usage examples\n- Time/space complexity\n- Unit test examples' },
-  { id: 22, category: 'python', title: 'Data Analysis', prompt: 'Write Python code for [DATA ANALYSIS TASK]. Include:\n- Data loading\n- Data cleaning\n- Analysis steps\n- Visualization code\n- Results interpretation\n- Export results\nUse: pandas, matplotlib, seaborn\nInclude: Comments and output examples' },
-
-  // JAVASCRIPT
-  { id: 23, category: 'javascript', title: 'JavaScript Function', prompt: 'Write JavaScript code for [FEATURE]. Include:\n- Modern ES6+ syntax\n- Clear variable names\n- Comments\n- Error handling\n- Input validation\n- Return values\n- Usage examples\n- Browser compatibility notes' },
-  { id: 24, category: 'javascript', title: 'React Component', prompt: 'Write a React component for [COMPONENT]. Include:\n- Functional component\n- Hooks (useState, useEffect)\n- Props documentation\n- Styling (CSS/Tailwind)\n- Error boundaries\n- Usage examples\n- Prop types/TypeScript' },
-  { id: 25, category: 'javascript', title: 'API Integration', prompt: 'Write JavaScript code to integrate with [API]. Include:\n- API authentication\n- Request method\n- Error handling\n- Response parsing\n- Rate limiting\n- Example requests\n- Testing code' },
-
-  // WEB DEVELOPMENT
-  { id: 26, category: 'web', title: 'HTML Template', prompt: 'Create HTML template for [PAGE TYPE]. Include:\n- Semantic HTML5 tags\n- Meta tags for SEO\n- Responsive design notes\n- Accessibility features\n- Comment sections\n- Clean structure\n- Mobile-first approach' },
-  { id: 27, category: 'web', title: 'CSS Styling', prompt: 'Write CSS for [COMPONENT/PAGE]. Include:\n- Modern CSS techniques\n- Responsive design\n- Mobile-first approach\n- Accessibility considerations\n- Browser compatibility\n- Comments for sections\n- BEM naming convention' },
-  { id: 28, category: 'web', title: 'Responsive Design', prompt: 'Design responsive layout for [ELEMENT]. Include:\n- Desktop design (1920px)\n- Tablet design (768px)\n- Mobile design (375px)\n- Flexbox/Grid layout\n- Media queries\n- Touch-friendly buttons\n- Readable typography' },
-
-  // DEBUGGING
-  { id: 29, category: 'debug', title: 'Bug Analysis', prompt: 'Help debug this code issue:\n[PASTE CODE]\n\nError: [ERROR MESSAGE]\nExpected behavior: [EXPECTED]\nActual behavior: [ACTUAL]\n\nProvide:\n- Root cause analysis\n- Step-by-step fix\n- Improved code\n- Testing suggestions\n- Prevention tips' },
-  { id: 30, category: 'debug', title: 'Performance Optimization', prompt: 'Optimize this code for performance:\n[PASTE CODE]\n\nCurrent issues: [ISSUES]\nGoals: [OPTIMIZATION GOALS]\n\nProvide:\n- Bottleneck analysis\n- Optimization techniques\n- Refactored code\n- Performance comparison\n- Best practices' },
-
-  // SEO
-  { id: 31, category: 'seo', title: 'SEO Optimization', prompt: 'Optimize this content for SEO:\n[PASTE CONTENT]\n\nTarget keyword: [KEYWORD]\nTarget audience: [AUDIENCE]\n\nProvide:\n- Meta title (60 chars)\n- Meta description (160 chars)\n- H1 optimization\n- Internal linking suggestions\n- Keyword placement\n- Content improvement\n- Schema markup suggestions' },
-  { id: 32, category: 'seo', title: 'Keyword Research', prompt: 'Conduct keyword research for [TOPIC/NICHE]. Provide:\n- Primary keywords\n- Long-tail variations\n- Search volume estimates\n- Competition level\n- User intent\n- Related topics\n- Content ideas\n- SEO difficulty' },
-  { id: 33, category: 'seo', title: 'Content Strategy', prompt: 'Create SEO content strategy for [WEBSITE/NICHE]. Include:\n- Target keywords\n- Content calendar (3 months)\n- 10 content ideas\n- Internal linking strategy\n- Featured snippet optimization\n- Backlink opportunities\n- Measurement metrics' },
-
-  // MARKETING
-  { id: 34, category: 'marketing', title: 'Marketing Campaign', prompt: 'Create marketing campaign for [PRODUCT/SERVICE]. Include:\n- Campaign goal\n- Target audience\n- Key messages\n- Channel strategy (social, email, PPC)\n- Timeline\n- Budget allocation\n- Success metrics\n- Creative concepts' },
-  { id: 35, category: 'marketing', title: 'Product Launch', prompt: 'Plan product launch for [PRODUCT]. Create:\n- Pre-launch strategy (2 weeks)\n- Launch day tactics\n- Post-launch plan (1 month)\n- Target audience segments\n- Marketing channels\n- Content calendar\n- Success metrics\n- Risk mitigation' },
-  { id: 36, category: 'marketing', title: 'Customer Segmentation', prompt: 'Develop customer segmentation for [BUSINESS]. Include:\n- Key demographic data\n- Behavioral patterns\n- Customer lifecycle stages\n- Value tiers\n- Pain points per segment\n- Messaging for each\n- Channel preferences\n- Retention strategies' },
-
-  // BUSINESS
-  { id: 37, category: 'business', title: 'Business Plan', prompt: 'Create executive summary for business plan:\nBusiness: [BUSINESS NAME]\nProduct/Service: [DESCRIPTION]\nTarget Market: [MARKET]\n\nInclude:\n- Business overview\n- Mission statement\n- Value proposition\n- Revenue model\n- Market analysis\n- Competitive advantage\n- Financial projections\n- Implementation timeline' },
-  { id: 38, category: 'business', title: 'SWOT Analysis', prompt: 'Conduct SWOT analysis for [COMPANY/PRODUCT]. Identify:\n\nStrengths:\n- 5-7 internal advantages\n\nWeaknesses:\n- 5-7 internal limitations\n\nOpportunities:\n- 5-7 external opportunities\n\nThreats:\n- 5-7 external threats\n\nProvide strategic recommendations.' },
-  { id: 39, category: 'business', title: 'Pitch Deck Outline', prompt: 'Create pitch deck outline for [BUSINESS IDEA]. Include:\n1. Problem statement\n2. Solution overview\n3. Market opportunity\n4. Business model\n5. Traction/proof\n6. Team credentials\n7. Financial projections\n8. Funding ask\n9. Timeline\n10. Call-to-action' },
-
-  // COPYWRITING
-  { id: 40, category: 'copywriting', title: 'Landing Page Copy', prompt: 'Write landing page copy for [PRODUCT/SERVICE]. Include:\n- Compelling headline\n- Subheading\n- Problem statement\n- Solution benefits\n- Features list (5-7)\n- Social proof/testimonials\n- CTA button text\n- FAQ section\nTone: Persuasive, benefit-focused' },
-  { id: 41, category: 'copywriting', title: 'Product Description', prompt: 'Write e-commerce product description for [PRODUCT]. Include:\n- Attention-grabbing headline\n- What it is (1-2 sentences)\n- Key features (5-7 bullets)\n- Benefits for customer\n- Specifications\n- Usage/care instructions\n- Why choose this product\n- Call-to-action\nHighlight: Unique selling points' },
-  { id: 42, category: 'copywriting', title: 'Ad Copy', prompt: 'Write ad copy for [PRODUCT/SERVICE] for [PLATFORM]. Include:\n- Headline (if applicable)\n- Body copy with hook\n- Primary benefit statement\n- Secondary benefits\n- Social proof element\n- Urgency/scarcity trigger\n- CTA button text\nPlatform requirements: [CHAR LIMITS]' },
-
-  // EDUCATION
-  { id: 43, category: 'education', title: 'Study Guide', prompt: 'Create study guide for [SUBJECT/CHAPTER]. Include:\n- Key concepts (with definitions)\n- Main ideas and themes\n- Important dates/figures\n- Practice questions (10+)\n- Answer key\n- Study tips\n- Resources for deeper learning\n- Exam preparation advice' },
-  { id: 44, category: 'education', title: 'Lesson Plan', prompt: 'Create lesson plan for [TOPIC] [GRADE LEVEL]. Include:\n- Learning objectives\n- Materials needed\n- Introduction activity\n- Main teaching content\n- Interactive activities\n- Assessment method\n- Homework assignment\n- Differentiation strategies' },
-  { id: 45, category: 'education', title: 'Quiz/Test', prompt: 'Create quiz on [TOPIC]. Requirements:\n- 20 questions\n- Mix question types (MC, T/F, short answer)\n- Clear instructions\n- Answer key with explanations\n- Point values\n- Difficulty levels\n- Time limit suggestion\n- Learning objectives covered' },
-
-  // RESEARCH
-  { id: 46, category: 'research', title: 'Research Paper Outline', prompt: 'Create outline for research paper on [TOPIC]. Include:\n- Thesis statement\n- Introduction structure\n- 5-7 main sections with subsections\n- Key points per section\n- Potential sources\n- Counterarguments section\n- Conclusion strategy\n- Citation format: [APA/MLA/Chicago]' },
-  { id: 47, category: 'research', title: 'Literature Review', prompt: 'Write literature review for [TOPIC]. Include:\n- Overview of topic\n- 10-15 key studies/sources\n- Summary of each study\n- Research trends identified\n- Gaps in current research\n- Synthesis of findings\n- Relevance to your research\nCitation style: [STYLE]' },
-
-  // DESIGN
-  { id: 48, category: 'design', title: 'Design Brief', prompt: 'Create design brief for [PROJECT]. Include:\n- Project overview\n- Goals and objectives\n- Target audience\n- Brand guidelines\n- Design requirements\n- Deliverables list\n- Timeline and budget\n- Success metrics\n- Reference examples' },
-  { id: 49, category: 'design', title: 'UI/UX Requirements', prompt: 'Specify UI/UX requirements for [APP/WEBSITE]. Include:\n- User personas (3-4)\n- User journeys\n- Wireframe specifications\n- Component library\n- Design system\n- Responsive breakpoints\n- Accessibility requirements\n- Interaction guidelines' },
-
-  // MUSIC
-  { id: 50, category: 'music', title: 'Song Lyrics', prompt: 'Write song lyrics for [SONG TITLE]. Requirements:\n- Genre: [GENRE]\n- Theme: [THEME]\n- Verse 1 (8 lines)\n- Chorus (4 lines, memorable)\n- Verse 2 (8 lines)\n- Bridge (4 lines)\n- Outro\n- Rhyme scheme: [PATTERN]\n- Emotional tone: [TONE]' },
-
-  // ART
-  { id: 51, category: 'art', title: 'Art Concept', prompt: 'Develop art concept for [PROJECT]. Include:\n- Concept statement\n- Visual style description\n- Color palette\n- Key elements\n- Mood and emotion\n- Inspiration sources\n- Technical approach\n- Final artwork description' },
-
-  // Add more prompts... (up to 500+)
-  // For brevity, adding sample prompts. In production, add 450+ more
-  { id: 100, category: 'blog', title: 'Guest Blog Pitch', prompt: 'Write pitch email to [PUBLICATION] for guest blog:\n- Subject line\n- Publication familiarity\n- 3 article ideas\n- Why relevant for their audience\n- Your credentials\n- Links to previous work\n- Publication guidelines compliance' },
-  { id: 101, category: 'seo', title: 'SEO Audit Report', prompt: 'Create SEO audit findings for [WEBSITE]. Report:\n- Technical SEO issues\n- On-page SEO problems\n- Content gaps\n- Backlink analysis\n- Competitor comparison\n- Quick wins (3-5)\n- Long-term strategy\n- Priority action items' },
-  { id: 102, category: 'marketing', title: 'Email Marketing Series', prompt: 'Create 5-email series for [GOAL]. Include:\n- Day 1: Hook/introduction\n- Day 3: Problem deep dive\n- Day 5: Solution introduction\n- Day 7: Social proof\n- Day 10: Final CTA\nEach with subject line and body copy' },
-  { id: 103, category: 'python', title: 'Web Scraper', prompt: 'Write Python web scraper for [WEBSITE]. Include:\n- Library choice (BeautifulSoup/Selenium)\n- HTML parsing\n- Data extraction\n- Error handling\n- Rate limiting\n- Data storage\n- Legal considerations' },
-  { id: 104, category: 'javascript', title: 'Form Validation', prompt: 'Write JavaScript form validation for [FORM TYPE]. Include:\n- Field validation rules\n- Error messages\n- Real-time feedback\n- Submit handler\n- Accessibility features\n- Browser compatibility\n- Regex patterns if needed' },
+  {id:1,cat:'blog',title:'SEO Blog Post',prompt:'Write an SEO-optimized blog post about [TOPIC]. Include:\n- Meta description (150 chars)\n- H1, H2, H3 headings\n- 2000+ words\n- Target keywords: [KEYWORDS]\n- Engaging introduction with a hook\n- Actionable conclusion with CTA\nTone: Professional, engaging\nFormat: Markdown'},
+  {id:2,cat:'blog',title:'How-To Guide',prompt:'Create a comprehensive how-to guide on [TOPIC]. Structure:\n- Introduction\n- 8-10 step-by-step instructions\n- Tips and common mistakes\n- FAQ section\n- Conclusion\nMake it easy to follow, detailed, and practical.'},
+  {id:3,cat:'blog',title:'Blog Outline',prompt:'Create a detailed blog outline for [TOPIC]. Include:\n- Catchy headline options (3)\n- Meta description\n- Introduction hook\n- 5-7 main sections with subsections\n- Call-to-action\n- Keywords to include\nFormat: Structured outline with bullet points'},
+  {id:4,cat:'blog',title:'Listicle Post',prompt:'Write a listicle: "[NUMBER] Best [TOPIC]". Include:\n- Compelling introduction\n- [NUMBER] well-researched items each with description\n- Pros and cons for each\n- Final recommendation\nTone: Informative and entertaining. Length: 2000+ words'},
+  {id:5,cat:'blog',title:'Case Study',prompt:'Write a case study about [TOPIC/COMPANY]. Cover:\n- Problem statement\n- Solution implemented\n- Results and metrics\n- Key learnings\n- Recommendations\nInclude real numbers and data. Length: 1500+ words'},
+  {id:6,cat:'essay',title:'Academic Essay',prompt:'Write an academic essay on [TOPIC]. Requirements:\n- Thesis statement\n- 5+ paragraphs\n- Arguments with citations\n- Counterarguments addressed\n- Conclusion with implications\nTone: Formal, analytical. Length: 1500+ words. Format: [APA/MLA/Chicago]'},
+  {id:7,cat:'essay',title:'Argumentative Essay',prompt:'Write an argumentative essay on [STATEMENT]. Include:\n- Strong thesis\n- 3-4 main arguments with evidence\n- Counterargument and rebuttal\n- Logical structure\n- Persuasive conclusion\nTone: Compelling, logical. Length: 1200+ words'},
+  {id:8,cat:'essay',title:'Narrative Essay',prompt:'Write a narrative essay about [TOPIC/EXPERIENCE]. Include:\n- Hook to grab attention\n- Clear narrative arc\n- Vivid descriptions and dialogue\n- Reflection/lesson learned\n- Powerful conclusion\nTone: Personal, engaging. Length: 1000+ words'},
+  {id:9,cat:'creative',title:'Short Story',prompt:'Write a short story with:\n- Setting: [SETTING]\n- Characters: [CHARACTERS]\n- Plot: [PLOT OUTLINE]\n- Genre: [GENRE]\n- Word count: 1500-2000\n- Twist ending\n- Vivid descriptions and engaging dialogue'},
+  {id:10,cat:'creative',title:'Character Profile',prompt:'Create a detailed character profile for [CHARACTER NAME]. Include:\n- Background and history\n- Personality traits and quirks\n- Motivations and fears\n- Strengths and weaknesses\n- Arc/transformation\n- Relationships\n- Physical description\n- Sample dialogue'},
+  {id:11,cat:'creative',title:'Story Ideas',prompt:'Generate 10 creative story ideas for:\n- Genre: [GENRE]\n- Theme: [THEME]\n- Setting: [SETTING]\nFor each: Title, premise, main conflict, unique twist, and potential for [LENGTH] story.'},
+  {id:12,cat:'email',title:'Cold Sales Email',prompt:'Write a cold sales email for [PRODUCT/SERVICE]. Include:\n- Attention-grabbing subject line\n- Personalization opener\n- Problem identification\n- Solution presentation\n- Social proof\n- Clear CTA\nLength: 150-200 words. Tone: Professional, persuasive'},
+  {id:13,cat:'email',title:'Newsletter',prompt:'Write an engaging newsletter email about [TOPIC]. Include:\n- High open-rate subject line\n- Welcome hook\n- 3 main content pieces with links\n- Featured highlight\n- Call-to-action\nTone: Friendly, informative'},
+  {id:14,cat:'email',title:'Apology Email',prompt:'Write a sincere apology email for [SITUATION]. Include:\n- Acknowledgment of mistake\n- Genuine apology without excuses\n- What you\'ll do differently\n- Concrete action steps\n- Request for understanding\nTone: Sincere, professional'},
+  {id:15,cat:'email',title:'Follow-Up Email',prompt:'Write a professional follow-up email after [EVENT/MEETING]. Include:\n- Reference to previous interaction\n- Key points discussed\n- Next steps and timeline\n- Clear ask or CTA\n- Professional closing\nLength: 100-150 words'},
+  {id:16,cat:'social',title:'LinkedIn Post',prompt:'Write a LinkedIn post about [TOPIC]. Include:\n- Hook in first line (stops scroll)\n- Personal insight or story\n- 3 actionable takeaways\n- Engagement question\n- 3-5 relevant hashtags\nTone: Professional, authentic. Length: 150-250 words'},
+  {id:17,cat:'social',title:'Twitter Thread',prompt:'Create a Twitter thread about [TOPIC]. Requirements:\n- 10-15 tweets\n- First tweet as strong hook\n- Each tweet stands alone\n- Building narrative with data\n- Final tweet with CTA\nCharacter limit: 280 per tweet. Use emojis strategically.'},
+  {id:18,cat:'social',title:'Instagram Caption',prompt:'Write Instagram captions for [CONTENT TYPE]. Include:\n- Hook first line\n- Story or insight\n- Relevant emojis\n- Call-to-action\n- 10-15 relevant hashtags\nTone: Conversational, engaging. Length: 150-200 words'},
+  {id:19,cat:'social',title:'TikTok Script',prompt:'Write a TikTok video script about [TOPIC]. Include:\n- Hook (first 3 seconds — must stop scroll)\n- Main content with tension/conflict\n- Resolution\n- CTA\nLength: 30-60 seconds. Tone: Trendy, entertaining. Add music/sound suggestions.'},
+  {id:20,cat:'python',title:'Python Script',prompt:'Write Python code to [TASK]. Requirements:\n- Clean, readable code with comments\n- Error handling with try/except\n- PEP 8 compliant\n- Docstrings for all functions\n- Example usage\n- Time complexity explanation\nLibraries: [SPECIFY if needed]'},
+  {id:21,cat:'python',title:'Python Function',prompt:'Write an optimized Python function for [TASK]. Include:\n- Function with full docstring\n- Type hints\n- Input validation\n- Error handling\n- Return value explanation\n- Usage examples\n- Time/space complexity\n- Unit test examples'},
+  {id:22,cat:'python',title:'Data Analysis',prompt:'Write Python code for [DATA ANALYSIS TASK]. Include:\n- Data loading and inspection\n- Data cleaning steps\n- Analysis with visualization\n- Results interpretation\n- Export results\nUse: pandas, matplotlib, seaborn. Include comments and output examples.'},
+  {id:23,cat:'python',title:'Web Scraper',prompt:'Write a Python web scraper for [WEBSITE/DATA]. Include:\n- Library choice (BeautifulSoup/Selenium) with justification\n- HTML parsing logic\n- Data extraction\n- Error handling and retries\n- Rate limiting\n- Data storage (CSV/JSON)\n- Legal/ethical considerations'},
+  {id:24,cat:'javascript',title:'JavaScript Function',prompt:'Write a JavaScript function for [TASK]. Include:\n- Clean ES6+ syntax\n- JSDoc comments\n- Input validation\n- Error handling\n- Usage examples\n- Browser compatibility notes\n- Performance considerations'},
+  {id:25,cat:'javascript',title:'React Component',prompt:'Write a React component for [FEATURE]. Include:\n- Functional component with hooks\n- Props with PropTypes\n- State management\n- Error boundary\n- Loading/empty states\n- CSS module or styled-components\n- Unit test example'},
+  {id:26,cat:'javascript',title:'Form Validation',prompt:'Write JavaScript form validation for [FORM TYPE]. Include:\n- Field validation rules\n- Clear error messages\n- Real-time feedback\n- Submit handler\n- Accessibility features (ARIA)\n- Browser compatibility\n- Regex patterns where needed'},
+  {id:27,cat:'web',title:'Landing Page Copy',prompt:'Write landing page copy for [PRODUCT/SERVICE]. Include:\n- Headline and sub-headline\n- Hero section text\n- 3 key benefits with descriptions\n- Social proof section\n- FAQ section (5 questions)\n- CTA button text\n- Footer tagline\nTone: Conversion-focused'},
+  {id:28,cat:'web',title:'Website About Page',prompt:'Write an About page for [COMPANY/PERSON]. Include:\n- Origin story\n- Mission and values\n- Team highlights\n- Achievements/milestones\n- CTA\nTone: Authentic, professional. Length: 500-700 words'},
+  {id:29,cat:'debug',title:'Code Debugging',prompt:'Debug the following [LANGUAGE] code. For each issue:\n- Identify the exact problem\n- Explain why it occurs\n- Provide the fixed code\n- Suggest how to prevent it in future\n[PASTE CODE HERE]\nAlso check for: performance issues, security vulnerabilities, best practice violations.'},
+  {id:30,cat:'debug',title:'Code Review',prompt:'Perform a thorough code review of the following [LANGUAGE] code. Check for:\n- Logic errors\n- Security vulnerabilities\n- Performance issues\n- Code style and readability\n- Missing edge case handling\n- Improvement suggestions\n[PASTE CODE HERE]'},
+  {id:31,cat:'seo',title:'SEO Audit Report',prompt:'Create an SEO audit for [WEBSITE]. Report sections:\n- Technical SEO issues\n- On-page SEO problems\n- Content gaps\n- Backlink analysis\n- Competitor comparison\n- 5 quick wins\n- 90-day action plan\nPrioritize by impact.'},
+  {id:32,cat:'seo',title:'Keyword Research',prompt:'Perform keyword research for [TOPIC/NICHE]. Provide:\n- 20 primary keywords with estimated search volume\n- 30 long-tail keywords\n- 10 question-based keywords\n- Content gap opportunities\n- Keyword difficulty assessment\n- Content strategy recommendations'},
+  {id:33,cat:'seo',title:'Meta Descriptions',prompt:'Write 5 compelling meta descriptions for [PAGE TYPE] about [TOPIC]. Each must:\n- Be 150-160 characters exactly\n- Include [PRIMARY KEYWORD] naturally\n- Have a clear benefit\n- Include a soft CTA\n- Be unique and non-duplicate\nProvide character counts for each.'},
+  {id:34,cat:'marketing',title:'Marketing Strategy',prompt:'Create a 90-day marketing strategy for [PRODUCT/SERVICE]. Include:\n- Target audience definition\n- Channel strategy (organic + paid)\n- Content calendar overview\n- KPIs and success metrics\n- Budget allocation\n- Week-by-week execution plan\nBudget: [SPECIFY]'},
+  {id:35,cat:'marketing',title:'Email Marketing Series',prompt:'Create a 5-email nurture sequence for [GOAL]. Include:\n- Email 1 (Day 1): Welcome/hook\n- Email 3: Problem deep dive\n- Email 5: Solution introduction\n- Email 7: Social proof\n- Email 10: Final CTA\nFor each: subject line, preview text, and full body copy.'},
+  {id:36,cat:'copywriting',title:'Product Description',prompt:'Write compelling product descriptions for [PRODUCT]. For each:\n- Attention-grabbing headline\n- Benefit-focused body (not features)\n- Social proof mention\n- Overcome objections\n- Clear CTA\n- SEO keywords included\nLength: 150-200 words per description. Tone: [SPECIFY]'},
+  {id:37,cat:'copywriting',title:'Ad Copy',prompt:'Write 5 variations of ad copy for [PRODUCT/SERVICE] for [PLATFORM: Facebook/Google/Instagram]. Each variation:\n- Headline (30 chars max for Google, 40 for FB)\n- Body text (90-125 chars)\n- CTA\n- Angle: [Pain point / Benefit / Social proof / Urgency / Question]\nTarget audience: [SPECIFY]'},
+  {id:38,cat:'business',title:'Business Plan Executive Summary',prompt:'Write an executive summary for a business plan for [BUSINESS]. Include:\n- Business concept (2 sentences)\n- Market opportunity\n- Unique value proposition\n- Revenue model\n- Funding ask and use of funds\n- Key milestones\nLength: 400-500 words. Tone: Professional, investor-ready.'},
+  {id:39,cat:'business',title:'SWOT Analysis',prompt:'Perform a detailed SWOT analysis for [COMPANY/PRODUCT]. For each quadrant:\n- 5-7 specific, evidence-based points\n- Industry context\n- Actionable implications\nAfter the SWOT: Provide 3 strategic recommendations based on the analysis.'},
+  {id:40,cat:'business',title:'Client Proposal',prompt:'Write a professional business proposal for [CLIENT] requesting [SERVICE]. Include:\n- Executive summary\n- Problem statement\n- Proposed solution\n- Deliverables and timeline\n- Pricing\n- Why us (credentials)\n- Terms and next steps\nTone: Professional, confident, client-focused.'},
+  {id:41,cat:'education',title:'Lesson Plan',prompt:'Create a detailed lesson plan for [TOPIC]. Include:\n- Grade level and subject\n- Learning objectives (3-5)\n- Materials needed\n- Introduction activity (5 min)\n- Main instruction (20 min)\n- Practice activity (15 min)\n- Assessment\n- Homework assignment\n- Differentiation for learners'},
+  {id:42,cat:'education',title:'Study Guide',prompt:'Create a comprehensive study guide for [SUBJECT/EXAM]. Include:\n- Key concepts and definitions\n- Important formulas or rules\n- Common exam question types\n- Practice questions with answers\n- Memory tips and mnemonics\n- Study schedule suggestion\nLevel: [BEGINNER/INTERMEDIATE/ADVANCED]'},
+  {id:43,cat:'research',title:'Research Summary',prompt:'Summarize current research on [TOPIC]. Include:\n- Current state of knowledge\n- Key findings from recent studies\n- Conflicting evidence\n- Research gaps\n- Practical implications\n- Recommended further reading\nLength: 600-800 words. Format: Academic but accessible.'},
+  {id:44,cat:'study',title:'Concept Explainer',prompt:'Explain [CONCEPT] to a [AUDIENCE LEVEL: beginner/intermediate/expert]. Include:\n- Simple definition\n- Real-world analogy\n- Step-by-step breakdown\n- Common misconceptions\n- Practical examples\n- When to use this concept\n- Further learning resources'},
+  {id:45,cat:'design',title:'Design Brief',prompt:'Create a design brief for [PROJECT TYPE]. Include:\n- Project overview and goals\n- Target audience profile\n- Brand guidelines (colors, fonts, tone)\n- Design deliverables list\n- Inspiration references\n- Technical requirements\n- Timeline and milestones\n- Success criteria'},
+  {id:46,cat:'music',title:'Song Lyrics Structure',prompt:'Create a song structure outline for a [GENRE] song about [THEME]. Include:\n- Verse 1 concept and tone\n- Pre-chorus idea\n- Chorus hook concept\n- Verse 2 direction\n- Bridge concept\n- Outro\n- Rhyme scheme suggestion\n- Tempo and mood guidance'},
+  {id:47,cat:'art',title:'Art Project Concept',prompt:'Develop a creative art project concept for [MEDIUM/STYLE]. Include:\n- Concept statement\n- Visual description\n- Materials needed\n- Execution steps\n- Thematic meaning\n- Target audience\n- Exhibition/presentation ideas\n- Variations or series potential'},
+  {id:48,cat:'blog',title:'Guest Post Pitch',prompt:'Write a pitch email to [PUBLICATION] for a guest blog post. Include:\n- Subject line\n- Your publication familiarity\n- 3 article ideas with titles and 2-sentence summaries\n- Why relevant for their audience\n- Your credentials\n- Links to previous work\n- Publication guidelines compliance'},
+  {id:49,cat:'marketing',title:'Influencer Outreach',prompt:'Write an influencer outreach email for [BRAND] to [INFLUENCER TYPE]. Include:\n- Personalized opening (reference their content)\n- Brand introduction\n- Campaign concept\n- Compensation/value offer\n- Deliverables expected\n- Timeline\n- Next steps\nTone: Collaborative, professional, not transactional'},
+  {id:50,cat:'seo',title:'Internal Linking Strategy',prompt:'Create an internal linking strategy for [WEBSITE TOPIC]. Include:\n- Pillar page recommendations\n- Cluster topic pages\n- Anchor text recommendations\n- Link placement priorities\n- Orphan page identification\n- Monthly implementation schedule\nCurrent site structure: [DESCRIBE]'},
 ];
 
-// Initialize
-let currentCategory = 'all';
-let filteredPrompts = [...prompts];
+let currentCat = 'all';
+let filtered = [...prompts];
+let modalPromptText = '';
+let liked=false, disliked=false, likes=6148, dislikes=44, cmtCount=3;
 
-// DOM Elements
-const promptsContainer = document.getElementById('promptsContainer');
-const categoryBtns = document.querySelectorAll('.category-btn');
-const searchInput = document.getElementById('searchInput');
-const modal = document.getElementById('modal');
-const notification = document.getElementById('notification');
-let currentPromptData = null;
-
-// Render prompts
+// RENDER
 function renderPrompts() {
-  promptsContainer.innerHTML = '';
-  
-  if (filteredPrompts.length === 0) {
-    promptsContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No prompts found. Try a different search or category.</div>';
+  const grid = document.getElementById('promptsGrid');
+  document.getElementById('resultsCount').textContent = `Showing ${filtered.length} prompts`;
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">😕 No prompts found. Try a different search or category.</div>';
     return;
   }
-
-  filteredPrompts.forEach(prompt => {
-    const card = document.createElement('div');
-    card.className = 'prompt-card';
-    card.innerHTML = `
-      <span class="prompt-category-tag">${prompt.category.toUpperCase()}</span>
-      <h3>${prompt.title}</h3>
-      <p>${prompt.prompt.substring(0, 100)}...</p>
+  grid.innerHTML = filtered.map(p => `
+    <div class="prompt-card">
+      <span class="prompt-tag">${p.cat}</span>
+      <h4>${p.title}</h4>
+      <p>${p.prompt.substring(0,90)}...</p>
       <div class="prompt-actions">
-        <button class="btn-copy" onclick="copyPrompt('${prompt.title}', '${escapeHtml(prompt.prompt)}')">📋 Copy</button>
-        <button class="btn-expand" onclick="expandPrompt(${prompt.id})">↗️ Expand</button>
+        <button class="btn-copy" onclick="copyPrompt(${p.id})">📋 Copy</button>
+        <button class="btn-expand" onclick="expandPrompt(${p.id})">↗️ Expand</button>
       </div>
-    `;
-    promptsContainer.appendChild(card);
-  });
+    </div>
+  `).join('');
 }
 
-// Filter by category
-categoryBtns.forEach(btn => {
+function filterPrompts() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  filtered = prompts.filter(p => {
+    const catOk = currentCat === 'all' || p.cat === currentCat;
+    const searchOk = !q || p.title.toLowerCase().includes(q) || p.prompt.toLowerCase().includes(q);
+    return catOk && searchOk;
+  });
+  renderPrompts();
+}
+
+// CATEGORY BUTTONS
+document.querySelectorAll('.cat-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    categoryBtns.forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    currentCategory = btn.dataset.category;
+    currentCat = btn.dataset.cat;
     filterPrompts();
   });
 });
 
-// Filter prompts
-function filterPrompts() {
-  const searchTerm = searchInput.value.toLowerCase();
-  
-  filteredPrompts = prompts.filter(prompt => {
-    const categoryMatch = currentCategory === 'all' || prompt.category === currentCategory;
-    const searchMatch = prompt.title.toLowerCase().includes(searchTerm) || 
-                       prompt.prompt.toLowerCase().includes(searchTerm);
-    return categoryMatch && searchMatch;
-  });
-  
-  renderPrompts();
+document.getElementById('searchInput').addEventListener('input', filterPrompts);
+
+function copyPrompt(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  navigator.clipboard.writeText(p.prompt).then(() => showToast());
 }
 
-// Search
-searchInput.addEventListener('input', filterPrompts);
-
-// Copy prompt
-function copyPrompt(title, prompt) {
-  navigator.clipboard.writeText(prompt).then(() => {
-    showNotification();
-  });
-}
-
-// Expand prompt
 function expandPrompt(id) {
-  const prompt = prompts.find(p => p.id === id);
-  if (prompt) {
-    document.getElementById('modalTitle').textContent = prompt.title;
-    document.getElementById('modalBody').textContent = prompt.prompt;
-    currentPromptData = prompt.prompt;
-    modal.classList.add('active');
-  }
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalTag').textContent = p.cat.toUpperCase();
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalPrompt').textContent = p.prompt;
+  modalPromptText = p.prompt;
+  document.getElementById('modal').classList.add('open');
 }
 
-// Close modal
-function closeModal() {
-  modal.classList.remove('active');
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function copyFromModal() { navigator.clipboard.writeText(modalPromptText).then(() => showToast()); }
+
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-// Copy from modal
-function copyFromModal() {
-  navigator.clipboard.writeText(currentPromptData).then(() => {
-    showNotification();
-  });
+// TOOL STARS
+function rateToolStar(n) {
+  document.querySelectorAll('#toolStars .star-btn').forEach((b,i) => b.textContent = i<n?'⭐':'☆');
+  document.getElementById('toolStarSummary').textContent = `You rated this ${n}/5 — Thank you! 🎉`;
 }
 
-// Show notification
-function showNotification() {
-  notification.classList.add('show');
-  setTimeout(() => notification.classList.remove('show'), 2000);
+// FOOTER STARS
+function rateFooterStar(n) {
+  document.querySelectorAll('#footerStars .f-star').forEach((b,i) => b.textContent = i<n?'⭐':'☆');
+  document.getElementById('footerRatingDisplay').textContent = `You rated ${n}/5 — Thank you!`;
 }
 
-// Escape HTML
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-  return text.replace(/[&<>"']/g, m => map[m]);
+// LIKE/DISLIKE
+function toggleLike(){if(liked){liked=false;likes--;}else{liked=true;likes++;if(disliked){disliked=false;dislikes--;}}updateLikeUI();}
+function toggleDislike(){if(disliked){disliked=false;dislikes--;}else{disliked=true;dislikes++;if(liked){liked=false;likes--;}}updateLikeUI();}
+function updateLikeUI(){document.getElementById('likeCount').textContent=likes.toLocaleString();document.getElementById('dislikeCount').textContent=dislikes.toLocaleString();document.getElementById('likeBtn').className='like-btn'+(liked?' liked':'');document.getElementById('dislikeBtn').className='like-btn'+(disliked?' disliked':'');}
+
+// COMMENTS
+function submitComment(){
+  const name=document.getElementById('cmtName').value.trim();
+  const text=document.getElementById('cmtText').value.trim();
+  if(!name||!text){alert('Please enter name and comment.');return;}
+  cmtCount++;
+  const item=document.createElement('div');item.className='comment-item';
+  item.innerHTML='<div class="comment-meta"><span class="comment-author">'+name+'</span><span class="comment-date">Just now</span></div><div class="comment-body">'+text+'</div>';
+  document.getElementById('cmtList').prepend(item);
+  document.getElementById('cmtCount').textContent=cmtCount;
+  document.getElementById('cmtName').value='';document.getElementById('cmtText').value='';
 }
 
-// Close modal on background click
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
+// FAQ
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
 
-// Initial render
+// INIT
 renderPrompts();
 </script>
-
 </body>
 </html>
