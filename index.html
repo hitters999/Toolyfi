@@ -659,7 +659,7 @@
   </section>
 
   <!-- ANIMATED TOOLS CAROUSEL -->
-  <section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 80px 20px; margin: 60px 0; position: relative; overflow: hidden;">
+  <section style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); color: white; padding: 48px 20px; margin: 40px 0; position: relative; overflow: hidden;">
     <!-- Animated background blobs -->
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; z-index: 0;">
       <div style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, #667eea, transparent); top: -150px; left: -150px; border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
@@ -684,21 +684,23 @@
 
         <!-- Carousel Items -->
         <div id="toolsCarousel" style="min-height: 200px; position: relative;">
-          <!-- Item 1: Salary to Hourly -->
+          <!-- Item 0: AI Assistant -->
           <div id="carousel-tool-0" class="carousel-tool-item active" style="animation: fadeInUp 0.8s ease;">
             <div style="display: flex; align-items: flex-start; gap: 30px;">
-              <div style="font-size: 5em; min-width: 80px; text-align: center;">💼</div>
+              <div style="font-size: 5em; min-width: 80px; text-align: center;">🤖</div>
               <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                  <span style="display: inline-block; background: linear-gradient(135deg, #10b981, #059669); padding: 8px 16px; border-radius: 25px; font-size: 0.85em; font-weight: 900; letter-spacing: 1.5px; box-shadow: 0 0 20px rgba(255, 217, 61, 0.4); text-transform: uppercase;">CALCULATOR</span>
+                  <span style="display: inline-block; background: linear-gradient(135deg, #6366f1, #a855f7); padding: 8px 16px; border-radius: 25px; font-size: 0.85em; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;">AI TOOL 🔥 NEW</span>
                   <span style="color: #ffd93d; font-weight: 700;">FREE</span>
                 </div>
-                <h3 style="color: #10b981; margin: 0 0 12px 0; font-size: 1.9em; font-weight: 1000; line-height: 1.2; letter-spacing: 0.5px;">Salary to Hourly Converter</h3>
-                <p style="color: rgba(255,255,255,0.85); margin: 0 0 20px 0; font-size: 1.05em; line-height: 1.7; font-weight: 500;">Convert your annual salary to hourly rate instantly. Perfect for freelancers, contractors & remote workers. Calculate your true hourly earnings with precision.</p>
-                <a href="salary-to-hourly.html" style="display: inline-block; color: white; background: linear-gradient(135deg, #10b981, #059669); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 800; transition: all 0.3s; cursor: pointer; border: none; box-shadow: 0 10px 25px rgba(16,185,129,0.3);">→ Try Now</a>
+                <h3 style="color: #818cf8; margin: 0 0 12px 0; font-size: 1.9em; font-weight: 1000; line-height: 1.2;">AI Writing Assistant</h3>
+                <p style="color: rgba(255,255,255,0.85); margin: 0 0 20px 0; font-size: 1.05em; line-height: 1.7; font-weight: 500;">Write SEO articles, rewrite content, generate meta tags & chat with AI. Powered by Gemma 4. No signup, completely free.</p>
+                <a href="ai-assistant.html" style="display: inline-block; color: white; background: linear-gradient(135deg, #6366f1, #a855f7); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 800; box-shadow: 0 10px 25px rgba(99,102,241,0.3);">→ Try Now</a>
               </div>
             </div>
           </div>
+
+          
 
           <!-- Item 2: Tip Calculator -->
           <div id="carousel-tool-1" class="carousel-tool-item" style="animation: fadeInUp 0.8s ease;">
@@ -862,7 +864,8 @@
           <div id="tool-dot-6" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(6)"></div>
           <div id="tool-dot-7" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(7)"></div>
           <div id="tool-dot-8" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(8)"></div>
-          <div id="tool-dot-9" style="width: 12px; height: 12px; background: rgba(255,77,77,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(9)"></div>
+          <div id="tool-dot-9" style="width: 12px; height: 12px; background: rgba(102,126,234,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(9)"></div>
+          <div id="tool-dot-10" style="width: 12px; height: 12px; background: rgba(99,102,241,0.5); border-radius: 50%; cursor: pointer; transition: all 0.3s;" onclick="goToToolSlide(10)"></div>
         </div>
       </div>
     </div>
@@ -890,7 +893,7 @@
     let carouselToolIndex = 0;
     
     function updateToolDots() {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 11; i++) {
         const dot = document.getElementById('tool-dot-' + i);
         if (i === carouselToolIndex) {
           dot.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
@@ -917,14 +920,14 @@
 
     function carouselToolNext() {
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.remove('active');
-      carouselToolIndex = (carouselToolIndex + 1) % 10;
+      carouselToolIndex = (carouselToolIndex + 1) % 11;
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.add('active');
       updateToolDots();
     }
 
     function carouselToolPrev() {
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.remove('active');
-      carouselToolIndex = (carouselToolIndex - 1 + 10) % 10;
+      carouselToolIndex = (carouselToolIndex - 1 + 11) % 11;
       document.getElementById('carousel-tool-' + carouselToolIndex).classList.add('active');
       updateToolDots();
     }
@@ -1230,6 +1233,88 @@
     </div>
   </section>
 
+  <!-- UPDATESWORLD ARTICLES -->
+  <section class="section" style="margin-bottom: 60px;">
+    <div style="text-align:center; margin-bottom: 40px;">
+      <h2 class="section-title">🌍 UpdatesWorld — Latest News & Guides</h2>
+      <p class="section-subtitle">AI trends, tools & insights — updated regularly</p>
+    </div>
+    <div class="blog-grid">
+      <a href="updatesworld/ai-jobs-2026.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #6366f1, #a855f7);">💼</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #6366f1, #a855f7);">AI JOBS</span>
+          <h3 class="blog-card-title">AI Jobs 2026 — Top Careers in Artificial Intelligence</h3>
+          <p class="blog-card-desc">Discover the highest-paying AI jobs in 2026 and how to get started in the field.</p>
+          <div class="blog-card-meta"><span>⏱️ 5 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/best-free-ai-image-generators-2026.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #ec4899, #f97316);">🎨</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #ec4899, #f97316);">AI IMAGE</span>
+          <h3 class="blog-card-title">Best Free AI Image Generators 2026 — Top Picks Reviewed</h3>
+          <p class="blog-card-desc">Compare the best free AI image generators available in 2026. No signup options included.</p>
+          <div class="blog-card-meta"><span>⏱️ 6 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/best-free-ai-tools-2026.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">🤖</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">AI TOOLS</span>
+          <h3 class="blog-card-title">Best Free AI Tools 2026 — Complete List for Every Use Case</h3>
+          <p class="blog-card-desc">The ultimate list of free AI tools for writing, images, coding, and productivity in 2026.</p>
+          <div class="blog-card-meta"><span>⏱️ 7 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/best-free-ai-tools-students-2026.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #10b981, #0ea5e9);">🎓</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #10b981, #0ea5e9);">STUDENTS</span>
+          <h3 class="blog-card-title">Best Free AI Tools for Students 2026 — Study Smarter</h3>
+          <p class="blog-card-desc">Top free AI tools every student should use in 2026 for essays, research and studying.</p>
+          <div class="blog-card-meta"><span>⏱️ 5 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/best-free-ai-writing-tools-2026.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">✍️</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">WRITING</span>
+          <h3 class="blog-card-title">Best Free AI Writing Tools 2026 — Write Better, Faster</h3>
+          <p class="blog-card-desc">The best free AI writing assistants in 2026 for blogs, emails, and content creation.</p>
+          <div class="blog-card-meta"><span>⏱️ 5 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/claude-best-prompts.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">💬</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">PROMPTS</span>
+          <h3 class="blog-card-title">Best Claude Prompts 2026 — Get Maximum Results from Claude AI</h3>
+          <p class="blog-card-desc">The most effective Claude prompts for writing, coding, research and business use cases.</p>
+          <div class="blog-card-meta"><span>⏱️ 6 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/economic-trends-ai.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #06b6d4, #10b981);">📊</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #06b6d4, #10b981);">ECONOMY</span>
+          <h3 class="blog-card-title">Economic Trends & AI — How AI is Reshaping the Global Economy</h3>
+          <p class="blog-card-desc">How artificial intelligence is transforming industries, jobs, and economic trends worldwide.</p>
+          <div class="blog-card-meta"><span>⏱️ 6 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+      <a href="updatesworld/claude-prompts.html" class="blog-card">
+        <div class="blog-card-top" style="background: linear-gradient(135deg, #a855f7, #ec4899);">🧠</div>
+        <div class="blog-card-body">
+          <span class="blog-badge" style="background: linear-gradient(135deg, #a855f7, #ec4899);">AI GUIDE</span>
+          <h3 class="blog-card-title">Claude Prompts Guide — Master Claude AI for Any Task</h3>
+          <p class="blog-card-desc">Complete guide to writing effective Claude AI prompts for any use case in 2026.</p>
+          <div class="blog-card-meta"><span>⏱️ 5 min read</span><span class="blog-read-more">Read →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
@@ -1257,11 +1342,13 @@
         { icon:'🎬', badge:'AI TOOL 🔥 NEW', badgeColor:'linear-gradient(135deg,#ff4d4d,#ff7b2e)', title:'YouTube Transcript Extractor', desc:'Extract transcript from any YouTube video instantly. AI-powered analysis, key points & summary. Free, no signup.', href:'youtube-transcript-extractor.html' },
         { icon:'🖼️', badge:'AI IMAGE 🚀 FAST', badgeColor:'linear-gradient(135deg,#667eea,#764ba2)', title:'Smart BG Remover (Offline)', desc:'Remove backgrounds instantly with AI object detection. Pure JavaScript, works offline, no API needed. Fast & secure.', href:'bg-remover-object-detection.html' },
         { icon:'🖼️', badge:'AI IMAGE', badgeColor:'linear-gradient(135deg,#764ba2,#667eea)', title:'Background Remover (Cloud)', desc:'Remove image backgrounds with cloud AI. Perfect for complex backgrounds. Results ready for download.', href:'https://bg.toolyfi.com' },
+        { icon:'🤖', badge:'AI TOOL 🔥 NEW', badgeColor:'linear-gradient(135deg,#6366f1,#a855f7)', title:'AI Assistant', desc:'Write SEO articles, rewrite content, generate meta tags & chat with AI. Powered by Gemma 4. Free, no signup.', href:'ai-assistant.html' },
         { icon:'🎨', badge:'AI TOOL', badgeColor:'linear-gradient(135deg,#764ba2,#667eea)', title:'AI Image Generator', desc:'Text-to-image AI with 9 stunning styles. Generate unlimited images, 100% free.', href:'ai-image-generator.html' },
         { icon:'💼', badge:'CALCULATOR', badgeColor:'linear-gradient(135deg,#10b981,#059669)', title:'Salary to Hourly', desc:'Convert annual salary to hourly rate instantly. Perfect for freelancers & contractors.', href:'salary-to-hourly.html' },
         { icon:'📊', badge:'GENERATOR', badgeColor:'linear-gradient(135deg,#10b981,#059669)', title:'Invoice Generator', desc:'Create professional PDF invoices in minutes. Add logo, tax & items. No signup needed.', href:'invoice-generator.html' },
         { icon:'📄', badge:'CAREER', badgeColor:'linear-gradient(135deg,#8b5cf6,#7c3aed)', title:'Resume Builder', desc:'Build ATS-friendly resume & download PDF instantly. No login required.', href:'resume-builder.html' },
-        { icon:'🤖', badge:'AI TOOL', badgeColor:'linear-gradient(135deg,#0ea5e9,#0284c7)', title:'AI Text Detector', desc:'Detect AI-written content instantly. Check ChatGPT, Claude & Gemini text free.', href:'ai-text-detector.html' },
+        { icon:'🤖', badge:'AI TOOL 🔥 NEW', badgeColor:'linear-gradient(135deg,#6366f1,#a855f7)', title:'AI Assistant', desc:'Write SEO articles, rewrite content, generate meta tags & chat with AI. Powered by Gemma 4. Free, no signup.', href:'ai-assistant.html', badge: true },
+      { icon:'🤖', badge:'AI TOOL', badgeColor:'linear-gradient(135deg,#0ea5e9,#0284c7)', title:'AI Text Detector', desc:'Detect AI-written content instantly. Check ChatGPT, Claude & Gemini text free.', href:'ai-text-detector.html' },
         { icon:'📱', badge:'GENERATOR', badgeColor:'linear-gradient(135deg,#3b82f6,#1d4ed8)', title:'QR Code Generator', desc:'Create QR codes instantly. Download PNG/SVG. Works for any URL or text.', href:'qr-code-generator.html' },
         { icon:'🔑', badge:'SECURITY', badgeColor:'linear-gradient(135deg,#a855f7,#9333ea)', title:'Password Generator', desc:'Generate strong secure passwords instantly. Customize length & symbols.', href:'password-generator.html' },
         { icon:'💱', badge:'CONVERTER', badgeColor:'linear-gradient(135deg,#f59e0b,#d97706)', title:'Currency Converter', desc:'Convert 150+ currencies with real-time rates. USD to PKR, EUR to USD instantly.', href:'currency-converter.html' },
