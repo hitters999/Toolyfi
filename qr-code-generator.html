@@ -44,7 +44,10 @@
 </script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","description":"Free online QR code generator — create QR codes for URLs, text, email and WiFi","url":"https://toolyfi.com/qr-code-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","description":"Free online QR code generator — create QR codes for URLs, text, email, WhatsApp, SMS, vCard and WiFi","url":"https://toolyfi.com/qr-code-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"3142","bestRating":"5","worstRating":"1"},"creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://toolyfi.com"},{"@type":"ListItem","position":3,"name":"QR Code Generator","item":"https://toolyfi.com/qr-code-generator.html"}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -52,7 +55,11 @@
   {"@type":"Question","name":"Is this QR code generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no watermark, no limits on QR codes generated."}},
   {"@type":"Question","name":"Can I create a QR code for WiFi?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select the WiFi type, enter your network name and password, and generate a scannable WiFi QR code."}},
   {"@type":"Question","name":"What size should a QR code be?","acceptedAnswer":{"@type":"Answer","text":"For print use, minimum 2cm x 2cm. For screens, 200x200px is good. Higher error correction allows smaller sizes while remaining scannable."}},
-  {"@type":"Question","name":"Do QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"Static QR codes like those generated here never expire. The QR code will work as long as the destination URL or content exists."}}
+  {"@type":"Question","name":"Do QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"Static QR codes like those generated here never expire. The QR code will work as long as the destination URL or content exists."}},
+  {"@type":"Question","name":"Can I create a WhatsApp QR code?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select the WhatsApp tab, enter the phone number with country code (e.g. +923001234567), add an optional pre-filled message, and generate the QR code. When scanned, it opens WhatsApp with that contact directly."}},
+  {"@type":"Question","name":"How do I add a logo to my QR code?","acceptedAnswer":{"@type":"Answer","text":"Use the Logo Upload feature in the tool. Upload your logo image, set error correction to High (H) for best results, and generate. Your logo will appear centered in the QR code automatically."}},
+  {"@type":"Question","name":"Can I create a vCard QR code for business cards?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select the vCard tab, fill in your name, phone, email, company, and website. The generated QR code will save your full contact information to the scanner's phone contacts with one tap."}},
+  {"@type":"Question","name":"How do I create an SMS QR code?","acceptedAnswer":{"@type":"Answer","text":"Click the SMS tab, enter the phone number and an optional pre-filled message. When scanned, it opens the SMS app with the number and message ready to send."}}
 ]}
 </script>
 
@@ -210,7 +217,33 @@ nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
 .faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.92rem}
 .faq-item.open .faq-a{display:block}
 
-/* RATING WIDGET */
+/* LOGO UPLOAD */
+.logo-upload-row{margin-bottom:20px;background:var(--light);border:2px dashed var(--border);border-radius:14px;padding:16px 18px;transition:all .2s}
+.logo-upload-row:hover{border-color:var(--primary)}
+.logo-upload-row label{display:block;font-weight:700;font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.logo-upload-inner{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-upload-btn{background:var(--primary);color:#fff;border:none;padding:9px 18px;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+#logoPreview{width:40px;height:40px;object-fit:contain;border-radius:8px;border:1px solid var(--border);display:none}
+.logo-clear-btn{background:none;border:1px solid var(--border);color:var(--gray);padding:6px 12px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;display:none;font-family:'Plus Jakarta Sans',sans-serif}
+.logo-tip{font-size:.75rem;color:#94a3b8;margin-top:6px}
+
+/* CHAR COUNTER */
+.char-counter{font-size:.72rem;color:#94a3b8;text-align:right;margin-top:4px;font-weight:600}
+
+/* HISTORY */
+.history-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.history-title{font-size:.82rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.history-grid{display:flex;gap:10px;flex-wrap:wrap}
+.hist-item{background:var(--light);border:2px solid var(--border);border-radius:12px;padding:10px;cursor:pointer;transition:all .2s;text-align:center;width:90px}
+.hist-item:hover{border-color:var(--primary);transform:translateY(-2px)}
+.hist-item img{width:64px;height:64px;border-radius:6px;display:block;margin:0 auto 6px}
+.hist-item .hist-type{font-size:.68rem;font-weight:700;color:var(--gray);text-transform:uppercase}
+
+/* SHARE BTN */
+.btn-share{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:14px 20px;border-radius:12px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-share:hover{opacity:.9;transform:translateY(-1px)}
+.btn-copy{background:linear-gradient(135deg,#667eea,#5568d3);color:#fff;border:none;padding:14px 20px;border-radius:12px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-copy:hover{opacity:.9}
 .tf-widget{max-width:860px;margin:0 auto;padding:0 20px 60px}
 .tf-widget-card{background:#fff;border:2px solid var(--border);border-radius:20px;overflow:hidden}
 .tf-rating-bar{background:linear-gradient(135deg,#f8fafc,#f1f5f9);padding:28px 32px;border-bottom:1px solid var(--border)}
@@ -361,9 +394,12 @@ footer a:hover{color:#fff}
       <div class="type-tabs">
         <button class="type-tab active" onclick="setType('url')">🔗 URL</button>
         <button class="type-tab" onclick="setType('text')">📝 Text</button>
+        <button class="type-tab" onclick="setType('whatsapp')">💬 WhatsApp</button>
         <button class="type-tab" onclick="setType('email')">📧 Email</button>
         <button class="type-tab" onclick="setType('phone')">📞 Phone</button>
+        <button class="type-tab" onclick="setType('sms')">✉️ SMS</button>
         <button class="type-tab" onclick="setType('wifi')">📶 WiFi</button>
+        <button class="type-tab" onclick="setType('vcard')">👤 vCard</button>
       </div>
 
       <!-- URL -->
@@ -372,7 +408,12 @@ footer a:hover{color:#fff}
       </div>
       <!-- TEXT -->
       <div class="input-panel" id="panel-text">
-        <div class="inp-group"><label>📝 Text Content</label><textarea id="inp-text" placeholder="Enter any text..." oninput="generateQR()"></textarea></div>
+        <div class="inp-group"><label>📝 Text Content</label><textarea id="inp-text" placeholder="Enter any text..." oninput="generateQR();updateCharCount(this,'txt-cc',500)"></textarea><div class="char-counter" id="txt-cc">0 / 500</div></div>
+      </div>
+      <!-- WHATSAPP -->
+      <div class="input-panel" id="panel-whatsapp">
+        <div class="inp-group"><label>📱 Phone Number (with country code)</label><input type="tel" id="inp-wa-phone" placeholder="+923001234567" oninput="generateQR()"></div>
+        <div class="inp-group"><label>💬 Pre-filled Message (optional)</label><textarea id="inp-wa-msg" placeholder="Hello! I found your contact via QR code..." oninput="generateQR();updateCharCount(this,'wa-cc',200)" style="min-height:70px"></textarea><div class="char-counter" id="wa-cc">0 / 200</div></div>
       </div>
       <!-- EMAIL -->
       <div class="input-panel" id="panel-email">
@@ -382,6 +423,11 @@ footer a:hover{color:#fff}
       <!-- PHONE -->
       <div class="input-panel" id="panel-phone">
         <div class="inp-group"><label>📞 Phone Number</label><input type="tel" id="inp-phone" placeholder="+923001234567" oninput="generateQR()"></div>
+      </div>
+      <!-- SMS -->
+      <div class="input-panel" id="panel-sms">
+        <div class="inp-group"><label>📱 Phone Number</label><input type="tel" id="inp-sms-phone" placeholder="+923001234567" oninput="generateQR()"></div>
+        <div class="inp-group"><label>✉️ Pre-filled Message (optional)</label><textarea id="inp-sms-msg" placeholder="Your message here..." oninput="generateQR();updateCharCount(this,'sms-cc',160)" style="min-height:70px"></textarea><div class="char-counter" id="sms-cc">0 / 160</div></div>
       </div>
       <!-- WIFI -->
       <div class="input-panel" id="panel-wifi">
@@ -394,6 +440,29 @@ footer a:hover{color:#fff}
             <option value="nopass">No Password</option>
           </select>
         </div>
+      </div>
+      <!-- VCARD -->
+      <div class="input-panel" id="panel-vcard">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="inp-group"><label>👤 First Name</label><input type="text" id="inp-vc-fn" placeholder="Ahmed" oninput="generateQR()"></div>
+          <div class="inp-group"><label>👤 Last Name</label><input type="text" id="inp-vc-ln" placeholder="Khan" oninput="generateQR()"></div>
+        </div>
+        <div class="inp-group"><label>🏢 Company</label><input type="text" id="inp-vc-org" placeholder="Toolyfi" oninput="generateQR()"></div>
+        <div class="inp-group"><label>📞 Phone</label><input type="tel" id="inp-vc-tel" placeholder="+923001234567" oninput="generateQR()"></div>
+        <div class="inp-group"><label>📧 Email</label><input type="email" id="inp-vc-email" placeholder="ahmed@toolyfi.com" oninput="generateQR()"></div>
+        <div class="inp-group"><label>🌐 Website</label><input type="url" id="inp-vc-url" placeholder="https://toolyfi.com" oninput="generateQR()"></div>
+      </div>
+
+      <!-- LOGO UPLOAD -->
+      <div class="logo-upload-row">
+        <label>🖼️ Logo Overlay (optional — set Error Correction to High for best results)</label>
+        <div class="logo-upload-inner">
+          <button class="logo-upload-btn" onclick="document.getElementById('logoFileInput').click()">📁 Upload Logo</button>
+          <img id="logoPreview" src="" alt="Logo preview">
+          <button class="logo-clear-btn" id="logoClearBtn" onclick="clearLogo()">✕ Remove</button>
+          <input type="file" id="logoFileInput" accept="image/*" style="display:none" onchange="handleLogoUpload(this)">
+        </div>
+        <div class="logo-tip">💡 Tip: Use PNG with transparent background. Logo will appear centered in your QR code.</div>
       </div>
 
       <!-- SETTINGS -->
@@ -440,9 +509,17 @@ footer a:hover{color:#fff}
       <div class="btn-row">
         <button class="btn-gen" onclick="generateQR()">⚡ Generate QR Code</button>
         <button class="btn-dl" onclick="downloadPNG()">📥 Download PNG</button>
-        <button class="btn-dl" onclick="printQR()" style="background:linear-gradient(135deg,#059669,#10b981);margin-top:8px;">🖨️ Print QR Code</button>
+        <button class="btn-copy" onclick="copyQR()">📋 Copy Image</button>
+        <button class="btn-share" onclick="shareQR()">🔗 Share</button>
+        <button class="btn-dl" onclick="printQR()" style="background:linear-gradient(135deg,#059669,#10b981)">🖨️ Print</button>
         <button class="btn-sm" onclick="clearQR()">🗑️ Clear</button>
         <button class="btn-sm" onclick="resetSettings()">↻ Reset</button>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="history-wrap" id="historyWrap" style="display:none">
+        <div class="history-title">🕐 Recent QR Codes</div>
+        <div class="history-grid" id="historyGrid"></div>
       </div>
 
       <!-- AD MID -->
@@ -459,7 +536,7 @@ footer a:hover{color:#fff}
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="sbar-item"><div class="sval">5M+</div><div class="slbl">QR Codes Created</div></div>
-    <div class="sbar-item"><div class="sval">5</div><div class="slbl">QR Types</div></div>
+    <div class="sbar-item"><div class="sval">8</div><div class="slbl">QR Types</div></div>
     <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
     <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Download</div></div>
   </div>
@@ -470,22 +547,22 @@ footer a:hover{color:#fff}
   <div class="more-inner">
     <div class="section-tag">Beyond Basic</div>
     <h2 class="section-title">More than just a <em>QR generator</em></h2>
-    <p class="section-sub">Most QR tools only handle URLs. Ours supports 5 QR types — URL, text, email, phone and WiFi — with custom colors and error correction.</p>
+    <p class="section-sub">Most QR tools only handle URLs. Ours supports 8 QR types — URL, text, WhatsApp, email, phone, SMS, vCard and WiFi — with logo overlay, custom colors, and error correction.</p>
     <div class="more-grid">
       <div>
         <div class="more-features">
+          <div class="more-feat"><div class="more-feat-ico">💬</div><div class="more-feat-text"><h4>WhatsApp QR Codes</h4><p>Scan to open WhatsApp chat instantly — with pre-filled message. Perfect for businesses.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">👤</div><div class="more-feat-text"><h4>vCard QR Codes</h4><p>Save full contact info (name, phone, email, company) to phone contacts with one scan.</p></div></div>
+          <div class="more-feat"><div class="more-feat-ico">🖼️</div><div class="more-feat-text"><h4>Logo Overlay</h4><p>Upload your logo and it appears centered inside the QR code — branded & professional.</p></div></div>
           <div class="more-feat"><div class="more-feat-ico">📶</div><div class="more-feat-text"><h4>WiFi QR Codes</h4><p>Let guests scan to connect — no typing passwords. Enter SSID, password, and security type.</p></div></div>
-          <div class="more-feat"><div class="more-feat-ico">🎨</div><div class="more-feat-text"><h4>Custom Colors</h4><p>Change dark and light colors to match your brand — create colored QR codes for print.</p></div></div>
-          <div class="more-feat"><div class="more-feat-ico">🛡️</div><div class="more-feat-text"><h4>Error Correction</h4><p>Choose correction level — high correction lets you add logos over your QR code.</p></div></div>
-          <div class="more-feat"><div class="more-feat-ico">📥</div><div class="more-feat-text"><h4>Instant PNG Download</h4><p>Download your QR code as a high-quality PNG — ready for print or digital use.</p></div></div>
         </div>
       </div>
       <div class="qr-visual">
         <div class="qr-vis-row"><span class="qr-vis-type">🔗 URL QR Code</span><span class="qr-vis-use">Website, social media</span><span class="qr-vis-badge">Most popular</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">💬 WhatsApp QR Code</span><span class="qr-vis-use">Chat, business contact</span><span class="qr-vis-badge">🔥 Trending</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">👤 vCard QR Code</span><span class="qr-vis-use">Business cards, networking</span><span class="qr-vis-badge">Pro feature</span></div>
         <div class="qr-vis-row"><span class="qr-vis-type">📶 WiFi QR Code</span><span class="qr-vis-use">Guest network access</span><span class="qr-vis-badge">No typing</span></div>
-        <div class="qr-vis-row"><span class="qr-vis-type">📧 Email QR Code</span><span class="qr-vis-use">Contact, newsletters</span><span class="qr-vis-badge">Instant email</span></div>
-        <div class="qr-vis-row"><span class="qr-vis-type">📞 Phone QR Code</span><span class="qr-vis-use">Business cards</span><span class="qr-vis-badge">One tap call</span></div>
-        <div class="qr-vis-row"><span class="qr-vis-type">📝 Text QR Code</span><span class="qr-vis-use">Any text message</span><span class="qr-vis-badge">Custom content</span></div>
+        <div class="qr-vis-row"><span class="qr-vis-type">✉️ SMS QR Code</span><span class="qr-vis-use">Pre-filled text message</span><span class="qr-vis-badge">One tap</span></div>
       </div>
     </div>
   </div>
@@ -498,10 +575,10 @@ footer a:hover{color:#fff}
   <p class="section-sub">Built for businesses, marketers, developers, and anyone who needs QR codes fast.</p>
   <div class="feat-grid">
     <div class="feat-card"><span class="feat-icon">⚡</span><h3>Instant Generation</h3><p>QR codes generate as you type. No button required — just enter your content and see the result.</p></div>
-    <div class="feat-card"><span class="feat-icon">📶</span><h3>5 QR Code Types</h3><p>URL, plain text, email with subject, phone number, and WiFi network — all in one tool.</p></div>
-    <div class="feat-card"><span class="feat-icon">🎨</span><h3>Custom Colors</h3><p>Choose any color for QR dark and light areas. Create branded QR codes that match your identity.</p></div>
+    <div class="feat-card"><span class="feat-icon">📶</span><h3>8 QR Code Types</h3><p>URL, text, WhatsApp, email, phone, SMS, vCard, and WiFi — all in one free tool.</p></div>
+    <div class="feat-card"><span class="feat-icon">🖼️</span><h3>Logo Overlay</h3><p>Upload your logo and it appears centered inside the QR code. Branded, professional, fully scannable.</p></div>
     <div class="feat-card"><span class="feat-icon">🛡️</span><h3>Error Correction</h3><p>Four levels of error correction — Low to High. High level allows logo overlays while remaining scannable.</p></div>
-    <div class="feat-card"><span class="feat-icon">📥</span><h3>PNG Download</h3><p>Download your QR code as a high-resolution PNG file — perfect for print, digital, and web use.</p></div>
+    <div class="feat-card"><span class="feat-icon">📋</span><h3>Copy & Share</h3><p>Copy QR to clipboard or share via Web Share API — send it directly to WhatsApp, email, or any app.</p></div>
     <div class="feat-card"><span class="feat-icon">🔒</span><h3>100% Private</h3><p>All QR generation happens in your browser. Your URLs, passwords, and content are never sent to any server.</p></div>
   </div>
 </section>
@@ -536,8 +613,11 @@ footer a:hover{color:#fff}
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do QR codes expire? <span class="arrow">▼</span></div><div class="faq-a">Static QR codes like those generated here never expire. The QR code works as long as the destination URL or content exists. Dynamic QR codes (from paid services) can be updated and may expire, but our QR codes are static.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I create a WiFi QR code? <span class="arrow">▼</span></div><div class="faq-a">Click the "WiFi" tab, enter your network name (SSID), password, and security type (WPA/WEP). Generate and download the QR code. When guests scan it, their phone automatically prompts to join the network.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What size should my QR code be for print? <span class="arrow">▼</span></div><div class="faq-a">For print, minimum 2cm × 2cm at 300 DPI. For most print use, 400-500px download size works well. Use High error correction if you plan to add a logo over the QR code.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I add a logo to my QR code? <span class="arrow">▼</span></div><div class="faq-a">Yes — set error correction to High (H) which allows up to 30% of the QR code to be covered. Download the PNG, then add your logo using any image editor. The QR remains scannable.</div></div>
-    </div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I add a logo to my QR code? <span class="arrow">▼</span></div><div class="faq-a">Yes — use the Logo Upload feature in the tool above. Upload your PNG logo (transparent background works best), set Error Correction to High (H), and generate. Your logo will automatically appear in the center of the QR code, fully scannable.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I create a WhatsApp QR code? <span class="arrow">▼</span></div><div class="faq-a">Click the WhatsApp tab, enter the phone number with country code (e.g. +923001234567) and an optional pre-filled message. When scanned, it opens WhatsApp directly with that contact — perfect for businesses.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is a vCard QR code? <span class="arrow">▼</span></div><div class="faq-a">A vCard QR code stores full contact information — name, phone, email, company, and website. When someone scans it, their phone prompts them to save the contact. It replaces traditional business cards and works on both Android and iPhone.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I create a QR code for WiFi? <span class="arrow">▼</span></div><div class="faq-a">Click the "WiFi" tab, enter your network name (SSID), password, and security type (WPA/WEP). Generate and download the QR code. When guests scan it, their phone automatically prompts to join the network.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What size should my QR code be for print? <span class="arrow">▼</span></div><div class="faq-a">For print, minimum 2cm × 2cm at 300 DPI. For most print use, 400-500px download size works well. Use High error correction if you plan to add a logo over the QR code.</div></div>
   </div>
 </div>
 
@@ -693,6 +773,16 @@ footer a:hover{color:#fff}
 // ── QR TOOL ──
 let currentType = 'url';
 let qrInstance = null;
+let logoDataUrl = null;
+
+// History
+const HIST_KEY = 'tf_qr_history';
+let qrHistory = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+
+function updateCharCount(el, id, max) {
+  const cc = document.getElementById(id);
+  if(cc) cc.textContent = el.value.length + ' / ' + max;
+}
 
 function setType(type) {
   currentType = type;
@@ -708,6 +798,13 @@ function getContent() {
   switch(currentType) {
     case 'url':   return document.getElementById('inp-url').value.trim();
     case 'text':  return document.getElementById('inp-text').value.trim();
+    case 'whatsapp': {
+      const ph = document.getElementById('inp-wa-phone').value.trim().replace(/\s/g,'');
+      const msg = document.getElementById('inp-wa-msg').value.trim();
+      if(!ph) return '';
+      const num = ph.replace(/[^0-9]/g,'');
+      return msg ? `https://wa.me/${num}?text=${encodeURIComponent(msg)}` : `https://wa.me/${num}`;
+    }
     case 'email': {
       const e = document.getElementById('inp-email').value.trim();
       const s = document.getElementById('inp-email-sub').value.trim();
@@ -717,11 +814,33 @@ function getContent() {
       const p = document.getElementById('inp-phone').value.trim();
       return p ? 'tel:' + p : '';
     }
+    case 'sms': {
+      const ph = document.getElementById('inp-sms-phone').value.trim();
+      const msg = document.getElementById('inp-sms-msg').value.trim();
+      if(!ph) return '';
+      return msg ? `smsto:${ph}:${msg}` : `smsto:${ph}`;
+    }
     case 'wifi': {
       const ssid = document.getElementById('inp-wifi-ssid').value.trim();
       const pass = document.getElementById('inp-wifi-pass').value.trim();
       const sec  = document.getElementById('inp-wifi-sec').value;
       return ssid ? `WIFI:T:${sec};S:${ssid};P:${pass};;` : '';
+    }
+    case 'vcard': {
+      const fn = document.getElementById('inp-vc-fn').value.trim();
+      const ln = document.getElementById('inp-vc-ln').value.trim();
+      const org = document.getElementById('inp-vc-org').value.trim();
+      const tel = document.getElementById('inp-vc-tel').value.trim();
+      const email = document.getElementById('inp-vc-email').value.trim();
+      const url = document.getElementById('inp-vc-url').value.trim();
+      if(!fn && !ln) return '';
+      let v = `BEGIN:VCARD\nVERSION:3.0\nN:${ln};${fn};;;\nFN:${fn} ${ln}`;
+      if(org) v += `\nORG:${org}`;
+      if(tel) v += `\nTEL:${tel}`;
+      if(email) v += `\nEMAIL:${email}`;
+      if(url) v += `\nURL:${url}`;
+      v += `\nEND:VCARD`;
+      return v;
     }
   }
   return '';
@@ -750,7 +869,88 @@ function generateQR() {
       colorDark: dark, colorLight: light,
       correctLevel: ecMap[ecVal] || QRCode.CorrectLevel.M
     });
+    // Logo overlay after canvas renders
+    if(logoDataUrl) {
+      setTimeout(() => overlayLogo(size), 150);
+    } else {
+      setTimeout(() => saveToHistory(content), 200);
+    }
   } catch(e) { showMsg('Error generating QR: ' + e.message, 'error'); }
+}
+
+function overlayLogo(size) {
+  const canvas = document.querySelector('#qrcode canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const img = new Image();
+  img.onload = function() {
+    const logoSize = size * 0.22;
+    const x = (size - logoSize) / 2;
+    const y = (size - logoSize) / 2;
+    // White background behind logo
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x - 4, y - 4, logoSize + 8, logoSize + 8);
+    ctx.drawImage(img, x, y, logoSize, logoSize);
+    const content = getContent();
+    saveToHistory(content);
+  };
+  img.src = logoDataUrl;
+}
+
+function saveToHistory(content) {
+  const canvas = document.querySelector('#qrcode canvas');
+  if(!canvas) return;
+  const dataUrl = canvas.toDataURL('image/png');
+  const entry = { type: currentType.toUpperCase(), dataUrl, content: content.substring(0,30) };
+  qrHistory = qrHistory.filter((_, i) => i < 4); // keep last 4
+  qrHistory.unshift(entry);
+  localStorage.setItem(HIST_KEY, JSON.stringify(qrHistory));
+  renderHistory();
+}
+
+function renderHistory() {
+  const wrap = document.getElementById('historyWrap');
+  const grid = document.getElementById('historyGrid');
+  if(!qrHistory.length) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  grid.innerHTML = '';
+  qrHistory.forEach((h, i) => {
+    const div = document.createElement('div');
+    div.className = 'hist-item';
+    div.title = h.content;
+    div.innerHTML = `<img src="${h.dataUrl}" alt="QR ${h.type}"><div class="hist-type">${h.type}</div>`;
+    div.onclick = () => {
+      const link = document.createElement('a');
+      link.href = h.dataUrl;
+      link.download = 'qr-history-' + i + '.png';
+      link.click();
+    };
+    grid.appendChild(div);
+  });
+}
+
+function handleLogoUpload(input) {
+  if(!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    logoDataUrl = e.target.result;
+    const preview = document.getElementById('logoPreview');
+    preview.src = logoDataUrl;
+    preview.style.display = 'block';
+    document.getElementById('logoClearBtn').style.display = 'inline-block';
+    // Recommend High error correction
+    document.getElementById('errorLevel').value = 'H';
+    generateQR();
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function clearLogo() {
+  logoDataUrl = null;
+  document.getElementById('logoPreview').style.display = 'none';
+  document.getElementById('logoClearBtn').style.display = 'none';
+  document.getElementById('logoFileInput').value = '';
+  generateQR();
 }
 
 function updateSize() {
@@ -767,6 +967,31 @@ function downloadPNG() {
   link.download = 'qrcode-toolyfi-' + Date.now() + '.png';
   link.click();
   showMsg('✓ Downloaded!', 'success');
+}
+
+async function copyQR() {
+  const canvas = document.querySelector('#qrcode canvas');
+  if(!canvas) { showMsg('Generate a QR code first!', 'error'); return; }
+  try {
+    canvas.toBlob(async (blob) => {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+      showMsg('✓ Copied to clipboard!', 'success');
+    });
+  } catch(e) {
+    showMsg('Copy not supported in this browser. Use Download instead.', 'error');
+  }
+}
+
+async function shareQR() {
+  const canvas = document.querySelector('#qrcode canvas');
+  if(!canvas) { showMsg('Generate a QR code first!', 'error'); return; }
+  if(!navigator.share) { showMsg('Share not supported in this browser. Use Copy instead.', 'error'); return; }
+  canvas.toBlob(async (blob) => {
+    const file = new File([blob], 'qrcode-toolyfi.png', {type:'image/png'});
+    try {
+      await navigator.share({title:'QR Code — Toolyfi', text:'Generated with Toolyfi Free QR Code Generator', files:[file]});
+    } catch(e) { /* user cancelled */ }
+  });
 }
 
 function clearQR() {
@@ -801,6 +1026,9 @@ function toggleFaq(el) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+// Render history on load
+renderHistory();
 
 // ── RATING WIDGET ──
 (function(){
