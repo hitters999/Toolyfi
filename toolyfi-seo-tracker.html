@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolyfi SEO Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3d;
+    --accent: #00e5a0;
+    --accent2: #ff6b6b;
+    --accent3: #ffd166;
+    --accent4: #74b9ff;
+    --text: #e8e8f0;
+    --muted: #6b6b8a;
+    --done-bg: #0f1f17;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .logo-area h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+  }
+
+  .logo-area h1 span {
+    color: var(--accent);
+  }
+
+  .logo-area p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Overall progress */
+  .progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .progress-ring {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  .progress-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring .track {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 5;
+  }
+
+  .progress-ring .fill {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 163;
+    stroke-dashoffset: 163;
+    transition: stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1);
+  }
+
+  .progress-ring .pct {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .progress-stats {
+    flex: 1;
+  }
+
+  .progress-stats .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .progress-bar-outer {
+    background: var(--border);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #00c4ff);
+    border-radius: 999px;
+    transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+
+  .progress-counts {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .progress-counts strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Phase tabs */
+  .phase-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .tab-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+    font-weight: 500;
+  }
+
+  /* Phase section */
+  .phase {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .phase.visible {
+    display: block;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .phase-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  .phase-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .phase-mini-progress {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .phase-mini-progress span {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Category group */
+  .category {
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .category:hover {
+    border-color: #3a3a55;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--surface2);
+  }
+
+  .category-icon {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+  }
+
+  .category-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    flex: 1;
+  }
+
+  .category-count {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--border);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .category-count.all-done {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .chevron {
+    color: var(--muted);
+    font-size: 12px;
+    transition: transform 0.25s;
+  }
+
+  .category.collapsed .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .category.collapsed .tasks-list {
+    display: none;
+  }
+
+  /* Tasks */
+  .tasks-list {
+    padding: 8px 0;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .task-item:hover {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .task-item.done {
+    border-left-color: var(--accent);
+    background: var(--done-bg);
+  }
+
+  .task-item.done .task-text {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+
+  .task-check {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 11px;
+  }
+
+  .task-item.done .task-check {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+  }
+
+  .task-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .task-tag {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    opacity: 0.7;
+  }
+
+  /* Priority tags */
+  .tag-critical { background: rgba(255,107,107,0.15); color: var(--accent2); }
+  .tag-content  { background: rgba(116,185,255,0.15); color: var(--accent4); }
+  .tag-tech     { background: rgba(255,209,102,0.15); color: var(--accent3); }
+  .tag-links    { background: rgba(0,229,160,0.15);   color: var(--accent);  }
+  .tag-social   { background: rgba(180,100,255,0.15); color: #c084fc; }
+
+  /* Target metrics */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .metric-card .m-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .metric-card .m-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-card .m-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* Timeline bar */
+  .timeline-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+
+  .tl-seg {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--border);
+    transition: background 0.4s;
+  }
+
+  .tl-seg.active { background: var(--accent); }
+  .tl-seg.partial { background: var(--accent3); }
+
+  /* Reset btn */
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .reset-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes checkPop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .task-check.pop { animation: checkPop 0.25s ease; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-area">
+        <h1>Toolyfi <span>SEO</span></h1>
+        <p>Implementation Tracker · 2026 Roadmap</p>
+      </div>
+    </div>
+
+    <!-- Overall progress -->
+    <div class="progress-card">
+      <div class="progress-ring">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle class="track" cx="32" cy="32" r="26"/>
+          <circle class="fill" id="ring-fill" cx="32" cy="32" r="26"/>
+        </svg>
+        <div class="pct" id="ring-pct">0%</div>
+      </div>
+      <div class="progress-stats">
+        <div class="label">Overall Progress</div>
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="main-bar"></div>
+        </div>
+        <div class="progress-counts" id="main-counts">0 of 0 tasks complete</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Target metrics -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="m-label">Month 1 Traffic</div>
+      <div class="m-value">2K</div>
+      <div class="m-sub">organic visitors</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Month 3 Traffic</div>
+      <div class="m-value">10K</div>
+      <div class="m-sub">organic visitors</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Month 6 Traffic</div>
+      <div class="m-value">25K</div>
+      <div class="m-sub">organic visitors</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">12-Month Goal</div>
+      <div class="m-value">100K</div>
+      <div class="m-sub">organic visitors</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Backlinks Target</div>
+      <div class="m-value">500+</div>
+      <div class="m-sub">by month 12</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">DA Target</div>
+      <div class="m-value">50–60</div>
+      <div class="m-sub">by month 12</div>
+    </div>
+  </div>
+
+  <!-- Timeline bar -->
+  <div class="timeline-row" id="timeline-row">
+    <!-- filled by JS -->
+  </div>
+
+  <!-- Phase tabs -->
+  <div class="phase-tabs">
+    <button class="tab-btn active" onclick="switchTab('quick')">⚡ Quick Wins</button>
+    <button class="tab-btn" onclick="switchTab('m1')">Month 1</button>
+    <button class="tab-btn" onclick="switchTab('m2')">Month 2</button>
+    <button class="tab-btn" onclick="switchTab('m3')">Month 3</button>
+    <button class="tab-btn" onclick="switchTab('m4')">Month 4–6</button>
+  </div>
+
+  <!-- Reset -->
+  <button class="reset-btn" onclick="resetAll()">↺ Reset all</button>
+
+  <!-- ─── QUICK WINS ─── -->
+  <div class="phase visible" id="phase-quick">
+    <div class="phase-header">
+      <div class="phase-badge" style="background:rgba(255,107,107,0.15);color:var(--accent2)">⚡ This Week</div>
+      <div class="phase-title">Quick Wins</div>
+      <div class="phase-mini-progress" id="prog-quick"></div>
+    </div>
+
+    <div class="category" id="cat-qw1">
+      <div class="category-header" onclick="toggleCat('cat-qw1')">
+        <span class="category-icon">🔧</span>
+        <span class="category-name">Critical Fixes</span>
+        <span class="category-count" id="cnt-cat-qw1"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add unique meta titles to all tool pages</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add unique meta descriptions to all tool pages (150–160 chars)</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Implement SoftwareApplication schema on all tool pages</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add FAQPage schema to all tool pages (5–8 questions each)</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add Organization schema to homepage</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Create and submit updated XML sitemap to Google Search Console</div>
+          <span class="task-tag tag-critical">Critical</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-qw2">
+      <div class="category-header" onclick="toggleCat('cat-qw2')">
+        <span class="category-icon">📝</span>
+        <span class="category-name">Content Additions</span>
+        <span class="category-count" id="cnt-cat-qw2"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add 200+ words of descriptive content to each tool page</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add FAQ section to each tool page</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add "Related Tools" section with internal links to each page</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add H1–H3 header structure to all tool pages</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Create comparison tables where applicable</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-qw3">
+      <div class="category-header" onclick="toggleCat('cat-qw3')">
+        <span class="category-icon">⚙️</span>
+        <span class="category-name">Technical Fixes</span>
+        <span class="category-count" id="cnt-cat-qw3"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Enable Gzip compression on server</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Optimize and compress all images</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Fix any broken internal links</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Implement lazy loading for images</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Add canonical tags to all pages</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-qw4">
+      <div class="category-header" onclick="toggleCat('cat-qw4')">
+        <span class="category-icon">📊</span>
+        <span class="category-name">Tracking Setup</span>
+        <span class="category-count" id="cnt-cat-qw4"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Install and configure Google Analytics 4</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Verify property in Google Search Console</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Set up Bing Webmaster Tools</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="quick">
+          <div class="task-check"></div>
+          <div class="task-text">Install Microsoft Clarity for heatmaps</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MONTH 1 ─── -->
+  <div class="phase" id="phase-m1">
+    <div class="phase-header">
+      <div class="phase-badge" style="background:rgba(0,229,160,0.12);color:var(--accent)">Month 1</div>
+      <div class="phase-title">Foundation</div>
+      <div class="phase-mini-progress" id="prog-m1"></div>
+    </div>
+
+    <div class="category" id="cat-m1-tech">
+      <div class="category-header" onclick="toggleCat('cat-m1-tech')">
+        <span class="category-icon">⚙️</span>
+        <span class="category-name">Technical SEO</span>
+        <span class="category-count" id="cnt-cat-m1-tech"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Fix all technical SEO issues identified in audit</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Optimize all meta titles using keyword + value prop + brand formula</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Implement schema markup on all tool pages</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Verify Core Web Vitals — hit <2s page load target</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Add breadcrumb navigation to all pages</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m1-content">
+      <div class="category-header" onclick="toggleCat('cat-m1-content')">
+        <span class="category-icon">📝</span>
+        <span class="category-name">Blog Content (4 Articles)</span>
+        <span class="category-count" id="cnt-cat-m1-content"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "50+ Free Online Tools to Boost Productivity in 2026" (2,500+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "How to Create Strong Passwords: Complete Guide 2026" (2,000+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "Invoice vs Receipt: What's the Difference?" (1,800+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "YouTube SEO: How to Optimize Videos with Transcripts" (2,200+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m1-links">
+      <div class="category-header" onclick="toggleCat('cat-m1-links')">
+        <span class="category-icon">🔗</span>
+        <span class="category-name">Link Building</span>
+        <span class="category-count" id="cnt-cat-m1-links"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Submit Toolyfi to top 10 free tool directories</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Submit to ProductHunt</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Submit to AlternativeTo</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m1">
+          <div class="task-check"></div>
+          <div class="task-text">Create social media profiles (Twitter/X, LinkedIn, Pinterest, Reddit)</div>
+          <span class="task-tag tag-social">Social</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MONTH 2 ─── -->
+  <div class="phase" id="phase-m2">
+    <div class="phase-header">
+      <div class="phase-badge" style="background:rgba(116,185,255,0.12);color:var(--accent4)">Month 2</div>
+      <div class="phase-title">Content & Links</div>
+      <div class="phase-mini-progress" id="prog-m2"></div>
+    </div>
+
+    <div class="category" id="cat-m2-content">
+      <div class="category-header" onclick="toggleCat('cat-m2-content')">
+        <span class="category-icon">📝</span>
+        <span class="category-name">Blog Content (4 Articles)</span>
+        <span class="category-count" id="cnt-cat-m2-content"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "Best Free QR Code Generators Compared (2026)" (2,500+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "Resume Builder vs Resume Template: Which is Better?" (2,000+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "10 Free Calculators Every Student Needs" (1,800+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "How to Remove Image Backgrounds Without Photoshop" (2,200+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m2-links">
+      <div class="category-header" onclick="toggleCat('cat-m2-links')">
+        <span class="category-icon">🔗</span>
+        <span class="category-name">Link Building (Target: 50+ backlinks)</span>
+        <span class="category-count" id="cnt-cat-m2-links"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Start guest posting outreach (identify 20+ target blogs)</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Publish at least 2 guest posts on relevant blogs</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Create first infographic (tool comparison or how-to)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Begin broken link building — find dead competitor tool links</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Post original data / stats pages for link bait</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m2-social">
+      <div class="category-header" onclick="toggleCat('cat-m2-social')">
+        <span class="category-icon">📣</span>
+        <span class="category-name">Social Media</span>
+        <span class="category-count" id="cnt-cat-m2-social"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Establish weekly social content cadence (Mon–Fri)</div>
+          <span class="task-tag tag-social">Social</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Engage in Reddit communities (r/webdev, r/entrepreneur, r/productivity)</div>
+          <span class="task-tag tag-social">Social</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m2">
+          <div class="task-check"></div>
+          <div class="task-text">Create Pinterest boards by tool category with infographics</div>
+          <span class="task-tag tag-social">Social</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MONTH 3 ─── -->
+  <div class="phase" id="phase-m3">
+    <div class="phase-header">
+      <div class="phase-badge" style="background:rgba(255,209,102,0.12);color:var(--accent3)">Month 3</div>
+      <div class="phase-title">Scale — Target 10K Visitors</div>
+      <div class="phase-mini-progress" id="prog-m3"></div>
+    </div>
+
+    <div class="category" id="cat-m3-content">
+      <div class="category-header" onclick="toggleCat('cat-m3-content')">
+        <span class="category-icon">📝</span>
+        <span class="category-name">Blog Content (4 Articles)</span>
+        <span class="category-count" id="cnt-cat-m3-content"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "Complete Guide to Currency Exchange Rates" (2,500+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "AI Content Detection: How to Spot AI-Generated Text" (2,200+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "BMI Calculator Guide: Understanding Your Body Mass Index" (2,000+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Publish: "Word Count for SEO: How Long Should Your Content Be?" (2,500+ words)</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m3-links">
+      <div class="category-header" onclick="toggleCat('cat-m3-links')">
+        <span class="category-icon">🔗</span>
+        <span class="category-name">Link Building (Target: 100+ backlinks)</span>
+        <span class="category-count" id="cnt-cat-m3-links"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Launch digital PR campaign — press release for milestone</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Sign up for HARO and respond to 5+ relevant reporter queries</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Execute Skyscraper technique on top competitor content</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Resource page outreach — contact 30+ sites linking to tools</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m3-video">
+      <div class="category-header" onclick="toggleCat('cat-m3-video')">
+        <span class="category-icon">🎥</span>
+        <span class="category-name">Video & Multimedia</span>
+        <span class="category-count" id="cnt-cat-m3-video"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Create video tutorial for Password Generator</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Create video tutorial for Invoice Generator</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m3">
+          <div class="task-check"></div>
+          <div class="task-text">Create video tutorial for Background Remover</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MONTH 4–6 ─── -->
+  <div class="phase" id="phase-m4">
+    <div class="phase-header">
+      <div class="phase-badge" style="background:rgba(192,132,252,0.12);color:#c084fc">Month 4–6</div>
+      <div class="phase-title">Optimization — Target 25K Visitors</div>
+      <div class="phase-mini-progress" id="prog-m4"></div>
+    </div>
+
+    <div class="category" id="cat-m4-opt">
+      <div class="category-header" onclick="toggleCat('cat-m4-opt')">
+        <span class="category-icon">🔍</span>
+        <span class="category-name">Content Optimization</span>
+        <span class="category-count" id="cnt-cat-m4-opt"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Analyze top-performing content from months 1–3</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Update and improve top 5 existing articles</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Expand most successful content into pillar pages</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Review bounce rate & session duration — optimize underperformers</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m4-links">
+      <div class="category-header" onclick="toggleCat('cat-m4-links')">
+        <span class="category-icon">🔗</span>
+        <span class="category-name">Advanced Link Building (Target: 200+ backlinks)</span>
+        <span class="category-count" id="cnt-cat-m4-links"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Continue resource page link building outreach</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Build relationships with 10+ industry influencers</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Issue press release for 100K user milestone (when reached)</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Launch new AI-powered tool + digital PR push</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Explore partnership announcements with complementary tools</div>
+          <span class="task-tag tag-links">Links</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-m4-intl">
+      <div class="category-header" onclick="toggleCat('cat-m4-intl')">
+        <span class="category-icon">🌍</span>
+        <span class="category-name">International / Local SEO</span>
+        <span class="category-count" id="cnt-cat-m4-intl"></span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="tasks-list">
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Identify top 3 target countries by traffic potential</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Implement hreflang tags if pursuing multilingual content</div>
+          <span class="task-tag tag-tech">Tech</span>
+        </div>
+        <div class="task-item" onclick="toggle(this)" data-phase="m4">
+          <div class="task-check"></div>
+          <div class="task-text">Research country-specific long-tail keywords (e.g. "free invoice generator India")</div>
+          <span class="task-tag tag-content">Content</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const STORAGE_KEY = 'toolyfi_seo_tracker_v1';
+
+// Load state
+let state = {};
+try {
+  state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+} catch(e) { state = {}; }
+
+// Save state
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// Generate stable ID for each task
+function getTaskId(el) {
+  const text = el.querySelector('.task-text').textContent.trim();
+  return btoa(encodeURIComponent(text)).slice(0, 20);
+}
+
+// Apply saved states on load
+function applyState() {
+  document.querySelectorAll('.task-item').forEach(el => {
+    const id = getTaskId(el);
+    if (state[id]) el.classList.add('done');
+    el.querySelector('.task-check').textContent = state[id] ? '✓' : '';
+  });
+}
+
+// Toggle task
+function toggle(el) {
+  const id = getTaskId(el);
+  const isDone = el.classList.toggle('done');
+  state[id] = isDone;
+  const check = el.querySelector('.task-check');
+  check.textContent = isDone ? '✓' : '';
+  check.classList.add('pop');
+  setTimeout(() => check.classList.remove('pop'), 300);
+  save();
+  updateAll();
+}
+
+// Toggle category collapse
+function toggleCat(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
+
+// Switch tabs
+function switchTab(phase) {
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('phase-' + phase).classList.add('visible');
+  event.currentTarget.classList.add('active');
+}
+
+// Count tasks in a category
+function countCat(catId) {
+  const cat = document.getElementById(catId);
+  const total = cat.querySelectorAll('.task-item').length;
+  const done = cat.querySelectorAll('.task-item.done').length;
+  const el = document.getElementById('cnt-' + catId.replace('cat-', ''));
+  if (el) {
+    el.textContent = done + '/' + total;
+    el.classList.toggle('all-done', done === total && total > 0);
+  }
+  return { done, total };
+}
+
+// Update all counters and progress
+function updateAll() {
+  const cats = document.querySelectorAll('.category');
+  let grandTotal = 0, grandDone = 0;
+
+  // Phase task counts
+  const phases = {
+    quick: { done: 0, total: 0 },
+    m1:    { done: 0, total: 0 },
+    m2:    { done: 0, total: 0 },
+    m3:    { done: 0, total: 0 },
+    m4:    { done: 0, total: 0 },
+  };
+
+  cats.forEach(cat => {
+    const id = cat.id;
+    const tasks = cat.querySelectorAll('.task-item');
+    const done = cat.querySelectorAll('.task-item.done').length;
+    const total = tasks.length;
+    const shortId = id.replace('cat-', '');
+    const cntEl = document.getElementById('cnt-' + shortId);
+    if (cntEl) {
+      cntEl.textContent = done + '/' + total;
+      cntEl.classList.toggle('all-done', done === total && total > 0);
+    }
+    grandTotal += total;
+    grandDone += done;
+
+    // Attribute to phase
+    tasks.forEach(t => {
+      const ph = t.dataset.phase;
+      if (phases[ph]) {
+        phases[ph].total++;
+        if (t.classList.contains('done')) phases[ph].done++;
+      }
+    });
+  });
+
+  // Phase mini-progress
+  Object.entries(phases).forEach(([ph, { done, total }]) => {
+    const el = document.getElementById('prog-' + ph);
+    if (el) el.innerHTML = `<span>${done}</span> / ${total} tasks`;
+  });
+
+  // Main bar
+  const pct = grandTotal ? Math.round((grandDone / grandTotal) * 100) : 0;
+  document.getElementById('main-bar').style.width = pct + '%';
+  document.getElementById('main-counts').innerHTML = `<strong>${grandDone}</strong> of <strong>${grandTotal}</strong> tasks complete`;
+
+  // Ring
+  const circ = 163;
+  const offset = circ - (pct / 100) * circ;
+  document.getElementById('ring-fill').style.strokeDashoffset = offset;
+  document.getElementById('ring-pct').textContent = pct + '%';
+
+  // Timeline segments (4 phases: quick, m1, m2, m3, m4)
+  const phaseOrder = ['quick','m1','m2','m3','m4'];
+  const tlRow = document.getElementById('timeline-row');
+  tlRow.innerHTML = '';
+  phaseOrder.forEach(ph => {
+    const { done, total } = phases[ph];
+    const seg = document.createElement('div');
+    seg.className = 'tl-seg';
+    if (done === total && total > 0) seg.classList.add('active');
+    else if (done > 0) seg.classList.add('partial');
+    tlRow.appendChild(seg);
+  });
+}
+
+// Reset
+function resetAll() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  state = {};
+  save();
+  document.querySelectorAll('.task-item').forEach(el => {
+    el.classList.remove('done');
+    el.querySelector('.task-check').textContent = '';
+  });
+  updateAll();
+}
+
+// Init
+applyState();
+updateAll();
+</script>
+</body>
+</html>
