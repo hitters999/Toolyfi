@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <title>Toolyfi — 30+ Free Online Tools</title>
+  <title>Toolyfi — 44+ Free Online Tools</title>
 
   <style>
     :root {
@@ -664,148 +664,201 @@
     </div>
   </section>
 
-  <!-- FEATURED 5 TOOLS - SLIDING CAROUSEL -->
-  <section style="background:#f8f9ff;padding:56px 24px;border-top:1px solid #e8e8f0;border-bottom:1px solid #e8e8f0;overflow:hidden;">
+  <!-- POPULAR TOOLS GRID -->
+  <section style="background:linear-gradient(135deg,#f0f4ff 0%,#faf5ff 100%);padding:60px 24px;border-top:1px solid #e8e8f0;border-bottom:1px solid #e8e8f0;">
     <div style="max-width:1200px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:40px;">
-        <div style="display:inline-block;background:linear-gradient(135deg,rgba(102,126,234,0.12),rgba(118,75,162,0.12));padding:8px 20px;border-radius:30px;border:1px solid rgba(102,126,234,0.25);margin-bottom:14px;">
-          <span style="background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;font-size:.95em;letter-spacing:2px;">⭐ POPULAR TOOLS</span>
+      <div style="text-align:center;margin-bottom:48px;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#667eea,#764ba2);padding:6px 20px;border-radius:30px;margin-bottom:16px;">
+          <span style="color:white;font-weight:800;font-size:.78rem;letter-spacing:2px;">⭐ MOST POPULAR</span>
         </div>
-        <h2 style="font-size:2.2rem;font-weight:800;color:#1a1a2e;margin:0 0 10px;">Most Used Tools on Toolyfi</h2>
-        <p style="color:#666;font-size:1.05rem;margin:0;">Free, no signup — start using instantly</p>
+        <h2 style="font-size:2.4rem;font-weight:800;color:#1a1a2e;margin:0 0 12px;letter-spacing:-0.5px;">Top 10 Tools on Toolyfi</h2>
+        <p style="color:#64748b;font-size:1.05rem;margin:0;">Free forever · No signup · Instant results</p>
       </div>
 
-      <!-- Sliding Track -->
-      <div style="position:relative;">
-        <div id="popCarousel" style="display:flex;gap:18px;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;">
+      <style>
+        .top-tool-card {
+          text-decoration:none;
+          background:#fff;
+          border-radius:20px;
+          padding:28px 20px 22px;
+          text-align:center;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          gap:10px;
+          box-shadow:0 4px 20px rgba(102,126,234,0.08);
+          border:1.5px solid #eef0fb;
+          transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+          position:relative;
+          overflow:hidden;
+        }
+        .top-tool-card::before {
+          content:'';
+          position:absolute;
+          top:0;left:0;right:0;
+          height:4px;
+          opacity:0;
+          transition:opacity .25s ease;
+        }
+        .top-tool-card:hover {
+          transform:translateY(-8px);
+          box-shadow:0 20px 40px rgba(102,126,234,0.18);
+          border-color:transparent;
+        }
+        .top-tool-card:hover::before { opacity:1; }
+        .top-tools-grid {
+          display:grid;
+          grid-template-columns:repeat(5,1fr);
+          gap:18px;
+        }
+        @media(max-width:1024px){ .top-tools-grid{ grid-template-columns:repeat(3,1fr); } }
+        @media(max-width:640px){ .top-tools-grid{ grid-template-columns:repeat(2,1fr); gap:12px; } }
+        .tool-icon-wrap {
+          width:60px;height:60px;border-radius:16px;
+          display:flex;align-items:center;justify-content:center;
+          font-size:1.8rem;
+          margin-bottom:4px;
+          flex-shrink:0;
+        }
+        .top-badge {
+          font-size:.65rem;font-weight:800;
+          padding:3px 10px;border-radius:20px;
+          color:white;letter-spacing:.8px;text-transform:uppercase;
+        }
+        .top-tool-name {
+          font-size:.95rem;font-weight:800;color:#1a1a2e;
+          margin:0;line-height:1.35;
+        }
+        .top-tool-desc {
+          font-size:.78rem;color:#64748b;
+          margin:0;line-height:1.5;flex:1;
+        }
+        .top-tool-btn {
+          margin-top:6px;
+          padding:8px 20px;border-radius:25px;
+          font-size:.82rem;font-weight:700;color:white;
+          display:inline-block;
+          transition:opacity .2s;
+        }
+        .top-tool-card:hover .top-tool-btn { opacity:.9; }
+      </style>
 
-          <!-- AI Text Detector -->
-          <a href="ai-text-detector.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">🤖</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">AI TOOL</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">AI Text Detector</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Detect ChatGPT, Claude & AI-written content instantly</p>
-            <span style="background:linear-gradient(135deg,#0ea5e9,#0284c7);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+      <div class="top-tools-grid">
 
-          <!-- Resume Builder -->
-          <a href="resume-builder.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">📄</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">CAREER</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">Resume Builder</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">ATS-friendly resume creator. Download PDF instantly</p>
-            <span style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 1. AI Text Detector -->
+        <a href="ai-text-detector.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0ea5e9,#0284c7);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">🤖</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">AI TOOL</span>
+          <h3 class="top-tool-name">AI Text Detector</h3>
+          <p class="top-tool-desc">Detect ChatGPT, Claude & Gemini written content instantly. 100% free.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">Try Now →</span>
+        </a>
 
-          <!-- Invoice Generator -->
-          <a href="invoice-generator.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">📊</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#10b981,#059669);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">GENERATOR</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">Invoice Generator</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Professional PDF invoices in minutes. No signup needed</p>
-            <span style="background:linear-gradient(135deg,#10b981,#059669);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 2. AI Image Generator -->
+        <a href="ai-image-generator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">🎨</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#667eea,#764ba2);">AI IMAGE</span>
+          <h3 class="top-tool-name">AI Image Generator</h3>
+          <p class="top-tool-desc">Text to image in 9 stunning styles. Unlimited, free, no signup.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#667eea,#764ba2);">Try Now →</span>
+        </a>
 
-          <!-- BISP 8171 Check -->
-          <a href="bisp-8171-check.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">🇵🇰</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#16a34a,#15803d);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">🔥 NEW</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">BISP 8171 Check</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Check BISP eligibility & Rs.13,500 payment status free</p>
-            <span style="background:linear-gradient(135deg,#16a34a,#15803d);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 3. Resume Builder -->
+        <a href="resume-builder.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#8b5cf6,#7c3aed);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);">📄</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">CAREER</span>
+          <h3 class="top-tool-name">Resume Builder</h3>
+          <p class="top-tool-desc">ATS-friendly resume. Download PDF instantly. No login required.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">Try Now →</span>
+        </a>
 
-          <!-- Flip Text -->
-          <a href="flip-fancy-text-generator.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">🔄</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#f97316,#ec4899);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">TEXT FUN</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">Flip Text Generator</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Flip & mirror text upside down instantly. Free & fun!</p>
-            <span style="background:linear-gradient(135deg,#f97316,#ec4899);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 4. Invoice Generator -->
+        <a href="invoice-generator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#10b981,#059669);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">📊</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#10b981,#059669);">GENERATOR</span>
+          <h3 class="top-tool-name">Invoice Generator</h3>
+          <p class="top-tool-desc">Professional PDF invoices in 2 mins. Add logo & tax. Free.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#10b981,#059669);">Try Now →</span>
+        </a>
 
-          <!-- Password Generator -->
-          <a href="password-generator.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">🔑</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#a855f7,#9333ea);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">SECURITY</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">Password Generator</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Generate strong secure passwords instantly. No signup</p>
-            <span style="background:linear-gradient(135deg,#a855f7,#9333ea);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 5. Scientific Calculator -->
+        <a href="scientific-calculator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#06b6d4,#0891b2);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#cffafe,#a5f3fc);">🧮</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">CALCULATOR</span>
+          <h3 class="top-tool-name">Scientific Calc</h3>
+          <p class="top-tool-desc">Full CASIO fx-82ES online. Trig, logs, fractions. No download.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">Try Now →</span>
+        </a>
 
-          <!-- QR Code Generator -->
-          <a href="qr-code-generator.html" class="pop-card" style="text-decoration:none;background:#fff;border:1.5px solid #e8e8f0;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 2px 12px rgba(102,126,234,0.06);display:flex;flex-direction:column;align-items:center;gap:10px;min-width:calc(20% - 15px);flex-shrink:0;transition:all .2s;">
-            <span style="font-size:2.5rem;">📱</span>
-            <span style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:white;font-size:.72rem;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">GENERATOR</span>
-            <h3 style="font-size:.95rem;font-weight:800;color:#1a1a2e;margin:0;line-height:1.4;">QR Code Generator</h3>
-            <p style="font-size:.82rem;color:#666;margin:0;line-height:1.5;">Create QR codes instantly. PNG/SVG download. Free</p>
-            <span style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:white;padding:8px 20px;border-radius:25px;font-size:.85rem;font-weight:700;margin-top:4px;">Try Now →</span>
-          </a>
+        <!-- 6. Password Generator -->
+        <a href="password-generator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#a855f7,#9333ea);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#fae8ff,#f0abfc);">🔑</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#a855f7,#9333ea);">SECURITY</span>
+          <h3 class="top-tool-name">Password Generator</h3>
+          <p class="top-tool-desc">Unbreakable passwords instantly. Custom length & symbols. Free.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#a855f7,#9333ea);">Try Now →</span>
+        </a>
 
-        </div>
+        <!-- 7. QR Code Generator -->
+        <a href="qr-code-generator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#3b82f6,#1d4ed8);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);">📱</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">GENERATOR</span>
+          <h3 class="top-tool-name">QR Code Generator</h3>
+          <p class="top-tool-desc">Create QR codes instantly. PNG/SVG download. Works for any URL.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">Try Now →</span>
+        </a>
 
-        <!-- Nav Buttons -->
-        <button onclick="popSlide(-1)" style="position:absolute;left:-18px;top:50%;transform:translateY(-50%);background:#fff;border:1.5px solid #e8e8f0;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.1);z-index:10;transition:all .2s;" onmouseover="this.style.borderColor='#667eea'" onmouseout="this.style.borderColor='#e8e8f0'">❮</button>
-        <button onclick="popSlide(1)" style="position:absolute;right:-18px;top:50%;transform:translateY(-50%);background:#fff;border:1.5px solid #e8e8f0;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.1);z-index:10;transition:all .2s;" onmouseover="this.style.borderColor='#667eea'" onmouseout="this.style.borderColor='#e8e8f0'">❯</button>
+        <!-- 8. Gold Rate Pakistan -->
+        <a href="gold-rate-pakistan.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f59e0b,#d97706);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">🥇</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#f59e0b,#d97706);">🔴 LIVE</span>
+          <h3 class="top-tool-name">Gold Rate Today</h3>
+          <p class="top-tool-desc">Live 24K/22K gold rate in PKR, USD & 20+ currencies. Updated daily.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);">Try Now →</span>
+        </a>
+
+        <!-- 9. BISP 8171 Check -->
+        <a href="bisp-8171-check.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16a34a,#15803d);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);">🇵🇰</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#16a34a,#15803d);">🔥 NEW</span>
+          <h3 class="top-tool-name">BISP 8171 Check</h3>
+          <p class="top-tool-desc">Check BISP eligibility & Rs.13,500 payment status instantly. Free.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#16a34a,#15803d);">Try Now →</span>
+        </a>
+
+        <!-- 10. Prompt Generator -->
+        <a href="prompt-generator.html" class="top-tool-card">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f97316,#ea580c);border-radius:20px 20px 0 0;"></div>
+          <div class="tool-icon-wrap" style="background:linear-gradient(135deg,#ffedd5,#fed7aa);">✨</div>
+          <span class="top-badge" style="background:linear-gradient(135deg,#f97316,#ea580c);">500+ FREE</span>
+          <h3 class="top-tool-name">Prompt Generator</h3>
+          <p class="top-tool-desc">500+ AI prompts for ChatGPT, Claude & Gemini. Copy & go viral.</p>
+          <span class="top-tool-btn" style="background:linear-gradient(135deg,#f97316,#ea580c);">Try Now →</span>
+        </a>
+
       </div>
 
-      <!-- Dots -->
-      <div style="display:flex;justify-content:center;gap:8px;margin-top:24px;" id="popDots"></div>
+      <div style="text-align:center;margin-top:36px;">
+        <a href="#tools" style="display:inline-flex;align-items:center;gap:8px;color:#667eea;font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid #667eea;padding:10px 28px;border-radius:30px;transition:all .2s;" onmouseover="this.style.background='#667eea';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='#667eea'">
+          View All 44 Tools ↓
+        </a>
+      </div>
     </div>
   </section>
-
-  <style>
-    #popCarousel { overflow:visible; }
-    .pop-card:hover { transform:translateY(-5px);box-shadow:0 12px 30px rgba(102,126,234,0.15)!important;border-color:#667eea!important; }
-    @media(max-width:900px){ .pop-card{ min-width:calc(33.33% - 13px)!important; } }
-    @media(max-width:600px){ .pop-card{ min-width:calc(50% - 10px)!important; } }
-  </style>
-
-  <script>
-  (function(){
-    const track = document.getElementById('popCarousel');
-    const cards = track.querySelectorAll('.pop-card');
-    const dotsWrap = document.getElementById('popDots');
-    let visible = window.innerWidth > 900 ? 5 : window.innerWidth > 600 ? 3 : 2;
-    let cur = 0;
-    const total = cards.length;
-    const max = total - visible;
-
-    // Build dots
-    for(let i=0;i<=max;i++){
-      const d=document.createElement('div');
-      d.style.cssText='width:8px;height:8px;border-radius:50%;background:rgba(102,126,234,0.3);cursor:pointer;transition:all .2s;';
-      d.onclick=()=>goTo(i);
-      dotsWrap.appendChild(d);
-    }
-
-    function updateDots(){
-      dotsWrap.querySelectorAll('div').forEach((d,i)=>{
-        d.style.background=i===cur?'linear-gradient(135deg,#667eea,#764ba2)':'rgba(102,126,234,0.3)';
-        d.style.width=i===cur?'22px':'8px';
-      });
-    }
-
-    function goTo(n){
-      cur=Math.max(0,Math.min(n,max));
-      const cardW=cards[0].offsetWidth+18;
-      track.style.transform=`translateX(-${cur*cardW}px)`;
-      updateDots();
-    }
-
-    window.popSlide=function(dir){ goTo(cur+dir); };
-
-    // Auto slide
-    setInterval(()=>goTo(cur>=max?0:cur+1),3000);
-    updateDots();
-    window.addEventListener('resize',()=>{ visible=window.innerWidth>900?5:window.innerWidth>600?3:2; goTo(0); });
-  })();
-  </script>
 
   <!-- TOOLS SECTION -->
   <section class="tools-section" id="tools">
     <div class="tools-section-inner">
-      <h2 class="tools-title">⚙️ 30+ Free Online Tools</h2>
+      <h2 class="tools-title">⚙️ 44+ Free Online Tools</h2>
       <p class="tools-subtitle">Powerful utilities for productivity, conversion, generation & more — no signup required</p>
       
       <div class="tools-categories">
@@ -1429,6 +1482,7 @@
       { name: "JSON Formatter",      desc: "Format & validate JSON data instantly.",                 icon: "📊", category: "text",       href: "json-formatter.html" },
       { name: "Link Shortener",      desc: "Shorten URLs with custom aliases. No signup needed.",     icon: "🔗", category: "text",       href: "link-shortener.html" },
       { name: "HTML Preview Tool",   desc: "Paste HTML & preview it live in browser. No install needed.", icon: "🖥️", category: "text",       href: "html-preview-tool.html" },
+      { name: "Morse Code Converter", desc: "Convert text to Morse code & back. Audio playback included. Free.", icon: "📡", category: "text", href: "morse-code-converter.html" },
       
       // SEO & CONTENT
       { name: "Modern SEO Strategy", desc: "Master SEO 2026: E-E-A-T signals, intent-based content & real data strategies.", icon: "📊", category: "article", href: "blog/seo-strategy-2026.html" },
