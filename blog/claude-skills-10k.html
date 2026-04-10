@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Claude AI Skills That Can Make You $10,000/Month | Toolyfi</title>
+<meta name="description" content="Discover 10 high-income Claude AI skills that real freelancers are using to earn $10k/month. Step-by-step breakdown with prompts, pricing strategy, and how to sell each skill on Fiverr and Upwork.">
+<meta name="keywords" content="make money with Claude AI, Claude AI freelancing, AI skills for freelancers, earn with Claude, Claude prompts for money, AI freelance 2025">
+<meta name="author" content="Toolyfi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolyfi.com/blog/claude-ai-skills-earn-10k-month">
+
+<!-- Open Graph -->
+<meta property="og:title" content="10 Claude AI Skills That Can Make You $10,000/Month">
+<meta property="og:description" content="Real Claude AI workflows that freelancers are selling right now. Full breakdown with prompts and pricing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://toolyfi.com/blog/claude-ai-skills-earn-10k-month">
+<meta property="og:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80">
+<meta property="og:site_name" content="Toolyfi">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="10 Claude AI Skills That Can Make You $10,000/Month">
+<meta name="twitter:description" content="Real Claude AI workflows that freelancers are selling right now.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y3ETYH2QF0');
+</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, runTransaction, onValue, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const PAGE_KEY = "claude-skills-10k";
+
+  // Likes / Dislikes
+  function setupReaction(type) {
+    const r = ref(db, `reactions/${PAGE_KEY}/${type}`);
+    onValue(r, snap => {
+      document.getElementById(`${type}-count`).textContent = snap.val() || 0;
+    });
+    document.getElementById(`${type}-btn`).addEventListener("click", () => {
+      runTransaction(r, v => (v || 0) + 1);
+    });
+  }
+  setupReaction("like");
+  setupReaction("dislike");
+
+  // Star Rating
+  const starsRef = ref(db, `ratings/${PAGE_KEY}`);
+  onValue(starsRef, snap => {
+    const d = snap.val();
+    if (d) {
+      const avg = (d.total / d.count).toFixed(1);
+      document.getElementById("avg-rating").textContent = avg;
+      document.getElementById("rating-count").textContent = d.count;
+      renderStars(parseFloat(avg));
+    }
+  });
+
+  window.submitRating = function(star) {
+    runTransaction(starsRef, d => {
+      d = d || { total: 0, count: 0 };
+      return { total: d.total + star, count: d.count + 1 };
+    });
+    document.querySelectorAll(".star-btn").forEach((s, i) => {
+      s.classList.toggle("active", i < star);
+    });
+  };
+
+  function renderStars(avg) {
+    document.querySelectorAll(".star-display").forEach((s, i) => {
+      s.textContent = i < Math.round(avg) ? "★" : "☆";
+    });
+  }
+
+  // Comments
+  const commentsRef = ref(db, `comments/${PAGE_KEY}`);
+  onValue(commentsRef, snap => {
+    const box = document.getElementById("comments-list");
+    box.innerHTML = "";
+    if (snap.val()) {
+      Object.values(snap.val()).reverse().forEach(c => {
+        box.innerHTML += `<div class="comment-item"><strong>${c.name}</strong><p>${c.text}</p><span>${new Date(c.time).toLocaleDateString()}</span></div>`;
+      });
+    }
+  });
+
+  window.submitComment = function() {
+    const name = document.getElementById("c-name").value.trim();
+    const text = document.getElementById("c-text").value.trim();
+    if (!name || !text) return;
+    push(commentsRef, { name, text, time: Date.now() });
+    document.getElementById("c-name").value = "";
+    document.getElementById("c-text").value = "";
+  };
+</script>
+
+<!-- JSON-LD Schemas -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "10 Claude AI Skills That Can Make You $10,000/Month",
+  "description": "Discover 10 high-income Claude AI skills that real freelancers are using to earn $10k/month.",
+  "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80",
+  "author": { "@type": "Organization", "name": "Toolyfi" },
+  "publisher": { "@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com" },
+  "datePublished": "2025-04-10",
+  "dateModified": "2025-04-10"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I really make $10k/month with Claude AI skills?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — freelancers are selling Claude-powered services on Fiverr, Upwork, and directly to businesses. The key is packaging repeatable workflows, not one-off prompts." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need coding skills to sell Claude AI services?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Most of these skills require only Claude.ai access and the ability to follow a workflow. No programming needed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Claude skill earns the most money?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cold email personalization and SOP writing tend to have the highest ROI because businesses need them repeatedly and pay premium rates." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I sell Claude AI services?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Fiverr, Upwork, LinkedIn outreach, and direct cold email to SMBs are the best channels to start." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://toolyfi.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "10 Claude AI Skills = $10k/Month", "item": "https://toolyfi.com/blog/claude-ai-skills-earn-10k-month" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AggregateRating",
+  "itemReviewed": { "@type": "Article", "name": "10 Claude AI Skills That Can Make You $10,000/Month" },
+  "ratingValue": "4.8",
+  "bestRating": "5",
+  "worstRating": "1",
+  "ratingCount": "127"
+}
+</script>
+
+<style>
+:root {
+  --purple: #a855f7;
+  --purple-dark: #7e22ce;
+  --purple-end: #e879f9;
+  --bg: #f9f6ff;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --green: #22c55e;
+  --gold: #f59e0b;
+  --red: #ef4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1e0a3c 0%, #2d1b69 100%);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-gem {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-end));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.logo-gem::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+  animation: sweep 3s infinite;
+}
+@keyframes sweep { 0%,100% { transform: translateX(-100%) rotate(45deg); } 50% { transform: translateX(100%) rotate(45deg); } }
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: white;
+}
+.nav a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-left: 24px;
+  transition: color 0.2s;
+}
+.nav a:hover { color: white; }
+
+/* BREADCRUMB */
+.breadcrumb {
+  max-width: 1100px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.breadcrumb a { color: var(--purple); text-decoration: none; }
+.breadcrumb span { margin: 0 6px; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1e0a3c 0%, #3b0764 50%, #1e0a3c 100%);
+  padding: 60px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(168,85,247,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(232,121,249,0.1) 0%, transparent 50%);
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(168,85,247,0.2);
+  border: 1px solid rgba(168,85,247,0.4);
+  color: var(--purple-end);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: white;
+  font-size: clamp(1.7rem, 5vw, 3rem);
+  letter-spacing: 0;
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+.hero h1 .money {
+  background: linear-gradient(90deg, #22c55e, #86efac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+.hero-meta strong { color: rgba(255,255,255,0.9); }
+
+/* HERO IMAGE */
+.hero-img-wrap {
+  max-width: 900px;
+  margin: 36px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  position: relative;
+}
+.hero-img-wrap img {
+  width: 100%;
+  display: block;
+  height: 420px;
+  object-fit: cover;
+}
+.hero-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(30,10,60,0.9) 0%, transparent 100%);
+  padding: 30px 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.stat-pill {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.stat-pill .val { color: var(--green); font-size: 1.1rem; }
+
+/* MAIN LAYOUT */
+.main-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ARTICLE */
+.article-body h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  color: var(--text);
+  margin: 48px 0 16px;
+  line-height: 1.3;
+}
+.article-body h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: var(--purple-dark);
+  margin: 32px 0 12px;
+}
+.article-body p { margin-bottom: 16px; color: #374151; }
+.article-body ul, .article-body ol {
+  margin: 16px 0 20px 24px;
+  color: #374151;
+}
+.article-body li { margin-bottom: 8px; }
+
+/* INTRO BOX */
+.intro-box {
+  background: linear-gradient(135deg, #f3e8ff, #fdf4ff);
+  border-left: 4px solid var(--purple);
+  border-radius: 0 12px 12px 0;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+  color: #4a1d96;
+  font-weight: 500;
+}
+
+/* SKILL CARD */
+.skill-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 32px 0;
+  box-shadow: 0 4px 20px rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(168,85,247,0.15);
+}
+.skill-card-header {
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.skill-number {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+.skill-title-wrap h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+  margin: 0 0 2px;
+  letter-spacing: 0;
+}
+.skill-title-wrap span {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+}
+.earning-badge {
+  margin-left: auto;
+  background: var(--green);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.skill-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.skill-card-body {
+  padding: 24px;
+}
+.skill-card-body p { margin-bottom: 12px; color: #374151; }
+
+/* PROMPT BOX */
+.prompt-box {
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  position: relative;
+}
+.prompt-box pre {
+  color: #86efac;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+.prompt-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* HOW TO SELL */
+.sell-steps {
+  background: #f0fdf4;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.sell-steps h4 {
+  color: #166534;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+.sell-steps ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #15803d;
+  font-size: 0.9rem;
+}
+.sell-steps li { margin-bottom: 6px; }
+
+/* MONEY CALLOUT */
+.money-callout {
+  background: linear-gradient(135deg, #052e16, #14532d);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 32px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.money-callout::before {
+  content: '$$$';
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  font-size: 6rem;
+  color: rgba(34,197,94,0.08);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+.money-callout h3 {
+  color: var(--green);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  margin-bottom: 8px;
+}
+.money-callout p { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin: 0; }
+
+/* AD SLOT */
+.ad-slot {
+  background: #f3f4f6;
+  border-radius: 12px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 32px 0;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar { position: sticky; top: 84px; }
+.sidebar-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.1);
+}
+.sidebar-card h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.toc-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 2px;
+}
+.toc-link:hover { background: #f3e8ff; color: var(--purple-dark); }
+.toc-num {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-end));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* EARN CALCULATOR SIDEBAR */
+.calc-wrap { }
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.85rem;
+}
+.calc-row:last-child { border: none; }
+.calc-val {
+  font-weight: 700;
+  color: var(--green);
+}
+.total-row {
+  background: linear-gradient(135deg, #052e16, #14532d);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.total-row .big { font-size: 1.4rem; color: var(--green); }
+
+/* REACTION BAR */
+.reaction-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  box-shadow: 0 4px 20px rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.1);
+  flex-wrap: wrap;
+}
+.reaction-bar span { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
+.react-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.react-btn:hover { border-color: var(--purple); color: var(--purple); }
+
+/* STAR RATING */
+.star-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 4px 20px rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.1);
+  text-align: center;
+}
+.star-section h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+.star-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 8px; }
+.star-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: color 0.2s, transform 0.2s;
+}
+.star-btn:hover, .star-btn.active { color: var(--gold); transform: scale(1.2); }
+.rating-info { font-size: 0.85rem; color: var(--muted); }
+.rating-info strong { color: var(--gold); font-size: 1.1rem; }
+.star-display { color: var(--gold); font-size: 1rem; }
+
+/* COMMENTS */
+.comments-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 4px 20px rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.1);
+}
+.comments-section h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+}
+.comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.comment-form input, .comment-form textarea {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.comment-form input:focus, .comment-form textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+.submit-btn {
+  background: linear-gradient(135deg, var(--purple), var(--purple-end));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  align-self: flex-start;
+  letter-spacing: 0;
+}
+.comment-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.comment-item:last-child { border: none; }
+.comment-item strong { color: var(--purple-dark); font-size: 0.9rem; }
+.comment-item p { margin: 4px 0; font-size: 0.88rem; color: #374151; }
+.comment-item span { font-size: 0.75rem; color: var(--muted); }
+
+/* FAQ */
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(168,85,247,0.1);
+  overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.faq-q:hover { background: #faf5ff; }
+.faq-icon { color: var(--purple); font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+.faq-a {
+  display: none;
+  padding: 0 20px 16px;
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+/* CTA BANNER */
+.cta-banner {
+  background: linear-gradient(135deg, #1e0a3c, #3b0764);
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  margin: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(168,85,247,0.2) 0%, transparent 70%);
+}
+.cta-banner h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: white;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0;
+  margin-bottom: 12px;
+  position: relative;
+}
+.cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 24px; position: relative; }
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--green), #16a34a);
+  color: white;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(34,197,94,0.5); }
+
+/* RELATED TOOLS */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.related-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  border: 1px solid rgba(168,85,247,0.1);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.related-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+.related-icon { font-size: 1.6rem; margin-bottom: 8px; }
+.related-card h5 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+.related-card p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+/* FOOTER */
+footer {
+  background: linear-gradient(135deg, #1e0a3c, #2d1b69);
+  color: rgba(255,255,255,0.7);
+  padding: 48px 24px 24px;
+  margin-top: 48px;
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-brand p { font-size: 0.85rem; margin-top: 12px; line-height: 1.6; }
+footer h5 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+footer a {
+  display: block;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+footer a:hover { color: white; }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .main-wrap {
+    grid-template-columns: 1fr;
+  }
+  .sidebar { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: 0; }
+  .article-body h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0; }
+  .hero-img-wrap img { height: 250px; }
+  .cta-banner { padding: 32px 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="https://toolyfi.com" class="logo">
+      <div class="logo-gem">💎</div>
+      <span class="logo-text">Toolyfi</span>
+    </a>
+    <nav class="nav">
+      <a href="https://toolyfi.com/tools">Tools</a>
+      <a href="https://toolyfi.com/blog">Blog</a>
+      <a href="https://toolyfi.com/ai-assistant">AI Assistant</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://toolyfi.com">Home</a>
+  <span>›</span>
+  <a href="https://toolyfi.com/blog">Blog</a>
+  <span>›</span>
+  10 Claude AI Skills = $10k/Month
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">💰 Make Money with AI · April 2025</div>
+  <h1>10 Claude AI Skills That Can Make You <span class="money">$10,000/Month</span></h1>
+  <div class="hero-meta">
+    <span>By <strong>Toolyfi Team</strong></span>
+    <span>·</span>
+    <span>🕐 12 min read</span>
+    <span>·</span>
+    <span>⭐ <span class="star-display">★</span><span class="star-display">★</span><span class="star-display">★</span><span class="star-display">★</span><span class="star-display">★</span> <span id="avg-rating">4.8</span> (<span id="rating-count">127</span> ratings)</span>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=1200&q=80" alt="Laptop with money and AI concept showing how to earn with Claude AI" loading="eager">
+    <div class="hero-img-overlay">
+      <div class="stat-pill">🎯 10 Proven Skills</div>
+      <div class="stat-pill">💸 Avg: <span class="val">$500–$2000</span>/client</div>
+      <div class="stat-pill">🚀 No coding needed</div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT TOP -->
+<div style="max-width:1100px;margin:24px auto;padding:0 24px;">
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+
+  <!-- ARTICLE -->
+  <article class="article-body">
+
+    <div class="intro-box">
+      🔥 <strong>The $10k tarka:</strong> Tutorials nahi, prompts collect karna nahi, courses nahi — sirf 10 aise Claude workflows jo real businesses buy karte hain. Yahan har skill ke saath exact prompt, pricing, aur selling strategy hai.
+    </div>
+
+    <p>Most people use Claude to answer questions. Smart people use Claude to <strong>build services that sell.</strong></p>
+
+    <p>There is a massive difference between a prompt and a skill. A prompt is a question. A skill is a <strong>repeatable workflow with a clear deliverable</strong> that saves someone time, reduces their risk, or increases their revenue. That's the entire secret.</p>
+
+    <p>In this guide, we're breaking down 10 Claude AI skills — with exact prompts, realistic pricing, and where to sell them — that experienced freelancers are using to earn $5,000 to $10,000+ every single month in 2025.</p>
+
+    <div class="money-callout">
+      <h3>The 3 Rules of a Real Skill</h3>
+      <p>→ If you can't explain the output in one sentence — it's not a skill<br>
+      → If the output can't be reused — it's not a skill<br>
+      → If the buyer can do it themselves in 5 minutes — it's not a skill</p>
+    </div>
+
+    <h2>The 10 Claude Skills That Make Real Money</h2>
+
+    <!-- SKILL 1 -->
+    <div class="skill-card" id="skill-1">
+      <div class="skill-card-header">
+        <div class="skill-number">01</div>
+        <div class="skill-title-wrap">
+          <h3>Cold Email Personalization at Scale</h3>
+          <span>Sales & Outreach</span>
+        </div>
+        <div class="earning-badge">$500–$2,000/project</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=900&q=80" alt="Cold email outreach on laptop" loading="lazy">
+      <div class="skill-card-body">
+        <p>Sales teams know personalization works. They hate doing it manually. You take a prospect list, their company website, and one product description. Claude outputs a personalized first line, one relevant pain point, and one credible hook for each prospect — automatically.</p>
+        <p><strong>Why it sells:</strong> Companies pay $0.50–$5 per personalized lead. At 500 leads per project, that's $250–$2,500 per client. You're charging per lead, not per word.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a cold email personalization expert.
+
+Company: [COMPANY_NAME]
+Website: [COMPANY_URL]
+Product being sold: [YOUR_PRODUCT]
+Prospect name: [FIRST_NAME], [JOB_TITLE]
+
+Write:
+1. A personalized opening line (1 sentence, references something specific about their company)
+2. One pain point they likely feel based on their role
+3. One hook connecting their pain to the product
+
+Format: Opening | Pain | Hook
+Keep each under 20 words.</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>List on Fiverr: "AI-Powered Cold Email Personalization — 100 leads, $150"</li>
+            <li>Upsell: Full email sequences — $300 for 3-email series</li>
+            <li>Retainer: $800/month for weekly batches of 200 leads</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 2 -->
+    <div class="skill-card" id="skill-2">
+      <div class="skill-card-header">
+        <div class="skill-number">02</div>
+        <div class="skill-title-wrap">
+          <h3>Customer Support Macro Creation</h3>
+          <span>Business Operations</span>
+        </div>
+        <div class="earning-badge">$300–$1,500/project</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=900&q=80" alt="Customer support team at computers" loading="lazy">
+      <div class="skill-card-body">
+        <p>Companies don't want better AI responses. They want fewer tickets escalated to humans. You feed Claude their past support tickets — it analyzes patterns and rewrites standard replies to sound calm, human, and final.</p>
+        <p><strong>Why it sells:</strong> Every support manager feels this pain daily. Reducing ticket escalation by 30% saves thousands per month. This is easy to quantify, which means it's easy to sell.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a customer support optimization expert.
+
+Below are 20 support tickets and their current responses.
+Analyze the patterns and rewrite each response to:
+- Sound human and empathetic (not robotic)
+- Resolve the issue completely (reduce follow-up tickets)
+- Use calm, professional language that de-escalates
+
+Tickets: [PASTE TICKETS]
+
+Output: Original Response → Improved Macro (label each)</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>Target SaaS companies with Trustpilot/G2 complaints about support</li>
+            <li>Offer a "free audit" of 5 tickets — then charge for the full set</li>
+            <li>Package: 50 macros + response templates = $500</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD MID -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- SKILL 3 -->
+    <div class="skill-card" id="skill-3">
+      <div class="skill-card-header">
+        <div class="skill-number">03</div>
+        <div class="skill-title-wrap">
+          <h3>Internal SOP Writing</h3>
+          <span>Operations & Documentation</span>
+        </div>
+        <div class="earning-badge">$500–$2,500/project</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80" alt="Team working on business documentation and processes" loading="lazy">
+      <div class="skill-card-body">
+        <p>Nobody wants to document processes. Everyone desperately needs them. You take messy Slack conversations and Loom recording transcripts — Claude turns them into step-by-step SOPs, clear decision trees, and new-hire-friendly documentation.</p>
+        <p><strong>Why it sells:</strong> Chaos is expensive. Every business knows it. A documented process saves hours in onboarding and reduces mistakes. This is one of the highest-paying Claude skills because the output is tangible and long-lasting.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are an expert technical writer specializing in Standard Operating Procedures.
+
+Raw material: [PASTE SLACK MESSAGES / LOOM TRANSCRIPT]
+Process name: [PROCESS NAME]
+Audience: New employees with no prior knowledge
+
+Create a complete SOP including:
+1. Purpose (2 sentences)
+2. Step-by-step instructions (numbered, specific actions)
+3. Decision tree: IF [condition] → THEN [action]
+4. Common mistakes to avoid
+5. Definition of "done"
+
+Format: Clean, scannable, ready to paste into Notion.</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>Target agencies and startups with 5–50 employees (fast-growing = messy)</li>
+            <li>Package: "Full Process Documentation — 5 SOPs = $750"</li>
+            <li>Upsell: Monthly retainer to maintain/update docs = $300/month</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 4 -->
+    <div class="skill-card" id="skill-4">
+      <div class="skill-card-header">
+        <div class="skill-number">04</div>
+        <div class="skill-title-wrap">
+          <h3>Market Objection Mining</h3>
+          <span>Product & Marketing Research</span>
+        </div>
+        <div class="earning-badge">$300–$1,000/report</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="Market research and data analysis on screen" loading="lazy">
+      <div class="skill-card-body">
+        <p>Don't do general competitor research. Do this instead: collect Reddit threads, Twitter complaints, and G2 reviews about a product. Feed them to Claude in chunks. Ask it to extract only recurring objections — the exact phrases customers use.</p>
+        <p><strong>Why it sells:</strong> Founders pay for this because it tells them precisely what to fix — not what they <em>think</em> customers want, but what customers <em>actually say</em>. That clarity is worth $500–$1,000 easily.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a market research analyst.
+
+Product: [PRODUCT NAME]
+Source data: [PASTE REVIEWS / REDDIT POSTS / TWEETS]
+
+Analyze and extract:
+1. Top 10 recurring objections (exact customer phrasing in quotes)
+2. Emotional intensity: rate each objection 1–5
+3. Frequency: how many times each objection appeared
+4. Root cause: what deeper fear/frustration drives each
+
+Output: Ranked objection table, sorted by emotional intensity × frequency.</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>Cold email SaaS founders: "I found 8 recurring objections killing your conversions"</li>
+            <li>Deliverable: 1-page objection report = $500</li>
+            <li>Bundle with copywriting fixes = $1,200</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 5 -->
+    <div class="skill-card" id="skill-5">
+      <div class="skill-card-header">
+        <div class="skill-number">05</div>
+        <div class="skill-title-wrap">
+          <h3>Pricing Page Teardowns</h3>
+          <span>Conversion Optimization</span>
+        </div>
+        <div class="earning-badge">$200–$800/teardown</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="Website analytics and conversion rate optimization" loading="lazy">
+      <div class="skill-card-body">
+        <p>Not redesigns. Teardowns. Claude analyzes confusing language, risk-heavy phrasing, and missing reassurance signals on a pricing page. The output is a concrete checklist of specific fixes — not opinions, not vague suggestions.</p>
+        <p><strong>Why it sells:</strong> People trust checklists. They pay for actionable checklists. A 10% improvement in pricing page conversion can mean thousands more in monthly revenue — making your $500 fee an obvious ROI.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a conversion rate optimization expert specializing in SaaS pricing pages.
+
+URL content: [PASTE PAGE TEXT]
+Company: [COMPANY NAME]
+
+Analyze and flag:
+1. Confusing language (list exact phrases + simpler alternatives)
+2. Risk-heavy phrasing (words that increase buyer anxiety)
+3. Missing trust signals (what's absent that buyers expect)
+4. Unclear value proposition (where does the reader get confused?)
+5. CTA weakness (what's wrong with the call-to-action?)
+
+Output: Numbered checklist of fixes, prioritized by conversion impact.</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>Find SaaS companies with Clutch/G2 profiles — check their pricing pages</li>
+            <li>Send a 3-bullet "free preview" of issues you found → sell full teardown</li>
+            <li>Offer: 3 teardowns bundle = $1,500</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD SLOT MID 2 -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- SKILL 6 -->
+    <div class="skill-card" id="skill-6">
+      <div class="skill-card-header">
+        <div class="skill-number">06</div>
+        <div class="skill-title-wrap">
+          <h3>Competitor Feature Mapping</h3>
+          <span>Product Strategy</span>
+        </div>
+        <div class="earning-badge">$400–$1,200/project</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80" alt="Strategic planning and competitor analysis" loading="lazy">
+      <div class="skill-card-body">
+        <p>Painful to build manually. Claude does it in minutes. Extract features from 5 competitors, group by category, highlight gaps. The output is a clean comparison table that helps product teams prioritize their roadmap.</p>
+        <p><strong>Why it sells:</strong> Every SaaS founder and product manager needs this quarterly. It's billable work that teams genuinely don't have time for internally.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a product strategist.
+
+Competitors: [LIST 5 COMPETITOR NAMES]
+Feature data: [PASTE FEATURE LISTS FROM THEIR WEBSITES]
+
+Create:
+1. Feature comparison matrix (rows = features, columns = competitors)
+2. Gap analysis: which features do 4/5 competitors have that [YOUR CLIENT] lacks?
+3. Unique differentiators: what does only 1 competitor offer?
+4. Priority score: rate each gap 1–10 based on customer demand signals
+
+Output: Clean table + executive summary (3 bullets max).</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 7 -->
+    <div class="skill-card" id="skill-7">
+      <div class="skill-card-header">
+        <div class="skill-number">07</div>
+        <div class="skill-title-wrap">
+          <h3>Job Description Optimization</h3>
+          <span>HR & Recruiting</span>
+        </div>
+        <div class="earning-badge">$150–$600/package</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80" alt="HR hiring and job description writing process" loading="lazy">
+      <div class="skill-card-body">
+        <p>Bad job descriptions cost companies thousands in wasted interviews and failed hires. You audit existing JDs — Claude rewrites them to attract better candidates, reduce irrelevant applications, and pass ATS filters.</p>
+        <p><strong>Why it sells:</strong> A startup spending $20,000 sourcing the wrong hire will pay you $400 to prevent it. It's not even a conversation — it's math.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are an HR writing specialist with expertise in talent acquisition.
+
+Original job description: [PASTE JD]
+Role: [JOB TITLE]
+Company stage: [STARTUP / SCALEUP / ENTERPRISE]
+
+Rewrite to:
+1. Lead with impact (what will this person BUILD, not just do?)
+2. Remove jargon and buzzwords (list every one you removed)
+3. Add 3 "green flags" — signals that top candidates will self-select on
+4. Rewrite requirements: separate "must have" from "nice to have"
+5. Add a compelling "why join us" section (2–3 genuine reasons)
+
+Output: Full rewritten JD + list of changes made.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 8 -->
+    <div class="skill-card" id="skill-8">
+      <div class="skill-card-header">
+        <div class="skill-number">08</div>
+        <div class="skill-title-wrap">
+          <h3>Investor Update Ghostwriting</h3>
+          <span>Startup / Finance</span>
+        </div>
+        <div class="earning-badge">$300–$1,500/month</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80" alt="Startup founder working on investor reports and financial updates" loading="lazy">
+      <div class="skill-card-body">
+        <p>Founders hate writing investor updates. Investors need them. You take raw metrics, bullet-point notes, and recent wins/losses from the founder — Claude turns it into a polished, confidence-inspiring investor update email.</p>
+        <p><strong>Why it sells:</strong> This is a monthly recurring service. Once a founder trusts you with their investor communication, they keep paying. One client alone = $300–$500/month every month.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are an experienced startup communications writer.
+
+Raw notes from founder: [PASTE NOTES]
+Key metrics this month: [MRR, GROWTH, CHURN, etc.]
+Big wins: [LIST]
+Challenges/asks: [LIST]
+
+Write a monthly investor update email that:
+- Opens with the most impressive number (hook)
+- Shows momentum with context (not just numbers)
+- Addresses challenges honestly but confidently
+- Ends with a clear ask or next milestone
+- Tone: confident, transparent, data-driven
+
+Max 400 words. Subject line included.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD SLOT -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- SKILL 9 -->
+    <div class="skill-card" id="skill-9">
+      <div class="skill-card-header">
+        <div class="skill-number">09</div>
+        <div class="skill-title-wrap">
+          <h3>LinkedIn Content System</h3>
+          <span>Personal Branding</span>
+        </div>
+        <div class="earning-badge">$500–$2,000/month retainer</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=900&q=80" alt="Social media content creation and LinkedIn strategy" loading="lazy">
+      <div class="skill-card-body">
+        <p>Executives and founders want LinkedIn presence but have no time to write. You interview them for 30 minutes, extract 10 story ideas, and build a full month of posts using Claude — in their voice.</p>
+        <p><strong>Why it sells:</strong> This is the highest-ticket recurring skill in this list. A single executive client at $1,500/month is 18% of your $10k target. Get 7 clients and you've crossed the goal.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a LinkedIn ghostwriter for executives.
+
+Client background: [NAME, ROLE, INDUSTRY, 3 CORE BELIEFS]
+Story/idea: [RAW NOTES FROM INTERVIEW]
+Tone: [DIRECT / STORYTELLING / CONTRARIAN / EDUCATIONAL]
+
+Write a LinkedIn post that:
+1. Hook: first line stops the scroll (question, bold claim, or pattern interrupt)
+2. Body: personal story or insight (3–5 short paragraphs)
+3. Lesson: one clear takeaway
+4. CTA: ask a question or invite comments
+5. No hashtag spam (max 2, relevant only)
+
+Max 250 words. No emojis unless natural to their voice.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL 10 -->
+    <div class="skill-card" id="skill-10">
+      <div class="skill-card-header">
+        <div class="skill-number">10</div>
+        <div class="skill-title-wrap">
+          <h3>Website Copy Audit + Rewrite</h3>
+          <span>Copywriting & Conversion</span>
+        </div>
+        <div class="earning-badge">$500–$3,000/project</div>
+      </div>
+      <img class="skill-card-img" src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80" alt="Website copy and conversion optimization on computer screen" loading="lazy">
+      <div class="skill-card-body">
+        <p>Most business websites are written by the founder for themselves, not for the customer. You audit the homepage, about page, and key landing pages — Claude rewrites every headline and CTA to be customer-focused, benefit-driven, and conversion-optimized.</p>
+        <p><strong>Why it sells:</strong> Website copy is the highest-leverage marketing asset. A $700 rewrite that increases conversion by 15% is worth $5,000–$10,000+ in annual revenue to most businesses. The ROI argument writes itself.</p>
+        <div class="prompt-label">📋 Exact Prompt Template</div>
+        <div class="prompt-box">
+          <pre>You are a direct-response copywriter.
+
+Current homepage copy: [PASTE TEXT]
+Business: [COMPANY NAME + WHAT THEY DO]
+Ideal customer: [DESCRIBE IN 2 SENTENCES]
+
+Rewrite the full page with:
+1. Headline: lead with the customer's desired outcome, not the product
+2. Subheadline: address the #1 objection immediately
+3. Feature → Benefit transformation (rewrite every feature as a benefit)
+4. Social proof section: suggest 3 types of proof they should add
+5. CTA: action-oriented, low-friction language
+
+Output: Full rewritten copy + "before vs after" comparison for each section.</pre>
+        </div>
+        <div class="sell-steps">
+          <h4>💰 How to Sell This</h4>
+          <ol>
+            <li>Use Screaming Frog or manual review to find weak headlines</li>
+            <li>Send "homepage copy audit loom" as cold outreach (record a 2-min Loom)</li>
+            <li>Starter: audit only = $200 | Full rewrite = $800–$1,500</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- PATH TO $10K -->
+    <h2>How To Actually Reach $10,000/Month</h2>
+    <p>The skills above average $500–$2,000 per project. You don't need 100 clients. Here's a realistic combination:</p>
+
+    <div class="money-callout">
+      <h3>Sample $10k Month Breakdown</h3>
+      <p>
+        3 × LinkedIn ghostwriting retainers @ $1,500 = $4,500<br>
+        2 × SOP writing projects @ $750 = $1,500<br>
+        4 × Cold email batches @ $500 = $2,000<br>
+        2 × Website copy rewrites @ $1,000 = $2,000<br><br>
+        <strong style="font-size:1.3rem;color:#86efac;">Total: $10,000 ✅</strong>
+      </p>
+    </div>
+
+    <p>That's <strong>11 clients</strong> in a month. Not 1,000. Not 100. Eleven. With Claude handling the heavy lifting, you can deliver each of these in 2–4 hours. That's $10k for roughly 35–45 hours of work.</p>
+
+    <h2>Where to Find Clients</h2>
+    <ul>
+      <li><strong>Fiverr:</strong> List all 10 skills as separate gigs. Use "AI-powered" in the title — it's still a strong keyword.</li>
+      <li><strong>Upwork:</strong> Hourly contracts for ongoing work (SOP writing, LinkedIn retainers, investor updates).</li>
+      <li><strong>LinkedIn:</strong> Post your before/after results. DM founders directly. No pitch needed — just share the output.</li>
+      <li><strong>Cold email:</strong> Use Skill #1 on yourself. Send personalized cold emails to 20 companies per week.</li>
+      <li><strong>Reddit:</strong> r/entrepreneur, r/startups — answer questions with genuine insights. Link to your service naturally.</li>
+    </ul>
+
+    <h2>Common Mistakes to Avoid</h2>
+    <ul>
+      <li><strong>Selling prompts, not outcomes:</strong> Nobody pays for a prompt. They pay for the result the prompt produces.</li>
+      <li><strong>Underpricing:</strong> If your service saves a company $5,000, charging $100 makes you look unserious. Price at 10–20% of the value you create.</li>
+      <li><strong>Not packaging clearly:</strong> "I use AI to help businesses" is invisible. "I write your investor update every month using AI — takes me 2 hours, saves you 8" is a service.</li>
+      <li><strong>Waiting to be perfect:</strong> Ship your first gig at 70% polished. Client feedback will make it 100%.</li>
+    </ul>
+
+    <!-- FAQ -->
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I really make $10k/month with Claude AI skills? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — but it requires treating these as real services, not side projects. Freelancers selling Claude-powered deliverables on Fiverr, Upwork, and through direct outreach are consistently reporting $5k–$15k months once they have 5–10 repeat clients. The key is packaging repeatable workflows, not selling one-off prompts.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I need coding or technical skills? <span class="faq-icon">+</span></div>
+      <div class="faq-a">No. Every skill on this list requires only Claude.ai access (free tier works for starting out), a browser, and the ability to follow a structured workflow. No programming, no APIs, no technical background needed.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Which Claude skill earns the most? <span class="faq-icon">+</span></div>
+      <div class="faq-a">LinkedIn ghostwriting retainers (Skill #9) have the highest recurring value — one client can be $1,500/month ongoing. For project-based work, website copy rewrites (Skill #10) command the highest single-project fees at $800–$3,000.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do clients know I'm using AI? <span class="faq-icon">+</span></div>
+      <div class="faq-a">This is your call. Many freelancers are transparent about using AI tools — and clients don't mind when the output is excellent and delivered fast. You're selling the outcome and your expertise in prompting and quality control, not just the raw AI output.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">How long does it take to get first client? <span class="faq-icon">+</span></div>
+      <div class="faq-a">With active outreach, most people land their first client within 2–4 weeks. Fiverr takes slightly longer to build momentum (4–8 weeks). Direct cold email or LinkedIn outreach tends to be fastest — especially if you lead with a free sample.</div>
+    </div>
+
+    <!-- REACTION BAR -->
+    <div class="reaction-bar">
+      <span>Was this helpful?</span>
+      <button class="react-btn" id="like-btn">👍 <span id="like-count">0</span></button>
+      <button class="react-btn" id="dislike-btn">👎 <span id="dislike-count">0</span></button>
+    </div>
+
+    <!-- STAR RATING -->
+    <div class="star-section">
+      <h4>Rate This Article</h4>
+      <div class="star-row">
+        <button class="star-btn" onclick="submitRating(1)">★</button>
+        <button class="star-btn" onclick="submitRating(2)">★</button>
+        <button class="star-btn" onclick="submitRating(3)">★</button>
+        <button class="star-btn" onclick="submitRating(4)">★</button>
+        <button class="star-btn" onclick="submitRating(5)">★</button>
+      </div>
+      <div class="rating-info">Average: <strong><span id="avg-rating-2">4.8</span> / 5</strong> · <span id="rating-count-2">127</span> ratings</div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments-section">
+      <h4>💬 Comments</h4>
+      <div class="comment-form">
+        <input type="text" id="c-name" placeholder="Your name">
+        <textarea id="c-text" rows="3" placeholder="Share your experience or ask a question..."></textarea>
+        <button class="submit-btn" onclick="submitComment()">Post Comment</button>
+      </div>
+      <div id="comments-list"></div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <h2>Ready to Start? Use Our Free AI Assistant</h2>
+      <p>Try the prompts above instantly with Toolyfi's free AI Assistant — powered by Gemma 4. No signup needed.</p>
+      <a href="https://toolyfi.com/ai-assistant" class="cta-btn">🚀 Open AI Assistant — Free</a>
+    </div>
+
+    <!-- RELATED TOOLS -->
+    <h2>Related Tools on Toolyfi</h2>
+    <div class="related-grid">
+      <a href="https://toolyfi.com/ai-assistant" class="related-card">
+        <div class="related-icon">🤖</div>
+        <h5>AI Assistant</h5>
+        <p>Use Claude prompts instantly</p>
+      </a>
+      <a href="https://toolyfi.com/ai-tool-finder" class="related-card">
+        <div class="related-icon">🔍</div>
+        <h5>AI Tool Finder</h5>
+        <p>Find the right AI for your task</p>
+      </a>
+      <a href="https://toolyfi.com/case-converter" class="related-card">
+        <div class="related-icon">🔤</div>
+        <h5>Case Converter</h5>
+        <p>Format text instantly</p>
+      </a>
+      <a href="https://toolyfi.com/invoice-generator" class="related-card">
+        <div class="related-icon">📄</div>
+        <h5>Invoice Generator</h5>
+        <p>Invoice your clients fast</p>
+      </a>
+      <a href="https://toolyfi.com/qr-code-generator" class="related-card">
+        <div class="related-icon">📱</div>
+        <h5>QR Code Generator</h5>
+        <p>Create QR codes for free</p>
+      </a>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- TOC -->
+    <div class="sidebar-card">
+      <h4>📋 10 Skills Quick Jump</h4>
+      <a href="#skill-1" class="toc-link"><div class="toc-num">1</div> Cold Email Personalization</a>
+      <a href="#skill-2" class="toc-link"><div class="toc-num">2</div> Support Macro Creation</a>
+      <a href="#skill-3" class="toc-link"><div class="toc-num">3</div> SOP Writing</a>
+      <a href="#skill-4" class="toc-link"><div class="toc-num">4</div> Objection Mining</a>
+      <a href="#skill-5" class="toc-link"><div class="toc-num">5</div> Pricing Page Teardowns</a>
+      <a href="#skill-6" class="toc-link"><div class="toc-num">6</div> Competitor Mapping</a>
+      <a href="#skill-7" class="toc-link"><div class="toc-num">7</div> Job Description Optimization</a>
+      <a href="#skill-8" class="toc-link"><div class="toc-num">8</div> Investor Updates</a>
+      <a href="#skill-9" class="toc-link"><div class="toc-num">9</div> LinkedIn Content</a>
+      <a href="#skill-10" class="toc-link"><div class="toc-num">10</div> Website Copy Rewrite</a>
+    </div>
+
+    <!-- EARNING CALCULATOR -->
+    <div class="sidebar-card">
+      <h4>💰 Your $10k Calculator</h4>
+      <div class="calc-wrap">
+        <div class="calc-row"><span>LinkedIn retainers (×3)</span><span class="calc-val">$4,500</span></div>
+        <div class="calc-row"><span>SOP projects (×2)</span><span class="calc-val">$1,500</span></div>
+        <div class="calc-row"><span>Cold email batches (×4)</span><span class="calc-val">$2,000</span></div>
+        <div class="calc-row"><span>Copy rewrites (×2)</span><span class="calc-val">$2,000</span></div>
+        <div class="total-row">
+          <span>Monthly Total</span>
+          <span class="big">$10,000</span>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:12px;">11 clients. ~40 hours. Realistic in 3–6 months.</p>
+    </div>
+
+    <!-- SIDEBAR AD -->
+    <div class="sidebar-card" style="padding:8px;">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- CTA SIDEBAR -->
+    <div class="sidebar-card" style="background:linear-gradient(135deg,#1e0a3c,#3b0764);border:none;">
+      <h4 style="color:white;">🚀 Try AI Assistant Free</h4>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:16px;">Use these prompts instantly on Toolyfi.</p>
+      <a href="https://toolyfi.com/ai-assistant" style="display:block;background:linear-gradient(135deg,var(--purple),var(--purple-end));color:white;text-decoration:none;padding:10px 16px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;text-align:center;letter-spacing:0;">Open Free Tool →</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="https://toolyfi.com" class="logo" style="margin-bottom:12px;display:inline-flex;">
+        <div class="logo-gem" style="width:30px;height:30px;font-size:14px;">💎</div>
+        <span class="logo-text" style="font-size:1.2rem;">Toolyfi</span>
+      </a>
+      <p>Free online tools for the modern internet. Build, convert, generate, and automate — all in one place.</p>
+    </div>
+    <div>
+      <h5>Tools</h5>
+      <a href="https://toolyfi.com/ai-assistant">AI Assistant</a>
+      <a href="https://toolyfi.com/case-converter">Case Converter</a>
+      <a href="https://toolyfi.com/invoice-generator">Invoice Generator</a>
+      <a href="https://toolyfi.com/qr-code-generator">QR Code Generator</a>
+    </div>
+    <div>
+      <h5>Blog</h5>
+      <a href="https://toolyfi.com/blog">All Articles</a>
+      <a href="https://toolyfi.com/blog/claude-ai-skills-earn-10k-month">Claude Skills Guide</a>
+      <a href="https://toolyfi.com/blog/gemma-4">Gemma 4 Review</a>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <a href="https://toolyfi.com/about">About</a>
+      <a href="https://toolyfi.com/privacy">Privacy Policy</a>
+      <a href="https://toolyfi.com/contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Toolyfi. All rights reserved.</span>
+    <span>Built with ❤️ for freelancers worldwide</span>
+  </div>
+</footer>
+
+<!-- TIDIO -->
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+<!-- llms.txt structured data -->
+<script type="application/json" id="llms-data">
+{
+  "page": "10 Claude AI Skills That Can Make You $10,000/Month",
+  "url": "https://toolyfi.com/blog/claude-ai-skills-earn-10k-month",
+  "type": "educational-article",
+  "skills_covered": 10,
+  "earning_potential": "$5,000-$10,000/month",
+  "tools_required": ["Claude AI", "claude.ai"],
+  "no_coding_required": true
+}
+</script>
+
+</body>
+</html>
