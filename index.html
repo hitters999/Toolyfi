@@ -267,6 +267,9 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
     </div>
   </div>
   <div class="tools-grid" id="toolsGrid"></div>
+  <div style="text-align:center;margin-top:32px;">
+    <button id="loadMoreBtn" onclick="loadMore()" style="display:none;background:var(--grad);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;padding:13px 36px;border:none;border-radius:50px;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(168,85,247,.35);">Load More Tools ↓</button>
+  </div>
 </section>
 
 <!-- SEO ARTICLE -->
@@ -396,19 +399,42 @@ const TOOLS = [
   {name:'Gold Rate Pakistan',icon:'🥇',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Pakistan — 24K, 22K, 21K by city. Updated daily.',href:'gold-rate-pakistan.html'},
 ];
 
+const PAGE_SIZE = 8;
+let currentList = [];
+let currentPage = 0;
+
 function renderTools(cat){
-  const grid=document.getElementById('toolsGrid');
-  const list=cat==='all'?TOOLS:TOOLS.filter(t=>t.cat===cat);
-  grid.innerHTML=list.map(t=>`
-    <div class="tool-card">
+  currentList = cat==='all' ? TOOLS : TOOLS.filter(t=>t.cat===cat);
+  currentPage = 0;
+  const grid = document.getElementById('toolsGrid');
+  grid.innerHTML = '';
+  showPage();
+}
+
+function showPage(){
+  const grid = document.getElementById('toolsGrid');
+  const btn = document.getElementById('loadMoreBtn');
+  const start = currentPage * PAGE_SIZE;
+  const slice = currentList.slice(start, start + PAGE_SIZE);
+  slice.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'tool-card';
+    card.innerHTML = `
       <div class="tool-card-top">
         <div class="tool-icon">${t.icon}</div>
         <span class="tool-badge" style="background:${t.bc}">${t.badge}</span>
       </div>
       <div class="tool-name">${t.name}</div>
       <div class="tool-desc">${t.desc}</div>
-      <a href="${t.href}" class="tool-link">Try Free →</a>
-    </div>`).join('');
+      <a href="${t.href}" class="tool-link">Try Free →</a>`;
+    grid.appendChild(card);
+  });
+  currentPage++;
+  btn.style.display = currentPage * PAGE_SIZE < currentList.length ? 'inline-block' : 'none';
+}
+
+function loadMore(){
+  showPage();
 }
 
 function filterCat(cat){
