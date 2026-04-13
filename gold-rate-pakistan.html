@@ -306,9 +306,9 @@
 <!-- ======== IMPORTANT: Update this section daily ======== -->
 <script>
   // ✅ DAILY UPDATE — Change ONLY this number every day!
-  const GOLD_24K_TOLA = 503625; // PKR per tola (24K) - Updated 10 Apr 2026
+  const GOLD_24K_TOLA = 503270; // PKR per tola (24K) - Updated 13 Apr 2026
 
-  // ✅ Currency rates — updated 10 Apr 2026 (Open Market)
+  // ✅ Currency rates — updated 13 Apr 2026 (Open Market)
   const CURRENCIES = [
     { flag: '🇺🇸', name: 'US Dollar',         code: 'USD', rate: 279.50 },
     { flag: '🇪🇺', name: 'Euro',              code: 'EUR', rate: 325.85 },
@@ -442,7 +442,7 @@
   <!-- CURRENCY SECTION -->
   <div class="section">
     <h2 class="sec-title">💱 Forex Rates — Open Market</h2>
-    <p class="sec-sub">Buy & Sell rates vs Pakistani Rupee (PKR) — 10 Apr 2026</p>
+    <p class="sec-sub">Buy & Sell rates vs Pakistani Rupee (PKR) — 13 Apr 2026</p>
     <div style="overflow-x:auto;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.06);">
       <table class="currency-table" id="currency-table">
         <thead>
@@ -694,7 +694,7 @@
   };
 
   function fmt(n) {
-    return 'PKR ' + Math.round(n).toLocaleString('en-PK');
+    return '🇵🇰 ' + Math.round(n).toLocaleString('en-PK');
   }
 
   function getPrice(karat, unit) {
@@ -709,14 +709,14 @@
   // Get selected currency info
   function getSelectedCurrency() {
     const code = document.getElementById('global-currency').value || 'PKR';
-    if (code === 'PKR') return { code: 'PKR', symbol: 'Rs.', rate: 1 };
+    if (code === 'PKR') return { code: 'PKR', symbol: '🇵🇰', rate: 1 };
     const curr = CURRENCIES.find(c => c.code === code);
-    return curr ? { code: curr.code, symbol: curr.code, rate: curr.rate } : { code: 'PKR', symbol: 'Rs.', rate: 1 };
+    return curr ? { code: curr.code, symbol: curr.code, rate: curr.rate } : { code: 'PKR', symbol: '🇵🇰', rate: 1 };
   }
 
   function convertPrice(pkrAmount) {
     const curr = getSelectedCurrency();
-    if (curr.code === 'PKR') return { val: pkrAmount, sym: 'Rs.' };
+    if (curr.code === 'PKR') return { val: pkrAmount, sym: '🇵🇰' };
     return { val: pkrAmount / curr.rate, sym: curr.code };
   }
 
@@ -804,8 +804,8 @@
       <tr>
         <td><span class="currency-flag">${c.flag}</span><span class="currency-name">${c.name}</span></td>
         <td><span class="currency-code">${c.code}</span></td>
-        <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#16a34a;font-size:15px;">Rs. ${parseFloat(buy).toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
-        <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#dc2626;font-size:15px;">Rs. ${parseFloat(sell).toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+        <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#16a34a;font-size:15px;"><span style="font-family:sans-serif;margin-right:4px;">🇵🇰</span>${parseFloat(buy).toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+        <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#dc2626;font-size:15px;"><span style="font-family:sans-serif;margin-right:4px;">🇵🇰</span>${parseFloat(sell).toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
       </tr>`;
     }).join('');
 
@@ -852,8 +852,7 @@
       
       const gold24Tola = liveData.goldPKRperTola;
       const gold24Gram = liveData.goldPKRperGram;
-      const karatPurity = { 24:1, 22:22/24, 21:21/24, 18:18/24 };
-      const purity = karatPurity[karat] || 1;
+      const purity = karat; // karat value from select is already the purity ratio (1, 0.9167, 0.875, 0.75)
       
       let pricePerUnit;
       if (unit === 'tola') pricePerUnit = gold24Tola * purity;
@@ -865,14 +864,14 @@
       let resultText, subText;
       
       if (currency === 'PKR') {
-        resultText = 'PKR ' + Math.round(totalPKR).toLocaleString();
+        resultText = '🇵🇰 ' + Math.round(totalPKR).toLocaleString();
         subText = amount + ' ' + unit + ' × ' + Math.round(purity*100) + '% purity';
       } else {
         const curr = (liveData.currencies||[]).find(c => c.code === currency);
         const rate = curr ? curr.rate : 1;
         const converted = (totalPKR / rate).toFixed(2);
         resultText = currency + ' ' + converted;
-        subText = '= PKR ' + Math.round(totalPKR).toLocaleString();
+        subText = '= 🇵🇰 ' + Math.round(totalPKR).toLocaleString();
       }
       
       const unitLabels = { tola:'Tola', gram:'Gram', '10gram':'10 Gram', ounce:'Ounce' };
@@ -896,13 +895,13 @@
       let resultText, subText;
 
       if (currency === 'PKR') {
-        resultText = 'PKR ' + Math.round(totalPKR).toLocaleString();
+        resultText = '🇵🇰 ' + Math.round(totalPKR).toLocaleString();
       } else {
         const curr = CURRENCIES.find(c => c.code === currency);
         const rate = curr ? curr.rate : 1;
         const converted = totalPKR / rate;
         resultText = currency + ' ' + converted.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        subText = `= PKR ${Math.round(totalPKR).toLocaleString()} (Fallback)`;
+        subText = `= 🇵🇰 ${Math.round(totalPKR).toLocaleString()} (Fallback)`;
       }
 
       const unitLabels = { tola: 'Tola', gram: 'Gram', '10gram': '10 Gram', ounce: 'Ounce' };
