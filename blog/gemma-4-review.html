@@ -182,7 +182,14 @@
     .stat-card{background:#fff;border:1px solid var(--border2);border-radius:var(--r);padding:22px 16px;text-align:center;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s}
     .stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
     .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p3),var(--pk))}
+    .stat-card:nth-child(2)::before{background:linear-gradient(90deg,#16a34a,#34d399)}
+    .stat-card:nth-child(3)::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+    .stat-card:nth-child(4)::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
     .stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.75rem;font-weight:800;background:linear-gradient(135deg,var(--p2),var(--p3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
+    .stat-card:nth-child(2) .stat-num{background:linear-gradient(135deg,#15803d,#16a34a);-webkit-background-clip:text;background-clip:text}
+    .stat-card:nth-child(3) .stat-num{background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;background-clip:text}
+    .stat-card:nth-child(4) .stat-num{background:linear-gradient(135deg,#1d4ed8,#3b82f6);-webkit-background-clip:text;background-clip:text}
+    @media(max-width:640px){.hero-img{height:160px!important}}
     .stat-label{font-size:.77rem;color:var(--t3);font-weight:600}
 
     /* ── BENCHMARK CHART ── */
@@ -340,12 +347,7 @@
   </nav>
 </header>
 
-<!-- AD TOP -->
-<div class="ad-wrap">
-  <div class="ad-label">Advertisement</div>
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+<!-- AD TOP - moved below hero -->
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
@@ -369,6 +371,19 @@
       <span class="meta-tag">⏱️ 12 min read</span>
       <span class="meta-tag">✍️ Toolyfi Team</span>
       <span class="meta-tag">🌍 Global Coverage</span>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div style="margin:20px 0 24px;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(107,33,168,.15);">
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&q=80" alt="Google Gemma 4 AI Model Review 2026" style="width:100%;height:220px;object-fit:cover;display:block;" loading="eager">
+    </div>
+
+    <!-- KEY STATS BAR -->
+    <div class="stat-grid" style="margin:0 0 24px;">
+      <div class="stat-card"><div class="stat-num">89.4</div><div class="stat-label">MMLU Score (Beats GPT-4o)</div></div>
+      <div class="stat-card"><div class="stat-num">FREE</div><div class="stat-label">Zero Cost, Open Weight</div></div>
+      <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Languages Supported</div></div>
+      <div class="stat-card"><div class="stat-num">128K</div><div class="stat-label">Context Window</div></div>
     </div>
 
     <!-- SHARE BAR -->
@@ -400,6 +415,13 @@
         <li><a href="#faq">FAQ</a></li>
       </ol>
     </div>
+  </div>
+
+  <!-- AD AFTER HERO -->
+  <div class="ad-wrap" style="padding:0;margin:0 0 32px;">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
   <div class="content">
