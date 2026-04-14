@@ -146,13 +146,14 @@ header{position:sticky;top:0;z-index:200;height:64px;background:rgba(14,0,38,.97
 .gold-section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-bottom:8px;}
 .gold-section-title span{background:linear-gradient(135deg,#D4AF37,#F5D06B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .gold-section-sub{color:rgba(255,255,255,.45);font-size:.93rem;margin-bottom:40px;}
-.gold-city-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.gold-city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;} /* Changed to 4 columns for better fit of 7 cards */
 @media(max-width:900px){.gold-city-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:600px){.gold-city-grid{grid-template-columns:repeat(2,1fr);}}
 .gold-city-card{background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(212,175,55,.25);border-radius:16px;padding:20px 16px;text-align:center;text-decoration:none;transition:all .25s;position:relative;overflow:hidden;}
 .gold-city-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .gold-city-card:hover{border-color:rgba(212,175,55,.6);transform:translateY(-4px);box-shadow:0 12px 32px rgba(212,175,55,.15);}
-.gold-city-card.featured{border-color:rgba(212,175,55,.5);background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.05));}
+.gold-city-card.featured{grid-column: 1 / -1; border-color:rgba(212,175,55,.5);background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.05));} /* Featured spans full width */
+@media(min-width:601px){ .gold-city-card.featured { grid-column: auto; } } /* Reset on larger screens */
 .gold-city-emoji{font-size:28px;margin-bottom:10px;display:block;}
 .gold-city-name{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:800;color:#fff;margin-bottom:4px;}
 .gold-city-desc{font-size:.76rem;color:rgba(212,175,55,.65);font-weight:500;}
@@ -233,6 +234,8 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
     <a href="gold-rate-lahore.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🌸</span>Lahore</a>
     <a href="gold-rate-islamabad.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏛️</span>Islamabad</a>
     <a href="gold-rate-rawalpindi.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏰</span>Rawalpindi</a>
+    <a href="gold-rate-faisalabad.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏭</span>Faisalabad</a>
+    <a href="gold-rate-multan.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🌾</span>Multan</a>
   </div>
   <div class="sb-divider"></div>
   <div class="sb-section">
@@ -283,7 +286,7 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
     <a class="cat-card" href="#tools" data-cat="calc"><div class="cat-icon-wrap">🧮</div><div class="cat-name">Calculators</div><div class="cat-count">11 tools</div></a>
     <a class="cat-card" href="#tools" data-cat="dev"><div class="cat-icon-wrap">⚙️</div><div class="cat-name">Developer</div><div class="cat-count">9 tools</div></a>
     <a class="cat-card" href="#tools" data-cat="ai"><div class="cat-icon-wrap">🤖</div><div class="cat-name">AI Tools</div><div class="cat-count">6 tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="finance"><div class="cat-icon-wrap">💰</div><div class="cat-name">Finance</div><div class="cat-count">9 tools</div></a>
+    <a class="cat-card" href="#tools" data-cat="finance"><div class="cat-icon-wrap">💰</div><div class="cat-name">Finance</div><div class="cat-count">11 tools</div></a>
   </div>
 </section>
 
@@ -322,6 +325,18 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
         <span class="gold-city-emoji">🏰</span>
         <div class="gold-city-name">Rawalpindi</div>
         <div class="gold-city-desc">Raja Bazaar · Saddar</div>
+        <div class="gold-city-badge">LIVE</div>
+      </a>
+      <a href="gold-rate-faisalabad.html" class="gold-city-card">
+        <span class="gold-city-emoji">🏭</span>
+        <div class="gold-city-name">Faisalabad</div>
+        <div class="gold-city-desc">Aminpur Bazaar · D Ground</div>
+        <div class="gold-city-badge">LIVE</div>
+      </a>
+      <a href="gold-rate-multan.html" class="gold-city-card">
+        <span class="gold-city-emoji">🌾</span>
+        <div class="gold-city-name">Multan</div>
+        <div class="gold-city-desc">Hussain Agahi · Gulgasht</div>
         <div class="gold-city-badge">LIVE</div>
       </a>
     </div>
@@ -375,7 +390,7 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   <p>Toolyfi's AI section is powered by real AI models, not simple scripts. The <a href="ai-assistant.html">AI Assistant</a> uses Gemma 4 to help users write SEO articles, rewrite content, generate meta descriptions and chat through ideas — all without signing up. The <a href="ai-image-generator.html">AI Image Generator</a> supports nine different artistic styles and produces unlimited images free of charge. For researchers and academics, the <a href="ai-text-detector.html">AI Text Detector</a> checks whether a piece of writing was produced by ChatGPT, Claude, Gemini or a human.</p>
 
   <h3>Finance Tools & Live Gold Rates</h3>
-  <p>The finance category is built around practical, everyday money tasks. The <a href="invoice-generator.html">Invoice Generator</a> lets freelancers and small businesses create professional PDF invoices in under two minutes. The <a href="currency-converter.html">Currency Converter</a> supports over 150 live currencies. The <a href="tax-refund-tracker.html">Tax Refund Tracker</a> helps US taxpayers check IRS refund status and PATH Act eligibility. And for Pakistani users, Toolyfi's <a href="gold-rate-pakistan.html">Gold Rate Pakistan</a> section provides live 24K, 22K, 21K and 18K gold prices for <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, and <a href="gold-rate-rawalpindi.html">Rawalpindi</a> — updated daily with a free gold calculator on every city page.</p>
+  <p>The finance category is built around practical, everyday money tasks. The <a href="invoice-generator.html">Invoice Generator</a> lets freelancers and small businesses create professional PDF invoices in under two minutes. The <a href="currency-converter.html">Currency Converter</a> supports over 150 live currencies. The <a href="tax-refund-tracker.html">Tax Refund Tracker</a> helps US taxpayers check IRS refund status and PATH Act eligibility. And for Pakistani users, Toolyfi's <a href="gold-rate-pakistan.html">Gold Rate Pakistan</a> section provides live 24K, 22K, 21K and 18K gold prices for <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="gold-rate-faisalabad.html">Faisalabad</a>, and <a href="gold-rate-multan.html">Multan</a> — updated daily with a free gold calculator on every city page.</p>
 
   <h2>Why "No Sign Up" Matters</h2>
   <p>Most online tool websites require an account before you can access their features. This creates friction, wastes time and often leads to unwanted marketing emails. Toolyfi believes that free tools should be genuinely free — no email address, no password, no waiting for a verification link. Every single tool on the platform works the moment you land on the page.</p>
@@ -395,7 +410,7 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   <p>Yes. Every tool on Toolyfi is fully responsive and works on smartphones, tablets and desktop browsers. The interface adapts automatically to your screen size.</p>
 
   <h3>Where can I check live gold rate in Pakistan?</h3>
-  <p>Toolyfi offers dedicated live gold rate pages for all major Pakistani cities — <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, and <a href="gold-rate-rawalpindi.html">Rawalpindi</a> — with a free calculator, karat tabs (24K, 22K, 21K, 18K), and Sarafa Bazaar information. All rates are updated daily.</p>
+  <p>Toolyfi offers dedicated live gold rate pages for all major Pakistani cities — <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="gold-rate-faisalabad.html">Faisalabad</a>, and <a href="gold-rate-multan.html">Multan</a> — with a free calculator, karat tabs (24K, 22K, 21K, 18K), and Sarafa Bazaar information. All rates are updated daily.</p>
 
   <h3>How often are new tools added?</h3>
   <p>New tools are added regularly based on user requests. The platform currently offers over 48 tools across five categories, with more in development.</p>
@@ -417,6 +432,8 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
       <a href="gold-rate-lahore.html">Lahore</a>
       <a href="gold-rate-islamabad.html">Islamabad</a>
       <a href="gold-rate-rawalpindi.html">Rawalpindi</a>
+      <a href="gold-rate-faisalabad.html">Faisalabad</a>
+      <a href="gold-rate-multan.html">Multan</a>
       <a href="ai-assistant.html">AI Assistant</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -483,6 +500,8 @@ const TOOLS = [
   {name:'Gold Rate Lahore',icon:'🌸',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live 24K 22K gold rate in Lahore. Anarkali Sarafa rates + calculator.',href:'gold-rate-lahore.html'},
   {name:'Gold Rate Islamabad',icon:'🏛️',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Islamabad. Aabpara & Jinnah Super rates daily.',href:'gold-rate-islamabad.html'},
   {name:'Gold Rate Rawalpindi',icon:'🏰',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Rawalpindi. Raja Bazaar Sarafa rates + calculator.',href:'gold-rate-rawalpindi.html'},
+  {name:'Gold Rate Faisalabad',icon:'🏭',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Faisalabad. Aminpur Bazaar Sarafa rates + calculator.',href:'gold-rate-faisalabad.html'},
+  {name:'Gold Rate Multan',icon:'🌾',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Multan. Hussain Agahi Sarafa rates + calculator.',href:'gold-rate-multan.html'},
 ];
 
 const PAGE_SIZE = 8;
