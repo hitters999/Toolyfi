@@ -61,13 +61,21 @@ body{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;b
 header{position:sticky;top:0;z-index:200;height:64px;background:rgba(14,0,38,.97);backdrop-filter:blur(24px);border-bottom:1px solid rgba(168,85,247,.15);}
 .nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:16px;}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.logo-gem{width:34px;height:34px;background:var(--grad);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;position:relative;overflow:hidden;}
-.logo-gem::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,.35);transform:skewX(-20deg);animation:gem 3s ease-in-out infinite;}
-@keyframes gem{0%,70%,100%{left:-60%;opacity:0}40%{left:160%;opacity:1}}
-.logo-word{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:0;}
+
+/* LOGO GEM - Enhanced Shining */
+.logo-gem{width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#e879f9,#a855f7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;position:relative;overflow:hidden;box-shadow:0 0 18px rgba(168,85,247,.55),0 0 36px rgba(168,85,247,.25);}
+.logo-gem::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,#c084fc,#f0abfc,#818cf8,#c084fc);border-radius:12px;z-index:-1;animation:gemBorder 3s linear infinite;background-size:200% 200%;}
+.logo-gem::after{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.5);transform:skewX(-18deg);animation:gemShine 2.8s ease-in-out infinite;}
+@keyframes gemShine{0%,65%,100%{left:-80%;opacity:0}50%{left:180%;opacity:1}}
+@keyframes gemBorder{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* LOGO WORD - Shining gradient text */
+.logo-word{font-family:'Space Grotesk',sans-serif;font-size:1.22rem;font-weight:800;background:linear-gradient(90deg,#fff 0%,#e9d5ff 30%,#fff 60%,#c4b5fd 80%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:logoShine 3s linear infinite;letter-spacing:.3px;}
+@keyframes logoShine{0%{background-position:0% center}100%{background-position:200% center}}
+
 .logo-badge{font-size:.66rem;font-weight:700;background:rgba(168,85,247,.2);color:#d8b4fe;border:1px solid rgba(168,85,247,.3);padding:2px 8px;border-radius:20px;letter-spacing:.6px;text-transform:uppercase;}
 .nav-right{display:flex;align-items:center;gap:10px;}
-.gold-nav-btn{background:linear-gradient(135deg,#B8860B,#D4AF37,#F5D06B);color:#1a0a00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;padding:7px 16px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:opacity .2s;white-space:nowrap;}
+.gold-nav-btn{background:linear-gradient(135deg,#B8860B,#D4AF37,#F5D06B);color:#1a0a00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;padding:7px 16px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:opacity .2s;white-space:nowrap;box-shadow:0 0 12px rgba(212,175,55,.35);}
 .gold-nav-btn:hover{opacity:.88;}
 .hamburger{width:38px;height:38px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;transition:background .2s;}
 .hamburger:hover{background:rgba(255,255,255,.15);}
@@ -104,28 +112,111 @@ header{position:sticky;top:0;z-index:200;height:64px;background:rgba(14,0,38,.97
 .stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
 .stat-label{font-size:.75rem;color:rgba(255,255,255,.38);letter-spacing:.5px;margin-top:4px;text-transform:uppercase;}
 
-/* CATEGORIES */
-.categories-section{max-width:1200px;margin:0 auto;padding:64px 24px 0;}
+/* ===========================
+   CATEGORIES — LIGHT & VIBRANT
+   =========================== */
+.categories-section{
+  background:linear-gradient(160deg,#ffffff 0%,#faf5ff 40%,#f5f0ff 70%,#fdf4ff 100%);
+  padding:72px 24px 0;
+  position:relative;
+  overflow:hidden;
+}
+.categories-section::before{
+  content:'';
+  position:absolute;
+  top:-120px;right:-120px;
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(168,85,247,.12),transparent 68%);
+  pointer-events:none;
+}
+.categories-section::after{
+  content:'';
+  position:absolute;
+  bottom:-80px;left:-80px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(232,121,249,.10),transparent 68%);
+  pointer-events:none;
+}
+.categories-section-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+
+/* Section heading pill */
+.section-eyebrow-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(232,121,249,.08));
+  border:1.5px solid rgba(168,85,247,.25);
+  color:var(--p2);font-family:'Space Grotesk',sans-serif;
+  font-size:.7rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;padding:5px 14px;border-radius:50px;
+  margin-bottom:14px;
+}
 .section-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--p3);margin-bottom:8px;}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;color:var(--t1);letter-spacing:0;margin-bottom:6px;}
 .section-sub{font-size:.93rem;color:var(--t3);margin-bottom:36px;}
+
+/* Toolyfi brand banner inside categories */
+.toolyfi-brand-banner{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  background:linear-gradient(135deg,#f5f0ff,#fdf4ff,#f0e8ff);
+  border:1.5px solid rgba(168,85,247,.2);
+  border-radius:20px;padding:18px 28px;margin-bottom:36px;
+  position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(168,85,247,.08);
+}
+.toolyfi-brand-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(168,85,247,.05) 50%,transparent 100%);
+  animation:bannerShimmer 3s ease-in-out infinite;
+}
+@keyframes bannerShimmer{0%,100%{opacity:0}50%{opacity:1}}
+.brand-gem-big{
+  width:52px;height:52px;
+  background:linear-gradient(135deg,#a855f7,#e879f9);
+  border-radius:15px;display:flex;align-items:center;justify-content:center;
+  font-size:24px;flex-shrink:0;
+  box-shadow:0 6px 20px rgba(168,85,247,.4),0 0 0 3px rgba(168,85,247,.15);
+  position:relative;overflow:hidden;
+}
+.brand-gem-big::after{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.45);transform:skewX(-18deg);animation:gemShine 2.8s ease-in-out infinite;}
+.brand-text-block{}
+.brand-name{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,#7c3aed,#a855f7,#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;}
+.brand-tagline{font-size:.82rem;color:var(--t3);font-weight:500;margin-top:2px;}
+.brand-stats-mini{display:flex;gap:16px;margin-left:auto;flex-shrink:0;}
+.brand-stat{text-align:center;}
+.brand-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;color:var(--p2);}
+.brand-stat-lbl{font-size:.65rem;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;}
+
 .cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
-.cat-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:20px 10px 16px;text-align:center;cursor:pointer;transition:all .22s;text-decoration:none;display:block;}
-.cat-card:hover,.cat-card.active{border-color:var(--p3);background:#faf5ff;box-shadow:0 0 0 3px rgba(168,85,247,.1);transform:translateY(-2px);}
-.cat-icon-wrap{width:46px;height:46px;border-radius:12px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;transition:background .22s;}
-.cat-card.active .cat-icon-wrap{background:var(--grad);}
+.cat-card{
+  background:#ffffff;
+  border:1.5px solid #ede9fe;
+  border-radius:14px;padding:20px 10px 16px;
+  text-align:center;cursor:pointer;
+  transition:all .22s;text-decoration:none;display:block;
+  box-shadow:0 2px 8px rgba(124,58,237,.05);
+}
+.cat-card:hover,.cat-card.active{
+  border-color:var(--p3);
+  background:linear-gradient(135deg,#faf5ff,#fdf4ff);
+  box-shadow:0 0 0 3px rgba(168,85,247,.12),0 6px 20px rgba(168,85,247,.12);
+  transform:translateY(-3px);
+}
+.cat-icon-wrap{width:48px;height:48px;border-radius:14px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 10px;transition:all .22s;box-shadow:0 2px 8px rgba(168,85,247,.12);}
+.cat-card.active .cat-icon-wrap{background:var(--grad);box-shadow:0 4px 14px rgba(168,85,247,.35);}
 .cat-name{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;color:var(--t1);margin-bottom:2px;}
 .cat-count{font-size:.72rem;color:var(--t3);}
 
-/* TOOLS */
-.tools-section{max-width:1200px;margin:48px auto 0;padding:0 24px 80px;}
+/* TOOLS SECTION — Light */
+.tools-section{
+  background:linear-gradient(180deg,#faf5ff 0%,#ffffff 100%);
+  max-width:100%;padding:48px 0 80px;
+}
+.tools-section-inner{max-width:1200px;margin:0 auto;padding:0 24px;}
 .tools-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;}
 .filter-row{display:flex;gap:7px;flex-wrap:wrap;}
-.filter-btn{border:1.5px solid var(--border2);background:var(--surface);color:var(--t2);font-family:'Plus Jakarta Sans',sans-serif;font-size:.83rem;font-weight:600;padding:7px 15px;border-radius:50px;cursor:pointer;transition:all .2s;}
+.filter-btn{border:1.5px solid var(--border2);background:#ffffff;color:var(--t2);font-family:'Plus Jakarta Sans',sans-serif;font-size:.83rem;font-weight:600;padding:7px 15px;border-radius:50px;cursor:pointer;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.04);}
 .filter-btn:hover{border-color:var(--p3);color:var(--p3);}
-.filter-btn.active{background:var(--p2);border-color:var(--p2);color:#fff;}
+.filter-btn.active{background:var(--p2);border-color:var(--p2);color:#fff;box-shadow:0 4px 12px rgba(109,40,217,.25);}
 .tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.tool-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 20px 20px;transition:all .22s;position:relative;}
+.tool-card{background:#ffffff;border:1.5px solid #ede9fe;border-radius:var(--radius);padding:22px 20px 20px;transition:all .22s;position:relative;box-shadow:0 2px 10px rgba(124,58,237,.05);}
 .tool-card:hover{border-color:var(--p3);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
 .tool-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
 .tool-icon{width:44px;height:44px;border-radius:11px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:20px;}
@@ -135,31 +226,95 @@ header{position:sticky;top:0;z-index:200;height:64px;background:rgba(14,0,38,.97
 .tool-link{display:inline-flex;align-items:center;gap:5px;font-size:.84rem;font-weight:700;color:var(--p2);text-decoration:none;transition:gap .2s;}
 .tool-link:hover{gap:8px;}
 
-/* GOLD RATE SECTION */
-.gold-section{background:linear-gradient(135deg,#0A0A0F 0%,#13131A 60%,#1a1040 100%);padding:64px 24px;position:relative;overflow:hidden;}
-.gold-section::before{content:'';position:absolute;top:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,175,55,.12),transparent 70%);border-radius:50%;}
-.gold-section::after{content:'';position:absolute;bottom:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(108,71,255,.15),transparent 70%);border-radius:50%;}
+/* ===========================
+   GOLD RATE SECTION — LIGHT WARM THEME
+   =========================== */
+.gold-section{
+  background:linear-gradient(160deg,#FFFDF5 0%,#FFF8E7 45%,#FFFBF0 80%,#FFF3D0 100%);
+  padding:72px 24px;position:relative;overflow:hidden;
+  border-top:1px solid rgba(212,175,55,.2);
+  border-bottom:1px solid rgba(212,175,55,.2);
+}
+.gold-section::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(212,175,55,.2),transparent 68%);
+  border-radius:50%;
+}
+.gold-section::after{
+  content:'';position:absolute;bottom:-80px;left:-80px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(184,134,11,.12),transparent 68%);
+  border-radius:50%;
+}
 .gold-section-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-.gold-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,.7);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-.live-dot-gold{width:8px;height:8px;background:#D4AF37;border-radius:50%;animation:blink 1s infinite;display:inline-block;}
+.gold-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold3);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.live-dot-gold{width:8px;height:8px;background:#D4AF37;border-radius:50%;animation:blink 1s infinite;display:inline-block;box-shadow:0 0 6px rgba(212,175,55,.7);}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0.3}}
-.gold-section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;margin-bottom:8px;}
-.gold-section-title span{background:linear-gradient(135deg,#D4AF37,#F5D06B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gold-section-sub{color:rgba(255,255,255,.45);font-size:.93rem;margin-bottom:40px;}
-.gold-city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;} /* Changed to 4 columns for better fit of 7 cards */
+.gold-section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#1a0a00;margin-bottom:8px;}
+.gold-section-title span{background:linear-gradient(135deg,#B8860B,#D4AF37,#F5C518);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gold-section-sub{color:rgba(90,60,10,.6);font-size:.93rem;margin-bottom:40px;}
+
+/* Gold city cards — Light */
+.gold-city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 @media(max-width:900px){.gold-city-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:600px){.gold-city-grid{grid-template-columns:repeat(2,1fr);}}
-.gold-city-card{background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(212,175,55,.25);border-radius:16px;padding:20px 16px;text-align:center;text-decoration:none;transition:all .25s;position:relative;overflow:hidden;}
-.gold-city-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
-.gold-city-card:hover{border-color:rgba(212,175,55,.6);transform:translateY(-4px);box-shadow:0 12px 32px rgba(212,175,55,.15);}
-.gold-city-card.featured{grid-column: 1 / -1; border-color:rgba(212,175,55,.5);background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(212,175,55,.05));} /* Featured spans full width */
-@media(min-width:601px){ .gold-city-card.featured { grid-column: auto; } } /* Reset on larger screens */
-.gold-city-emoji{font-size:28px;margin-bottom:10px;display:block;}
-.gold-city-name{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:800;color:#fff;margin-bottom:4px;}
-.gold-city-desc{font-size:.76rem;color:rgba(212,175,55,.65);font-weight:500;}
-.gold-city-badge{display:inline-block;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:var(--gold2);font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-top:8px;}
-.gold-all-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:linear-gradient(135deg,#B8860B,#D4AF37,#F5D06B);color:#0A0A0F;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:800;padding:12px 28px;border-radius:50px;text-decoration:none;transition:all .2s;}
-.gold-all-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35);}
+
+.gold-city-card{
+  background:linear-gradient(145deg,#ffffff,#FFFBF0);
+  border:1.5px solid rgba(212,175,55,.35);
+  border-radius:18px;padding:22px 16px;text-align:center;
+  text-decoration:none;transition:all .25s;
+  position:relative;overflow:hidden;
+  box-shadow:0 4px 16px rgba(212,175,55,.10);
+}
+.gold-city-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,#D4AF37,transparent);
+}
+.gold-city-card:hover{
+  border-color:rgba(212,175,55,.7);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(212,175,55,.25);
+  background:linear-gradient(145deg,#FFFBF0,#FFF3D0);
+}
+.gold-city-card.featured{
+  border-color:rgba(212,175,55,.6);
+  background:linear-gradient(145deg,#FFF8E7,#FFF0C8);
+  box-shadow:0 6px 24px rgba(212,175,55,.2);
+}
+@media(max-width:600px){.gold-city-card.featured{grid-column:1/-1;}}
+@media(min-width:601px){.gold-city-card.featured{grid-column:auto;}}
+.gold-city-emoji{font-size:30px;margin-bottom:10px;display:block;}
+.gold-city-name{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:800;color:#1a0a00;margin-bottom:4px;}
+.gold-city-desc{font-size:.76rem;color:rgba(120,80,10,.7);font-weight:500;}
+.gold-city-badge{display:inline-block;background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(245,208,107,.15));border:1px solid rgba(212,175,55,.45);color:var(--gold3);font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-top:8px;}
+.gold-all-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:linear-gradient(135deg,#B8860B,#D4AF37,#F5D06B);color:#0A0A0F;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:800;padding:13px 30px;border-radius:50px;text-decoration:none;transition:all .2s;box-shadow:0 6px 20px rgba(212,175,55,.35);}
+.gold-all-link:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,.45);}
+
+/* GOLD PAGES INDEX — SEO Section */
+.gold-index-section{
+  background:linear-gradient(160deg,#FFFDF8,#FFF9ED);
+  border-top:1px solid rgba(212,175,55,.15);
+  padding:56px 24px;
+}
+.gold-index-inner{max-width:1100px;margin:0 auto;}
+.gold-index-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;color:#1a0a00;margin-bottom:6px;}
+.gold-index-sub{font-size:.88rem;color:rgba(90,60,10,.6);margin-bottom:32px;}
+.gold-index-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:900px){.gold-index-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:580px){.gold-index-grid{grid-template-columns:repeat(2,1fr);}}
+.gold-index-card{
+  background:#fff;border:1px solid rgba(212,175,55,.25);
+  border-radius:14px;padding:16px 14px;
+  text-decoration:none;display:flex;align-items:center;gap:10px;
+  transition:all .2s;box-shadow:0 2px 8px rgba(212,175,55,.06);
+}
+.gold-index-card:hover{border-color:rgba(212,175,55,.55);transform:translateY(-2px);box-shadow:0 6px 18px rgba(212,175,55,.15);}
+.gold-index-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#FFF3D0,#FFF8E7);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid rgba(212,175,55,.2);}
+.gold-index-info{}
+.gold-index-city{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;color:#1a0a00;margin-bottom:1px;}
+.gold-index-url{font-size:.7rem;color:rgba(120,80,10,.55);font-family:monospace;}
 
 /* SEO ARTICLE */
 .article-section{max-width:860px;margin:0 auto;padding:0 24px 100px;}
@@ -186,6 +341,7 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
 @media(max-width:960px){
   .cat-grid{grid-template-columns:repeat(3,1fr);}
   .tools-grid{grid-template-columns:repeat(2,1fr);}
+  .brand-stats-mini{display:none;}
 }
 @media(max-width:640px){
   .hero{padding:52px 20px 60px;}
@@ -196,9 +352,11 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   .nav-inner{padding:0 16px;}
   .logo-badge{display:none;}
   .categories-section,.tools-section{padding-left:16px;padding-right:16px;}
+  .toolyfi-brand-banner{flex-wrap:wrap;gap:10px;padding:16px 18px;}
   .tools-header{flex-direction:column;align-items:flex-start;}
   .article-section{padding:0 16px 80px;}
   .article-section h2{font-size:1.2rem;letter-spacing:0;}
+  .gold-index-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:400px){
   .cat-grid{grid-template-columns:repeat(2,1fr);}
@@ -234,8 +392,8 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
     <a href="gold-rate-lahore.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🌸</span>Lahore</a>
     <a href="gold-rate-islamabad.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏛️</span>Islamabad</a>
     <a href="gold-rate-rawalpindi.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏰</span>Rawalpindi</a>
-    <a href="gold-rate-faisalabad.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏭</span>Faisalabad</a>
-    <a href="gold-rate-multan.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🌾</span>Multan</a>
+    <a href="faisalabad-gold-rate.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🏭</span>Faisalabad</a>
+    <a href="multan-gold-rate.html" class="sb-link"><span class="sb-icon" style="background:#FFF8E7">🌾</span>Multan</a>
   </div>
   <div class="sb-divider"></div>
   <div class="sb-section">
@@ -276,21 +434,39 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   </div>
 </section>
 
-<!-- CATEGORIES -->
+<!-- CATEGORIES — LIGHT & VIBRANT -->
 <section class="categories-section" id="categories">
-  <div class="section-eyebrow">Browse by Category</div>
-  <h2 class="section-title">Pick a category and find exactly what you need</h2>
-  <div class="cat-grid">
-    <a class="cat-card active" href="#tools" data-cat="all"><div class="cat-icon-wrap">🔧</div><div class="cat-name">All Tools</div><div class="cat-count">48+ tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="text"><div class="cat-icon-wrap">📝</div><div class="cat-name">Text Tools</div><div class="cat-count">7 tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="calc"><div class="cat-icon-wrap">🧮</div><div class="cat-name">Calculators</div><div class="cat-count">11 tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="dev"><div class="cat-icon-wrap">⚙️</div><div class="cat-name">Developer</div><div class="cat-count">9 tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="ai"><div class="cat-icon-wrap">🤖</div><div class="cat-name">AI Tools</div><div class="cat-count">6 tools</div></a>
-    <a class="cat-card" href="#tools" data-cat="finance"><div class="cat-icon-wrap">💰</div><div class="cat-name">Finance</div><div class="cat-count">11 tools</div></a>
+  <div class="categories-section-inner">
+
+    <!-- Toolyfi Brand Banner -->
+    <div class="toolyfi-brand-banner">
+      <div class="brand-gem-big">🛠️</div>
+      <div class="brand-text-block">
+        <div class="brand-name">Toolyfi</div>
+        <div class="brand-tagline">Your all-in-one free toolkit — no login, no download</div>
+      </div>
+      <div class="brand-stats-mini">
+        <div class="brand-stat"><div class="brand-stat-num">48+</div><div class="brand-stat-lbl">Tools</div></div>
+        <div class="brand-stat"><div class="brand-stat-num">5K+</div><div class="brand-stat-lbl">Users</div></div>
+        <div class="brand-stat"><div class="brand-stat-num">100%</div><div class="brand-stat-lbl">Free</div></div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Browse by Category</div>
+    <h2 class="section-title">Pick a category and find exactly what you need</h2>
+    <p class="section-sub">48+ tools across 5 categories — all free, all instant, no account needed</p>
+    <div class="cat-grid">
+      <a class="cat-card active" href="#tools" data-cat="all"><div class="cat-icon-wrap">🔧</div><div class="cat-name">All Tools</div><div class="cat-count">48+ tools</div></a>
+      <a class="cat-card" href="#tools" data-cat="text"><div class="cat-icon-wrap">📝</div><div class="cat-name">Text Tools</div><div class="cat-count">7 tools</div></a>
+      <a class="cat-card" href="#tools" data-cat="calc"><div class="cat-icon-wrap">🧮</div><div class="cat-name">Calculators</div><div class="cat-count">11 tools</div></a>
+      <a class="cat-card" href="#tools" data-cat="dev"><div class="cat-icon-wrap">⚙️</div><div class="cat-name">Developer</div><div class="cat-count">9 tools</div></a>
+      <a class="cat-card" href="#tools" data-cat="ai"><div class="cat-icon-wrap">🤖</div><div class="cat-name">AI Tools</div><div class="cat-count">6 tools</div></a>
+      <a class="cat-card" href="#tools" data-cat="finance"><div class="cat-icon-wrap">💰</div><div class="cat-name">Finance</div><div class="cat-count">11 tools</div></a>
+    </div>
   </div>
 </section>
 
-<!-- GOLD RATE SECTION -->
+<!-- GOLD RATE SECTION — LIGHT WARM -->
 <section class="gold-section" id="gold-rates">
   <div class="gold-section-inner">
     <div class="gold-eyebrow"><span class="live-dot-gold"></span> Live Rates · Updated Daily</div>
@@ -327,13 +503,13 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
         <div class="gold-city-desc">Raja Bazaar · Saddar</div>
         <div class="gold-city-badge">LIVE</div>
       </a>
-      <a href="gold-rate-faisalabad.html" class="gold-city-card">
+      <a href="faisalabad-gold-rate.html" class="gold-city-card">
         <span class="gold-city-emoji">🏭</span>
         <div class="gold-city-name">Faisalabad</div>
         <div class="gold-city-desc">Aminpur Bazaar · D Ground</div>
         <div class="gold-city-badge">LIVE</div>
       </a>
-      <a href="gold-rate-multan.html" class="gold-city-card">
+      <a href="multan-gold-rate.html" class="gold-city-card">
         <span class="gold-city-emoji">🌾</span>
         <div class="gold-city-name">Multan</div>
         <div class="gold-city-desc">Hussain Agahi · Gulgasht</div>
@@ -346,23 +522,85 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
 
 <!-- TOOLS -->
 <section class="tools-section" id="tools">
-  <div class="tools-header">
-    <div>
-      <div class="section-eyebrow">All Free Tools</div>
-      <h2 class="section-title" style="margin-bottom:0">Click any tool — no login, no download</h2>
+  <div class="tools-section-inner">
+    <div class="tools-header">
+      <div>
+        <div class="section-eyebrow">All Free Tools</div>
+        <h2 class="section-title" style="margin-bottom:0">Click any tool — no login, no download</h2>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-cat="all">All</button>
+        <button class="filter-btn" data-cat="text">Text</button>
+        <button class="filter-btn" data-cat="calc">Calc</button>
+        <button class="filter-btn" data-cat="dev">Dev</button>
+        <button class="filter-btn" data-cat="ai">AI</button>
+        <button class="filter-btn" data-cat="finance">Finance</button>
+      </div>
     </div>
-    <div class="filter-row">
-      <button class="filter-btn active" data-cat="all">All</button>
-      <button class="filter-btn" data-cat="text">Text</button>
-      <button class="filter-btn" data-cat="calc">Calc</button>
-      <button class="filter-btn" data-cat="dev">Dev</button>
-      <button class="filter-btn" data-cat="ai">AI</button>
-      <button class="filter-btn" data-cat="finance">Finance</button>
+    <div class="tools-grid" id="toolsGrid"></div>
+    <div style="text-align:center;margin-top:32px;">
+      <button id="loadMoreBtn" onclick="loadMore()" style="display:none;background:var(--grad);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;padding:13px 36px;border:none;border-radius:50px;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(168,85,247,.35);">Load More Tools ↓</button>
     </div>
   </div>
-  <div class="tools-grid" id="toolsGrid"></div>
-  <div style="text-align:center;margin-top:32px;">
-    <button id="loadMoreBtn" onclick="loadMore()" style="display:none;background:var(--grad);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;padding:13px 36px;border:none;border-radius:50px;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(168,85,247,.35);">Load More Tools ↓</button>
+</section>
+
+<!-- GOLD PAGES INDEX — SEO -->
+<section class="gold-index-section" id="gold-pages-index">
+  <div class="gold-index-inner">
+    <div class="gold-eyebrow" style="color:var(--gold3);margin-bottom:6px;"><span class="live-dot-gold"></span> Gold Rate Pages Index</div>
+    <h2 class="gold-index-title">📍 All Pakistan Gold Rate Pages</h2>
+    <p class="gold-index-sub">Direct links to every city gold rate page — 24K, 22K, 21K & 18K rates with free calculator</p>
+    <div class="gold-index-grid">
+      <a href="gold-rate-pakistan.html" class="gold-index-card">
+        <div class="gold-index-icon">🇵🇰</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Pakistan</div>
+          <div class="gold-index-url">gold-rate-pakistan.html</div>
+        </div>
+      </a>
+      <a href="gold-rate-karachi.html" class="gold-index-card">
+        <div class="gold-index-icon">🌊</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Karachi</div>
+          <div class="gold-index-url">gold-rate-karachi.html</div>
+        </div>
+      </a>
+      <a href="gold-rate-lahore.html" class="gold-index-card">
+        <div class="gold-index-icon">🌸</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Lahore</div>
+          <div class="gold-index-url">gold-rate-lahore.html</div>
+        </div>
+      </a>
+      <a href="gold-rate-islamabad.html" class="gold-index-card">
+        <div class="gold-index-icon">🏛️</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Islamabad</div>
+          <div class="gold-index-url">gold-rate-islamabad.html</div>
+        </div>
+      </a>
+      <a href="gold-rate-rawalpindi.html" class="gold-index-card">
+        <div class="gold-index-icon">🏰</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Rawalpindi</div>
+          <div class="gold-index-url">gold-rate-rawalpindi.html</div>
+        </div>
+      </a>
+      <a href="faisalabad-gold-rate.html" class="gold-index-card">
+        <div class="gold-index-icon">🏭</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Faisalabad</div>
+          <div class="gold-index-url">faisalabad-gold-rate.html</div>
+        </div>
+      </a>
+      <a href="multan-gold-rate.html" class="gold-index-card">
+        <div class="gold-index-icon">🌾</div>
+        <div class="gold-index-info">
+          <div class="gold-index-city">Gold Rate Multan</div>
+          <div class="gold-index-url">multan-gold-rate.html</div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -389,8 +627,8 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   <h3>AI Tools</h3>
   <p>Toolyfi's AI section is powered by real AI models, not simple scripts. The <a href="ai-assistant.html">AI Assistant</a> uses Gemma 4 to help users write SEO articles, rewrite content, generate meta descriptions and chat through ideas — all without signing up. The <a href="ai-image-generator.html">AI Image Generator</a> supports nine different artistic styles and produces unlimited images free of charge. For researchers and academics, the <a href="ai-text-detector.html">AI Text Detector</a> checks whether a piece of writing was produced by ChatGPT, Claude, Gemini or a human.</p>
 
-  <h3>Finance Tools & Live Gold Rates</h3>
-  <p>The finance category is built around practical, everyday money tasks. The <a href="invoice-generator.html">Invoice Generator</a> lets freelancers and small businesses create professional PDF invoices in under two minutes. The <a href="currency-converter.html">Currency Converter</a> supports over 150 live currencies. The <a href="tax-refund-tracker.html">Tax Refund Tracker</a> helps US taxpayers check IRS refund status and PATH Act eligibility. And for Pakistani users, Toolyfi's <a href="gold-rate-pakistan.html">Gold Rate Pakistan</a> section provides live 24K, 22K, 21K and 18K gold prices for <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="gold-rate-faisalabad.html">Faisalabad</a>, and <a href="gold-rate-multan.html">Multan</a> — updated daily with a free gold calculator on every city page.</p>
+  <h3>Finance Tools &amp; Live Gold Rates</h3>
+  <p>The finance category is built around practical, everyday money tasks. The <a href="invoice-generator.html">Invoice Generator</a> lets freelancers and small businesses create professional PDF invoices in under two minutes. The <a href="currency-converter.html">Currency Converter</a> supports over 150 live currencies. The <a href="tax-refund-tracker.html">Tax Refund Tracker</a> helps US taxpayers check IRS refund status and PATH Act eligibility. And for Pakistani users, Toolyfi's <a href="gold-rate-pakistan.html">Gold Rate Pakistan</a> section provides live 24K, 22K, 21K and 18K gold prices for <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="faisalabad-gold-rate.html">Faisalabad</a>, and <a href="multan-gold-rate.html">Multan</a> — updated daily with a free gold calculator on every city page.</p>
 
   <h2>Why "No Sign Up" Matters</h2>
   <p>Most online tool websites require an account before you can access their features. This creates friction, wastes time and often leads to unwanted marketing emails. Toolyfi believes that free tools should be genuinely free — no email address, no password, no waiting for a verification link. Every single tool on the platform works the moment you land on the page.</p>
@@ -410,7 +648,7 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
   <p>Yes. Every tool on Toolyfi is fully responsive and works on smartphones, tablets and desktop browsers. The interface adapts automatically to your screen size.</p>
 
   <h3>Where can I check live gold rate in Pakistan?</h3>
-  <p>Toolyfi offers dedicated live gold rate pages for all major Pakistani cities — <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="gold-rate-faisalabad.html">Faisalabad</a>, and <a href="gold-rate-multan.html">Multan</a> — with a free calculator, karat tabs (24K, 22K, 21K, 18K), and Sarafa Bazaar information. All rates are updated daily.</p>
+  <p>Toolyfi offers dedicated live gold rate pages for all major Pakistani cities — <a href="gold-rate-karachi.html">Karachi</a>, <a href="gold-rate-lahore.html">Lahore</a>, <a href="gold-rate-islamabad.html">Islamabad</a>, <a href="gold-rate-rawalpindi.html">Rawalpindi</a>, <a href="faisalabad-gold-rate.html">Faisalabad</a>, and <a href="multan-gold-rate.html">Multan</a> — with a free calculator, karat tabs (24K, 22K, 21K, 18K), and Sarafa Bazaar information. All rates are updated daily.</p>
 
   <h3>How often are new tools added?</h3>
   <p>New tools are added regularly based on user requests. The platform currently offers over 48 tools across five categories, with more in development.</p>
@@ -432,8 +670,8 @@ footer{background:linear-gradient(135deg,#0c001e,#150038);border-top:1px solid r
       <a href="gold-rate-lahore.html">Lahore</a>
       <a href="gold-rate-islamabad.html">Islamabad</a>
       <a href="gold-rate-rawalpindi.html">Rawalpindi</a>
-      <a href="gold-rate-faisalabad.html">Faisalabad</a>
-      <a href="gold-rate-multan.html">Multan</a>
+      <a href="faisalabad-gold-rate.html">Faisalabad</a>
+      <a href="multan-gold-rate.html">Multan</a>
       <a href="ai-assistant.html">AI Assistant</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -500,8 +738,8 @@ const TOOLS = [
   {name:'Gold Rate Lahore',icon:'🌸',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live 24K 22K gold rate in Lahore. Anarkali Sarafa rates + calculator.',href:'gold-rate-lahore.html'},
   {name:'Gold Rate Islamabad',icon:'🏛️',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Islamabad. Aabpara & Jinnah Super rates daily.',href:'gold-rate-islamabad.html'},
   {name:'Gold Rate Rawalpindi',icon:'🏰',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Rawalpindi. Raja Bazaar Sarafa rates + calculator.',href:'gold-rate-rawalpindi.html'},
-  {name:'Gold Rate Faisalabad',icon:'🏭',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Faisalabad. Aminpur Bazaar Sarafa rates + calculator.',href:'gold-rate-faisalabad.html'},
-  {name:'Gold Rate Multan',icon:'🌾',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Multan. Hussain Agahi Sarafa rates + calculator.',href:'gold-rate-multan.html'},
+  {name:'Gold Rate Faisalabad',icon:'🏭',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Faisalabad. Aminpur Bazaar Sarafa rates + calculator.',href:'faisalabad-gold-rate.html'},
+  {name:'Gold Rate Multan',icon:'🌾',cat:'finance',badge:'LIVE',bc:'#d97706',desc:'Live gold rate in Multan. Hussain Agahi Sarafa rates + calculator.',href:'multan-gold-rate.html'},
 ];
 
 const PAGE_SIZE = 8;
