@@ -95,20 +95,20 @@
 
 <style>
   :root {
-    --bg: #0a0a0f;
-    --bg2: #111118;
-    --bg3: #1a1a24;
-    --card: #16161f;
-    --border: #2a2a3a;
-    --accent: #00e5ff;
-    --accent2: #7c3aed;
-    --accent3: #10b981;
-    --text: #e8e8f0;
-    --muted: #6b6b88;
-    --tab-active: #00e5ff;
-    --html-color: #f97316;
-    --css-color: #3b82f6;
-    --js-color: #facc15;
+    --bg: #f9f6ff;
+    --bg2: #f0ebff;
+    --bg3: #e8e0ff;
+    --card: #ffffff;
+    --border: #ddd5f8;
+    --accent: #7c3aed;
+    --accent2: #a855f7;
+    --accent3: #059669;
+    --text: #1e1338;
+    --muted: #6b5e91;
+    --tab-active: #7c3aed;
+    --html-color: #c2410c;
+    --css-color: #1d4ed8;
+    --js-color: #92400e;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -131,7 +131,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10,10,15,0.95);
+    background: rgba(249,246,255,0.95);
     backdrop-filter: blur(12px);
   }
   .nav-logo {
@@ -178,13 +178,13 @@
     transform: translateX(-50%);
     width: 600px;
     height: 400px;
-    background: radial-gradient(ellipse, rgba(0,229,255,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 70%);
     pointer-events: none;
   }
   .hero-badge {
     display: inline-block;
-    background: rgba(0,229,255,0.1);
-    border: 1px solid rgba(0,229,255,0.3);
+    background: rgba(124,58,237,0.08);
+    border: 1px solid rgba(124,58,237,0.25);
     color: var(--accent);
     font-size: 0.75rem;
     font-weight: 600;
@@ -203,6 +203,7 @@
     margin-bottom: 1rem;
   }
   .hero h1 span { color: var(--accent); }
+  .text-accent { color: var(--accent); }
   .hero p {
     color: var(--muted);
     font-size: 1.05rem;
@@ -269,10 +270,10 @@
     transition: all 0.2s;
     color: var(--muted);
   }
-  .tab-btn.html.active { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); color: var(--html-color); }
-  .tab-btn.css.active { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: var(--css-color); }
-  .tab-btn.js.active { background: rgba(250,204,21,0.15); border-color: rgba(250,204,21,0.4); color: var(--js-color); }
-  .tab-btn:not(.active):hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .tab-btn.html.active { background: rgba(194,65,12,0.1); border-color: rgba(194,65,12,0.35); color: var(--html-color); }
+  .tab-btn.css.active { background: rgba(29,78,216,0.1); border-color: rgba(29,78,216,0.35); color: var(--css-color); }
+  .tab-btn.js.active { background: rgba(146,64,14,0.1); border-color: rgba(146,64,14,0.35); color: var(--js-color); }
+  .tab-btn:not(.active):hover { color: var(--text); background: rgba(0,0,0,0.05); }
 
   /* Action buttons */
   .action-btn {
@@ -289,51 +290,43 @@
     align-items: center;
     gap: 0.35rem;
   }
-  .action-btn:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+  .action-btn:hover { background: rgba(0,0,0,0.05); color: var(--text); }
   .action-btn.run {
     background: var(--accent);
-    color: #000;
+    color: #fff;
     border-color: var(--accent);
     font-weight: 700;
   }
-  .action-btn.run:hover { background: #00c8e0; }
-  .action-btn.mobile-active { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.5); color: #a78bfa; }
+  .action-btn.run:hover { background: #6d28d9; }
+  .action-btn.mobile-active { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.4); color: var(--accent); }
 
-  /* Layout */
-  .editor-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 480px;
-  }
-  .editor-panel {
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
+  /* ===== TOOL WIDGET ===== */
+  .editor-wrapper {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 4px 32px rgba(124,58,237,0.10);
   }
-  .preview-panel {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+
+  /* EDITOR TOP */
   .panel-label {
-    padding: 0.4rem 0.8rem;
+    padding: 0.45rem 0.9rem;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--muted);
     border-bottom: 1px solid var(--border);
-    background: var(--bg3);
+    background: var(--bg2);
     font-family: 'Space Mono', monospace;
   }
-
-  /* Code Editors */
   .code-editor {
+    display: none;
     width: 100%;
-    flex: 1;
-    background: #0d0d14;
-    color: var(--text);
+    height: 260px;
+    background: #13111f;
+    color: #e2dff7;
     border: none;
     outline: none;
     padding: 1rem;
@@ -342,33 +335,50 @@
     line-height: 1.7;
     resize: none;
     tab-size: 2;
-    display: none;
+    box-sizing: border-box;
   }
   .code-editor.active { display: block; }
-  .code-editor::placeholder { color: #2a2a3a; }
+  .code-editor::placeholder { color: #3a3560; }
 
-  /* Preview */
-  .preview-frame {
-    flex: 1;
-    border: none;
-    background: #fff;
-    width: 100%;
+  /* RESIZE HANDLE */
+  .editor-resize-handle {
+    height: 8px;
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    cursor: ns-resize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: background 0.2s;
   }
-  .preview-frame.mobile-view {
+  .editor-resize-handle:hover, .editor-resize-handle.dragging { background: rgba(124,58,237,0.15); }
+  .editor-resize-handle::after { content: '━━━'; font-size: 0.45rem; color: var(--muted); letter-spacing: 3px; }
+
+  /* PREVIEW BOTTOM */
+  .preview-section { border-top: 2px solid var(--border); }
+  .preview-frame-wrap {
+    width: 100%;
+    height: 380px;
+    background: #fff;
+    overflow: hidden;
+  }
+  #preview-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  #preview-frame.mobile-view {
     width: 375px;
     margin: 0 auto;
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-  }
-  .preview-container {
-    flex: 1;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    background: #111;
+    display: block;
+    border-left: 2px solid var(--border);
+    border-right: 2px solid var(--border);
   }
 
-  /* Status bar */
+  /* STATUS BAR */
   .status-bar {
     display: flex;
     align-items: center;
@@ -382,29 +392,52 @@
   }
   .status-live { display: flex; align-items: center; gap: 0.4rem; }
   .live-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    width: 6px; height: 6px; border-radius: 50%;
     background: var(--accent3);
     animation: blink 1.5s infinite;
   }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  /* Mobile layout */
+  /* SETTINGS BAR */
+  .settings-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 1rem;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .settings-left { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .settings-label { font-size: 0.72rem; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .settings-select {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+  }
+  .toggle-wrap {
+    display: flex; align-items: center; gap: 0.35rem;
+    cursor: pointer; font-size: 0.75rem; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; user-select: none;
+  }
+  .toggle-wrap input[type=checkbox] { accent-color: var(--accent); cursor: pointer; }
+  .toggle-wrap:hover { color: var(--text); }
+
   @media (max-width: 768px) {
-    .editor-layout {
-      grid-template-columns: 1fr;
-      height: auto;
-    }
-    .editor-panel { height: 280px; border-right: none; border-bottom: 1px solid var(--border); }
-    .preview-panel { height: 300px; }
+    .code-editor { height: 200px; }
+    .preview-frame-wrap { height: 300px; }
     .hero { padding: 2.5rem 1rem 1rem; }
     .tool-section { padding: 1rem; }
     nav { padding: 1rem; }
     .nav-links { display: none; }
+    .toolbar-right .action-btn { padding: 0.3rem 0.55rem; font-size: 0.72rem; }
   }
 
   /* CONTENT SECTIONS */
@@ -551,18 +584,17 @@
 
   /* CTA */
   .cta-section {
-    background: linear-gradient(135deg, rgba(0,229,255,0.08), rgba(124,58,237,0.08)) !important;
+    background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(168,85,247,0.06)) !important;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     text-align: center;
   }
-  .cta-section h2 { color: var(--text); }
   .cta-btn {
     display: inline-block;
     margin-top: 1.5rem;
     padding: 0.9rem 2.2rem;
     background: var(--accent);
-    color: #000;
+    color: #fff;
     font-weight: 700;
     font-size: 0.95rem;
     border-radius: 12px;
@@ -572,7 +604,7 @@
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
   }
-  .cta-btn:hover { background: #00c8e0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,255,0.2); }
+  .cta-btn:hover { background: #6d28d9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.25); }
 
   /* ENGAGEMENT */
   .engagement-bar {
@@ -596,6 +628,7 @@
     font-size: 0.88rem;
     font-family: 'DM Sans', sans-serif;
     transition: all 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
   .like-btn:hover { border-color: #10b981; color: #10b981; }
   .dislike-btn:hover { border-color: #f43f5e; color: #f43f5e; }
@@ -615,7 +648,7 @@
     font-size: 1.4rem;
     cursor: pointer;
     transition: transform 0.15s;
-    color: #2a2a3a;
+    color: #c4b8e8;
   }
   .star.filled { color: #facc15; }
   .star:hover { transform: scale(1.2); }
@@ -820,11 +853,31 @@
       </div>
     </div>
 
-    <!-- Editor + Preview -->
-    <div class="editor-layout">
-      <div class="editor-panel">
-        <div class="panel-label">✏️ Editor — <span id="tab-label">HTML</span></div>
-        <textarea id="html-editor" class="code-editor active" placeholder="Write your HTML here..." oninput="autoRun()">&lt;!DOCTYPE html&gt;
+    <!-- Settings Bar -->
+    <div class="settings-bar">
+      <div class="settings-left">
+        <span class="settings-label">⚙ Settings</span>
+        <select class="settings-select" id="fontSizeSelect" onchange="changeFontSize(this.value)">
+          <option value="0.72rem">Small font</option>
+          <option value="0.82rem" selected>Medium font</option>
+          <option value="0.95rem">Large font</option>
+        </select>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="autoRunToggle" checked onchange="setAutoRun(this.checked)">
+          Auto-run
+        </label>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="wrapToggle" onchange="setWrap(this.checked)">
+          Wrap lines
+        </label>
+      </div>
+      <button class="action-btn" onclick="toggleEditorCollapse()" id="collapseBtn">▲ Editor</button>
+    </div>
+
+    <!-- EDITOR (top) -->
+    <div id="editor-section">
+      <div class="panel-label">✏️ Editor — <span id="tab-label">HTML</span></div>
+      <textarea id="html-editor" class="code-editor active" placeholder="Write your HTML here..." oninput="autoRun()">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -832,11 +885,11 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;Hello, Toolyfi! 👋&lt;/h1&gt;
-  &lt;p&gt;Edit HTML, CSS, and JS above to preview your code live.&lt;/p&gt;
+  &lt;p&gt;Edit HTML, CSS, and JS above — preview updates live below.&lt;/p&gt;
   &lt;button onclick=&quot;changeColor()&quot;&gt;Click Me&lt;/button&gt;
 &lt;/body&gt;
 &lt;/html&gt;</textarea>
-        <textarea id="css-editor" class="code-editor" placeholder="Write your CSS here..." oninput="autoRun()">body {
+      <textarea id="css-editor" class="code-editor" placeholder="Write your CSS here..." oninput="autoRun()">body {
   font-family: sans-serif;
   background: #f0f4ff;
   display: flex;
@@ -847,19 +900,8 @@
   margin: 0;
   padding: 2rem;
 }
-
-h1 {
-  color: #7c3aed;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-p {
-  color: #444;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
+h1 { color: #7c3aed; font-size: 2rem; margin-bottom: 1rem; }
+p { color: #444; margin-bottom: 1.5rem; text-align: center; }
 button {
   padding: 0.7rem 1.8rem;
   background: #7c3aed;
@@ -868,25 +910,24 @@ button {
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
 }
-
-button:hover {
-  background: #5b21b6;
+button:hover { background: #5b21b6; }</textarea>
+      <textarea id="js-editor" class="code-editor" placeholder="Write your JavaScript here..." oninput="autoRun()">function changeColor() {
+  const colors = ['#7c3aed','#10b981','#f97316','#3b82f6','#e11d48'];
+  const c = colors[Math.floor(Math.random()*colors.length)];
+  document.querySelector('h1').style.color = c;
+  document.querySelector('button').style.background = c;
 }</textarea>
-        <textarea id="js-editor" class="code-editor" placeholder="Write your JavaScript here..." oninput="autoRun()">function changeColor() {
-  const colors = ['#7c3aed', '#10b981', '#f97316', '#3b82f6', '#e11d48'];
-  const random = colors[Math.floor(Math.random() * colors.length)];
-  document.querySelector('h1').style.color = random;
-  document.querySelector('button').style.background = random;
-}</textarea>
-      </div>
+    </div>
 
-      <div class="preview-panel">
-        <div class="panel-label">👁 Live Preview</div>
-        <div class="preview-container" id="preview-container">
-          <iframe id="preview-frame" class="preview-frame"></iframe>
-        </div>
+    <!-- RESIZE HANDLE -->
+    <div class="editor-resize-handle" id="resizeHandle"></div>
+
+    <!-- PREVIEW (bottom) -->
+    <div class="preview-section">
+      <div class="panel-label">👁 Live Preview</div>
+      <div class="preview-frame-wrap" id="preview-frame-wrap">
+        <iframe id="preview-frame"></iframe>
       </div>
     </div>
 
@@ -1492,6 +1533,71 @@ button:hover {
 </footer>
 
 <script>
+  // ---- SETTINGS ----
+  let autoRunEnabled = true;
+
+  function changeFontSize(size) {
+    document.querySelectorAll('.code-editor').forEach(e => e.style.fontSize = size);
+  }
+  function setAutoRun(v) { autoRunEnabled = v; }
+  function setWrap(v) {
+    document.querySelectorAll('.code-editor').forEach(e => {
+      e.style.whiteSpace = v ? 'pre-wrap' : 'pre';
+      e.style.overflowX  = v ? 'hidden'   : 'auto';
+    });
+  }
+  function toggleEditorCollapse() {
+    const sec = document.getElementById('editor-section');
+    const btn = document.getElementById('collapseBtn');
+    const hidden = sec.style.display === 'none';
+    sec.style.display = hidden ? '' : 'none';
+    btn.innerHTML = hidden ? '▲ Editor' : '▼ Editor';
+  }
+
+  // ---- DRAG RESIZE ----
+  (function(){
+    const handle = document.getElementById('resizeHandle');
+    const editors = document.querySelectorAll('.code-editor');
+    const wrap    = document.getElementById('preview-frame-wrap');
+    let dragging = false, startY = 0, startEH = 0, startPH = 0;
+    handle.addEventListener('mousedown', e => {
+      dragging = true;
+      startY  = e.clientY;
+      startEH = document.querySelector('.code-editor.active').offsetHeight;
+      startPH = wrap.offsetHeight;
+      handle.classList.add('dragging');
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ns-resize';
+    });
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const d = e.clientY - startY;
+      const newEH = Math.max(80,  Math.min(600, startEH + d));
+      const newPH = Math.max(150, Math.min(800, startPH - d));
+      editors.forEach(ed => ed.style.height = newEH + 'px');
+      wrap.style.height = newPH + 'px';
+    });
+    document.addEventListener('mouseup', () => {
+      dragging = false;
+      handle.classList.remove('dragging');
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    });
+    handle.addEventListener('touchstart', e => {
+      dragging = true;
+      startY  = e.touches[0].clientY;
+      startEH = document.querySelector('.code-editor.active').offsetHeight;
+      startPH = wrap.offsetHeight;
+    }, {passive:true});
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      const d = e.touches[0].clientY - startY;
+      editors.forEach(ed => ed.style.height = Math.max(80, Math.min(600, startEH + d)) + 'px');
+      wrap.style.height = Math.max(150, Math.min(800, startPH - d)) + 'px';
+    }, {passive:true});
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
   // ---- TOOL LOGIC ----
   let autoRunTimer = null;
   let isMobile = false;
@@ -1548,6 +1654,7 @@ button:hover {
   function autoRun() {
     saveCode();
     updateCharCount();
+    if (!autoRunEnabled) return;
     clearTimeout(autoRunTimer);
     autoRunTimer = setTimeout(runPreview, 700);
   }
@@ -1557,7 +1664,6 @@ button:hover {
     const css = editors.css.value;
     const js = editors.js.value;
 
-    // Inject CSS and JS into the HTML
     let combined = html;
     if (combined.includes('</head>')) {
       combined = combined.replace('</head>', `<style>${css}</style></head>`);
@@ -1566,14 +1672,20 @@ button:hover {
     } else {
       combined = `<style>${css}</style>${combined}`;
     }
-
     if (combined.includes('</body>')) {
       combined = combined.replace('</body>', `<script>${js}<\/script></body>`);
     } else {
       combined = combined + `<script>${js}<\/script>`;
     }
 
-    previewFrame.srcdoc = combined;
+    try {
+      const doc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+      doc.open();
+      doc.write(combined);
+      doc.close();
+    } catch(e) {
+      previewFrame.srcdoc = combined;
+    }
   }
 
   function clearCode() {
@@ -1626,17 +1738,15 @@ button:hover {
   function toggleMobile() {
     isMobile = !isMobile;
     const btn = document.getElementById('mobileBtn');
-    const container = document.getElementById('preview-container');
+    const frame = document.getElementById('preview-frame');
     if (isMobile) {
-      previewFrame.classList.add('mobile-view');
+      frame.classList.add('mobile-view');
       btn.classList.add('mobile-active');
       btn.innerHTML = '🖥 Desktop';
-      container.style.overflow = 'auto';
     } else {
-      previewFrame.classList.remove('mobile-view');
+      frame.classList.remove('mobile-view');
       btn.classList.remove('mobile-active');
       btn.innerHTML = '📱 Mobile';
-      container.style.overflow = 'hidden';
     }
   }
 
