@@ -306,7 +306,7 @@
 <!-- ======== IMPORTANT: Update this section daily ======== -->
 <script>
   // ✅ DAILY UPDATE — Change ONLY this number every day!
-  const GOLD_24K_TOLA = 503270; // PKR per tola (24K) - Updated 13 Apr 2026
+  let GOLD_24K_TOLA = 503270; // PKR per tola (24K) - Updated 13 Apr 2026
 
   // ✅ Currency rates — updated 13 Apr 2026 (Open Market)
   const CURRENCIES = [
@@ -961,7 +961,7 @@
       const data = await response.json();
       
       if (data && data.goldPKRperTola) {
-        window.GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
+        GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
         if (data.currencies && data.currencies.length > 0) {
           window.LIVE_CURRENCIES = data.currencies;
         }
@@ -970,7 +970,7 @@
         buildCityTable();
         buildCurrencyTable();
         document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' (Live)';
-        console.log('Live rate: PKR ' + window.GOLD_24K_TOLA);
+        console.log('Live rate: PKR ' + GOLD_24K_TOLA);
       }
     } catch (error) {
       console.error('❌ Error fetching live rates:', error);
