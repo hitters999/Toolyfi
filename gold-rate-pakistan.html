@@ -841,7 +841,7 @@
       return;
     }
 
-    const BACKEND_URL = 'https://toolyfi-backend-production.up.railway.app';
+    const BACKEND_URL = 'https://toolyfi-backend.onrender.com';
 
     try {
       // Fetch live rates from Backend
@@ -957,7 +957,7 @@
   // LIVE API FUNCTION
   async function refreshLiveRates() {
     try {
-      const response = await fetch('https://toolyfi-backend-production.up.railway.app/api/gold');
+      const response = await fetch('https://toolyfi-backend.onrender.com/api/gold');
       const data = await response.json();
       
       if (data && data.goldPKRperTola) {
