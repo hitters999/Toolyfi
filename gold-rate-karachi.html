@@ -885,7 +885,7 @@ async function calculateGold() {
 
   if (!amount || amount <= 0) { alert('Please enter a valid amount!'); return; }
 
-  const BACKEND = 'https://toolyfi-backend-production.up.railway.app';
+  const BACKEND = 'https://toolyfi-backend.onrender.com';
   let resultText, subText;
 
   try {
@@ -946,7 +946,7 @@ function setDate() {
 // LIVE API REFRESH
 async function refreshLiveRates() {
   try {
-    const res  = await fetch('https://toolyfi-backend-production.up.railway.app/api/gold');
+    const res  = await fetch('https://toolyfi-backend.onrender.com/api/gold');
     const data = await res.json();
     if (data && data.goldPKRperTola) {
       window.GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
