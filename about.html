@@ -1,459 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>About Us - Toolyfi | Free Online Tools Platform</title>
-  <meta name="description" content="Learn about Toolyfi - 100+ free online tools platform. Our mission is to make digital tasks easy and efficient for everyone.">
-  <meta name="keywords" content="about toolyfi, free tools, online utilities, digital tools">
-  <meta name="author" content="Toolyfi">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Toolyfi – Free Online Tools for Everyone</title>
+  <meta name="description" content="Learn about Toolyfi – a free online tools platform designed to make digital tasks simple, fast, and accessible to everyone. No sign-up required." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://toolyfi.com/about" />
+
   <!-- Open Graph -->
-  <meta property="og:title" content="About Us - Toolyfi">
-  <meta property="og:description" content="Discover Toolyfi - Your one-stop platform for 100+ free online tools">
-  <meta property="og:url" content="https://toolyfi.com/about.html">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  
+  <meta property="og:title" content="About Toolyfi – Free Online Tools for Everyone" />
+  <meta property="og:description" content="Toolyfi is a free online tools platform with 100+ utilities. Learn about our mission, values, and the team behind the platform." />
+  <meta property="og:url" content="https://toolyfi.com/about" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y3ETYH2QF0');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <style>
-    /* About Page Specific Styles */
-    .about-hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #a855f7;
+      --purple-dark: #7c3aed;
+      --purple-light: #e879f9;
+      --bg: #f9f6ff;
+      --text: #1e1b4b;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--purple-dark);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #6d28d9 100%);
       color: var(--white);
-      padding: 4rem 2rem;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      letter-spacing: 0;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* STATS */
+    .stats-section {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+    }
+    .stats-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
       text-align: center;
     }
-
-    .about-hero h1 {
-      color: var(--white);
-      margin-bottom: 1rem;
+    .stat-item {}
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .about-hero p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.1rem;
-      max-width: 700px;
+    /* MAIN */
+    main {
+      max-width: 1000px;
       margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
     }
 
-    .about-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .about-section {
-      margin-bottom: 4rem;
-    }
-
-    .about-section h2 {
-      color: var(--text-primary);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
-
-    body.dark-mode .about-section h2 {
-      color: #F9FAFB;
-    }
-
-    .about-section p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    body.dark-mode .about-section p {
-      color: #D1D5DB;
-    }
-
-    .about-grid {
+    /* STORY SECTION */
+    .story-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 3rem;
+      margin-bottom: 5rem;
+      align-items: center;
     }
-
-    .about-card {
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(124, 58, 237, 0.02) 100%);
-      padding: 2rem;
-      border-radius: 1rem;
-      border: 1px solid var(--medium-gray);
-      transition: all var(--transition-normal);
+    .story-text h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0;
     }
-
-    body.dark-mode .about-card {
-      background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, rgba(167, 139, 250, 0.02) 100%);
-      border-color: #4B5563;
-    }
-
-    .about-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary);
-    }
-
-    body.dark-mode .about-card:hover {
-      border-color: #A78BFA;
-    }
-
-    .about-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.75rem;
-      font-size: 1.5rem;
-    }
-
-    body.dark-mode .about-card h3 {
-      color: #A78BFA;
-    }
-
-    .about-card p {
-      color: var(--text-secondary);
-      margin: 0;
-    }
-
-    body.dark-mode .about-card p {
-      color: #D1D5DB;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .feature-item {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .feature-icon {
-      font-size: 3rem;
+    .story-text p {
+      color: #374151;
       margin-bottom: 1rem;
     }
+    .story-visual {
+      background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: var(--white);
+    }
+    .story-visual h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    .visual-list { list-style: none; }
+    .visual-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .visual-list li:last-child { border: none; }
+    .check { color: #a3e635; font-weight: 700; }
 
-    .feature-item h3 {
-      color: var(--text-primary);
+    @media (max-width: 700px) {
+      .story-section { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-title h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: 0;
       margin-bottom: 0.5rem;
     }
+    .section-title p { color: var(--text-muted); max-width: 500px; margin: 0 auto; }
 
-    body.dark-mode .feature-item h3 {
-      color: #F9FAFB;
-    }
-
-    .feature-item p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    body.dark-mode .feature-item p {
-      color: #D1D5DB;
-    }
-
-    .stats-section {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: var(--white);
-      padding: 3rem 2rem;
-      border-radius: 1rem;
-      margin-top: 3rem;
-    }
-
-    .stats-grid {
+    /* MISSION / VISION */
+    .mv-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .mv-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .mv-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .mv-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: var(--purple-dark);
+    }
+    .mv-card p { color: #374151; font-size: 0.95rem; }
+    @media (max-width: 600px) { .mv-grid { grid-template-columns: 1fr; } }
+
+    /* VALUES */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.1);
+    }
+    .value-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .value-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    @media (max-width: 700px) { .values-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .values-grid { grid-template-columns: 1fr; } }
+
+    /* TOOL CATEGORIES */
+    .tools-section { margin-bottom: 5rem; }
+    .tools-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .tool-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .tool-tag:hover {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+    }
+
+    /* TEAM */
+    .team-section { margin-bottom: 5rem; }
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 480px;
+      margin: 1.5rem auto 0;
       text-align: center;
     }
+    .team-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+    }
+    .team-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .team-role {
+      color: var(--purple);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .team-card p { color: var(--text-muted); font-size: 0.92rem; }
 
-    .stat-item h3 {
-      font-size: 2.5rem;
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
       color: var(--white);
-      margin-bottom: 0.5rem;
     }
-
-    .stat-item p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
+    .cta-section h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0;
     }
-
-    .cta-button {
+    .cta-section p { opacity: 0.8; margin-bottom: 1.5rem; }
+    .cta-btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
       color: var(--white);
-      padding: 1rem 2rem;
-      border-radius: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 10px;
       text-decoration: none;
-      font-weight: 600;
-      margin-top: 1.5rem;
-      transition: all var(--transition-fast);
+      font-size: 1rem;
+      transition: opacity 0.2s;
     }
+    .cta-btn:hover { opacity: 0.9; }
 
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    /* FOOTER */
+    footer {
+      background: #1e1b4b;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.875rem;
     }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { color: var(--white); }
+    footer .footer-links { margin-bottom: 0.75rem; }
 
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-section h2 {
-        font-size: 1.5rem;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      main { padding: 2rem 1rem 4rem; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .cta-section { padding: 2rem 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-container">
-    <div class="logo">Toolyfi</div>
-    
-    <!-- Theme Toggle Button - ADDED -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
-    
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="about.html" style="color: var(--primary); font-weight: 600;">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#" class="nav-cta">Get Started</a>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Toolyfi</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a href="/about" class="active">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/tools" class="nav-cta">Get Started</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
 <!-- HERO -->
-<section class="about-hero">
+<div class="hero">
   <h1>About Toolyfi</h1>
-  <p>Empowering millions with free, powerful online tools. Simple. Efficient. Always available.</p>
-</section>
-
-<!-- ABOUT CONTENT -->
-<section class="about-container">
-  
-  <!-- Story Section -->
-  <div class="about-section">
-    <h2>Our Story</h2>
-    <p>Toolyfi was founded with a simple mission: to provide everyone with access to powerful, free online tools without any barriers. We believe that digital tools should be accessible to everyone, regardless of their technical expertise or financial resources.</p>
-    <p>What started as a small project has grown into a comprehensive platform with 100+ tools used by millions of people worldwide. We're constantly innovating and adding new features to serve our users better.</p>
+  <p>We believe powerful digital tools should be free, fast, and accessible to everyone — no accounts, no fees, no complexity.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">🌍 Global Audience</span>
+    <span class="hero-tag">🔒 Privacy First</span>
+    <span class="hero-tag">⚡ 100% Free Forever</span>
   </div>
+</div>
 
-  <!-- Mission & Vision -->
-  <div class="about-grid">
-    <div class="about-card">
-      <h3>🎯 Our Mission</h3>
-      <p>To make digital tasks simple, fast, and accessible to everyone by providing 100% free, high-quality online tools without any sign-up requirements or hidden fees.</p>
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Free Online Tools</div>
     </div>
-    
-    <div class="about-card">
-      <h3>🚀 Our Vision</h3>
-      <p>To become the world's most trusted and comprehensive platform for free online tools, helping billions of people complete their digital tasks efficiently every day.</p>
+    <div class="stat-item">
+      <div class="stat-number">50K+</div>
+      <div class="stat-label">Monthly Visitors</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Sign-up Required</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Always Available</div>
     </div>
   </div>
+</div>
 
-  <!-- Why Choose Us -->
-  <div class="about-section">
-    <h2>Why Choose Toolyfi?</h2>
-    
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🆓</div>
-        <h3>100% Free</h3>
-        <p>All tools are completely free. No premium tiers, no hidden charges, no surprise bills.</p>
-      </div>
-      
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <h3>Lightning Fast</h3>
-        <p>Optimized for speed. Get results in milliseconds, not seconds.</p>
-      </div>
-      
-      <div class="feature-item">
-        <div class="feature-icon">🔒</div>
-        <h3>Secure & Private</h3>
-        <p>Your data is processed locally. We don't store or share your information.</p>
-      </div>
-      
-      <div class="feature-item">
-        <div class="feature-icon">📱</div>
-        <h3>Works Everywhere</h3>
-        <p>Desktop, tablet, mobile - works perfectly on any device and browser.</p>
-      </div>
-      
-      <div class="feature-item">
-        <div class="feature-icon">🎨</div>
-        <h3>Beautiful Design</h3>
-        <p>Modern, intuitive interface that's a pleasure to use.</p>
-      </div>
-      
-      <div class="feature-item">
-        <div class="feature-icon">🚀</div>
-        <h3>Always Growing</h3>
-        <p>New tools added regularly. Your feedback shapes our future.</p>
-      </div>
+<!-- MAIN -->
+<main>
+
+  <!-- OUR STORY -->
+  <div class="story-section">
+    <div class="story-text">
+      <h2>Our Story</h2>
+      <p>Toolyfi started with a simple frustration: why do basic online tools require sign-ups, subscriptions, or constant upsells? We believed that tools like image resizers, QR generators, unit converters, and calculators should just work — instantly, for free, for everyone.</p>
+      <p>What started as a small collection of utilities has grown into a comprehensive platform with over 100 tools, serving users across the UK, USA, and beyond. We're constantly expanding based on what our users actually need.</p>
+      <p>Our platform is built with a focus on speed, privacy, and simplicity. Most of our tools process data entirely within your browser — meaning your files and data never leave your device.</p>
+    </div>
+    <div class="story-visual">
+      <h3>Why Toolyfi is Different</h3>
+      <ul class="visual-list">
+        <li><span class="check">✓</span> No account or sign-up required</li>
+        <li><span class="check">✓</span> No premium tiers or hidden fees</li>
+        <li><span class="check">✓</span> Browser-based processing — data stays private</li>
+        <li><span class="check">✓</span> Works on desktop, tablet, and mobile</li>
+        <li><span class="check">✓</span> Clean, distraction-free interface</li>
+        <li><span class="check">✓</span> New tools added regularly</li>
+        <li><span class="check">✓</span> Available 24/7 with no downtime policy</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <h3>100+</h3>
-        <p>Free Tools</p>
-      </div>
-      <div class="stat-item">
-        <h3>∞</h3>
-        <p>Users</p>
-      </div>
-      <div class="stat-item">
-        <h3>0</h3>
-        <p>Ads</p>
-      </div>
-      <div class="stat-item">
-        <h3>24/7</h3>
-        <p>Available</p>
-      </div>
+  <!-- MISSION & VISION -->
+  <div class="section-title">
+    <h2>Mission & Vision</h2>
+    <p>What drives everything we build at Toolyfi</p>
+  </div>
+  <div class="mv-grid">
+    <div class="mv-card">
+      <div class="mv-icon">🎯</div>
+      <h3>Our Mission</h3>
+      <p>To make digital tasks simple, fast, and accessible to everyone by providing 100% free, high-quality online tools — with no sign-up requirements, no hidden fees, and no unnecessary complexity.</p>
+    </div>
+    <div class="mv-card">
+      <div class="mv-icon">🚀</div>
+      <h3>Our Vision</h3>
+      <p>To become the world's most trusted and comprehensive platform for free online tools — helping people everywhere complete their digital tasks efficiently, privately, and without barriers.</p>
     </div>
   </div>
 
-  <!-- Values Section -->
-  <div class="about-section">
+  <!-- VALUES -->
+  <div class="section-title">
     <h2>Our Values</h2>
-    
-    <div class="about-grid">
-      <div class="about-card">
-        <h3>Accessibility</h3>
-        <p>Technology should be accessible to everyone. We remove barriers and make tools available to all, regardless of their background or resources.</p>
-      </div>
-      
-      <div class="about-card">
-        <h3>Simplicity</h3>
-        <p>Simple is beautiful. We design tools that are intuitive and easy to use, without unnecessary complexity.</p>
-      </div>
-      
-      <div class="about-card">
-        <h3>Quality</h3>
-        <p>We're committed to providing high-quality tools that work reliably and deliver accurate results every time.</p>
-      </div>
-      
-      <div class="about-card">
-        <h3>Privacy</h3>
-        <p>Your privacy matters. We respect your data and never collect, store, or share any personal information without consent.</p>
-      </div>
+    <p>The principles that guide every tool we build</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🌐</div>
+      <h3>Accessibility</h3>
+      <p>Technology should be accessible to everyone. We remove barriers so anyone can use our tools regardless of technical background or financial resources.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">⚡</div>
+      <h3>Speed</h3>
+      <p>Your time matters. Every tool is optimized for instant results — no waiting, no loading screens, no unnecessary steps.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔒</div>
+      <h3>Privacy</h3>
+      <p>We respect your data. Most tools process everything locally in your browser. We never sell your personal data to third parties.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">✨</div>
+      <h3>Quality</h3>
+      <p>Every tool is tested thoroughly and designed to deliver accurate, reliable results. We don't publish tools that don't work properly.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💡</div>
+      <h3>Simplicity</h3>
+      <p>Simple is beautiful. We design clean interfaces that are intuitive to use, without unnecessary complexity or confusing menus.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔄</div>
+      <h3>Continuous Growth</h3>
+      <p>We listen to our users and continuously add new tools, improve existing ones, and expand our platform based on real needs.</p>
+    </div>
+  </div>
+
+  <!-- TOOLS WE OFFER -->
+  <div class="tools-section">
+    <div class="section-title">
+      <h2>Tools We Offer</h2>
+      <p>Covering every category of digital task</p>
+    </div>
+    <div class="tools-tags">
+      <a href="/tools" class="tool-tag">🖼️ Image Tools</a>
+      <a href="/tools" class="tool-tag">📱 QR Code Generator</a>
+      <a href="/tools" class="tool-tag">🔢 Calculators</a>
+      <a href="/tools" class="tool-tag">📏 Unit Converters</a>
+      <a href="/tools" class="tool-tag">🔐 Password Generator</a>
+      <a href="/tools" class="tool-tag">📄 PDF Tools</a>
+      <a href="/tools" class="tool-tag">✏️ Text Utilities</a>
+      <a href="/tools" class="tool-tag">🌐 Web Tools</a>
+      <a href="/tools" class="tool-tag">💰 Finance Tools</a>
+      <a href="/tools" class="tool-tag">🤖 AI Tools</a>
+      <a href="/tools" class="tool-tag">📊 Data Tools</a>
+      <a href="/tools" class="tool-tag">🎨 Design Utilities</a>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="team-section">
+    <div class="section-title">
+      <h2>The Team Behind Toolyfi</h2>
+      <p>Built and maintained by people passionate about making the web more useful</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨‍💻</div>
+      <h3>Muhammad Umar</h3>
+      <div class="team-role">Founder & Lead Developer</div>
+      <p>Muhammad built Toolyfi with a vision to create a world-class free tools platform. With a background in web development and digital marketing, he oversees all tools development, SEO strategy, and platform growth.</p>
     </div>
   </div>
 
   <!-- CTA -->
-  <div class="about-section" style="text-align: center;">
-    <h2>Ready to Get Started?</h2>
-    <p>Explore our collection of 100+ free tools and simplify your digital tasks today.</p>
-    <a href="index.html#tools" class="cta-button">Explore All Tools</a>
+  <div class="cta-section">
+    <h2>Ready to Explore Our Tools?</h2>
+    <p>Over 100 free tools available right now — no account required.</p>
+    <a href="/tools" class="cta-btn">Browse All Tools →</a>
   </div>
 
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer>
-
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-column">
-        <h4>About Toolyfi</h4>
-        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">100+ Free Online Tools that make your daily digital tasks easy and efficient.</p>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="image-resizer.html">Image Resizer</a></li>
-          <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-          <li><a href="password-generator.html">Password Generator</a></li>
-          <li><a href="unit-converter.html">Unit Converter</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms & Conditions</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="GitHub">⚙️</a>
-          <a href="#" title="LinkedIn">💼</a>
-          <a href="#" title="Facebook">f</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Toolyfi. All rights reserved.</p>
-      <p>
-        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy</a> •
-        <a href="terms.html" style="color: rgba(255, 255, 255, 0.7);">Terms</a>
-      </p>
-    </div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/tools">Tools</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/terms">Terms & Conditions</a>
   </div>
+  <p>© 2026 Toolyfi — Free Online Tools for Everyone</p>
 </footer>
 
-<script>
-  // Auto year update
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Dark Mode Toggle - ADDED
-  const themeToggle = document.getElementById('themeToggle');
-  
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️';
-  }
-  
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('theme', 'dark');
-      themeToggle.textContent = '☀️';
-    } else {
-      localStorage.setItem('theme', 'light');
-      themeToggle.textContent = '🌙';
-    }
-  });
-</script>
+<!-- Tidio -->
+<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwwcygoz4lv4d.js" async></script>
 
 </body>
 </html>
