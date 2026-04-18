@@ -883,7 +883,6 @@ async function refreshLiveRates() {
     const data = await res.json();
     if (data && data.goldPKRperTola) {
       GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
-      window.GOLD_24K_TOLA = GOLD_24K_TOLA;
       buildHero();
       buildKaratPanels();
       document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' (Live)';
@@ -969,6 +968,7 @@ buildKaratPanels();
 buildCalcCurrencies();
 buildFAQ('faq-container');
 buildFAQ('faq-container-2');
+refreshLiveRates();
 setInterval(refreshLiveRates, 1800000);
 
 document.addEventListener('DOMContentLoaded', () => {
