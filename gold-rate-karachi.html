@@ -282,7 +282,6 @@
 
 <!-- Daily Update Variables -->
 <script>
-  const GOLD_24K_TOLA = 503270; // PKR per tola (24K) — 13 Apr 2026
   const TOLA_TO_GRAM = 11.664;
   const TOLA_TO_OUNCE = 0.375;
   const KARAT_RATIOS = { '24k':1, '22k':22/24, '21k':21/24, '18k':18/24 };
@@ -949,9 +948,7 @@ async function refreshLiveRates() {
     const res  = await fetch('https://toolyfi-backend.onrender.com/api/gold');
     const data = await res.json();
     if (data && data.goldPKRperTola) {
-      window.GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
-      // Re-assign const workaround
-      const GOLD_24K_TOLA = window.GOLD_24K_TOLA;
+      GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
       buildHero();
       buildKaratPanels();
       document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' (Live)';
@@ -1038,7 +1035,8 @@ buildKaratPanels();
 buildCalcCurrencies();
 buildFAQ('faq-container');
 buildFAQ('faq-container-2');
-setInterval(refreshLiveRates, 1800000); // refresh every 30min
+refreshLiveRates();
+setInterval(refreshLiveRates, 1800000);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('calc-amount').addEventListener('keydown', e => {
@@ -1336,7 +1334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Daily Update Variables -->
 <script>
-  const GOLD_24K_TOLA = 503270; // PKR per tola (24K) — 13 Apr 2026
+  let GOLD_24K_TOLA = 503270; // PKR per tola (24K) — 13 Apr 2026
   const TOLA_TO_GRAM = 11.664;
   const TOLA_TO_OUNCE = 0.375;
   const KARAT_RATIOS = { '24k':1, '22k':22/24, '21k':21/24, '18k':18/24 };
@@ -2003,9 +2001,7 @@ async function refreshLiveRates() {
     const res  = await fetch('https://toolyfi-backend.onrender.com/api/gold');
     const data = await res.json();
     if (data && data.goldPKRperTola) {
-      window.GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
-      // Re-assign const workaround
-      const GOLD_24K_TOLA = window.GOLD_24K_TOLA;
+      GOLD_24K_TOLA = Math.round(data.goldPKRperTola);
       buildHero();
       buildKaratPanels();
       document.getElementById('last-updated-text').textContent = '📅 ' + new Date().toLocaleDateString('en-PK', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' (Live)';
@@ -2092,7 +2088,8 @@ buildKaratPanels();
 buildCalcCurrencies();
 buildFAQ('faq-container');
 buildFAQ('faq-container-2');
-setInterval(refreshLiveRates, 1800000); // refresh every 30min
+refreshLiveRates();
+setInterval(refreshLiveRates, 1800000);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('calc-amount').addEventListener('keydown', e => {
