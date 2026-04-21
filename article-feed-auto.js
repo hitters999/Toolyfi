@@ -4,76 +4,28 @@
 
 const ARTICLES = [
   {
-    id: 'us-strategy',
-    title: 'US Military Strategy in Middle East War',
-    description: 'Comprehensive analysis of American military operations, carrier deployments, and strategic objectives in the Middle East conflict.',
-    tag: '🇺🇸 US STRATEGY',
-    tagBg: '#2563eb',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
-    link: 'updatesworld/us-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T10:00:00'),
-    keywords: ['US', 'military', 'strategy', 'operation', 'epic fury']
+    id: 'ai-trends-2026',
+    title: 'Top AI Trends to Watch in 2026',
+    description: 'From autonomous agents to multimodal models, discover the key AI trends that are shaping the future of technology this year.',
+    tag: '🤖 AI TRENDS',
+    tagBg: '#7c3aed',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
+    link: 'updatesworld/economic-trends-ai.html',
+    category: 'Technology',
+    published: new Date('2026-04-15T10:00:00'),
+    keywords: ['AI', 'trends', '2026', 'technology', 'future']
   },
   {
-    id: 'iran-strategy',
-    title: 'Iran\'s Military Strategy: Asymmetric Warfare & Proxy Forces',
-    description: 'Deep analysis of Iran\'s defensive strategy, Revolutionary Guard tactics, and how asymmetric warfare counters US military superiority.',
-    tag: '🇮🇷 IRAN STRATEGY',
-    tagBg: '#dc2626',
-    image: 'https://images.unsplash.com/photo-1578926314433-0e341b2edbf6?w=600&h=400&fit=crop',
-    link: 'updatesworld/iran-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T09:30:00'),
-    keywords: ['Iran', 'strategy', 'asymmetric', 'proxy', 'defense']
-  },
-  {
-    id: 'israel-strategy',
-    title: 'Israel\'s Defense Strategy: Operation Roaring Lion & Iron Dome',
-    description: 'Detailed breakdown of Israeli military operations, advanced defense systems, and strategic objectives against Iranian nuclear threat.',
-    tag: '🇮🇱 ISRAEL STRATEGY',
-    tagBg: '#f97316',
-    image: 'https://images.unsplash.com/photo-1551632786-de41ec18b67e?w=600&h=400&fit=crop',
-    link: 'updatesworld/israel-strategy.html',
-    category: 'Strategic Analysis',
-    published: new Date('2026-03-06T09:00:00'),
-    keywords: ['Israel', 'strategy', 'defense', 'iron dome', 'roaring lion']
-  },
-  {
-    id: 'middle-east-crisis',
-    title: 'Middle East Crisis: What\'s Happening & Why It Matters',
-    description: 'Complete analysis of Middle East crisis, Iran-US tensions, and global impact. Live updates and expert analysis.',
-    tag: '🌍 GEOPOLITICS',
-    tagBg: '#d32f2f',
-    image: 'https://images.unsplash.com/photo-1582716743212-82f5a7737220?w=600&h=400&fit=crop',
-    link: 'updatesworld/middle-east-crisis.html',
-    category: 'Geopolitical',
-    published: new Date('2026-03-05T15:00:00'),
-    keywords: ['middle east', 'crisis', 'geopolitics', 'analysis']
-  },
-  {
-    id: 'us-assets-targeted',
-    title: 'US Assets Targeted in Middle East - Military Impact & Response',
-    description: 'Analysis of attacks on US military assets and embassy compounds in Middle East. Live coverage of American response and security measures.',
-    tag: '🎯 MILITARY ALERT',
-    tagBg: '#c41e3a',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
-    link: 'updatesworld/us-assets-targeted.html',
-    category: 'Military',
-    published: new Date('2026-03-05T12:00:00'),
-    keywords: ['US', 'assets', 'military', 'attack', 'response']
-  },
-  {
-    id: 'iran-naval-ship',
-    title: 'US Submarine Sinks Iranian Warship Near Sri Lanka — 80 Dead',
-    description: 'USS submarine torpedoes Iranian frigate IRIS Dena in Indian Ocean near Sri Lanka. 80 Iranian sailors killed.',
-    tag: '🚢 NAVAL WAR',
-    tagBg: '#0284c7',
-    image: 'https://images.unsplash.com/photo-1533612528813-be11f34fc5f0?w=600&h=400&fit=crop',
-    link: 'updatesworld/iran-naval-ship.html',
-    category: 'Naval War',
-    published: new Date('2026-03-06T08:00:00'),
-    keywords: ['naval', 'submarine', 'warship', 'iran', 'sri lanka']
+    id: 'remote-work-tools',
+    title: 'Best Free Tools for Remote Teams in 2026',
+    description: 'Boost your team\'s productivity with these essential free tools for communication, project management, and collaboration.',
+    tag: '💻 REMOTE WORK',
+    tagBg: '#059669',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop',
+    link: 'updatesworld/best-free-ai-tools-2026.html',
+    category: 'Productivity',
+    published: new Date('2026-04-10T09:30:00'),
+    keywords: ['remote work', 'tools', 'productivity', 'collaboration']
   }
 ];
 

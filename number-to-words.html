@@ -35,14 +35,14 @@
   if(data.count<3)return;
   const avg=(data.total/data.count).toFixed(1);
   const s=document.createElement('script');s.type='application/ld+json';
-  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg,"ratingCount":data.count,"bestRating":"5","worstRating":"1"}});
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type": "SoftwareApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg,"ratingCount":data.count,"bestRating":"5","worstRating":"1"}});
   document.head.appendChild(s);
 })();
 </script>
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"WebApplication",
+  "@context":"https://schema.org","@type": "SoftwareApplication",
   "name":"Number to Words Converter",
   "description":"Free online number to words converter — convert any number to English words instantly",
   "url":"https://toolyfi.com/number-to-words.html",
@@ -705,7 +705,7 @@ function toggleFaq(el){
     if(ratingData.count>=3){
       let s=document.getElementById('tf-live-schema');
       if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='tf-live-schema';document.head.appendChild(s);}
-      s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"WebApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg.toFixed(1),"ratingCount":ratingData.count,"bestRating":"5","worstRating":"1"}});
+      s.textContent=JSON.stringify({"@context":"https://schema.org","@type": "SoftwareApplication","name":"Number to Words Converter","url":window.location.href,"aggregateRating":{"@type":"AggregateRating","ratingValue":avg.toFixed(1),"ratingCount":ratingData.count,"bestRating":"5","worstRating":"1"}});
     }
   }
 

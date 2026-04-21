@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Beautiful auto-updating photo gallery. Real images from Unsplash. News, nature, business, technology photos. Free, instant loading.">
-  <meta name="keywords" content="photo gallery, stock photos, image gallery, news photos, Unsplash">
+  <meta name="description" content="Explore our beautiful, auto-updating photo gallery featuring high-quality stock images from Unsplash. Browse categories like News, Nature, Business, and Technology. Free to use, fast loading, and updated daily.">
+  <meta name="keywords" content="photo gallery, stock photos, free images, high-quality photography, Unsplash gallery, news photos, nature photography, business images, tech photos, Toolyfi gallery">
   <meta name="author" content="Toolyfi">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#667eea">
   
-  <title>Photo Gallery - Real Auto-Updating Images | Toolyfi</title>
+  <title>Free High-Quality Photo Gallery | Auto-Updating Stock Images | Toolyfi</title>
   
-  <meta property="og:title" content="Photo Gallery - Real Images">
-  <meta property="og:description" content="Beautiful gallery with real stock photos. Auto-updates daily.">
+  <meta property="og:title" content="Free High-Quality Photo Gallery | Toolyfi">
+  <meta property="og:description" content="Discover a stunning collection of auto-updating stock photos across various categories. High-resolution images for your projects, updated daily.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolyfi.com/gallery.html">
   
@@ -504,15 +504,17 @@
                   searchQueries[cat].includes(query)
                 ) || 'all';
 
-                allImages.push({
-                  id: img.id,
-                  url: img.urls.regular,
-                  thumb: img.urls.small,
-                  title: img.alt_description || img.description || query,
-                  category: category,
-                  photographer: img.user.name,
-                  likes: img.likes
-                });
+	                allImages.push({
+	                  id: img.id,
+	                  url: img.urls.regular,
+	                  thumb: img.urls.small,
+	                  title: img.alt_description || img.description || query,
+	                  alt: img.alt_description || img.description || 'Beautiful image from Unsplash',
+	                  category: category,
+	                  photographer: img.user.name,
+	                  likes: img.likes,
+	                  location: img.user.location || 'Global'
+	                });
               });
             }
           }
@@ -550,19 +552,20 @@
     }
 
     galleryEl.innerHTML = images.map((img, idx) => `
-      <div class="gallery-item" onclick="openModal(${idx})">
-        <img src="${img.thumb}" alt="${img.title}" class="gallery-img" loading="lazy">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <div class="gallery-title">${img.title.substring(0, 50)}</div>
-            <div class="gallery-meta">
-              <span>📸 ${img.photographer}</span>
-              <span>❤️ ${img.likes}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    `).join('');
+	      <div class="gallery-item" onclick="openModal(${idx})">
+	        <img src="${img.thumb}" alt="${img.alt}" class="gallery-img" loading="lazy" title="${img.title}">
+	        <div class="gallery-overlay">
+	          <div class="gallery-info">
+	            <div class="gallery-title">${img.title.substring(0, 50)}</div>
+	            <div class="gallery-meta">
+	              <span>📸 ${img.photographer}</span>
+	              <span>📍 ${img.location}</span>
+	              <span>❤️ ${img.likes}</span>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    `).join('');
 
     document.getElementById('totalImages').textContent = images.length;
   }
