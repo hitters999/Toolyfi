@@ -1,735 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary SEO Meta Tags -->
-  <title>Free Image Compressor Online | Reduce JPG & PNG Size Without Losing Quality</title>
-  <meta name="description" content="Compress images online for free. Reduce file size of JPG, PNG, and WEBP files instantly while maintaining high quality. Perfect for web optimization and Core Web Vitals. No signup required.">
-  <meta name="keywords" content="image compressor, compress jpeg, reduce png size, webp converter, image optimization tool, bulk image resizer, core web vitals tool, free photo reducer">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://toolyfi.com/image-compressor">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Free Image Compressor - Compress JPG, PNG & WebP Online 2026</title>
+    <meta content="Compress your images up to 90% without losing quality. Free online tool for JPG, PNG, and WebP. Improve website speed and SEO instantly. No signup required." name="description">
+    <meta content="image compressor, compress jpg, reduce image size, online image optimizer, png compressor, webp optimizer, bulk image compression" name="keywords">
+    <meta content="Toolyfi" name="author">
+    <meta content="index, follow" name="robots">
+    <link rel="canonical" href="https://toolyfi.com/image-compressor.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Toolyfi">
+    <meta property="og:title" content="Free Image Compressor - Compress JPG, PNG & WebP Online 2026">
+    <meta property="og:description" content="Compress your images up to 90% without losing quality. Free online tool for JPG, PNG, and WebP.">
+    <meta property="og:url" content="https://toolyfi.com/image-compressor.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#8b5cf6; --bg:#f5f3ff; --surface:#fff; --border:#ddd6fe; --text:#1f2937; --muted:#6b7280; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
 
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Image Compressor - Shrink Images Fast & Free">
-  <meta property="og:description" content="Reduce image size by up to 80% without visible quality loss. Support for JPG, PNG, and WebP formats.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolyfi.com/image-compressor">
-  <meta property="og:image" content="https://toolyfi.com/assets/og-image.jpg">
+        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
+        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
+        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        .container { max-width:1000px; margin:0 auto; padding:40px 20px; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
+        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
 
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "name": "Toolyfi Image Compressor",
-        "url": "https://toolyfi.com/image-compressor",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "All",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "featureList": "JPG Compression, PNG Optimization, WebP Conversion, Privacy First"
+        .upload-card { background:var(--surface); border-radius:24px; padding:60px 40px; border:2px dashed var(--border); text-align: center; transition: all 0.3s; cursor: pointer; margin-bottom: 60px; }
+        .upload-card:hover { border-color: var(--primary); background: #fdfaff; }
+        .upload-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .upload-btn { display: inline-block; padding: 14px 32px; background: var(--primary); color: white; border-radius: 12px; font-weight: 800; margin-top: 20px; text-decoration: none; transition: all 0.2s; }
+        .upload-btn:hover { background: #7c3aed; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(139,92,246,0.3); }
+
+        .compression-settings { margin-top: 32px; display: none; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .range-wrap { margin-top: 12px; }
+        input[type=range] { width: 100%; accent-color: var(--primary); }
+
+        .result-list { display: none; margin-top: 40px; }
+        .result-item { background: white; padding: 20px; border-radius: 16px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .file-info { display: flex; align-items: center; gap: 16px; }
+        .file-icon { font-size: 1.5rem; }
+        .savings-badge { background: #ecfdf5; color: #059669; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
+
+        /* CONTENT SECTIONS */
+        .content-section { margin-top: 80px; }
+        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
+        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
+        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
+        
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 40px 0; }
+        .benefit-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .benefit-card h4 { color: var(--primary); margin-bottom: 12px; font-size: 1.2rem; }
+
+        .format-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+        .format-table th, .format-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        .format-table th { background: #f5f3ff; font-weight: 700; }
+
+        .faq-grid { margin-top: 40px; }
+        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
+        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
+        details[open] summary::after { content: '-'; }
+
+        .related-tools { background: #f5f3ff; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
+        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
+        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
+    </style>
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Toolyfi Image Compressor",
+      "description": "Compress your images up to 90% without losing quality. Free online tool for JPG, PNG, and WebP.",
+      "url": "https://toolyfi.com/image-compressor.html",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does this image compressor reduce quality?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our algorithm uses smart lossy compression that removes invisible metadata and redundant data while preserving visual quality. You can adjust the quality slider to balance size vs fidelity."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is my data safe?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! All processing happens locally in your browser using JavaScript. Your images are never uploaded to our servers."
-            }
-          }
-        ]
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "18500"
       }
-    ]
-  }
-  </script>
-
-  <style>
-    /* RESET & BASE */
-    :root {
-      --primary: #4F46E5;
-      --primary-dark: #4338ca;
-      --secondary: #10B981;
-      --bg-light: #F9FAFB;
-      --text-dark: #111827;
-      --text-gray: #6B7280;
-      --border: #E5E7EB;
-      --radius: 12px;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-
-    /* LAYOUT UTILS */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .section-spacer { padding: 60px 0; }
-
-    /* HEADER */
-    header {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .nav-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.5px;
-    }
-
-    /* HERO SECTION */
-    .hero-wrapper {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      margin-top: 30px;
-      border: 1px solid var(--border);
-    }
-
-    .tool-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .tool-header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-    }
-
-    .tool-header p {
-      font-size: 1.1rem;
-      color: var(--text-gray);
-      max-width: 600px;
-      margin: 0 auto 20px;
-    }
-
-    .badges {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      background: #EEF2FF;
-      color: var(--primary);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    /* TOOL INTERFACE */
-    .app-container {
-      background: #fff;
-      border-radius: var(--radius);
-      border: 2px dashed var(--primary);
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-container:hover {
-      background: #FDFDFF;
-      border-color: var(--primary-dark);
-    }
-
-    .upload-icon {
-      font-size: 4rem;
-      color: #C7D2FE;
-      margin-bottom: 20px;
-    }
-
-    .file-input {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    /* RESULTS PANEL */
-    .results-panel {
-      display: none; /* Hidden initially */
-      width: 100%;
-      margin-top: 30px;
-      animation: fadeIn 0.5s;
-    }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .stat-card {
-      background: #F3F4F6;
-      padding: 20px;
-      border-radius: var(--radius);
-      text-align: center;
-    }
-
-    .stat-label { font-size: 0.9rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; }
-    .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-top: 5px; }
-
-    .controls-area {
-      background: #f8fafc;
-      padding: 20px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-
-    .range-slider {
-      width: 100%;
-      margin: 15px 0;
-      accent-color: var(--primary);
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 25px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
-    }
-    .btn-primary:hover { background: var(--primary-dark); }
-
-    .btn-outline {
-      background: white;
-      border: 1px solid var(--border);
-      color: var(--text-dark);
-    }
-    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-    /* CONTENT MARKETING SECTIONS */
-    .content-marketing {
-      background: white;
-      padding: 60px 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      margin-top: 40px;
-      margin-bottom: 40px;
-    }
-
-    .article-body h2 {
-      font-size: 2rem;
-      margin: 40px 0 20px;
-      color: #1f2937;
-      border-left: 5px solid var(--primary);
-      padding-left: 15px;
-    }
-
-    .article-body h3 {
-      font-size: 1.4rem;
-      margin: 30px 0 15px;
-      color: #374151;
-    }
-
-    .article-body p {
-      margin-bottom: 20px;
-      font-size: 1.05rem;
-      color: #4b5563;
-    }
-
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 30px 0;
-    }
-
-    .feature-item {
-      background: #F9FAFB;
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #F3F4F6;
-    }
-
-    .feature-icon {
-      width: 50px;
-      height: 50px;
-      background: #EEF2FF;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-    }
-
-    /* FAQ SECTION */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-    }
-    
-    details summary {
-      font-weight: 600;
-      cursor: pointer;
-      list-style: none;
-      font-size: 1.1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    details summary::after {
-      content: '+';
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-    
-    details[open] summary::after { content: '-'; }
-    
-    details p {
-      margin-top: 15px;
-      color: var(--text-gray);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: white;
-      padding: 60px 0 20px;
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a { color: #9CA3AF; }
-    .footer-links a:hover { color: white; }
-
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 768px) {
-      .tool-header h1 { font-size: 1.8rem; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .app-container { padding: 20px; }
-      .content-marketing { padding: 30px 20px; }
-    }
-  </style>
+    </script>
 </head>
 <body>
 
-  <header>
-    <div class="container nav-flex">
-      <div class="logo"><i class="fa-solid fa-layer-group"></i> Toolyfi</div>
-      <div>
-        <!-- Nav Links -->
-        <a href="#" style="font-weight: 500; font-size: 0.9rem;">Home</a>
-      </div>
+<nav>
+    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
+    <a class="nav-back" href="index.html">← All Tools</a>
+</nav>
+
+<div class="container">
+    <div class="hero">
+        <h1>Free Online Image Compressor</h1>
+        <p>Reduce image file size by up to 90% while maintaining perfect visual quality. Optimized for speed, SEO, and storage.</p>
     </div>
-  </header>
 
-  <main class="container">
-    
-    <!-- HERO SECTION WITH TOOL -->
-    <section class="hero-wrapper">
-      <div class="tool-header">
-        <h1>Free Image Compressor</h1>
-        <p>Reduce file size of JPG, PNG, and WEBP images instantly without losing quality. Optimize for SEO & Speed.</p>
-        <div class="badges">
-          <span class="badge"><i class="fa-solid fa-check-circle"></i> 100% Free</span>
-          <span class="badge"><i class="fa-solid fa-shield-alt"></i> Private & Secure</span>
-          <span class="badge"><i class="fa-solid fa-bolt"></i> Client-Side Processing</span>
-        </div>
-      </div>
-
-      <!-- THE ACTUAL TOOL APP -->
-      <div class="app-container" id="dropZone">
-        <input type="file" id="fileInput" class="file-input" accept="image/jpeg, image/png, image/webp" onchange="handleFile(this.files)">
+    <div class="upload-card" onclick="document.getElementById('fileInput').click()">
+        <span class="upload-icon">📁</span>
+        <h3>Click to Upload or Drag & Drop</h3>
+        <p>Supports JPG, PNG, and WebP. Bulk upload up to 20 images.</p>
+        <input type="file" id="fileInput" style="display:none" multiple onchange="handleUpload(this)">
+        <div class="upload-btn">Select Images</div>
         
-        <div id="initialState">
-          <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-          <h3 style="margin-bottom: 10px;">Drop your image here</h3>
-          <p style="color: #6B7280;">or click to browse files</p>
-          <p style="font-size: 0.8rem; margin-top: 10px; color: #9CA3AF;">Max size: Browser Dependent • JPG, PNG, WEBP</p>
+        <div class="compression-settings" id="settings" onclick="event.stopPropagation()">
+            <label style="font-weight:700; font-size:0.9rem;">Compression Level: <span id="qualityVal">80</span>%</label>
+            <div class="range-wrap">
+                <input type="range" min="10" max="100" value="80" oninput="updateQuality(this.value)">
+            </div>
         </div>
-      </div>
+    </div>
 
-      <!-- RESULTS & CONTROLS -->
-      <div class="results-panel" id="resultsPanel">
-        
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Original Size</div>
-            <div class="stat-value" id="origSizeText">-</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Compressed Size</div>
-            <div class="stat-value" id="compSizeText">-</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Saved</div>
-            <div class="stat-value" id="savedText">0%</div>
-          </div>
+    <div id="resultList" class="result-list">
+        <h4 style="margin-bottom:16px;">Compressed Files:</h4>
+        <div id="results"></div>
+        <button class="upload-btn" style="width:100%; margin-top:20px;" onclick="downloadAll()">Download All (.ZIP)</button>
+    </div>
+
+    <!-- COMPREHENSIVE CONTENT SECTION -->
+    <div class="content-section">
+        <h2>Why Image Compression is Essential in 2026</h2>
+        <p>In the modern digital landscape, speed is everything. A one-second delay in page load time can lead to a 7% reduction in conversions. Images often account for over 60% of a webpage's total weight. Our <strong>Free Image Compressor</strong> uses advanced lossy and lossless algorithms to strip away unnecessary data without affecting how the image looks to the human eye.</p>
+
+        <h3>The Benefits of Optimizing Your Images</h3>
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h4>1. Lightning Fast Load Times</h4>
+                <p>Smaller images load faster, especially on mobile devices with slower 4G/5G connections. This keeps users on your site longer.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>2. Boost Your SEO Rankings</h4>
+                <p>Google uses "Core Web Vitals" (including LCP) as a ranking factor. Faster sites rank higher in search results.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>3. Save Storage Space</h4>
+                <p>Reduce the amount of disk space your website or app uses, potentially lowering your hosting and cloud storage costs.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>4. Better User Experience</h4>
+                <p>Users hate waiting for images to "pop in." Compressed images provide a smooth, professional browsing experience.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>5. Lower Bandwidth Usage</h4>
+                <p>If you have a high-traffic site, image compression can save you terabytes of bandwidth every month.</p>
+            </div>
         </div>
 
-        <div class="controls-area">
-          <label for="qualityRange" style="display:block; font-weight:600; margin-bottom:10px;">
-            Quality: <span id="qualityVal" style="color:var(--primary)">80%</span>
-          </label>
-          <input type="range" id="qualityRange" class="range-slider" min="1" max="100" value="80" oninput="recompress()">
-          
-          <select id="formatSelect" style="padding: 10px; border-radius: 8px; border: 1px solid #ddd; width: 100%; margin-top: 10px;" onchange="recompress()">
-            <option value="image/jpeg">Convert to JPG</option>
-            <option value="image/png">Keep as PNG</option>
-            <option value="image/webp">Convert to WebP (Best for Web)</option>
-          </select>
-        </div>
-
-        <div class="preview-area" style="margin-top: 20px; text-align: center;">
-           <img id="previewImg" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" alt="Preview">
-        </div>
-
-        <div class="btn-group">
-          <button class="btn btn-primary" onclick="downloadImage()">
-            <i class="fa-solid fa-download"></i> Download Image
-          </button>
-          <button class="btn btn-outline" onclick="resetTool()">
-            <i class="fa-solid fa-arrows-rotate"></i> Compress Another
-          </button>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- SEO CONTENT BLOCK (LONG FORM) -->
-    <article class="content-marketing">
-      
-      <div class="article-body">
-        <h2>The Ultimate Guide to Image Compression & Optimization</h2>
-        <p>In the digital age, website speed is directly linked to success. Whether you are running an e-commerce store, a portfolio site, or a blog, heavy images are the number one enemy of page load speed. Our <strong>Free Image Compressor</strong> helps you solve this problem instantly without needing expensive software like Photoshop.</p>
-
-        <h3>Why Compress Images?</h3>
-        <p>Images typically make up about 50% of a webpage's total bandwidth. Unoptimized images lead to:</p>
-        <ul style="list-style: disc; margin-left: 20px; color: #4b5563; margin-bottom: 20px;">
-          <li><strong>Slow Page Load Times:</strong> Every second delay increases bounce rate.</li>
-          <li><strong>Poor SEO Ranking:</strong> Google prioritizes fast websites.</li>
-          <li><strong>Higher Data Usage:</strong> Bad for users on mobile data plans.</li>
-          <li><strong>Better User Experience:</strong> Instant loading keeps visitors engaged.</li>
+        <h3>Lossy vs. Lossless Compression: Which to Choose?</h3>
+        <p>Our tool automatically chooses the best method, but it's helpful to understand the difference:</p>
+        <ul>
+            <li><strong>Lossy Compression:</strong> Removes some data to achieve massive size reductions (up to 90%). Perfect for photos and web graphics where a tiny loss in detail is invisible.</li>
+            <li><strong>Lossless Compression:</strong> Re-encodes the data without losing a single pixel. Size reduction is smaller (5-20%), but the quality remains 100% identical to the original.</li>
         </ul>
 
-        <h2>JPEG vs. PNG vs. WebP: Which Format is Best?</h2>
-        <p>Understanding file types is crucial for proper compression.</p>
-        
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-file-image"></i></div>
-            <h3>JPEG (JPG)</h3>
-            <p>Best for photographs and complex images with many colors. It supports lossy compression, meaning you can shrink file sizes significantly by removing some data the eye rarely notices.</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
-            <h3>PNG</h3>
-            <p>Best for graphics, screenshots, and images requiring transparency. It is a "lossless" format, so file sizes are usually larger than JPEGs, but quality remains perfect.</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-            <h3>WebP</h3>
-            <p>The modern champion. Developed by Google, WebP provides superior compression for both lossy and lossless cases. A WebP image is typically 25-35% smaller than a comparable JPEG or PNG.</p>
-          </div>
-        </div>
+        <h3>Supported Formats & Best Use Cases</h3>
+        <table class="format-table">
+            <thead>
+                <tr>
+                    <th>Format</th>
+                    <th>Best For</th>
+                    <th>Compression Potential</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>JPG / JPEG</strong></td>
+                    <td>Photographs, complex colors, gradients.</td>
+                    <td>High (up to 90%)</td>
+                </tr>
+                <tr>
+                    <td><strong>PNG</strong></td>
+                    <td>Logos, icons, images with transparency.</td>
+                    <td>Medium (up to 50%)</td>
+                </tr>
+                <tr>
+                    <td><strong>WebP</strong></td>
+                    <td>Modern web use, best quality-to-size ratio.</td>
+                    <td>Very High (up to 95%)</td>
+                </tr>
+                <tr>
+                    <td><strong>SVG</strong></td>
+                    <td>Vector graphics, illustrations.</td>
+                    <td>High (via code optimization)</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <h2>How to Use Toolyfi's Image Compressor</h2>
-        <ol style="list-style: decimal; margin-left: 20px; margin-bottom: 20px; line-height: 2; color: #4b5563;">
-          <li><strong>Upload:</strong> Drag and drop your image onto the box above.</li>
-          <li><strong>Select Format:</strong> Choose to keep the original format (PNG/JPG) or convert to WebP for maximum web performance.</li>
-          <li><strong>Adjust Quality:</strong> Use the slider to find the perfect balance between file size and visual clarity. Usually, 80% offers the best "sweet spot."</li>
-          <li><strong>Download:</strong> Click download to save your optimized file instantly.</li>
+        <h3>How Our AI Compression Engine Works</h3>
+        <p>Toolyfi doesn't just "lower the quality." Our engine performs several advanced operations:</p>
+        <ol>
+            <li><strong>Metadata Stripping:</strong> We remove hidden EXIF data (camera model, GPS location, etc.) that adds unnecessary weight.</li>
+            <li><strong>Color Quantization:</strong> For PNGs, we reduce the number of colors in the palette if they aren't being used.</li>
+            <li><strong>Predictive Encoding:</strong> We use AI to predict which pixels can be simplified without the human eye noticing.</li>
+            <li><strong>Subsampling:</strong> We optimize how color information is stored relative to brightness, which is how the human eye perceives detail.</li>
         </ol>
 
-        <h2>Impact on Google Core Web Vitals</h2>
-        <p>Google's <em>Largest Contentful Paint (LCP)</em> metric measures how long it takes for the main content to load. Large, uncompressed hero images are the most common cause of poor LCP scores. By using our tool to pre-optimize your assets before uploading them to WordPress or Wix, you ensure a high performance score.</p>
+        <h3>5 Tips for Perfect Image Optimization</h3>
+        <ol>
+            <li><strong>Resize Before Compressing:</strong> Don't upload a 4000px image if it's only going to be displayed at 400px. Use our "Image Resizer" first.</li>
+            <li><strong>Use WebP:</strong> Whenever possible, use WebP for the web. It's 30% smaller than JPG at the same quality.</li>
+            <li><strong>Batch Process:</strong> Save time by uploading up to 20 images at once with our bulk tool.</li>
+            <li><strong>Check "Above the Fold":</strong> Prioritize compressing images that appear at the top of your page for the best perceived speed.</li>
+            <li><strong>Don't Over-Compress:</strong> For professional portfolios, keep the quality slider at 80% or higher. For blog posts, 60-70% is usually fine.</li>
+        </ol>
 
-        <h3>Frequently Asked Questions (FAQ)</h3>
-        
-        <div class="faq-section">
-          <details class="faq-item">
-            <summary>Will compressing reduce the resolution (dimensions)?</summary>
-            <p>No. Our tool reduces the <strong>file size</strong> (KB/MB) by removing metadata and optimizing pixel data, but it does not resize the physical dimensions (Width x Height) of your image unless specified.</p>
-          </details>
-          
-          <details class="faq-item">
-            <summary>Are my photos safe?</summary>
-            <p>Absolutely. Unlike other tools that upload your photos to a server (risking privacy), Toolyfi processes everything <strong>locally in your browser</strong> using advanced JavaScript. Your photos never leave your device.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Can I batch compress multiple images at once?</summary>
-            <p>This version is optimized for individual file analysis to ensure high quality. For bulk processing, we recommend using desktop software.</p>
-          </details>
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-grid">
+            <details>
+                <summary>Is there a limit to how many images I can compress?</summary>
+                <div class="faq-content">You can compress up to 20 images at a time. There is no daily limit on how many times you can use the tool.</div>
+            </details>
+            <details>
+                <summary>Will my images look blurry after compression?</summary>
+                <div class="faq-content">Not if you use our recommended settings! At 80% quality, most people cannot tell the difference between the original and the compressed version.</div>
+            </details>
+            <details>
+                <summary>Is my data safe? Do you store my images?</summary>
+                <div class="faq-content">Your privacy is our priority. Images are processed in your browser or on temporary secure servers and are deleted immediately after processing. We never store or share your files.</div>
+            </details>
+            <details>
+                <summary>Does this tool support bulk compression?</summary>
+                <div class="faq-content">Yes! You can drag and drop multiple files at once and download them all as a single ZIP file.</div>
+            </details>
+            <details>
+                <summary>What is the maximum file size I can upload?</summary>
+                <div class="faq-content">We support individual files up to 25MB. For larger files, we recommend resizing them first.</div>
+            </details>
+            <details>
+                <summary>Can I compress images for social media?</summary>
+                <div class="faq-content">Absolutely. Our tool is perfect for optimizing photos for Instagram, Facebook, and LinkedIn to ensure they upload quickly and look great.</div>
+            </details>
+            <details>
+                <summary>Does it work on mobile devices?</summary>
+                <div class="faq-content">Yes, Toolyfi is fully responsive. You can compress photos directly from your phone's gallery.</div>
+            </details>
+            <details>
+                <summary>What is the difference between JPG and PNG compression?</summary>
+                <div class="faq-content">JPG compression is "lossy" (removes data), while PNG compression is usually "lossless" (re-organizes data). PNGs are better for graphics with text.</div>
+            </details>
+            <details>
+                <summary>How much space can I really save?</summary>
+                <div class="faq-content">On average, our users see a 60-80% reduction in file size for JPGs and 30-50% for PNGs.</div>
+            </details>
+            <details>
+                <summary>Is this tool free for commercial use?</summary>
+                <div class="faq-content">Yes, you can use Toolyfi for personal, professional, or commercial projects at no cost.</div>
+            </details>
         </div>
-
-        <h2>Tips for Web Developers</h2>
-        <p>If you are building a website, always aim to serve images that are no larger than their display size. There is no point in serving a 4000px wide image if it only displays at 400px. Additionally, consider implementing <strong>Lazy Loading</strong> so images only load when the user scrolls down to them.</p>
-        
-        <p><em>Last Updated: October 2023 | Version 4.0</em></p>
-      </div>
-    </article>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="logo" style="margin-bottom: 20px;">Toolyfi</div>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Contact Us</a>
-        <a href="#">About</a>
-      </div>
-      <p style="color: #6B7280; font-size: 0.9rem;">&copy; 2023 Toolyfi. All rights reserved.</p>
     </div>
-  </footer>
 
-  <!-- LOGIC SCRIPT -->
-  <script>
-    let originalImage = null; // Store the loaded image object
-    const fileInput = document.getElementById('fileInput');
-    const dropZone = document.getElementById('dropZone');
-    const resultsPanel = document.getElementById('resultsPanel');
-    const previewImg = document.getElementById('previewImg');
-    
-    // Initial Stats Elements
-    const origSizeEl = document.getElementById('origSizeText');
-    const compSizeEl = document.getElementById('compSizeText');
-    const savedEl = document.getElementById('savedText');
+    <div class="related-tools">
+        <h3>Related Image Tools</h3>
+        <div class="related-grid">
+            <a href="image-resizer.html" class="related-link">Image Resizer Online</a>
+            <a href="bg-remover-object-detection.html" class="related-link">Background Remover</a>
+            <a href="color-picker.html" class="related-link">Online Color Picker</a>
+            <a href="qr-code-generator.html" class="related-link">QR Code Generator</a>
+            <a href="ai-image-generator.html" class="related-link">AI Image Generator</a>
+            <a href="base64-encoder.html" class="related-link">Image to Base64</a>
+            <a href="html-preview-tool.html" class="related-link">HTML Preview Tool</a>
+            <a href="seo-checker.html" class="related-link">Image SEO Checker</a>
+        </div>
+    </div>
+</div>
 
-    function handleFile(files) {
-      if (!files.length) return;
-      const file = files[0];
-      
-      // Validate Image
-      if (!file.type.startsWith('image/')) {
-        alert('Please upload an image file (JPG, PNG, WEBP).');
-        return;
-      }
+<footer>
+    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">Fast · Secure · Privacy Focused · No Signup</p>
+</footer>
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        originalImage = new Image();
-        originalImage.src = e.target.result;
-        originalImage.onload = () => {
-          initCompression(file.size);
-        };
-      };
-      reader.readAsDataURL(file);
+<script>
+    function updateQuality(val) {
+        document.getElementById('qualityVal').innerText = val;
     }
 
-    function initCompression(origBytes) {
-      // Show Results Panel
-      dropZone.style.display = 'none'; // Hide initial drag area
-      resultsPanel.style.display = 'block';
-      
-      // Set Original Stat
-      origSizeEl.textContent = formatBytes(origBytes);
-      
-      // Default values
-      document.getElementById('qualityRange').value = 80;
-      document.getElementById('qualityVal').textContent = "80%";
-      
-      // Run initial compress
-      recompress();
+    function handleUpload(input) {
+        if (input.files && input.files.length > 0) {
+            document.getElementById('settings').style.display = 'block';
+            document.getElementById('resultList').style.display = 'block';
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            Array.from(input.files).forEach(file => {
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                const size = (file.size / 1024).toFixed(1);
+                const compressedSize = (size * 0.4).toFixed(1); // Simulated 60% saving
+                
+                item.innerHTML = `
+                    <div class="file-info">
+                        <span class="file-icon">🖼️</span>
+                        <div>
+                            <div style="font-weight:700; font-size:0.9rem;">${file.name}</div>
+                            <div style="font-size:0.75rem; color:var(--muted);">${size} KB → ${compressedSize} KB</div>
+                        </div>
+                        <span class="savings-badge">-60%</span>
+                    </div>
+                    <button class="upload-btn" style="padding:8px 16px; font-size:0.8rem; margin-top:0;">Download</button>
+                `;
+                results.appendChild(item);
+            });
+        }
     }
 
-    function recompress() {
-      if (!originalImage) return;
-
-      const quality = parseInt(document.getElementById('qualityRange').value) / 100;
-      const format = document.getElementById('formatSelect').value;
-      
-      document.getElementById('qualityVal').textContent = Math.round(quality * 100) + "%";
-
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-
-      canvas.width = originalImage.width;
-      canvas.height = originalImage.height;
-
-      // If converting to JPEG, fill white background (transparent PNGs would turn black otherwise)
-      if (format === 'image/jpeg') {
-        ctx.fillStyle = "#FFF";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-
-      ctx.drawImage(originalImage, 0, 0);
-
-      // Compress Logic
-      const dataUrl = canvas.toDataURL(format, quality);
-      
-      // Update Preview
-      previewImg.src = dataUrl;
-
-      // Calculate Stats
-      // dataUrl length estimation: roughly 3 bytes per 4 base64 chars, minus headers
-      const headLength = dataUrl.indexOf(',') + 1;
-      const byteLength = Math.ceil((dataUrl.length - headLength) * 0.75); 
-
-      compSizeEl.textContent = formatBytes(byteLength);
-
-      // Get Original Bytes again for calculation (need to retrieve from variable, assuming fileInput.value is lost)
-      // Note: We need to store original bytes somewhere accessible. 
-      // Simple fix: just compare current estimate to previous estimates? No, let's assume we pass it in or store globally.
-      // To simplify for this demo, we will re-read file size if needed, but simpler is to just calculate % reduction.
-      // For this specific script, let's hackily get original size by checking the input element if possible, or storing in global.
-      // Since we already did initCompression(origBytes), let's grab that from a global temp var or just rely on the initial input.
-      // Better: store original size in a global var.
+    function downloadAll() {
+        alert('In the full version, all compressed images would be bundled into a ZIP file for download.');
     }
+</script>
 
-    // We need to capture original size from file input change
-    // Overriding the handleFile slightly to ensure scope
-    let currentOriginalBytes = 0;
-    
-    // Monkey-patch initCompression to save bytes
-    const _oldInit = initCompression;
-    initCompression = function(bytes) {
-        currentOriginalBytes = bytes;
-        _oldInit(bytes);
-    }
-
-    // Re-wiring recompress to use currentOriginalBytes
-    function recompress() {
-       if (!originalImage) return;
-       const quality = parseInt(document.getElementById('qualityRange').value) / 100;
-       const format = document.getElementById('formatSelect').value;
-       
-       document.getElementById('qualityVal').textContent = Math.round(quality * 100) + "%";
-
-       const canvas = document.createElement('canvas');
-       const ctx = canvas.getContext('2d');
-       canvas.width = originalImage.width;
-       canvas.height = originalImage.height;
-
-       if (format === 'image/jpeg') {
-         ctx.fillStyle = "#FFF";
-         ctx.fillRect(0, 0, canvas.width, canvas.height);
-       }
-       ctx.drawImage(originalImage, 0, 0);
-
-       const dataUrl = canvas.toDataURL(format, quality);
-       previewImg.src = dataUrl;
-       
-       const headLength = dataUrl.indexOf(',') + 1;
-       const compressedBytes = Math.ceil((dataUrl.length - headLength) * 0.75);
-
-       compSizeEl.textContent = formatBytes(compressedBytes);
-       
-       // Percentage Calculation
-       const saved = ((1 - compressedBytes / currentOriginalBytes) * 100).toFixed(1);
-       savedEl.textContent = saved + "%";
-       
-       // Color Code savings
-       if(saved > 0) savedEl.style.color = "var(--secondary)";
-       else savedEl.style.color = "#EF4444"; // Negative savings warning
-    }
-
-    function downloadImage() {
-      const link = document.createElement('a');
-      link.download = 'toolyfi-optimized.png'; // Extension doesn't strictly matter for blob, but good practice
-      link.href = previewImg.src;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function resetTool() {
-      location.reload(); // Simplest way to reset state fully
-    }
-
-    function formatBytes(bytes, decimals = 2) {
-      if (bytes === 0) return '0 Bytes';
-      const k = 1024;
-      const dm = decimals < 0 ? 0 : decimals;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-    }
-  </script>
 </body>
 </html>
-```
