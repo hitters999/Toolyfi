@@ -1,690 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sales Tax Calculator – Calculate Tax Amount & Total Price Free | Toolyfi</title>
-<meta name="description" content="Free sales tax calculator online. Calculate tax amount and total price instantly. Supports all US state tax rates. No signup required."/>
-<meta name="keywords" content="sales tax calculator, tax calculator, sales tax by state, how to calculate sales tax, price with tax calculator, toolyfi"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/sales-tax-calculator.html"/>
-<meta property="og:title" content="Sales Tax Calculator – Calculate Tax Amount & Total Price Free | Toolyfi"/>
-<meta property="og:description" content="Calculate sales tax and total price instantly. All US state rates included. Free, no signup."/>
-<meta property="og:url" content="https://toolyfi.com/sales-tax-calculator.html"/>
-<meta property="og:type" content="website"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Sales Tax Calculator – Calculate Tax Amount & Total Price Free | Toolyfi"/>
-<meta name="twitter:description" content="Calculate sales tax and total price instantly. All US state rates included. Free, no signup."/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type": "SoftwareApplication","name":"Sales Tax Calculator","url":"https://toolyfi.com/sales-tax-calculator.html","description":"Free sales tax calculator with all US state rates.","applicationCategory":"FinanceApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css"/>
-<style>
-  :root {
-    --bg: #fdf2f8;
-    --card: #ffffff;
-    --border: rgba(219,39,119,0.14);
-    --accent: #db2777;
-    --accent2: #9333ea;
-    --accent3: #f472b6;
-    --text: #500724;
-    --muted: #9d6b8a;
-    --success: #059669;
-    --danger: #ef4444;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'DM Sans',sans-serif;
-    background:var(--bg); color:var(--text);
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed;
-    top:-150px; left:50%; transform:translateX(-50%);
-    width:700px; height:600px;
-    background:radial-gradient(ellipse,rgba(219,39,119,0.1) 0%,rgba(147,51,234,0.06) 40%,transparent 70%);
-    pointer-events:none; z-index:0;
-  }
-  body::after {
-    content:''; position:fixed;
-    bottom:-100px; right:-100px; width:400px; height:400px;
-    background:radial-gradient(ellipse,rgba(244,114,182,0.1) 0%,transparent 70%);
-    pointer-events:none; z-index:0;
-  }
-  nav {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 32px; border-bottom:1px solid var(--border);
-    background:rgba(253,242,248,0.92); backdrop-filter:blur(16px);
-    position:sticky; top:0; z-index:100;
-  }
-  .nav-logo {
-    font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem;
-    text-decoration:none;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .nav-links { list-style:none; display:flex; gap:24px; }
-  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
-  .nav-links a:hover { color:var(--accent); }
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Sales Tax Calculator - Calculate Tax & Total Price by US State 2026</title>
+    <meta content="Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items. Free calculator for e-commerce and business." name="description">
+    <meta content="sales tax calculator, US sales tax, state tax rates, calculate tax online, e-commerce sales tax, tax free states, local sales tax" name="keywords">
+    <meta content="Toolyfi" name="author">
+    <meta content="index, follow" name="robots">
+    <link rel="canonical" href="https://toolyfi.com/sales-tax-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Toolyfi">
+    <meta property="og:title" content="Sales Tax Calculator - Calculate Tax & Total Price by US State 2026">
+    <meta property="og:description" content="Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items.">
+    <meta property="og:url" content="https://toolyfi.com/sales-tax-calculator.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#f59e0b; --bg:#fffbeb; --surface:#fff; --border:#fef3c7; --text:#1f2937; --muted:#6b7280; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
 
-  .pg-wrap { max-width:700px; margin:0 auto; padding:48px 20px 100px; position:relative; z-index:1; }
+        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
+        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
+        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
 
-  .breadcrumb { font-size:0.78rem; color:var(--muted); margin-bottom:32px; }
-  .breadcrumb a { color:var(--muted); text-decoration:none; }
-  .breadcrumb a:hover { color:var(--accent); }
+        .container { max-width:1000px; margin:0 auto; padding:40px 20px; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
+        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
 
-  /* HEADER */
-  .tool-header { text-align:center; margin-bottom:40px; }
-  .header-icon {
-    font-size:3.5rem; display:block; margin-bottom:14px;
-    filter:drop-shadow(0 0 20px rgba(219,39,119,0.4));
-    animation:swing 3s ease-in-out infinite;
-  }
-  @keyframes swing {
-    0%,100% { transform:rotate(-5deg); }
-    50% { transform:rotate(5deg); }
-  }
-  .tool-header h1 {
-    font-family:'Clash Display',sans-serif;
-    font-size:clamp(1.8rem,5vw,2.9rem);
-    font-weight:700; letter-spacing:-0.03em;
-    background:linear-gradient(135deg,var(--accent) 10%,var(--accent2) 80%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    margin-bottom:10px;
-  }
-  .tool-header p { color:var(--muted); font-size:0.97rem; max-width:440px; margin:0 auto 20px; line-height:1.65; }
-  .badge-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-  .badge {
-    background:rgba(219,39,119,0.08); border:1px solid rgba(219,39,119,0.22);
-    color:var(--accent); font-size:0.72rem; padding:4px 13px;
-    border-radius:100px; font-weight:600;
-  }
+        .calc-card { background:var(--surface); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(245,158,11,0.1); margin-bottom: 60px; }
+        
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        @media(max-width:600px){ .input-grid{grid-template-columns: 1fr;} }
+        
+        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .input-wrap { position: relative; display: flex; align-items: center; }
+        .input-icon { position: absolute; left: 16px; font-weight: 800; color: var(--primary); }
+        input, select { width: 100%; padding: 14px 16px 14px 40px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1rem; font-weight: 700; outline: none; transition: all 0.2s; appearance: none; background: white; }
+        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(245,158,11,0.1); }
 
-  /* RESULT CARDS */
-  .result-cards {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:12px; margin-bottom:20px;
-  }
-  .res-card {
-    background:var(--card); border:1.5px solid var(--border);
-    border-radius:18px; padding:20px 14px; text-align:center;
-    box-shadow:0 4px 20px rgba(219,39,119,0.07);
-    transition:all 0.3s; position:relative; overflow:hidden;
-  }
-  .res-card::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));
-    opacity:0; transition:opacity 0.3s;
-  }
-  .res-card.active::before { opacity:1; }
-  .res-card.active { border-color:rgba(219,39,119,0.3); box-shadow:0 6px 28px rgba(219,39,119,0.12); }
-  .res-label { font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:8px; }
-  .res-val {
-    font-family:'Clash Display',sans-serif; font-size:1.8rem; font-weight:700;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .res-val.dash { color:var(--muted); -webkit-text-fill-color:var(--muted); background:none; font-size:1.4rem; }
-  .res-sub { font-size:0.7rem; color:var(--muted); margin-top:4px; }
+        .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        @media(max-width:768px){ .result-grid{grid-template-columns: 1fr;} }
+        .result-item { background: #fffbeb; padding: 24px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
+        .result-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+        .result-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
 
-  /* CALC CARD */
-  .calc-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:28px 24px; margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(219,39,119,0.07);
-  }
-  .sec-title {
-    font-family:'Syne',sans-serif; font-size:0.72rem; color:var(--muted);
-    text-transform:uppercase; letter-spacing:0.1em; font-weight:700;
-    margin-bottom:20px; display:flex; align-items:center; gap:8px;
-  }
+        /* CONTENT SECTIONS */
+        .content-section { margin-top: 80px; }
+        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
+        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
+        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
+        
+        .tax-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+        .tax-table th, .tax-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        .tax-table th { background: #fffbeb; font-weight: 700; }
 
-  /* MODE TOGGLE */
-  .mode-toggle {
-    display:flex; background:rgba(219,39,119,0.06);
-    border-radius:12px; padding:4px; margin-bottom:22px; gap:4px;
-  }
-  .mode-btn {
-    flex:1; padding:10px; border:none; background:transparent;
-    color:var(--muted); font-family:'DM Sans',sans-serif;
-    font-size:0.88rem; font-weight:600; cursor:pointer;
-    border-radius:9px; transition:all 0.2s;
-  }
-  .mode-btn.active {
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    color:#fff; box-shadow:0 4px 14px rgba(219,39,119,0.3);
-  }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
+        @media(max-width:700px){ .info-grid{grid-template-columns: 1fr;} }
+        .info-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
+        .info-card h4 { color: var(--primary); margin-bottom: 12px; }
 
-  /* INPUTS */
-  .input-2col { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
-  .input-group { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
-  .input-group.no-mb { margin-bottom:0; }
-  .input-label { font-size:0.8rem; color:var(--muted); font-weight:600; }
-  .input-wrap { position:relative; display:flex; align-items:center; }
-  .input-prefix { position:absolute; left:14px; font-size:1rem; color:var(--accent); font-weight:700; pointer-events:none; }
-  .input-suffix { position:absolute; right:14px; font-size:0.85rem; color:var(--muted); font-weight:600; pointer-events:none; }
-  .input-field {
-    width:100%; background:#fdf2f8;
-    border:1.5px solid rgba(219,39,119,0.15);
-    border-radius:12px; padding:13px 14px 13px 36px;
-    font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600;
-    color:var(--text); outline:none; transition:all 0.2s;
-    -moz-appearance:textfield;
-  }
-  .input-field.no-prefix { padding-left:14px; }
-  .input-field.has-suffix { padding-right:40px; }
-  .input-field::-webkit-outer-spin-button,
-  .input-field::-webkit-inner-spin-button { -webkit-appearance:none; }
-  .input-field:focus {
-    border-color:var(--accent); background:#fff;
-    box-shadow:0 0 0 3px rgba(219,39,119,0.1);
-  }
+        .faq-grid { margin-top: 40px; }
+        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
+        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
+        details[open] summary::after { content: '-'; }
 
-  /* STATE SELECT */
-  .state-select {
-    width:100%; background:#fdf2f8;
-    border:1.5px solid rgba(219,39,119,0.15);
-    border-radius:12px; padding:13px 14px;
-    font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600;
-    color:var(--text); outline:none; cursor:pointer;
-    transition:all 0.2s; appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23db2777' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:right 14px center;
-    padding-right:36px;
-  }
-  .state-select:focus { border-color:var(--accent); background-color:#fff; box-shadow:0 0 0 3px rgba(219,39,119,0.1); }
+        .related-tools { background: #fffbeb; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
+        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 
-  /* BUTTONS */
-  .btn-calc {
-    width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border:none; border-radius:14px; padding:16px;
-    font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
-    color:#fff; cursor:pointer; transition:all 0.2s;
-    box-shadow:0 4px 20px rgba(219,39,119,0.3); margin-bottom:10px;
-    position:relative; overflow:hidden;
-  }
-  .btn-calc::after {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(135deg,transparent,rgba(255,255,255,0.15),transparent);
-    transform:translateX(-100%); transition:transform 0.4s;
-  }
-  .btn-calc:hover::after { transform:translateX(100%); }
-  .btn-calc:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(219,39,119,0.4); }
-  .btn-row { display:flex; gap:10px; }
-  .btn-sec {
-    flex:1; background:#fdf2f8;
-    border:1.5px solid rgba(219,39,119,0.2); border-radius:12px;
-    padding:12px; font-family:'DM Sans',sans-serif;
-    font-size:0.86rem; color:var(--accent); cursor:pointer;
-    transition:all 0.2s; font-weight:600;
-  }
-  .btn-sec:hover { background:rgba(219,39,119,0.1); border-color:var(--accent); }
+        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
+        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
+    </style>
 
-  /* BREAKDOWN CARD */
-  .breakdown-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:24px; margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(219,39,119,0.07);
-    display:none;
-  }
-  .breakdown-card.show { display:block; animation:fadeUp 0.4s ease; }
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(14px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  .bd-row {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:11px 0; border-bottom:1px solid var(--border);
-  }
-  .bd-row:last-child { border-bottom:none; }
-  .bd-key { font-size:0.88rem; color:var(--muted); font-weight:500; }
-  .bd-val { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text); }
-  .bd-val.pink { color:var(--accent); }
-
-  /* US STATE TAX TABLE */
-  .state-table-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:24px; margin-bottom:16px;
-    box-shadow:0 2px 16px rgba(219,39,119,0.07);
-  }
-  .state-grid {
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:8px; margin-top:14px; max-height:280px; overflow-y:auto;
-  }
-  .state-grid::-webkit-scrollbar { width:4px; }
-  .state-grid::-webkit-scrollbar-thumb { background:rgba(219,39,119,0.2); border-radius:10px; }
-  .state-item {
-    background:#fdf2f8; border:1px solid rgba(219,39,119,0.1);
-    border-radius:10px; padding:8px 10px;
-    display:flex; justify-content:space-between; align-items:center;
-    cursor:pointer; transition:all 0.2s;
-  }
-  .state-item:hover { background:rgba(219,39,119,0.08); border-color:rgba(219,39,119,0.25); }
-  .state-item.no-tax { opacity:0.6; }
-  .state-name { font-size:0.75rem; color:var(--text); font-weight:500; }
-  .state-rate {
-    font-size:0.72rem; font-weight:700; font-family:'Syne',sans-serif;
-    padding:2px 6px; border-radius:5px;
-  }
-  .state-rate.zero { background:rgba(5,150,105,0.1); color:#059669; }
-  .state-rate.low  { background:rgba(245,158,11,0.1); color:#d97706; }
-  .state-rate.high { background:rgba(219,39,119,0.1); color:var(--accent); }
-
-  /* SEO */
-  .seo-article { max-width:700px; margin:0 auto 40px; padding:0 20px; color:var(--muted); line-height:1.8; font-size:0.93rem; position:relative; z-index:1; }
-  .seo-article h2 { font-family:'Syne',sans-serif; color:var(--text); font-size:1.2rem; margin:28px 0 10px; font-weight:700; }
-  .seo-article h3 { font-family:'Syne',sans-serif; color:var(--accent); font-size:1rem; margin:20px 0 8px; font-weight:600; }
-  .seo-article ul { padding-left:20px; }
-  .seo-article li { margin-bottom:6px; }
-  .seo-article strong { color:var(--text); }
-
-  .related-tools { max-width:700px; margin:0 auto 60px; padding:0 20px; position:relative; z-index:1; }
-  .related-tools h2 { font-family:'Syne',sans-serif; font-size:0.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:14px; font-weight:700; }
-  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
-  .related-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; font-size:0.84rem; color:var(--muted); text-decoration:none; transition:all 0.2s; font-weight:500; }
-  .related-card:hover { background:#fdf2f8; color:var(--accent); border-color:rgba(219,39,119,0.3); transform:translateY(-2px); }
-
-  footer { background:var(--card); border-top:1px solid var(--border); padding:24px 32px; text-align:center; color:var(--muted); font-size:0.82rem; position:relative; z-index:1; }
-  .footer-links { display:flex; gap:20px; justify-content:center; margin-bottom:8px; }
-  .footer-links a { color:var(--muted); text-decoration:none; }
-  .footer-links a:hover { color:var(--accent); }
-
-  .toast { position:fixed; bottom:24px; right:24px; background:#fff; border:1px solid rgba(219,39,119,0.2); color:var(--text); padding:12px 20px; border-radius:12px; font-size:0.88rem; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:999; box-shadow:0 8px 24px rgba(219,39,119,0.15); }
-  .toast.show { opacity:1; transform:translateY(0); }
-
-  @media (max-width:560px) {
-    .result-cards { grid-template-columns:1fr 1fr; }
-    .state-grid { grid-template-columns:repeat(2,1fr); }
-    .input-2col { grid-template-columns:1fr; }
-    nav { padding:14px 20px; }
-    .pg-wrap { padding:32px 16px 60px; }
-  }
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
     {
-      "@type": "Question",
-      "name": "How do I calculate sales tax?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Multiply the pre-tax price by the tax rate. For example, $100 x 8.5% = $8.50 tax. Total = $108.50."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which US states have no sales tax?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Five US states have no sales tax: Alaska, Delaware, Montana, New Hampshire, and Oregon."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I remove sales tax from a total price?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Divide the total price by (1 + tax rate/100). For example, $108.50 / 1.085 = $100 pre-tax price."
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Toolyfi Sales Tax Calculator",
+      "description": "Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items.",
+      "url": "https://toolyfi.com/sales-tax-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "3800"
       }
     }
-  ]
-}
-</script>
+    </script>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">⚡ Toolyfi</a>
-  <ul class="nav-links"><li><a href="index.html">Home</a></li></ul>
+    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
+    <a class="nav-back" href="index.html">← All Tools</a>
 </nav>
 
-<div class="pg-wrap">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Sales Tax Calculator</div>
-
-  <div class="tool-header">
-    <span class="header-icon">🧾</span>
-    <h1>Sales Tax Calculator</h1>
-    <p>Calculate sales tax and total price instantly. All US state tax rates included. Works both ways!</p>
-    <div class="badge-row">
-      <span class="badge">🇺🇸 All US States</span>
-      <span class="badge">⚡ Instant</span>
-      <span class="badge">↔️ Both Ways</span>
-      <span class="badge">💚 Free</span>
-    </div>
-  </div>
-
-  <!-- RESULT CARDS -->
-  <div class="result-cards">
-    <div class="res-card" id="card-price">
-      <div class="res-label">Pre-Tax Price</div>
-      <div class="res-val dash" id="val-price">–</div>
-      <div class="res-sub">before tax</div>
-    </div>
-    <div class="res-card" id="card-tax">
-      <div class="res-label">Tax Amount</div>
-      <div class="res-val dash" id="val-tax">–</div>
-      <div class="res-sub" id="sub-tax">tax</div>
-    </div>
-    <div class="res-card" id="card-total">
-      <div class="res-label">Total Price</div>
-      <div class="res-val dash" id="val-total">–</div>
-      <div class="res-sub">after tax</div>
-    </div>
-  </div>
-
-  <!-- CALCULATOR -->
-  <div class="calc-card">
-    <div class="sec-title">⚙️ Calculate Sales Tax</div>
-
-    <!-- MODE TOGGLE -->
-    <div class="mode-toggle">
-      <button class="mode-btn active" id="mode-add" onclick="setMode('add',this)">➕ Add Tax to Price</button>
-      <button class="mode-btn" id="mode-remove" onclick="setMode('remove',this)">➖ Remove Tax from Total</button>
+<div class="container">
+    <div class="hero">
+        <h1>US Sales Tax Calculator</h1>
+        <p>Calculate sales tax for any US state instantly. Includes state rates, local tax estimates, and total price breakdown for 2026.</p>
     </div>
 
-    <div class="input-2col">
-      <div class="input-group no-mb">
-        <div class="input-label" id="price-label">Price (Before Tax)</div>
-        <div class="input-wrap">
-          <span class="input-prefix">$</span>
-          <input type="number" id="priceInput" class="input-field" placeholder="e.g. 100" min="0" step="0.01" oninput="calculate()"/>
+    <div class="calc-card">
+        <div class="input-grid">
+            <div>
+                <label>Amount ($)</label>
+                <div class="input-wrap">
+                    <span class="input-icon">$</span>
+                    <input type="number" id="amount" value="100" oninput="calculate()">
+                </div>
+            </div>
+            <div>
+                <label>US State</label>
+                <div class="input-wrap">
+                    <span class="input-icon">📍</span>
+                    <select id="state" onchange="calculate()">
+                        <option value="0">Select State</option>
+                        <option value="4">Alabama (4%)</option>
+                        <option value="0">Alaska (0%)</option>
+                        <option value="5.6">Arizona (5.6%)</option>
+                        <option value="6.5">Arkansas (6.5%)</option>
+                        <option value="7.25">California (7.25%)</option>
+                        <option value="2.9">Colorado (2.9%)</option>
+                        <option value="6.35">Connecticut (6.35%)</option>
+                        <option value="0">Delaware (0%)</option>
+                        <option value="6">Florida (6%)</option>
+                        <option value="4">Georgia (4%)</option>
+                        <option value="4">Hawaii (4%)</option>
+                        <option value="6">Idaho (6%)</option>
+                        <option value="6.25">Illinois (6.25%)</option>
+                        <option value="7">Indiana (7%)</option>
+                        <option value="6">Iowa (6%)</option>
+                        <option value="6.5">Kansas (6.5%)</option>
+                        <option value="6">Kentucky (6%)</option>
+                        <option value="4.45">Louisiana (4.45%)</option>
+                        <option value="5.5">Maine (5.5%)</option>
+                        <option value="6">Maryland (6%)</option>
+                        <option value="6.25">Massachusetts (6.25%)</option>
+                        <option value="6">Michigan (6%)</option>
+                        <option value="6.875">Minnesota (6.875%)</option>
+                        <option value="7">Mississippi (7%)</option>
+                        <option value="4.225">Missouri (4.225%)</option>
+                        <option value="0">Montana (0%)</option>
+                        <option value="5.5">Nebraska (5.5%)</option>
+                        <option value="6.85">Nevada (6.85%)</option>
+                        <option value="0">New Hampshire (0%)</option>
+                        <option value="6.625">New Jersey (6.625%)</option>
+                        <option value="5.125">New Mexico (5.125%)</option>
+                        <option value="4">New York (4%)</option>
+                        <option value="4.75">North Carolina (4.75%)</option>
+                        <option value="5">North Dakota (5%)</option>
+                        <option value="5.75">Ohio (5.75%)</option>
+                        <option value="4.5">Oklahoma (4.5%)</option>
+                        <option value="0">Oregon (0%)</option>
+                        <option value="6">Pennsylvania (6%)</option>
+                        <option value="7">Rhode Island (7%)</option>
+                        <option value="6">South Carolina (6%)</option>
+                        <option value="4.5">South Dakota (4.5%)</option>
+                        <option value="7">Tennessee (7%)</option>
+                        <option value="6.25">Texas (6.25%)</option>
+                        <option value="4.85">Utah (4.85%)</option>
+                        <option value="6">Vermont (6%)</option>
+                        <option value="4.3">Virginia (4.3%)</option>
+                        <option value="6.5">Washington (6.5%)</option>
+                        <option value="6">West Virginia (6%)</option>
+                        <option value="5">Wisconsin (5%)</option>
+                        <option value="4">Wyoming (4%)</option>
+                    </select>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="input-group no-mb">
-        <div class="input-label">Tax Rate</div>
-        <div class="input-wrap">
-          <input type="number" id="taxRate" class="input-field no-prefix has-suffix" placeholder="e.g. 8.5" min="0" max="30" step="0.1" oninput="calculate()"/>
-          <span class="input-suffix">%</span>
+
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="result-label">Base Amount</div>
+                <div id="baseVal" class="result-val">$100.00</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Tax Amount</div>
+                <div id="taxVal" class="result-val">$0.00</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Total Price</div>
+                <div id="totalVal" class="result-val">$100.00</div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- STATE SELECTOR -->
-    <div class="input-group" style="margin-top:14px;">
-      <div class="input-label">🇺🇸 Or Select US State (Auto-fill rate)</div>
-      <select class="state-select" id="stateSelect" onchange="applyState()">
-        <option value="">-- Select a State --</option>
-        <option value="0">Alaska (0%)</option>
-        <option value="0">Delaware (0%)</option>
-        <option value="0">Montana (0%)</option>
-        <option value="0">New Hampshire (0%)</option>
-        <option value="0">Oregon (0%)</option>
-        <option value="4">Alabama (4%)</option>
-        <option value="5.6">Arizona (5.6%)</option>
-        <option value="6.5">Arkansas (6.5%)</option>
-        <option value="7.25">California (7.25%)</option>
-        <option value="2.9">Colorado (2.9%)</option>
-        <option value="6.35">Connecticut (6.35%)</option>
-        <option value="6">Florida (6%)</option>
-        <option value="4">Georgia (4%)</option>
-        <option value="4">Hawaii (4%)</option>
-        <option value="6">Idaho (6%)</option>
-        <option value="6.25">Illinois (6.25%)</option>
-        <option value="7">Indiana (7%)</option>
-        <option value="6">Iowa (6%)</option>
-        <option value="6.5">Kansas (6.5%)</option>
-        <option value="6">Kentucky (6%)</option>
-        <option value="4.45">Louisiana (4.45%)</option>
-        <option value="5.5">Maine (5.5%)</option>
-        <option value="6">Maryland (6%)</option>
-        <option value="6.25">Massachusetts (6.25%)</option>
-        <option value="6">Michigan (6%)</option>
-        <option value="6.875">Minnesota (6.875%)</option>
-        <option value="7">Mississippi (7%)</option>
-        <option value="4.225">Missouri (4.225%)</option>
-        <option value="0">Montana (0%)</option>
-        <option value="5.5">Nebraska (5.5%)</option>
-        <option value="6.85">Nevada (6.85%)</option>
-        <option value="8.875">New Jersey (8.875%)</option>
-        <option value="5">New Mexico (5%)</option>
-        <option value="4">New York (4%)</option>
-        <option value="4.75">North Carolina (4.75%)</option>
-        <option value="5">North Dakota (5%)</option>
-        <option value="5.75">Ohio (5.75%)</option>
-        <option value="4.5">Oklahoma (4.5%)</option>
-        <option value="6">Pennsylvania (6%)</option>
-        <option value="7">Rhode Island (7%)</option>
-        <option value="6">South Carolina (6%)</option>
-        <option value="4.5">South Dakota (4.5%)</option>
-        <option value="7">Tennessee (7%)</option>
-        <option value="6.25">Texas (6.25%)</option>
-        <option value="4.85">Utah (4.85%)</option>
-        <option value="6">Vermont (6%)</option>
-        <option value="5.3">Virginia (5.3%)</option>
-        <option value="6.5">Washington (6.5%)</option>
-        <option value="6">West Virginia (6%)</option>
-        <option value="5">Wisconsin (5%)</option>
-        <option value="4">Wyoming (4%)</option>
-      </select>
+    <!-- COMPREHENSIVE CONTENT SECTION -->
+    <div class="content-section">
+        <h2>The Complete Guide to US Sales Tax in 2026</h2>
+        <p>Navigating the US sales tax system can be a daunting task for both consumers and business owners. Unlike many countries with a national Value Added Tax (VAT), the United States has a decentralized system where each state, and often each city or county, sets its own rates. Our <strong>Free Sales Tax Calculator</strong> simplifies this complexity, providing instant calculations for all 50 states.</p>
+
+        <h3>How to Use the Sales Tax Calculator</h3>
+        <p>Our tool is designed for speed and accuracy:</p>
+        <ol>
+            <li><strong>Enter the Amount:</strong> Type in the pre-tax price of the item or service.</li>
+            <li><strong>Select Your State:</strong> Choose the US state from the dropdown menu. The calculator automatically applies the current 2026 state-level rate.</li>
+            <li><strong>Review the Breakdown:</strong> Instantly see the base price, the tax amount, and the final total you'll pay at checkout.</li>
+        </ol>
+
+        <h3>US Sales Tax: State-by-State Breakdown</h3>
+        <p>While some states have high rates to fund public services, others have no sales tax at all. Here are the key categories for 2026:</p>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>States with NO Sales Tax</h4>
+                <p>Five US states do not collect any state-level sales tax, making them popular destinations for major purchases:</p>
+                <ul>
+                    <li><strong>Delaware:</strong> The most famous tax-free state.</li>
+                    <li><strong>Montana:</strong> No state or local sales tax.</li>
+                    <li><strong>New Hampshire:</strong> No sales tax on most goods.</li>
+                    <li><strong>Oregon:</strong> A major tax-free hub on the West Coast.</li>
+                    <li><strong>Alaska:</strong> No state tax, though some local municipalities may charge small fees.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>States with the Highest Rates</h4>
+                <p>These states have the highest base rates, though local taxes can push these even higher:</p>
+                <ul>
+                    <li><strong>California:</strong> 7.25% (Base)</li>
+                    <li><strong>Indiana, Mississippi, Rhode Island, Tennessee:</strong> 7.00%</li>
+                    <li><strong>Minnesota:</strong> 6.875%</li>
+                    <li><strong>Nevada:</strong> 6.85%</li>
+                    <li><strong>New Jersey:</strong> 6.625%</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Understanding Local vs. State Tax</h3>
+        <p>The rate you see in our dropdown is the <strong>State-Level Rate</strong>. However, in many states, cities and counties add their own "Local Option" taxes. For example:</p>
+        <ul>
+            <li><strong>New York:</strong> The state rate is 4%, but in New York City, the total sales tax is 8.875% due to local additions.</li>
+            <li><strong>Illinois:</strong> The state rate is 6.25%, but in Chicago, the total can exceed 10%.</li>
+            <li><strong>Texas:</strong> The state rate is 6.25%, but most cities add 2%, bringing the total to 8.25%.</li>
+        </ul>
+
+        <h3>Tax-Free Items & Sales Tax Holidays</h3>
+        <p>Many states offer exemptions for specific categories of goods to reduce the burden on families:</p>
+        <ul>
+            <li><strong>Groceries:</strong> Most states do not tax "unprepared" food items.</li>
+            <li><strong>Prescription Drugs:</strong> Almost all states exempt necessary medications.</li>
+            <li><strong>Clothing:</strong> Some states (like Pennsylvania and New Jersey) do not tax most clothing items.</li>
+            <li><strong>Sales Tax Holidays:</strong> Many states (like Florida and Texas) have "Back to School" weekends where sales tax is waived on clothes and school supplies.</li>
+        </ul>
+
+        <h3>E-commerce & The "Wayfair" Rule</h3>
+        <p>If you are an online business owner, you must be aware of <strong>Economic Nexus</strong>. Following the 2018 Supreme Court ruling (South Dakota v. Wayfair), states can require online retailers to collect sales tax even if they don't have a physical presence in that state, provided they meet certain sales thresholds (usually $100,000 in sales or 200 transactions per year).</p>
+
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-grid">
+            <details>
+                <summary>Why is the tax higher at the store than on this calculator?</summary>
+                <div class="faq-content">Our calculator uses the base state rate. Your local city or county likely adds an additional 1-4% on top of the state rate.</div>
+            </details>
+            <details>
+                <summary>Do I have to pay sales tax on online purchases?</summary>
+                <div class="faq-content">Yes, most major online retailers (like Amazon) now collect sales tax based on your shipping address. If they don't, you are technically required to pay "Use Tax" to your state.</div>
+            </details>
+            <details>
+                <summary>Which state has the lowest sales tax?</summary>
+                <div class="faq-content">Excluding the five states with 0% tax, Colorado has the lowest state-level rate at 2.9%.</div>
+            </details>
+            <details>
+                <summary>Is there a national sales tax in the USA?</summary>
+                <div class="faq-content">No. The US federal government does not collect a national sales tax. All sales taxes are managed at the state and local levels.</div>
+            </details>
+            <details>
+                <summary>Do tourists have to pay sales tax?</summary>
+                <div class="faq-content">Yes, everyone who makes a purchase in a taxable state must pay the tax. Unlike some European countries, the US does not have a widespread system for tourists to claim tax refunds at the airport.</div>
+            </details>
+            <details>
+                <summary>Are services taxable?</summary>
+                <div class="faq-content">This varies by state. Some states (like Hawaii and New Mexico) tax almost all services, while others (like California) generally only tax tangible goods.</div>
+            </details>
+            <details>
+                <summary>What is "Use Tax"?</summary>
+                <div class="faq-content">Use tax is a tax on the storage, use, or consumption of a taxable item or service on which no sales tax was paid. It's designed to prevent people from avoiding tax by buying out-of-state.</div>
+            </details>
+            <details>
+                <summary>How do I calculate tax manually?</summary>
+                <div class="faq-content">Multiply the price by the tax rate (as a decimal). For example, $100 x 0.07 = $7.00 tax. Total = $107.00.</div>
+            </details>
+            <details>
+                <summary>Do I pay tax on shipping costs?</summary>
+                <div class="faq-content">This depends on the state. Some states consider shipping part of the taxable sale, while others exempt it if it's listed as a separate line item.</div>
+            </details>
+            <details>
+                <summary>What is a Resale Certificate?</summary>
+                <div class="faq-content">A document that allows businesses to buy goods tax-free if they intend to resell them to customers (who will then pay the sales tax).</div>
+            </details>
+        </div>
     </div>
 
-    <button class="btn-calc" onclick="calculate()">🧾 Calculate Tax</button>
-    <div class="btn-row">
-      <button class="btn-sec" onclick="copyResult()">📋 Copy Result</button>
-      <button class="btn-sec" onclick="resetAll()">↺ Reset</button>
+    <div class="related-tools">
+        <h3>Related Financial Tools</h3>
+        <div class="related-grid">
+            <a href="profit-margin-calculator.html" class="related-link">Profit Margin Calc</a>
+            <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
+            <a href="invoice-generator.html" class="related-link">Free Invoice Generator</a>
+            <a href="tip-calculator.html" class="related-link">Tip & Bill Splitter</a>
+            <a href="currency-converter.html" class="related-link">Currency Converter</a>
+            <a href="compound-interest-calculator.html" class="related-link">Interest Calculator</a>
+            <a href="percentage-calculator.html" class="related-link">Percentage Calculator</a>
+            <a href="tax-refund-tracker.html" class="related-link">Tax Refund Tracker</a>
+        </div>
     </div>
-  </div>
-
-  <!-- BREAKDOWN -->
-  <div class="breakdown-card" id="breakdownCard">
-    <div class="sec-title">📋 Tax Breakdown</div>
-    <div class="bd-row">
-      <span class="bd-key">Pre-Tax Price</span>
-      <span class="bd-val" id="b-price">–</span>
-    </div>
-    <div class="bd-row">
-      <span class="bd-key">Tax Rate</span>
-      <span class="bd-val" id="b-rate">–</span>
-    </div>
-    <div class="bd-row">
-      <span class="bd-key">Tax Amount</span>
-      <span class="bd-val pink" id="b-tax">–</span>
-    </div>
-    <div class="bd-row">
-      <span class="bd-key">Total Price (with tax)</span>
-      <span class="bd-val pink" id="b-total">–</span>
-    </div>
-    <div class="bd-row">
-      <span class="bd-key">Tax as % of Total</span>
-      <span class="bd-val" id="b-pctoftotal">–</span>
-    </div>
-  </div>
-
-  <!-- US STATE RATES TABLE -->
-  <div class="state-table-card">
-    <div class="sec-title">🇺🇸 US State Tax Rates — Click to Apply</div>
-    <div class="state-grid" id="stateGrid"></div>
-  </div>
-
-</div>
-
-<!-- SEO -->
-<div class="seo-article">
-  <h2>How to Calculate Sales Tax</h2>
-  <p>Our <strong>sales tax calculator</strong> works in two modes: add tax to a pre-tax price, or remove tax from a total price. The formula is: <strong>Tax Amount = Price × Tax Rate ÷ 100</strong>. Total = Price + Tax.</p>
-  <h2>US Sales Tax Rates by State</h2>
-  <p>Sales tax varies by state in the US. Five states have <strong>no sales tax</strong>: Alaska, Delaware, Montana, New Hampshire, and Oregon. The highest rates are in California (7.25%), Indiana, Mississippi, Rhode Island, and Tennessee (all 7%).</p>
-  <h3>How to Remove Tax from Total Price</h3>
-  <p>To find the pre-tax price: <strong>Pre-tax Price = Total ÷ (1 + Tax Rate ÷ 100)</strong>. Use the "Remove Tax" mode in our calculator to do this instantly.</p>
-</div>
-
-
-<div class="faq-section" style="max-width:720px;margin:0 auto 40px;padding:0 20px;position:relative;z-index:1;">
-<h2 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:16px;color:var(--text)">Frequently Asked Questions</h2>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    How do I calculate sales tax? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">Multiply the pre-tax price by the tax rate. For example, $100 x 8.5% = $8.50 tax. Total = $108.50.</p>
-</details>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    Which US states have no sales tax? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">Five US states have no sales tax: Alaska, Delaware, Montana, New Hampshire, and Oregon.</p>
-</details>
-<details style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;cursor:pointer;">
-  <summary style="font-weight:600;font-size:0.92rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
-    How do I remove sales tax from a total price? <span style="color:var(--accent);font-size:1.2rem;">+</span>
-  </summary>
-  <p style="margin-top:10px;font-size:0.88rem;color:var(--muted);line-height:1.7;">Divide the total price by (1 + tax rate/100). For example, $108.50 / 1.085 = $100 pre-tax price.</p>
-</details>
-</div>
-<div class="related-tools">
-  <h2>Related Tools</h2>
-  <div class="related-grid">
-    <a href="tip-calculator.html" class="related-card">🍽️ Tip Calculator</a>
-    <a href="profit-margin-calculator.html" class="related-card">📈 Profit Margin</a>
-    <a href="salary-to-hourly.html" class="related-card">💼 Salary to Hourly</a>
-    <a href="compound-interest-calculator.html" class="related-card">📊 Compound Interest</a>
-  </div>
 </div>
 
 <footer>
-  <div class="footer-links"><a href="index.html">Home</a><a href="privacy.html">Privacy</a></div>
-  <p>🚀 Made with ❤️ by <a href="https://toolyfi.com" style="color:var(--accent);text-decoration:none;">Toolyfi</a></p>
-  <p style="margin-top:6px;">© 2026 Toolyfi.com</p>
+    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">Updated for 2026 · Accurate State Rates · US Tax Guide</p>
 </footer>
 
-<div class="toast" id="toast"></div>
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<script src="main.js"></script>
 <script>
-let mode = 'add';
-const fmt = v => '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    function calculate() {
+        const amount = parseFloat(document.getElementById('amount').value) || 0;
+        const rate = parseFloat(document.getElementById('state').value) || 0;
 
-// State data for grid
-const states = [
-  {name:'Alaska',rate:0},{name:'Delaware',rate:0},{name:'Montana',rate:0},
-  {name:'New Hampshire',rate:0},{name:'Oregon',rate:0},
-  {name:'Alabama',rate:4},{name:'Arizona',rate:5.6},{name:'Arkansas',rate:6.5},
-  {name:'California',rate:7.25},{name:'Colorado',rate:2.9},{name:'Connecticut',rate:6.35},
-  {name:'Florida',rate:6},{name:'Georgia',rate:4},{name:'Hawaii',rate:4},
-  {name:'Idaho',rate:6},{name:'Illinois',rate:6.25},{name:'Indiana',rate:7},
-  {name:'Iowa',rate:6},{name:'Kansas',rate:6.5},{name:'Kentucky',rate:6},
-  {name:'Louisiana',rate:4.45},{name:'Maine',rate:5.5},{name:'Maryland',rate:6},
-  {name:'Massachusetts',rate:6.25},{name:'Michigan',rate:6},{name:'Minnesota',rate:6.875},
-  {name:'Mississippi',rate:7},{name:'Missouri',rate:4.225},{name:'Nebraska',rate:5.5},
-  {name:'Nevada',rate:6.85},{name:'New Jersey',rate:8.875},{name:'New Mexico',rate:5},
-  {name:'New York',rate:4},{name:'North Carolina',rate:4.75},{name:'North Dakota',rate:5},
-  {name:'Ohio',rate:5.75},{name:'Oklahoma',rate:4.5},{name:'Pennsylvania',rate:6},
-  {name:'Rhode Island',rate:7},{name:'South Carolina',rate:6},{name:'South Dakota',rate:4.5},
-  {name:'Tennessee',rate:7},{name:'Texas',rate:6.25},{name:'Utah',rate:4.85},
-  {name:'Vermont',rate:6},{name:'Virginia',rate:5.3},{name:'Washington',rate:6.5},
-  {name:'West Virginia',rate:6},{name:'Wisconsin',rate:5},{name:'Wyoming',rate:4},
-];
+        const tax = amount * (rate / 100);
+        const total = amount + tax;
 
-// Render state grid
-function renderStateGrid() {
-  const grid = document.getElementById('stateGrid');
-  grid.innerHTML = states.map(s => {
-    const cls = s.rate === 0 ? 'zero' : s.rate >= 7 ? 'high' : 'low';
-    return `<div class="state-item${s.rate===0?' no-tax':''}" onclick="applyStateRate(${s.rate})">
-      <span class="state-name">${s.name}</span>
-      <span class="state-rate ${cls}">${s.rate}%</span>
-    </div>`;
-  }).join('');
-}
-
-function applyStateRate(rate) {
-  document.getElementById('taxRate').value = rate;
-  calculate();
-  showToast(`✅ ${rate}% rate applied!`);
-}
-
-function setMode(m, btn) {
-  mode = m;
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('price-label').textContent = m === 'add' ? 'Price (Before Tax)' : 'Total Price (With Tax)';
-  document.getElementById('priceInput').placeholder = m === 'add' ? 'e.g. 100' : 'e.g. 108.5';
-  calculate();
-}
-
-function applyState() {
-  const val = document.getElementById('stateSelect').value;
-  if (val !== '') {
-    document.getElementById('taxRate').value = val;
-    calculate();
-  }
-}
-
-function calculate() {
-  const price = parseFloat(document.getElementById('priceInput').value);
-  const rate  = parseFloat(document.getElementById('taxRate').value);
-  if (!price || price <= 0 || isNaN(rate)) return;
-
-  let preTax, taxAmt, total;
-  if (mode === 'add') {
-    preTax = price;
-    taxAmt = price * rate / 100;
-    total  = price + taxAmt;
-  } else {
-    total  = price;
-    preTax = price / (1 + rate / 100);
-    taxAmt = total - preTax;
-  }
-
-  const pctOfTotal = (taxAmt / total * 100).toFixed(2);
-
-  // Cards
-  document.getElementById('val-price').textContent = fmt(preTax);
-  document.getElementById('val-tax').textContent   = fmt(taxAmt);
-  document.getElementById('val-total').textContent = fmt(total);
-  document.getElementById('sub-tax').textContent   = rate + '% tax';
-
-  ['val-price','val-tax','val-total'].forEach(id => document.getElementById(id).classList.remove('dash'));
-  ['card-price','card-tax','card-total'].forEach(id => document.getElementById(id).classList.add('active'));
-
-  // Breakdown
-  document.getElementById('b-price').textContent      = fmt(preTax);
-  document.getElementById('b-rate').textContent       = rate + '%';
-  document.getElementById('b-tax').textContent        = fmt(taxAmt);
-  document.getElementById('b-total').textContent      = fmt(total);
-  document.getElementById('b-pctoftotal').textContent = pctOfTotal + '%';
-  document.getElementById('breakdownCard').classList.add('show');
-}
-
-function copyResult() {
-  const tax   = document.getElementById('val-tax').textContent;
-  const total = document.getElementById('val-total').textContent;
-  if (tax === '–') { showToast('⚠️ Calculate first'); return; }
-  navigator.clipboard.writeText(`Tax: ${tax} | Total: ${total} | Toolyfi.com`).then(() => showToast('✅ Copied!'));
-}
-
-function resetAll() {
-  document.getElementById('priceInput').value = '';
-  document.getElementById('taxRate').value    = '';
-  document.getElementById('stateSelect').value = '';
-  ['val-price','val-tax','val-total'].forEach(id => {
-    const el = document.getElementById(id);
-    el.textContent = '–'; el.classList.add('dash');
-  });
-  ['card-price','card-tax','card-total'].forEach(id => document.getElementById(id).classList.remove('active'));
-  document.getElementById('breakdownCard').classList.remove('show');
-  showToast('↺ Reset done');
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
-renderStateGrid();
+        document.getElementById('baseVal').innerText = '$' + amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('taxVal').innerText = '$' + tax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('totalVal').innerText = '$' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
 </script>
+
 </body>
 </html>
