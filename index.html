@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
@@ -361,6 +361,88 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   .search-btn { padding: 12px; }
   .tools-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ========== NEWS TICKER (UpdatesWorld) ========== */
+.news-ticker-wrap {
+  background: linear-gradient(90deg, #1e0a3c, #3b0764, #6d28d9, #3b0764, #1e0a3c);
+  border-radius: 12px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.2);
+  position: relative;
+}
+.ticker-label {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #1a1a2e;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.ticker-scroll {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: tickerMove 32s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 32px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.ticker-item:hover { color: #fbbf24; }
+.ticker-item::after {
+  content: '•';
+  margin-left: 32px;
+  color: rgba(255,255,255,0.25);
+}
+.ticker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+  display: inline-block;
+  animation: tickDot 1.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes tickDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.6); }
+}
+@keyframes tickerMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media(max-width:600px) {
+  .ticker-label { font-size: 0.65rem; padding: 0 10px; }
+  .ticker-item { font-size: 0.75rem; padding: 0 20px; }
+}
 </style>
 </head>
 <body>
@@ -433,7 +515,7 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 
 <!-- ADSENSE TOP -->
 <div class="ad-wrap">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
@@ -509,7 +591,7 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 
 <!-- ADSENSE MID -->
 <div class="ad-wrap">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
@@ -598,7 +680,7 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 
 <!-- ADSENSE BOTTOM -->
 <div class="ad-wrap">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
@@ -646,7 +728,42 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
     <h2>AI & Tech Updates 2026</h2>
     <p class="section-sub">Latest AI news, tool reviews & tech guides. Updated weekly.</p>
   </div>
+
+  <!-- ✅ NEWS TICKER -->
+  <div class="news-ticker-wrap">
+    <div class="ticker-label">🔴 LIVE</div>
+    <div class="ticker-scroll">
+      <div class="ticker-track" id="tickerTrack">
+        <a href="/updatesworld/manus_ai_vs_comparison.html" class="ticker-item"><span class="ticker-dot"></span>🔥 It's Over. Manus.ai Just Replaced Every AI Tool You're Using.</a>
+        <a href="/updatesworld/best-free-ai-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>🤖 15 Best Free AI Tools in 2026 — Complete Ranked List</a>
+        <a href="/updatesworld/best-free-ai-image-generators-2026.html" class="ticker-item"><span class="ticker-dot"></span>🎨 Best Free AI Image Generators 2026 — Tested & Ranked</a>
+        <a href="/updatesworld/best-free-ai-writing-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>✍️ Best Free AI Writing Tools 2026 — Write 10x Faster</a>
+        <a href="/updatesworld/ai-jobs-2026.html" class="ticker-item"><span class="ticker-dot"></span>💼 AI Revolution & Job Market 2026 — What You Need to Know</a>
+        <a href="/updatesworld/gemini-3d-simulations-article.html" class="ticker-item"><span class="ticker-dot"></span>🌐 Gemini 3D Simulations — Google's Next Big Move Explained</a>
+        <a href="/updatesworld/meta-new-ai-9-months.html" class="ticker-item"><span class="ticker-dot"></span>📱 Meta's New AI — 9 Months of Secret Development Revealed</a>
+        <a href="/updatesworld/claude-best-prompts.html" class="ticker-item"><span class="ticker-dot"></span>💬 10 Claude AI Prompts That Will Change How You Work</a>
+        <!-- Duplicate for seamless loop -->
+        <a href="/updatesworld/manus_ai_vs_comparison.html" class="ticker-item"><span class="ticker-dot"></span>🔥 It's Over. Manus.ai Just Replaced Every AI Tool You're Using.</a>
+        <a href="/updatesworld/best-free-ai-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>🤖 15 Best Free AI Tools in 2026 — Complete Ranked List</a>
+        <a href="/updatesworld/best-free-ai-image-generators-2026.html" class="ticker-item"><span class="ticker-dot"></span>🎨 Best Free AI Image Generators 2026 — Tested & Ranked</a>
+        <a href="/updatesworld/best-free-ai-writing-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>✍️ Best Free AI Writing Tools 2026 — Write 10x Faster</a>
+        <a href="/updatesworld/ai-jobs-2026.html" class="ticker-item"><span class="ticker-dot"></span>💼 AI Revolution & Job Market 2026 — What You Need to Know</a>
+        <a href="/updatesworld/gemini-3d-simulations-article.html" class="ticker-item"><span class="ticker-dot"></span>🌐 Gemini 3D Simulations — Google's Next Big Move Explained</a>
+        <a href="/updatesworld/meta-new-ai-9-months.html" class="ticker-item"><span class="ticker-dot"></span>📱 Meta's New AI — 9 Months of Secret Development Revealed</a>
+        <a href="/updatesworld/claude-best-prompts.html" class="ticker-item"><span class="ticker-dot"></span>💬 10 Claude AI Prompts That Will Change How You Work</a>
+      </div>
+    </div>
+  </div>
+
   <div class="updates-grid">
+    <!-- ✅ MANUS ARTICLE — FIRST -->
+    <a href="/updatesworld/manus_ai_vs_comparison.html" class="update-card" style="border-color:rgba(255,45,120,0.25); background:linear-gradient(135deg,#fff5f8,#ffffff);">
+      <div class="update-icon">🔥</div>
+      <div>
+        <h3 style="color:#c2185b;">It's Over. Manus.ai Just Replaced Every AI Tool You're Using.</h3>
+        <p>Brutal comparison — Manus.ai vs ChatGPT, Jasper, Zapier & more. Going viral.</p>
+      </div>
+    </a>
     <a href="/updatesworld/best-free-ai-tools-2026.html" class="update-card"><div class="update-icon">🤖</div><div><h3>15 Best Free AI Tools in 2026</h3><p>Complete list of top AI tools — ChatGPT, Gemini, Claude & more.</p></div></a>
     <a href="/updatesworld/best-free-ai-image-generators-2026.html" class="update-card"><div class="update-icon">🎨</div><div><h3>Best Free AI Image Generators 2026</h3><p>Top AI image generators you can use for free right now.</p></div></a>
     <a href="/updatesworld/best-free-ai-writing-tools-2026.html" class="update-card"><div class="update-icon">✍️</div><div><h3>Best Free AI Writing Tools 2026</h3><p>AI writing assistants that boost productivity instantly.</p></div></a>
