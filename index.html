@@ -56,20 +56,8 @@ html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; font-size: 1rem; line-height: 1.6; }
 h1,h2,h3,h4,h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--text); line-height: 1.25; }
 a { text-decoration: none; color: inherit; }
-
-/* ========== HEADER ========== */
-.header {
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 1000;
-  box-shadow: 0 2px 20px rgba(109,40,217,0.07);
-}
-.header-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 14px 20px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-}
+.header { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(109,40,217,0.07); }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .logo { display: flex; align-items: center; gap: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); }
 .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #6d28d9, #7c3aed); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
 .logo span { background: linear-gradient(135deg, #6d28d9, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -84,145 +72,39 @@ a { text-decoration: none; color: inherit; }
 .mobile-nav a { padding: 10px 14px; border-radius: 8px; font-weight: 600; color: var(--text-2); }
 .mobile-nav a:hover { background: var(--purple-light); color: var(--purple); }
 @media(max-width:768px) { .nav { display: none; } .header-cta { display: none; } .hamburger { display: block; } .mobile-nav.open { display: flex; } }
-
-/* ========== HERO ========== */
-.hero {
-  background: linear-gradient(135deg, #1e0a3c 0%, #3b0764 30%, #6d28d9 65%, #ede9fe 100%);
-  padding: 80px 20px 100px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.4) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(109,40,217,0.3) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 7px 18px; border-radius: 30px;
-  font-size: 0.85rem; font-weight: 700; color: white;
-  margin-bottom: 24px;
-  animation: fadeDown 0.6s ease both;
-}
+.hero { background: linear-gradient(135deg, #1e0a3c 0%, #3b0764 30%, #6d28d9 65%, #ede9fe 100%); padding: 80px 20px 100px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(109,40,217,0.3) 0%, transparent 50%); pointer-events: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 7px 18px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 24px; animation: fadeDown 0.6s ease both; }
 .hero-badge span { color: #c4b5fd; }
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3.6rem);
-  color: white;
-  margin-bottom: 18px;
-  position: relative; z-index: 1;
-  animation: fadeDown 0.6s ease 0.1s both;
-}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); color: white; margin-bottom: 18px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.1s both; }
 .hero h1 em { font-style: normal; color: #c4b5fd; }
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  color: rgba(255,255,255,0.85);
-  max-width: 600px; margin: 0 auto 36px;
-  position: relative; z-index: 1;
-  animation: fadeDown 0.6s ease 0.2s both;
-}
-.hero-stats {
-  display: flex; gap: 36px; justify-content: center; flex-wrap: wrap;
-  margin-bottom: 40px;
-  position: relative; z-index: 1;
-  animation: fadeDown 0.6s ease 0.3s both;
-}
+.hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 36px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.2s both; }
+.hero-stats { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.3s both; }
 .hstat { text-align: center; }
 .hstat-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.9rem; font-weight: 800; color: white; }
 .hstat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
-.hero-btns {
-  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-  position: relative; z-index: 1;
-  animation: fadeDown 0.6s ease 0.4s both;
-}
-.btn-primary {
-  background: white; color: var(--purple);
-  padding: 14px 32px; border-radius: 12px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800; font-size: 1rem;
-  transition: all 0.2s;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-}
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.4s both; }
+.btn-primary { background: white; color: var(--purple); padding: 14px 32px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1rem; transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
-.btn-outline {
-  background: rgba(255,255,255,0.1);
-  border: 2px solid rgba(255,255,255,0.4);
-  color: white;
-  padding: 14px 32px; border-radius: 12px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700; font-size: 1rem;
-  transition: all 0.2s;
-}
+.btn-outline { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.4); color: white; padding: 14px 32px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; transition: all 0.2s; }
 .btn-outline:hover { background: rgba(255,255,255,0.2); }
-
-/* ========== SEARCH ========== */
-.search-section {
-  max-width: 720px; margin: -30px auto 0;
-  padding: 0 20px;
-  position: relative; z-index: 10;
-}
-.search-card {
-  background: white;
-  border-radius: 18px;
-  padding: 8px;
-  box-shadow: 0 20px 60px rgba(109,40,217,0.18);
-  display: flex; gap: 8px;
-}
+.search-section { max-width: 720px; margin: -30px auto 0; padding: 0 20px; position: relative; z-index: 10; }
+.search-card { background: white; border-radius: 18px; padding: 8px; box-shadow: 0 20px 60px rgba(109,40,217,0.18); display: flex; gap: 8px; }
 .search-input-wrap { flex: 1; position: relative; }
 .search-input-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-3); }
-.search-input {
-  width: 100%; padding: 14px 14px 14px 44px;
-  border: 2px solid transparent; border-radius: 12px;
-  font-family: 'DM Sans', sans-serif; font-size: 1rem;
-  background: var(--bg); color: var(--text);
-  transition: border-color 0.2s;
-  outline: none;
-}
+.search-input { width: 100%; padding: 14px 14px 14px 44px; border: 2px solid transparent; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; background: var(--bg); color: var(--text); transition: border-color 0.2s; outline: none; }
 .search-input:focus { border-color: var(--purple); background: white; }
 .search-input::placeholder { color: var(--text-3); }
-.search-btn {
-  background: linear-gradient(135deg, #6d28d9, #7c3aed);
-  color: white; border: none; border-radius: 12px;
-  padding: 14px 24px; font-weight: 700; font-size: 0.95rem;
-  cursor: pointer; white-space: nowrap;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: all 0.2s;
-}
+.search-btn { background: linear-gradient(135deg, #6d28d9, #7c3aed); color: white; border: none; border-radius: 12px; padding: 14px 24px; font-weight: 700; font-size: 0.95rem; cursor: pointer; white-space: nowrap; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s; }
 .search-btn:hover { transform: translateY(-1px); }
-
-/* ========== ADSENSE ========== */
 .ad-wrap { max-width: 1200px; margin: 30px auto; padding: 0 20px; text-align: center; }
-
-/* ========== SECTIONS ========== */
 .section { max-width: 1200px; margin: 0 auto; padding: 70px 20px; }
 .section-header { margin-bottom: 40px; }
-.section-tag {
-  display: inline-block;
-  background: var(--purple-light); color: var(--purple);
-  padding: 5px 14px; border-radius: 20px;
-  font-size: 0.82rem; font-weight: 700;
-  margin-bottom: 12px; letter-spacing: 0.5px;
-}
+.section-tag { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
 .section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
 .section-sub { color: var(--text-2); font-size: 1.05rem; max-width: 560px; }
-
-/* ========== TOOL CARDS ========== */
 .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.tools-grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-
-.tool-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px 20px;
-  transition: all 0.25s;
-  display: flex; flex-direction: column; gap: 8px;
-  opacity: 0; transform: translateY(24px);
-}
+.tool-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; transition: all 0.25s; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(24px); }
 .tool-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s, border-color 0.25s; }
 .tool-card:hover { border-color: var(--purple); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
 .tool-icon { font-size: 2rem; margin-bottom: 4px; }
@@ -230,33 +112,16 @@ a { text-decoration: none; color: inherit; }
 .tool-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.5; flex: 1; }
 .tool-badge { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-top: 4px; width: fit-content; }
 .tool-badge.green { background: #d1fae5; color: #065f46; }
-.tool-badge.gold { background: #fef3c7; color: #92400e; }
-
-/* Featured cards */
 .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.featured-card {
-  background: white; border-radius: 18px;
-  padding: 26px; border: 1px solid var(--border);
-  box-shadow: var(--card-shadow);
-  transition: all 0.25s;
-  opacity: 0; transform: translateY(24px);
-  display: flex; flex-direction: column; gap: 10px;
-}
+.featured-card { background: white; border-radius: 18px; padding: 26px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: all 0.25s; opacity: 0; transform: translateY(24px); display: flex; flex-direction: column; gap: 10px; }
 .featured-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s; }
 .featured-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-5px); border-color: var(--purple); }
 .featured-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #6d28d9, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
 .featured-card h3 { font-size: 1.05rem; font-weight: 800; }
 .featured-card p { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; flex: 1; }
 .featured-link { display: flex; align-items: center; gap: 6px; color: var(--purple); font-weight: 700; font-size: 0.9rem; margin-top: 4px; }
-.featured-link:hover { gap: 10px; }
-
-/* Blog cards */
 .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.blog-card {
-  background: white; border-radius: var(--radius); border: 1px solid var(--border);
-  overflow: hidden; transition: all 0.25s;
-  opacity: 0; transform: translateY(24px);
-}
+.blog-card { background: white; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: all 0.25s; opacity: 0; transform: translateY(24px); }
 .blog-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s; }
 .blog-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-4px); border-color: var(--purple); }
 .blog-thumb { height: 8px; background: linear-gradient(135deg, #6d28d9, #7c3aed); }
@@ -265,61 +130,37 @@ a { text-decoration: none; color: inherit; }
 .blog-card h3 { font-size: 0.97rem; font-weight: 700; line-height: 1.45; margin-bottom: 8px; }
 .blog-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; }
 .blog-read { display: inline-flex; align-items: center; gap: 5px; color: var(--purple); font-weight: 700; font-size: 0.85rem; margin-top: 12px; }
-
-/* Gold section */
 .gold-section { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-top: 1px solid #fde68a; border-bottom: 1px solid #fde68a; }
 .gold-inner { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
 .gold-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 28px; }
-.gold-card {
-  background: white; border-radius: 12px; border: 1px solid #fde68a;
-  padding: 16px; text-align: center; transition: all 0.2s;
-  opacity: 0; transform: translateY(16px);
-}
+.gold-card { background: white; border-radius: 12px; border: 1px solid #fde68a; padding: 16px; text-align: center; transition: all 0.2s; opacity: 0; transform: translateY(16px); }
 .gold-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s; }
 .gold-card:hover { box-shadow: 0 8px 24px rgba(245,158,11,0.2); transform: translateY(-3px); }
 .gold-city { font-size: 0.82rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
 .gold-tag { font-size: 0.75rem; color: #b45309; margin-top: 4px; }
-
-/* UpdatesWorld */
 .updates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.update-card {
-  background: white; border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 20px; transition: all 0.25s;
-  opacity: 0; transform: translateY(20px);
-  display: flex; gap: 14px; align-items: flex-start;
-}
+.update-card { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; transition: all 0.25s; opacity: 0; transform: translateY(20px); display: flex; gap: 14px; align-items: flex-start; }
 .update-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s; }
 .update-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); border-color: var(--purple); }
 .update-icon { font-size: 1.8rem; flex-shrink: 0; }
 .update-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
 .update-card p { font-size: 0.82rem; color: var(--text-2); }
-
-/* Why section */
 .why-section { background: linear-gradient(135deg, #1e0a3c, #3b0764); }
 .why-inner { max-width: 1200px; margin: 0 auto; padding: 70px 20px; }
 .why-inner h2 { color: white; text-align: center; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
 .why-sub { color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 48px; font-size: 1.05rem; }
 .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.why-card {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px; padding: 28px 22px; text-align: center;
-  opacity: 0; transform: translateY(24px);
-  transition: all 0.25s;
-}
+.why-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 22px; text-align: center; opacity: 0; transform: translateY(24px); transition: all 0.25s; }
 .why-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease; }
 .why-card:hover { background: rgba(255,255,255,0.13); }
 .why-icon { font-size: 2.2rem; margin-bottom: 14px; }
 .why-card h3 { color: white; font-size: 1rem; margin-bottom: 8px; }
 .why-card p { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.6; }
-
-/* CTA */
 .cta-section { background: linear-gradient(135deg, #6d28d9, #7c3aed); padding: 70px 20px; text-align: center; }
 .cta-section h2 { color: white; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; }
 .cta-section p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
 .cta-btn { background: white; color: var(--purple); padding: 16px 40px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.05rem; display: inline-block; transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
-
-/* ========== FOOTER ========== */
 footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 30px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
@@ -336,130 +177,35 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 .footer-links a:hover { color: rgba(255,255,255,0.7); }
 @media(max-width:768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
 @media(max-width:480px) { .footer-top { grid-template-columns: 1fr; } }
-
-/* ========== DIVIDER ========== */
 .section-divider { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .section-divider hr { border: none; border-top: 1px solid var(--border); }
-
-/* ========== VIEW ALL BTN ========== */
 .view-all { display: inline-flex; align-items: center; gap: 8px; background: var(--purple-light); color: var(--purple); padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: 0.92rem; margin-top: 28px; transition: all 0.2s; }
 .view-all:hover { background: var(--purple); color: white; }
-
-/* ========== SEARCH RESULTS ========== */
 #search-results { display: none; max-width: 1200px; margin: 20px auto; padding: 0 20px; }
 #search-results.active { display: block; }
 .sr-title { font-size: 0.9rem; color: var(--text-2); margin-bottom: 16px; font-weight: 600; }
-
-/* ========== ANIMATIONS ========== */
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-
-/* ========== RESPONSIVE ========== */
-@media(max-width:600px) {
-  .hero { padding: 60px 20px 80px; }
-  .hero-stats { gap: 24px; }
-  .search-card { flex-direction: column; }
-  .search-btn { padding: 12px; }
-  .tools-grid { grid-template-columns: 1fr 1fr; }
-}
-
-/* ========== NEWS TICKER ========== */
-.news-ticker-outer {
-  max-width: 860px;
-  margin: 28px auto 0;
-  padding: 0 20px;
-  position: relative;
-  z-index: 9;
-}
-.news-ticker-wrap {
-  background: linear-gradient(90deg, #1e0a3c, #3b0764, #6d28d9, #3b0764, #1e0a3c);
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  height: 38px;
-  box-shadow: 0 4px 20px rgba(109,40,217,0.25);
-  position: relative;
-}
-.ticker-label {
-  background: linear-gradient(135deg, #f59e0b, #fbbf24);
-  color: #1a1a2e;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 0 14px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  flex-shrink: 0;
-  z-index: 2;
-}
-.ticker-scroll {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-.ticker-track {
-  display: flex;
-  gap: 0;
-  white-space: nowrap;
-  animation: tickerMove 32s linear infinite;
-}
+@media(max-width:600px) { .hero { padding: 60px 20px 80px; } .hero-stats { gap: 24px; } .search-card { flex-direction: column; } .search-btn { padding: 12px; } .tools-grid { grid-template-columns: 1fr 1fr; } }
+.news-ticker-outer { max-width: 860px; margin: 28px auto 0; padding: 0 20px; position: relative; z-index: 9; }
+.news-ticker-wrap { background: linear-gradient(90deg, #1e0a3c, #3b0764, #6d28d9, #3b0764, #1e0a3c); border-radius: 10px; overflow: hidden; display: flex; align-items: center; height: 38px; box-shadow: 0 4px 20px rgba(109,40,217,0.25); position: relative; }
+.ticker-label { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #1a1a2e; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.72rem; font-weight: 800; padding: 0 14px; height: 100%; display: flex; align-items: center; white-space: nowrap; letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; z-index: 2; }
+.ticker-scroll { flex: 1; overflow: hidden; position: relative; }
+.ticker-track { display: flex; gap: 0; white-space: nowrap; animation: tickerMove 32s linear infinite; }
 .ticker-track:hover { animation-play-state: paused; }
-.ticker-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 32px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: white;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: color 0.2s;
-  cursor: pointer;
-}
+.ticker-item { display: inline-flex; align-items: center; gap: 6px; padding: 0 32px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; color: white; white-space: nowrap; text-decoration: none; transition: color 0.2s; cursor: pointer; }
 .ticker-item:hover { color: #fbbf24; }
-.ticker-item::after {
-  content: '•';
-  margin-left: 32px;
-  color: rgba(255,255,255,0.25);
-}
-.ticker-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f59e0b;
-  display: inline-block;
-  animation: tickDot 1.2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-@keyframes tickDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.6); }
-}
-@keyframes tickerMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@media(max-width:600px) {
-  .ticker-label { font-size: 0.65rem; padding: 0 10px; }
-  .ticker-item { font-size: 0.75rem; padding: 0 20px; }
-}
+.ticker-item::after { content: '•'; margin-left: 32px; color: rgba(255,255,255,0.25); }
+.ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; display: inline-block; animation: tickDot 1.2s ease-in-out infinite; flex-shrink: 0; }
+@keyframes tickDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.6); } }
+@keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media(max-width:600px) { .ticker-label { font-size: 0.65rem; padding: 0 10px; } .ticker-item { font-size: 0.75rem; padding: 0 20px; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <a href="/" class="logo">
-      <div class="logo-icon">⚡</div>
-      <span>Toolyfi</span>
-    </a>
+    <a href="/" class="logo"><div class="logo-icon">⚡</div><span>Toolyfi</span></a>
     <nav class="nav">
       <a href="#ai-tools">AI Tools</a>
       <a href="#finance">Finance</a>
@@ -469,9 +215,7 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
       <a href="/updatesworld/updatesworld.html">Updates</a>
     </nav>
     <a href="#search-section" class="header-cta">Try Free Tools →</a>
-    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <nav class="mobile-nav" id="mobileNav">
     <a href="#ai-tools">🤖 AI Tools</a>
@@ -485,7 +229,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-badge">⚡ <span>50+ Free Tools</span> — No Login Required</div>
   <h1>Free Online Tools for<br><em>Work, Study & Life</em></h1>
@@ -502,7 +245,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </section>
 
-<!-- SEARCH -->
 <div class="search-section" id="search-section">
   <div class="search-card">
     <div class="search-input-wrap">
@@ -513,18 +255,17 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </div>
 
-<!-- SEARCH RESULTS -->
 <div id="search-results">
   <div class="section-header"><p class="sr-title" id="srTitle"></p></div>
   <div class="tools-grid" id="srGrid"></div>
 </div>
 
-<!-- NEWS TICKER -->
 <div class="news-ticker-outer">
   <div class="news-ticker-wrap">
     <div class="ticker-label">🔴 AI NEWS</div>
     <div class="ticker-scroll">
       <div class="ticker-track">
+        <a href="/updatesworld/claude-design.html" class="ticker-item"><span class="ticker-dot"></span>👑 Nobody Is Ready For What Claude Just Launched — DESIGN.md Changes Everything</a>
         <a href="/updatesworld/manus_ai_vs_comparison.html" class="ticker-item"><span class="ticker-dot"></span>🔥 It's Over — Manus.ai Just Killed ChatGPT, Jasper & Zapier in One Move</a>
         <a href="/updatesworld/gemini-3d-simulations-article.html" class="ticker-item"><span class="ticker-dot"></span>🌐 Google Gemini Can Now Build 3D Worlds — The Internet Is Losing Its Mind</a>
         <a href="/updatesworld/meta-new-ai-9-months.html" class="ticker-item"><span class="ticker-dot"></span>🤫 Meta Built a Secret AI for 9 Months — Here's What It Can Do</a>
@@ -532,8 +273,8 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
         <a href="/updatesworld/claude-best-prompts.html" class="ticker-item"><span class="ticker-dot"></span>⚡ These 10 Claude Prompts Made Freelancers $10,000/Month</a>
         <a href="/updatesworld/ai-jobs-2026.html" class="ticker-item"><span class="ticker-dot"></span>💼 AI Is Replacing These 12 Jobs in 2026 — Is Yours on the List?</a>
         <a href="/updatesworld/best-free-ai-image-generators-2026.html" class="ticker-item"><span class="ticker-dot"></span>🎨 Free AI Image Generators So Good, Designers Are Actually Worried</a>
-        <a href="/updatesworld/best-free-ai-writing-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>✍️ This Free AI Writing Tool Beats Jasper — No Credit Card Needed</a>
         <!-- Duplicate for seamless loop -->
+        <a href="/updatesworld/claude-design.html" class="ticker-item"><span class="ticker-dot"></span>👑 Nobody Is Ready For What Claude Just Launched — DESIGN.md Changes Everything</a>
         <a href="/updatesworld/manus_ai_vs_comparison.html" class="ticker-item"><span class="ticker-dot"></span>🔥 It's Over — Manus.ai Just Killed ChatGPT, Jasper & Zapier in One Move</a>
         <a href="/updatesworld/gemini-3d-simulations-article.html" class="ticker-item"><span class="ticker-dot"></span>🌐 Google Gemini Can Now Build 3D Worlds — The Internet Is Losing Its Mind</a>
         <a href="/updatesworld/meta-new-ai-9-months.html" class="ticker-item"><span class="ticker-dot"></span>🤫 Meta Built a Secret AI for 9 Months — Here's What It Can Do</a>
@@ -541,19 +282,16 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
         <a href="/updatesworld/claude-best-prompts.html" class="ticker-item"><span class="ticker-dot"></span>⚡ These 10 Claude Prompts Made Freelancers $10,000/Month</a>
         <a href="/updatesworld/ai-jobs-2026.html" class="ticker-item"><span class="ticker-dot"></span>💼 AI Is Replacing These 12 Jobs in 2026 — Is Yours on the List?</a>
         <a href="/updatesworld/best-free-ai-image-generators-2026.html" class="ticker-item"><span class="ticker-dot"></span>🎨 Free AI Image Generators So Good, Designers Are Actually Worried</a>
-        <a href="/updatesworld/best-free-ai-writing-tools-2026.html" class="ticker-item"><span class="ticker-dot"></span>✍️ This Free AI Writing Tool Beats Jasper — No Credit Card Needed</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ADSENSE TOP -->
 <div class="ad-wrap">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
-<!-- FEATURED TOOLS -->
 <section class="section" id="featured">
   <div class="section-header">
     <span class="section-tag">🔥 Trending</span>
@@ -561,48 +299,17 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
     <p class="section-sub">Handpicked tools used by thousands daily — free, instant, no login.</p>
   </div>
   <div class="featured-grid">
-    <a href="/ai-assistant.html" class="featured-card">
-      <div class="featured-icon">🤖</div>
-      <h3>AI Assistant</h3>
-      <p>Write articles, emails & SEO content instantly with Gemma 4 AI. Free, no signup, works globally.</p>
-      <div class="featured-link">Try Free <span>→</span></div>
-    </a>
-    <a href="/tax-refund-tracker.html" class="featured-card">
-      <div class="featured-icon">💰</div>
-      <h3>Tax Refund Tracker 2026</h3>
-      <p>Estimate your IRS 2026 refund date instantly. Check delay risk, diagnostic breakdown. Free tool.</p>
-      <div class="featured-link">Check Now <span>→</span></div>
-    </a>
-    <a href="/salary-to-hourly.html" class="featured-card">
-      <div class="featured-icon">📊</div>
-      <h3>Salary to Hourly Calculator</h3>
-      <p>Convert annual salary to hourly wage instantly. Monthly, weekly, daily breakdown. US-focused 2026.</p>
-      <div class="featured-link">Calculate <span>→</span></div>
-    </a>
-    <a href="/qr-code-generator.html" class="featured-card">
-      <div class="featured-icon">📱</div>
-      <h3>QR Code Generator</h3>
-      <p>Create QR codes for URLs, text, WiFi, contacts in seconds. Download PNG instantly. No login.</p>
-      <div class="featured-link">Generate Free <span>→</span></div>
-    </a>
-    <a href="/password-generator.html" class="featured-card">
-      <div class="featured-icon">🔐</div>
-      <h3>Password Generator</h3>
-      <p>Generate strong, secure passwords instantly. Custom length, symbols, numbers. Copy in one click.</p>
-      <div class="featured-link">Generate <span>→</span></div>
-    </a>
-    <a href="/resume-builder.html" class="featured-card">
-      <div class="featured-icon">📄</div>
-      <h3>Resume Builder</h3>
-      <p>Build an ATS-friendly PDF resume free online. Professional templates, no account needed.</p>
-      <div class="featured-link">Build Resume <span>→</span></div>
-    </a>
+    <a href="/ai-assistant.html" class="featured-card"><div class="featured-icon">🤖</div><h3>AI Assistant</h3><p>Write articles, emails & SEO content instantly with Gemma 4 AI. Free, no signup, works globally.</p><div class="featured-link">Try Free <span>→</span></div></a>
+    <a href="/tax-refund-tracker.html" class="featured-card"><div class="featured-icon">💰</div><h3>Tax Refund Tracker 2026</h3><p>Estimate your IRS 2026 refund date instantly. Check delay risk, diagnostic breakdown. Free tool.</p><div class="featured-link">Check Now <span>→</span></div></a>
+    <a href="/salary-to-hourly.html" class="featured-card"><div class="featured-icon">📊</div><h3>Salary to Hourly Calculator</h3><p>Convert annual salary to hourly wage instantly. Monthly, weekly, daily breakdown. US-focused 2026.</p><div class="featured-link">Calculate <span>→</span></div></a>
+    <a href="/qr-code-generator.html" class="featured-card"><div class="featured-icon">📱</div><h3>QR Code Generator</h3><p>Create QR codes for URLs, text, WiFi, contacts in seconds. Download PNG instantly. No login.</p><div class="featured-link">Generate Free <span>→</span></div></a>
+    <a href="/password-generator.html" class="featured-card"><div class="featured-icon">🔐</div><h3>Password Generator</h3><p>Generate strong, secure passwords instantly. Custom length, symbols, numbers. Copy in one click.</p><div class="featured-link">Generate <span>→</span></div></a>
+    <a href="/resume-builder.html" class="featured-card"><div class="featured-icon">📄</div><h3>Resume Builder</h3><p>Build an ATS-friendly PDF resume free online. Professional templates, no account needed.</p><div class="featured-link">Build Resume <span>→</span></div></a>
   </div>
 </section>
 
 <div class="section-divider"><hr></div>
 
-<!-- AI TOOLS -->
 <section class="section" id="ai-tools">
   <div class="section-header">
     <span class="section-tag">🧠 AI-Powered</span>
@@ -623,13 +330,11 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </section>
 
-<!-- ADSENSE MID -->
 <div class="ad-wrap">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
-<!-- FINANCE TOOLS -->
 <section class="section" id="finance" style="background:white; max-width:100%; padding:70px 0;">
 <div style="max-width:1200px; margin:0 auto; padding:0 20px;">
   <div class="section-header">
@@ -653,7 +358,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 </div>
 </section>
 
-<!-- CALCULATORS -->
 <section class="section" id="calculators">
   <div class="section-header">
     <span class="section-tag">🔢 Calculators</span>
@@ -674,7 +378,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 
 <div class="section-divider"><hr></div>
 
-<!-- TEXT + DEV TOOLS -->
 <section class="section" id="dev-tools" style="background:white; max-width:100%; padding:70px 0;">
 <div style="max-width:1200px; margin:0 auto; padding:0 20px;">
   <div class="section-header">
@@ -706,7 +409,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
         <a href="/html-preview-tool.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🌐</div><div><div class="tool-name">HTML Preview Tool</div><div class="tool-desc" style="font-size:0.82rem;">Write HTML/CSS/JS & see live output. Free online IDE.</div></div></a>
         <a href="/color-picker.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🎨</div><div><div class="tool-name">Color Picker</div><div class="tool-desc" style="font-size:0.82rem;">Pick colors, get HEX, RGB, HSL values instantly.</div></div></a>
         <a href="/unit-converter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">📏</div><div><div class="tool-name">Unit Converter</div><div class="tool-desc" style="font-size:0.82rem;">Convert length, weight, area & more units instantly.</div></div></a>
-        <!-- ✅ NEW: Broken Link Checker -->
         <a href="/broken-link-checker.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔗</div><div><div class="tool-name">Broken Link Checker</div><div class="tool-desc" style="font-size:0.82rem;">Find dead links & 404 errors on any website instantly.</div></div></a>
       </div>
     </div>
@@ -714,13 +416,11 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 </div>
 </section>
 
-<!-- ADSENSE BOTTOM -->
 <div class="ad-wrap">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 
-<!-- GOLD RATES -->
 <div class="gold-section">
   <div class="gold-inner">
     <span class="section-tag" style="background:#fef3c7; color:#92400e;">🥇 Live Gold Rates</span>
@@ -738,7 +438,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </div>
 
-<!-- BLOG -->
 <section class="section" id="blog">
   <div class="section-header">
     <span class="section-tag">📚 Guides</span>
@@ -764,8 +463,17 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
     <h2>AI & Tech Updates 2026</h2>
     <p class="section-sub">Latest AI news, tool reviews & tech guides. Updated weekly.</p>
   </div>
-
   <div class="updates-grid">
+
+    <!-- ✅ NEW: Claude Design -->
+    <a href="/updatesworld/claude-design.html" class="update-card" style="border-color:rgba(109,40,217,0.3); background:linear-gradient(135deg,#f5f3ff,#ffffff);">
+      <div class="update-icon">👑</div>
+      <div>
+        <h3 style="color:#6d28d9;">Nobody Is Ready For What Claude Just Launched — DESIGN.md</h3>
+        <p>Google's design.md spec gives AI agents a persistent visual identity. The internet is reacting.</p>
+      </div>
+    </a>
+
     <a href="/updatesworld/manus_ai_vs_comparison.html" class="update-card" style="border-color:rgba(255,45,120,0.25); background:linear-gradient(135deg,#fff5f8,#ffffff);">
       <div class="update-icon">🔥</div>
       <div>
@@ -786,7 +494,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 </div>
 </section>
 
-<!-- WHY TOOLYFI -->
 <div class="why-section">
   <div class="why-inner">
     <h2>Why 50,000+ People Choose Toolyfi</h2>
@@ -800,14 +507,12 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta-section">
   <h2>Ready to Boost Your Productivity?</h2>
   <p>50+ free tools waiting for you. No signup, no cost, no limits.</p>
   <a href="#featured" class="cta-btn">Get Started Free →</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -864,7 +569,6 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
 </footer>
 
 <script>
-// ===== ALL TOOLS DATA (for search) =====
 const allTools = [
   {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖',cat:'AI'},
   {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images free',icon:'🎨',cat:'AI'},
@@ -915,7 +619,6 @@ const allTools = [
   {name:'Broken Link Checker',url:'/broken-link-checker.html',desc:'Find dead links & 404 errors on any website free',icon:'🔗',cat:'Developer'},
 ];
 
-// ===== SEARCH =====
 function handleSearch(q) {
   const query = q.trim().toLowerCase();
   const sr = document.getElementById('search-results');
@@ -933,7 +636,6 @@ function handleSearch(q) {
   sr.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ===== SCROLL ANIMATIONS =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -942,10 +644,8 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
 document.querySelectorAll('.tool-card, .featured-card, .blog-card, .gold-card, .update-card, .why-card').forEach(el => observer.observe(el));
 
-// ===== COUNTER ANIMATION =====
 function animateCounter(el) {
   const target = parseInt(el.dataset.count);
   const suffix = el.dataset.suffix || '';
@@ -966,12 +666,7 @@ const counterObs = new IntersectionObserver((entries) => {
 });
 document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 
-// ===== MOBILE NAV =====
-function toggleMobileNav() {
-  document.getElementById('mobileNav').classList.toggle('open');
-}
-
-// Search on Enter
+function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
 document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(e.target.value); });
 </script>
 </body>
