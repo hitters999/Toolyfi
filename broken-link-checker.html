@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Web Tools for Checking Broken Links — Free Dead Link Checker 2026 | Toolyfi</title>
+  <meta name="description" content="Free online web tool for checking broken links on any website. Find dead links, 404 errors and fix them instantly. No signup required. Scan your website now!"/>
+  <meta name="keywords" content="online web tools for checking broken links, broken link checker, dead link checker, free broken link tool, 404 error checker, check website links, find broken links online, website link checker"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="author" content="Toolyfi"/>
+  <link rel="canonical" href="https://toolyfi.com/broken-link-checker.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Free Online Web Tool for Checking Broken Links | Toolyfi"/>
+  <meta property="og:description" content="Check broken links on any website for free. Find dead links and 404 errors instantly. No signup required."/>
+  <meta property="og:url" content="https://toolyfi.com/broken-link-checker.html"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Online Web Tools for Checking Broken Links","url":"https://toolyfi.com/broken-link-checker.html","description":"Free online web tool to check broken links on any website. Find dead links and 404 errors instantly.","publisher":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a broken link?","acceptedAnswer":{"@type":"Answer","text":"A broken link is a hyperlink that no longer works and leads to a 404 error page or dead URL. Broken links hurt SEO rankings and user experience."}},{"@type":"Question","name":"How do I check for broken links on my website?","acceptedAnswer":{"@type":"Answer","text":"You can use Toolyfi's free online broken link checker. Simply enter your website URL and click Scan. The tool will check all links and report which ones are broken."}},{"@type":"Question","name":"How often should I check for broken links?","acceptedAnswer":{"@type":"Answer","text":"You should check your website for broken links at least once a month. If you frequently update content or publish new posts, check weekly."}},{"@type":"Question","name":"Do broken links affect SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes, broken links hurt SEO by wasting Google's crawl budget, losing link equity, and creating poor user experience which increases bounce rate."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #6c47ff;
+      --primary2: #8b6fff;
+      --primary3: #4f32cc;
+      --red: #ef4444;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --blue: #3b82f6;
+      --dark: #0A0A0F;
+      --dark2: #13131A;
+      --dark3: #1C1C26;
+      --white: #FFFFFF;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --light-bg: #f8f7ff;
+      --accent-bg: #f0edff;
+      --radius: 16px;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--light-bg); color: var(--text); }
+
+    /* NAV */
+    nav { background: white; border-bottom: 1px solid var(--border); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .nav-logo { font-family: var(--font-head); font-weight: 900; font-size: 20px; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--primary); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-right a { color: var(--muted); font-size: 14px; text-decoration: none; font-weight: 500; }
+    .nav-right a:hover { color: var(--primary); }
+    .nav-btn { background: linear-gradient(135deg, var(--primary), var(--primary2)); color: #fff !important; padding: 8px 18px; border-radius: 99px; font-size: 13px; font-weight: 700; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, #0d0a1f 100%);
+      padding: 60px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(108,71,255,0.18), transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(239,68,68,0.12), transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(108,71,255,0.15);
+      border: 1px solid rgba(108,71,255,0.4);
+      color: #a78bfa;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 99px; margin-bottom: 20px;
+    }
+    .scan-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; animation: pulse-dot 1.4s infinite; display: inline-block; }
+    @keyframes pulse-dot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.3);opacity:0.7} }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(26px, 5vw, 50px); font-weight: 900; color: white; line-height: 1.15; margin-bottom: 14px; }
+    .hero h1 span { background: linear-gradient(135deg, #a78bfa, #7c3aed, #6c47ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 10px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .hero-badges-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+    .hero-tag { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px; }
+
+    /* TOOL BOX */
+    .tool-section { max-width: 780px; margin: 0 auto; padding: 40px 20px 0; }
+    .tool-card {
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 8px 40px rgba(108,71,255,0.12);
+      border: 1px solid rgba(108,71,255,0.1);
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    .tool-title { font-family: var(--font-head); font-size: 20px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+    .tool-sub { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+    .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .url-input {
+      flex: 1 1 280px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--light-bg);
+    }
+    .url-input:focus { border-color: var(--primary); background: white; }
+    .scan-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 30px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+    .scan-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(108,71,255,0.35); }
+    .scan-btn:disabled { background: #d1d5db; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* PROGRESS */
+    .progress-wrap { margin-top: 20px; }
+    .progress-bar-bg { background: #f3f4f6; height: 6px; border-radius: 3px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary2)); transition: width 0.4s ease; border-radius: 3px; }
+    .progress-text { font-size: 12px; color: var(--muted); margin-top: 8px; font-family: var(--font-mono); letter-spacing: 0.5px; }
+
+    /* ERROR */
+    .error-box { background: #fef2f2; border: 1.5px solid #fca5a5; color: #dc2626; padding: 12px 16px; border-radius: 10px; margin-top: 16px; font-size: 13px; font-weight: 600; }
+
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+    @media(max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card { border-radius: 14px; padding: 16px 14px; text-align: center; }
+    .stat-card-total { background: #f8f7ff; border: 1.5px solid #e0d9ff; }
+    .stat-card-ok { background: #f0fdf4; border: 1.5px solid #86efac; }
+    .stat-card-broken { background: #fef2f2; border: 1.5px solid #fca5a5; }
+    .stat-card-remain { background: #fffbeb; border: 1.5px solid #fde68a; }
+    .stat-num { font-family: var(--font-mono); font-size: 28px; font-weight: 700; line-height: 1; }
+    .stat-total-num { color: var(--primary); }
+    .stat-ok-num { color: #16a34a; }
+    .stat-broken-num { color: #dc2626; }
+    .stat-remain-num { color: #d97706; }
+    .stat-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; color: var(--muted); }
+
+    /* RESULTS */
+    .results-header { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; margin-bottom: 14px; }
+    .results-title { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--text); }
+    .filter-btns { display: flex; gap: 6px; }
+    .filter-btn { padding: 6px 14px; border-radius: 99px; border: 1.5px solid var(--border); font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: white; color: var(--muted); }
+    .filter-btn.active-all { border-color: var(--primary); color: var(--primary); background: var(--accent-bg); }
+    .filter-btn.active-ok { border-color: #16a34a; color: #16a34a; background: #f0fdf4; }
+    .filter-btn.active-broken { border-color: #dc2626; color: #dc2626; background: #fef2f2; }
+    .results-list { display: flex; flex-direction: column; gap: 7px; max-height: 440px; overflow-y: auto; padding-right: 4px; }
+    .results-list::-webkit-scrollbar { width: 5px; }
+    .results-list::-webkit-scrollbar-track { background: #f3f4f6; border-radius: 3px; }
+    .results-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+    .result-item { background: white; border: 1.5px solid; border-radius: 10px; padding: 11px 14px; display: flex; align-items: center; gap: 12px; transition: box-shadow 0.2s; }
+    .result-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .result-item-ok { border-color: #bbf7d0; }
+    .result-item-broken { border-color: #fecaca; }
+    .status-badge { min-width: 52px; text-align: center; padding: 4px 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
+    .badge-ok { background: #dcfce7; color: #16a34a; }
+    .badge-broken { background: #fee2e2; color: #dc2626; }
+    .result-url { flex: 1; font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-mono); }
+    .result-url-broken { color: #ef4444; }
+    .result-status-text { font-size: 11px; font-weight: 700; min-width: 60px; text-align: right; letter-spacing: 0.5px; }
+    .ok-text { color: #16a34a; }
+    .broken-text { color: #dc2626; }
+
+    /* FINAL SUMMARY */
+    .final-summary { margin-top: 20px; padding: 16px 20px; border-radius: 12px; font-size: 14px; font-weight: 700; text-align: center; letter-spacing: 0.3px; }
+    .summary-ok { background: #f0fdf4; border: 1.5px solid #86efac; color: #16a34a; }
+    .summary-warn { background: #fef2f2; border: 1.5px solid #fca5a5; color: #dc2626; }
+
+    /* WRAP */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* INFO BOX */
+    .info-box-wrap { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+    .info-box-tip {
+      background: var(--accent-bg); border: 2px solid rgba(108,71,255,0.3); border-radius: 16px;
+      padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+    }
+    .info-box-tip-icon { font-size: 26px; }
+    .info-box-tip-text strong { display: block; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+    .info-box-tip-text span { font-size: 13px; color: var(--muted); }
+
+    /* HOW IT WORKS */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    @media(max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
+    .step-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px 18px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .step-num { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary2)); color: white; font-family: var(--font-mono); font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .step-title { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* STATUS CODE TABLE */
+    .status-table { width: 100%; border-collapse: collapse; }
+    .status-table th { background: linear-gradient(135deg, var(--dark), var(--dark2)); color: #a78bfa; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 14px 16px; text-align: left; }
+    .status-table th:first-child { border-radius: 12px 0 0 0; }
+    .status-table th:last-child { border-radius: 0 12px 0 0; }
+    .status-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 14px; background: white; }
+    .status-table tr:hover td { background: var(--accent-bg); }
+    .status-table tr:last-child td:first-child { border-radius: 0 0 0 12px; }
+    .status-table tr:last-child td:last-child { border-radius: 0 0 12px 0; }
+    .code-badge { font-family: var(--font-mono); font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 6px; display: inline-block; }
+    .code-ok { background: #dcfce7; color: #16a34a; }
+    .code-redirect { background: #fef9c3; color: #92400e; }
+    .code-broken { background: #fee2e2; color: #dc2626; }
+    .code-server { background: #ede9fe; color: #6c47ff; }
+
+    /* SECTION */
+    .section { margin: 50px 0; }
+    .sec-title { font-family: var(--font-head); font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--text); margin-bottom: 6px; }
+    .sec-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+    /* SEO ARTICLE */
+    .article { margin: 60px 0; }
+    .article h2 { font-family: var(--font-head); font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--text); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 3px solid var(--accent-bg); }
+    .article h3 { font-family: var(--font-head); font-size: 19px; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
+    .article p { color: #374151; font-size: 15px; line-height: 1.9; margin-bottom: 16px; }
+    .article ul { margin: 12px 0 16px 0; padding-left: 0; list-style: none; }
+    .article ul li { padding: 9px 0 9px 26px; position: relative; color: #374151; font-size: 15px; line-height: 1.7; border-bottom: 1px solid #f3f4f6; }
+    .article ul li::before { content: '▸'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+    .article ol { margin: 12px 0 16px 0; padding-left: 22px; }
+    .article ol li { color: #374151; font-size: 15px; line-height: 1.7; margin-bottom: 10px; }
+    .article-info-box { background: var(--accent-bg); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 22px 0; }
+    .article-info-box strong { display: block; color: var(--primary3); font-size: 13px; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+    .article-info-box p { margin: 0; font-size: 14px; color: #374151; }
+    .article-warn-box { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 22px 0; }
+    .article-warn-box strong { display: block; color: #dc2626; font-size: 13px; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+    .article-warn-box p { margin: 0; font-size: 14px; color: #374151; }
+
+    /* COMPARISON TABLE */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .compare-table th { background: linear-gradient(135deg, var(--primary3), var(--primary)); color: white; padding: 13px 16px; font-size: 13px; font-weight: 700; text-align: left; }
+    .compare-table th:first-child { border-radius: 12px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 12px 0 0; }
+    .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 14px; background: white; }
+    .compare-table tr:hover td { background: var(--accent-bg); }
+    .compare-table tr:last-child td:first-child { border-radius: 0 0 0 12px; }
+    .compare-table tr:last-child td:last-child { border-radius: 0 0 12px 0; }
+    .tick { color: #16a34a; font-weight: 700; font-size: 16px; }
+    .cross { color: #dc2626; font-weight: 700; font-size: 16px; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q { padding: 18px 20px; font-weight: 700; font-size: 15px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s; }
+    .faq-q:hover { background: var(--accent-bg); }
+    .faq-q span { font-size: 20px; color: var(--primary); transition: transform 0.3s; flex-shrink: 0; margin-left: 12px; }
+    .faq-q.open span { transform: rotate(45deg); }
+    .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-a.open { max-height: 250px; padding: 0 20px 18px; }
+    .faq-a p { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 0; }
+
+    /* TOOLS GRID */
+    .tools-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    @media(max-width: 600px) { .tools-grid { grid-template-columns: repeat(3, 1fr); } }
+    .tool-link { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 14px 10px; text-align: center; text-decoration: none; color: var(--text); font-size: 12px; font-weight: 600; transition: all 0.2s; display: flex; flex-direction: column; gap: 6px; }
+    .tool-link:hover { border-color: var(--primary); background: var(--accent-bg); color: var(--primary); transform: translateY(-2px); }
+    .tool-link span { font-size: 22px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 20px; margin-top: 60px; border-top: 1px solid rgba(108,71,255,0.2); font-size: 13px; }
+    footer a { color: #a78bfa; text-decoration: none; font-weight: 600; }
+    .footer-kw { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 8px; line-height: 1.8; }
+
+    /* SHIMMER */
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    .purple-shimmer { background: linear-gradient(90deg, var(--primary3), var(--primary2), var(--primary), var(--primary2), var(--primary3)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+
+    @media(max-width: 600px) {
+      .tool-card { padding: 22px 16px; }
+      .hero { padding: 44px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://toolyfi.com" class="nav-logo">🛠️ Tool<span>yfi</span></a>
+  <div class="nav-right">
+    <a href="https://toolyfi.com">Home</a>
+    <a href="https://toolyfi.com/#tools">Tools</a>
+    <a href="https://toolyfi.com" class="nav-btn">All Tools</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge"><span class="scan-dot"></span> Free Online Web Diagnostic Tool</div>
+  <h1>Online Web Tools for<br/><span>Checking Broken Links</span></h1>
+  <p class="hero-sub">Find dead links, 404 errors, and broken URLs on any website — instantly, for free. No signup required.</p>
+  <div class="hero-badges-row">
+    <div class="hero-tag">✅ No Signup</div>
+    <div class="hero-tag">⚡ Instant Scan</div>
+    <div class="hero-tag">🔒 No Data Stored</div>
+    <div class="hero-tag">🆓 100% Free</div>
+    <div class="hero-tag">📊 Up to 40 Links</div>
+  </div>
+</header>
+
+<!-- TOOL CARD -->
+<div style="max-width:780px;margin:0 auto;padding:0 20px;">
+  <div class="tool-card">
+    <div class="tool-title">🔍 Broken Link Checker</div>
+    <div class="tool-sub">Enter any website URL below to scan all links and find broken/dead ones</div>
+
+    <div class="input-row">
+      <input type="text" id="url-input" class="url-input" placeholder="https://yourwebsite.com" onkeydown="if(event.key==='Enter') startScan()"/>
+      <button class="scan-btn" id="scan-btn" onclick="startScan()">🔍 Scan Links</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progress-wrap" style="display:none;">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="progress-text" id="progress-text">Initializing scan...</div>
+    </div>
+
+    <!-- ERROR -->
+    <div class="error-box" id="error-box" style="display:none;"></div>
+
+    <!-- STATS -->
+    <div class="stats-grid" id="stats-grid" style="display:none;">
+      <div class="stat-card stat-card-total">
+        <div class="stat-num stat-total-num" id="stat-total">0</div>
+        <div class="stat-label">Total Links</div>
+      </div>
+      <div class="stat-card stat-card-ok">
+        <div class="stat-num stat-ok-num" id="stat-ok">0</div>
+        <div class="stat-label">Working</div>
+      </div>
+      <div class="stat-card stat-card-broken">
+        <div class="stat-num stat-broken-num" id="stat-broken">0</div>
+        <div class="stat-label">Broken</div>
+      </div>
+      <div class="stat-card stat-card-remain">
+        <div class="stat-num stat-remain-num" id="stat-remain">0</div>
+        <div class="stat-label">Remaining</div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="results-section" style="display:none;">
+      <div class="results-header">
+        <div class="results-title" id="scanned-label">Results</div>
+        <div class="filter-btns">
+          <button class="filter-btn active-all" onclick="filterResults('all', this)">All</button>
+          <button class="filter-btn" onclick="filterResults('ok', this)">✓ Working</button>
+          <button class="filter-btn" onclick="filterResults('broken', this)">✗ Broken</button>
+        </div>
+      </div>
+      <div class="results-list" id="results-list"></div>
+      <div class="final-summary" id="final-summary" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIP BOX -->
+<div class="info-box-wrap">
+  <div class="info-box-tip">
+    <div class="info-box-tip-icon">💡</div>
+    <div class="info-box-tip-text">
+      <strong>Pro Tip — How to use this tool effectively</strong>
+      <span>Enter your homepage URL first to check all main navigation links. Then check your most important blog posts or product pages. Run this scan at least once a month to keep your website healthy and SEO-friendly.</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="wrap">
+  <div class="section">
+    <h2 class="sec-title purple-shimmer">How This Tool Works</h2>
+    <p class="sec-sub">3 simple steps to find broken links on your website</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Enter URL</div>
+        <div class="step-desc">Type or paste your website URL in the input box above and click the Scan button.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Auto Scan</div>
+        <div class="step-desc">Our tool fetches your page, extracts all links, and checks each one's HTTP status code.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Fix Broken Links</div>
+        <div class="step-desc">Review the results, identify broken links (red), and update or remove them from your website.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS CODE TABLE -->
+  <div class="section">
+    <h2 class="sec-title">📋 HTTP Status Codes Explained</h2>
+    <p class="sec-sub">What each status code means when checking your website links</p>
+    <div style="overflow-x:auto;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.06);">
+      <table class="status-table">
+        <thead>
+          <tr>
+            <th>Status Code</th>
+            <th>Meaning</th>
+            <th>SEO Impact</th>
+            <th>Action Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="code-badge code-ok">200 OK</span></td>
+            <td>Page exists and loads perfectly</td>
+            <td>✅ Positive</td>
+            <td>None — link is healthy</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-redirect">301</span></td>
+            <td>Permanent redirect to new URL</td>
+            <td>⚠️ Minor loss</td>
+            <td>Update link to new URL directly</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-redirect">302</span></td>
+            <td>Temporary redirect</td>
+            <td>⚠️ Link equity lost</td>
+            <td>Update if redirect is permanent</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-broken">404 Not Found</span></td>
+            <td>Page does not exist — most common broken link</td>
+            <td>🔴 Harmful</td>
+            <td>Remove or update the link immediately</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-broken">410 Gone</span></td>
+            <td>Page permanently deleted</td>
+            <td>🔴 Harmful</td>
+            <td>Remove the link entirely</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-server">500</span></td>
+            <td>Server error on target website</td>
+            <td>⚠️ Temporary</td>
+            <td>Recheck later; replace if persistent</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge code-broken">ERR</span></td>
+            <td>Connection failed or timeout</td>
+            <td>🔴 Harmful</td>
+            <td>Verify manually and remove if dead</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SEO ARTICLE -->
+  <article class="article">
+
+    <h2>Online Web Tools for Checking Broken Links — Complete Guide 2026</h2>
+    <p>Every website owner, blogger, and SEO professional needs access to reliable <strong>online web tools for checking broken links</strong>. Whether you manage a small personal blog or a large e-commerce website, broken links are a silent killer that damage your search engine rankings, frustrate your visitors, and erode the trust you have worked so hard to build. In this comprehensive guide, we will explain everything you need to know about broken links — what they are, why they happen, how they affect your SEO, and most importantly, how to find and fix them using free online tools.</p>
+
+    <p>According to a 2025 study by Ahrefs, over 66% of websites on the internet contain at least one broken link. Among websites older than three years, this number rises to over 80%. Despite being such a widespread problem, broken links are one of the most overlooked technical SEO issues. The good news is that with the right <strong>web tools for checking broken links</strong>, you can identify and fix these issues in minutes.</p>
+
+    <div class="article-info-box">
+      <strong>📊 Key Statistic</strong>
+      <p>Websites with broken links see an average 12–18% increase in bounce rate. Google's crawl budget is wasted every time Googlebot follows a dead link, meaning fewer of your pages get indexed. Fixing broken links alone can improve your rankings within 4–6 weeks.</p>
+    </div>
+
+    <h2>What Are Broken Links and Why Do They Happen?</h2>
+    <p>A broken link — also called a dead link or dead URL — is a hyperlink on a webpage that no longer leads to a working destination. When a user clicks a broken link, they see an error page instead of the content they expected. The most common error is a <strong>404 Not Found</strong> page, which tells the browser that the destination page does not exist on the server.</p>
+
+    <p>Broken links happen for several reasons, and understanding these causes helps you prevent them in the future:</p>
+
+    <ul>
+      <li><strong>Page Deleted:</strong> The most common cause. A webpage is deleted from a website without setting up a redirect. Any links pointing to that page immediately become broken.</li>
+      <li><strong>URL Changed:</strong> The page still exists but its URL was changed — for example, a blog post was moved to a different category. Old links pointing to the previous URL become dead links.</li>
+      <li><strong>Website Shutdown:</strong> An external website you linked to has shut down or gone offline permanently. This is especially common with links to small blogs, startup websites, and social media profiles.</li>
+      <li><strong>Typos in URLs:</strong> A simple typing mistake when adding a hyperlink creates an instant broken link. Even one wrong character in a URL makes the link dead.</li>
+      <li><strong>Domain Changes:</strong> An external website migrated to a new domain without proper redirects in place, making all old links to that domain broken.</li>
+      <li><strong>HTTPS Migration:</strong> A website moved from HTTP to HTTPS but failed to update internal links, creating broken HTTP links.</li>
+      <li><strong>CMS Updates:</strong> WordPress, Joomla, or other content management system updates sometimes change permalink structures, breaking existing internal links.</li>
+      <li><strong>Expired Content:</strong> Product pages for discontinued items, event pages for past events, and promotional pages that have expired are frequently deleted without redirects.</li>
+    </ul>
+
+    <h2>How Broken Links Hurt Your SEO Rankings</h2>
+    <p>The connection between broken links and SEO is direct and significant. Search engines like Google use links to discover and rank content. When your website contains broken links, it sends negative signals to search engine algorithms that affect how your site is crawled, indexed, and ranked.</p>
+
+    <h3>1. Wasted Crawl Budget</h3>
+    <p>Google allocates a specific crawl budget to every website — the number of pages Googlebot will crawl in a given time period. When Googlebot follows a broken link and receives a 404 error, that crawl request is wasted. For large websites, excessive broken links mean many important pages never get crawled or indexed. This directly impacts your ability to rank for target keywords.</p>
+
+    <h3>2. Lost Link Equity (Link Juice)</h3>
+    <p>When external websites link to a page on your site that no longer exists, all the authority and ranking power (link equity) from those backlinks is completely lost. This is one of the most damaging effects of broken links. A single high-authority backlink can be worth hundreds of lower-quality links — losing it to a dead page is a significant SEO setback.</p>
+
+    <h3>3. Poor User Experience Signals</h3>
+    <p>When visitors click a broken link and land on a 404 error page, they leave your website immediately. This increases your bounce rate — a metric Google uses as a signal of page quality and user satisfaction. High bounce rates from broken links send negative ranking signals to search algorithms, pushing your pages down in search results.</p>
+
+    <h3>4. Reduced Crawling Efficiency</h3>
+    <p>A website cluttered with broken links appears disorganized and poorly maintained to search engine crawlers. Google's Quality Rater Guidelines explicitly mention that websites with many broken links are considered lower quality. Over time, this perception reduces how often and how deeply Google crawls your site.</p>
+
+    <div class="article-warn-box">
+      <strong>⚠️ Important Warning</strong>
+      <p>Never ignore broken links on your website hoping they will fix themselves. They will not. In fact, the problem only grows over time as more external websites change URLs and your own content evolves. Regular maintenance using online web tools for checking broken links is essential for long-term SEO health.</p>
+    </div>
+
+    <h2>Types of Broken Links: Internal vs External</h2>
+    <p>Not all broken links are the same. Understanding the two main types — internal and external — helps you prioritize which ones to fix first and how to approach the repair process.</p>
+
+    <h3>Internal Broken Links</h3>
+    <p>Internal broken links are links on your website that point to other pages on your own website that no longer exist or have changed URLs. These are the highest priority to fix because they are entirely within your control. Internal broken links directly disrupt the flow of link equity through your site and prevent search engines from properly crawling your content. You can fix internal broken links by updating the URL in your content or setting up a 301 redirect from the old URL to the new one.</p>
+
+    <h3>External Broken Links</h3>
+    <p>External broken links are links on your website that point to pages on other websites that have been deleted, moved, or shut down. These are harder to control because you depend on the target website to maintain their URLs. When you discover external broken links, your options are to remove the link entirely, replace it with a link to a different relevant source, or try to find the new URL of the moved content using the Wayback Machine or a search engine.</p>
+
+    <div class="article-info-box">
+      <strong>💡 Pro Strategy — Broken Link Building</strong>
+      <p>Broken link building is a powerful SEO tactic where you find broken links on other websites that point to dead resources, create similar content on your own site, and then reach out to the website owner to suggest replacing the dead link with a link to your content. This strategy earns high-quality backlinks while helping other website owners fix their broken link problem.</p>
+    </div>
+
+    <h2>How to Check Broken Links on Your Website — Step by Step</h2>
+    <p>Using <strong>online web tools for checking broken links</strong> is the most efficient way to audit your website for dead links. Here is a complete step-by-step process you can follow to systematically find and fix broken links:</p>
+
+    <ol>
+      <li><strong>Start with your homepage:</strong> Use Toolyfi's free broken link checker to scan your homepage first. The homepage typically has the most internal links to other sections of your site and is most frequently visited.</li>
+      <li><strong>Check your most important pages:</strong> Scan your top 10 highest-traffic pages. These generate the most revenue and ranking potential, so keeping them free of broken links is critical.</li>
+      <li><strong>Scan your blog archive:</strong> Blog posts often contain the most external links and are the most likely to have broken links due to older content referencing websites that have since shut down.</li>
+      <li><strong>Check your resource pages:</strong> If you have a resources or tools page that links to external websites, these pages typically have the highest concentration of external broken links.</li>
+      <li><strong>Review navigation menus:</strong> Broken links in navigation menus affect every single page of your site and should be fixed immediately.</li>
+      <li><strong>Document all broken links:</strong> Keep a spreadsheet of all broken links found, noting the page they appear on, the broken URL, and whether it is internal or external.</li>
+      <li><strong>Fix or redirect:</strong> For internal broken links, set up 301 redirects or update the URL. For external broken links, find a replacement source or remove the link entirely.</li>
+      <li><strong>Verify the fix:</strong> After making changes, re-run the broken link checker to confirm all issues have been resolved.</li>
+    </ol>
+
+    <h2>Free Online Web Tools for Checking Broken Links — Comparison</h2>
+    <p>There are several free tools available for checking broken links. Here is how they compare, including Toolyfi's own free broken link checker:</p>
+
+    <div style="overflow-x:auto;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.06);">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Free to Use</th>
+            <th>No Signup</th>
+            <th>External Links</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>🟢 Toolyfi Broken Link Checker</strong></td>
+            <td><span class="tick">✓</span> Always free</td>
+            <td><span class="tick">✓</span> No account needed</td>
+            <td><span class="tick">✓</span> Yes</td>
+            <td>Quick free scans, bloggers, small sites</td>
+          </tr>
+          <tr>
+            <td><strong>Ahrefs Broken Link Checker</strong></td>
+            <td><span class="tick">✓</span> Limited free</td>
+            <td><span class="cross">✗</span> Account required</td>
+            <td><span class="tick">✓</span> Yes</td>
+            <td>SEO professionals, large sites</td>
+          </tr>
+          <tr>
+            <td><strong>Screaming Frog</strong></td>
+            <td><span class="tick">✓</span> Up to 500 URLs</td>
+            <td><span class="tick">✓</span> Desktop app</td>
+            <td><span class="tick">✓</span> Yes</td>
+            <td>Technical SEO audits, agencies</td>
+          </tr>
+          <tr>
+            <td><strong>Google Search Console</strong></td>
+            <td><span class="tick">✓</span> Free</td>
+            <td><span class="cross">✗</span> Google account</td>
+            <td><span class="cross">✗</span> Internal only</td>
+            <td>Monitoring your own site's errors</td>
+          </tr>
+          <tr>
+            <td><strong>Dead Link Checker</strong></td>
+            <td><span class="tick">✓</span> Limited</td>
+            <td><span class="tick">✓</span> No signup needed</td>
+            <td><span class="tick">✓</span> Yes</td>
+            <td>Simple website link checking</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How to Fix Broken Links — Complete Guide</h2>
+    <p>Finding broken links is only half the battle. Once you have identified them using an <strong>online web tool for checking broken links</strong>, you need to fix them properly. Here are the best methods for repairing different types of broken links:</p>
+
+    <h3>Method 1 — Update the URL</h3>
+    <p>The simplest fix for an internal broken link is to update the hyperlink in your content to point to the correct, current URL. Log into your CMS, find the page containing the broken link, edit the link to the new working URL, and save. This is the preferred method for internal links because it eliminates the broken link entirely rather than adding a redirect layer.</p>
+
+    <h3>Method 2 — Set Up a 301 Redirect</h3>
+    <p>A 301 redirect tells browsers and search engines that a page has permanently moved to a new location. This is the best solution when you have changed a URL and want to preserve the link equity from all existing links pointing to the old URL. In WordPress, you can set up 301 redirects using plugins like Redirection or Rank Math. In Apache servers, add redirect rules to your .htaccess file.</p>
+
+    <h3>Method 3 — Restore the Deleted Page</h3>
+    <p>If a page was accidentally deleted, the best solution is to restore it. Most CMS platforms keep a trash or deleted items folder where recently deleted content can be recovered. Restoring the original page preserves all existing links without requiring any redirects or URL updates.</p>
+
+    <h3>Method 4 — Replace With Relevant Content</h3>
+    <p>For external broken links pointing to deleted third-party resources, find a similar, high-quality page on a different website and update your link to point there instead. This maintains the value of your outbound links for readers while removing the dead link that harms your SEO.</p>
+
+    <h3>Method 5 — Remove the Link Entirely</h3>
+    <p>Sometimes the content a broken link points to is no longer relevant or available anywhere on the internet. In this case, the cleanest solution is to simply remove the hyperlink from your text. The anchor text can remain as regular text, or you can update it to reference a different resource entirely.</p>
+
+    <h2>Broken Links and Website Maintenance Best Practices</h2>
+    <p>Fixing broken links reactively is important, but establishing proactive practices to prevent and catch broken links early is even better. Here are the best practices for maintaining a link-healthy website in 2026:</p>
+
+    <ul>
+      <li><strong>Monthly link audits:</strong> Run a broken link check on your most important pages every month. Set a recurring calendar reminder to make this a consistent habit.</li>
+      <li><strong>Always set redirects when changing URLs:</strong> Whenever you change a page URL, immediately set up a 301 redirect from the old URL to the new one before publishing the change.</li>
+      <li><strong>Use relative URLs for internal links:</strong> Internal links using relative URLs (/blog/post-name) are less likely to break during domain migrations than absolute URLs (https://domain.com/blog/post-name).</li>
+      <li><strong>Monitor Google Search Console:</strong> The Coverage report in Google Search Console highlights 404 errors that Googlebot has encountered while crawling your site.</li>
+      <li><strong>Be selective with external links:</strong> Only link to established, reliable websites that are unlikely to disappear. Avoid linking to social media posts, temporary promotional pages, or small personal blogs.</li>
+      <li><strong>Create a custom 404 page:</strong> Even with the best practices, some broken links are inevitable. A helpful custom 404 page that guides visitors back to relevant content reduces the damage when a broken link is encountered.</li>
+      <li><strong>Check links before publishing:</strong> Before publishing any new blog post or page, click every link you have included to verify it works correctly.</li>
+    </ul>
+
+    <div class="article-info-box">
+      <strong>🎯 SEO Quick Win</strong>
+      <p>If you find external websites linking to broken pages on your site (you can check this in Google Search Console under Links), set up 301 redirects from those old broken URLs to your most relevant current pages. This recovers the lost link equity from those backlinks and can improve your rankings within weeks.</p>
+    </div>
+
+    <h2>Broken Links Impact on User Experience</h2>
+    <p>Beyond SEO, broken links significantly damage the user experience on your website. When a visitor clicks a link expecting to find helpful information or a product page and instead encounters a 404 error page, the experience is frustrating and erodes trust. Research from the Nielsen Norman Group shows that users who encounter a dead link are 40% less likely to return to that website. In e-commerce, broken links on product pages or checkout flows can directly result in lost sales.</p>
+
+    <p>The impact is even more pronounced on mobile devices where users are less likely to try typing a corrected URL or navigating back to find the content they were looking for. A mobile visitor who hits a broken link almost always leaves the site entirely.</p>
+
+    <h2>Broken Link Checker for WordPress Websites</h2>
+    <p>WordPress powers over 43% of all websites on the internet, making it the most common platform where broken links occur. WordPress users have several options for checking and fixing broken links beyond using an online web tool like Toolyfi:</p>
+
+    <ul>
+      <li><strong>Broken Link Checker Plugin:</strong> This free WordPress plugin actively monitors all links on your site and notifies you when broken links are detected. It also allows you to unlink or edit broken links directly from the WordPress dashboard without having to edit each post individually.</li>
+      <li><strong>Rank Math SEO:</strong> The popular Rank Math SEO plugin includes a 404 monitor that tracks all 404 errors encountered by visitors and search engines on your site.</li>
+      <li><strong>Yoast SEO + Redirection:</strong> Yoast SEO paired with the Redirection plugin provides comprehensive control over your website's redirect management and broken link monitoring.</li>
+      <li><strong>Manual wp-admin check:</strong> You can also check for broken links manually by reviewing your posts and pages in the WordPress editor, though this is time-consuming for sites with a large amount of content.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions — Broken Links</h2>
+    <div id="faq-container"></div>
+
+  </article>
+
+  <!-- MORE TOOLS -->
+  <div class="section">
+    <h2 class="sec-title">🛠️ More Free Tools on Toolyfi</h2>
+    <p class="sec-sub">Explore our complete collection of free online tools</p>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/age-calculator.html" class="tool-link"><span>🎂</span>Age Calculator</a>
+      <a href="https://toolyfi.com/scientific-calculator.html" class="tool-link"><span>🔬</span>Scientific Calc</a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link"><span>💰</span>Tip Calculator</a>
+      <a href="https://toolyfi.com/compound-interest.html" class="tool-link"><span>📈</span>Compound Interest</a>
+      <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link"><span>💵</span>Salary to Hourly</a>
+      <a href="https://toolyfi.com/gold-rate-pakistan" class="tool-link"><span>🪙</span>Gold Rate</a>
+      <a href="https://toolyfi.com/word-counter.html" class="tool-link"><span>📝</span>Word Counter</a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link"><span>🔒</span>Password Gen</a>
+      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link"><span>📱</span>QR Generator</a>
+      <a href="https://toolyfi.com/youtube-transcript.html" class="tool-link"><span>📺</span>YT Transcript</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>🚀 By <a href="https://toolyfi.com">Toolyfi</a> — Free Tools for Everyone · No Signup Required</p>
+  <p class="footer-kw">online web tools for checking broken links · broken link checker · dead link checker free · check broken links online · 404 error checker · website link checker tool · find broken links · free broken link finder</p>
+</footer>
+
+<script>
+  const PROXY = 'https://api.allorigins.win/get?url=';
+  let allResults = [];
+  let currentFilter = 'all';
+
+  async function checkLink(link) {
+    try {
+      const res = await fetch(PROXY + encodeURIComponent(link), { signal: AbortSignal.timeout(12000) });
+      const data = await res.json();
+      const code = data?.status?.http_code ?? 0;
+      return { url: link, code, broken: code === 0 || code >= 400 };
+    } catch {
+      return { url: link, code: 'ERR', broken: true };
+    }
+  }
+
+  async function startScan() {
+    let url = document.getElementById('url-input').value.trim();
+    if (!url) { showError('Please enter a website URL first.'); return; }
+    if (!url.startsWith('http')) url = 'https://' + url;
+
+    // Reset UI
+    document.getElementById('error-box').style.display = 'none';
+    document.getElementById('stats-grid').style.display = 'none';
+    document.getElementById('results-section').style.display = 'none';
+    document.getElementById('final-summary').style.display = 'none';
+    document.getElementById('progress-wrap').style.display = 'block';
+    document.getElementById('scan-btn').disabled = true;
+    document.getElementById('scan-btn').textContent = '⟳ Scanning...';
+    allResults = [];
+
+    setProgress(10, 'Fetching page content...');
+
+    try {
+      const res = await fetch(PROXY + encodeURIComponent(url));
+      const data = await res.json();
+      if (!data.contents) { showError('Could not fetch this URL. Please check the URL and try again.'); resetBtn(); return; }
+
+      const doc = new DOMParser().parseFromString(data.contents, 'text/html');
+      const base = new URL(url).origin;
+      const anchors = Array.from(doc.querySelectorAll('a[href]'));
+
+      let links = anchors.map(a => {
+        const href = a.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:') || href.startsWith('whatsapp:')) return null;
+        if (href.startsWith('http')) return href;
+        if (href.startsWith('/')) return base + href;
+        if (href.startsWith('//')) return 'https:' + href;
+        return null;
+      }).filter(Boolean);
+
+      links = [...new Set(links)].slice(0, 40);
+
+      if (!links.length) { showError('No links found on this page. Try a different URL.'); resetBtn(); return; }
+
+      document.getElementById('stats-grid').style.display = 'grid';
+      document.getElementById('results-section').style.display = 'block';
+      document.getElementById('scanned-label').textContent = 'Results for: ' + url.replace('https://','').replace('http://','').split('/')[0];
+      document.getElementById('stat-total').textContent = links.length;
+      document.getElementById('stat-remain').textContent = links.length;
+
+      setProgress(20, 'Starting link verification...');
+
+      for (let i = 0; i < links.length; i++) {
+        const result = await checkLink(links[i]);
+        allResults.push(result);
+
+        const broken = allResults.filter(r => r.broken).length;
+        const ok = allResults.filter(r => !r.broken).length;
+        const remain = links.length - i - 1;
+        const pct = Math.round(20 + ((i + 1) / links.length) * 80);
+
+        document.getElementById('stat-ok').textContent = ok;
+        document.getElementById('stat-broken').textContent = broken;
+        document.getElementById('stat-remain').textContent = remain;
+        setProgress(pct, `Checking link ${i + 1} of ${links.length}... ${pct}% complete`);
+
+        renderResults();
+      }
+
+      setProgress(100, 'Scan complete!');
+      setTimeout(() => { document.getElementById('progress-wrap').style.display = 'none'; }, 800);
+
+      showFinalSummary(allResults);
+      resetBtn();
+
+    } catch {
+      showError('Something went wrong. Please check the URL and try again.');
+      resetBtn();
+    }
+  }
+
+  function renderResults() {
+    const filtered = currentFilter === 'all' ? allResults : currentFilter === 'ok' ? allResults.filter(r => !r.broken) : allResults.filter(r => r.broken);
+    const list = document.getElementById('results-list');
+    list.innerHTML = filtered.map(r => `
+      <div class="result-item ${r.broken ? 'result-item-broken' : 'result-item-ok'}">
+        <div class="status-badge ${r.broken ? 'badge-broken' : 'badge-ok'}">${r.code}</div>
+        <div class="result-url ${r.broken ? 'result-url-broken' : ''}" title="${r.url}">${r.url}</div>
+        <div class="result-status-text ${r.broken ? 'broken-text' : 'ok-text'}">${r.broken ? '✗ BROKEN' : '✓ OK'}</div>
+      </div>
+    `).join('');
+  }
+
+  function filterResults(type, btn) {
+    currentFilter = type;
+    document.querySelectorAll('.filter-btn').forEach(b => b.className = 'filter-btn');
+    if (type === 'all') btn.className = 'filter-btn active-all';
+    else if (type === 'ok') btn.className = 'filter-btn active-ok';
+    else btn.className = 'filter-btn active-broken';
+    renderResults();
+  }
+
+  function showFinalSummary(results) {
+    const broken = results.filter(r => r.broken).length;
+    const el = document.getElementById('final-summary');
+    el.style.display = 'block';
+    if (broken === 0) {
+      el.className = 'final-summary summary-ok';
+      el.innerHTML = `✅ All ${results.length} links are working perfectly! Your website has zero broken links.`;
+    } else {
+      el.className = 'final-summary summary-warn';
+      el.innerHTML = `⚠️ Found <strong>${broken} broken link${broken > 1 ? 's' : ''}</strong> out of ${results.length} total links. Fix them to improve your SEO!`;
+    }
+  }
+
+  function setProgress(pct, text) {
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = text;
+  }
+
+  function showError(msg) {
+    document.getElementById('error-box').textContent = '⚠ ' + msg;
+    document.getElementById('error-box').style.display = 'block';
+    document.getElementById('progress-wrap').style.display = 'none';
+  }
+
+  function resetBtn() {
+    document.getElementById('scan-btn').disabled = false;
+    document.getElementById('scan-btn').textContent = '🔍 Scan Links';
+  }
+
+  // FAQ
+  const FAQS = [
+    { q: 'What is a broken link and why does it matter?', a: 'A broken link is a hyperlink that no longer leads to a working webpage. It returns a 404 error or another error code instead of loading content. Broken links matter because they hurt SEO rankings, waste Google\'s crawl budget, reduce user experience, and cause visitors to leave your site.' },
+    { q: 'How many broken links are too many for SEO?', a: 'Even a small number of broken links can negatively impact your SEO. As a general rule, if more than 5% of your website\'s links are broken, it\'s considered a serious technical SEO problem. However, any broken link on a high-traffic or high-authority page should be fixed immediately regardless of the percentage.' },
+    { q: 'How do I fix broken links on my website?', a: 'You can fix broken links by: (1) Updating the link to the new correct URL, (2) Setting up a 301 redirect from the old URL to a relevant new page, (3) Restoring a deleted page if it was removed by mistake, (4) Replacing the broken external link with a link to a different relevant source, or (5) Simply removing the broken link if no suitable replacement exists.' },
+    { q: 'How often should I check my website for broken links?', a: 'For most websites, checking for broken links once a month is sufficient. If you publish new content frequently, update your website regularly, or rely heavily on external links, consider checking every two weeks. Large e-commerce sites with thousands of product pages should have automated monitoring in place.' },
+    { q: 'Does this free broken link checker work on all websites?', a: 'Toolyfi\'s broken link checker works on most publicly accessible websites. However, some websites with strict security policies (such as CORS restrictions) may not be fully scannable. For complete audits of password-protected pages or private content, you may need to use a desktop tool like Screaming Frog.' },
+    { q: 'What is the difference between a broken link and a redirect?', a: 'A broken link returns a 4xx or 5xx error code, meaning the destination page does not exist or cannot be reached. A redirect (301 or 302) automatically sends the browser to a different URL. While redirects are not technically broken, they do cause a small loss of link equity. For best SEO performance, update internal redirects to point directly to the final destination URL.' },
+    { q: 'Can broken links get my website penalized by Google?', a: 'Google does not issue manual penalties specifically for broken links. However, a large number of broken links does harm your site\'s technical SEO health, crawl efficiency, and user experience signals — all of which indirectly affect your rankings. Google\'s algorithms consider broken links as a quality signal when evaluating your site.' },
+    { q: 'What is broken link building and how does it work?', a: 'Broken link building is an SEO link-building strategy where you find broken links on other websites (links pointing to dead pages), create content on your site that matches what the dead page used to cover, and then reach out to the website owner to suggest replacing their broken link with a link to your content. This helps you earn high-quality backlinks while providing a genuine service to other website owners.' },
+  ];
+
+  function buildFAQ() {
+    document.getElementById('faq-container').innerHTML = FAQS.map((f, i) => `
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(${i}, this)">${f.q}<span>+</span></div>
+        <div class="faq-a" id="faq-a-${i}"><p>${f.a}</p></div>
+      </div>
+    `).join('');
+  }
+
+  function toggleFaq(i, el) {
+    const ans = document.getElementById('faq-a-' + i);
+    const isOpen = ans.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+    if (!isOpen) { ans.classList.add('open'); el.classList.add('open'); }
+  }
+
+  buildFAQ();
+</script>
+</body>
+</html>
