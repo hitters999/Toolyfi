@@ -704,7 +704,18 @@ async function callAI(prompt, sys) {
     body: JSON.stringify({ messages, model: 'openai', seed: Math.floor(Math.random() * 9999) })
   });
   if (!res.ok) throw new Error('API error ' + res.status);
-  return await res.text();
+  const raw = await res.text();
+  // Try to parse JSON response and extract content
+  try {
+    const parsed = JSON.parse(raw);
+    // Handle OpenAI-style response
+    if (parsed.choices?.[0]?.message?.content) return parsed.choices[0].message.content;
+    // Handle direct content field
+    if (parsed.content) return parsed.content;
+    // Handle array content
+    if (Array.isArray(parsed) && parsed[0]?.content) return parsed[0].content;
+  } catch(e) { /* not JSON, use raw */ }
+  return raw;
 }
 
 // ── ARTICLE WRITER ──
@@ -840,7 +851,13 @@ async function sendChat() {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ messages, model: 'openai' })
     });
-    const reply = await res.text();
+    const raw = await res.text();
+    let reply = raw;
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed.choices?.[0]?.message?.content) reply = parsed.choices[0].message.content;
+      else if (parsed.content) reply = parsed.content;
+    } catch(e) { /* plain text */ }
     chatHistory.push({role: 'assistant', content: reply});
     document.getElementById('chat-typing').classList.remove('show');
     appendMsg('ai', reply);
