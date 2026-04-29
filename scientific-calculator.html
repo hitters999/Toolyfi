@@ -70,53 +70,44 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;}
 
 /* ── FULLSCREEN CALC SECTION ── */
 .calc-screen{
-  width:100%;height:100dvh;
-  background:linear-gradient(160deg,#0a0a14 0%,#111122 50%,#0d0d1e 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:44px 8px 36px;position:relative;
-  overflow:hidden;touch-action:none;
+  position:fixed;inset:0;
+  background:#111122;
+  display:flex;flex-direction:column;
+  overflow:hidden;touch-action:none;z-index:1;
 }
 .calc-screen::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(168,85,247,0.12) 0%,transparent 70%);
+  background:radial-gradient(ellipse 60% 40% at 50% 30%,rgba(168,85,247,0.1) 0%,transparent 70%);
   pointer-events:none;
 }
 
 /* top bar */
 .topbar{
-  position:absolute;top:0;left:0;right:0;
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px 20px;z-index:10;
+  padding:10px 16px;z-index:10;flex-shrink:0;
+  background:rgba(10,10,20,0.6);
 }
 .topbar-logo{
-  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:0.95rem;
   background:linear-gradient(90deg,#a855f7,#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
   text-decoration:none;
 }
 .scroll-hint{
-  display:flex;align-items:center;gap:6px;font-size:0.75rem;color:rgba(255,255,255,0.45);
+  display:flex;align-items:center;gap:5px;font-size:0.72rem;color:rgba(255,255,255,0.45);
   font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:none;
-  transition:color .2s;
 }
-.scroll-hint:hover{color:rgba(255,255,255,0.75);}
 .scroll-hint svg{animation:bounce 1.8s infinite;}
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
 
 /* ── CASIO BODY ── */
 .casio-body{
-  width:min(400px,98vw);
-  max-height:calc(100dvh - 82px);
+  flex:1;width:100%;
   display:flex;flex-direction:column;
   background:linear-gradient(170deg,#252535 0%,#1a1a28 60%,#1e1e2e 100%);
-  border-radius:12px 12px 22px 22px;
-  box-shadow:
-    0 0 0 2px #0a0a14,
-    0 0 0 4px #333348,
-    0 24px 60px rgba(0,0,0,.85),
-    inset 0 1px 2px rgba(255,255,255,.07);
-  padding:14px 12px 18px;
+  padding:10px 12px 14px;
   position:relative;z-index:2;
   user-select:none;touch-action:manipulation;overflow:hidden;
+  min-height:0;
 }
 
 /* header */
@@ -580,16 +571,10 @@ h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;}
     </div><!-- end sci-wrap -->
   </div><!-- end casio-body -->
 
-  <!-- scroll down hint -->
-  <button class="scroll-down" onclick="document.getElementById('pageContent').scrollIntoView({behavior:'smooth'})">
-    scroll for more
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-  </button>
-</section>
+  </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE CONTENT
-═══════════════════════════════════════════ -->
+<!-- spacer so content scrolls below fixed calc -->
+<div style="height:100dvh;"></div>
 <div id="pageContent">
 
 <!-- STARS -->
