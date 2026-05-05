@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Use Claude Code for Free — No Subscription, No API Bill | Toolyfi Blog</title>
+<meta name="description" content="Claude Code doesn't have to cost $20/month. Here's how to run it completely free using local AI models with Ollama — no API key, no subscription needed.">
+<meta name="keywords" content="claude code free, use claude code without subscription, ollama claude code, run claude code locally, free agentic coding">
+<link rel="canonical" href="https://toolyfi.com/blog/how-to-use-claude-code-free">
+
+<!-- Open Graph -->
+<meta property="og:title" content="How to Use Claude Code for Free — No Subscription, No API Bill">
+<meta property="og:description" content="Claude Code doesn't have to cost $20/month. Here's how to run it completely free using local AI models with Ollama.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://toolyfi.com/blog/how-to-use-claude-code-free">
+<meta property="og:site_name" content="Toolyfi">
+<meta property="article:published_time" content="2026-05-05T10:00:00Z">
+<meta property="article:author" content="Toolyfi Team">
+<meta property="article:section" content="AI Tools">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Use Claude Code for Free — No Subscription, No API Bill">
+<meta name="twitter:description" content="Run Claude Code free with Ollama. No API key, no subscription, no bill.">
+<meta name="twitter:site" content="@toolyfi">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y3ETYH2QF0');
+</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Use Claude Code for Free — No Subscription, No API Bill",
+  "description": "Claude Code doesn't have to cost $20/month. Here's how to run it completely free using local AI models with Ollama.",
+  "author": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"},
+  "publisher": {"@type": "Organization", "name": "Toolyfi", "logo": {"@type": "ImageObject", "url": "https://toolyfi.com/logo.png"}},
+  "datePublished": "2026-05-05T10:00:00Z",
+  "dateModified": "2026-05-05T10:00:00Z",
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://toolyfi.com/blog/how-to-use-claude-code-free"},
+  "articleSection": "AI Tools",
+  "keywords": "claude code free, ollama, local AI, agentic coding"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://toolyfi.com/blog"},
+    {"@type": "ListItem", "position": 3, "name": "How to Use Claude Code for Free", "item": "https://toolyfi.com/blog/how-to-use-claude-code-free"}
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --primary-light: #e0f2fe;
+    --accent: #f59e0b;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --card-shadow: 0 4px 24px rgba(15,23,42,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--dark);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+  .header-nav { display: flex; gap: 24px; align-items: center; }
+  .header-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .header-nav a:hover { color: #fff; }
+  .header-cta {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+  }
+  .header-cta:hover { background: var(--primary-dark); color: #fff !important; }
+
+  /* ── TOP AD ── */
+  .ad-top {
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+    padding: 12px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── THUMBNAIL HERO ── */
+  .article-hero {
+    position: relative;
+    width: 100%;
+    max-height: 480px;
+    overflow: hidden;
+    background: var(--dark);
+  }
+  .thumbnail-graphic {
+    width: 100%;
+    height: 480px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0f2847 70%, #0a1628 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Grid lines background */
+  .thumbnail-graphic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(14,165,233,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,165,233,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  /* Glow orb */
+  .thumbnail-graphic::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .thumbnail-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    max-width: 720px;
+  }
+  .thumb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(14,165,233,0.2);
+    border: 1px solid rgba(14,165,233,0.4);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .thumb-badge::before { content: '●'; font-size: 8px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .thumb-title {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .thumb-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .thumb-sub {
+    font-size: 16px;
+    color: #94a3b8;
+    font-weight: 400;
+  }
+  /* Code terminal decoration */
+  .thumb-terminal {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(14,165,233,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #4ade80;
+    text-align: left;
+    z-index: 2;
+  }
+  .thumb-terminal .t-line { margin-bottom: 2px; }
+  .thumb-terminal .t-line span { color: var(--primary); }
+  /* Photo credit bar */
+  .photo-credit {
+    background: rgba(0,0,0,0.6);
+    color: #94a3b8;
+    font-size: 11px;
+    padding: 6px 16px;
+    text-align: right;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── ARTICLE META ── */
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-category {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+  .meta-divider { color: var(--border); }
+  .meta-date, .meta-read {
+    color: var(--gray);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .meta-date::before { content: '📅'; font-size: 12px; }
+  .meta-read::before { content: '⏱️'; font-size: 12px; }
+
+  /* ── ARTICLE TITLE ── */
+  .article-title {
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin-bottom: 20px;
+  }
+  .article-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--primary);
+  }
+  .article-intro {
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    border-left: 3px solid var(--primary);
+    padding-left: 16px;
+  }
+
+  /* ── AUTHOR CARD ── */
+  .author-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 32px;
+  }
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .author-info { flex: 1; }
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+  .author-title { font-size: 12px; color: var(--gray); }
+  .author-follow {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+  }
+  .author-follow:hover { background: var(--primary-dark); }
+
+  /* ── SHARE BAR ── */
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .share-label { font-size: 13px; font-weight: 600; color: var(--gray); margin-right: 4px; }
+  .share-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  .share-btn:hover { opacity: 0.85; }
+  .share-x { background: #000; color: #fff; }
+  .share-wa { background: #25D366; color: #fff; }
+  .share-copy { background: var(--light); color: var(--dark); border: 1px solid var(--border) !important; }
+  .share-reddit { background: #FF4500; color: #fff; }
+
+  /* ── ARTICLE BODY ── */
+  .article-body { font-size: 16px; line-height: 1.85; color: var(--text); }
+  .article-body p { margin-bottom: 20px; }
+  .article-body h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--dark);
+    margin: 44px 0 16px;
+    letter-spacing: -0.5px;
+    padding-top: 8px;
+  }
+  .article-body h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 32px 0 12px;
+  }
+  .article-body strong { color: var(--primary-dark); font-weight: 700; }
+  .article-body a { color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--primary-light); }
+  .article-body a:hover { color: var(--primary-dark); }
+  .article-body ul, .article-body ol {
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+  .article-body li { margin-bottom: 8px; }
+  .article-body code {
+    background: #1e293b;
+    color: #4ade80;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+  }
+
+  /* Code block */
+  .code-block {
+    background: #0f172a;
+    border: 1px solid #1e3a5f;
+    border-radius: 12px;
+    margin: 24px 0;
+    overflow: hidden;
+  }
+  .code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #1e293b;
+    border-bottom: 1px solid #1e3a5f;
+  }
+  .code-block-lang {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .code-dots span:nth-child(1) { background: #ef4444; }
+  .code-dots span:nth-child(2) { background: #f59e0b; }
+  .code-dots span:nth-child(3) { background: #22c55e; }
+  .code-block pre {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #e2e8f0;
+    overflow-x: auto;
+  }
+  .code-block pre .cmd { color: #4ade80; }
+  .code-block pre .comment { color: #64748b; }
+  .code-block pre .var { color: #f59e0b; }
+  .code-block pre .val { color: #a78bfa; }
+
+  /* Highlight box */
+  .article-highlight {
+    background: linear-gradient(135deg, var(--primary-light), #f0f9ff);
+    border: 1px solid rgba(14,165,233,0.3);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .article-highlight-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .article-highlight p { color: var(--text); margin: 0; font-size: 15px; }
+
+  /* Warning box */
+  .article-warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .article-warning-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .article-warning p { color: #78350f; margin: 0; font-size: 15px; }
+
+  /* Inline image card */
+  .article-img-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 28px 0;
+    box-shadow: var(--card-shadow);
+  }
+  .article-img-graphic {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+  }
+  .img-terminal {
+    background: #0f172a;
+    color: #4ade80;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    padding: 24px 28px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+  }
+  .img-terminal .prompt { color: var(--primary); }
+  .img-terminal .output { color: #94a3b8; padding-left: 16px; }
+  .img-terminal .success { color: #4ade80; }
+  .img-ollama {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ollama-badge {
+    background: rgba(14,165,233,0.15);
+    border: 1px solid rgba(14,165,233,0.3);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    width: 80%;
+  }
+  .article-img-caption {
+    padding: 10px 16px;
+    background: var(--light);
+    font-size: 12px;
+    color: var(--gray);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    font-size: 15px;
+  }
+  .compare-table th {
+    background: var(--dark);
+    color: #fff;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .compare-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--light); }
+  .compare-table .yes { color: #16a34a; font-weight: 700; }
+  .compare-table .no { color: #dc2626; font-weight: 700; }
+  .compare-table .partial { color: var(--accent); font-weight: 700; }
+
+  /* Steps */
+  .steps-list { list-style: none; padding: 0; margin: 24px 0; }
+  .step-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--light);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .step-content p { font-size: 14px; color: var(--gray); margin: 0; line-height: 1.6; }
+
+  /* Mid ad */
+  .ad-mid {
+    background: var(--light);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin: 36px 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 12px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 80px; }
+  .toc-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-title::before { content: '≡'; font-size: 16px; color: var(--primary); }
+  .toc-list { list-style: none; padding: 0; }
+  .toc-list li { margin-bottom: 6px; }
+  .toc-list a {
+    font-size: 13px;
+    color: var(--gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .toc-list a::before { content: '›'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+  .toc-list a:hover { background: var(--primary-light); color: var(--primary-dark); }
+  .toc-list a.active { background: var(--primary-light); color: var(--primary-dark); font-weight: 700; }
+
+  /* Sidebar ad */
+  .sidebar-ad {
+    background: var(--light);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  /* Related tools */
+  .related-tools-card {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .related-tools-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .tool-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .tool-link:hover { background: rgba(14,165,233,0.15); }
+  .tool-link-emoji { font-size: 18px; }
+  .tool-link-name { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+  .tool-link-arrow { margin-left: auto; color: var(--primary); font-size: 12px; }
+
+  /* ── RELATED ARTICLES ── */
+  .related-articles {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px solid var(--border);
+  }
+  .section-heading {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .related-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+  }
+  .related-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow); }
+  .related-thumb {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .related-thumb-1 { background: linear-gradient(135deg, #0f172a, #1e3a5f); color: var(--primary); }
+  .related-thumb-2 { background: linear-gradient(135deg, #1a0a2e, #2d1b69); color: #a78bfa; }
+  .related-thumb-3 { background: linear-gradient(135deg, #0a2010, #14532d); color: #4ade80; }
+  .related-card-body { padding: 14px; }
+  .related-card-cat {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .related-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .related-card-meta { font-size: 12px; color: var(--gray); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    margin: 60px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(14,165,233,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,165,233,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .cta-banner > * { position: relative; }
+  .cta-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .cta-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .cta-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .cta-sub { font-size: 16px; color: #94a3b8; margin-bottom: 28px; }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(14,165,233,0.3);
+  }
+  .cta-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--dark); color: #94a3b8; margin-top: 60px; }
+  .footer-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand .logo { font-size: 24px; display: block; margin-bottom: 12px; }
+  .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 240px; }
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--primary); }
+  .footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 13px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .page-wrapper { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .toc-card { display: none; }
+    .related-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    .thumb-terminal { display: none; }
+    .header-nav { display: none; }
+  }
+  @media (max-width: 600px) {
+    .thumbnail-content { padding: 24px 20px; }
+    .thumb-title { font-size: 24px; }
+    .article-title { font-size: 24px; }
+    .cta-title { font-size: 24px; }
+    .cta-banner { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+  <nav class="header-nav">
+    <a href="https://toolyfi.com/blog">Blog</a>
+    <a href="https://toolyfi.com/#tools">All Tools</a>
+    <a href="https://toolyfi.com/ai-assistant" class="header-cta">Try AI Tools ✨</a>
+  </nav>
+</header>
+
+<!-- TOP AD -->
+<div class="ad-top">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- THUMBNAIL HERO -->
+<div class="article-hero">
+  <div class="thumbnail-graphic">
+    <div class="thumbnail-content">
+      <div class="thumb-badge">AI Tools Guide</div>
+      <h1 class="thumb-title">How to Use <em>Claude Code</em><br>Completely Free</h1>
+      <p class="thumb-sub">No subscription. No API bill. Just your machine.</p>
+    </div>
+    <div class="thumb-terminal">
+      <div class="t-line"><span>$</span> ollama pull qwen3.6</div>
+      <div class="t-line"><span>$</span> ollama launch claude</div>
+      <div class="t-line" style="color:#4ade80">✓ Claude Code ready</div>
+      <div class="t-line" style="color:#64748b">Cost: $0.00</div>
+    </div>
+  </div>
+  <div class="photo-credit">Graphic: Toolyfi / AI-generated illustration</div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="page-wrapper">
+
+  <!-- ARTICLE MAIN -->
+  <main>
+
+    <!-- Meta -->
+    <div class="article-meta">
+      <a href="https://toolyfi.com/blog/category/ai-tools" class="meta-category">AI Tools</a>
+      <span class="meta-divider">|</span>
+      <span class="meta-date">May 5, 2026</span>
+      <span class="meta-divider">|</span>
+      <span class="meta-read">7 min read</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="article-title">How to Use <em>Claude Code</em> for Free — No Subscription, No API Bill</h1>
+    <p class="article-intro">Claude Code is one of the most powerful agentic coding tools available today — but most people think it requires a $20/month Pro plan. It doesn't. Here's exactly how to run it for free using local AI models on your own machine.</p>
+
+    <!-- Author -->
+    <div class="author-card">
+      <div class="author-avatar">🛠️</div>
+      <div class="author-info">
+        <div class="author-name">Toolyfi Editorial</div>
+        <div class="author-title">AI Tools & Productivity · toolyfi.com</div>
+      </div>
+      <button class="author-follow" onclick="this.textContent=this.textContent==='Follow'?'Following ✓':'Follow'">Follow</button>
+    </div>
+
+    <!-- Share -->
+    <div class="share-bar">
+      <span class="share-label">Share:</span>
+      <a href="https://twitter.com/intent/tweet?text=How+to+Use+Claude+Code+for+Free&url=https://toolyfi.com/blog/how-to-use-claude-code-free" target="_blank" class="share-btn share-x">𝕏 Tweet</a>
+      <a href="https://web.whatsapp.com/send?text=https://toolyfi.com/blog/how-to-use-claude-code-free" target="_blank" class="share-btn share-wa">WhatsApp</a>
+      <a href="https://www.reddit.com/submit?url=https://toolyfi.com/blog/how-to-use-claude-code-free" target="_blank" class="share-btn share-reddit">Reddit</a>
+      <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!'">Copy Link</button>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-body">
+
+      <p>Every developer who has used Claude Code knows how transformative it feels. You describe what you want, and it reads files, writes code, runs terminal commands, and manages context across your entire project — all on its own. It's not a chatbot. It's an agent.</p>
+
+      <p>The problem? Most people assume Claude Code is locked behind Anthropic's Pro or Max subscription. And while <strong>the default setup does require a paid plan</strong>, the underlying tool itself is completely free to install. What you're actually paying for is the AI model behind it — and that part is entirely swappable.</p>
+
+      <div class="article-highlight">
+        <div class="article-highlight-title">💡 Key Insight</div>
+        <p>Claude Code is the <em>interface</em>, not the brain. You can replace the brain (the AI model) with a free, locally-running alternative and keep all the same features: file editing, terminal commands, and multi-step task execution.</p>
+      </div>
+
+      <!-- SECTION 1 -->
+      <h2 id="what-is-claude-code">What Is Claude Code, Exactly?</h2>
+
+      <p>Claude Code is a <strong>terminal-based agentic coding tool</strong> built by Anthropic. Unlike ChatGPT or Claude's web interface, it doesn't just respond to messages — it actively does things. It can open files, edit code, run shell commands, search your project, and chain together multi-step tasks without you needing to babysit every move.</p>
+
+      <p>Think of it as having a senior developer sitting in your terminal who actually executes work, not just suggests it.</p>
+
+      <p>The architecture is two-layered. First, there's the Claude Code harness — the CLI application that handles file access, tool execution, and task management. This layer is <strong>free and installable by anyone</strong>. Second, there's the language model that does the actual thinking. By default, this points to Anthropic's servers and uses Claude Sonnet or Opus, which costs money.</p>
+
+      <p>The trick? You can tell Claude Code to point somewhere else entirely.</p>
+
+      <!-- Image 1 -->
+      <div class="article-img-card">
+        <div class="article-img-graphic img-ollama">
+          <div class="ollama-badge">🦙 Ollama Local Server</div>
+          <div class="ollama-badge" style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.3);color:#4ade80">Claude Code → localhost:11434</div>
+          <div class="ollama-badge" style="background:rgba(245,158,11,0.15);border-color:rgba(245,158,11,0.3);color:#f59e0b">Model: Qwen3.6 / Gemma 4 · Cost: $0</div>
+        </div>
+        <div class="article-img-caption">How Claude Code connects to a local Ollama instance instead of Anthropic's paid API servers.</div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <h2 id="how-it-works">How the Free Setup Actually Works</h2>
+
+      <p>Claude Code exposes two critical configuration points that make this possible:</p>
+
+      <ul>
+        <li><strong><code>--model</code> flag</strong> — lets you specify which model to use when launching Claude Code</li>
+        <li><strong><code>ANTHROPIC_BASE_URL</code> environment variable</strong> — lets you redirect API calls to any compatible endpoint, including a local one</li>
+      </ul>
+
+      <p>Ollama is a tool that runs open-weight AI models directly on your machine. It starts a local server — by default at <code>localhost:11434</code> — that speaks the same API language as Anthropic's servers. Set the environment variable to point there, and Claude Code has no idea it's talking to a local model instead of the cloud.</p>
+
+      <p>The result is a fully functional agentic coding environment running entirely on your hardware, with zero API costs and complete privacy — your code never leaves your machine.</p>
+
+      <!-- SECTION 3 -->
+      <h2 id="step-by-step">Step-by-Step: How to Set It Up</h2>
+
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Install Claude Code</h4>
+            <p>Claude Code installs as a global npm package. You'll need Node.js 18+ on your machine. Run this in your terminal:</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <span class="code-block-lang">Terminal</span>
+        </div>
+        <pre><span class="cmd">npm install -g @anthropic-ai/claude-code</span></pre>
+      </div>
+
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Install Ollama</h4>
+            <p>Head to <strong>ollama.com</strong> and download Ollama for your OS (Mac, Linux, or Windows). Install and run it — it starts a local server automatically in the background.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Download a Coding Model</h4>
+            <p>Pull one of the recommended models. Qwen3.6 is purpose-built for agentic coding tasks and is the top recommendation for this setup:</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <span class="code-block-lang">Terminal</span>
+        </div>
+        <pre><span class="comment"># Recommended: Qwen3.6 (agentic coding specialist)</span>
+<span class="cmd">ollama pull qwen3.6</span>
+
+<span class="comment"># Alternative: Gemma 4 by Google DeepMind</span>
+<span class="cmd">ollama pull gemma4</span>
+
+<span class="comment"># For 16GB RAM or less (lightweight version)</span>
+<span class="cmd">ollama pull gemma4:4b</span></pre>
+      </div>
+
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Launch Claude Code with Ollama</h4>
+            <p>Run this single command to start Claude Code using your local model. It will prompt you to select the model you downloaded:</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <span class="code-block-lang">Terminal</span>
+        </div>
+        <pre><span class="cmd">ollama launch claude</span>
+
+<span class="comment"># Or manually set the endpoint and model:</span>
+<span class="var">ANTHROPIC_BASE_URL</span>=<span class="val">http://localhost:11434</span> <span class="cmd">claude --model qwen3.6</span></pre>
+      </div>
+
+      <p>That's it. You're inside Claude Code. The interface is identical — file editing, terminal commands, context management — all working the same way as the paid version, just powered by a local model.</p>
+
+      <!-- Image 2: Terminal screenshot mockup -->
+      <div class="article-img-card">
+        <div class="article-img-graphic img-terminal">
+          <div class="prompt">$ ollama launch claude</div>
+          <div class="output">Select a model:</div>
+          <div class="output" style="color:#f59e0b">▶ qwen3.6</div>
+          <div class="output">  gemma4</div>
+          <div class="output">  gemma4:4b</div>
+          <div class="output" style="height:8px"></div>
+          <div class="success">✓ Claude Code initialized with qwen3.6</div>
+          <div class="success">✓ Connected to local Ollama instance</div>
+          <div class="output">Type your first task or /help for commands...</div>
+          <div class="prompt" style="margin-top:8px">❯ <span style="animation: blink 1s infinite">█</span></div>
+        </div>
+        <div class="article-img-caption">Claude Code terminal prompt after connecting to a local Ollama model — interface is identical to the paid version.</div>
+      </div>
+      <style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}</style>
+
+      <!-- AD MID -->
+      <div class="ad-mid">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- SECTION 4 -->
+      <h2 id="best-models">Which Models Work Best?</h2>
+
+      <p>Not every open-weight model is suited for agentic coding tasks. Claude Code needs a model that handles long context windows, follows complex multi-step instructions, and properly uses tool-call syntax. Here's what's worth your time right now:</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Size</th>
+            <th>RAM Needed</th>
+            <th>Best For</th>
+            <th>Agentic?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Qwen3.6 27B</strong></td>
+            <td>27B params</td>
+            <td>~17GB</td>
+            <td>Frontend, repos</td>
+            <td class="yes">✓ Excellent</td>
+          </tr>
+          <tr>
+            <td><strong>Qwen3.6 35B</strong></td>
+            <td>35B params</td>
+            <td>~24GB</td>
+            <td>Complex codebases</td>
+            <td class="yes">✓ Best</td>
+          </tr>
+          <tr>
+            <td><strong>Gemma 4 31B</strong></td>
+            <td>31B params</td>
+            <td>~22GB</td>
+            <td>General coding</td>
+            <td class="yes">✓ Good</td>
+          </tr>
+          <tr>
+            <td><strong>Gemma 4 E4B</strong></td>
+            <td>4B active</td>
+            <td>~5GB</td>
+            <td>Low-end devices</td>
+            <td class="partial">~ Decent</td>
+          </tr>
+          <tr>
+            <td><strong>Claude Sonnet</strong> (paid)</td>
+            <td>Cloud</td>
+            <td>No local GPU</td>
+            <td>Everything</td>
+            <td class="yes">✓ Best-in-class</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Qwen3.6</strong> is the standout choice for this setup. It was designed specifically for agentic workflows and handles repository-level reasoning and frontend code better than most open-weight alternatives at this size.</p>
+
+      <div class="article-highlight">
+        <div class="article-highlight-title">💡 Pro Tip</div>
+        <p>Ollama defaults to a small context window which breaks multi-file tasks. Set <code>OLLAMA_NUM_CTX=65536</code> before launching to give your model a proper 64K context window. Complex tasks will fail without this.</p>
+      </div>
+
+      <!-- SECTION 5 -->
+      <h2 id="hardware">What Hardware Do You Actually Need?</h2>
+
+      <p>This is the honest part. Running a large language model locally is one of the most demanding workloads a consumer machine handles. Before committing to this setup, here's what you're working with:</p>
+
+      <h3>Apple Silicon Macs (Best Option)</h3>
+      <p>Apple's unified memory architecture gives Macs a significant advantage for local AI. The CPU and GPU share the same RAM pool, which means a <strong>32GB M-series Mac</strong> can comfortably run Qwen3.6 or Gemma 4 at full quality. Even a 16GB M2 or M3 can handle the smaller Gemma 4 E4B variant.</p>
+
+      <h3>Windows / Linux with Dedicated GPU</h3>
+      <p>If you're on PC, VRAM is everything. An RTX 3090 (24GB VRAM) or RTX 4090 handles the 27B models well. For 16GB VRAM cards like the RTX 4080, stick to the quantized versions of smaller models. The 4-bit quantized Qwen3.6 27B pulls around 17GB, so it's a tight but workable fit.</p>
+
+      <div class="article-warning">
+        <div class="article-warning-title">⚠️ Important Caveat</div>
+        <p>One reader noted that the latest Claude Code release may have closed this integration. Before committing significant time to the setup, verify that your installed version still accepts the <code>ANTHROPIC_BASE_URL</code> override. The core method remains valid — just double check version compatibility.</p>
+      </div>
+
+      <!-- SECTION 6 -->
+      <h2 id="paid-vs-free">Free vs Paid: Honest Comparison</h2>
+
+      <p>Let's be direct. The free local setup is genuinely capable, but it's not identical to running Claude Sonnet or Opus. Here's where the gap is real and where it barely matters:</p>
+
+      <h3>Where the Gap Is Real</h3>
+      <ul>
+        <li>Complex, multi-file refactors across large codebases — frontier models handle these with more precision</li>
+        <li>Nuanced debugging where context and reasoning depth matter</li>
+        <li>Generating long, architecturally complex outputs from scratch</li>
+      </ul>
+
+      <h3>Where Free Local Models Hold Their Own</h3>
+      <ul>
+        <li><strong>Routine coding tasks</strong> — writing functions, creating components, adding features</li>
+        <li><strong>File editing and search</strong> — these are harness-level tasks, not model-dependent</li>
+        <li><strong>Simple automation and scripting</strong> — shell scripts, config files, boilerplate</li>
+        <li><strong>Privacy-sensitive projects</strong> — your code stays on your machine, always</li>
+      </ul>
+
+      <p>For most day-to-day development work, the free setup with Qwen3.6 is surprisingly competitive. The gap has shrunk considerably as open-weight models have matured.</p>
+
+      <!-- SECTION 7 -->
+      <h2 id="advanced-setup">Advanced Setup: Dedicated Inference Server</h2>
+
+      <p>If you work across multiple devices or want to avoid taxing your main machine, consider running Ollama on a <strong>dedicated machine or home server</strong> and connecting to it over your local network.</p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <span class="code-block-lang">Terminal — From Your Laptop</span>
+        </div>
+        <pre><span class="comment"># Point Claude Code to your inference server</span>
+<span class="var">ANTHROPIC_BASE_URL</span>=<span class="val">http://192.168.1.100:11434</span> <span class="cmd">claude --model qwen3.6</span></pre>
+      </div>
+
+      <p>Replace <code>192.168.1.100</code> with your server's local IP. This way the heavy model runs on the server, and your laptop stays cool and fast. You get the performance of a beefy machine delivered to any device on your network.</p>
+
+      <!-- SECTION 8 -->
+      <h2 id="related-tools">More AI Tools on Toolyfi</h2>
+
+      <p>If you're exploring free AI tools, Toolyfi has several utilities worth bookmarking alongside your Claude Code setup:</p>
+
+      <ul>
+        <li><a href="https://toolyfi.com/ai-assistant">AI Assistant</a> — Claude-powered chat, no signup required</li>
+        <li><a href="https://toolyfi.com/ai-tool-finder">AI Tool Finder</a> — discover the right AI tool for any task</li>
+        <li><a href="https://toolyfi.com/prompt-generator">AI Prompt Generator</a> — craft better prompts for coding assistants</li>
+        <li><a href="https://toolyfi.com/json-formatter">JSON Formatter</a> — clean and validate JSON output from AI tools</li>
+      </ul>
+
+      <!-- SECTION 9 -->
+      <h2 id="conclusion">Conclusion: Own the Tool, Not the Subscription</h2>
+
+      <p>The subscription economy has trained us to think of AI as a monthly rental. Claude Code breaks that assumption. The harness is free. The workflow is yours. The only thing you were paying for was the model — and now you have alternatives.</p>
+
+      <p><strong>For developers on a budget</strong>, this setup is a complete game-changer. Install Ollama, pull Qwen3.6, set one environment variable, and you're running a full agentic coding environment at zero cost. For developers already on Claude Pro, it's still worth setting up as a fallback for tasks where you'd rather not burn through tokens.</p>
+
+      <p>The models aren't as powerful as Sonnet. That's the honest truth. But <em>free and surprisingly capable</em> is a completely different value proposition than <em>$20/month and excellent</em>. Try it first, then judge.</p>
+
+      <div class="article-highlight">
+        <div class="article-highlight-title">🚀 Quick Start Summary</div>
+        <p>1. <code>npm install -g @anthropic-ai/claude-code</code> &nbsp;→&nbsp; 2. Install Ollama &nbsp;→&nbsp; 3. <code>ollama pull qwen3.6</code> &nbsp;→&nbsp; 4. <code>ollama launch claude</code>. That's your entire setup.</p>
+      </div>
+
+    </div><!-- end article-body -->
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-articles">
+      <h2 class="section-heading">More From Toolyfi Blog</h2>
+      <div class="related-grid">
+        <a href="https://toolyfi.com/blog/best-free-ai-coding-tools-2026" class="related-card">
+          <div class="related-thumb related-thumb-1">⚡</div>
+          <div class="related-card-body">
+            <div class="related-card-cat">AI Tools</div>
+            <div class="related-card-title">Best Free AI Coding Assistants in 2026 — Compared</div>
+            <div class="related-card-meta">May 2026 · 6 min read</div>
+          </div>
+        </a>
+        <a href="https://toolyfi.com/blog/ollama-beginner-guide" class="related-card">
+          <div class="related-thumb related-thumb-2">🦙</div>
+          <div class="related-card-body">
+            <div class="related-card-cat">Local AI</div>
+            <div class="related-card-title">Ollama Beginner Guide: Run Any AI Model on Your Laptop</div>
+            <div class="related-card-meta">April 2026 · 5 min read</div>
+          </div>
+        </a>
+        <a href="https://toolyfi.com/blog/ai-tools-for-developers" class="related-card">
+          <div class="related-thumb related-thumb-3">🛠️</div>
+          <div class="related-card-body">
+            <div class="related-card-cat">Developer Tools</div>
+            <div class="related-card-title">10 Free AI Tools Every Developer Should Bookmark</div>
+            <div class="related-card-meta">April 2026 · 8 min read</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <div class="cta-eyebrow">Free Tools · No Signup · No Watermark</div>
+      <h2 class="cta-title">Explore <em>40+ Free</em> Online Tools</h2>
+      <p class="cta-sub">From AI assistants to developer utilities — all free, all instant, all on Toolyfi.</p>
+      <a href="https://toolyfi.com/#tools" class="cta-btn">Browse All Tools →</a>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- TOC -->
+    <div class="toc-card">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#what-is-claude-code">What Is Claude Code?</a></li>
+        <li><a href="#how-it-works">How the Free Setup Works</a></li>
+        <li><a href="#step-by-step">Step-by-Step Setup</a></li>
+        <li><a href="#best-models">Which Models Work Best?</a></li>
+        <li><a href="#hardware">Hardware Requirements</a></li>
+        <li><a href="#paid-vs-free">Free vs Paid</a></li>
+        <li><a href="#advanced-setup">Advanced: Inference Server</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Ad -->
+    <div class="sidebar-ad">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Related Tools -->
+    <div class="related-tools-card">
+      <div class="related-tools-title">🔥 Free AI Tools</div>
+      <a href="https://toolyfi.com/ai-assistant" class="tool-link">
+        <span class="tool-link-emoji">🤖</span>
+        <span class="tool-link-name">AI Assistant</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+      <a href="https://toolyfi.com/prompt-generator" class="tool-link">
+        <span class="tool-link-emoji">✨</span>
+        <span class="tool-link-name">Prompt Generator</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+      <a href="https://toolyfi.com/ai-tool-finder" class="tool-link">
+        <span class="tool-link-emoji">🧠</span>
+        <span class="tool-link-name">AI Tool Finder</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+      <a href="https://toolyfi.com/json-formatter" class="tool-link">
+        <span class="tool-link-emoji">🖥️</span>
+        <span class="tool-link-name">JSON Formatter</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+      <a href="https://toolyfi.com/password-generator" class="tool-link">
+        <span class="tool-link-emoji">🔑</span>
+        <span class="tool-link-name">Password Generator</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+      <a href="https://toolyfi.com/#tools" class="tool-link" style="border:1px solid rgba(14,165,233,0.3);margin-top:4px">
+        <span class="tool-link-emoji">🛠️</span>
+        <span class="tool-link-name">View All 40+ Tools</span>
+        <span class="tool-link-arrow">→</span>
+      </a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
+      <p>40+ free online tools for developers and everyday users. No signup, no watermark, no limits.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <a href="https://toolyfi.com/qr-code-generator">📱 QR Code Generator</a>
+      <a href="https://toolyfi.com/password-generator">🔑 Password Generator</a>
+      <a href="https://toolyfi.com/image-resizer">✂️ Image Resizer</a>
+      <a href="https://toolyfi.com/json-formatter">🖥️ JSON Formatter</a>
+      <a href="https://toolyfi.com/word-counter">📝 Word Counter</a>
+      <a href="https://toolyfi.com/bmi-calculator">⚖️ BMI Calculator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <a href="https://toolyfi.com/blog">All Articles</a>
+      <a href="https://toolyfi.com/blog/category/ai-tools">AI Tools</a>
+      <a href="https://toolyfi.com/blog/category/developer">Developer</a>
+      <a href="https://toolyfi.com/blog/category/productivity">Productivity</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Toolyfi · All rights reserved · <a href="https://toolyfi.com/privacy" style="color:#64748b">Privacy</a> · <a href="https://toolyfi.com/contact" style="color:#64748b">Contact</a></p>
+  </div>
+</footer>
+
+<script>
+// Active TOC highlighting
+const sections = document.querySelectorAll('[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
