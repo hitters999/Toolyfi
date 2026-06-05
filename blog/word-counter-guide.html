@@ -9,265 +9,980 @@
   <meta name="author" content="Toolyfi">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://toolyfi.com/blog/word-counter-guide.html">
-  <meta property="og:title" content="Free Word Counter Online — Count Words, Characters & Sentences Instantly">
-  <meta property="og:description" content="Free word counter online tool. Count words, characters, sentences, paragraphs & reading time instantly. No login required. Fast & accurate results.">
+  <meta property="og:title" content="Free Word Counter Online — Count Words, Characters & Sentences Instantly | Toolyfi">
+  <meta property="og:description" content="Count words, characters, sentences & reading time instantly. Free, no signup, no watermark.">
   <meta property="og:type" content="article">
+  <meta property="og:url" content="https://toolyfi.com/blog/word-counter-guide.html">
+  <meta property="og:site_name" content="Toolyfi">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Free Word Counter Online — Count Words, Characters & Sentences Instantly","description":"Free word counter online. Count words, characters, sentences & reading time instantly. No login required.","author":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"},"publisher":{"@type":"Organization","name":"Toolyfi"},"datePublished":"2026-03-18","dateModified":"2026-03-18","mainEntityOfPage":{"@type":"WebPage","@id":"https://toolyfi.com/blog/word-counter-guide.html"}}</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+  <meta name="twitter:title" content="Free Word Counter Online | Toolyfi">
+  <meta name="twitter:description" content="Count words, characters & sentences instantly. Free forever.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Free Word Counter Online — Count Words, Characters & Sentences Instantly",
+    "description": "Free word counter online. Count words, characters, sentences & reading time instantly. No login required.",
+    "author": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"},
+    "publisher": {"@type": "Organization", "name": "Toolyfi"},
+    "datePublished": "2026-03-18",
+    "dateModified": "2026-06-01",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://toolyfi.com/blog/word-counter-guide.html"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "How do I count words online for free?","acceptedAnswer": {"@type": "Answer","text": "Go to Toolyfi Word Counter, paste your text, and get instant results — word count, characters, sentences and reading time. Completely free, no login needed."}},
+      {"@type": "Question","name": "Is Toolyfi Word Counter free to use?","acceptedAnswer": {"@type": "Answer","text": "Yes, 100% free. No account, no signup, no hidden charges. Use it unlimited times."}},
+      {"@type": "Question","name": "What is the ideal word count for a blog post?","acceptedAnswer": {"@type": "Answer","text": "For SEO, 1000–2000 words is recommended. Google ranks longer, detailed content higher."}},
+      {"@type": "Question","name": "How many words is 1 page?","acceptedAnswer": {"@type": "Answer","text": "One double-spaced page (12pt font) contains about 250–300 words. Single-spaced pages have approximately 500–600 words."}},
+      {"@type": "Question","name": "Does the word counter work for all languages?","acceptedAnswer": {"@type": "Answer","text": "Yes! It works for English, Urdu, Arabic, Spanish, French, Hindi and most languages."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem","position": 1,"name": "Home","item": "https://toolyfi.com"},
+      {"@type": "ListItem","position": 2,"name": "Blog","item": "https://toolyfi.com/blog/"},
+      {"@type": "ListItem","position": 3,"name": "Word Counter Guide","item": "https://toolyfi.com/blog/word-counter-guide.html"}
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getDatabase, ref, runTransaction, onValue, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "toolyfi-208b8.firebaseapp.com",
-      databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com",
-      projectId: "toolyfi-208b8",
-      storageBucket: "toolyfi-208b8.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const id = "word-counter";
-    const likesRef=ref(db,`articles/${id}/likes`);
-    const dislikesRef=ref(db,`articles/${id}/dislikes`);
-    const starsRef=ref(db,`articles/${id}/stars`);
-    const commentsRef=ref(db,`articles/${id}/comments`);
-    onValue(likesRef,s=>{document.getElementById('like-count').textContent=s.val()||0;});
-    onValue(dislikesRef,s=>{document.getElementById('dislike-count').textContent=s.val()||0;});
-    onValue(starsRef,s=>{const d=s.val()||{total:0,count:0};document.getElementById('star-avg').textContent=d.count>0?(d.total/d.count).toFixed(1):"0.0";document.getElementById('star-count').textContent=d.count;});
-    onValue(commentsRef,s=>{const c=document.getElementById('comments-list');c.innerHTML='';const data=s.val();if(data){Object.values(data).reverse().forEach(x=>{const d=document.createElement('div');d.className='comment-item';d.innerHTML=`<div class="comment-author">${x.name}</div><div class="comment-text">${x.text}</div>`;c.appendChild(d);});}else{c.innerHTML='<p style="color:#94a3b8;font-size:.9em;">No comments yet. Be the first!</p>';}});
-    window.handleLike=()=>runTransaction(likesRef,v=>(v||0)+1);
-    window.handleDislike=()=>runTransaction(dislikesRef,v=>(v||0)+1);
-    window.handleStar=(val)=>{runTransaction(starsRef,d=>{if(!d)d={total:0,count:0};d.total+=val;d.count+=1;return d;});document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('active',i<val));};
-    window.submitComment=()=>{const name=document.getElementById('comment-name').value.trim()||'Anonymous';const text=document.getElementById('comment-text').value.trim();if(!text)return;push(commentsRef,{name,text,timestamp:serverTimestamp()});document.getElementById('comment-name').value='';document.getElementById('comment-text').value='';};
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#f9fafb;--white:#ffffff;--accent:#667eea;--accent2:#764ba2;--accent-light:#ede9fe;--text:#111827;--text2:#4b5563;--text3:#6b7280;--border:#e5e7eb;--shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(102,126,234,0.07)}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--bg);color:var(--text);font-family:'Lora',Georgia,serif;font-size:18px;line-height:1.9}
-    header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:0 5%;height:64px;display:flex;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 15px rgba(102,126,234,0.3);font-family:'Inter',sans-serif}
-    header nav{width:100%;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
-    .logo{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;text-decoration:none}
-    .nav-links{display:flex;gap:6px;align-items:center}
-    .nav-links a{color:rgba(255,255,255,0.88);text-decoration:none;padding:7px 14px;border-radius:8px;font-size:.88rem;font-weight:500;transition:all .2s;font-family:'Inter',sans-serif}
-    .nav-links a:hover{background:rgba(255,255,255,0.2);color:white}
-    .nav-cta{background:white!important;color:var(--accent2)!important;font-weight:700!important;border-radius:20px!important}
-    .breadcrumb{max-width:860px;margin:18px auto 0;padding:0 20px;font-size:.82rem;color:var(--text3);display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
-    .breadcrumb a{color:var(--text3);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}.breadcrumb span{color:#d1d5db}
-    .ad-wrap{max-width:860px;margin:16px auto;padding:0 20px}
-    .ad-label{font-size:.65rem;color:#d1d5db;text-align:center;margin-bottom:3px;letter-spacing:1px;font-family:'Inter',sans-serif}
-    .article-wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
-    .article-hero{padding:36px 0 28px;border-bottom:1px solid var(--border);margin-bottom:32px}
-    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent2);font-size:.7rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.8px;margin-bottom:18px;font-family:'Inter',sans-serif;text-transform:uppercase}
-    h1{font-family:'Inter',sans-serif;font-size:1.85rem;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:16px;letter-spacing:-0.3px}
-    h1 .hl{color:var(--accent)}
-    .article-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--text3);margin-bottom:22px;font-family:'Inter',sans-serif}
-    .quick-answer{background:var(--white);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:24px;box-shadow:var(--shadow)}
-    .quick-answer strong{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text)}
-    .quick-answer p{color:var(--text2);font-size:.97rem;margin:6px 0 0;line-height:1.7;font-family:'Inter',sans-serif}
-    .quick-answer a{color:var(--accent);text-decoration:none;font-weight:600}
-    .toc{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 26px;margin-bottom:36px;box-shadow:var(--shadow)}
-    .toc-title{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px}
-    .toc ol{padding-left:20px}.toc li{margin-bottom:9px}
-    .toc a{color:var(--accent);text-decoration:none;font-size:.95rem;font-weight:500;font-family:'Inter',sans-serif}
-    .content h2{font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:700;color:var(--text);margin:48px 0 18px;padding-left:16px;border-left:3px solid var(--accent);letter-spacing:-0.2px;line-height:1.35}
-    .content h3{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin:26px 0 10px}
-    .content p{color:var(--text2);margin-bottom:20px;font-size:1rem;line-height:1.9}
-    .content ul,.content ol{color:var(--text2);padding-left:24px;margin-bottom:20px}
-    .content li{margin-bottom:12px;font-size:1rem;line-height:1.8}
-    .content strong{color:var(--text);font-weight:700}
-    .content a{color:var(--accent);text-decoration:none;font-weight:600}
-    .takeaway{background:var(--accent-light);border-radius:12px;padding:20px 24px;margin:24px 0;border-left:3px solid var(--accent2)}
-    .takeaway-label{font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;color:var(--accent2);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
-    .takeaway p{color:#3b3273;font-size:.97rem;margin:0;font-weight:500;line-height:1.75;font-family:'Inter',sans-serif}
-    .steps{margin:24px 0}
-    .step{display:flex;gap:18px;margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
-    .step-num{width:34px;height:34px;min-width:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;margin-top:2px}
-    .step-body h3{font-family:'Inter',sans-serif;font-size:1rem;color:var(--text);margin-bottom:5px;font-weight:700}
-    .step-body p{color:var(--text2);font-size:.93rem;margin:0;line-height:1.7;font-family:'Inter',sans-serif}
-    .table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
-    table{width:100%;border-collapse:collapse}
-    thead th{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;padding:12px 16px;text-align:left;font-size:.88rem;font-family:'Inter',sans-serif;font-weight:700}
-    tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.93rem;color:var(--text2);font-family:'Inter',sans-serif}
-    tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:var(--bg)}
-    .cta-box{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:36px;text-align:center;margin:40px 0}
-    .cta-box h3{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:10px}
-    .cta-box p{color:rgba(255,255,255,.88);margin-bottom:20px;font-size:.97rem;font-family:'Inter',sans-serif;line-height:1.6}
-    .cta-btn{display:inline-block;background:white;color:var(--accent2);font-weight:700;font-family:'Inter',sans-serif;padding:13px 30px;border-radius:25px;text-decoration:none;transition:transform .2s;font-size:.97rem}
-    .cta-btn:hover{transform:translateY(-2px)}
-    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:12px;box-shadow:var(--shadow)}
-    .faq-q{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:10px}
-    .faq-a{color:var(--text2);font-size:.97rem;line-height:1.8;font-family:'Inter',sans-serif}
-    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0}
-    .related-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:all .2s;box-shadow:var(--shadow)}
-    .related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-    .related-card .icon{font-size:1.5rem;margin-bottom:10px}
-    .related-card h4{font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);margin-bottom:5px;font-weight:700}
-    .related-card p{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text3);margin:0}
-    .engagement-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;box-shadow:var(--shadow)}
-    .engagement-section h3{font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:24px}
-    .like-dislike{display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap}
-    .eng-btn{background:var(--bg);border:2px solid var(--border);color:var(--text2);padding:10px 22px;border-radius:50px;cursor:pointer;font-size:.92rem;font-family:'Inter',sans-serif;font-weight:600;transition:all .25s;display:flex;align-items:center;gap:7px}
-    .eng-btn:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
-    .star-row{margin-bottom:26px}
-    .star-row p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
-    .stars{display:flex;gap:6px;margin-bottom:6px}
-    .star-btn{background:none;border:none;font-size:1.8em;cursor:pointer;color:#e5e7eb;transition:color .2s,transform .2s}
-    .star-btn:hover,.star-btn.active{color:#f59e0b;transform:scale(1.15)}
-    .star-info{color:var(--text3);font-size:.82rem;font-family:'Inter',sans-serif}
-    .comment-box>p{color:var(--text3);font-size:.88rem;margin-bottom:10px;font-family:'Inter',sans-serif}
-    .comment-input{width:100%;padding:12px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.95rem;margin-bottom:10px;resize:vertical;transition:border-color .2s}
-    .comment-input:focus{outline:none;border-color:var(--accent)}
-    .submit-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border:none;padding:11px 28px;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;font-size:.92rem;transition:opacity .3s}
-    .submit-btn:hover{opacity:.85}
-    #comments-list{margin-top:20px}
-    .comment-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
-    .comment-author{font-family:'Inter',sans-serif;font-weight:700;color:var(--accent);font-size:.85rem;margin-bottom:4px}
-    .comment-text{color:var(--text2);font-size:.93rem;font-family:'Inter',sans-serif;line-height:1.6}
-    footer{background:linear-gradient(135deg,#2a2a3e 0%,#1a1a2e 100%);color:#9ca3af;text-align:center;padding:36px 20px;margin-top:60px;border-top:2px solid var(--accent);font-family:'Inter',sans-serif}
-    footer p{margin-bottom:8px;font-size:.88rem}
-    footer a{color:var(--accent);text-decoration:none;font-weight:600}
-    footer a:hover{text-decoration:underline}
-    @media(max-width:600px){body{font-size:17px}h1{font-size:1.5rem}.content h2{font-size:1.18rem}.article-hero{padding:22px 0}.article-wrap{padding:0 16px 60px}.engagement-section{padding:22px}}
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --primary-light: #e0f2fe;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      --green: #10b981;
+      --purple: #8b5cf6;
+      --red: #ef4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f0f9ff;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--dark);
+      padding: 0 5%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    header nav { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.3rem; font-weight: 800; color: white; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: .88rem; font-weight: 500; transition: all .2s; }
+    .nav-links a:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-cta { background: var(--primary) !important; color: white !important; font-weight: 700 !important; border-radius: 20px !important; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb { max-width: 900px; margin: 16px auto 0; padding: 0 20px; font-size: .8rem; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--gray); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+
+    /* ===== AD ===== */
+    .ad-wrap { max-width: 900px; margin: 16px auto; padding: 0 20px; }
+    .ad-label { font-size: .6rem; color: #cbd5e1; text-align: center; margin-bottom: 3px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--dark);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.3);
+      color: var(--primary);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      animation: fadeDown .6s ease;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      animation: fadeUp .7s ease;
+    }
+    .hero h1 em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      margin-bottom: 28px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeUp .8s ease;
+    }
+    .hero-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp .9s ease;
+    }
+    .pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+    .hero-meta {
+      margin-top: 24px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.45);
+      font-size: .78rem;
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ===== LIVE TOOL ===== */
+    .tool-section {
+      max-width: 900px;
+      margin: -40px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .tool-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.15), 0 0 0 1px rgba(14,165,233,0.1);
+      overflow: hidden;
+      animation: fadeUp .8s ease .2s both;
+    }
+    .tool-header {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tool-dots { display: flex; gap: 7px; }
+    .tool-dots span { width: 12px; height: 12px; border-radius: 50%; }
+    .tool-dots span:nth-child(1) { background: #ef4444; }
+    .tool-dots span:nth-child(2) { background: #f59e0b; }
+    .tool-dots span:nth-child(3) { background: #10b981; }
+    .tool-header-title { color: rgba(255,255,255,0.7); font-size: .82rem; font-weight: 600; margin-left: 4px; }
+    .tool-chips { margin-left: auto; display: flex; gap: 8px; }
+    .chip { background: rgba(14,165,233,0.2); color: var(--primary); font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+    .tool-body { padding: 24px; }
+    #wc-textarea {
+      width: 100%;
+      min-height: 180px;
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-family: 'DM Mono', monospace;
+      font-size: .93rem;
+      color: var(--dark);
+      resize: vertical;
+      transition: border-color .2s, box-shadow .2s;
+      line-height: 1.7;
+    }
+    #wc-textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(14,165,233,0.1); }
+    #wc-textarea::placeholder { color: #94a3b8; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .stat-box:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(14,165,233,0.15); }
+    .stat-box:nth-child(2) { background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: rgba(245,158,11,0.2); }
+    .stat-box:nth-child(3) { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-color: rgba(16,185,129,0.2); }
+    .stat-box:nth-child(4) { background: linear-gradient(135deg, #ede9fe, #ddd6fe); border-color: rgba(139,92,246,0.2); }
+    .stat-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+      display: block;
+      font-family: 'DM Mono', monospace;
+      line-height: 1;
+      margin-bottom: 5px;
+      transition: transform .2s;
+    }
+    .stat-label { font-size: .72rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+    .tool-actions { margin-top: 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .btn-clear {
+      background: var(--light);
+      border: 2px solid var(--border);
+      color: var(--gray);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-clear:hover { border-color: var(--red); color: var(--red); }
+    .btn-full {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s;
+      box-shadow: 0 4px 12px rgba(14,165,233,0.3);
+    }
+    .btn-full:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,165,233,0.4); }
+    .char-progress { margin-top: 12px; }
+    .progress-bar { height: 4px; background: var(--border); border-radius: 50px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 50px; transition: width .3s ease; width: 0%; }
+    .progress-label { font-size: .72rem; color: var(--gray); margin-top: 5px; }
+
+    /* ===== ARTICLE WRAP ===== */
+    .article-wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px 80px; }
+
+    /* ===== QUICK ANSWER ===== */
+    .quick-answer {
+      background: white;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 16px 16px 0;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 16px rgba(14,165,233,0.08);
+      animation: fadeUp .6s ease;
+    }
+    .quick-answer .qa-label { font-size: .7rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+    .quick-answer p { color: #334155; font-size: .97rem; line-height: 1.75; }
+    .quick-answer a { color: var(--primary); font-weight: 700; text-decoration: none; }
+
+    /* ===== TOC ===== */
+    .toc {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .toc-title { font-size: .7rem; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 10px; }
+    .toc a { color: var(--primary-dark); text-decoration: none; font-size: .92rem; font-weight: 600; transition: color .2s; }
+    .toc a:hover { color: var(--accent); }
+
+    /* ===== CONTENT ===== */
+    .content h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 52px 0 18px;
+      padding-left: 18px;
+      border-left: 4px solid var(--primary);
+      line-height: 1.3;
+      scroll-margin-top: 80px;
+    }
+    .content h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+    .content p { color: #334155; margin-bottom: 20px; font-size: .98rem; line-height: 1.85; }
+    .content ul, .content ol { color: #334155; padding-left: 24px; margin-bottom: 20px; }
+    .content li { margin-bottom: 12px; font-size: .97rem; line-height: 1.8; }
+    .content strong { color: var(--primary-dark); font-weight: 700; }
+    .content a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .content a:hover { text-decoration: underline; }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: linear-gradient(135deg, #fff7ed, #fef3c7);
+      border: 1px solid rgba(245,158,11,0.3);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+    }
+    .highlight-box .hl-label { font-size: .68rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+    .highlight-box p { color: #78350f; font-size: .95rem; margin: 0; font-weight: 500; line-height: 1.7; }
+
+    /* ===== STEPS ===== */
+    .steps { margin: 24px 0; display: flex; flex-direction: column; gap: 12px; }
+    .step {
+      display: flex;
+      gap: 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .step:hover { transform: translateX(4px); box-shadow: 0 8px 24px rgba(14,165,233,0.1); border-color: var(--primary); }
+    .step-num {
+      width: 36px; height: 36px; min-width: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .88rem; margin-top: 2px;
+    }
+    .step-body h3 { font-size: .97rem; color: var(--dark); margin-bottom: 5px; font-weight: 700; }
+    .step-body p { color: var(--gray); font-size: .88rem; margin: 0; line-height: 1.65; }
+
+    /* ===== TABLE ===== */
+    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: var(--dark); color: white; padding: 14px 18px; text-align: left; font-size: .83rem; font-weight: 700; }
+    thead th:first-child { border-radius: 14px 0 0 0; }
+    thead th:last-child { border-radius: 0 14px 0 0; }
+    tbody td { padding: 13px 18px; border-bottom: 1px solid var(--border); font-size: .9rem; color: #334155; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--light); }
+    .tag-green { background: #d1fae5; color: #065f46; padding: 2px 10px; border-radius: 20px; font-size: .75rem; font-weight: 700; }
+    .tag-blue { background: #dbeafe; color: #1e40af; padding: 2px 10px; border-radius: 20px; font-size: .75rem; font-weight: 700; }
+    .tag-amber { background: #fef3c7; color: #92400e; padding: 2px 10px; border-radius: 20px; font-size: .75rem; font-weight: 700; }
+
+    /* ===== WORD COUNT TARGETS ===== */
+    .targets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 24px 0; }
+    .target-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      transition: transform .2s;
+    }
+    .target-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .target-card .t-emoji { font-size: 1.8rem; margin-bottom: 8px; }
+    .target-card .t-type { font-size: .8rem; font-weight: 700; color: var(--gray); margin-bottom: 6px; }
+    .target-card .t-count { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .target-card .t-goal { font-size: .72rem; color: var(--gray); }
+
+    /* ===== CTA BOX ===== */
+    .cta-box {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(14,165,233,0.2), transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box h3 { font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 10px; position: relative; }
+    .cta-box p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: .97rem; position: relative; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      font-weight: 800;
+      padding: 14px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      font-size: 1rem;
+      box-shadow: 0 8px 24px rgba(14,165,233,0.3);
+    }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(14,165,233,0.4); }
+
+    /* ===== FAQ ===== */
+    .faq-list { margin: 24px 0; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .faq-item:hover { box-shadow: 0 4px 16px rgba(14,165,233,0.1); }
+    .faq-q {
+      padding: 18px 22px;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+    .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--primary); font-weight: 400; min-width: 20px; transition: transform .3s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 22px;
+      color: var(--gray);
+      font-size: .93rem;
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .3s;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+    /* ===== RELATED TOOLS ===== */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 24px 0; }
+    .related-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .related-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(14,165,233,0.12); }
+    .related-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .related-card h4 { font-size: .88rem; color: var(--dark); margin-bottom: 5px; font-weight: 700; }
+    .related-card p { font-size: .76rem; color: var(--gray); margin: 0; }
+
+    /* ===== ENGAGEMENT ===== */
+    .engagement-section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin: 40px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .engagement-section h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 28px; }
+    .like-dislike { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .eng-btn {
+      background: var(--light);
+      border: 2px solid var(--border);
+      color: var(--gray);
+      padding: 10px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: .9rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      transition: all .25s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .eng-btn:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+    .star-row { margin-bottom: 28px; }
+    .star-row p { color: var(--gray); font-size: .88rem; margin-bottom: 12px; font-weight: 600; }
+    .stars { display: flex; gap: 6px; margin-bottom: 8px; }
+    .star-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #e2e8f0; transition: color .2s, transform .2s; }
+    .star-btn:hover, .star-btn.active { color: var(--accent); transform: scale(1.15); }
+    .star-info { color: var(--gray); font-size: .82rem; }
+    .comment-box > p { color: var(--gray); font-size: .88rem; margin-bottom: 12px; font-weight: 600; }
+    .comment-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--light);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .93rem;
+      margin-bottom: 10px;
+      resize: vertical;
+      transition: border-color .2s;
+    }
+    .comment-input:focus { outline: none; border-color: var(--primary); }
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 11px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: opacity .2s, transform .2s;
+    }
+    .submit-btn:hover { opacity: .9; transform: translateY(-1px); }
+    #comments-list { margin-top: 20px; }
+    .comment-item { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+    .comment-author { font-weight: 700; color: var(--primary); font-size: .83rem; margin-bottom: 4px; }
+    .comment-text { color: #334155; font-size: .91rem; line-height: 1.65; }
+
+    /* ===== FOOTER TOOLS GRID ===== */
+    .footer-tools { background: var(--dark); padding: 48px 20px; }
+    .footer-tools-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-tools h3 { color: white; font-size: 1rem; font-weight: 700; margin-bottom: 24px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .tool-link-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all .2s;
+    }
+    .tool-link-card:hover { background: rgba(14,165,233,0.15); border-color: rgba(14,165,233,0.3); }
+    .tool-link-card .t-icon { font-size: 1.1rem; }
+    .tool-link-card .t-name { color: rgba(255,255,255,0.75); font-size: .8rem; font-weight: 600; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060e1b;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .82rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 40px 20px 70px; }
+      .hero h1 { font-size: 1.7rem; }
+      .engagement-section { padding: 24px; }
+      .cta-box { padding: 28px 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
   </style>
 </head>
 <body>
+
+<!-- HEADER -->
 <header>
   <nav>
-    <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi</a>
+    <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
     <div class="nav-links">
       <a href="https://toolyfi.com">Home</a>
       <a href="https://toolyfi.com/#tools">Tools</a>
       <a href="https://toolyfi.com/blog/">Blog</a>
-      <a href="https://toolyfi.com/word-counter.html" class="nav-cta">Try Tool Free</a>
+      <a href="https://toolyfi.com/word-counter.html" class="nav-cta">Try Free →</a>
     </div>
   </nav>
 </header>
-<div class="ad-wrap"><div class="ad-label">ADVERTISEMENT</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-<div class="breadcrumb"><a href="https://toolyfi.com">Home</a><span>›</span><a href="https://toolyfi.com/blog/">Blog</a><span>›</span>Word Counter</div>
+
+<!-- AD TOP -->
+<div class="ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://toolyfi.com">Home</a> › <a href="https://toolyfi.com/blog/">Blog</a> › Word Counter Guide
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📝 Free Guide · Updated June 2026</div>
+  <h1>Free <em>Word Counter</em><br>Count Words Instantly Online</h1>
+  <p class="hero-sub">Count words, characters, sentences & reading time in real-time. No signup, no watermark, no limits — forever free.</p>
+  <div class="hero-pills">
+    <span class="pill">✓ 100% Free</span>
+    <span class="pill">✓ No Signup</span>
+    <span class="pill">✓ Real-Time</span>
+    <span class="pill">✓ All Languages</span>
+    <span class="pill">✓ No Watermark</span>
+  </div>
+  <div class="hero-meta">
+    <span>📅 June 2026</span>
+    <span>⏱️ 5 min read</span>
+    <span>✍️ Toolyfi Team</span>
+    <span>🟢 Beginner Friendly</span>
+  </div>
+</div>
+
+<!-- LIVE TOOL -->
+<div class="tool-section">
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-dots"><span></span><span></span><span></span></div>
+      <div class="tool-header-title">📝 Live Word Counter — Toolyfi</div>
+      <div class="tool-chips">
+        <span class="chip">⚡ Instant</span>
+        <span class="chip">🌍 All Languages</span>
+        <span class="chip">📊 Real-Time</span>
+      </div>
+    </div>
+    <div class="tool-body">
+      <textarea id="wc-textarea" placeholder="Paste or type your text here... results appear instantly ✨"></textarea>
+      <div class="char-progress">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-label" id="progress-label">0 / 2000 characters</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-val" id="wc-words">0</span>
+          <span class="stat-label">Words</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val" id="wc-chars">0</span>
+          <span class="stat-label">Characters</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val" id="wc-sentences">0</span>
+          <span class="stat-label">Sentences</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val" id="wc-readtime">0m</span>
+          <span class="stat-label">Read Time</span>
+        </div>
+      </div>
+      <div class="tool-actions">
+        <button class="btn-clear" onclick="clearText()">🗑️ Clear</button>
+        <a href="https://toolyfi.com/word-counter.html" class="btn-full">Open Full Version →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
 <div class="article-wrap">
 
-  <div class="article-hero">
-    <div class="badge">📝 FREE GUIDE · 2026</div>
-    <h1>Free <span class="hl">Word Counter</span> Online — Count Words, Characters & Sentences Instantly</h1>
-    <div class="article-meta">
-      <span>📅 Updated: March 2026</span>
-      <span>⏱️ 5 min read</span>
-      <span>✍️ Toolyfi Team</span>
-      <span>🟢 Beginner Friendly</span>
-    </div>
-    <div class="quick-answer">
-      <strong>Short answer:</strong>
-      <p>The fastest way to count words is <a href="https://toolyfi.com/word-counter.html">Toolyfi's free Word Counter</a>. Paste your text and instantly get word count, characters, sentences and reading time — no signup, no software.</p>
-    </div>
-    <div class="toc">
-      <div class="toc-title">📋 In This Article</div>
-      <ol>
-        <li><a href="#what-is">What is a Word Counter?</a></li>
-        <li><a href="#who-uses">Who Needs a Word Counter?</a></li>
-        <li><a href="#try-tool">Live Word Counter Tool</a></li>
-        <li><a href="#how-to">How to Use — Step by Step</a></li>
-        <li><a href="#guide">Word Count Guide by Content Type</a></li>
-        <li><a href="#faq">Frequently Asked Questions</a></li>
-      </ol>
-    </div>
+  <div class="quick-answer">
+    <div class="qa-label">⚡ Quick Answer</div>
+    <p>The fastest way to count words online is <a href="https://toolyfi.com/word-counter.html">Toolyfi's free Word Counter</a>. Paste your text and instantly get word count, characters, sentences and reading time — no signup, no software, no limits.</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">📋 In This Article</div>
+    <ol>
+      <li><a href="#what-is">What is a Word Counter?</a></li>
+      <li><a href="#who-uses">Who Needs a Word Counter?</a></li>
+      <li><a href="#how-to">How to Use — Step by Step</a></li>
+      <li><a href="#targets">Word Count Targets by Content Type</a></li>
+      <li><a href="#seo-tips">SEO Tips for Word Count</a></li>
+      <li><a href="#compare">Word Counter vs Alternatives</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <!-- AD MID -->
+  <div class="ad-wrap" style="padding:0;margin-bottom:36px;">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
   <div class="content">
+
     <h2 id="what-is">What is a Word Counter?</h2>
-    <p>A <strong>word counter</strong> is an online tool that instantly counts words, characters, sentences, paragraphs, and estimated reading time in any text. Writers, students, bloggers, and SEO professionals use it daily to meet content requirements and optimize their writing.</p>
-    <p>Whether you need to stay under a 500-word limit or make sure your blog post hits 1500 words for SEO — a word counter removes all guesswork instantly.</p>
-    <div class="takeaway"><div class="takeaway-label">💡 KEY TAKEAWAY</div><p>For SEO blog posts, aim for <strong>1000–2000 words minimum</strong>. Google consistently ranks longer, more detailed content higher in search results.</p></div>
+    <p>A <strong>word counter</strong> is an online tool that instantly counts words, characters, sentences, paragraphs, and estimated reading time in any block of text. Writers, students, bloggers, and SEO professionals use it daily to meet content requirements and optimize their writing without guesswork.</p>
+    <p>Whether you need to stay under a 500-word limit or hit 1500 words for SEO — a word counter removes all guesswork. It's the digital equivalent of the word count feature in Microsoft Word, but faster, free, and works anywhere in your browser.</p>
+    <p>The very first word counters were built into typewriters in the early 20th century. Today, online word counters process millions of words per second and can analyze reading level, keyword density, and estimated speaking time — all in real time.</p>
+
+    <div class="highlight-box">
+      <div class="hl-label">💡 Pro Tip</div>
+      <p>For SEO blog posts, aim for <strong>1,500–2,500 words minimum</strong>. Google consistently ranks longer, more detailed content higher in search results — especially for competitive keywords.</p>
+    </div>
 
     <h2 id="who-uses">Who Needs a Word Counter?</h2>
+    <p>A word counter is not just for writers. Here are the most common use cases across different professions:</p>
     <ul>
-      <li><strong>Students</strong> — Stay within essay word limits</li>
-      <li><strong>Bloggers</strong> — Optimize post length for SEO rankings</li>
-      <li><strong>Social Media Writers</strong> — Stay within Twitter/LinkedIn character limits</li>
-      <li><strong>Freelancers</strong> — Track billable word count for clients</li>
-      <li><strong>SEO Writers</strong> — Match competitor content length for better ranking</li>
+      <li><strong>Students</strong> — Stay within essay word limits and meet minimum requirements for assignments.</li>
+      <li><strong>Bloggers & Content Creators</strong> — Optimize post length for SEO rankings and reader engagement.</li>
+      <li><strong>Social Media Writers</strong> — Stay within Twitter/X (280 chars), LinkedIn, and Instagram character limits.</li>
+      <li><strong>Freelance Writers</strong> — Track billable word count accurately when charging per word.</li>
+      <li><strong>SEO Writers</strong> — Match or exceed competitor content length for better ranking potential.</li>
+      <li><strong>Academic Researchers</strong> — Ensure abstracts, papers, and submissions meet journal requirements.</li>
+      <li><strong>Translators</strong> — Calculate project scope and pricing based on source word count.</li>
+      <li><strong>Email Marketers</strong> — Keep emails concise (under 200 words) for optimal open and click rates.</li>
     </ul>
 
-    <div class="ad-wrap" style="padding:0;margin:24px 0"><div class="ad-label">ADVERTISEMENT</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
-
-    <h2 id="try-tool">Live Word Counter Tool</h2>
-    <p>Paste your text below and see instant results — words, characters, sentences, and reading time:</p>
-    <div class="tool-embed">
-      <h3>📝 Live Word Counter</h3>
-      <textarea id="text-input" placeholder="Paste or type your text here to start counting..."></textarea>
-      <div class="stats-row">
-        <div class="stat"><span class="stat-val" id="word-count">0</span><span class="stat-label">Words</span></div>
-        <div class="stat"><span class="stat-val" id="char-count">0</span><span class="stat-label">Characters</span></div>
-        <div class="stat"><span class="stat-val" id="sent-count">0</span><span class="stat-label">Sentences</span></div>
-        <div class="stat"><span class="stat-val" id="read-time">0m</span><span class="stat-label">Read Time</span></div>
-      </div>
-      <a href="https://toolyfi.com/word-counter.html" class="tool-link">Open Full Version with More Features →</a>
-    </div>
-
-    <h2 id="how-to">How to Use — Step by Step</h2>
+    <h2 id="how-to">How to Use Toolyfi Word Counter — Step by Step</h2>
+    <p>Using the Toolyfi Word Counter is incredibly simple. Here's how to get started in under 30 seconds:</p>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open Toolyfi Word Counter</h3><p>Visit toolyfi.com/word-counter.html — no login or signup required.</p></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Paste or Type Your Text</h3><p>Copy your content and paste it, or start typing directly in the input box.</p></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Get Instant Results</h3><p>Word count, characters, sentences and reading time appear instantly.</p></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Edit & Recount</h3><p>Edit your text directly — results update in real time automatically.</p></div></div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Open the Tool</h3>
+          <p>Visit <a href="https://toolyfi.com/word-counter.html">toolyfi.com/word-counter.html</a> — no login, no signup, no download required.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Paste or Type Your Text</h3>
+          <p>Copy your content from any source and paste it in the input box, or start typing directly. Works with all languages including Urdu, Arabic, and Hindi.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Get Instant Results</h3>
+          <p>Word count, characters, sentences, paragraphs, and reading time appear instantly — no button to click.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Edit & Recount Live</h3>
+          <p>Edit your text directly in the box — all stats update in real time as you type or delete.</p>
+        </div>
+      </div>
     </div>
 
-    <h2 id="guide">Word Count Guide by Content Type</h2>
+    <h2 id="targets">Word Count Targets by Content Type</h2>
+    <p>Different types of content have different ideal word counts. Here's a quick reference guide:</p>
+
+    <div class="targets-grid">
+      <div class="target-card">
+        <div class="t-emoji">🐦</div>
+        <div class="t-type">Tweet / X Post</div>
+        <div class="t-count">Max 280 chars</div>
+        <div class="t-goal">Engagement & reach</div>
+      </div>
+      <div class="target-card">
+        <div class="t-emoji">📸</div>
+        <div class="t-type">Instagram Caption</div>
+        <div class="t-count">125–150 words</div>
+        <div class="t-goal">Saves & comments</div>
+      </div>
+      <div class="target-card">
+        <div class="t-emoji">📧</div>
+        <div class="t-type">Marketing Email</div>
+        <div class="t-count">150–200 words</div>
+        <div class="t-goal">Click-through rate</div>
+      </div>
+      <div class="target-card">
+        <div class="t-emoji">📝</div>
+        <div class="t-type">Short Blog Post</div>
+        <div class="t-count">500–800 words</div>
+        <div class="t-goal">Quick answers</div>
+      </div>
+      <div class="target-card">
+        <div class="t-emoji">📰</div>
+        <div class="t-type">Standard Blog</div>
+        <div class="t-count">1,000–1,500 words</div>
+        <div class="t-goal">Topic coverage</div>
+      </div>
+      <div class="target-card">
+        <div class="t-emoji">🏆</div>
+        <div class="t-type">SEO Pillar Post</div>
+        <div class="t-count">2,500+ words</div>
+        <div class="t-goal">Authority & backlinks</div>
+      </div>
+    </div>
+
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Content Type</th><th>Recommended Length</th><th>SEO Goal</th></tr></thead>
+        <thead>
+          <tr><th>Content Type</th><th>Recommended Length</th><th>Primary Goal</th></tr>
+        </thead>
         <tbody>
-          <tr><td>Tweet / X Post</td><td>Max 280 characters</td><td>Engagement</td></tr>
-          <tr><td>Instagram Caption</td><td>125–150 words</td><td>Reach & Saves</td></tr>
-          <tr><td>Short Blog Post</td><td>500–800 words</td><td>Quick answers</td></tr>
-          <tr><td>Standard Blog Post</td><td>1,000–1,500 words</td><td>Topic coverage</td></tr>
-          <tr><td>SEO-Optimized Blog</td><td>1,500–2,500 words</td><td>First page ranking</td></tr>
-          <tr><td>Pillar Article</td><td>2,500+ words</td><td>Authority & backlinks</td></tr>
+          <tr><td>Tweet / X Post</td><td>Max 280 characters</td><td><span class="tag-green">Engagement</span></td></tr>
+          <tr><td>Instagram Caption</td><td>125–150 words</td><td><span class="tag-blue">Reach & Saves</span></td></tr>
+          <tr><td>Short Blog Post</td><td>500–800 words</td><td><span class="tag-amber">Quick Answers</span></td></tr>
+          <tr><td>Standard Blog Post</td><td>1,000–1,500 words</td><td><span class="tag-blue">Topic Coverage</span></td></tr>
+          <tr><td>SEO-Optimized Blog</td><td>1,500–2,500 words</td><td><span class="tag-green">First Page Rank</span></td></tr>
+          <tr><td>Pillar Article</td><td>2,500+ words</td><td><span class="tag-green">Authority & Links</span></td></tr>
+          <tr><td>Academic Paper</td><td>3,000–8,000 words</td><td><span class="tag-amber">Publication</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="cta-box">
-      <h3>✅ Count Your Words Free — Right Now</h3>
-      <p>No signup. No download. Paste your text and go!</p>
-      <a href="https://toolyfi.com/word-counter.html" class="cta-btn">Open Full Word Counter →</a>
+    <h2 id="seo-tips">SEO Tips: How Word Count Affects Your Rankings</h2>
+    <p>Word count alone doesn't guarantee a high Google ranking — but it's a strong signal of content depth and quality. Here's how to use it strategically:</p>
+    <ul>
+      <li><strong>Match user intent first.</strong> A "how to boil an egg" post doesn't need 3,000 words. Match the depth to what the searcher actually needs.</li>
+      <li><strong>Beat the top 3 results.</strong> Check word count of ranking pages for your keyword. Aim to be 20–30% more comprehensive.</li>
+      <li><strong>Use subheadings every 300 words.</strong> This improves both readability and passage indexing by Google.</li>
+      <li><strong>Don't pad just to hit a count.</strong> Google's Helpful Content update penalizes content that adds fluff without value.</li>
+      <li><strong>Target featured snippets.</strong> Short, direct answers (40–60 words) inside long-form content often win the featured snippet box.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <div class="hl-label">📊 Data Insight</div>
+      <p>According to multiple SEO studies, the average first-page Google result contains <strong>1,447 words</strong>. For competitive keywords, top posts often exceed 2,000 words with strong internal linking.</p>
+    </div>
+
+    <h2 id="compare">Toolyfi Word Counter vs Alternatives</h2>
+    <p>There are many word counting options available. Here's how Toolyfi compares:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Free?</th><th>No Signup?</th><th>Real-Time?</th><th>All Languages?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Toolyfi Word Counter</strong></td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+          <tr><td>Microsoft Word</td><td>❌ Paid</td><td>❌ Account needed</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+          <tr><td>Google Docs</td><td>✅ Free</td><td>❌ Google login</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+          <tr><td>WordCounter.net</td><td>✅ Free</td><td>✅ Yes</td><td>✅ Yes</td><td>⚠️ Partial</td></tr>
+          <tr><td>Grammarly</td><td>⚠️ Limited</td><td>❌ Account needed</td><td>✅ Yes</td><td>❌ English only</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Related Tools on Toolyfi</h2>
+    <p>Pair the word counter with these free tools for a complete writing workflow:</p>
+    <div class="related-grid">
+      <a href="https://toolyfi.com/case-converter.html" class="related-card">
+        <div class="icon">🔡</div>
+        <h4>Case Converter</h4>
+        <p>Convert to UPPER, lower or Title Case</p>
+      </a>
+      <a href="https://toolyfi.com/ai-text-detector.html" class="related-card">
+        <div class="icon">🤖</div>
+        <h4>AI Text Detector</h4>
+        <p>Detect AI-generated content instantly</p>
+      </a>
+      <a href="https://toolyfi.com/json-formatter.html" class="related-card">
+        <div class="icon">🖥️</div>
+        <h4>JSON Formatter</h4>
+        <p>Format & validate JSON code</p>
+      </a>
+      <a href="https://toolyfi.com/seo-checker.html" class="related-card">
+        <div class="icon">🔍</div>
+        <h4>SEO Checker</h4>
+        <p>Analyze any page for SEO issues</p>
+      </a>
+    </div>
+
+    <!-- AD PRE-FAQ -->
+    <div class="ad-wrap" style="padding:0;margin:32px 0;">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
 
     <h2 id="faq">Frequently Asked Questions</h2>
-    <div class="faq-item"><div class="faq-q">How do I count words online for free?</div><div class="faq-a">Go to Toolyfi Word Counter, paste your text, and get instant results — word count, characters, sentences and reading time. Completely free, no login needed.</div></div>
-    <div class="faq-item"><div class="faq-q">Is Toolyfi Word Counter free to use?</div><div class="faq-a">Yes, 100% free. No account, no signup, no hidden charges. Use it unlimited times.</div></div>
-    <div class="faq-item"><div class="faq-q">Does the word counter work for all languages?</div><div class="faq-a">Yes! It works for English, Urdu, Arabic, Spanish, French, Hindi and most languages.</div></div>
-    <div class="faq-item"><div class="faq-q">What is the ideal word count for a blog post?</div><div class="faq-a">For SEO, 1000–2000 words is recommended. Google ranks longer, detailed content higher. Aim for at least 1500 words for competitive topics.</div></div>
-    <div class="faq-item"><div class="faq-q">How many words is 1 page?</div><div class="faq-a">One double-spaced page (12pt font) contains about 250–300 words. Single-spaced pages have approximately 500–600 words.</div></div>
-
-    <h2>Related Tools You Might Like</h2>
-    <div class="related-grid">
-      <a href="https://toolyfi.com/case-converter.html" class="related-card"><div class="icon">🔡</div><h4>Case Converter</h4><p>Convert text to UPPER, lower or Title Case</p></a>
-      <a href="https://toolyfi.com/text-trimmer.html" class="related-card"><div class="icon">✂️</div><h4>Text Trimmer</h4><p>Remove extra spaces & format text</p></a>
-      <a href="https://toolyfi.com/json-formatter.html" class="related-card"><div class="icon">📊</div><h4>JSON Formatter</h4><p>Format & validate JSON instantly</p></a>
-      <a href="https://toolyfi.com/ai-text-detector.html" class="related-card"><div class="icon">🤖</div><h4>AI Text Detector</h4><p>Detect if text was written by AI</p></a>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">How do I count words online for free?</div>
+        <div class="faq-a">Go to Toolyfi Word Counter at toolyfi.com/word-counter.html, paste your text, and get instant results — word count, characters, sentences and reading time. Completely free, no login needed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is Toolyfi Word Counter free to use?</div>
+        <div class="faq-a">Yes, 100% free. No account, no signup, no hidden charges. Use it unlimited times for any length of text.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Does the word counter work for Urdu, Arabic and other languages?</div>
+        <div class="faq-a">Yes! Toolyfi Word Counter works for English, Urdu, Arabic, Spanish, French, Hindi and most languages. It counts words based on spacing and punctuation patterns.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the ideal word count for a blog post in 2026?</div>
+        <div class="faq-a">For SEO, 1,500–2,500 words is the sweet spot in 2026. Google rewards comprehensive, helpful content. For competitive keywords, aim for 2,500+ words with strong internal linking and clear structure.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How many words is 1 page?</div>
+        <div class="faq-a">One double-spaced page (12pt font) contains approximately 250–300 words. Single-spaced pages have roughly 500–600 words. This varies by font size and margins.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use the word counter without internet?</div>
+        <div class="faq-a">The Toolyfi Word Counter requires an internet connection to load. However, once loaded, all counting happens locally in your browser — so a slow connection won't slow down the results.</div>
+      </div>
     </div>
 
-    <div class="ad-wrap" style="padding:0;margin-top:32px"><div class="ad-label">ADVERTISEMENT</div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    <div class="cta-box">
+      <h3>✅ Count Your Words — Free, Right Now</h3>
+      <p>No signup. No download. No watermark. Just paste and go.</p>
+      <a href="https://toolyfi.com/word-counter.html" class="cta-btn">Open Full Word Counter →</a>
+    </div>
+
   </div>
-</div>
 
-
-  <!-- FIREBASE ENGAGEMENT -->
+  <!-- ENGAGEMENT -->
   <div class="engagement-section">
-    <h3>💬 Rate & Review This Article</h3>
+    <h3>💬 Was This Article Helpful?</h3>
     <div class="like-dislike">
-      <button class="eng-btn" onclick="handleLike()">👍 Like <span id="like-count">0</span></button>
-      <button class="eng-btn" onclick="handleDislike()">👎 Dislike <span id="dislike-count">0</span></button>
+      <button class="eng-btn" onclick="handleLike()">👍 Helpful <span id="like-count">0</span></button>
+      <button class="eng-btn" onclick="handleDislike()">👎 Not Really <span id="dislike-count">0</span></button>
     </div>
     <div class="star-row">
-      <p>Rate this article:</p>
+      <p>Rate this guide:</p>
       <div class="stars">
         <button class="star-btn" onclick="handleStar(1)">★</button>
         <button class="star-btn" onclick="handleStar(2)">★</button>
@@ -279,17 +994,182 @@
     </div>
     <div class="comment-box">
       <p>Leave a comment:</p>
-      <input type="text" id="comment-name" class="comment-input" placeholder="Your name (optional)" style="resize:none;height:46px;">
-      <textarea id="comment-text" class="comment-input" rows="3" placeholder="Share your thoughts..."></textarea>
+      <input type="text" id="comment-name" class="comment-input" placeholder="Your name (optional)" style="height:46px;resize:none;">
+      <textarea id="comment-text" class="comment-input" rows="3" placeholder="Share your thoughts or questions..."></textarea>
       <button class="submit-btn" onclick="submitComment()">Post Comment →</button>
       <div id="comments-list"></div>
     </div>
   </div>
+
 </div>
+
+<!-- FOOTER TOOLS -->
+<div class="footer-tools">
+  <div class="footer-tools-inner">
+    <h3>🛠️ More Free Tools on Toolyfi</h3>
+    <div class="tools-grid">
+      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link-card"><span class="t-icon">📱</span><span class="t-name">QR Code Generator</span></a>
+      <a href="https://toolyfi.com/image-resizer.html" class="tool-link-card"><span class="t-icon">✂️</span><span class="t-name">Image Resizer</span></a>
+      <a href="https://toolyfi.com/image-compressor.html" class="tool-link-card"><span class="t-icon">🗜️</span><span class="t-name">Image Compressor</span></a>
+      <a href="https://toolyfi.com/base64-encoder.html" class="tool-link-card"><span class="t-icon">🔐</span><span class="t-name">Base64 Encoder</span></a>
+      <a href="https://toolyfi.com/password-generator.html" class="tool-link-card"><span class="t-icon">🔑</span><span class="t-name">Password Generator</span></a>
+      <a href="https://toolyfi.com/age-calculator.html" class="tool-link-card"><span class="t-icon">🎂</span><span class="t-name">Age Calculator</span></a>
+      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link-card"><span class="t-icon">⚖️</span><span class="t-name">BMI Calculator</span></a>
+      <a href="https://toolyfi.com/currency-converter.html" class="tool-link-card"><span class="t-icon">💱</span><span class="t-name">Currency Converter</span></a>
+      <a href="https://toolyfi.com/loan-emi-calculator.html" class="tool-link-card"><span class="t-icon">🏦</span><span class="t-name">Loan Calculator</span></a>
+      <a href="https://toolyfi.com/json-formatter.html" class="tool-link-card"><span class="t-icon">🖥️</span><span class="t-name">JSON Formatter</span></a>
+      <a href="https://toolyfi.com/csv-to-json.html" class="tool-link-card"><span class="t-icon">📊</span><span class="t-name">CSV to JSON</span></a>
+      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link-card"><span class="t-icon">🧾</span><span class="t-name">Invoice Generator</span></a>
+      <a href="https://toolyfi.com/resume-builder.html" class="tool-link-card"><span class="t-icon">📄</span><span class="t-name">Resume Builder</span></a>
+      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link-card"><span class="t-icon">💰</span><span class="t-name">Tip Calculator</span></a>
+      <a href="https://toolyfi.com/scientific-calculator.html" class="tool-link-card"><span class="t-icon">🧮</span><span class="t-name">Scientific Calculator</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools for Everyone</p>
-  <p style="margin-top:6px;"><a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/blog/">Blog</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://toolyfi.com/TERMS.HTML">Terms</a></p>
+  <p style="margin-top:8px;">
+    <a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/blog/">Blog</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/about.html">About</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp;
+    <a href="https://toolyfi.com/terms.html">Terms</a>
+  </p>
 </footer>
+
+<!-- TIDIO -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
+<script>
+  // ===== LIVE WORD COUNTER =====
+  const textarea = document.getElementById('wc-textarea');
+  const wcWords = document.getElementById('wc-words');
+  const wcChars = document.getElementById('wc-chars');
+  const wcSentences = document.getElementById('wc-sentences');
+  const wcReadtime = document.getElementById('wc-readtime');
+  const progressFill = document.getElementById('progress-fill');
+  const progressLabel = document.getElementById('progress-label');
+  const MAX_CHARS = 2000;
+
+  function animateVal(el, newVal) {
+    el.style.transform = 'scale(1.15)';
+    el.textContent = newVal;
+    setTimeout(() => el.style.transform = 'scale(1)', 200);
+  }
+
+  textarea.addEventListener('input', () => {
+    const text = textarea.value;
+    const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    const chars = text.length;
+    const sentences = text.trim() === '' ? 0 : (text.match(/[.!?]+/g) || []).length;
+    const readMin = Math.ceil(words / 200);
+    const readStr = readMin < 1 ? '<1m' : readMin + 'm';
+
+    animateVal(wcWords, words.toLocaleString());
+    animateVal(wcChars, chars.toLocaleString());
+    animateVal(wcSentences, sentences.toLocaleString());
+    animateVal(wcReadtime, readStr);
+
+    const pct = Math.min((chars / MAX_CHARS) * 100, 100);
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = chars.toLocaleString() + ' / ' + MAX_CHARS.toLocaleString() + ' characters';
+  });
+
+  function clearText() {
+    textarea.value = '';
+    textarea.dispatchEvent(new Event('input'));
+    textarea.focus();
+  }
+
+  // ===== FAQ ACCORDION =====
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ===== ENGAGEMENT (localStorage) =====
+  const PAGE_ID = 'word-counter-guide';
+
+  function getStore(key, def) {
+    try { return JSON.parse(localStorage.getItem('tf_' + key + '_' + PAGE_ID)) ?? def; } catch { return def; }
+  }
+  function setStore(key, val) {
+    try { localStorage.setItem('tf_' + key + '_' + PAGE_ID, JSON.stringify(val)); } catch {}
+  }
+
+  // Likes / Dislikes
+  let likes = getStore('likes', 0);
+  let dislikes = getStore('dislikes', 0);
+  document.getElementById('like-count').textContent = likes;
+  document.getElementById('dislike-count').textContent = dislikes;
+
+  function handleLike() {
+    if (getStore('voted', false)) return;
+    likes++;
+    setStore('likes', likes);
+    setStore('voted', true);
+    document.getElementById('like-count').textContent = likes;
+  }
+  function handleDislike() {
+    if (getStore('voted', false)) return;
+    dislikes++;
+    setStore('dislikes', dislikes);
+    setStore('voted', true);
+    document.getElementById('dislike-count').textContent = dislikes;
+  }
+
+  // Stars
+  let starData = getStore('stars', { total: 0, count: 0 });
+  updateStarDisplay();
+  function updateStarDisplay() {
+    const avg = starData.count > 0 ? (starData.total / starData.count).toFixed(1) : '0.0';
+    document.getElementById('star-avg').textContent = avg;
+    document.getElementById('star-count').textContent = starData.count;
+  }
+  function handleStar(val) {
+    if (getStore('starred', false)) return;
+    starData.total += val;
+    starData.count += 1;
+    setStore('stars', starData);
+    setStore('starred', true);
+    updateStarDisplay();
+    document.querySelectorAll('.star-btn').forEach((b, i) => b.classList.toggle('active', i < val));
+  }
+
+  // Comments
+  let comments = getStore('comments', []);
+  renderComments();
+  function renderComments() {
+    const list = document.getElementById('comments-list');
+    if (comments.length === 0) {
+      list.innerHTML = '<p style="color:#94a3b8;font-size:.88rem;margin-top:12px;">No comments yet. Be the first! 👋</p>';
+      return;
+    }
+    list.innerHTML = comments.slice().reverse().map(c => `
+      <div class="comment-item">
+        <div class="comment-author">${c.name}</div>
+        <div class="comment-text">${c.text}</div>
+      </div>
+    `).join('');
+  }
+  function submitComment() {
+    const name = document.getElementById('comment-name').value.trim() || 'Anonymous';
+    const text = document.getElementById('comment-text').value.trim();
+    if (!text) return;
+    comments.push({ name, text });
+    setStore('comments', comments);
+    document.getElementById('comment-name').value = '';
+    document.getElementById('comment-text').value = '';
+    renderComments();
+  }
+</script>
+
 </body>
 </html>
