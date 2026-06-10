@@ -917,6 +917,16 @@ function enhancePrompt() {
   setTimeout(() => { btn.disabled = false; btn.textContent = '✨ Enhance Prompt'; }, 600);
 }
 
+function tryLoadImage(url, timeout) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = url;
+    setTimeout(reject, timeout);
+  });
+}
+
 async function generateImage() {
   const prompt = document.getElementById('promptInput').value.trim();
   document.getElementById('errorMsg').classList.remove('visible');
@@ -932,38 +942,63 @@ async function generateImage() {
   document.getElementById('generateBtn').disabled = true;
   startLoad();
 
-  const seed = Math.floor(Math.random() * 999999);
+  const seed1 = Math.floor(Math.random() * 999999);
+  const seed2 = Math.floor(Math.random() * 999999);
   const encoded = encodeURIComponent(fullPrompt);
-  const imgUrl = `https://image.pollinations.ai/prompt/${encoded}?width=${w}&height=${h}&model=${model}&nologo=true&seed=${seed}`;
+  const imgUrl1 = `https://image.pollinations.ai/prompt/${encoded}?width=${w}&height=${h}&model=${model}&nologo=true&seed=${seed1}`;
+  const imgUrl2 = `https://image.pollinations.ai/prompt/${encoded}?width=${w}&height=${h}&model=turbo&nologo=true&seed=${seed2}`;
 
+  let success = false;
+  let finalUrl = '';
+
+  // Attempt 1 — selected model
   try {
-    await new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = resolve;
-      img.onerror = reject;
-      img.src = imgUrl;
-      setTimeout(reject, 35000);
-    });
+    document.getElementById('loadSteps').textContent = 'Attempt 1 — connecting to AI...';
+    await tryLoadImage(imgUrl1, 60000);
+    finalUrl = imgUrl1;
+    success = true;
+  } catch(e1) {
+    // Attempt 2 — turbo model fallback with new seed
+    try {
+      document.getElementById('loadSteps').textContent = 'Retrying with Turbo model...';
+      await tryLoadImage(imgUrl2, 60000);
+      finalUrl = imgUrl2;
+      success = true;
+    } catch(e2) {
+      // Attempt 3 — shorter prompt, turbo
+      try {
+        const shortPrompt = prompt.split(',')[0].trim();
+        const encodedShort = encodeURIComponent(shortPrompt);
+        const imgUrl3 = `https://image.pollinations.ai/prompt/${encodedShort}?width=${w}&height=${h}&model=turbo&nologo=true&seed=${seed1}`;
+        document.getElementById('loadSteps').textContent = 'Final attempt with simplified prompt...';
+        await tryLoadImage(imgUrl3, 60000);
+        finalUrl = imgUrl3;
+        success = true;
+      } catch(e3) {
+        success = false;
+      }
+    }
+  }
 
-    currentImageUrl = imgUrl;
+  stopLoad();
+  document.getElementById('generateBtn').disabled = false;
+
+  if (success && finalUrl) {
+    currentImageUrl = finalUrl;
     currentPrompt = fullPrompt;
-    document.getElementById('resultImg').src = imgUrl;
+    document.getElementById('resultImg').src = finalUrl;
     document.getElementById('resultPrompt').textContent = '🎨 ' + prompt;
     document.getElementById('loadingBox').classList.remove('visible');
     document.getElementById('imageResult').classList.add('visible');
 
-    // Save to gallery
-    gallery.unshift({ url: imgUrl, prompt: prompt, date: Date.now() });
+    gallery.unshift({ url: finalUrl, prompt: prompt, date: Date.now() });
     if (gallery.length > 12) gallery.pop();
     localStorage.setItem(KEYS.gallery, JSON.stringify(gallery));
     renderGallery();
-
-  } catch(e) {
+  } else {
     document.getElementById('loadingBox').classList.remove('visible');
-    showError('Generation failed. Please try again or use a different prompt.');
+    showError('Generation failed after 3 attempts. Please wait a moment and try again, or try a simpler prompt.');
   }
-  stopLoad();
-  document.getElementById('generateBtn').disabled = false;
 }
 
 function showError(msg) {
