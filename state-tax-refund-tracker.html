@@ -104,7 +104,11 @@
     --red-light: #FEF2F2;
   }
   html { scroll-behavior: smooth; }
+  :root { --ease-cinematic: cubic-bezier(0.22,1,0.36,1); --ease-out: cubic-bezier(0.16,1,0.3,1); }
+  @media (prefers-reduced-motion: reduce) { *{ animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
   body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--light); color: var(--text-body); font-size: 1rem; line-height: 1.6; }
+  @keyframes drift { from{transform:translate(0,0)} to{transform:translate(6%,8%)} }
+  @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.008)} }
   h1,h2,h3,h4,h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--text-dark); }
   em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--primary); }
 
@@ -114,11 +118,16 @@
   nav a { color: rgba(255,255,255,0.8); text-decoration: none; margin-left: 20px; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
   nav a:hover { color: #fff; }
 
-  .hero { background: linear-gradient(135deg, var(--primary-light), #f0f9ff); padding: 56px 24px 40px; text-align: center; }
-  .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .hero h1 { font-size: clamp(1.8rem, 5vw, 2.9rem); line-height: 1.2; margin-bottom: 14px; }
-  .hero p { font-size: 1.05rem; color: var(--gray); max-width: 600px; margin: 0 auto 22px; }
-  .trust-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 8px; }
+  .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--primary-light), #f0f9ff); padding: 56px 24px 40px; text-align: center; }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .3; pointer-events: none; z-index: 0; }
+  .hero-blob.b1 { width: 320px; height: 320px; background: var(--primary); top: -60px; left: -60px; animation: drift 28s ease-in-out infinite alternate; }
+  .hero-blob.b2 { width: 260px; height: 260px; background: var(--accent); bottom: -60px; right: -40px; animation: drift 35s ease-in-out infinite alternate-reverse; }
+  .hero > *:not(.hero-blob) { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; opacity:0; transform:translateY(10px); transition: opacity .6s var(--ease-cinematic), transform .6s var(--ease-cinematic); }
+  .hero h1 { font-size: clamp(1.8rem, 5vw, 2.9rem); line-height: 1.2; margin-bottom: 14px; opacity:0; transform:translateY(20px); filter:blur(8px); transition: opacity .7s var(--ease-cinematic) .15s, transform .7s var(--ease-cinematic) .15s, filter .7s var(--ease-cinematic) .15s; }
+  .hero p { font-size: 1.05rem; color: var(--gray); max-width: 600px; margin: 0 auto 22px; opacity:0; transform:translateY(14px); transition: opacity .6s var(--ease-cinematic) .3s, transform .6s var(--ease-cinematic) .3s; }
+  .trust-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 8px; opacity:0; transform: scale(.96); transition: opacity .6s var(--ease-cinematic) .45s, transform .6s var(--ease-cinematic) .45s; }
+  .hero.reveal .hero-badge, .hero.reveal h1, .hero.reveal p, .hero.reveal .trust-pills { opacity:1; transform:none; filter:blur(0); }
   .trust-pill { background: white; border: 1px solid var(--border); border-radius: 99px; padding: 6px 16px; font-size: 0.82rem; font-weight: 600; color: var(--primary-dark); }
 
   .eeat-strip { max-width: 860px; margin: 0 auto; padding: 0 16px 20px; text-align: center; }
@@ -129,9 +138,11 @@
   .ad-banner ins { display: block; }
 
   .tool-section { max-width: 860px; margin: 0 auto; padding: 0 16px 32px; }
-  .tool-card { background: white; border-radius: 20px; border: 1.5px solid var(--border); box-shadow: 0 4px 24px rgba(14,165,233,0.08); overflow: hidden; margin-bottom: 24px; }
+  .tool-card { background: white; border-radius: 20px; border: 1.5px solid var(--border); box-shadow: 0 4px 24px rgba(14,165,233,0.08); overflow: hidden; margin-bottom: 24px; opacity:0; transform: translateY(16px) scale(.98); transition: opacity .5s var(--ease-cinematic), transform .5s var(--ease-cinematic); }
+  .tool-card.reveal { opacity:1; transform: translateY(0) scale(1); }
   .tool-card-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); padding: 18px 24px; color: white; display: flex; align-items: center; gap: 12px; }
-  .tool-card-header .icon { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink:0; }
+  .tool-card-header .icon { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink:0; transition: transform .3s; }
+  .tool-card-header:hover .icon { transform: rotate(2deg); }
   .tool-card-header h2 { color: white; font-size: 1.1rem; margin-bottom: 2px; }
   .tool-card-header p { color: rgba(255,255,255,0.85); font-size: 0.82rem; }
   .tool-body { padding: 26px 24px; }
@@ -184,27 +195,32 @@
   .stats-bar { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); padding: 28px 24px; margin: 0 0 40px; }
   .stats-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
   @media(max-width:640px){ .stats-inner { grid-template-columns: 1fr 1fr; } }
-  .stat-item { text-align:center; }
+  .stat-item { text-align:center; opacity:0; transform:translateY(14px); transition: opacity .5s var(--ease-cinematic), transform .5s var(--ease-cinematic); }
+  .stat-item.reveal { opacity:1; transform:translateY(0); }
   .stat-number { font-size: 1.7rem; font-weight: 800; color: white; line-height:1; margin-bottom:4px; }
   .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.8); }
 
   .section-container { max-width: 860px; margin: 0 auto; padding: 0 16px 48px; }
-  .section-title { text-align: center; margin-bottom: 32px; }
+  .section-title { text-align: center; margin-bottom: 32px; opacity:0; transform:translateY(30px); transition: opacity .7s var(--ease-cinematic), transform .7s var(--ease-cinematic); }
+  .section-title.reveal { opacity:1; transform:translateY(0); }
   .section-title h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 8px; }
   .section-title p { color: var(--gray); font-size: 0.95rem; }
 
   .feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
   @media(max-width:640px){ .feature-grid { grid-template-columns: 1fr; } }
   @media(min-width:641px) and (max-width:900px){ .feature-grid { grid-template-columns: 1fr 1fr; } }
-  .feature-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 22px 20px; transition: box-shadow .2s, transform .2s; }
-  .feature-card:hover { box-shadow: 0 8px 28px rgba(14,165,233,0.1); transform: translateY(-3px); }
-  .feature-icon { width: 46px; height: 46px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 14px; }
+  .feature-card { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 22px 20px; transition: box-shadow .2s, transform .3s var(--ease-cinematic), opacity .5s var(--ease-cinematic); opacity:0; transform: translateY(16px) scale(.98); animation: breathe 4s ease-in-out infinite; animation-play-state: paused; }
+  .feature-card.reveal { opacity:1; transform: translateY(0) scale(1); animation-play-state: running; }
+  .feature-card:hover { box-shadow: 0 8px 28px rgba(14,165,233,0.1); transform: translateY(-3px); animation-play-state: paused; }
+  .feature-icon { width: 46px; height: 46px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 14px; transition: transform .3s; }
+  .feature-card:hover .feature-icon { transform: rotate(2deg); }
   .feature-card h3 { font-size: 0.95rem; margin-bottom: 7px; }
   .feature-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
 
   .benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
   @media(max-width:640px){ .benefits-grid { grid-template-columns: 1fr 1fr; } }
-  .benefit-card { background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 18px 16px; text-align: center; }
+  .benefit-card { background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 18px 16px; text-align: center; opacity:0; transform: translateY(14px); transition: opacity .5s var(--ease-cinematic), transform .5s var(--ease-cinematic); }
+  .benefit-card.reveal { opacity:1; transform:translateY(0); }
   .benefit-emoji { font-size: 1.8rem; margin-bottom: 8px; }
   .benefit-card h4 { font-size: 0.88rem; margin-bottom: 4px; }
   .benefit-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.4; }
@@ -282,6 +298,8 @@
   .footer-bottom a { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-decoration: none; }
 
   .btn-reset { background: none; border: none; color: var(--primary); font-size: 0.85rem; font-weight: 600; cursor: pointer; margin-top: 12px; text-decoration: underline; }
+  .btn-calculate:active, .cta-btn:active, .state-btn:active, .comment-submit:active, .like-btn:active, .dislike-btn:active, .code-pill:active, .star-btn:active { transform: scale(.97); }
+  .code-pill { transition: transform .15s, background .15s, color .15s; }
 </style>
 </head>
 <body>
@@ -293,7 +311,9 @@
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="heroSection">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
   <div class="hero-badge">🇺🇸 2026 Tax Season</div>
   <h1>Free <em>IRS Cycle Code Decoder</em><br>& State Refund Tracker</h1>
   <p>Decode your 8-digit IRS cycle code, look up transcript codes like 846 and 570, and check your state refund timeline — free, instant, no signup.</p>
@@ -394,10 +414,10 @@
 
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Transcript Codes Covered</div></div>
-    <div class="stat-item"><div class="stat-number">50</div><div class="stat-label">States Covered</div></div>
-    <div class="stat-item"><div class="stat-number">21 Days</div><div class="stat-label">Standard E-File Window</div></div>
-    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Free, No Signup</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="16" data-suffix="+">0</div><div class="stat-label">Transcript Codes Covered</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="50" data-suffix="">0</div><div class="stat-label">States Covered</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="21" data-suffix=" Days">0</div><div class="stat-label">Standard E-File Window</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="100" data-suffix="%">0</div><div class="stat-label">Free, No Signup</div></div>
   </div>
 </div>
 
@@ -814,6 +834,84 @@ function loadFirebaseData() {
   });
 }
 window.addEventListener('load', initFirebase);
+
+// ===================== MOTION SYSTEM (Section 10) =====================
+async function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+// 10.B Hero sequential reveal
+window.addEventListener('DOMContentLoaded', () => {
+  requestAnimationFrame(() => {
+    setTimeout(() => document.getElementById('heroSection').classList.add('reveal'), 100);
+  });
+});
+
+// 10.F Section transitions — overlap feel
+const sectionIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal'); });
+}, { threshold: 0.1, rootMargin: '-10% 0px -10% 0px' });
+document.querySelectorAll('.section-title').forEach(el => sectionIO.observe(el));
+
+// 10.D Tool cards — presentation reveal, one at a time
+async function revealSequential(selector, gap=180){
+  const els = document.querySelectorAll(selector);
+  const io = new IntersectionObserver(async (entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('reveal');
+        io.unobserve(e.target);
+        await sleep(gap);
+      }
+    }
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+}
+revealSequential('.tool-card', 200);
+revealSequential('.feature-card', 100);
+revealSequential('.benefit-card', 90);
+
+// Stat items reveal
+document.querySelectorAll('.stat-item').forEach((el,i) => {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { setTimeout(()=>e.target.classList.add('reveal'), i*100); io.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  io.observe(el);
+});
+
+// 10.H Non-linear stat counters (ease-out cubic)
+function animateStatCount(el, target, suffix) {
+  let start; const dur = 1400;
+  function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if (p < 1) requestAnimationFrame(step); else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+const statCountIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      animateStatCount(el, target, suffix);
+      statCountIO.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-number[data-count]').forEach(el => statCountIO.observe(el));
+
+// 10.D Card cursor-follow micro-tilt (tool cards + feature cards)
+document.querySelectorAll('.tool-card, .feature-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width/2) / r.width;
+    const dy = (e.clientY - r.top - r.height/2) / r.height;
+    card.style.transform = `translate(${dx*4}px, ${dy*4}px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
 </script>
 </body>
 </html>
