@@ -1,0 +1,34 @@
+name: Gemini Tool Research Agent
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Every Monday 6 AM UTC
+  workflow_dispatch: {}    # Manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Gemini research script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/gemini-research.js
+
+      - name: Commit research-queue.md only
+        run: |
+          git config user.name "toolyfi-research-bot"
+          git config user.email "bot@toolyfi.com"
+          git add research-queue.md
+          git diff --cached --quiet || git commit -m "Weekly tool research update"
+          git push
