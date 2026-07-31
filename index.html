@@ -8,408 +8,603 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
 <!-- Tidio -->
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toolyfi — 50+ Free Online Tools | AI, Calculator, Finance & More</title>
-<meta name="description" content="Free online tools for everyone — AI writer, tax refund tracker, QR code generator, salary calculator & 50 more. 100% free, no login required. Used by 50,000+ worldwide.">
-<meta name="keywords" content="free online tools, AI tools, calculator, tax refund tracker, QR code generator, password generator, resume builder, salary calculator">
-<meta name="robots" content="index, follow">
+<title>Toolyfi — 50+ Free Online Tools | AI, Finance, Dev & More</title>
+<meta name="description" content="50+ free online tools: AI Assistant, QR generator, tax refund tracker, salary calculator & more. No signup, no limits.">
 <link rel="canonical" href="https://toolyfi.com/">
 <meta property="og:title" content="Toolyfi — 50+ Free Online Tools">
-<meta property="og:description" content="AI tools, calculators, finance tools & more. 100% free, no login needed.">
-<meta property="og:url" content="https://toolyfi.com/">
-<meta property="og:type" content="website">
+<meta property="og:description" content="AI, finance, calculators, dev tools — all free, no login.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Toolyfi — 50+ Free Online Tools">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Toolyfi","url":"https://toolyfi.com","description":"50+ free online tools including AI tools, calculators, finance tools, text utilities and developer tools.","potentialAction":{"@type":"SearchAction","target":"https://toolyfi.com/?search={search_term_string}","query-input":"required name=search_term_string"}}</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Toolyfi","url":"https://toolyfi.com","description":"50+ free online tools.","potentialAction":{"@type":"SearchAction","target":"https://toolyfi.com/?search={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com","logo":"https://toolyfi.com/logo1.png"}
+</script>
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Firebase -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getDatabase, ref, onValue, set, increment } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
-const firebaseConfig = {apiKey:"AIzaSyExample",authDomain:"toolyfi-208b8.firebaseapp.com",databaseURL:"https://toolyfi-208b8-default-rtdb.firebaseio.com",projectId:"toolyfi-208b8",storageBucket:"toolyfi-208b8.appspot.com",messagingSenderId:"123456789",appId:"1:123456789:web:abcdef"};
-try { const app = initializeApp(firebaseConfig); const db = getDatabase(app); const visRef = ref(db,'homepage/visits'); set(visRef, increment(1)); } catch(e){}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<!--
+  NOTE (Firebase): Purani file mein dummy/fake apiKey ("AIzaSyExample") tha jo silently fail ho raha
+  tha — koi visit count save nahi ho raha tha. Yahan se hata diya hai taake console error na aaye.
+  Firebase Realtime Database har tool-page k like/comment/rating jaisa engagement data live-save
+  karta hai. Jab real config (Firebase Console > Project Settings > apiKey/authDomain/etc) ready ho,
+  wapis add karwa dena — is comment ki jagah.
+-->
+
 <style>
-:root {
-  --purple: #6d28d9;
-  --purple-dark: #4c1d95;
-  --purple-light: #ede9fe;
-  --purple-mid: #7c3aed;
-  --text: #1a1a2e;
-  --text-2: #4a5568;
-  --text-3: #94a3b8;
-  --bg: #f5f3ff;
-  --white: #ffffff;
-  --border: #e9d5ff;
-  --gold: #f59e0b;
-  --green: #059669;
-  --card-shadow: 0 4px 24px rgba(109,40,217,0.08);
-  --card-shadow-hover: 0 12px 40px rgba(109,40,217,0.16);
-  --radius: 16px;
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#faf6f0;
+  --bg-card:#ffffff;
+  --text:#1a1a2e;
+  --text-2:#4a4a5a;
+  --text-3:#8a8a9a;
+  --coral:#e85d4a;
+  --coral-light:#f5d4ce;
+  --teal:#2a9d8f;
+  --teal-light:#d4ebe7;
+  --gold:#e9b741;
+  --gold-light:#f5e6c8;
+  --shadow:0 8px 32px rgba(0,0,0,0.06);
+  --radius:20px;
+  --radius-sm:12px;
+  --ease: cubic-bezier(0.22,1,0.36,1);
 }
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; font-size: 1rem; line-height: 1.6; }
-h1,h2,h3,h4,h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--text); line-height: 1.25; }
-a { text-decoration: none; color: inherit; }
-.header { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(109,40,217,0.07); }
-.header-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.logo { display: flex; align-items: center; }
-.nav { display: flex; gap: 4px; flex-wrap: wrap; }
-.nav a { padding: 7px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; color: var(--text-2); transition: all 0.2s; }
-.nav a:hover { background: var(--purple-light); color: var(--purple); }
-.header-cta { background: linear-gradient(135deg, #6d28d9, #7c3aed); color: white; padding: 9px 20px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; transition: all 0.2s; white-space: nowrap; }
-.header-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(109,40,217,0.35); }
-.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
-.mobile-nav { display: none; padding: 16px 20px; border-top: 1px solid var(--border); flex-direction: column; gap: 4px; }
-.mobile-nav a { padding: 10px 14px; border-radius: 8px; font-weight: 600; color: var(--text-2); }
-.mobile-nav a:hover { background: var(--purple-light); color: var(--purple); }
-@media(max-width:768px) { .nav { display: none; } .header-cta { display: none; } .hamburger { display: block; } .mobile-nav.open { display: flex; } }
-.hero { background: linear-gradient(135deg, #1e0a3c 0%, #3b0764 30%, #6d28d9 65%, #ede9fe 100%); padding: 80px 20px 100px; text-align: center; position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(109,40,217,0.3) 0%, transparent 50%); pointer-events: none; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 7px 18px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 24px; animation: fadeDown 0.6s ease both; }
-.hero-badge span { color: #c4b5fd; }
-.hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); color: white; margin-bottom: 18px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.1s both; }
-.hero h1 em { font-style: normal; color: #c4b5fd; }
-.hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 36px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.2s both; }
-.hero-stats { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.3s both; }
-.hstat { text-align: center; }
-.hstat-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.9rem; font-weight: 800; color: white; }
-.hstat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
-.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeDown 0.6s ease 0.4s both; }
-.btn-primary { background: white; color: var(--purple); padding: 14px 32px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1rem; transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
-.btn-outline { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.4); color: white; padding: 14px 32px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; transition: all 0.2s; }
-.btn-outline:hover { background: rgba(255,255,255,0.2); }
-.search-section { max-width: 720px; margin: -30px auto 0; padding: 0 20px; position: relative; z-index: 10; }
-.search-card { background: white; border-radius: 18px; padding: 8px; box-shadow: 0 20px 60px rgba(109,40,217,0.18); display: flex; gap: 8px; }
-.search-input-wrap { flex: 1; position: relative; }
-.search-input-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-3); }
-.search-input { width: 100%; padding: 14px 14px 14px 44px; border: 2px solid transparent; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; background: var(--bg); color: var(--text); transition: border-color 0.2s; outline: none; }
-.search-input:focus { border-color: var(--purple); background: white; }
-.search-input::placeholder { color: var(--text-3); }
-.search-btn { background: linear-gradient(135deg, #6d28d9, #7c3aed); color: white; border: none; border-radius: 12px; padding: 14px 24px; font-weight: 700; font-size: 0.95rem; cursor: pointer; white-space: nowrap; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.2s; }
-.search-btn:hover { transform: translateY(-1px); }
-.ad-wrap { max-width: 1200px; margin: 30px auto; padding: 0 20px; text-align: center; }
-.section { max-width: 1200px; margin: 0 auto; padding: 70px 20px; }
-.section-header { margin-bottom: 40px; }
-.section-tag { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
-.section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
-.section-sub { color: var(--text-2); font-size: 1.05rem; max-width: 560px; }
-.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.tool-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; transition: all 0.25s; display: flex; flex-direction: column; gap: 8px; opacity: 0; transform: translateY(24px); }
-.tool-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s, border-color 0.25s; }
-.tool-card:hover { border-color: var(--purple); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
-.tool-icon { font-size: 2rem; margin-bottom: 4px; }
-.tool-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); }
-.tool-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.5; flex: 1; }
-.tool-badge { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-top: 4px; width: fit-content; }
-.tool-badge.green { background: #d1fae5; color: #065f46; }
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.featured-card { background: white; border-radius: 18px; padding: 26px; border: 1px solid var(--border); box-shadow: var(--card-shadow); transition: all 0.25s; opacity: 0; transform: translateY(24px); display: flex; flex-direction: column; gap: 10px; }
-.featured-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s; }
-.featured-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-5px); border-color: var(--purple); }
-.featured-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #6d28d9, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-.featured-card h3 { font-size: 1.05rem; font-weight: 800; }
-.featured-card p { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; flex: 1; }
-.featured-link { display: flex; align-items: center; gap: 6px; color: var(--purple); font-weight: 700; font-size: 0.9rem; margin-top: 4px; }
-.gold-section { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-top: 1px solid #fde68a; border-bottom: 1px solid #fde68a; }
-.gold-inner { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
-.gold-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 28px; }
-.gold-card { background: white; border-radius: 12px; border: 1px solid #fde68a; padding: 16px; text-align: center; transition: all 0.2s; opacity: 0; transform: translateY(16px); }
-.gold-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s; }
-.gold-card:hover { box-shadow: 0 8px 24px rgba(245,158,11,0.2); transform: translateY(-3px); }
-.gold-city { font-size: 0.82rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.gold-tag { font-size: 0.75rem; color: #b45309; margin-top: 4px; }
-.why-section { background: linear-gradient(135deg, #1e0a3c, #3b0764); }
-.why-inner { max-width: 1200px; margin: 0 auto; padding: 70px 20px; }
-.why-inner h2 { color: white; text-align: center; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
-.why-sub { color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 48px; font-size: 1.05rem; }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.why-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 28px 22px; text-align: center; opacity: 0; transform: translateY(24px); transition: all 0.25s; }
-.why-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease; }
-.why-card:hover { background: rgba(255,255,255,0.13); }
-.why-icon { font-size: 2.2rem; margin-bottom: 14px; }
-.why-card h3 { color: white; font-size: 1rem; margin-bottom: 8px; }
-.why-card p { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.6; }
-.cta-section { background: linear-gradient(135deg, #6d28d9, #7c3aed); padding: 70px 20px; text-align: center; }
-.cta-section h2 { color: white; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; }
-.cta-section p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-.cta-btn { background: white; color: var(--purple); padding: 16px 40px; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.05rem; display: inline-block; transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
-footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 30px; }
-.footer-inner { max-width: 1200px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-.footer-brand p { font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-top: 12px; line-height: 1.7; max-width: 280px; }
-.footer-logo { display: flex; align-items: center; }
-.footer-col h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-.footer-col a { display: block; font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-bottom: 9px; transition: color 0.2s; }
-.footer-col a:hover { color: #c4b5fd; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
-.footer-links { display: flex; gap: 20px; }
-.footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
-.footer-links a:hover { color: rgba(255,255,255,0.7); }
-@media(max-width:768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-@media(max-width:480px) { .footer-top { grid-template-columns: 1fr; } }
-.section-divider { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.section-divider hr { border: none; border-top: 1px solid var(--border); }
-.view-all { display: inline-flex; align-items: center; gap: 8px; background: var(--purple-light); color: var(--purple); padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: 0.92rem; margin-top: 28px; transition: all 0.2s; }
-.view-all:hover { background: var(--purple); color: white; }
-#search-results { display: none; max-width: 1200px; margin: 20px auto; padding: 0 20px; }
-#search-results.active { display: block; }
-.sr-title { font-size: 0.9rem; color: var(--text-2); margin-bottom: 16px; font-weight: 600; }
-@keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-@media(max-width:600px) { .hero { padding: 60px 20px 80px; } .hero-stats { gap: 24px; } .search-card { flex-direction: column; } .search-btn { padding: 12px; } .tools-grid { grid-template-columns: 1fr 1fr; } }
-.news-ticker-outer { max-width: 860px; margin: 28px auto 0; padding: 0 20px; position: relative; z-index: 9; }
-.news-ticker-wrap { background: linear-gradient(90deg, #1e0a3c, #3b0764, #6d28d9, #3b0764, #1e0a3c); border-radius: 10px; overflow: hidden; display: flex; align-items: center; height: 38px; box-shadow: 0 4px 20px rgba(109,40,217,0.25); position: relative; }
-.ticker-label { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #1a1a2e; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.72rem; font-weight: 800; padding: 0 14px; height: 100%; display: flex; align-items: center; white-space: nowrap; letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; z-index: 2; }
-.ticker-scroll { flex: 1; overflow: hidden; position: relative; }
-.ticker-track { display: flex; gap: 0; white-space: nowrap; animation: tickerMove 36s linear infinite; }
-.ticker-track:hover { animation-play-state: paused; }
-.ticker-item { display: inline-flex; align-items: center; gap: 6px; padding: 0 32px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; color: white; white-space: nowrap; text-decoration: none; transition: color 0.2s; cursor: pointer; }
-.ticker-item:hover { color: #fbbf24; }
-.ticker-item::after { content: '•'; margin-left: 32px; color: rgba(255,255,255,0.25); }
-.ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; display: inline-block; animation: tickDot 1.2s ease-in-out infinite; flex-shrink: 0; }
-@keyframes tickDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.6); } }
-@keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@media(max-width:600px) { .ticker-label { font-size: 0.65rem; padding: 0 10px; } .ticker-item { font-size: 0.75rem; padding: 0 20px; } }
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+a{color:inherit;text-decoration:none;}
+img{display:block;width:100%;height:auto;}
+
+/* ===== HEADER ===== */
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(250,246,240,0.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 24px;max-width:1280px;margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:8px;}
+.logo img{height:40px;width:auto;}
+.nav{display:flex;gap:4px;flex-wrap:wrap;}
+.nav a{
+  padding:8px 16px;border-radius:10px;font-weight:600;font-size:0.85rem;
+  color:var(--text-2);transition:all 0.2s;
+}
+.nav a:hover{background:var(--coral-light);color:var(--coral);}
+.header-cta{
+  background:var(--coral);color:#fff;padding:8px 22px;border-radius:12px;
+  font-weight:700;font-size:0.85rem;transition:all 0.2s;
+}
+.header-cta:hover{transform:scale(0.96);box-shadow:0 4px 20px rgba(232,93,74,0.3);}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;}
+.mobile-nav{display:none;padding:16px 24px;border-top:1px solid rgba(0,0,0,0.04);flex-direction:column;gap:4px;}
+.mobile-nav a{padding:10px 14px;border-radius:8px;font-weight:600;color:var(--text-2);}
+.mobile-nav a:hover{background:var(--coral-light);color:var(--coral);}
+@media(max-width:768px){.nav,.header-cta{display:none;}.hamburger{display:block;}.mobile-nav.open{display:flex;}}
+
+/* ===== HERO — magazine style ===== */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  min-height:80vh;background:var(--bg);overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 48px 60px 60px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--coral-light);color:var(--coral);padding:4px 16px;border-radius:30px;
+  font-weight:700;font-size:0.75rem;letter-spacing:0.5px;margin-bottom:16px;width:fit-content;
+}
+.hero-left h1{
+  font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.1;
+  margin-bottom:12px;letter-spacing:-1px;
+}
+.hero-left h1 em{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  color:var(--coral);font-weight:400;
+}
+.hero-left p{
+  font-size:1.05rem;color:var(--text-2);max-width:420px;margin-bottom:28px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--coral);color:#fff;padding:14px 32px;border-radius:14px;
+  font-weight:700;transition:all 0.2s;box-shadow:0 4px 16px rgba(232,93,74,0.25);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,93,74,0.35);}
+.btn-primary:active{transform:scale(0.97);}
+.btn-outline{
+  border:2px solid var(--text-3);color:var(--text-2);padding:14px 32px;border-radius:14px;font-weight:600;transition:all 0.2s;
+}
+.btn-outline:hover{border-color:var(--coral);color:var(--coral);}
+.hero-stats{
+  display:flex;gap:32px;margin-top:28px;padding-top:24px;border-top:2px solid rgba(0,0,0,0.04);
+}
+.hstat-num{font-size:1.6rem;font-weight:800;color:var(--text);}
+.hstat-num span{color:var(--coral);}
+.hstat-lbl{font-size:0.8rem;color:var(--text-3);margin-top:-2px;}
+
+.hero-right{
+  position:relative;overflow:hidden;background:var(--coral-light);
+  display:flex;align-items:center;justify-content:center;
+  padding:40px;
+}
+.hero-image-grid{
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;
+  width:100%;max-width:480px;aspect-ratio:1/1;
+}
+.hero-image-grid .img-card{
+  border-radius:var(--radius-sm);overflow:hidden;
+  background:#fff;box-shadow:var(--shadow);
+  transition:transform 0.3s ease;
+  position:relative;
+}
+.hero-image-grid .img-card img{
+  width:100%;height:100%;object-fit:cover;
+}
+.hero-image-grid .img-card:nth-child(1){grid-column:1;grid-row:1;}
+.hero-image-grid .img-card:nth-child(2){grid-column:2;grid-row:1;transform:translateY(16px);}
+.hero-image-grid .img-card:nth-child(3){grid-column:1;grid-row:2;transform:translateY(-16px);}
+.hero-image-grid .img-card:nth-child(4){grid-column:2;grid-row:2;}
+.hero-image-grid .img-card:hover{transform:scale(1.02) translateY(0);}
+.hero-image-grid .img-card .label{
+  position:absolute;bottom:8px;left:8px;right:8px;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);
+  color:#fff;font-size:0.6rem;font-weight:700;padding:4px 10px;border-radius:6px;
+  text-align:center;letter-spacing:0.3px;
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:40px 24px;order:2;}
+  .hero-right{padding:24px;order:1;min-height:300px;}
+  .hero-image-grid{max-width:320px;}
+}
+@media(max-width:480px){
+  .hero-left h1{font-size:2rem;}
+  .hero-stats{flex-wrap:wrap;gap:16px;}
+}
+
+/* ===== SEARCH BAR ===== */
+.search-section{
+  max-width:720px;margin:-32px auto 0;padding:0 20px;position:relative;z-index:10;
+}
+.search-card{
+  background:#fff;border-radius:18px;padding:8px;
+  display:flex;gap:8px;box-shadow:0 20px 60px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.04);
+}
+.search-input-wrap{flex:1;position:relative;}
+.search-input-wrap svg{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--text-3);width:18px;height:18px;
+}
+.search-input{
+  width:100%;padding:14px 14px 14px 44px;
+  border:2px solid transparent;border-radius:12px;
+  background:var(--bg);color:var(--text);font-size:1rem;
+  outline:none;transition:border-color 0.2s;
+}
+.search-input:focus{border-color:var(--coral);background:#fff;}
+.search-input::placeholder{color:var(--text-3);}
+.search-btn{
+  background:var(--coral);color:#fff;border:none;border-radius:12px;
+  padding:14px 28px;font-weight:700;cursor:pointer;transition:all 0.2s;
+}
+.search-btn:hover{transform:scale(0.97);box-shadow:0 4px 20px rgba(232,93,74,0.3);}
+.search-btn:active{transform:scale(0.95);}
+
+/* ===== SEARCH RESULTS ===== */
+#search-results{display:none;max-width:1280px;margin:20px auto;padding:0 20px;}
+#search-results.active{display:block;}
+.sr-title{color:var(--text-2);margin-bottom:16px;font-weight:600;}
+
+/* ===== SECTIONS ===== */
+.section{padding:70px 20px;}
+.section-header{max-width:1280px;margin:0 auto 40px;}
+.section-tag{
+  display:inline-block;background:var(--coral-light);color:var(--coral);
+  padding:4px 14px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.5px;margin-bottom:6px;
+}
+.section h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-0.5px;}
+.section h2 em{color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;font-weight:400;}
+.section-sub{color:var(--text-2);font-size:1.05rem;max-width:520px;}
+
+/* ===== TOOL CARDS — with images ===== */
+.tools-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;
+  max-width:1280px;margin:0 auto;
+}
+.tool-card{
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);transition:all 0.35s ease;
+  opacity:0;transform:translateY(20px);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.tool-card.is-visible{
+  opacity:1;transform:translateY(0);
+  transition:opacity 500ms var(--ease),transform 500ms var(--ease),box-shadow 0.3s,transform 0.3s;
+}
+.tool-card:hover{
+  transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.08);
+}
+.tool-card-img{
+  height:140px;overflow:hidden;background:var(--coral-light);position:relative;
+}
+.tool-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.tool-card:hover .tool-card-img img{transform:scale(1.06);}
+.tool-card-img .tool-badge-float{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);
+  color:#fff;font-size:0.6rem;font-weight:700;padding:3px 10px;border-radius:6px;
+}
+.tool-card-img .tool-icon-overlay{
+  position:absolute;bottom:10px;left:10px;
+  background:rgba(255,255,255,0.92);
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.tool-card-body{padding:14px 18px 18px;}
+.tool-card-body .tool-name{font-weight:700;font-size:1rem;color:var(--text);}
+.tool-card-body .tool-desc{font-size:0.85rem;color:var(--text-2);line-height:1.5;margin-top:2px;}
+.tool-card-body .tool-badge{
+  display:inline-block;background:var(--coral-light);color:var(--coral);
+  padding:2px 10px;border-radius:6px;font-size:0.65rem;font-weight:700;margin-top:6px;
+}
+.tool-badge.green{background:var(--teal-light);color:var(--teal);}
+.tool-badge.gold{background:var(--gold-light);color:#b8860b;}
+
+/* compact row-style card (used in dev/text 2-col layout) */
+.tool-row{
+  display:flex;flex-direction:row;align-items:center;gap:14px;
+  background:#fff;border-radius:var(--radius-sm);overflow:hidden;
+  box-shadow:var(--shadow);opacity:0;transform:translateY(14px);
+  border:1px solid rgba(0,0,0,0.03);transition:opacity 500ms var(--ease),transform 500ms var(--ease),box-shadow .3s;
+}
+.tool-row.is-visible{opacity:1;transform:translateY(0);}
+.tool-row:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);transform:translateY(-2px);}
+.tool-row .row-img{width:74px;height:74px;flex-shrink:0;overflow:hidden;position:relative;}
+.tool-row .row-img img{width:100%;height:100%;object-fit:cover;}
+.tool-row .row-body{padding:10px 14px 10px 0;}
+.tool-row .tool-name{font-weight:700;font-size:0.92rem;}
+.tool-row .tool-desc{font-size:0.78rem;color:var(--text-2);margin-top:2px;}
+
+/* ===== FEATURED (large hero cards with images) ===== */
+.featured-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;
+  max-width:1280px;margin:0 auto;
+}
+.featured-card{
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);transition:all 0.35s ease;
+  opacity:0;transform:translateY(20px);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.featured-card.is-visible{
+  opacity:1;transform:translateY(0);
+  transition:opacity 500ms var(--ease),transform 500ms var(--ease),box-shadow 0.3s;
+}
+.featured-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,0.08);}
+.featured-card-img{
+  height:200px;overflow:hidden;background:var(--coral-light);
+}
+.featured-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.featured-card:hover .featured-card-img img{transform:scale(1.05);}
+.featured-card-body{padding:20px 22px 24px;}
+.featured-card-body .fc-icon{
+  display:inline-block;font-size:1.8rem;margin-bottom:4px;
+}
+.featured-card-body h3{font-size:1.1rem;font-weight:800;color:var(--text);}
+.featured-card-body p{font-size:0.9rem;color:var(--text-2);margin:4px 0 10px;}
+.featured-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--coral);font-weight:700;font-size:0.9rem;
+}
+.featured-link:hover{gap:10px;}
+
+/* ===== GOLD SECTION ===== */
+.gold-section{
+  background:var(--gold-light);padding:50px 20px;
+}
+.gold-inner{max-width:1280px;margin:0 auto;}
+.gold-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:20px;
+}
+.gold-card{
+  background:#fff;border-radius:var(--radius-sm);padding:16px;text-align:center;
+  box-shadow:var(--shadow);transition:all 0.2s;
+  opacity:0;transform:translateY(12px);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.gold-card.is-visible{
+  opacity:1;transform:translateY(0);
+  transition:opacity 400ms var(--ease),transform 400ms var(--ease);
+}
+.gold-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.06);}
+.gold-city{font-weight:700;color:var(--text);}
+.gold-tag{font-size:0.7rem;color:var(--text-3);margin-top:2px;}
+
+/* ===== WHY SECTION ===== */
+.why-section{background:#fff;padding:70px 20px;}
+.why-inner{max-width:1280px;margin:0 auto;text-align:center;}
+.why-inner h2{margin-bottom:6px;}
+.why-inner h2 em{color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;}
+.why-sub{color:var(--text-2);margin-bottom:40px;}
+.why-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;
+}
+.why-card{
+  background:var(--bg);border-radius:var(--radius-sm);padding:28px 20px;
+  border:1px solid rgba(0,0,0,0.03);transition:all 0.2s;
+  opacity:0;transform:translateY(16px);
+}
+.why-card.is-visible{
+  opacity:1;transform:translateY(0);
+  transition:opacity 500ms var(--ease),transform 500ms var(--ease);
+}
+.why-card:hover{background:var(--coral-light);transform:translateY(-4px);}
+.why-icon{font-size:2.2rem;margin-bottom:8px;}
+.why-card h3{font-weight:700;font-size:1rem;}
+.why-card p{font-size:0.9rem;color:var(--text-2);margin-top:4px;}
+
+/* ===== CTA ===== */
+.cta-section{
+  background:linear-gradient(135deg,var(--coral),#d94f3a);
+  padding:70px 20px;text-align:center;color:#fff;
+}
+.cta-section h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;}
+.cta-section p{font-size:1.05rem;opacity:0.9;margin:8px auto 30px;max-width:500px;}
+.cta-btn{
+  background:#fff;color:var(--coral);padding:16px 44px;border-radius:14px;
+  font-weight:700;font-size:1.05rem;display:inline-block;
+  transition:all 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.1);
+}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.15);}
+.cta-btn:active{transform:scale(0.97);}
+
+/* ===== FOOTER ===== */
+footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:56px 20px 28px;}
+.footer-inner{max-width:1280px;margin:0 auto;}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;
+}
+.footer-brand img{height:40px;width:auto;display:block;margin-bottom:10px;}
+.footer-brand p{font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:8px;max-width:280px;}
+.footer-col h4{color:#fff;font-weight:700;margin-bottom:14px;font-size:0.8rem;letter-spacing:0.5px;text-transform:uppercase;}
+.footer-col a{display:block;font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:6px;transition:color 0.2s;}
+.footer-col a:hover{color:var(--coral-light);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:0.8rem;color:rgba(255,255,255,0.4);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:0.8rem;color:rgba(255,255,255,0.4);}
+.footer-links a:hover{color:#fff;}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+
+/* ===== ADS ===== */
+.ad-wrap{max-width:1280px;margin:28px auto;padding:0 20px;text-align:center;}
+.ad-wrap-inner{background:#fff;border-radius:var(--radius-sm);padding:8px;box-shadow:var(--shadow);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  .section{padding:50px 16px;}
+  .tools-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .featured-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <a href="/" class="logo">
-      <img src="/assets/logo.jpg" alt="Toolyfi.com - Free Online Tools" style="height:40px;width:auto;display:block;">
+      <img src="/logo1.png" alt="Toolyfi">
     </a>
     <nav class="nav">
-      <a href="#ai-tools">AI Tools</a>
+      <a href="#ai-tools">AI</a>
       <a href="#finance">Finance</a>
       <a href="#calculators">Calculators</a>
-      <a href="#dev-tools">Dev Tools</a>
-      <a href="#more-tools">More Tools</a>
+      <a href="#dev-tools">Dev</a>
     </nav>
-    <a href="#search-section" class="header-cta">Try Free Tools →</a>
+    <a href="#search-section" class="header-cta">Explore →</a>
     <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <nav class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav">
     <a href="#ai-tools">🤖 AI Tools</a>
-    <a href="#finance">💵 Finance Tools</a>
+    <a href="#finance">💵 Finance</a>
     <a href="#calculators">🔢 Calculators</a>
-    <a href="#dev-tools">⚙️ Developer Tools</a>
-    <a href="#more-tools">🧰 More Tools</a>
+    <a href="#dev-tools">⚙️ Dev Tools</a>
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
-  </nav>
+  </div>
 </header>
 
+<!-- HERO — magazine style with real photos -->
 <section class="hero">
-  <div class="hero-badge">⚡ <span>50+ Free Tools</span> — No Login Required</div>
-  <h1>Free Online Tools for<br><em>Work, Study & Life</em></h1>
-  <p class="hero-sub">AI tools, finance calculators, text utilities, QR generators & more. 100% free, instant access, no account needed. Trusted by 50,000+ people worldwide.</p>
-  <div class="hero-stats">
-    <div class="hstat"><div class="hstat-num" data-count="50">0</div><div class="hstat-lbl">Free Tools</div></div>
-    <div class="hstat"><div class="hstat-num" data-count="50000" data-suffix="K+">0</div><div class="hstat-lbl">Monthly Users</div></div>
-    <div class="hstat"><div class="hstat-num" data-count="100" data-suffix="%">0</div><div class="hstat-lbl">Free Forever</div></div>
-    <div class="hstat"><div class="hstat-num" data-count="0" data-text="No">No</div><div class="hstat-lbl">Login Needed</div></div>
+  <div class="hero-left">
+    <div class="hero-badge">⚡ 50+ Free Tools</div>
+    <h1>Free tools for <br><em>work, life & play</em></h1>
+    <p>AI assistants, calculators, finance tools, text utilities — all free, no login, no limits. Used by thousands of people every month.</p>
+    <div class="hero-btns">
+      <a href="#featured" class="btn-primary">Browse Tools →</a>
+      <a href="/ai-assistant.html" class="btn-outline">Try AI Assistant</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-num"><span data-count="50">0</span>+</div><div class="hstat-lbl">Free Tools</div></div>
+      <div><div class="hstat-num">0</div><div class="hstat-lbl">Signups Required</div></div>
+      <div><div class="hstat-num">100%</div><div class="hstat-lbl">Free Forever</div></div>
+    </div>
   </div>
-  <div class="hero-btns">
-    <a href="#featured" class="btn-primary">Explore All Tools →</a>
-    <a href="/ai-assistant.html" class="btn-outline">Try AI Assistant</a>
+  <div class="hero-right">
+    <div class="hero-image-grid">
+      <div class="img-card"><img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500" alt="AI tools" loading="lazy"><div class="label">🤖 AI Tools</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500" alt="Finance tools" loading="lazy"><div class="label">💰 Finance</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500" alt="Calculators" loading="lazy"><div class="label">🔢 Calculators</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=500" alt="Dev tools" loading="lazy"><div class="label">⚙️ Dev Tools</div></div>
+    </div>
   </div>
 </section>
 
+<!-- SEARCH -->
 <div class="search-section" id="search-section">
   <div class="search-card">
     <div class="search-input-wrap">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="search-input" id="searchInput" placeholder="Search any tool — QR code, salary calculator, AI writer..." oninput="handleSearch(this.value)">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search any tool..." oninput="handleSearch(this.value)">
     </div>
     <button class="search-btn" onclick="handleSearch(document.getElementById('searchInput').value)">Search</button>
   </div>
 </div>
 
+<!-- SEARCH RESULTS -->
 <div id="search-results">
-  <div class="section-header"><p class="sr-title" id="srTitle"></p></div>
+  <p class="sr-title" id="srTitle"></p>
   <div class="tools-grid" id="srGrid"></div>
 </div>
 
-<div class="news-ticker-outer">
-  <div class="news-ticker-wrap">
-    <div class="ticker-label">⚡ QUICK LINKS</div>
-    <div class="ticker-scroll">
-      <div class="ticker-track">
-        <a href="/tax-refund-tracker.html" class="ticker-item"><span class="ticker-dot"></span>💰 Tax Refund Tracker — Check Your 2026 IRS Refund Status Free</a>
-        <a href="/qr-code-generator.html" class="ticker-item"><span class="ticker-dot"></span>📱 QR Code Generator — Create Free QR Codes Instantly</a>
-        <a href="/password-generator.html" class="ticker-item"><span class="ticker-dot"></span>🔐 Password Generator — Strong Secure Passwords in One Click</a>
-        <a href="/currency-converter.html" class="ticker-item"><span class="ticker-dot"></span>💱 Currency Converter — Live Rates for 150+ Currencies</a>
-        <a href="/resume-builder.html" class="ticker-item"><span class="ticker-dot"></span>📄 Resume Builder — Free ATS-Friendly PDF Resume</a>
-        <a href="/seo-checker.html" class="ticker-item"><span class="ticker-dot"></span>📈 SEO Checker — Analyze Any Website's SEO Free</a>
-        <a href="/invoice-generator.html" class="ticker-item"><span class="ticker-dot"></span>🧾 Invoice Generator — Create Professional Invoices Free</a>
-        <a href="/scientific-calculator.html" class="ticker-item"><span class="ticker-dot"></span>🔬 Scientific Calculator — Full CASIO fx-82ES Replica Online</a>
-        <a href="/gold-rate-pakistan.html" class="ticker-item"><span class="ticker-dot"></span>🥇 Gold Rate Pakistan — Live 24K 22K 21K Prices Daily</a>
-        <a href="/tax-refund-tracker.html" class="ticker-item"><span class="ticker-dot"></span>💰 Tax Refund Tracker — Check Your 2026 IRS Refund Status Free</a>
-        <a href="/qr-code-generator.html" class="ticker-item"><span class="ticker-dot"></span>📱 QR Code Generator — Create Free QR Codes Instantly</a>
-        <a href="/password-generator.html" class="ticker-item"><span class="ticker-dot"></span>🔐 Password Generator — Strong Secure Passwords in One Click</a>
-        <a href="/currency-converter.html" class="ticker-item"><span class="ticker-dot"></span>💱 Currency Converter — Live Rates for 150+ Currencies</a>
-        <a href="/resume-builder.html" class="ticker-item"><span class="ticker-dot"></span>📄 Resume Builder — Free ATS-Friendly PDF Resume</a>
-        <a href="/seo-checker.html" class="ticker-item"><span class="ticker-dot"></span>📈 SEO Checker — Analyze Any Website's SEO Free</a>
-        <a href="/invoice-generator.html" class="ticker-item"><span class="ticker-dot"></span>🧾 Invoice Generator — Create Professional Invoices Free</a>
-        <a href="/scientific-calculator.html" class="ticker-item"><span class="ticker-dot"></span>🔬 Scientific Calculator — Full CASIO fx-82ES Replica Online</a>
-        <a href="/gold-rate-pakistan.html" class="ticker-item"><span class="ticker-dot"></span>🥇 Gold Rate Pakistan — Live 24K 22K 21K Prices Daily</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="ad-wrap">
+<!-- ADS -->
+<div class="ad-wrap"><div class="ad-wrap-inner">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+</div></div>
 
+<!-- FEATURED -->
 <section class="section" id="featured">
   <div class="section-header">
-    <span class="section-tag">🔥 Trending</span>
-    <h2>Most Popular Tools Right Now</h2>
+    <span class="section-tag">🔥 Featured</span>
+    <h2>Most <em>popular</em> tools</h2>
     <p class="section-sub">Handpicked tools used by thousands daily — free, instant, no login.</p>
   </div>
   <div class="featured-grid">
-    <a href="/ai-assistant.html" class="featured-card"><div class="featured-icon">🤖</div><h3>AI Assistant</h3><p>Write articles, emails & SEO content instantly with Gemma 4 AI. Free, no signup, works globally.</p><div class="featured-link">Try Free <span>→</span></div></a>
-    <a href="/tax-refund-tracker.html" class="featured-card"><div class="featured-icon">💰</div><h3>Tax Refund Tracker 2026</h3><p>Estimate your IRS 2026 refund date instantly. Check delay risk, diagnostic breakdown. Free tool.</p><div class="featured-link">Check Now <span>→</span></div></a>
-    <a href="/salary-to-hourly.html" class="featured-card"><div class="featured-icon">📊</div><h3>Salary to Hourly Calculator</h3><p>Convert annual salary to hourly wage instantly. Monthly, weekly, daily breakdown. US-focused 2026.</p><div class="featured-link">Calculate <span>→</span></div></a>
-    <a href="/qr-code-generator.html" class="featured-card"><div class="featured-icon">📱</div><h3>QR Code Generator</h3><p>Create QR codes for URLs, text, WiFi, contacts in seconds. Download PNG instantly. No login.</p><div class="featured-link">Generate Free <span>→</span></div></a>
-    <a href="/password-generator.html" class="featured-card"><div class="featured-icon">🔐</div><h3>Password Generator</h3><p>Generate strong, secure passwords instantly. Custom length, symbols, numbers. Copy in one click.</p><div class="featured-link">Generate <span>→</span></div></a>
-    <a href="/resume-builder.html" class="featured-card"><div class="featured-icon">📄</div><h3>Resume Builder</h3><p>Build an ATS-friendly PDF resume free online. Professional templates, no account needed.</p><div class="featured-link">Build Resume <span>→</span></div></a>
+    <a href="/ai-assistant.html" class="featured-card">
+      <div class="featured-card-img"><img src="https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?cs=srgb&fm=jpg&w=600" alt="AI Assistant" loading="lazy"></div>
+      <div class="featured-card-body">
+        <div class="fc-icon">🤖</div>
+        <h3>AI Assistant</h3>
+        <p>Write articles, emails & SEO content instantly with AI.</p>
+        <span class="featured-link">Try Free →</span>
+      </div>
+    </a>
+    <a href="/tax-refund-tracker.html" class="featured-card">
+      <div class="featured-card-img"><img src="https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?cs=srgb&fm=jpg&w=600" alt="Tax Refund" loading="lazy"></div>
+      <div class="featured-card-body">
+        <div class="fc-icon">💰</div>
+        <h3>Tax Refund Tracker 2026</h3>
+        <p>Estimate your IRS 2026 refund date instantly. Check delay risk.</p>
+        <span class="featured-link">Check Now →</span>
+      </div>
+    </a>
+    <a href="/qr-code-generator.html" class="featured-card">
+      <div class="featured-card-img"><img src="https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=600" alt="QR Code" loading="lazy"></div>
+      <div class="featured-card-body">
+        <div class="fc-icon">📱</div>
+        <h3>QR Code Generator</h3>
+        <p>Create QR codes for URLs, WiFi, contacts in seconds. PNG download.</p>
+        <span class="featured-link">Generate Free →</span>
+      </div>
+    </a>
   </div>
 </section>
 
-<div class="section-divider"><hr></div>
+<!-- ADS -->
+<div class="ad-wrap"><div class="ad-wrap-inner">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div></div>
 
+<!-- AI TOOLS -->
 <section class="section" id="ai-tools">
   <div class="section-header">
     <span class="section-tag">🧠 AI-Powered</span>
-    <h2>Free AI Tools</h2>
+    <h2>Free <em>AI</em> tools</h2>
     <p class="section-sub">Supercharge your work with cutting-edge AI. Free, instant, no signup.</p>
   </div>
-  <div class="tools-grid">
-    <a href="/ai-assistant.html" class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">AI Assistant</div><div class="tool-desc">Write articles, emails, SEO content with Gemma 4 AI.</div><span class="tool-badge">Popular</span></a>
-    <a href="/ai-image-generator.html" class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">AI Image Generator</div><div class="tool-desc">Turn text into stunning images in 9 styles. Free, no signup.</div><span class="tool-badge">Free</span></a>
-    <a href="/ai-text-detector.html" class="tool-card"><div class="tool-icon">🔍</div><div class="tool-name">AI Text Detector</div><div class="tool-desc">Detect ChatGPT, Claude & Gemini written content instantly.</div><span class="tool-badge">Accurate</span></a>
-    <a href="/ai-tool-finder.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">AI Tool Finder</div><div class="tool-desc">Find the best AI tool for any task. 1000+ tools, 20 categories.</div><span class="tool-badge">1000+ Tools</span></a>
-    <a href="/youtube-transcript-extractor.html" class="tool-card"><div class="tool-icon">▶️</div><div class="tool-name">YouTube Transcript</div><div class="tool-desc">Extract & summarize YouTube video transcripts free.</div><span class="tool-badge">Free</span></a>
-    <a href="/bg-remover-object-detection.html" class="tool-card"><div class="tool-icon">✂️</div><div class="tool-name">Background Remover</div><div class="tool-desc">Remove image backgrounds instantly. Professional quality PNG.</div><span class="tool-badge green">HD Quality</span></a>
-    <a href="/prompt-generator.html" class="tool-card"><div class="tool-icon">💡</div><div class="tool-name">Prompt Generator</div><div class="tool-desc">500+ AI prompts for ChatGPT, Claude & Gemini. Copy instantly.</div><span class="tool-badge">500+ Prompts</span></a>
-    <a href="/seo-checker.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">SEO Checker</div><div class="tool-desc">Analyze any website's SEO with Ahrefs & Semrush data free.</div><span class="tool-badge">Free</span></a>
-    <a href="/image-compressor.html" class="tool-card"><div class="tool-icon">🗜️</div><div class="tool-name">Image Compressor</div><div class="tool-desc">Compress JPG, PNG, WEBP files while maintaining quality.</div><span class="tool-badge">Free</span></a>
-    <a href="/image-resizer.html" class="tool-card"><div class="tool-icon">📐</div><div class="tool-name">Image Resizer</div><div class="tool-desc">Resize images to any size. Bulk resize, download PNG/JPG.</div><span class="tool-badge">Free</span></a>
-  </div>
+  <div class="tools-grid" id="aiGrid"></div>
 </section>
 
-<div class="ad-wrap">
+<!-- ADS -->
+<div class="ad-wrap"><div class="ad-wrap-inner">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+</div></div>
 
-<section class="section" id="finance" style="background:white; max-width:100%; padding:70px 0;">
-<div style="max-width:1200px; margin:0 auto; padding:0 20px;">
+<!-- FINANCE -->
+<section class="section" id="finance">
   <div class="section-header">
     <span class="section-tag">💵 Finance</span>
-    <h2>Free Finance & Money Tools</h2>
+    <h2>Free <em>finance</em> tools</h2>
     <p class="section-sub">Financial calculators for US workers, freelancers & everyone worldwide.</p>
   </div>
-  <div class="tools-grid">
-    <a href="/tax-refund-tracker.html" class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">Tax Refund Tracker</div><div class="tool-desc">IRS 2026 refund estimator. Check delay risk instantly.</div><span class="tool-badge green">IRS 2026</span></a>
-    <a href="/state-tax-refund-tracker.html" class="tool-card"><div class="tool-icon">🗺️</div><div class="tool-name">State Tax Refund</div><div class="tool-desc">Track state tax refunds across all 50 US states.</div><span class="tool-badge green">All 50 States</span></a>
-    <a href="/salary-to-hourly.html" class="tool-card"><div class="tool-icon">💵</div><div class="tool-name">Salary to Hourly</div><div class="tool-desc">Convert annual salary to hourly rate. Monthly breakdown.</div><span class="tool-badge">US Focused</span></a>
-    <a href="/tip-calculator.html" class="tool-card"><div class="tool-icon">🍽️</div><div class="tool-name">Tip Calculator</div><div class="tool-desc">Calculate tip amount & split bill between people instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/profit-margin-calculator.html" class="tool-card"><div class="tool-icon">📈</div><div class="tool-name">Profit Margin</div><div class="tool-desc">Calculate gross, net & operating profit margins instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/sales-tax-calculator.html" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-name">Sales Tax Calculator</div><div class="tool-desc">Add or remove sales tax from any price. US state rates.</div><span class="tool-badge">Free</span></a>
-    <a href="/compound-interest-calculator.html" class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Compound Interest</div><div class="tool-desc">Calculate investment growth with yearly breakdown.</div><span class="tool-badge">Free</span></a>
-    <a href="/invoice-generator.html" class="tool-card"><div class="tool-icon">📋</div><div class="tool-name">Invoice Generator</div><div class="tool-desc">Create professional PDF invoices. No login, instant download.</div><span class="tool-badge">PDF</span></a>
-    <a href="/currency-converter.html" class="tool-card"><div class="tool-icon">💱</div><div class="tool-name">Currency Converter</div><div class="tool-desc">Live USD to PKR, EUR & 150+ currencies. Real-time rates.</div><span class="tool-badge">Live</span></a>
-    <a href="/resume-builder.html" class="tool-card"><div class="tool-icon">📄</div><div class="tool-name">Resume Builder</div><div class="tool-desc">ATS-friendly PDF resume builder. Free, no account needed.</div><span class="tool-badge green">ATS Ready</span></a>
-    <a href="/bisp-8171-check.html" class="tool-card"><div class="tool-icon">🇵🇰</div><div class="tool-name">BISP 8171 Check</div><div class="tool-desc">Check BISP Kafaalat payment status online. Free tool.</div><span class="tool-badge">Pakistan</span></a>
-  </div>
-</div>
+  <div class="tools-grid" id="financeGrid"></div>
 </section>
 
+<!-- CALCULATORS -->
 <section class="section" id="calculators">
   <div class="section-header">
     <span class="section-tag">🔢 Calculators</span>
-    <h2>Free Online Calculators</h2>
+    <h2>Free <em>calculator</em> tools</h2>
     <p class="section-sub">Fast, accurate calculators for health, academics, math & more.</p>
   </div>
-  <div class="tools-grid">
-    <a href="/scientific-calculator.html" class="tool-card"><div class="tool-icon">🔬</div><div class="tool-name">Scientific Calculator</div><div class="tool-desc">Full CASIO fx-82ES replica. Trig, logs, equations online.</div><span class="tool-badge">Advanced</span></a>
-    <a href="/bmi-calculator.html" class="tool-card"><div class="tool-icon">⚖️</div><div class="tool-name">BMI Calculator</div><div class="tool-desc">Calculate Body Mass Index with health tips. Free instant.</div><span class="tool-badge">Free</span></a>
-    <a href="/age-calculator.html" class="tool-card"><div class="tool-icon">🎂</div><div class="tool-name">Age Calculator</div><div class="tool-desc">Calculate exact age in years, months, days. Birthday countdown.</div><span class="tool-badge">Free</span></a>
-    <a href="/percentage-calculator.html" class="tool-card"><div class="tool-icon">%</div><div class="tool-name">Percentage Calculator</div><div class="tool-desc">Advanced percentage calculator with export PDF/CSV.</div><span class="tool-badge">Free</span></a>
-    <a href="/sleep-calculator.html" class="tool-card"><div class="tool-icon">😴</div><div class="tool-name">Sleep Calculator</div><div class="tool-desc">Find your perfect bedtime using 90-min sleep cycles.</div><span class="tool-badge">Health</span></a>
-    <a href="/loan-calculator.html" class="tool-card"><div class="tool-icon">🏦</div><div class="tool-name">Loan Calculator</div><div class="tool-desc">Calculate monthly EMI for home, car & personal loans.</div><span class="tool-badge">Free</span></a>
-    <a href="/cgpa-to-percentage.html" class="tool-card"><div class="tool-icon">🎓</div><div class="tool-name">CGPA to Percentage</div><div class="tool-desc">Convert CGPA to percentage for all university scales.</div><span class="tool-badge">Free</span></a>
-    <a href="/random-number-generator.html" class="tool-card"><div class="tool-icon">🎲</div><div class="tool-name">Random Number</div><div class="tool-desc">Generate random numbers with custom range & quantity.</div><span class="tool-badge">Free</span></a>
-  </div>
+  <div class="tools-grid" id="calcGrid"></div>
 </section>
 
-<div class="section-divider"><hr></div>
-
-<section class="section" id="dev-tools" style="background:white; max-width:100%; padding:70px 0;">
-<div style="max-width:1200px; margin:0 auto; padding:0 20px;">
+<!-- DEV & TEXT -->
+<section class="section" id="dev-tools">
   <div class="section-header">
     <span class="section-tag">⚙️ Dev & Text</span>
-    <h2>Text & Developer Tools</h2>
+    <h2>Free <em>developer</em> tools</h2>
     <p class="section-sub">Essential utilities for developers, writers & everyday users.</p>
   </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;">
     <div>
-      <h3 style="font-size:1rem; color:var(--purple); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.5px;">✍️ Text Tools</h3>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <a href="/word-counter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔤</div><div><div class="tool-name">Word Counter</div><div class="tool-desc" style="font-size:0.82rem;">Count words, characters, sentences & reading time.</div></div></a>
-        <a href="/case-converter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">Aa</div><div><div class="tool-name">Case Converter</div><div class="tool-desc" style="font-size:0.82rem;">UPPERCASE, lowercase, Title Case, camelCase & more.</div></div></a>
-        <a href="/text-trimmer.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">✂️</div><div><div class="tool-name">Text Trimmer</div><div class="tool-desc" style="font-size:0.82rem;">Remove extra spaces, trim whitespace, clean text.</div></div></a>
-        <a href="/number-to-words.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔢</div><div><div class="tool-name">Number to Words</div><div class="tool-desc" style="font-size:0.82rem;">Convert any number into written English words.</div></div></a>
-        <a href="/morse-code-converter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">•—</div><div><div class="tool-name">Morse Code</div><div class="tool-desc" style="font-size:0.82rem;">Text to Morse & Morse to text. Copy & hear your code.</div></div></a>
-        <a href="/flip-fancy-text-generator.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">✨</div><div><div class="tool-name">Fancy Text Generator</div><div class="tool-desc" style="font-size:0.82rem;">25+ text styles: flip, bubble, cursive, glitch & more.</div></div></a>
-        <a href="/link-shortener.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔗</div><div><div class="tool-name">Link Shortener</div><div class="tool-desc" style="font-size:0.82rem;">Shorten any URL instantly. No signup required.</div></div></a>
-      </div>
+      <h3 style="font-size:0.85rem;color:var(--coral);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;">✍️ Text Tools</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;" id="textGrid"></div>
     </div>
     <div>
-      <h3 style="font-size:1rem; color:var(--purple); margin-bottom:16px; text-transform:uppercase; letter-spacing:0.5px;">🛠️ Developer Tools</h3>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <a href="/qr-code-generator.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">📱</div><div><div class="tool-name">QR Code Generator</div><div class="tool-desc" style="font-size:0.82rem;">Create QR codes for URLs, WiFi, contacts. PNG download.</div></div></a>
-        <a href="/password-generator.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔐</div><div><div class="tool-name">Password Generator</div><div class="tool-desc" style="font-size:0.82rem;">Strong secure passwords. Custom length & symbols.</div></div></a>
-        <a href="/base64-encoder.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔒</div><div><div class="tool-name">Base64 Encoder</div><div class="tool-desc" style="font-size:0.82rem;">Encode & decode Base64 text, images & files.</div></div></a>
-        <a href="/json-formatter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">{}</div><div><div class="tool-name">JSON Formatter</div><div class="tool-desc" style="font-size:0.82rem;">Format, validate & minify JSON instantly. 100% browser-based.</div></div></a>
-        <a href="/csv-to-json.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">📊</div><div><div class="tool-name">CSV to JSON</div><div class="tool-desc" style="font-size:0.82rem;">Convert CSV to JSON, XML, YAML instantly. Free tool.</div></div></a>
-        <a href="/html-preview-tool.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🌐</div><div><div class="tool-name">HTML Preview Tool</div><div class="tool-desc" style="font-size:0.82rem;">Write HTML/CSS/JS & see live output. Free online IDE.</div></div></a>
-        <a href="/color-picker.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🎨</div><div><div class="tool-name">Color Picker</div><div class="tool-desc" style="font-size:0.82rem;">Pick colors, get HEX, RGB, HSL values instantly.</div></div></a>
-        <a href="/unit-converter.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">📏</div><div><div class="tool-name">Unit Converter</div><div class="tool-desc" style="font-size:0.82rem;">Convert length, weight, area & more units instantly.</div></div></a>
-        <a href="/broken-link-checker.html" class="tool-card" style="flex-direction:row; align-items:center; gap:12px; padding:14px 16px;"><div class="tool-icon" style="font-size:1.4rem;">🔗</div><div><div class="tool-name">Broken Link Checker</div><div class="tool-desc" style="font-size:0.82rem;">Find dead links & 404 errors on any website instantly.</div></div></a>
-      </div>
+      <h3 style="font-size:0.85rem;color:var(--coral);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;">🛠️ Developer Tools</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;" id="devGrid"></div>
     </div>
   </div>
-</div>
 </section>
 
-<div class="ad-wrap">
+<!-- ADS -->
+<div class="ad-wrap"><div class="ad-wrap-inner">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+</div></div>
 
+<!-- GOLD -->
 <div class="gold-section">
   <div class="gold-inner">
-    <span class="section-tag" style="background:#fef3c7; color:#92400e;">🥇 Live Gold Rates</span>
-    <h2 style="margin:10px 0 6px;">Gold Rates Today in Pakistan</h2>
-    <p style="color:var(--text-2); font-size:1rem;">Live 24K, 22K, 21K gold prices per tola, gram & ounce. Updated daily.</p>
+    <span class="section-tag" style="background:var(--gold-light);color:#b8860b;">🥇 Live Gold Rates</span>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;">Gold rates <em style="color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;">today</em></h2>
+    <p style="color:var(--text-2);">Live 24K, 22K, 21K gold prices per tola, gram & ounce. Updated daily.</p>
     <div class="gold-grid">
       <a href="/gold-rate-pakistan.html" class="gold-card"><div class="gold-city">🇵🇰 Pakistan</div><div class="gold-tag">All Cities • Live</div></a>
-      <a href="/gold-rate-karachi.html" class="gold-card"><div class="gold-city">Karachi</div><div class="gold-tag">Sarafa Bazaar Rate</div></a>
+      <a href="/gold-rate-karachi.html" class="gold-card"><div class="gold-city">Karachi</div><div class="gold-tag">Sarafa Bazaar</div></a>
       <a href="/gold-rate-lahore.html" class="gold-card"><div class="gold-city">Lahore</div><div class="gold-tag">Daily Updated</div></a>
       <a href="/gold-rate-islamabad.html" class="gold-card"><div class="gold-city">Islamabad</div><div class="gold-tag">Aabpara Rate</div></a>
       <a href="/gold-rate-rawalpindi.html" class="gold-card"><div class="gold-city">Rawalpindi</div><div class="gold-tag">Daily Updated</div></a>
@@ -419,202 +614,239 @@ footer { background: #0f0a1e; color: rgba(255,255,255,0.8); padding: 60px 20px 3
   </div>
 </div>
 
-<section class="section" id="more-tools">
-  <div class="section-header">
-    <span class="section-tag">🧰 More Tools</span>
-    <h2>More Free Tools You'll Love</h2>
-    <p class="section-sub">A few more handy utilities — free, instant, no signup required.</p>
-  </div>
-  <div class="tools-grid">
-    <a href="/markdown-to-html-seo.html" class="tool-card"><div class="tool-icon">📝</div><div class="tool-name">Markdown to HTML</div><div class="tool-desc">Convert Markdown to clean, SEO-friendly HTML instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/temperature-converter.html" class="tool-card"><div class="tool-icon">🌡️</div><div class="tool-name">Temperature Converter</div><div class="tool-desc">Convert Celsius, Fahrenheit & Kelvin instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/special-characters-counter.html" class="tool-card"><div class="tool-icon">#️⃣</div><div class="tool-name">Special Characters Counter</div><div class="tool-desc">Count special characters, symbols & emojis in your text.</div><span class="tool-badge">Free</span></a>
-    <a href="/state-tax-refund-tracker.html" class="tool-card"><div class="tool-icon">🗺️</div><div class="tool-name">State Tax Refund Tracker</div><div class="tool-desc">Track your state tax refund status across all 50 US states.</div><span class="tool-badge green">All 50 States</span></a>
-    <a href="/ai-tool-finder.html" class="tool-card"><div class="tool-icon">🎯</div><div class="tool-name">AI Tool Finder</div><div class="tool-desc">Discover the best AI tool for any task from 1000+ options.</div><span class="tool-badge">1000+ Tools</span></a>
-    <a href="/broken-link-checker.html" class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Broken Link Checker</div><div class="tool-desc">Scan any website for dead links & 404 errors free.</div><span class="tool-badge">Free</span></a>
-    <a href="/unit-converter.html" class="tool-card"><div class="tool-icon">📏</div><div class="tool-name">Unit Converter</div><div class="tool-desc">Convert length, weight, area & volume units instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/sales-tax-calculator.html" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-name">Sales Tax Calculator</div><div class="tool-desc">Add or remove US sales tax from any price instantly.</div><span class="tool-badge">Free</span></a>
-    <a href="/gold-rate-pakistan.html" class="tool-card"><div class="tool-icon">🥇</div><div class="tool-name">Gold Rate Pakistan</div><div class="tool-desc">Live gold rates across all major Pakistani cities.</div><span class="tool-badge green">Live</span></a>
+<!-- WHY -->
+<section class="why-section">
+  <div class="why-inner">
+    <h2>Why people choose <em>Toolyfi</em></h2>
+    <p class="why-sub">Simple, powerful, completely free — built for everyone.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">✅</div><h3>100% Free</h3><p>No hidden fees, no premium plans, no credit card.</p></div>
+      <div class="why-card"><div class="why-icon">🚀</div><h3>No Login</h3><p>Use any tool instantly. No account, no email, no signup.</p></div>
+      <div class="why-card"><div class="why-icon">🔒</div><h3>Privacy First</h3><p>We never store your data. Everything runs in your browser.</p></div>
+      <div class="why-card"><div class="why-icon">📱</div><h3>Works Everywhere</h3><p>Mobile, tablet, desktop — all tools work perfectly.</p></div>
+    </div>
   </div>
 </section>
 
-<div class="why-section">
-  <div class="why-inner">
-    <h2>Why 50,000+ People Choose Toolyfi</h2>
-    <p class="why-sub">Simple, powerful, completely free — built for everyone.</p>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-icon">✅</div><h3>100% Free</h3><p>No hidden fees, no premium plans, no credit card. Every tool is free forever.</p></div>
-      <div class="why-card"><div class="why-icon">🚀</div><h3>No Login Required</h3><p>Use any tool instantly. No account, no email, no signup process whatsoever.</p></div>
-      <div class="why-card"><div class="why-icon">🔒</div><h3>Privacy First</h3><p>We never store your data. Everything runs in your browser. Zero tracking.</p></div>
-      <div class="why-card"><div class="why-icon">📱</div><h3>Works Everywhere</h3><p>Mobile, tablet, desktop — all tools work perfectly on every device.</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-section">
-  <h2>Ready to Boost Your Productivity?</h2>
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to boost your <br>productivity?</h2>
   <p>50+ free tools waiting for you. No signup, no cost, no limits.</p>
   <a href="#featured" class="cta-btn">Get Started Free →</a>
-</div>
+</section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="/assets/logo.jpg" alt="Toolyfi.com - Free Online Tools" style="height:32px;width:auto;display:block;">
-        </div>
-        <p>Free online tools for everyone. AI tools, calculators, finance tools & more. 100% free, no login required. Trusted worldwide.</p>
+        <img src="/logo1.png" alt="Toolyfi">
+        <p>Free online tools for everyone. AI, finance, calculators, dev tools — 100% free, no login required.</p>
       </div>
-      <div class="footer-col">
-        <h4>AI Tools</h4>
-        <a href="/ai-assistant.html">AI Assistant</a>
-        <a href="/ai-image-generator.html">Image Generator</a>
-        <a href="/ai-text-detector.html">Text Detector</a>
-        <a href="/ai-tool-finder.html">AI Tool Finder</a>
-        <a href="/prompt-generator.html">Prompt Generator</a>
-        <a href="/seo-checker.html">SEO Checker</a>
-      </div>
-      <div class="footer-col">
-        <h4>Finance</h4>
-        <a href="/tax-refund-tracker.html">Tax Refund</a>
-        <a href="/salary-to-hourly.html">Salary Calculator</a>
-        <a href="/invoice-generator.html">Invoice Generator</a>
-        <a href="/currency-converter.html">Currency Converter</a>
-        <a href="/resume-builder.html">Resume Builder</a>
-        <a href="/compound-interest-calculator.html">Compound Interest</a>
-      </div>
-      <div class="footer-col">
-        <h4>Calculators</h4>
-        <a href="/scientific-calculator.html">Scientific Calc</a>
-        <a href="/bmi-calculator.html">BMI Calculator</a>
-        <a href="/age-calculator.html">Age Calculator</a>
-        <a href="/sleep-calculator.html">Sleep Calculator</a>
-        <a href="/percentage-calculator.html">Percentage Calc</a>
-        <a href="/loan-calculator.html">Loan Calculator</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/about.html">About Us</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="#more-tools">More Tools</a>
-      </div>
+      <div class="footer-col"><h4>AI Tools</h4><a href="/ai-assistant.html">AI Assistant</a><a href="/ai-image-generator.html">Image Generator</a><a href="/ai-text-detector.html">Text Detector</a><a href="/ai-tool-finder.html">AI Tool Finder</a><a href="/prompt-generator.html">Prompt Generator</a><a href="/seo-checker.html">SEO Checker</a></div>
+      <div class="footer-col"><h4>Finance</h4><a href="/tax-refund-tracker.html">Tax Refund</a><a href="/salary-to-hourly.html">Salary Calculator</a><a href="/invoice-generator.html">Invoice Generator</a><a href="/currency-converter.html">Currency Converter</a><a href="/resume-builder.html">Resume Builder</a><a href="/compound-interest-calculator.html">Compound Interest</a></div>
+      <div class="footer-col"><h4>Calculators</h4><a href="/scientific-calculator.html">Scientific Calc</a><a href="/bmi-calculator.html">BMI Calculator</a><a href="/age-calculator.html">Age Calculator</a><a href="/sleep-calculator.html">Sleep Calculator</a><a href="/percentage-calculator.html">Percentage Calc</a><a href="/loan-calculator.html">Loan Calculator</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 Toolyfi. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
-        <a href="/contact.html">Contact</a>
-      </div>
+      <div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/contact.html">Contact</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-const allTools = [
-  {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖',cat:'AI'},
-  {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images free',icon:'🎨',cat:'AI'},
-  {name:'AI Text Detector',url:'/ai-text-detector.html',desc:'Detect ChatGPT, Claude & Gemini text',icon:'🔍',cat:'AI'},
-  {name:'AI Tool Finder',url:'/ai-tool-finder.html',desc:'Find the best AI tool for any task',icon:'🎯',cat:'AI'},
-  {name:'YouTube Transcript',url:'/youtube-transcript-extractor.html',desc:'Extract YouTube video transcripts free',icon:'▶️',cat:'AI'},
-  {name:'Background Remover',url:'/bg-remover-object-detection.html',desc:'Remove image backgrounds instantly',icon:'✂️',cat:'AI'},
-  {name:'Prompt Generator',url:'/prompt-generator.html',desc:'500+ AI prompts for ChatGPT & Claude',icon:'💡',cat:'AI'},
-  {name:'SEO Checker',url:'/seo-checker.html',desc:'Analyze website SEO with Ahrefs data',icon:'📈',cat:'AI'},
-  {name:'Image Compressor',url:'/image-compressor.html',desc:'Compress JPG, PNG, WEBP files',icon:'🗜️',cat:'AI'},
-  {name:'Image Resizer',url:'/image-resizer.html',desc:'Resize images to any size',icon:'📐',cat:'AI'},
-  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',desc:'IRS 2026 refund estimator & tracker',icon:'💰',cat:'Finance'},
-  {name:'State Tax Refund',url:'/state-tax-refund-tracker.html',desc:'Track state tax refunds all 50 states',icon:'🗺️',cat:'Finance'},
-  {name:'Salary to Hourly',url:'/salary-to-hourly.html',desc:'Convert annual salary to hourly rate',icon:'💵',cat:'Finance'},
-  {name:'Tip Calculator',url:'/tip-calculator.html',desc:'Calculate tip and split bills',icon:'🍽️',cat:'Finance'},
-  {name:'Profit Margin',url:'/profit-margin-calculator.html',desc:'Calculate gross & net profit margins',icon:'📈',cat:'Finance'},
-  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',desc:'Add or remove sales tax from prices',icon:'🧾',cat:'Finance'},
-  {name:'Compound Interest',url:'/compound-interest-calculator.html',desc:'Calculate investment growth',icon:'📊',cat:'Finance'},
-  {name:'Invoice Generator',url:'/invoice-generator.html',desc:'Create professional PDF invoices',icon:'📋',cat:'Finance'},
-  {name:'Currency Converter',url:'/currency-converter.html',desc:'Live USD to PKR, EUR & 150+ currencies',icon:'💱',cat:'Finance'},
-  {name:'Resume Builder',url:'/resume-builder.html',desc:'ATS-friendly PDF resume builder',icon:'📄',cat:'Finance'},
-  {name:'BISP 8171 Check',url:'/bisp-8171-check.html',desc:'Check BISP Kafaalat payment status',icon:'🇵🇰',cat:'Finance'},
-  {name:'Scientific Calculator',url:'/scientific-calculator.html',desc:'CASIO fx-82ES replica online',icon:'🔬',cat:'Calculator'},
-  {name:'BMI Calculator',url:'/bmi-calculator.html',desc:'Calculate Body Mass Index',icon:'⚖️',cat:'Calculator'},
-  {name:'Age Calculator',url:'/age-calculator.html',desc:'Exact age in years, months, days',icon:'🎂',cat:'Calculator'},
-  {name:'Percentage Calculator',url:'/percentage-calculator.html',desc:'Advanced percentage calculations',icon:'%',cat:'Calculator'},
-  {name:'Sleep Calculator',url:'/sleep-calculator.html',desc:'Find perfect bedtime using sleep cycles',icon:'😴',cat:'Calculator'},
-  {name:'Loan Calculator',url:'/loan-calculator.html',desc:'Calculate monthly EMI for loans',icon:'🏦',cat:'Calculator'},
-  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',desc:'Convert CGPA to percentage',icon:'🎓',cat:'Calculator'},
-  {name:'Random Number',url:'/random-number-generator.html',desc:'Generate random numbers',icon:'🎲',cat:'Calculator'},
-  {name:'Word Counter',url:'/word-counter.html',desc:'Count words, characters & reading time',icon:'🔤',cat:'Text'},
-  {name:'Case Converter',url:'/case-converter.html',desc:'UPPERCASE, lowercase, Title Case',icon:'Aa',cat:'Text'},
-  {name:'Text Trimmer',url:'/text-trimmer.html',desc:'Remove extra spaces & clean text',icon:'✂️',cat:'Text'},
-  {name:'Number to Words',url:'/number-to-words.html',desc:'Convert numbers into English words',icon:'🔢',cat:'Text'},
-  {name:'Morse Code',url:'/morse-code-converter.html',desc:'Text to Morse code converter',icon:'•—',cat:'Text'},
-  {name:'Fancy Text Generator',url:'/flip-fancy-text-generator.html',desc:'25+ text styles: flip, bubble, glitch',icon:'✨',cat:'Text'},
-  {name:'Link Shortener',url:'/link-shortener.html',desc:'Shorten any URL instantly',icon:'🔗',cat:'Text'},
-  {name:'Special Characters Counter',url:'/special-characters-counter.html',desc:'Count special characters & symbols in text',icon:'#️⃣',cat:'Text'},
-  {name:'Markdown to HTML',url:'/markdown-to-html-seo.html',desc:'Convert Markdown to clean SEO HTML',icon:'📝',cat:'Text'},
-  {name:'QR Code Generator',url:'/qr-code-generator.html',desc:'Create QR codes for URLs & WiFi',icon:'📱',cat:'Developer'},
-  {name:'Password Generator',url:'/password-generator.html',desc:'Strong secure password generator',icon:'🔐',cat:'Developer'},
-  {name:'Base64 Encoder',url:'/base64-encoder.html',desc:'Encode & decode Base64',icon:'🔒',cat:'Developer'},
-  {name:'JSON Formatter',url:'/json-formatter.html',desc:'Format, validate & minify JSON',icon:'{}',cat:'Developer'},
-  {name:'CSV to JSON',url:'/csv-to-json.html',desc:'Convert CSV to JSON, XML, YAML',icon:'📊',cat:'Developer'},
-  {name:'HTML Preview',url:'/html-preview-tool.html',desc:'Live HTML/CSS/JS preview tool',icon:'🌐',cat:'Developer'},
-  {name:'Color Picker',url:'/color-picker.html',desc:'Pick colors, get HEX, RGB, HSL',icon:'🎨',cat:'Developer'},
-  {name:'Unit Converter',url:'/unit-converter.html',desc:'Convert length, weight, area units',icon:'📏',cat:'Developer'},
-  {name:'Temperature Converter',url:'/temperature-converter.html',desc:'Celsius, Fahrenheit, Kelvin',icon:'🌡️',cat:'Developer'},
-  {name:'Broken Link Checker',url:'/broken-link-checker.html',desc:'Find dead links & 404 errors on any website free',icon:'🔗',cat:'Developer'},
-  {name:'Gold Rate Pakistan',url:'/gold-rate-pakistan.html',desc:'Live gold rates across all Pakistan cities',icon:'🥇',cat:'Finance'},
+/* ===== REAL STOCK PHOTOS (Pexels — free license, commercial use OK) ===== */
+const AI_PHOTOS=[
+"https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8294619/pexels-photo-8294619.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8566464/pexels-photo-8566464.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8294654/pexels-photo-8294654.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8386359/pexels-photo-8386359.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?cs=srgb&fm=jpg&w=500"
+];
+const FINANCE_PHOTOS=[
+"https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/5921494/pexels-photo-5921494.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/7054402/pexels-photo-7054402.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6801680/pexels-photo-6801680.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6958539/pexels-photo-6958539.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/7680680/pexels-photo-7680680.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/7688523/pexels-photo-7688523.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6958507/pexels-photo-6958507.jpeg?cs=srgb&fm=jpg&w=500"
+];
+const CALC_PHOTOS=[
+"https://images.pexels.com/photos/7692469/pexels-photo-7692469.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/5877591/pexels-photo-5877591.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6958525/pexels-photo-6958525.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/7054414/pexels-photo-7054414.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/6958540/pexels-photo-6958540.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8296969/pexels-photo-8296969.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/7580943/pexels-photo-7580943.jpeg?cs=srgb&fm=jpg&w=500",
+"https://images.pexels.com/photos/8296966/pexels-photo-8296966.jpeg?cs=srgb&fm=jpg&w=500"
+];
+const DEV_PHOTOS=[
+"https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=300",
+"https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=300"
 ];
 
-function handleSearch(q) {
-  const query = q.trim().toLowerCase();
-  const sr = document.getElementById('search-results');
-  const srGrid = document.getElementById('srGrid');
-  const srTitle = document.getElementById('srTitle');
-  if (!query) { sr.classList.remove('active'); return; }
-  const results = allTools.filter(t => t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query) || t.cat.toLowerCase().includes(query));
-  srTitle.textContent = `${results.length} tool${results.length !== 1 ? 's' : ''} found for "${q}"`;
-  if (!results.length) {
-    srGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-3);">No tools found. Try a different keyword.</div>';
-  } else {
-    srGrid.innerHTML = results.map(t => `<a href="${t.url}" class="tool-card visible"><div class="tool-icon">${t.icon}</div><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div><span class="tool-badge">${t.cat}</span></a>`).join('');
+function pick(arr,i){return arr[i%arr.length];}
+
+// ===== TOOL DATA =====
+const aiTools=[
+  {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖',badge:'Popular'},
+  {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images free',icon:'🎨',badge:'Free'},
+  {name:'AI Text Detector',url:'/ai-text-detector.html',desc:'Detect ChatGPT, Claude & Gemini text',icon:'🔍',badge:'Accurate',cls:'green'},
+  {name:'AI Tool Finder',url:'/ai-tool-finder.html',desc:'Find the best AI tool for any task',icon:'🎯',badge:'1000+'},
+  {name:'YouTube Transcript',url:'/youtube-transcript-extractor.html',desc:'Extract YouTube video transcripts free',icon:'▶️',badge:'Free'},
+  {name:'Background Remover',url:'/bg-remover-object-detection.html',desc:'Remove image backgrounds instantly',icon:'✂️',badge:'HD',cls:'green'},
+  {name:'Prompt Generator',url:'/prompt-generator.html',desc:'500+ AI prompts for ChatGPT & Claude',icon:'💡',badge:'500+'},
+  {name:'SEO Checker',url:'/seo-checker.html',desc:'Analyze website SEO instantly',icon:'📈',badge:'Free'},
+  {name:'Image Compressor',url:'/image-compressor.html',desc:'Compress JPG, PNG, WEBP files',icon:'🗜️',badge:'Free'},
+  {name:'Image Resizer',url:'/image-resizer.html',desc:'Resize images to any size',icon:'📐',badge:'Free'},
+];
+const financeTools=[
+  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',desc:'IRS 2026 refund estimator & tracker',icon:'💰',badge:'IRS 2026',cls:'green'},
+  {name:'State Tax Refund',url:'/state-tax-refund-tracker.html',desc:'Track state tax refunds all 50 states',icon:'🗺️',badge:'50 States',cls:'green'},
+  {name:'Salary to Hourly',url:'/salary-to-hourly.html',desc:'Convert annual salary to hourly rate',icon:'💵',badge:'US'},
+  {name:'Tip Calculator',url:'/tip-calculator.html',desc:'Calculate tip and split bills',icon:'🍽️',badge:'Free'},
+  {name:'Profit Margin',url:'/profit-margin-calculator.html',desc:'Calculate gross & net profit margins',icon:'📈',badge:'Free'},
+  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',desc:'Add or remove sales tax from prices',icon:'🧾',badge:'Free'},
+  {name:'Compound Interest',url:'/compound-interest-calculator.html',desc:'Calculate investment growth',icon:'📊',badge:'Free'},
+  {name:'Invoice Generator',url:'/invoice-generator.html',desc:'Create professional PDF invoices',icon:'📋',badge:'PDF'},
+  {name:'Currency Converter',url:'/currency-converter.html',desc:'Live USD, PKR, EUR & 150+ currencies',icon:'💱',badge:'Live'},
+  {name:'Resume Builder',url:'/resume-builder.html',desc:'ATS-friendly PDF resume builder',icon:'📄',badge:'ATS',cls:'green'},
+];
+const calcTools=[
+  {name:'Scientific Calculator',url:'/scientific-calculator.html',desc:'Full CASIO fx-82ES replica online',icon:'🔬',badge:'Advanced'},
+  {name:'BMI Calculator',url:'/bmi-calculator.html',desc:'Calculate Body Mass Index',icon:'⚖️',badge:'Free'},
+  {name:'Age Calculator',url:'/age-calculator.html',desc:'Exact age in years, months, days',icon:'🎂',badge:'Free'},
+  {name:'Percentage Calculator',url:'/percentage-calculator.html',desc:'Advanced percentage calculations',icon:'%',badge:'Free'},
+  {name:'Sleep Calculator',url:'/sleep-calculator.html',desc:'Find perfect bedtime with sleep cycles',icon:'😴',badge:'Health'},
+  {name:'Loan Calculator',url:'/loan-calculator.html',desc:'Calculate monthly EMI for loans',icon:'🏦',badge:'Free'},
+  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',desc:'Convert CGPA to percentage',icon:'🎓',badge:'Free'},
+  {name:'Random Number',url:'/random-number-generator.html',desc:'Generate random numbers',icon:'🎲',badge:'Free'},
+];
+const textTools=[
+  {name:'Word Counter',url:'/word-counter.html',desc:'Count words, characters & reading time',icon:'🔤'},
+  {name:'Case Converter',url:'/case-converter.html',desc:'UPPERCASE, lowercase, Title Case',icon:'Aa'},
+  {name:'Text Trimmer',url:'/text-trimmer.html',desc:'Remove extra spaces, trim whitespace',icon:'✂️'},
+  {name:'Number to Words',url:'/number-to-words.html',desc:'Convert numbers into English words',icon:'🔢'},
+  {name:'Morse Code',url:'/morse-code-converter.html',desc:'Text to Morse code converter',icon:'•—'},
+  {name:'Fancy Text Generator',url:'/flip-fancy-text-generator.html',desc:'25+ text styles: flip, bubble, glitch',icon:'✨'},
+  {name:'Link Shortener',url:'/link-shortener.html',desc:'Shorten any URL instantly',icon:'🔗'},
+];
+const devTools=[
+  {name:'QR Code Generator',url:'/qr-code-generator.html',desc:'Create QR codes for URLs, WiFi, contacts',icon:'📱'},
+  {name:'Password Generator',url:'/password-generator.html',desc:'Strong secure passwords instantly',icon:'🔐'},
+  {name:'Base64 Encoder',url:'/base64-encoder.html',desc:'Encode & decode Base64 text/files',icon:'🔒'},
+  {name:'JSON Formatter',url:'/json-formatter.html',desc:'Format, validate & minify JSON',icon:'{}'},
+  {name:'CSV to JSON',url:'/csv-to-json.html',desc:'Convert CSV to JSON, XML, YAML',icon:'📊'},
+  {name:'HTML Preview Tool',url:'/html-preview-tool.html',desc:'Live HTML/CSS/JS preview tool',icon:'🌐'},
+  {name:'Color Picker',url:'/color-picker.html',desc:'Pick colors, get HEX, RGB, HSL',icon:'🎨'},
+  {name:'Unit Converter',url:'/unit-converter.html',desc:'Convert length, weight, area units',icon:'📏'},
+  {name:'Broken Link Checker',url:'/broken-link-checker.html',desc:'Find dead links & 404s on any site',icon:'🔗'},
+];
+
+function renderGrid(containerId, tools, photoArr){
+  const el=document.getElementById(containerId);
+  el.innerHTML=tools.map((t,i)=>`
+    <a href="${t.url}" class="tool-card">
+      <div class="tool-card-img">
+        <img src="${pick(photoArr,i)}" alt="${t.name}" loading="lazy">
+        ${t.badge?`<span class="tool-badge-float">${t.badge}</span>`:''}
+        <span class="tool-icon-overlay">${t.icon}</span>
+      </div>
+      <div class="tool-card-body">
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-desc">${t.desc}</div>
+        ${t.badge?`<span class="tool-badge ${t.cls||''}">${t.badge}</span>`:''}
+      </div>
+    </a>`).join('');
+}
+function renderRows(containerId, tools, photoArr){
+  const el=document.getElementById(containerId);
+  el.innerHTML=tools.map((t,i)=>`
+    <a href="${t.url}" class="tool-row">
+      <div class="row-img"><img src="${pick(photoArr,i)}" alt="${t.name}" loading="lazy"></div>
+      <div class="row-body">
+        <div class="tool-name">${t.name}</div>
+        <div class="tool-desc">${t.desc}</div>
+      </div>
+    </a>`).join('');
+}
+renderGrid('aiGrid', aiTools, AI_PHOTOS);
+renderGrid('financeGrid', financeTools, FINANCE_PHOTOS);
+renderGrid('calcGrid', calcTools, CALC_PHOTOS);
+renderRows('textGrid', textTools, DEV_PHOTOS);
+renderRows('devGrid', devTools, DEV_PHOTOS);
+
+// ===== SEARCH =====
+const allTools=[...aiTools,...financeTools,...calcTools,...textTools,...devTools];
+function handleSearch(q){
+  const query=q.trim().toLowerCase();
+  const sr=document.getElementById('search-results');
+  const srGrid=document.getElementById('srGrid');
+  const srTitle=document.getElementById('srTitle');
+  if(!query){sr.classList.remove('active');return;}
+  const results=allTools.filter(t=>t.name.toLowerCase().includes(query)||t.desc.toLowerCase().includes(query));
+  srTitle.textContent=`${results.length} tool${results.length!==1?'s':''} found for "${q}"`;
+  if(!results.length){
+    srGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-3);">No tools found. Try a different keyword.</div>';
+  }else{
+    srGrid.innerHTML=results.map((t,i)=>`<a href="${t.url}" class="tool-card is-visible"><div class="tool-card-img"><img src="${pick(AI_PHOTOS,i)}" alt="${t.name}" loading="lazy"><span class="tool-icon-overlay">${t.icon}</span></div><div class="tool-card-body"><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div></a>`).join('');
   }
   sr.classList.add('active');
-  sr.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  sr.scrollIntoView({behavior:'smooth',block:'start'});
 }
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSearch(e.target.value);});
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
-      observer.unobserve(entry.target);
+// ===== OBSERVERS =====
+const sectionObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('is-visible');});
+},{threshold:0.1,rootMargin:'-10% 0px -10% 0px'});
+document.querySelectorAll('.section, .why-section, .gold-section, .cta-section').forEach(el=>sectionObserver.observe(el));
+
+const cardObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const parent=entry.target.closest('.tools-grid, .featured-grid, .gold-grid, .why-grid')||entry.target;
+      const cards=parent.querySelectorAll?parent.querySelectorAll('.tool-card, .featured-card, .gold-card, .why-card, .tool-row'):[];
+      cards.forEach((card,idx)=>{setTimeout(()=>{card.classList.add('is-visible');},idx*70);});
+      cardObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.tool-card, .featured-card, .gold-card, .why-card').forEach(el => observer.observe(el));
+},{threshold:0.15});
+document.querySelectorAll('.tools-grid, .featured-grid, .gold-grid, .why-grid, #textGrid, #devGrid').forEach(grid=>cardObserver.observe(grid));
 
-function animateCounter(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.suffix || '';
-  const text = el.dataset.text;
-  if (text) return;
-  const duration = 1500;
-  const step = target / (duration / 16);
-  let current = 0;
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) { current = target; clearInterval(timer); }
-    if (suffix === 'K+') { el.textContent = Math.floor(current / 1000) + 'K+'; }
-    else { el.textContent = Math.floor(current) + suffix; }
-  }, 16);
+// ===== COUNTER =====
+function animateCounter(el){
+  const target=parseInt(el.dataset.count);
+  const duration=1600;let start=null;
+  function step(time){
+    if(!start)start=time;
+    const p=Math.min((time-start)/duration,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(eased*target);
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target;
+  }
+  requestAnimationFrame(step);
 }
-const counterObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
-});
-document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){animateCounter(entry.target);counterObserver.unobserve(entry.target);}});
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
 
-function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
-document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(e.target.value); });
+// ===== MOBILE NAV =====
+function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open');}
 </script>
 </body>
 </html>
