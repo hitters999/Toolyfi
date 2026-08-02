@@ -56,7 +56,10 @@ img{display:block;width:100%;height:auto;}
 /* ===== HEADER w/ sticky live search ===== */
 .header{position:sticky;top:0;z-index:1000;background:rgba(250,246,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.05);}
 .header-inner{display:flex;align-items:center;gap:20px;padding:10px 24px;max-width:1280px;margin:0 auto;}
-.logo img{height:38px;width:auto;flex-shrink:0;}
+.logo{display:flex;align-items:center;gap:9px;flex-shrink:0;}
+.logo-icon{width:40px;height:40px;border-radius:11px;overflow:hidden;flex-shrink:0;background-image:url('/logo1.png');background-size:300% auto;background-position:50% 12%;background-repeat:no-repeat;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.55rem;color:var(--text);letter-spacing:-0.5px;white-space:nowrap;}
+.logo-text em{font-style:normal;color:var(--coral);}
 .header-search{flex:1;max-width:420px;position:relative;}
 .header-search input{width:100%;padding:10px 14px 10px 38px;border-radius:10px;border:1.5px solid var(--coral-light);background:#fff;font-size:0.88rem;outline:none;transition:border-color .2s;}
 .header-search input:focus{border-color:var(--coral);}
@@ -150,6 +153,14 @@ img{display:block;width:100%;height:auto;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:700px){.two-col{grid-template-columns:1fr;}}
 
+/* All Tools compact grid */
+.all-tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.at-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,0.05);transition:all .2s;}
+.at-item:hover{border-color:var(--coral);background:var(--coral-light);transform:translateY(-2px);}
+.at-item .at-ic{width:34px;height:34px;border-radius:9px;background:var(--coral-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.at-item:hover .at-ic{background:#fff;}
+.at-item .at-name{font-weight:700;font-size:0.83rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
 /* ===== WHY ===== */
 .why-section{background:#fff;padding:60px 20px;}
 .why-inner{max-width:1280px;margin:0 auto;text-align:center;}
@@ -174,7 +185,10 @@ img{display:block;width:100%;height:auto;}
 footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
 .footer-inner{max-width:1280px;margin:0 auto;}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
-.footer-brand img{height:38px;width:auto;display:block;margin-bottom:10px;}
+.footer-brand .logo{margin-bottom:12px;}
+.footer-brand .logo-icon{width:44px;height:44px;}
+.footer-brand .logo-text{font-size:1.6rem;color:#fff;}
+.footer-brand .logo-text em{color:var(--coral-light);}
 .footer-brand p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-top:8px;max-width:280px;}
 .footer-col h4{color:#fff;font-weight:700;margin-bottom:12px;font-size:0.78rem;letter-spacing:0.5px;text-transform:uppercase;}
 .footer-col a{display:block;font-size:0.84rem;color:rgba(255,255,255,0.5);margin-bottom:6px;}
@@ -201,13 +215,14 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
 <!-- HEADER w/ live search -->
 <header class="header">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/logo1.png" alt="Toolyfi"></a>
+    <a href="/" class="logo"><span class="logo-icon" role="img" aria-label="Toolyfi"></span><span class="logo-text">Toolyfi<em>.</em></span></a>
     <div class="header-search">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="headerSearch" placeholder="Search tools..." autocomplete="off">
       <div class="header-search-dropdown" id="hsDropdown"></div>
     </div>
     <nav class="nav">
+      <a href="#all-tools">All Tools</a>
       <a href="#ai-tools">AI</a>
       <a href="#finance">Finance</a>
       <a href="#calculators">Calculators</a>
@@ -286,13 +301,26 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   </div>
 </section>
 
+<!-- ALL TOOLS — full searchable list -->
+<section class="tabs-section" id="all-tools">
+  <div class="tabs-head">
+    <h2>All <em>tools</em></h2>
+    <p style="color:var(--text-2);font-size:0.9rem;margin-top:4px;">Every tool on Toolyfi, in one place — search to find exactly what you need.</p>
+  </div>
+  <div class="header-search" style="max-width:480px;margin-bottom:24px;">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="allToolsSearch" placeholder="Search all 47 tools..." autocomplete="off">
+  </div>
+  <p id="allToolsCount" style="color:var(--text-3);font-size:0.82rem;margin-bottom:14px;"></p>
+  <div class="all-tools-grid" id="allToolsGrid"></div>
+</section>
+
 <!-- ADS -->
 <div class="ad-wrap"><div class="ad-wrap-inner">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div></div>
 
-<!-- WHY -->
 <section class="why-section">
   <div class="why-inner">
     <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;">Why professionals choose <em>Toolyfi</em></h2>
@@ -318,7 +346,7 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/logo1.png" alt="Toolyfi">
+        <a href="/" class="logo"><span class="logo-icon" role="img" aria-label="Toolyfi"></span><span class="logo-text">Toolyfi<em>.</em></span></a>
         <p>Professional-grade tools for AI, finance, and everyday work — built to be fast and reliable.</p>
       </div>
       <div class="footer-col"><h4>AI Tools</h4><a href="/ai-assistant.html">AI Assistant</a><a href="/ai-image-generator.html">Image Generator</a><a href="/ai-text-detector.html">Text Detector</a><a href="/seo-checker.html">SEO Checker</a></div>
@@ -336,7 +364,7 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
 const AI_PHOTOS=["https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294619/pexels-photo-8294619.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566464/pexels-photo-8566464.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294654/pexels-photo-8294654.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386359/pexels-photo-8386359.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?cs=srgb&fm=jpg&w=500"];
 const FINANCE_PHOTOS=["https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5921494/pexels-photo-5921494.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054402/pexels-photo-7054402.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6801680/pexels-photo-6801680.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958539/pexels-photo-6958539.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7680680/pexels-photo-7680680.jpeg?cs=srgb&fm=jpg&w=500"];
 const CALC_PHOTOS=["https://images.pexels.com/photos/7692469/pexels-photo-7692469.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5877591/pexels-photo-5877591.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958525/pexels-photo-6958525.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054414/pexels-photo-7054414.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958540/pexels-photo-6958540.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8296969/pexels-photo-8296969.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7580943/pexels-photo-7580943.jpeg?cs=srgb&fm=jpg&w=500"];
-const DEV_PHOTOS=["https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=300"];
+const DEV_PHOTOS=["https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4383298/pexels-photo-4383298.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/5125366/pexels-photo-5125366.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/16592498/pexels-photo-16592498.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?cs=srgb&fm=jpg&w=300"];
 function pick(arr,i){return arr[i%arr.length];}
 
 // Pakistan-specific tools (BISP, Gold Rate) intentionally excluded — see note in <head>
@@ -384,10 +412,62 @@ const devTools=[
   {name:'Password Generator',url:'/password-generator.html',desc:'Strong secure passwords instantly',icon:'🔐'},
   {name:'JSON Formatter',url:'/json-formatter.html',desc:'Format, validate & minify JSON',icon:'{}'},
   {name:'CSV to JSON',url:'/csv-to-json.html',desc:'Convert CSV to JSON, XML, YAML',icon:'📊'},
+  {name:'HTML Preview Tool',url:'/html-preview-tool.html',desc:'Live HTML/CSS/JS preview tool',icon:'🌐'},
   {name:'Color Picker',url:'/color-picker.html',desc:'Pick colors, get HEX, RGB, HSL',icon:'🎨'},
   {name:'Unit Converter',url:'/unit-converter.html',desc:'Convert length, weight, area units',icon:'📏'},
 ];
 const trending=[aiTools[0],financeTools[0],devTools[0],calcTools[1],aiTools[5],financeTools[8],calcTools[2],devTools[1]];
+
+// ===== FULL TOOL LIST (47 tools, PK-specific excluded) — used by All Tools section + header search =====
+const allToolsFull=[
+  {name:'AI Assistant',url:'/ai-assistant.html',icon:'🤖'},
+  {name:'AI Image Generator',url:'/ai-image-generator.html',icon:'🎨'},
+  {name:'AI Text Detector',url:'/ai-text-detector.html',icon:'🔍'},
+  {name:'AI Tool Finder',url:'/ai-tool-finder.html',icon:'🎯'},
+  {name:'YouTube Transcript Extractor',url:'/youtube-transcript-extractor.html',icon:'▶️'},
+  {name:'Background Remover',url:'/bg-remover-object-detection.html',icon:'✂️'},
+  {name:'Prompt Generator',url:'/prompt-generator.html',icon:'💡'},
+  {name:'SEO Checker',url:'/seo-checker.html',icon:'📈'},
+  {name:'Image Compressor',url:'/image-compressor.html',icon:'🗜️'},
+  {name:'Image Resizer',url:'/image-resizer.html',icon:'📐'},
+  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',icon:'💰'},
+  {name:'State Tax Refund Tracker',url:'/state-tax-refund-tracker.html',icon:'🗺️'},
+  {name:'Salary to Hourly',url:'/salary-to-hourly.html',icon:'💵'},
+  {name:'Tip Calculator',url:'/tip-calculator.html',icon:'🍽️'},
+  {name:'Profit Margin Calculator',url:'/profit-margin-calculator.html',icon:'📈'},
+  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',icon:'🧾'},
+  {name:'Compound Interest Calculator',url:'/compound-interest-calculator.html',icon:'📊'},
+  {name:'Invoice Generator',url:'/invoice-generator.html',icon:'📋'},
+  {name:'Currency Converter',url:'/currency-converter.html',icon:'💱'},
+  {name:'Resume Builder',url:'/resume-builder.html',icon:'📄'},
+  {name:'Scientific Calculator',url:'/scientific-calculator.html',icon:'🔬'},
+  {name:'BMI Calculator',url:'/bmi-calculator.html',icon:'⚖️'},
+  {name:'Age Calculator',url:'/age-calculator.html',icon:'🎂'},
+  {name:'Percentage Calculator',url:'/percentage-calculator.html',icon:'%'},
+  {name:'Sleep Calculator',url:'/sleep-calculator.html',icon:'😴'},
+  {name:'Loan Calculator',url:'/loan-calculator.html',icon:'🏦'},
+  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',icon:'🎓'},
+  {name:'Random Number Generator',url:'/random-number-generator.html',icon:'🎲'},
+  {name:'Word Counter',url:'/word-counter.html',icon:'🔤'},
+  {name:'Case Converter',url:'/case-converter.html',icon:'Aa'},
+  {name:'Text Trimmer',url:'/text-trimmer.html',icon:'✂️'},
+  {name:'Number to Words',url:'/number-to-words.html',icon:'🔢'},
+  {name:'Morse Code Converter',url:'/morse-code-converter.html',icon:'•—'},
+  {name:'Fancy Text Generator',url:'/flip-fancy-text-generator.html',icon:'✨'},
+  {name:'Link Shortener',url:'/link-shortener.html',icon:'🔗'},
+  {name:'Special Characters Counter',url:'/special-characters-counter.html',icon:'#️⃣'},
+  {name:'Markdown to HTML',url:'/markdown-to-html-seo.html',icon:'📝'},
+  {name:'QR Code Generator',url:'/qr-code-generator.html',icon:'📱'},
+  {name:'Password Generator',url:'/password-generator.html',icon:'🔐'},
+  {name:'Base64 Encoder',url:'/base64-encoder.html',icon:'🔒'},
+  {name:'JSON Formatter',url:'/json-formatter.html',icon:'{}'},
+  {name:'CSV to JSON',url:'/csv-to-json.html',icon:'📊'},
+  {name:'HTML Preview Tool',url:'/html-preview-tool.html',icon:'🌐'},
+  {name:'Color Picker',url:'/color-picker.html',icon:'🎨'},
+  {name:'Unit Converter',url:'/unit-converter.html',icon:'📏'},
+  {name:'Temperature Converter',url:'/temperature-converter.html',icon:'🌡️'},
+  {name:'Broken Link Checker',url:'/broken-link-checker.html',icon:'🔗'},
+];
 
 function renderGrid(id,tools,photos){
   document.getElementById(id).innerHTML=tools.map((t,i)=>`
@@ -414,7 +494,7 @@ renderGrid('aiGrid',aiTools,AI_PHOTOS);
 renderGrid('financeGrid',financeTools,FINANCE_PHOTOS);
 renderGrid('calcGrid',calcTools,CALC_PHOTOS);
 renderRows('textGrid',textTools,DEV_PHOTOS);
-renderRows('devGrid',devTools,DEV_PHOTOS);
+renderRows('devGrid',devTools,DEV_PHOTOS.slice().reverse());
 renderTrending();
 
 // ===== TABS =====
@@ -432,16 +512,28 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 // reveal first panel on load
 document.querySelectorAll('#panel-ai .tool-card').forEach((c,i)=>setTimeout(()=>c.classList.add('is-visible'),i*40));
 
-// ===== HEADER LIVE SEARCH =====
-const allTools=[...aiTools,...financeTools,...calcTools,...textTools,...devTools];
+// ===== ALL TOOLS SECTION render + search =====
+function renderAllTools(list){
+  const grid=document.getElementById('allToolsGrid');
+  const count=document.getElementById('allToolsCount');
+  count.textContent=`${list.length} tool${list.length!==1?'s':''}`;
+  grid.innerHTML=list.map(t=>`<a href="${t.url}" class="at-item"><span class="at-ic">${t.icon}</span><span class="at-name">${t.name}</span></a>`).join('');
+}
+renderAllTools(allToolsFull);
+document.getElementById('allToolsSearch').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  renderAllTools(q?allToolsFull.filter(t=>t.name.toLowerCase().includes(q)):allToolsFull);
+});
+
+// ===== HEADER LIVE SEARCH (uses full 47-tool list) =====
 const hsInput=document.getElementById('headerSearch');
 const hsDrop=document.getElementById('hsDropdown');
 hsInput.addEventListener('input',()=>{
   const q=hsInput.value.trim().toLowerCase();
   if(!q){hsDrop.classList.remove('active');hsDrop.innerHTML='';return;}
-  const results=allTools.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)).slice(0,8);
+  const results=allToolsFull.filter(t=>t.name.toLowerCase().includes(q)).slice(0,8);
   if(!results.length){hsDrop.innerHTML='<div class="hsd-item">No tools found</div>';}
-  else{hsDrop.innerHTML=results.map(t=>`<a href="${t.url}" class="hsd-item"><span class="ic">${t.icon}</span><div><div class="nm">${t.name}</div><div class="dc">${t.desc}</div></div></a>`).join('');}
+  else{hsDrop.innerHTML=results.map(t=>`<a href="${t.url}" class="hsd-item"><span class="ic">${t.icon}</span><div><div class="nm">${t.name}</div></div></a>`).join('');}
   hsDrop.classList.add('active');
 });
 document.addEventListener('click',(e)=>{if(!e.target.closest('.header-search'))hsDrop.classList.remove('active');});
