@@ -111,6 +111,7 @@ nav{background:rgba(8,61,31,0.97);backdrop-filter:blur(20px);border-bottom:1px s
 /* LIVE BTN */
 .live-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,68,68,0.15);border:1px solid rgba(255,68,68,0.35);color:#ff6b6b;font-size:0.8rem;font-weight:700;padding:9px 22px;border-radius:100px;margin-top:24px;cursor:pointer;transition:all .3s;}
 .live-btn:hover{background:rgba(255,68,68,0.25);}
+.rate-note{color:rgba(255,255,255,0.35);font-size:0.7rem;margin-top:10px;}
 
 /* WRAP */
 .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
@@ -253,6 +254,7 @@ nav{background:rgba(8,61,31,0.97);backdrop-filter:blur(20px);border-bottom:1px s
 .comment-btn{background:linear-gradient(135deg,var(--mg),var(--mg2));color:white;border:none;border-radius:10px;padding:11px 26px;font-weight:700;font-size:0.875rem;cursor:pointer;transition:all .2s;}
 .comment-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(13,92,46,0.3);}
 .comment-list{margin-top:20px;display:flex;flex-direction:column;gap:12px;}
+.c-empty{font-size:0.85rem;color:var(--muted);text-align:center;padding:10px 0;}
 .c-item{background:#f8fdf8;border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
 .c-author{font-weight:700;font-size:0.82rem;color:var(--mg);margin-bottom:4px;}
 .c-text{font-size:0.875rem;color:var(--muted);line-height:1.6;}
@@ -363,6 +365,7 @@ footer{background:var(--mg3);border-top:1px solid rgba(212,175,55,0.15);padding:
     </div>
     <div class="rate-hero" id="hero-rate-cards"></div>
     <button class="live-btn" onclick="refreshLiveRates()">🔴 Refresh Live Rate</button>
+    <div class="rate-note" id="rate-source-note"></div>
   </div>
 </section>
 
@@ -613,8 +616,8 @@ footer{background:var(--mg3);border-top:1px solid rgba(212,175,55,0.15);padding:
     </div>
     <div class="rating-msg" id="rating-msg"></div>
     <div class="like-row">
-      <button class="like-btn like" id="like-btn" onclick="handleLike('like')">👍 Helpful <span id="like-count">287</span></button>
-      <button class="like-btn dislike" id="dislike-btn" onclick="handleLike('dislike')">👎 Not Helpful <span id="dislike-count">9</span></button>
+      <button class="like-btn like" id="like-btn" onclick="handleLike('like')">👍 Helpful <span id="like-count">0</span></button>
+      <button class="like-btn dislike" id="dislike-btn" onclick="handleLike('dislike')">👎 Not Helpful <span id="dislike-count">0</span></button>
     </div>
   </div>
 
@@ -627,9 +630,7 @@ footer{background:var(--mg3);border-top:1px solid rgba(212,175,55,0.15);padding:
       <button class="comment-btn" onclick="submitComment()">Post Comment</button>
     </div>
     <div class="comment-list" id="comment-list">
-      <div class="c-item"><div class="c-author">Usman R. — Lahore</div><div class="c-text">Checked the rate before going to Anarkali Bazaar today. Spot on! The dealer quoted exactly the same rate.</div><div class="c-date">13 Apr 2026</div></div>
-      <div class="c-item"><div class="c-author">Sana M. — Gulberg, Lahore</div><div class="c-text">Excellent calculator! Was buying a bridal set from Liberty Market and used this to cross-check making charges. Highly recommend.</div><div class="c-date">12 Apr 2026</div></div>
-      <div class="c-item"><div class="c-author">Bilal A. — Shah Alam Market</div><div class="c-text">Main yeh page rozana check karta hoon. Rate bilkul theek hota hai. Bookmark kar liya hai!</div><div class="c-date">11 Apr 2026</div></div>
+      <div class="c-empty" id="comment-empty">Be the first to share your experience.</div>
     </div>
   </div>
 
@@ -676,7 +677,7 @@ footer{background:var(--mg3);border-top:1px solid rgba(212,175,55,0.15);padding:
         <h4>Toolyfi</h4>
         <a href="https://toolyfi.com">Home</a>
         <a href="https://toolyfi.com/#tools">All Tools</a>
-        <a href="https://toolyfi.com/updatesworld/updatesworld.html">News</a>
+        <a href="https://toolyfi.com/about.html">About</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -689,7 +690,8 @@ footer{background:var(--mg3);border-top:1px solid rgba(212,175,55,0.15);padding:
 
 <script>
 const TOLA_GRAM=11.664,TOLA_OZ=0.374878;
-let GOLD24=503270;
+let GOLD24=503270; // fallback rate, used only if live backend is unreachable
+let usingFallback=false;
 const KL={'24k':'24K Pure Gold','22k':'22K Jewelry Gold','21k':'21K Gold','18k':'18K Gold'};
 const KM={'24k':1,'22k':0.9167,'21k':0.875,'18k':0.75};
 const CURR=[
@@ -711,6 +713,7 @@ function price(k,u){const b=GOLD24*KM[k];if(u==='tola')return b;if(u==='gram')re
 function buildHero(){
   const cards=[{unit:'Per Tola',k:'22k',u:'tola'},{unit:'Per Gram',k:'22k',u:'gram'},{unit:'Per 10g',k:'22k',u:'10gram'},{unit:'24K Tola',k:'24k',u:'tola'}];
   document.getElementById('hero-rate-cards').innerHTML=cards.map(c=>`<div class="rate-card"><div class="rate-unit">${c.unit}</div><div class="rate-amount">${fmt(price(c.k,c.u))}</div><div class="rate-karat">${KL[c.k]}</div></div>`).join('');
+  document.getElementById('rate-source-note').textContent=usingFallback?'⚠️ Live feed unavailable — showing last known rate.':'';
 }
 
 function buildPanels(){
@@ -751,11 +754,13 @@ async function calculateGold(){
     if(c==='PKR'){rt='🇵🇰 '+Math.round(t).toLocaleString();sb=`${a} ${u} × ${Math.round(k*100)}% purity`;}
     else{const cx=(d.currencies||[]).find(x=>x.code===c)||CURR.find(x=>x.code===c);const ra=cx?cx.rate:1;rt=c+' '+(t/ra).toFixed(2);sb='= 🇵🇰 '+Math.round(t).toLocaleString();}
   }catch{
+    usingFallback=true;
+    document.getElementById('rate-source-note').textContent='⚠️ Live feed unavailable — showing last known rate.';
     const b=GOLD24*k;let pp;
     if(u==='tola')pp=b;else if(u==='gram')pp=b/TOLA_GRAM;else if(u==='10gram')pp=b/TOLA_GRAM*10;else pp=b/TOLA_OZ;
     const t=pp*a;
-    if(c==='PKR'){rt='🇵🇰 '+Math.round(t).toLocaleString();sb=`${a} ${u} × ${Math.round(k*100)}% purity`;}
-    else{const cx=CURR.find(x=>x.code===c);const ra=cx?cx.rate:1;rt=c+' '+(t/ra).toFixed(2);sb='= 🇵🇰 '+Math.round(t).toLocaleString();}
+    if(c==='PKR'){rt='🇵🇰 '+Math.round(t).toLocaleString();sb=`${a} ${u} × ${Math.round(k*100)}% purity (last known rate)`;}
+    else{const cx=CURR.find(x=>x.code===c);const ra=cx?cx.rate:1;rt=c+' '+(t/ra).toFixed(2);sb='= 🇵🇰 '+Math.round(t).toLocaleString()+' (last known rate)';}
   }
   document.getElementById('calc-result-amount').textContent=rt;
   document.getElementById('calc-result-sub').textContent=sb;
@@ -766,8 +771,19 @@ async function refreshLiveRates(){
   try{
     const r=await fetch('https://toolyfi-backend.onrender.com/api/gold');
     const d=await r.json();
-    if(d&&d.goldPKRperTola){GOLD24=Math.round(d.goldPKRperTola);buildHero();buildPanels();document.getElementById('last-updated-text').textContent='📅 '+new Date().toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' (Live)';}
-  }catch(e){console.error(e);}
+    if(d&&d.goldPKRperTola){
+      GOLD24=Math.round(d.goldPKRperTola);
+      usingFallback=false;
+      buildHero();buildPanels();
+      document.getElementById('last-updated-text').textContent='📅 '+new Date().toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' (Live)';
+    } else {
+      throw new Error('bad payload');
+    }
+  }catch(e){
+    usingFallback=true;
+    document.getElementById('rate-source-note').textContent='⚠️ Live feed unavailable — showing last known rate.';
+    document.getElementById('last-updated-text').textContent='📅 '+new Date().toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' (last known rate)';
+  }
 }
 
 const FAQS=[
@@ -808,6 +824,8 @@ function submitComment(){
   const text=document.getElementById('comment-input').value.trim();
   const name=document.getElementById('comment-name').value.trim()||'Anonymous';
   if(!text)return;
+  const empty=document.getElementById('comment-empty');
+  if(empty)empty.remove();
   const today=new Date().toLocaleDateString('en-PK',{day:'numeric',month:'short',year:'numeric'});
   const d=document.createElement('div');d.className='c-item';
   d.innerHTML=`<div class="c-author">${name}</div><div class="c-text">${text}</div><div class="c-date">${today}</div>`;
