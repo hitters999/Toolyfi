@@ -1,556 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
-<!-- Tidio -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toolyfi — Professional-Grade Free Online Tools</title>
-<meta name="description" content="AI Assistant, tax refund tracker, calculators & developer tools — professional-grade, no signup, no limits.">
-<link rel="canonical" href="https://toolyfi.com/">
-<meta property="og:title" content="Toolyfi — Professional-Grade Online Tools">
-<meta property="og:description" content="AI, finance, calculators, dev tools — built for real work.">
-<meta name="twitter:card" content="summary_large_image">
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Toolyfi","url":"https://toolyfi.com","description":"Professional-grade free online tools.","potentialAction":{"@type":"SearchAction","target":"https://toolyfi.com/?search={search_term_string}","query-input":"required name=search_term_string"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com","logo":"https://toolyfi.com/logo1.png"}
-</script>
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
-<!--
-  NOTE (Firebase): dummy apiKey hata diya gaya, real config aane par yahan add karna.
-  NOTE (Pakistan tools): BISP 8171 aur Gold Rate cities is homepage se hata diye gaye hain
-  (audience-split fix — homepage ab sirf global/US-focused). Ye tools abhi bhi live hain,
-  bas homepage se link nahi ho rahe. Inke liye alag "/pk/" section ya subdomain baad mein
-  bana sakte hain jab time ho.
--->
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#faf6f0; --bg-card:#ffffff; --text:#1a1a2e; --text-2:#4a4a5a; --text-3:#8a8a9a;
-  --coral:#e85d4a; --coral-light:#f5d4ce; --teal:#2a9d8f; --teal-light:#d4ebe7;
-  --gold:#e9b741; --gold-light:#f5e6c8;
-  --shadow:0 8px 32px rgba(0,0,0,0.06); --radius:20px; --radius-sm:12px;
-  --ease: cubic-bezier(0.22,1,0.36,1);
-}
-html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
-a{color:inherit;text-decoration:none;}
-img{display:block;width:100%;height:auto;}
-
-/* ===== HEADER w/ sticky live search ===== */
-.header{position:sticky;top:0;z-index:1000;background:rgba(250,246,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.05);}
-.header-inner{display:flex;align-items:center;gap:20px;padding:10px 24px;max-width:1280px;margin:0 auto;}
-.logo{display:flex;align-items:center;gap:9px;flex-shrink:0;}
-.logo-icon{width:40px;height:40px;border-radius:11px;overflow:hidden;flex-shrink:0;background-image:url('/logo1.png');background-size:300% auto;background-position:50% 12%;background-repeat:no-repeat;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
-.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.55rem;color:var(--text);letter-spacing:-0.5px;white-space:nowrap;}
-.logo-text em{font-style:normal;color:var(--coral);}
-.header-search{flex:1;max-width:420px;position:relative;}
-.header-search input{width:100%;padding:10px 14px 10px 38px;border-radius:10px;border:1.5px solid var(--coral-light);background:#fff;font-size:0.88rem;outline:none;transition:border-color .2s;}
-.header-search input:focus{border-color:var(--coral);}
-.header-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-3);}
-.header-search-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.12);overflow:hidden;display:none;max-height:320px;overflow-y:auto;z-index:50;}
-.header-search-dropdown.active{display:block;}
-.hsd-item{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:0.85rem;border-bottom:1px solid rgba(0,0,0,0.04);}
-.hsd-item:hover{background:var(--coral-light);}
-.hsd-item .ic{font-size:1.1rem;}
-.hsd-item .nm{font-weight:700;}
-.hsd-item .dc{color:var(--text-3);font-size:0.75rem;}
-.nav{display:flex;gap:2px;flex-shrink:0;}
-.nav a{padding:8px 12px;border-radius:10px;font-weight:600;font-size:0.82rem;color:var(--text-2);transition:all 0.2s;}
-.nav a:hover{background:var(--coral-light);color:var(--coral);}
-.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;}
-.mobile-nav{display:none;padding:16px 24px;border-top:1px solid rgba(0,0,0,0.04);flex-direction:column;gap:4px;}
-.mobile-nav a{padding:10px 14px;border-radius:8px;font-weight:600;color:var(--text-2);}
-@media(max-width:768px){.nav{display:none;}.hamburger{display:block;}.mobile-nav.open{display:flex;}.header-search{max-width:none;}}
-
-/* ===== HERO — quality-focused ===== */
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:0;min-height:70vh;background:var(--bg);overflow:hidden;}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:60px 48px 60px 60px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--coral-light);color:var(--coral);padding:4px 16px;border-radius:30px;font-weight:700;font-size:0.75rem;letter-spacing:0.5px;margin-bottom:16px;width:fit-content;}
-.hero-left h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.1;margin-bottom:14px;letter-spacing:-1px;}
-.hero-left h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--coral);font-weight:400;}
-.hero-left p{font-size:1.05rem;color:var(--text-2);max-width:460px;margin-bottom:28px;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{background:var(--coral);color:#fff;padding:15px 34px;border-radius:14px;font-weight:700;transition:all 0.2s;box-shadow:0 4px 16px rgba(232,93,74,0.25);}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,93,74,0.35);}
-.btn-primary:active{transform:scale(0.97);}
-.btn-text-link{color:var(--text-2);font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;padding:15px 4px;}
-.btn-text-link:hover{color:var(--coral);}
-.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:2px solid rgba(0,0,0,0.05);}
-.hero-pill{font-size:0.78rem;font-weight:700;color:var(--text-2);background:#fff;border:1px solid var(--coral-light);padding:6px 14px;border-radius:20px;}
-
-.hero-right{position:relative;overflow:hidden;background:var(--coral-light);display:flex;align-items:center;justify-content:center;padding:40px;}
-.hero-image-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;width:100%;max-width:460px;aspect-ratio:1/1;}
-.hero-image-grid .img-card{border-radius:var(--radius-sm);overflow:hidden;background:#fff;box-shadow:var(--shadow);transition:transform 0.3s ease;position:relative;}
-.hero-image-grid .img-card img{width:100%;height:100%;object-fit:cover;}
-.hero-image-grid .img-card:nth-child(2){transform:translateY(16px);}
-.hero-image-grid .img-card:nth-child(3){transform:translateY(-16px);}
-.hero-image-grid .img-card:hover{transform:scale(1.02) translateY(0);}
-.hero-image-grid .img-card .label{position:absolute;bottom:8px;left:8px;right:8px;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);color:#fff;font-size:0.6rem;font-weight:700;padding:4px 10px;border-radius:6px;text-align:center;letter-spacing:0.3px;}
-@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;}.hero-left{padding:40px 24px;order:2;}.hero-right{padding:24px;order:1;min-height:280px;}.hero-image-grid{max-width:320px;}}
-@media(max-width:480px){.hero-left h1{font-size:2rem;}.hero-pills{gap:8px;}}
-
-/* ===== TRENDING (top 8, right under hero) ===== */
-.trending{padding:50px 20px 20px;max-width:1280px;margin:0 auto;}
-.trending h2{font-size:1.4rem;font-weight:800;margin-bottom:4px;}
-.trending .sub{color:var(--text-2);font-size:0.9rem;margin-bottom:22px;}
-.trending-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
-.trend-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);transition:transform .25s,box-shadow .25s;}
-.trend-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.09);}
-.trend-card .ti{height:90px;overflow:hidden;position:relative;}
-.trend-card .ti img{width:100%;height:100%;object-fit:cover;}
-.trend-card .ti .ic{position:absolute;bottom:8px;left:8px;background:rgba(255,255,255,0.92);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;}
-.trend-card .tn{padding:10px 12px;font-weight:700;font-size:0.85rem;}
-
-/* ===== TABS ===== */
-.tabs-section{padding:50px 20px 70px;max-width:1280px;margin:0 auto;}
-.tabs-head{margin-bottom:26px;}
-.tabs-head h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;}
-.tabs-head h2 em{color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;font-weight:400;}
-.tab-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px;border-bottom:2px solid rgba(0,0,0,0.06);}
-.tab-btn{padding:12px 20px;font-weight:700;font-size:0.88rem;color:var(--text-3);border-bottom:3px solid transparent;transition:all .2s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;}
-.tab-btn.active{color:var(--coral);border-bottom-color:var(--coral);}
-.tab-panel{display:none;}
-.tab-panel.active{display:block;}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
-.tool-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all 0.3s ease;opacity:0;transform:translateY(16px);border:1px solid rgba(0,0,0,0.03);}
-.tool-card.is-visible{opacity:1;transform:translateY(0);transition:opacity 450ms var(--ease),transform 450ms var(--ease),box-shadow .3s;}
-.tool-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.08);}
-.tool-card-img{height:130px;overflow:hidden;background:var(--coral-light);position:relative;}
-.tool-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
-.tool-card:hover .tool-card-img img{transform:scale(1.06);}
-.tool-card-img .tool-icon-overlay{position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,0.92);width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-.tool-card-body{padding:14px 16px 16px;}
-.tool-card-body .tool-name{font-weight:700;font-size:0.95rem;}
-.tool-card-body .tool-desc{font-size:0.8rem;color:var(--text-2);line-height:1.5;margin-top:2px;}
-
-/* row style (text/dev) */
-.tool-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);border:1px solid rgba(0,0,0,0.03);transition:opacity 450ms var(--ease),transform 450ms var(--ease),box-shadow .3s;}
-.tool-row.is-visible{opacity:1;transform:translateY(0);}
-.tool-row:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);}
-.tool-row .row-img{width:64px;height:64px;flex-shrink:0;overflow:hidden;}
-.tool-row .row-img img{width:100%;height:100%;object-fit:cover;}
-.tool-row .row-body{padding:8px 12px 8px 0;}
-.tool-row .tool-name{font-weight:700;font-size:0.88rem;}
-.tool-row .tool-desc{font-size:0.75rem;color:var(--text-2);margin-top:2px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:700px){.two-col{grid-template-columns:1fr;}}
-
-/* All Tools compact grid */
-.all-tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
-.at-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,0.05);transition:all .2s;}
-.at-item:hover{border-color:var(--coral);background:var(--coral-light);transform:translateY(-2px);}
-.at-item .at-ic{width:34px;height:34px;border-radius:9px;background:var(--coral-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-.at-item:hover .at-ic{background:#fff;}
-.at-item .at-name{font-weight:700;font-size:0.83rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-/* ===== WHY ===== */
-.why-section{background:#fff;padding:60px 20px;}
-.why-inner{max-width:1280px;margin:0 auto;text-align:center;}
-.why-inner h2 em{color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;}
-.why-sub{color:var(--text-2);margin-bottom:36px;}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
-.why-card{background:var(--bg);border-radius:var(--radius-sm);padding:26px 18px;border:1px solid rgba(0,0,0,0.03);transition:all 0.2s;opacity:0;transform:translateY(14px);}
-.why-card.is-visible{opacity:1;transform:translateY(0);transition:opacity 450ms var(--ease),transform 450ms var(--ease);}
-.why-card:hover{background:var(--coral-light);transform:translateY(-4px);}
-.why-icon{font-size:2rem;margin-bottom:8px;}
-.why-card h3{font-weight:700;font-size:0.95rem;}
-.why-card p{font-size:0.85rem;color:var(--text-2);margin-top:4px;}
-
-/* ===== CTA ===== */
-.cta-section{background:linear-gradient(135deg,var(--coral),#d94f3a);padding:60px 20px;text-align:center;color:#fff;}
-.cta-section h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;}
-.cta-section p{font-size:1rem;opacity:0.9;margin:8px auto 26px;max-width:480px;}
-.cta-btn{background:#fff;color:var(--coral);padding:15px 40px;border-radius:14px;font-weight:700;font-size:1rem;display:inline-block;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
-.cta-btn:hover{transform:translateY(-3px);}
-
-/* ===== FOOTER ===== */
-footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
-.footer-inner{max-width:1280px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
-.footer-brand .logo{margin-bottom:12px;}
-.footer-brand .logo-icon{width:44px;height:44px;}
-.footer-brand .logo-text{font-size:1.6rem;color:#fff;}
-.footer-brand .logo-text em{color:var(--coral-light);}
-.footer-brand p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-top:8px;max-width:280px;}
-.footer-col h4{color:#fff;font-weight:700;margin-bottom:12px;font-size:0.78rem;letter-spacing:0.5px;text-transform:uppercase;}
-.footer-col a{display:block;font-size:0.84rem;color:rgba(255,255,255,0.5);margin-bottom:6px;}
-.footer-col a:hover{color:var(--coral-light);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.4);}
-.footer-links{display:flex;gap:18px;}
-.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.4);}
-@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;}}
-@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
-
-/* ===== ADS ===== */
-.ad-wrap{max-width:1280px;margin:24px auto;padding:0 20px;text-align:center;}
-.ad-wrap-inner{background:#fff;border-radius:var(--radius-sm);padding:8px;box-shadow:var(--shadow);}
-
-@media(max-width:600px){
-  .trending-grid{grid-template-columns:1fr 1fr;}
-  .tools-grid{grid-template-columns:1fr 1fr;gap:10px;}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f15e47">
+  <meta name="description" content="Toolyfi — practical AI, finance, calculator, text and developer tools for real work.">
+  <title>Toolyfi — The shortcut to getting it done</title>
+  <style>
+    /* Toolyfi Editorial Utility Atlas: warm paper, ink navy, coral action signal. */
+    :root{--paper:#f5f0e8;--card:#fffdf8;--ink:#15243b;--muted:#637086;--line:#dcd5ca;--coral:#f15e47;--sage:#dceee4;--butter:#f7e7b8;--blue:#dfe6f5;--ease:cubic-bezier(.23,1,.32,1)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f15e4766;outline-offset:3px}a{color:inherit;text-decoration:none}
+    .header{position:sticky;top:0;z-index:20;border-bottom:1px solid #15243b20;background:#f5f0e8ed;backdrop-filter:blur(14px)}.header-inner{display:flex;align-items:center;gap:18px;max-width:1440px;min-height:72px;margin:auto;padding:0 28px}.brand{display:inline-flex;align-items:center;gap:10px;border:0;background:transparent;color:var(--ink);font-weight:800;letter-spacing:-1.7px;font-size:24px}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:2px solid var(--coral);color:var(--coral);font-size:26px;line-height:1;transform:rotate(45deg)}.brand-mark span{transform:rotate(-45deg)}.brand-word em{color:var(--coral);font-family:Georgia,serif;font-style:italic}.header-search{position:relative;display:flex;align-items:center;gap:9px;width:min(100%,390px);min-height:40px;border:1px solid #15243b2b;padding:0 12px;background:#fffdf8b5;color:var(--muted)}.header-search input{min-width:0;width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-size:13px}.header-search input::placeholder{color:#7f8999}.search-clear{border:0;background:transparent;color:var(--muted)}.search-popover{position:absolute;left:0;right:0;top:calc(100% + 8px);overflow:hidden;border:1px solid #15243b22;background:var(--card);box-shadow:0 18px 38px #15243b22}.search-result{display:grid;grid-template-columns:30px 1fr 16px;align-items:center;gap:9px;width:100%;border:0;border-bottom:1px solid #dcd5ca;padding:10px;text-align:left;background:var(--card);color:var(--ink)}.search-result:hover{background:#f8eae5}.search-result strong,.search-result small{display:block}.search-result strong{font-size:13px}.search-result small{color:var(--muted);font-size:10px}.mini-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:800;font-size:12px}.mini-ai{background:#ffe1da;color:#bb3c2b}.mini-finance{background:var(--butter);color:#8c6417}.mini-calculators{background:var(--sage);color:#176e5d}.mini-dev{background:var(--blue);color:#3f5e9a}.search-empty{margin:0;padding:14px;color:var(--muted);font-size:12px}.nav{display:flex;align-items:center;gap:7px;margin-left:auto}.nav button,.mobile-nav button{border:0;background:transparent;color:#45546a;font-size:12px;font-weight:700}.nav button:hover,.mobile-nav button:hover{color:var(--coral)}.header-cta{display:inline-flex;align-items:center;gap:7px;border:0;padding:10px 13px;background:var(--ink);color:var(--card);font-size:12px;font-weight:700}.header-cta:hover{background:var(--coral)}.menu{display:none;border:0;background:transparent;color:var(--ink);font-size:24px}.mobile-nav{display:none}
+    .hero{display:grid;grid-template-columns:minmax(0,.94fr) minmax(430px,1.06fr);max-width:1440px;min-height:620px;margin:auto;border-left:1px solid #15243b20;border-right:1px solid #15243b20}.hero-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:92px clamp(28px,6vw,96px) 70px;background-image:radial-gradient(#15243b1c 1px,transparent 1.4px),radial-gradient(#f15e4730 1px,transparent 1.4px);background-size:17px 17px,13px 13px}.eyebrow,.kicker{display:flex;align-items:center;gap:9px;color:var(--coral);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.spark{display:grid;place-items:center;width:24px;height:24px;background:var(--coral);color:var(--card);font-size:16px}.hero-index{position:absolute;top:34px;left:clamp(28px,6vw,96px);color:#8790a0;font-size:10px;font-weight:800;letter-spacing:1.7px}.hero h1,.section-heading h2,.directory-intro h2,.why h2,.cta h2{margin:22px 0 22px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(48px,5.4vw,86px);font-weight:500;letter-spacing:-6px;line-height:.91}.hero h1 em,.section-heading h2 em,.directory-intro h2 em,.why h2 em,.cta h2 em{color:var(--coral);font-style:italic}.hero-copy p{max-width:470px;margin:0;color:#526075;font-size:16px;line-height:1.65}.actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:32px}.primary{display:inline-flex;align-items:center;gap:12px;border:0;padding:14px 18px;background:var(--coral);box-shadow:4px 4px 0 var(--ink);color:var(--card);font-size:13px;font-weight:800}.primary:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}.quiet{border:0;border-bottom:1px solid currentColor;padding:4px 0;background:transparent;color:var(--ink);font-size:12px;font-weight:800}.quiet:hover{color:var(--coral)}.proof{display:flex;gap:14px 19px;flex-wrap:wrap;margin-top:48px;border-top:1px solid #15243b29;padding-top:15px;color:#59667a;font-size:11px;font-weight:700}.proof span::before{content:'✓';margin-right:4px;color:var(--coral)}
+    .hero-art{position:relative;display:grid;place-items:center;overflow:hidden;min-height:520px;background:#d9e9df}.hero-art:before{position:absolute;inset:11% 8%;border:1px solid #15243b55;content:'';border-radius:50%}.hero-art:after{position:absolute;right:-50px;top:8%;width:270px;height:270px;border:1px dashed #15243b66;border-radius:50%;content:''}.art-label{position:absolute;z-index:3;top:28px;left:28px;color:var(--ink);font-size:9px;font-weight:800;letter-spacing:1.6px}.art-label b{color:var(--coral);font-size:16px}.toolbox{position:relative;z-index:2;width:58%;height:45%;margin-top:65px;border:7px solid #c74335;border-top:24px solid #e84f3d;background:#d84d3c;box-shadow:18px 20px 0 #15243b22;transform:rotate(-3deg)}.toolbox:before{position:absolute;left:28%;top:-54px;width:40%;height:35px;border:7px solid #c74335;border-bottom:0;border-radius:18px 18px 0 0;content:''}.toolbox:after{position:absolute;left:42%;bottom:-9px;width:17%;height:19px;border:3px solid #15243b;background:#f7e7b8;content:''}.object{position:absolute;z-index:3;border:4px solid var(--ink);background:#e6eef0;box-shadow:4px 5px 0 #15243b44}.calculator{top:-65px;left:10%;width:95px;height:135px;background:#15243b;transform:rotate(-15deg)}.calculator:after{position:absolute;left:15px;right:15px;bottom:14px;height:52px;background:repeating-linear-gradient(90deg,#f7e7b8 0 12px,transparent 12px 17px),repeating-linear-gradient(0deg,#f7e7b8 0 12px,transparent 12px 17px);content:'';opacity:.85}.screen{position:absolute;left:14px;right:14px;top:15px;height:25px;background:#c7dfd0}.chart{right:-21px;top:-24px;width:155px;height:102px;padding:12px;background:var(--ink);transform:rotate(10deg)}.chart:before{display:block;height:4px;margin:4px 0 14px;background:var(--coral);box-shadow:0 13px 0 #f7e7b8,0 26px 0 #9ccdbd;content:''}.chart:after{position:absolute;right:15px;bottom:15px;width:22px;height:22px;border:9px solid var(--coral);border-left-color:#f7e7b8;border-radius:50%;content:''}.white-calc{left:48%;bottom:-44px;width:82px;height:102px;background:#fffdf8;transform:rotate(7deg)}.white-calc:after{position:absolute;inset:24px 12px 13px;background:repeating-linear-gradient(90deg,#f7e7b8 0 13px,transparent 13px 18px),repeating-linear-gradient(0deg,#f7e7b8 0 13px,transparent 13px 18px);content:''}.coin{right:3%;bottom:-15px;width:100px;height:100px;border-radius:50%;background:#9ccdbd;transform:rotate(22deg)}.sticker{position:absolute;z-index:4;border:1px solid #15243b55;padding:7px 9px;background:#fffdf8e8;box-shadow:3px 3px 0 #15243b22;color:var(--ink);font-size:10px;font-weight:800}.sticker-top{top:19%;right:3%;transform:rotate(4deg)}.sticker-bottom{bottom:15%;left:4%;transform:rotate(-5deg)}
+    .ticker{overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--ink);color:var(--card)}.ticker-track{display:flex;gap:43px;width:max-content;padding:11px 0;font-size:10px;font-weight:800;letter-spacing:2px;animation:marquee 24s linear infinite}.ticker-track i{color:var(--coral);font-style:normal}
+    .section{max-width:1440px;margin:auto;padding:92px clamp(22px,5vw,76px)}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px}.section-heading h2{margin:0;font-size:clamp(43px,4.5vw,72px)}.section-heading p{margin:9px 0 0;color:var(--muted);font-size:13px}.underlined{border:0;border-bottom:1px solid currentColor;padding:4px 0;background:transparent;color:var(--ink);font-size:12px;font-weight:800}.shelf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:42px}
+    .tile{position:relative;display:flex;min-height:205px;flex-direction:column;justify-content:space-between;border:1px solid var(--ink);padding:14px;background:var(--card);color:var(--ink);text-align:left;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s}.tile:hover{z-index:2;transform:translateY(-6px);box-shadow:6px 6px 0 var(--ink)}.tile-number{position:absolute;right:10px;top:9px;color:#15243b44;font-size:9px;font-weight:800}.tile-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font-weight:900;font-size:15px}.tile-arrow{font-size:16px;float:right}.tile-top{display:flex;justify-content:space-between}.tile strong{display:block;max-width:160px;font-family:Georgia,serif;font-size:17px;font-weight:500;letter-spacing:-.5px;line-height:1.05}.tile small{display:block;margin-top:7px;color:var(--muted);font-size:10px;line-height:1.45}.tile-tag{display:inline-block;margin-top:10px;border-top:1px solid #15243b33;padding-top:7px;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.ai .tile-icon{background:#ffe1da;color:#bb3c2b}.finance .tile-icon{background:var(--butter);color:#8c6417}.calculators .tile-icon{background:var(--sage);color:#176e5d}.dev .tile-icon{background:var(--blue);color:#3f5e9a}.ai:hover{background:#fff3f0}.finance:hover{background:#fff9e9}.calculators:hover{background:#f1fbf4}.dev:hover{background:#f1f4ff}
+    .directory{display:grid;grid-template-columns:minmax(245px,.65fr) minmax(0,1.35fr);gap:60px;padding:104px clamp(22px,7vw,110px);background:var(--ink);color:var(--card)}.directory-intro h2{margin:18px 0;font-size:clamp(46px,4.5vw,76px)}.directory-intro p{max-width:290px;color:#c1cbd8;font-size:13px}.directory-search{display:flex;align-items:center;gap:9px;border-bottom:1px solid #fffdf83c;padding-bottom:12px;color:#c3cddd}.directory-search input{min-width:0;width:100%;border:0;outline:0;background:transparent;color:var(--card);font-size:14px}.directory-search input::placeholder{color:#aeb9c9}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0}.tabs button{border:1px solid #fffdf844;padding:7px 9px;background:transparent;color:#d8e0ea;font-size:10px;font-weight:800}.tabs button.active,.tabs button:hover{border-color:var(--coral);background:var(--coral);color:var(--card)}.count{float:right;color:#aeb9c9;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.atlas{display:grid;gap:22px}.atlas-group{display:grid;grid-template-columns:125px minmax(0,1fr);gap:14px;border-top:1px solid #fffdf83c;padding-top:13px}.atlas-label{color:#d7e0eb}.atlas-label .num{color:var(--coral);font-family:Georgia,serif;font-size:20px}.atlas-label h3{margin:5px 0;font-family:Georgia,serif;font-size:21px;font-weight:500;letter-spacing:-1px}.atlas-label p{margin:0;color:#9eacbf;font-size:10px;line-height:1.35}.atlas-label small{display:block;margin-top:12px;color:var(--coral);font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.atlas-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.atlas-tools .tile{min-height:145px;border-color:#fffdf83c;padding:11px}.atlas-tools .featured{grid-row:span 2;min-height:300px}.atlas-tools .featured strong{font-size:21px}.atlas-tools .featured small{font-size:11px}.atlas-tools .featured .tile-tag{color:var(--coral)}.atlas-group:nth-child(2) .featured{background:#fff7df;color:var(--ink)}.atlas-group:nth-child(3) .featured{background:#eaf8ee;color:var(--ink)}.atlas-group:nth-child(4) .featured{background:#e9efff;color:var(--ink)}.empty{grid-column:1/-1;padding:34px;border:1px dashed #fffdf84c;color:#c3cddd;text-align:center}.empty button{border:0;padding:8px 12px;background:var(--coral);color:var(--card);font-size:11px;font-weight:800}
+    .why{display:grid;grid-template-columns:1fr 1fr;min-height:590px}.why-art{position:relative;overflow:hidden;background:#f6e1b8}.why-art:before,.why-art:after{position:absolute;content:'';background:var(--ink);transform:rotate(43deg)}.why-art:before{left:18%;top:18%;width:36%;height:18px;box-shadow:62px 54px 0 var(--coral),120px 108px 0 var(--ink),185px 162px 0 var(--coral)}.why-art:after{right:8%;bottom:20%;width:35%;height:10px;box-shadow:-80px -12px 0 var(--coral)}.why-stamp{position:absolute;right:10%;bottom:42px;z-index:2;display:flex;gap:8px;border:1px solid var(--ink);padding:12px;background:var(--card);box-shadow:5px 5px 0 var(--ink);font-size:11px;font-weight:800}.why-stamp b{color:var(--coral);font-size:18px}.why-copy{padding:88px clamp(25px,6vw,95px);background:var(--butter)}.why h2{margin:17px 0;font-size:clamp(45px,4.3vw,70px)}.why-copy>p{max-width:420px;color:#4f5d71;font-size:14px}.benefits{margin-top:34px;border-top:1px solid #15243b44}.benefit{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #15243b2d}.benefit-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--card);font-weight:800}.benefit h3{margin:0;font-size:12px}.benefit p{margin:2px 0 0;color:#58657a;font-size:11px}
+    .cta{padding:18px clamp(22px,5vw,80px) 70px;background:var(--coral);color:var(--card)}.cta-top{display:flex;justify-content:space-between;border-bottom:1px solid #fffdf899;padding-bottom:12px;font-size:9px;font-weight:800;letter-spacing:1.5px}.cta-content{display:flex;align-items:end;justify-content:space-between;gap:20px;padding-top:60px}.cta h2{margin:10px 0 0;color:var(--card);font-size:clamp(48px,6vw,92px)}.cta h2 em{color:var(--ink)}.circle{display:grid;place-items:center;width:90px;height:90px;border:1px solid var(--ink);border-radius:50%;background:var(--butter);color:var(--ink);font-size:28px}.circle:hover{transform:rotate(-30deg)}.footer{padding:56px clamp(22px,5vw,80px) 14px;background:var(--ink);color:var(--card)}.footer-main{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1440px;margin:auto}.footer p{max-width:320px;color:#aeb9c9;font-size:12px}.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:22px}.footer-links h4{margin:0 0 11px;color:var(--coral);font-size:10px;letter-spacing:1.5px;text-transform:uppercase}.footer-links a{display:block;margin:4px 0;color:#d8e0ea;font-size:12px}.footer-links a:hover{color:var(--coral)}.footer-bottom{display:flex;justify-content:space-between;max-width:1440px;margin:42px auto 0;border-top:1px solid #fffdf82a;padding-top:12px;color:#8d9bad;font-size:9px;font-weight:800;letter-spacing:1.3px}
+    @keyframes marquee{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+    @media(max-width:1080px){.nav{display:none}.menu{display:block;margin-left:auto}.header-cta{margin-left:0}.shelf{grid-template-columns:repeat(3,1fr)}.atlas-group{grid-template-columns:110px minmax(0,1fr)}.atlas-tools{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.header-inner{min-height:64px;padding:0 14px;gap:10px}.brand{font-size:20px}.brand-mark{width:29px;height:29px;font-size:22px}.header-search{display:none}.header-cta{margin-left:auto;padding:9px 10px;font-size:11px}.mobile-nav{display:none;padding:7px 14px 12px;border-top:1px solid #15243b18;background:var(--paper)}.mobile-nav.open{display:grid}.mobile-nav button{display:flex;justify-content:space-between;border-bottom:1px solid #15243b17;padding:11px 0;text-align:left}.hero{grid-template-columns:1fr;border:0}.hero-copy{min-height:auto;padding:88px 22px 46px}.hero-index{top:26px;left:22px}.hero h1{font-size:clamp(50px,14vw,76px);letter-spacing:-4px}.hero-copy p{font-size:14px}.hero-art{min-height:370px}.toolbox{width:64%;height:42%}.section{padding:66px 16px}.section-heading{display:block}.underlined{margin-top:18px}.shelf{grid-template-columns:repeat(2,1fr);gap:7px;margin-top:27px}.tile{min-height:172px;padding:10px}.tile strong{font-size:15px}.directory{display:block;padding:66px 16px}.directory-intro{margin-bottom:32px}.directory-intro h2{font-size:clamp(50px,14vw,75px);letter-spacing:-4px}.atlas-group{display:block}.atlas-label{display:grid;grid-template-columns:32px 25px auto 1fr;align-items:center;gap:7px;margin-bottom:10px}.atlas-label h3{margin:0}.atlas-label p,.atlas-label:after{display:none}.atlas-label small{margin:0;justify-self:end}.atlas-tools{grid-template-columns:repeat(2,1fr);gap:7px}.atlas-tools .featured{min-height:240px}.why{display:block}.why-art{min-height:340px}.why-copy{padding:66px 22px}.cta{padding:15px 16px 52px}.cta-content{padding-top:46px}.circle{width:68px;height:68px;font-size:22px}.footer{padding:42px 20px 14px}.footer-main{display:block}.footer-links{margin-top:30px}.footer-bottom{margin-top:30px;font-size:8px}.search-popover{position:fixed;top:64px;left:14px;right:14px;width:auto}}
+    @media(max-width:390px){.header-cta{font-size:10px}.header-cta span{display:none}.shelf{gap:5px}.tile{min-height:155px;padding:8px}.tile strong{font-size:14px}.tile small{font-size:9px}.atlas-tools{gap:5px}.atlas-tools .tile{min-height:137px}.atlas-tools .featured{min-height:220px}}
+  </style>
 </head>
 <body>
+  <header class="header"><div class="header-inner">
+    <a class="brand" href="#top" aria-label="Toolyfi home"><span class="brand-mark"><span>✦</span></span><span class="brand-word">tooly<em>fi</em>.</span></a>
+    <div class="header-search"><span aria-hidden="true">⌕</span><input id="headerSearch" placeholder="Search tools, workflows, answers…" autocomplete="off" aria-label="Search tools"><button class="search-clear" id="clearSearch" hidden aria-label="Clear search">×</button><div class="search-popover" id="searchPopover" hidden></div></div>
+    <nav class="nav" aria-label="Main navigation"><button data-category="AI">AI</button><button data-category="Finance">Finance</button><button data-category="Calculators">Calculators</button><button data-category="Dev & Text">Dev &amp; Text</button></nav>
+    <a class="header-cta" href="#directory"><span>Explore tools</span> ↗</a><button class="menu" id="menuButton" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"><button data-category="AI">AI <span>→</span></button><button data-category="Finance">Finance <span>→</span></button><button data-category="Calculators">Calculators <span>→</span></button><button data-category="Dev & Text">Dev &amp; Text <span>→</span></button></nav></header>
 
-<!-- HEADER w/ live search -->
-<header class="header">
-  <div class="header-inner">
-    <a href="/" class="logo"><span class="logo-icon" role="img" aria-label="Toolyfi"></span><span class="logo-text">Toolyfi<em>.</em></span></a>
-    <div class="header-search">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="headerSearch" placeholder="Search tools..." autocomplete="off">
-      <div class="header-search-dropdown" id="hsDropdown"></div>
-    </div>
-    <nav class="nav">
-      <a href="#all-tools">All Tools</a>
-      <a href="#ai-tools">AI</a>
-      <a href="#finance">Finance</a>
-      <a href="#calculators">Calculators</a>
-      <a href="#dev-tools">Dev</a>
-    </nav>
-    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#ai-tools">🤖 AI Tools</a>
-    <a href="#finance">💵 Finance</a>
-    <a href="#calculators">🔢 Calculators</a>
-    <a href="#dev-tools">⚙️ Dev Tools</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-  </div>
-</header>
+  <main id="top">
+    <section class="hero"><div class="hero-copy"><span class="hero-index">01 / DISCOVER</span><div class="eyebrow"><span class="spark">✦</span> The practical toolkit</div><h1>The shortcut to <em>getting it done.</em></h1><p>AI assistants, financial calculators and practical developer utilities — built for people who would rather finish the task than fight the tool.</p><div class="actions"><a class="primary" href="#directory">Find your tool ↓</a><a class="quiet" href="#why">Why Toolyfi ↗</a></div><div class="proof"><span>No installs</span><span>No account</span><span>Ready when you are</span></div></div><div class="hero-art"><div class="art-label">YOUR DIGITAL UTILITY SHELF <b>→</b></div><div class="toolbox"><span class="object calculator"><i class="screen"></i></span><span class="object chart"></span><span class="object white-calc"></span><span class="object coin"></span></div><span class="sticker sticker-top">✦ AI &amp; creative</span><span class="sticker sticker-bottom">▣ Everyday math</span></div></section>
+    <div class="ticker"><div class="ticker-track"><span>AI</span><i>✦</i><span>FINANCE</span><i>✦</i><span>CALCULATORS</span><i>✦</i><span>TEXT &amp; DEV</span><i>✦</i><span>AI</span><i>✦</i><span>FINANCE</span><i>✦</i><span>CALCULATORS</span><i>✦</i><span>TEXT &amp; DEV</span><i>✦</i></div></div>
 
-<!-- HERO — quality/power positioning -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">⚡ Professional Toolkit</div>
-    <h1>Tools built for <br><em>real work</em></h1>
-    <p>AI assistants, financial calculators, and developer utilities engineered for precision — the kind of tools professionals actually rely on.</p>
-    <div class="hero-btns">
-      <a href="#tabs-section" class="btn-primary">Explore Tools →</a>
-    </div>
-    <div class="hero-pills">
-      <span class="hero-pill">No installs</span>
-      <span class="hero-pill">Works instantly</span>
-      <span class="hero-pill">Privacy-first</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-image-grid">
-      <div class="img-card"><img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500" alt="AI tools" loading="lazy"><div class="label">🤖 AI Tools</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500" alt="Finance tools" loading="lazy"><div class="label">💰 Finance</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500" alt="Calculators" loading="lazy"><div class="label">🔢 Calculators</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=500" alt="Dev tools" loading="lazy"><div class="label">⚙️ Dev Tools</div></div>
-    </div>
-  </div>
-</section>
+    <section class="section" aria-labelledby="trendingTitle"><div class="kicker"><span>02</span> OPEN THE DRAWER</div><div class="section-heading"><div><h2 id="trendingTitle">Useful <em>right now.</em></h2><p>Start with the essentials. Move on with your day.</p></div><a class="underlined" href="#directory">See all tools ↗</a></div><div class="shelf" id="trendingShelf"></div></section>
 
-<!-- TRENDING (top 8, immediately visible, no scroll needed) -->
-<div class="trending">
-  <h2>Trending right now</h2>
-  <p class="sub">The most-used tools this week — start here.</p>
-  <div class="trending-grid" id="trendingGrid"></div>
-</div>
+    <section class="directory" id="directory" aria-labelledby="directoryTitle"><div class="directory-intro"><div class="kicker"><span>03</span> TOOL DIRECTORY</div><h2 id="directoryTitle">Pick a task.<br><em>Leave with it done.</em></h2><p>Every tool is easy to find, simple to understand, and ready to use.</p></div><div class="directory-panel"><div class="directory-search"><span>⌕</span><input id="directorySearch" placeholder="What are you working on?" aria-label="Search all tools"><span class="count" id="toolCount"></span></div><div class="tabs" role="tablist"><button class="active" data-category="All">All</button><button data-category="AI">AI</button><button data-category="Finance">Finance</button><button data-category="Calculators">Calculators</button><button data-category="Dev & Text">Dev &amp; Text</button></div><div class="atlas" id="atlas"></div></div></section>
 
-<!-- ADS -->
-<div class="ad-wrap"><div class="ad-wrap-inner">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div></div>
+    <section class="why" id="why"><div class="why-art"><div class="why-stamp"><b>✦</b><span>Built for<br>real work</span></div></div><div class="why-copy"><div class="kicker"><span>04</span> THE TOOLYFI WAY</div><h2>More doing.<br><em>Less detouring.</em></h2><p>A good utility should feel almost invisible: you arrive, get the answer, and carry on. That is the standard we build toward.</p><div class="benefits"><div class="benefit"><span class="benefit-icon">↗</span><div><h3>Immediately useful</h3><p>No accounts, onboarding tours or unnecessary barriers.</p></div></div><div class="benefit"><span class="benefit-icon">⌁</span><div><h3>Privacy-minded</h3><p>Your inputs stay focused on the job at hand.</p></div></div><div class="benefit"><span class="benefit-icon">✓</span><div><h3>Made for any screen</h3><p>The same calm, practical experience on mobile or desktop.</p></div></div></div></div></section>
 
-<!-- TABS — replaces long stacked sections -->
-<section class="tabs-section" id="tabs-section">
-  <div class="tabs-head">
-    <h2>Browse by <em>category</em></h2>
-  </div>
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="ai">🤖 AI</button>
-    <button class="tab-btn" data-tab="finance">💵 Finance</button>
-    <button class="tab-btn" data-tab="calc">🔢 Calculators</button>
-    <button class="tab-btn" data-tab="devtext">⚙️ Dev & Text</button>
-  </div>
+    <section class="cta"><div class="cta-top"><span>TOOLYFI</span><span>UTILITY WITHOUT THE FUSS</span></div><div class="cta-content"><div><div class="kicker" style="color:#fffdf8">YOUR NEXT TASK IS WAITING</div><h2>Open a tool.<br><em>Make progress.</em></h2></div><a class="circle" href="#directory" aria-label="Explore all tools">↓</a></div></section>
+  </main>
 
-  <div class="tab-panel active" id="panel-ai"><div class="tools-grid" id="aiGrid"></div></div>
-  <div class="tab-panel" id="panel-finance"><div class="tools-grid" id="financeGrid"></div></div>
-  <div class="tab-panel" id="panel-calc"><div class="tools-grid" id="calcGrid"></div></div>
-  <div class="tab-panel" id="panel-devtext">
-    <div class="two-col">
-      <div style="display:flex;flex-direction:column;gap:10px;" id="textGrid"></div>
-      <div style="display:flex;flex-direction:column;gap:10px;" id="devGrid"></div>
-    </div>
-  </div>
-</section>
+  <footer class="footer"><div class="footer-main"><div><a class="brand" href="#top" style="color:#fffdf8"><span class="brand-mark"><span>✦</span></span><span class="brand-word" style="color:#fffdf8">tooly<em>fi</em>.</span></a><p>Professional-grade online tools for the work that needs to move.</p></div><div class="footer-links"><div><h4>Explore</h4><a href="#directory" data-category-link="AI">AI tools</a><a href="#directory" data-category-link="Finance">Finance</a><a href="#directory" data-category-link="Calculators">Calculators</a><a href="#directory" data-category-link="Dev & Text">Dev &amp; Text</a></div><div><h4>Company</h4><a href="#top">About Toolyfi</a><a href="#directory">All tools</a><a href="#why">Privacy-minded</a></div></div></div><div class="footer-bottom"><span>© 2026 TOOLYFI</span><span>BUILT FOR REAL WORK</span></div></footer>
 
-<!-- ALL TOOLS — full searchable list -->
-<section class="tabs-section" id="all-tools">
-  <div class="tabs-head">
-    <h2>All <em>tools</em></h2>
-    <p style="color:var(--text-2);font-size:0.9rem;margin-top:4px;">Every tool on Toolyfi, in one place — search to find exactly what you need.</p>
-  </div>
-  <div class="header-search" style="max-width:480px;margin-bottom:24px;">
-    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="allToolsSearch" placeholder="Search all 47 tools..." autocomplete="off">
-  </div>
-  <p id="allToolsCount" style="color:var(--text-3);font-size:0.82rem;margin-bottom:14px;"></p>
-  <div class="all-tools-grid" id="allToolsGrid"></div>
-</section>
-
-<!-- ADS -->
-<div class="ad-wrap"><div class="ad-wrap-inner">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="auto" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div></div>
-
-<section class="why-section">
-  <div class="why-inner">
-    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;">Why professionals choose <em>Toolyfi</em></h2>
-    <p class="why-sub">Built for speed, precision, and everyday reliability.</p>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-icon">🚀</div><h3>No Login</h3><p>Use any tool instantly. No account, no email required.</p></div>
-      <div class="why-card"><div class="why-icon">🔒</div><h3>Privacy First</h3><p>Nothing you enter is stored. Everything runs in your browser.</p></div>
-      <div class="why-card"><div class="why-icon">⚡</div><h3>Built for Speed</h3><p>No bloated loading screens — results in seconds.</p></div>
-      <div class="why-card"><div class="why-icon">📱</div><h3>Works Everywhere</h3><p>Mobile, tablet, desktop — every tool works perfectly.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Ready to get to work?</h2>
-  <p>Pick a tool and get results in seconds — no setup required.</p>
-  <a href="#tabs-section" class="cta-btn">Explore Tools →</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="logo"><span class="logo-icon" role="img" aria-label="Toolyfi"></span><span class="logo-text">Toolyfi<em>.</em></span></a>
-        <p>Professional-grade tools for AI, finance, and everyday work — built to be fast and reliable.</p>
-      </div>
-      <div class="footer-col"><h4>AI Tools</h4><a href="/ai-assistant.html">AI Assistant</a><a href="/ai-image-generator.html">Image Generator</a><a href="/ai-text-detector.html">Text Detector</a><a href="/seo-checker.html">SEO Checker</a></div>
-      <div class="footer-col"><h4>Finance</h4><a href="/tax-refund-tracker.html">Tax Refund</a><a href="/salary-to-hourly.html">Salary Calculator</a><a href="/invoice-generator.html">Invoice Generator</a><a href="/currency-converter.html">Currency Converter</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Toolyfi. All rights reserved.</p>
-      <div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/contact.html">Contact</a></div>
-    </div>
-  </div>
-</footer>
-
-<script>
-const AI_PHOTOS=["https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294619/pexels-photo-8294619.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566464/pexels-photo-8566464.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294654/pexels-photo-8294654.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386359/pexels-photo-8386359.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?cs=srgb&fm=jpg&w=500"];
-const FINANCE_PHOTOS=["https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5921494/pexels-photo-5921494.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054402/pexels-photo-7054402.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6801680/pexels-photo-6801680.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958539/pexels-photo-6958539.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7680680/pexels-photo-7680680.jpeg?cs=srgb&fm=jpg&w=500"];
-const CALC_PHOTOS=["https://images.pexels.com/photos/7692469/pexels-photo-7692469.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5877591/pexels-photo-5877591.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958525/pexels-photo-6958525.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054414/pexels-photo-7054414.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958540/pexels-photo-6958540.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8296969/pexels-photo-8296969.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7580943/pexels-photo-7580943.jpeg?cs=srgb&fm=jpg&w=500"];
-const DEV_PHOTOS=["https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4383298/pexels-photo-4383298.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/5125366/pexels-photo-5125366.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/16592498/pexels-photo-16592498.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?cs=srgb&fm=jpg&w=300"];
-function pick(arr,i){return arr[i%arr.length];}
-
-// Pakistan-specific tools (BISP, Gold Rate) intentionally excluded — see note in <head>
-const aiTools=[
-  {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖'},
-  {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images',icon:'🎨'},
-  {name:'AI Text Detector',url:'/ai-text-detector.html',desc:'Detect ChatGPT, Claude & Gemini text',icon:'🔍'},
-  {name:'AI Tool Finder',url:'/ai-tool-finder.html',desc:'Find the best AI tool for any task',icon:'🎯'},
-  {name:'YouTube Transcript',url:'/youtube-transcript-extractor.html',desc:'Extract YouTube video transcripts',icon:'▶️'},
-  {name:'Background Remover',url:'/bg-remover-object-detection.html',desc:'Remove image backgrounds instantly',icon:'✂️'},
-  {name:'Prompt Generator',url:'/prompt-generator.html',desc:'500+ AI prompts for ChatGPT & Claude',icon:'💡'},
-  {name:'SEO Checker',url:'/seo-checker.html',desc:'Analyze website SEO instantly',icon:'📈'},
-  {name:'Image Compressor',url:'/image-compressor.html',desc:'Compress JPG, PNG, WEBP files',icon:'🗜️'},
-  {name:'Image Resizer',url:'/image-resizer.html',desc:'Resize images to any size',icon:'📐'},
-];
-const financeTools=[
-  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',desc:'IRS 2026 refund estimator & tracker',icon:'💰'},
-  {name:'State Tax Refund',url:'/state-tax-refund-tracker.html',desc:'Track state tax refunds all 50 states',icon:'🗺️'},
-  {name:'Salary to Hourly',url:'/salary-to-hourly.html',desc:'Convert annual salary to hourly rate',icon:'💵'},
-  {name:'Tip Calculator',url:'/tip-calculator.html',desc:'Calculate tip and split bills',icon:'🍽️'},
-  {name:'Profit Margin',url:'/profit-margin-calculator.html',desc:'Calculate gross & net profit margins',icon:'📈'},
-  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',desc:'Add or remove sales tax from prices',icon:'🧾'},
-  {name:'Compound Interest',url:'/compound-interest-calculator.html',desc:'Calculate investment growth',icon:'📊'},
-  {name:'Invoice Generator',url:'/invoice-generator.html',desc:'Create professional PDF invoices',icon:'📋'},
-  {name:'Currency Converter',url:'/currency-converter.html',desc:'Live USD, EUR & 150+ currencies',icon:'💱'},
-];
-const calcTools=[
-  {name:'Scientific Calculator',url:'/scientific-calculator.html',desc:'Full CASIO fx-82ES replica online',icon:'🔬'},
-  {name:'BMI Calculator',url:'/bmi-calculator.html',desc:'Calculate Body Mass Index',icon:'⚖️'},
-  {name:'Age Calculator',url:'/age-calculator.html',desc:'Exact age in years, months, days',icon:'🎂'},
-  {name:'Percentage Calculator',url:'/percentage-calculator.html',desc:'Advanced percentage calculations',icon:'%'},
-  {name:'Sleep Calculator',url:'/sleep-calculator.html',desc:'Find perfect bedtime with sleep cycles',icon:'😴'},
-  {name:'Loan Calculator',url:'/loan-calculator.html',desc:'Calculate monthly EMI for loans',icon:'🏦'},
-  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',desc:'Convert CGPA to percentage',icon:'🎓'},
-];
-const textTools=[
-  {name:'Word Counter',url:'/word-counter.html',desc:'Count words, characters & reading time',icon:'🔤'},
-  {name:'Case Converter',url:'/case-converter.html',desc:'UPPERCASE, lowercase, Title Case',icon:'Aa'},
-  {name:'Number to Words',url:'/number-to-words.html',desc:'Convert numbers into English words',icon:'🔢'},
-  {name:'Fancy Text Generator',url:'/flip-fancy-text-generator.html',desc:'25+ text styles: flip, bubble, glitch',icon:'✨'},
-  {name:'Link Shortener',url:'/link-shortener.html',desc:'Shorten any URL instantly',icon:'🔗'},
-];
-const devTools=[
-  {name:'QR Code Generator',url:'/qr-code-generator.html',desc:'Create QR codes for URLs, WiFi, contacts',icon:'📱'},
-  {name:'Password Generator',url:'/password-generator.html',desc:'Strong secure passwords instantly',icon:'🔐'},
-  {name:'JSON Formatter',url:'/json-formatter.html',desc:'Format, validate & minify JSON',icon:'{}'},
-  {name:'CSV to JSON',url:'/csv-to-json.html',desc:'Convert CSV to JSON, XML, YAML',icon:'📊'},
-  {name:'HTML Preview Tool',url:'/html-preview-tool.html',desc:'Live HTML/CSS/JS preview tool',icon:'🌐'},
-  {name:'Color Picker',url:'/color-picker.html',desc:'Pick colors, get HEX, RGB, HSL',icon:'🎨'},
-  {name:'Unit Converter',url:'/unit-converter.html',desc:'Convert length, weight, area units',icon:'📏'},
-];
-const trending=[aiTools[0],financeTools[0],devTools[0],calcTools[1],aiTools[5],financeTools[8],calcTools[2],devTools[1]];
-
-// ===== FULL TOOL LIST (47 tools, PK-specific excluded) — used by All Tools section + header search =====
-const allToolsFull=[
-  {name:'AI Assistant',url:'/ai-assistant.html',icon:'🤖'},
-  {name:'AI Image Generator',url:'/ai-image-generator.html',icon:'🎨'},
-  {name:'AI Text Detector',url:'/ai-text-detector.html',icon:'🔍'},
-  {name:'AI Tool Finder',url:'/ai-tool-finder.html',icon:'🎯'},
-  {name:'YouTube Transcript Extractor',url:'/youtube-transcript-extractor.html',icon:'▶️'},
-  {name:'Background Remover',url:'/bg-remover-object-detection.html',icon:'✂️'},
-  {name:'Prompt Generator',url:'/prompt-generator.html',icon:'💡'},
-  {name:'SEO Checker',url:'/seo-checker.html',icon:'📈'},
-  {name:'Image Compressor',url:'/image-compressor.html',icon:'🗜️'},
-  {name:'Image Resizer',url:'/image-resizer.html',icon:'📐'},
-  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',icon:'💰'},
-  {name:'State Tax Refund Tracker',url:'/state-tax-refund-tracker.html',icon:'🗺️'},
-  {name:'Salary to Hourly',url:'/salary-to-hourly.html',icon:'💵'},
-  {name:'Tip Calculator',url:'/tip-calculator.html',icon:'🍽️'},
-  {name:'Profit Margin Calculator',url:'/profit-margin-calculator.html',icon:'📈'},
-  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',icon:'🧾'},
-  {name:'Compound Interest Calculator',url:'/compound-interest-calculator.html',icon:'📊'},
-  {name:'Invoice Generator',url:'/invoice-generator.html',icon:'📋'},
-  {name:'Currency Converter',url:'/currency-converter.html',icon:'💱'},
-  {name:'Resume Builder',url:'/resume-builder.html',icon:'📄'},
-  {name:'Scientific Calculator',url:'/scientific-calculator.html',icon:'🔬'},
-  {name:'BMI Calculator',url:'/bmi-calculator.html',icon:'⚖️'},
-  {name:'Age Calculator',url:'/age-calculator.html',icon:'🎂'},
-  {name:'Percentage Calculator',url:'/percentage-calculator.html',icon:'%'},
-  {name:'Sleep Calculator',url:'/sleep-calculator.html',icon:'😴'},
-  {name:'Loan Calculator',url:'/loan-calculator.html',icon:'🏦'},
-  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',icon:'🎓'},
-  {name:'Random Number Generator',url:'/random-number-generator.html',icon:'🎲'},
-  {name:'Word Counter',url:'/word-counter.html',icon:'🔤'},
-  {name:'Case Converter',url:'/case-converter.html',icon:'Aa'},
-  {name:'Text Trimmer',url:'/text-trimmer.html',icon:'✂️'},
-  {name:'Number to Words',url:'/number-to-words.html',icon:'🔢'},
-  {name:'Morse Code Converter',url:'/morse-code-converter.html',icon:'•—'},
-  {name:'Fancy Text Generator',url:'/flip-fancy-text-generator.html',icon:'✨'},
-  {name:'Link Shortener',url:'/link-shortener.html',icon:'🔗'},
-  {name:'Special Characters Counter',url:'/special-characters-counter.html',icon:'#️⃣'},
-  {name:'Markdown to HTML',url:'/markdown-to-html-seo.html',icon:'📝'},
-  {name:'QR Code Generator',url:'/qr-code-generator.html',icon:'📱'},
-  {name:'Password Generator',url:'/password-generator.html',icon:'🔐'},
-  {name:'Base64 Encoder',url:'/base64-encoder.html',icon:'🔒'},
-  {name:'JSON Formatter',url:'/json-formatter.html',icon:'{}'},
-  {name:'CSV to JSON',url:'/csv-to-json.html',icon:'📊'},
-  {name:'HTML Preview Tool',url:'/html-preview-tool.html',icon:'🌐'},
-  {name:'Color Picker',url:'/color-picker.html',icon:'🎨'},
-  {name:'Unit Converter',url:'/unit-converter.html',icon:'📏'},
-  {name:'Temperature Converter',url:'/temperature-converter.html',icon:'🌡️'},
-  {name:'Broken Link Checker',url:'/broken-link-checker.html',icon:'🔗'},
-];
-
-function renderGrid(id,tools,photos){
-  document.getElementById(id).innerHTML=tools.map((t,i)=>`
-    <a href="${t.url}" class="tool-card">
-      <div class="tool-card-img"><img src="${pick(photos,i)}" alt="${t.name}" loading="lazy"><span class="tool-icon-overlay">${t.icon}</span></div>
-      <div class="tool-card-body"><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div>
-    </a>`).join('');
-}
-function renderRows(id,tools,photos){
-  document.getElementById(id).innerHTML=tools.map((t,i)=>`
-    <a href="${t.url}" class="tool-row">
-      <div class="row-img"><img src="${pick(photos,i)}" alt="${t.name}" loading="lazy"></div>
-      <div class="row-body"><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div>
-    </a>`).join('');
-}
-function renderTrending(){
-  document.getElementById('trendingGrid').innerHTML=trending.map((t,i)=>`
-    <a href="${t.url}" class="trend-card">
-      <div class="ti"><img src="${pick(AI_PHOTOS.concat(FINANCE_PHOTOS,CALC_PHOTOS),i)}" alt="${t.name}" loading="lazy"><span class="ic">${t.icon}</span></div>
-      <div class="tn">${t.name}</div>
-    </a>`).join('');
-}
-renderGrid('aiGrid',aiTools,AI_PHOTOS);
-renderGrid('financeGrid',financeTools,FINANCE_PHOTOS);
-renderGrid('calcGrid',calcTools,CALC_PHOTOS);
-renderRows('textGrid',textTools,DEV_PHOTOS);
-renderRows('devGrid',devTools,DEV_PHOTOS.slice().reverse());
-renderTrending();
-
-// ===== TABS =====
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
-    document.querySelectorAll('#panel-'+btn.dataset.tab+' .tool-card, #panel-'+btn.dataset.tab+' .tool-row').forEach((c,i)=>{
-      setTimeout(()=>c.classList.add('is-visible'),i*40);
-    });
-  });
-});
-// reveal first panel on load
-document.querySelectorAll('#panel-ai .tool-card').forEach((c,i)=>setTimeout(()=>c.classList.add('is-visible'),i*40));
-
-// ===== ALL TOOLS SECTION render + search =====
-function renderAllTools(list){
-  const grid=document.getElementById('allToolsGrid');
-  const count=document.getElementById('allToolsCount');
-  count.textContent=`${list.length} tool${list.length!==1?'s':''}`;
-  grid.innerHTML=list.map(t=>`<a href="${t.url}" class="at-item"><span class="at-ic">${t.icon}</span><span class="at-name">${t.name}</span></a>`).join('');
-}
-renderAllTools(allToolsFull);
-document.getElementById('allToolsSearch').addEventListener('input',e=>{
-  const q=e.target.value.trim().toLowerCase();
-  renderAllTools(q?allToolsFull.filter(t=>t.name.toLowerCase().includes(q)):allToolsFull);
-});
-
-// ===== HEADER LIVE SEARCH (uses full 47-tool list) =====
-const hsInput=document.getElementById('headerSearch');
-const hsDrop=document.getElementById('hsDropdown');
-hsInput.addEventListener('input',()=>{
-  const q=hsInput.value.trim().toLowerCase();
-  if(!q){hsDrop.classList.remove('active');hsDrop.innerHTML='';return;}
-  const results=allToolsFull.filter(t=>t.name.toLowerCase().includes(q)).slice(0,8);
-  if(!results.length){hsDrop.innerHTML='<div class="hsd-item">No tools found</div>';}
-  else{hsDrop.innerHTML=results.map(t=>`<a href="${t.url}" class="hsd-item"><span class="ic">${t.icon}</span><div><div class="nm">${t.name}</div></div></a>`).join('');}
-  hsDrop.classList.add('active');
-});
-document.addEventListener('click',(e)=>{if(!e.target.closest('.header-search'))hsDrop.classList.remove('active');});
-
-// ===== OBSERVERS (why cards) =====
-const cardObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const cards=entry.target.querySelectorAll('.why-card');
-      cards.forEach((c,i)=>setTimeout(()=>c.classList.add('is-visible'),i*80));
-      cardObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:0.2});
-document.querySelectorAll('.why-grid').forEach(g=>cardObserver.observe(g));
-
-function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open');}
-</script>
+  <script>
+    const tools=[
+      ['AI Assistant','Draft articles, emails and SEO content.','AI','Popular','ai-assistant.html'],['AI Image Generator','Turn a creative brief into a visual starting point.','AI','Visual','ai-image-generator.html'],['AI Text Detector','Check text patterns with a quick scan.','AI','Check','ai-text-detector.html'],['AI Tool Finder','Find the right AI workflow for a task.','AI','Discover','ai-tool-finder.html'],['YouTube Transcript','Extract a video transcript for fast review.','AI','Extract','youtube-transcript-extractor.html'],['Background Remover','Clean image backgrounds in a single step.','AI','Image','bg-remover-object-detection.html'],['Prompt Generator','Build clearer prompts for everyday work.','AI','Write','prompt-generator.html'],['SEO Checker','Run a focused on-page SEO check.','AI','Audit','seo-checker.html'],['Image Compressor','Reduce JPG, PNG and WEBP file size.','AI','Optimize','image-compressor.html'],['Image Resizer','Resize images cleanly for any channel.','AI','Resize','image-resizer.html'],
+      ['Tax Refund Tracker','Estimate and track your US tax refund.','Finance','Tax','tax-refund-tracker.html'],['State Tax Refund','Follow state refund status across the US.','Finance','Tax','state-tax-refund-tracker.html'],['Salary to Hourly','Convert annual salary into an hourly rate.','Finance','Pay','salary-to-hourly.html'],['Tip Calculator','Calculate tips and split a bill quickly.','Finance','Split','tip-calculator.html'],['Profit Margin','Work out gross and net profit margins.','Finance','Business','profit-margin-calculator.html'],['Sales Tax Calculator','Add or remove sales tax from a price.','Finance','Tax','sales-tax-calculator.html'],['Compound Interest','See a savings or investment growth path.','Finance','Plan','compound-interest-calculator.html'],['Invoice Generator','Create a clean PDF invoice in moments.','Finance','Invoice','invoice-generator.html'],['Currency Converter','Compare USD, EUR and 150+ currencies.','Finance','Live','currency-converter.html'],
+      ['Scientific Calculator','A familiar, full-featured scientific calculator.','Calculators','Math','scientific-calculator.html'],['BMI Calculator','Calculate body mass index clearly.','Calculators','Health','bmi-calculator.html'],['Age Calculator','Find exact age in years, months and days.','Calculators','Time','age-calculator.html'],['Percentage Calculator','Solve percentage questions without detours.','Calculators','Math','percentage-calculator.html'],['Sleep Calculator','Map a better bedtime around sleep cycles.','Calculators','Routine','sleep-calculator.html'],['Loan Calculator','Estimate monthly repayments for a loan.','Calculators','Plan','loan-calculator.html'],['CGPA to Percentage','Convert CGPA to a percentage result.','Calculators','Convert','cgpa-to-percentage.html'],['Random Number Generator','Generate a number in a selected range.','Calculators','Random','random-number-generator.html'],
+      ['Word Counter','Count words, characters and reading time.','Dev & Text','Text','word-counter.html'],['Case Converter','Switch text between common case formats.','Dev & Text','Text','case-converter.html'],['Text Trimmer','Tidy a piece of text with less friction.','Dev & Text','Text','text-trimmer.html'],['Number to Words','Write a number out in English words.','Dev & Text','Text','number-to-words.html'],['Morse Code Converter','Translate text to and from Morse code.','Dev & Text','Code','morse-code-converter.html'],['Fancy Text Generator','Try alternate text treatments quickly.','Dev & Text','Text','flip-fancy-text-generator.html'],['Link Shortener','Create a compact link for sharing.','Dev & Text','Link','link-shortener.html'],['QR Code Generator','Create QR codes for links and Wi-Fi.','Dev & Text','Generate','qr-code-generator.html'],['Password Generator','Generate a strong, unique password.','Dev & Text','Secure','password-generator.html'],['JSON Formatter','Format, validate and minify JSON.','Dev & Text','Format','json-formatter.html'],['CSV to JSON','Convert CSV into JSON, XML or YAML.','Dev & Text','Convert','csv-to-json.html'],['HTML Preview Tool','Preview a small HTML, CSS and JS experiment.','Dev & Text','Preview','html-preview-tool.html'],['Color Picker','Pick a color and save HEX, RGB or HSL.','Dev & Text','Design','color-picker.html'],['Unit Converter','Convert length, weight and area units.','Dev & Text','Convert','unit-converter.html'],['Temperature Converter','Switch temperature units instantly.','Dev & Text','Convert','temperature-converter.html'],['Broken Link Checker','Check whether a web link still resolves.','Dev & Text','Audit','broken-link-checker.html']
+    ].map(([name,desc,category,tag,url])=>({name,desc,category,tag,url}));
+    const categoryNotes={'AI':'Create, check and shape ideas.','Finance':'Make the numbers easier to move.','Calculators':'A direct answer for everyday questions.','Dev & Text':'Small utilities for clean digital work.'};
+    const icons={AI:'✦',Finance:'$',Calculators:'÷','Dev & Text':'</>'};
+    let active='All';
+    const typeClass=c=>c==='Dev & Text'?'dev':c.toLowerCase();
+    const tile=(tool,i,featured=false)=>`<a class="tile ${typeClass(tool.category)} ${featured?'featured':''}" href="${tool.url}"><span class="tile-number">${String(i+1).padStart(2,'0')}</span><span class="tile-top"><span class="tile-icon">${icons[tool.category]}</span><span class="tile-arrow">↗</span></span><span><strong>${tool.name}</strong><small>${tool.desc}</small></span><span class="tile-tag">${featured?'Start here':tool.tag}</span></a>`;
+    const render=()=>{
+      const q=document.getElementById('directorySearch').value.trim().toLowerCase();
+      const filtered=tools.filter(t=>(active==='All'||t.category===active)&&(!q||`${t.name} ${t.desc} ${t.category}`.toLowerCase().includes(q)));
+      document.getElementById('toolCount').textContent=`${filtered.length} / ${tools.length} tools`;
+      const groups=['AI','Finance','Calculators','Dev & Text'].map(category=>({category,list:filtered.filter(t=>t.category===category)})).filter(g=>g.list.length);
+      document.getElementById('atlas').innerHTML=groups.length?groups.map((g,gi)=>`<section class="atlas-group"><div class="atlas-label"><span class="num">${String(gi+1).padStart(2,'0')}</span><span>${icons[g.category]}</span><h3>${g.category}</h3><p>${categoryNotes[g.category]}</p><small>${g.list.length} tools</small></div><div class="atlas-tools">${g.list.map((t,i)=>tile(t,i,i===0)).join('')}</div></section>`).join(''):`<div class="empty">No matching tool found.<br><button id="reset">Reset filters</button></div>`;
+      const reset=document.getElementById('reset');if(reset)reset.onclick=()=>{document.getElementById('directorySearch').value='';active='All';document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.category==='All'));render()};
+    };
+    const trending=['AI Assistant','Tax Refund Tracker','QR Code Generator','BMI Calculator','Background Remover','Currency Converter'].map(n=>tools.find(t=>t.name===n));document.getElementById('trendingShelf').innerHTML=trending.map((t,i)=>tile(t,i)).join('');
+    document.querySelectorAll('[data-category]').forEach(btn=>btn.addEventListener('click',()=>{active=btn.dataset.category;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.category===active));document.getElementById('directory').scrollIntoView({behavior:'smooth'});render();document.getElementById('mobileNav').classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false')}));
+    document.querySelectorAll('[data-category-link]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();active=link.dataset.categoryLink;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.category===active));document.getElementById('directory').scrollIntoView({behavior:'smooth'});render()}));
+    document.querySelectorAll('.tabs button').forEach(btn=>btn.addEventListener('click',()=>{active=btn.dataset.category;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b===btn));render()}));
+    document.getElementById('directorySearch').addEventListener('input',render);
+    const headerInput=document.getElementById('headerSearch'),pop=document.getElementById('searchPopover'),clear=document.getElementById('clearSearch');
+    headerInput.addEventListener('input',()=>{const q=headerInput.value.trim().toLowerCase();clear.hidden=!q;if(!q){pop.hidden=true;return}const results=tools.filter(t=>t.name.toLowerCase().includes(q)).slice(0,6);pop.innerHTML=results.length?results.map(t=>`<a class="search-result" href="${t.url}"><span class="mini-icon mini-${typeClass(t.category)}">${icons[t.category]}</span><span><strong>${t.name}</strong><small>${t.category}</small></span><span>↗</span></a>`).join(''):`<p class="search-empty">No matching tool yet. Try calculator, image or text.</p>`;pop.hidden=false});clear.addEventListener('click',()=>{headerInput.value='';clear.hidden=true;pop.hidden=true;headerInput.focus()});document.addEventListener('click',e=>{if(!e.target.closest('.header-search'))pop.hidden=true});
+    document.getElementById('menuButton').addEventListener('click',()=>{const nav=document.getElementById('mobileNav'),open=nav.classList.toggle('open');document.getElementById('menuButton').setAttribute('aria-expanded',open)});
+    render();
+  </script>
 </body>
 </html>
