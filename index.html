@@ -16,15 +16,7 @@
 <link rel="canonical" href="https://toolyfi.com/">
 <meta property="og:title" content="Toolyfi — Professional-Grade Online Tools">
 <meta property="og:description" content="AI, finance, calculators, dev tools — built for real work.">
-<meta property="og:image" content="https://toolyfi.com/logo1.png">
-<meta property="og:url" content="https://toolyfi.com/">
 <meta name="twitter:card" content="summary_large_image">
-
-<!-- Favicon / PWA -->
-<link rel="icon" type="image/png" href="/logo1.png">
-<link rel="apple-touch-icon" href="/logo1.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#e85d4a">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Toolyfi","url":"https://toolyfi.com","description":"Professional-grade free online tools.","potentialAction":{"@type":"SearchAction","target":"https://toolyfi.com/?search={search_term_string}","query-input":"required name=search_term_string"}}
@@ -36,18 +28,14 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.pexels.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <!--
   NOTE (Firebase): dummy apiKey hata diya gaya, real config aane par yahan add karna.
   NOTE (Pakistan tools): BISP 8171 aur Gold Rate cities is homepage se hata diye gaye hain
-  (audience-split fix — homepage ab sirf global/US-focused).
-  NOTE (Images v2): AI/Finance/Calculator tools ab 1:1 unique photo se mapped hain (koi repeat nahi,
-  trending section bhi wahi exact photo use karta hai jo us tool ki apni category card par hai).
-  Dev & Text tools generic stock photos ki jagah icon-based cards use karte hain — zyada relevant
-  aur faster load, kyunki "JSON Formatter" ya "Password Generator" ke liye stock office photo
-  meaningful nahi thi.
+  (audience-split fix — homepage ab sirf global/US-focused). Ye tools abhi bhi live hain,
+  bas homepage se link nahi ho rahe. Inke liye alag "/pk/" section ya subdomain baad mein
+  bana sakte hain jab time ho.
 -->
 
 <style>
@@ -124,8 +112,7 @@ img{display:block;width:100%;height:auto;}
 .trending h2{font-size:1.4rem;font-weight:800;margin-bottom:4px;}
 .trending .sub{color:var(--text-2);font-size:0.9rem;margin-bottom:22px;}
 .trending-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
-.trend-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);transition:transform .25s,box-shadow .25s,opacity 450ms var(--ease);opacity:0;transform:translateY(14px) scale(.98);}
-.trend-card.is-visible{opacity:1;transform:translateY(0) scale(1);}
+.trend-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);transition:transform .25s,box-shadow .25s;}
 .trend-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.09);}
 .trend-card .ti{height:90px;overflow:hidden;position:relative;}
 .trend-card .ti img{width:100%;height:100%;object-fit:cover;}
@@ -154,14 +141,15 @@ img{display:block;width:100%;height:auto;}
 .tool-card-body .tool-name{font-weight:700;font-size:0.95rem;}
 .tool-card-body .tool-desc{font-size:0.8rem;color:var(--text-2);line-height:1.5;margin-top:2px;}
 
-/* icon-based rows (Dev & Text tools — no stock photos, more relevant) */
-.icon-row{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius-sm);padding:14px 16px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);opacity:0;transform:translateY(12px);transition:opacity 450ms var(--ease),transform 450ms var(--ease),box-shadow .3s,background .2s;}
-.icon-row.is-visible{opacity:1;transform:translateY(0);}
-.icon-row:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);transform:translateY(-3px);}
-.icon-row .ir-icon{width:48px;height:48px;border-radius:12px;background:var(--coral-light);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;transition:background .2s,color .2s;}
-.icon-row:hover .ir-icon{background:var(--coral);color:#fff;}
-.icon-row .tool-name{font-weight:700;font-size:0.88rem;}
-.icon-row .tool-desc{font-size:0.75rem;color:var(--text-2);margin-top:2px;}
+/* row style (text/dev) */
+.tool-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);border:1px solid rgba(0,0,0,0.03);transition:opacity 450ms var(--ease),transform 450ms var(--ease),box-shadow .3s;}
+.tool-row.is-visible{opacity:1;transform:translateY(0);}
+.tool-row:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+.tool-row .row-img{width:64px;height:64px;flex-shrink:0;overflow:hidden;}
+.tool-row .row-img img{width:100%;height:100%;object-fit:cover;}
+.tool-row .row-body{padding:8px 12px 8px 0;}
+.tool-row .tool-name{font-weight:700;font-size:0.88rem;}
+.tool-row .tool-desc{font-size:0.75rem;color:var(--text-2);margin-top:2px;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:700px){.two-col{grid-template-columns:1fr;}}
 
@@ -185,20 +173,6 @@ img{display:block;width:100%;height:auto;}
 .why-icon{font-size:2rem;margin-bottom:8px;}
 .why-card h3{font-weight:700;font-size:0.95rem;}
 .why-card p{font-size:0.85rem;color:var(--text-2);margin-top:4px;}
-
-/* ===== FAQ ===== */
-.faq-section{background:var(--bg);padding:60px 20px;max-width:860px;margin:0 auto;}
-.faq-section h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:8px;text-align:center;}
-.faq-section h2 em{color:var(--coral);font-style:italic;font-family:'Instrument Serif',serif;font-weight:400;}
-.faq-sub{text-align:center;color:var(--text-2);margin-bottom:32px;font-size:0.92rem;}
-.faq-item{border-bottom:1px solid rgba(0,0,0,0.08);opacity:0;transform:translateY(10px);transition:opacity 450ms var(--ease),transform 450ms var(--ease);}
-.faq-item.is-visible{opacity:1;transform:translateY(0);}
-.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 4px;font-weight:700;font-size:0.95rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--text);}
-.faq-q .plus{font-size:1.3rem;color:var(--coral);transition:transform .3s;flex-shrink:0;}
-.faq-item.open .plus{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);}
-.faq-item.open .faq-a{max-height:220px;}
-.faq-a p{padding:0 4px 18px;color:var(--text-2);font-size:0.88rem;line-height:1.6;}
 
 /* ===== CTA ===== */
 .cta-section{background:linear-gradient(135deg,var(--coral),#d94f3a);padding:60px 20px;text-align:center;color:#fff;}
@@ -266,7 +240,7 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO — quality/power positioning -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-badge">⚡ Professional Toolkit</div>
@@ -283,15 +257,15 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   </div>
   <div class="hero-right">
     <div class="hero-image-grid">
-      <div class="img-card"><img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?auto=compress&cs=tinysrgb&w=400" alt="AI tools" loading="lazy" decoding="async"><div class="label">🤖 AI Tools</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Finance tools" loading="lazy" decoding="async"><div class="label">💰 Finance</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/7692469/pexels-photo-7692469.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Calculators" loading="lazy" decoding="async"><div class="label">🔢 Calculators</div></div>
-      <div class="img-card"><img src="https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dev tools" loading="lazy" decoding="async"><div class="label">⚙️ Dev Tools</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500" alt="AI tools" loading="lazy"><div class="label">🤖 AI Tools</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500" alt="Finance tools" loading="lazy"><div class="label">💰 Finance</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500" alt="Calculators" loading="lazy"><div class="label">🔢 Calculators</div></div>
+      <div class="img-card"><img src="https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=500" alt="Dev tools" loading="lazy"><div class="label">⚙️ Dev Tools</div></div>
     </div>
   </div>
 </section>
 
-<!-- TRENDING -->
+<!-- TRENDING (top 8, immediately visible, no scroll needed) -->
 <div class="trending">
   <h2>Trending right now</h2>
   <p class="sub">The most-used tools this week — start here.</p>
@@ -304,7 +278,7 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div></div>
 
-<!-- TABS -->
+<!-- TABS — replaces long stacked sections -->
 <section class="tabs-section" id="tabs-section">
   <div class="tabs-head">
     <h2>Browse by <em>category</em></h2>
@@ -327,7 +301,7 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   </div>
 </section>
 
-<!-- ALL TOOLS -->
+<!-- ALL TOOLS — full searchable list -->
 <section class="tabs-section" id="all-tools">
   <div class="tabs-head">
     <h2>All <em>tools</em></h2>
@@ -360,13 +334,6 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq-section" id="faq">
-  <h2>Frequently asked <em>questions</em></h2>
-  <p class="faq-sub">Everything you need to know before you start.</p>
-  <div id="faqList"></div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section">
   <h2>Ready to get to work?</h2>
@@ -394,43 +361,45 @@ footer{background:#1a1a2e;color:rgba(255,255,255,0.7);padding:50px 20px 24px;}
 </footer>
 
 <script>
-function px(id,w){return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w||400}`;}
+const AI_PHOTOS=["https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386437/pexels-photo-8386437.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/17483868/pexels-photo-17483868.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294619/pexels-photo-8294619.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8566464/pexels-photo-8566464.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294654/pexels-photo-8294654.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8386359/pexels-photo-8386359.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?cs=srgb&fm=jpg&w=500"];
+const FINANCE_PHOTOS=["https://images.pexels.com/photos/7680748/pexels-photo-7680748.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5921494/pexels-photo-5921494.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6266276/pexels-photo-6266276.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5900228/pexels-photo-5900228.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054402/pexels-photo-7054402.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/259065/pexels-photo-259065.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6801680/pexels-photo-6801680.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958539/pexels-photo-6958539.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7680680/pexels-photo-7680680.jpeg?cs=srgb&fm=jpg&w=500"];
+const CALC_PHOTOS=["https://images.pexels.com/photos/7692469/pexels-photo-7692469.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/5877591/pexels-photo-5877591.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958525/pexels-photo-6958525.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7054414/pexels-photo-7054414.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/6958540/pexels-photo-6958540.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/8296969/pexels-photo-8296969.jpeg?cs=srgb&fm=jpg&w=500","https://images.pexels.com/photos/7580943/pexels-photo-7580943.jpeg?cs=srgb&fm=jpg&w=500"];
+const DEV_PHOTOS=["https://images.pexels.com/photos/5483075/pexels-photo-5483075.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4383298/pexels-photo-4383298.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/5125366/pexels-photo-5125366.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/16592498/pexels-photo-16592498.jpeg?cs=srgb&fm=jpg&w=300","https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?cs=srgb&fm=jpg&w=300"];
+function pick(arr,i){return arr[i%arr.length];}
 
 // Pakistan-specific tools (BISP, Gold Rate) intentionally excluded — see note in <head>
-// Every AI / Finance / Calculator tool below has its OWN unique image (1:1, zero repeats).
 const aiTools=[
-  {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖',img:px(8849295)},
-  {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images',icon:'🎨',img:px(8386437)},
-  {name:'AI Text Detector',url:'/ai-text-detector.html',desc:'Detect ChatGPT, Claude & Gemini text',icon:'🔍',img:px(8566526)},
-  {name:'AI Tool Finder',url:'/ai-tool-finder.html',desc:'Find the best AI tool for any task',icon:'🎯',img:px(17483868)},
-  {name:'YouTube Transcript',url:'/youtube-transcript-extractor.html',desc:'Extract YouTube video transcripts',icon:'▶️',img:px(8294619)},
-  {name:'Background Remover',url:'/bg-remover-object-detection.html',desc:'Remove image backgrounds instantly',icon:'✂️',img:px(2599244)},
-  {name:'Prompt Generator',url:'/prompt-generator.html',desc:'500+ AI prompts for ChatGPT & Claude',icon:'💡',img:px(8566464)},
-  {name:'SEO Checker',url:'/seo-checker.html',desc:'Analyze website SEO instantly',icon:'📈',img:px(8294654)},
-  {name:'Image Compressor',url:'/image-compressor.html',desc:'Compress JPG, PNG, WEBP files',icon:'🗜️',img:px(8386359)},
-  {name:'Image Resizer',url:'/image-resizer.html',desc:'Resize images to any size',icon:'📐',img:px(8294566)},
+  {name:'AI Assistant',url:'/ai-assistant.html',desc:'Write articles, emails & SEO content with AI',icon:'🤖'},
+  {name:'AI Image Generator',url:'/ai-image-generator.html',desc:'Turn text into stunning AI images',icon:'🎨'},
+  {name:'AI Text Detector',url:'/ai-text-detector.html',desc:'Detect ChatGPT, Claude & Gemini text',icon:'🔍'},
+  {name:'AI Tool Finder',url:'/ai-tool-finder.html',desc:'Find the best AI tool for any task',icon:'🎯'},
+  {name:'YouTube Transcript',url:'/youtube-transcript-extractor.html',desc:'Extract YouTube video transcripts',icon:'▶️'},
+  {name:'Background Remover',url:'/bg-remover-object-detection.html',desc:'Remove image backgrounds instantly',icon:'✂️'},
+  {name:'Prompt Generator',url:'/prompt-generator.html',desc:'500+ AI prompts for ChatGPT & Claude',icon:'💡'},
+  {name:'SEO Checker',url:'/seo-checker.html',desc:'Analyze website SEO instantly',icon:'📈'},
+  {name:'Image Compressor',url:'/image-compressor.html',desc:'Compress JPG, PNG, WEBP files',icon:'🗜️'},
+  {name:'Image Resizer',url:'/image-resizer.html',desc:'Resize images to any size',icon:'📐'},
 ];
 const financeTools=[
-  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',desc:'IRS 2026 refund estimator & tracker',icon:'💰',img:px(7680748)},
-  {name:'State Tax Refund',url:'/state-tax-refund-tracker.html',desc:'Track state tax refunds all 50 states',icon:'🗺️',img:px(5921494)},
-  {name:'Salary to Hourly',url:'/salary-to-hourly.html',desc:'Convert annual salary to hourly rate',icon:'💵',img:px(6266276)},
-  {name:'Tip Calculator',url:'/tip-calculator.html',desc:'Calculate tip and split bills',icon:'🍽️',img:px(5900228)},
-  {name:'Profit Margin',url:'/profit-margin-calculator.html',desc:'Calculate gross & net profit margins',icon:'📈',img:px(7054402)},
-  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',desc:'Add or remove sales tax from prices',icon:'🧾',img:px(259065)},
-  {name:'Compound Interest',url:'/compound-interest-calculator.html',desc:'Calculate investment growth',icon:'📊',img:px(6801680)},
-  {name:'Invoice Generator',url:'/invoice-generator.html',desc:'Create professional PDF invoices',icon:'📋',img:px(6958539)},
-  {name:'Currency Converter',url:'/currency-converter.html',desc:'Live USD, EUR & 150+ currencies',icon:'💱',img:px(7680680)},
+  {name:'Tax Refund Tracker',url:'/tax-refund-tracker.html',desc:'IRS 2026 refund estimator & tracker',icon:'💰'},
+  {name:'State Tax Refund',url:'/state-tax-refund-tracker.html',desc:'Track state tax refunds all 50 states',icon:'🗺️'},
+  {name:'Salary to Hourly',url:'/salary-to-hourly.html',desc:'Convert annual salary to hourly rate',icon:'💵'},
+  {name:'Tip Calculator',url:'/tip-calculator.html',desc:'Calculate tip and split bills',icon:'🍽️'},
+  {name:'Profit Margin',url:'/profit-margin-calculator.html',desc:'Calculate gross & net profit margins',icon:'📈'},
+  {name:'Sales Tax Calculator',url:'/sales-tax-calculator.html',desc:'Add or remove sales tax from prices',icon:'🧾'},
+  {name:'Compound Interest',url:'/compound-interest-calculator.html',desc:'Calculate investment growth',icon:'📊'},
+  {name:'Invoice Generator',url:'/invoice-generator.html',desc:'Create professional PDF invoices',icon:'📋'},
+  {name:'Currency Converter',url:'/currency-converter.html',desc:'Live USD, EUR & 150+ currencies',icon:'💱'},
 ];
 const calcTools=[
-  {name:'Scientific Calculator',url:'/scientific-calculator.html',desc:'Full CASIO fx-82ES replica online',icon:'🔬',img:px(7692469)},
-  {name:'BMI Calculator',url:'/bmi-calculator.html',desc:'Calculate Body Mass Index',icon:'⚖️',img:px(5877591)},
-  {name:'Age Calculator',url:'/age-calculator.html',desc:'Exact age in years, months, days',icon:'🎂',img:px(6958525)},
-  {name:'Percentage Calculator',url:'/percentage-calculator.html',desc:'Advanced percentage calculations',icon:'%',img:px(7054414)},
-  {name:'Sleep Calculator',url:'/sleep-calculator.html',desc:'Find perfect bedtime with sleep cycles',icon:'😴',img:px(6958540)},
-  {name:'Loan Calculator',url:'/loan-calculator.html',desc:'Calculate monthly EMI for loans',icon:'🏦',img:px(8296969)},
-  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',desc:'Convert CGPA to percentage',icon:'🎓',img:px(7580943)},
+  {name:'Scientific Calculator',url:'/scientific-calculator.html',desc:'Full CASIO fx-82ES replica online',icon:'🔬'},
+  {name:'BMI Calculator',url:'/bmi-calculator.html',desc:'Calculate Body Mass Index',icon:'⚖️'},
+  {name:'Age Calculator',url:'/age-calculator.html',desc:'Exact age in years, months, days',icon:'🎂'},
+  {name:'Percentage Calculator',url:'/percentage-calculator.html',desc:'Advanced percentage calculations',icon:'%'},
+  {name:'Sleep Calculator',url:'/sleep-calculator.html',desc:'Find perfect bedtime with sleep cycles',icon:'😴'},
+  {name:'Loan Calculator',url:'/loan-calculator.html',desc:'Calculate monthly EMI for loans',icon:'🏦'},
+  {name:'CGPA to Percentage',url:'/cgpa-to-percentage.html',desc:'Convert CGPA to percentage',icon:'🎓'},
 ];
-// Text & Dev tools use icon cards (no stock photos — more relevant, faster load)
 const textTools=[
   {name:'Word Counter',url:'/word-counter.html',desc:'Count words, characters & reading time',icon:'🔤'},
   {name:'Case Converter',url:'/case-converter.html',desc:'UPPERCASE, lowercase, Title Case',icon:'Aa'},
@@ -447,10 +416,9 @@ const devTools=[
   {name:'Color Picker',url:'/color-picker.html',desc:'Pick colors, get HEX, RGB, HSL',icon:'🎨'},
   {name:'Unit Converter',url:'/unit-converter.html',desc:'Convert length, weight, area units',icon:'📏'},
 ];
-// Trending references the SAME objects above — so it always shows the exact same photo as that tool's own category card
-const trending=[aiTools[0],financeTools[0],devTools[0],calcTools[1],aiTools[5],financeTools[8],calcTools[2],aiTools[7]];
+const trending=[aiTools[0],financeTools[0],devTools[0],calcTools[1],aiTools[5],financeTools[8],calcTools[2],devTools[1]];
 
-// ===== FULL TOOL LIST (47 tools, PK-specific excluded) — All Tools section + header search =====
+// ===== FULL TOOL LIST (47 tools, PK-specific excluded) — used by All Tools section + header search =====
 const allToolsFull=[
   {name:'AI Assistant',url:'/ai-assistant.html',icon:'🤖'},
   {name:'AI Image Generator',url:'/ai-image-generator.html',icon:'🎨'},
@@ -501,41 +469,32 @@ const allToolsFull=[
   {name:'Broken Link Checker',url:'/broken-link-checker.html',icon:'🔗'},
 ];
 
-const faqs=[
-  {q:'Is Toolyfi really free?',a:'Yes — every tool on Toolyfi is 100% free to use, with no hidden fees or premium tiers.'},
-  {q:'Do I need to sign up or create an account?',a:'No signup required. Just open a tool and start using it instantly.'},
-  {q:'Is my data safe when I use these tools?',a:'Most tools run entirely in your browser — your data isn\\'t uploaded or stored on our servers.'},
-  {q:'Do the tools add watermarks to my files?',a:'No. Files, images, and documents you create or edit on Toolyfi are watermark-free.'},
-  {q:'Can I use Toolyfi on my phone?',a:'Yes, every tool is fully responsive and works on mobile, tablet, and desktop.'},
-  {q:'How often do you add new tools?',a:'We regularly add new tools based on user requests and search trends — check back often.'},
-];
-
-function renderGrid(id,tools){
-  document.getElementById(id).innerHTML=tools.map(t=>`
+function renderGrid(id,tools,photos){
+  document.getElementById(id).innerHTML=tools.map((t,i)=>`
     <a href="${t.url}" class="tool-card">
-      <div class="tool-card-img"><img src="${t.img}" alt="${t.name}" loading="lazy" decoding="async"><span class="tool-icon-overlay">${t.icon}</span></div>
+      <div class="tool-card-img"><img src="${pick(photos,i)}" alt="${t.name}" loading="lazy"><span class="tool-icon-overlay">${t.icon}</span></div>
       <div class="tool-card-body"><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div>
     </a>`).join('');
 }
-function renderIconRows(id,tools){
-  document.getElementById(id).innerHTML=tools.map(t=>`
-    <a href="${t.url}" class="icon-row">
-      <div class="ir-icon">${t.icon}</div>
-      <div><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div>
+function renderRows(id,tools,photos){
+  document.getElementById(id).innerHTML=tools.map((t,i)=>`
+    <a href="${t.url}" class="tool-row">
+      <div class="row-img"><img src="${pick(photos,i)}" alt="${t.name}" loading="lazy"></div>
+      <div class="row-body"><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div></div>
     </a>`).join('');
 }
 function renderTrending(){
-  document.getElementById('trendingGrid').innerHTML=trending.map(t=>`
+  document.getElementById('trendingGrid').innerHTML=trending.map((t,i)=>`
     <a href="${t.url}" class="trend-card">
-      <div class="ti"><img src="${t.img}" alt="${t.name}" loading="lazy" decoding="async"><span class="ic">${t.icon}</span></div>
+      <div class="ti"><img src="${pick(AI_PHOTOS.concat(FINANCE_PHOTOS,CALC_PHOTOS),i)}" alt="${t.name}" loading="lazy"><span class="ic">${t.icon}</span></div>
       <div class="tn">${t.name}</div>
     </a>`).join('');
 }
-renderGrid('aiGrid',aiTools);
-renderGrid('financeGrid',financeTools);
-renderGrid('calcGrid',calcTools);
-renderIconRows('textGrid',textTools);
-renderIconRows('devGrid',devTools);
+renderGrid('aiGrid',aiTools,AI_PHOTOS);
+renderGrid('financeGrid',financeTools,FINANCE_PHOTOS);
+renderGrid('calcGrid',calcTools,CALC_PHOTOS);
+renderRows('textGrid',textTools,DEV_PHOTOS);
+renderRows('devGrid',devTools,DEV_PHOTOS.slice().reverse());
 renderTrending();
 
 // ===== TABS =====
@@ -545,14 +504,15 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
-    document.querySelectorAll('#panel-'+btn.dataset.tab+' .tool-card, #panel-'+btn.dataset.tab+' .icon-row').forEach((c,i)=>{
+    document.querySelectorAll('#panel-'+btn.dataset.tab+' .tool-card, #panel-'+btn.dataset.tab+' .tool-row').forEach((c,i)=>{
       setTimeout(()=>c.classList.add('is-visible'),i*40);
     });
   });
 });
+// reveal first panel on load
 document.querySelectorAll('#panel-ai .tool-card').forEach((c,i)=>setTimeout(()=>c.classList.add('is-visible'),i*40));
 
-// ===== ALL TOOLS render + search =====
+// ===== ALL TOOLS SECTION render + search =====
 function renderAllTools(list){
   const grid=document.getElementById('allToolsGrid');
   const count=document.getElementById('allToolsCount');
@@ -565,7 +525,7 @@ document.getElementById('allToolsSearch').addEventListener('input',e=>{
   renderAllTools(q?allToolsFull.filter(t=>t.name.toLowerCase().includes(q)):allToolsFull);
 });
 
-// ===== HEADER LIVE SEARCH =====
+// ===== HEADER LIVE SEARCH (uses full 47-tool list) =====
 const hsInput=document.getElementById('headerSearch');
 const hsDrop=document.getElementById('hsDropdown');
 hsInput.addEventListener('input',()=>{
@@ -578,30 +538,17 @@ hsInput.addEventListener('input',()=>{
 });
 document.addEventListener('click',(e)=>{if(!e.target.closest('.header-search'))hsDrop.classList.remove('active');});
 
-// ===== FAQ render + accordion =====
-document.getElementById('faqList').innerHTML=faqs.map((f,i)=>`
-  <div class="faq-item" data-i="${i}">
-    <button class="faq-q" onclick="toggleFaq(${i})"><span>${f.q}</span><span class="plus">+</span></button>
-    <div class="faq-a"><p>${f.a}</p></div>
-  </div>`).join('');
-function toggleFaq(i){
-  document.querySelectorAll('.faq-item').forEach(el=>{
-    if(parseInt(el.dataset.i)===i) el.classList.toggle('open');
-    else el.classList.remove('open');
-  });
-}
-
-// ===== SCROLL REVEAL (why-cards, trend-cards, faq-items) =====
+// ===== OBSERVERS (why cards) =====
 const cardObserver=new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      const cards=entry.target.querySelectorAll('.why-card, .trend-card, .faq-item');
+      const cards=entry.target.querySelectorAll('.why-card');
       cards.forEach((c,i)=>setTimeout(()=>c.classList.add('is-visible'),i*80));
       cardObserver.unobserve(entry.target);
     }
   });
-},{threshold:0.15});
-document.querySelectorAll('.why-grid, .trending-grid, .faq-section').forEach(g=>cardObserver.observe(g));
+},{threshold:0.2});
+document.querySelectorAll('.why-grid').forEach(g=>cardObserver.observe(g));
 
 function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open');}
 </script>
