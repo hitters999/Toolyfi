@@ -39,8 +39,7 @@
       "description": "Free online tool to write HTML, CSS, and JavaScript and preview the output live in real time, with console log, share link, and code formatting.",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1247", "bestRating": "5" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     },
     {
       "@type": "BreadcrumbList",
@@ -69,7 +68,7 @@
 
 <style>
 :root {
-  --primary: #0ea5e9; --primary-dark: #0284c7; --primary-light: #e0f2fe; --primary-gl: rgba(14,165,233,0.12);
+  --primary: #ef6c54; --primary-dark: #c95743; --primary-light: #fff0eb; --primary-gl: rgba(239,108,84,0.14);
   --accent: #f59e0b; --dark: #0f172a; --gray: #64748b; --light: #f8fafc; --border-light: #e2e8f0;
   --ide-bg: #0a0e1a; --ide-bg2: #0d1220; --ide-sidebar: #090d18; --ide-panel: #0f1628;
   --ide-border: #1a2438; --ide-border2: #243050; --ide-tab-h: #111928;
@@ -82,8 +81,9 @@ html{scroll-behavior:smooth;}
 body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--dark); color: var(--ide-text); overflow-x: hidden; }
 
 /* NAVBAR */
-.navbar { position: sticky; top: 0; z-index: 200; background: rgba(9,13,24,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--ide-border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 56px; }
-.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.navbar { position: sticky; top: 0; z-index: 200; background: rgba(9,13,24,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--ide-border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 64px; }
+.nav-logo { display: flex; align-items: center; text-decoration: none; width: 92px; height: 54px; overflow: hidden; }
+.nav-logo img { height: 64px !important; width: auto !important; max-width: none; transform: scale(1.28); transform-origin: left center; }
 .nav-links { display: flex; gap: 1.5rem; }
 .nav-links a { color: var(--ide-muted2); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: #fff; }
@@ -100,7 +100,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--dark); co
 .trust-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .trust-pill { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.04); border: 1px solid var(--ide-border2); color: var(--ide-muted2); font-size: 0.72rem; font-weight: 600; padding: 5px 12px; border-radius: 100px; }
 .trust-pill .chk { color: var(--green); }
-.adsense-top { max-width: 728px; margin: 0 auto 16px; text-align: center; }
+.adsense-top { display:none; }
 
 /* ══ 3-COLUMN IDE ══ */
 .ide-wrapper { max-width: 1440px; margin: 0 auto; padding: 0 16px 32px; }
@@ -277,6 +277,23 @@ footer { background: var(--ide-sidebar); border-top: 1px solid var(--ide-border)
 .footer-bottom a:hover{color:var(--primary)}
 .footer-bottom-links{display:flex;gap:16px}
 .adsense-mid { text-align: center; padding: 16px 0; border-top: 1px solid var(--ide-border); border-bottom: 1px solid var(--ide-border); }
+@media (max-width: 600px) {
+  .navbar { height: 62px; padding: 0 12px; gap: 8px; }
+  .nav-logo { width: 68px; height: 52px; flex-shrink: 0; }
+  .nav-logo img { height: 62px !important; transform: scale(1.34); }
+  .nav-links { display: none; }
+  .nav-cta { margin-left: auto; padding: 8px 13px; font-size: 0.72rem; }
+  .hero { padding: 34px 18px 26px; }
+  .hero::before { width: 480px; height: 260px; top: -34px; }
+  .hero-sub { font-size: 0.88rem; line-height: 1.65; }
+  .trust-pills { gap: 6px; margin-bottom: 0; }
+  .trust-pill { font-size: 0.66rem; padding: 4px 8px; }
+  .ide-wrapper { padding: 0 0 22px; }
+  .ide-container { border-radius: 0; border-left: 0; border-right: 0; }
+  .ide-topbar { height: auto; padding: 9px 10px; }
+  .ide-topbar > div:last-child { width: 100%; justify-content: space-between; }
+  .ide-topbar .side-btn { font-size: 0.66rem; padding: 6px 8px; }
+}
 @media (max-width: 480px) { .stat-item{min-width:100%;border-right:none;border-bottom:1px solid var(--ide-border)} .footer-top{grid-template-columns:1fr;gap:24px} }
 </style>
 </head>
@@ -285,7 +302,7 @@ footer { background: var(--ide-sidebar); border-top: 1px solid var(--ide-border)
 <!-- ══ NAVBAR ══ -->
 <nav class="navbar">
   <a href="/" class="nav-logo">
-    <img src="/logo1.png" alt="Toolyfi.com - Free Online Tools" style="height:36px;width:auto;display:block;">
+    <img src="/logo.png" alt="Toolyfi.com - Free Online Tools" style="height:36px;width:auto;display:block;">
   </a>
   <div class="nav-links">
     <a href="/">Home</a>
@@ -422,8 +439,8 @@ button:hover { background: #0284c7; }</textarea>
           </div>
         </div>
         <div class="preview-frame-wrap" id="previewWrap">
-          <iframe id="pframe"></iframe>
-          <div class="mobile-frame" id="mobileFrame"><iframe id="pframe-mobile"></iframe></div>
+          <iframe id="pframe" sandbox="allow-scripts allow-modals"></iframe>
+          <div class="mobile-frame" id="mobileFrame"><iframe id="pframe-mobile" sandbox="allow-scripts allow-modals"></iframe></div>
         </div>
         <div class="console-panel">
           <div class="console-head">
@@ -455,30 +472,7 @@ button:hover { background: #0284c7; }</textarea>
   </div>
 </div>
 
-<!-- ══ STAR RATING ══ -->
-<div class="star-row">
-  <div class="stars" id="stars">
-    <span class="star filled" onclick="setRating(1)">★</span>
-    <span class="star filled" onclick="setRating(2)">★</span>
-    <span class="star filled" onclick="setRating(3)">★</span>
-    <span class="star filled" onclick="setRating(4)">★</span>
-    <span class="star filled" onclick="setRating(5)">★</span>
-  </div>
-  <span class="star-label" id="starLabel">4.8 / 5 · 1,247 ratings</span>
-</div>
-
-<!-- ══ STATS BAR ══ -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Free Tools on Toolyfi</div></div>
-  <div class="stat-item"><div class="stat-num">1,247</div><div class="stat-label">5-Star Ratings</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
-  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
-</div>
-
-<div class="adsense-mid">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
+<section class="section section-dark" style="padding:26px 24px"><div class="section-inner text-center"><div class="trust-pills" style="margin:0"><div class="trust-pill"><span class="chk">✓</span> Browser-side preview</div><div class="trust-pill"><span class="chk">✓</span> Separate HTML, CSS & JS</div><div class="trust-pill"><span class="chk">✓</span> Mobile viewport</div><div class="trust-pill"><span class="chk">✓</span> Exportable test file</div></div></div></section>
 
 <!-- ══ FEATURES ══ -->
 <section class="section section-bg2">
@@ -593,6 +587,42 @@ button:hover { background: #0284c7; }</textarea>
   </div>
 </section>
 
+<!-- TOOLYFI ORIGINAL HTML PREVIEW GUIDE -->
+<section class="section section-dark" id="html-preview-guide">
+  <div class="section-inner-narrow article-body">
+    <div class="section-tag">Practical guide</div>
+    <h2 class="section-title">How to use an HTML preview tool <em>with confidence</em></h2>
+    <p>An HTML preview tool is most useful when it shortens the distance between a small change and a clear result. The workspace above lets you keep HTML, CSS, and JavaScript separate, then render them together in a browser frame. That makes it a practical place to inspect a component, reproduce a layout issue, explain a code example, or prepare a minimal page before moving the work into a project repository. It is not a production hosting environment, a security scanner, or a substitute for testing a complete application in its real stack.</p>
+    <p>Start with the smallest example that demonstrates the behaviour you care about. Paste the relevant markup into the HTML tab, put presentation rules in the CSS tab, and add only the script needed for the interaction in the JavaScript tab. Smaller examples are easier to read and easier to repair. When an element fails to appear, work from the outside in: confirm the element exists in the HTML, confirm it is not hidden by CSS, and then check whether a script changed or removed it.</p>
+    <h2>Build a reliable HTML, CSS, and JavaScript test</h2>
+    <p>Good previews begin with an intentional document structure. Use a single main heading for the purpose of a test page, then arrange supporting headings in a logical order. Label form controls, include a button type where it matters, and give meaningful images alternative text. Even a short prototype benefits from these habits because they make the markup easier to move into a real project later. A preview that only “looks right” can still be difficult to navigate, translate, or maintain.</p>
+    <p>Keep CSS in its own tab while you are exploring layout. Begin with predictable defaults for box sizing, margins, font sizing, and colour contrast. Use a container width that makes the actual content easy to inspect. If you need to test a card, modal, navigation menu, or table, make a reduced version of that component instead of pasting an entire application stylesheet. Isolating the component makes specificity conflicts and inherited styles easier to spot.</p>
+    <p>Use JavaScript for a specific observable action. For example, a button can update a message, an input can show validation feedback, or a small data array can render a list. Add <code>console.log()</code> statements around values you expect to change. The console area below the preview is useful for observing those messages and for spotting uncaught errors. Remove temporary logging when you move code into production, but keep the small reproducible sample in your notes if the bug needs more investigation.</p>
+    <h2>Test responsive layouts before handoff</h2>
+    <p>Desktop is only one context. A component that looks balanced on a wide screen may overflow, create awkward gaps, or expose tiny touch targets on a phone. Use the mobile preview mode to check the first layout decision: does the reading order still make sense when there is one narrow column? Then check line lengths, menu wrapping, focusable controls, and images. A mobile preview is a design checkpoint, not a complete device lab, but it catches many avoidable issues early.</p>
+    <p>Use relative widths when a module should grow with its container, and set a meaningful maximum width when a text block should stay readable. Avoid relying on a single hard-coded screen size. Test a breakpoint by reducing available width gradually: headings should wrap naturally, buttons should remain usable, and horizontal scroll should appear only when it is genuinely required for a data table or code sample. When a change feels fragile, simplify the layout rule instead of adding many one-off overrides.</p>
+    <h2>Use the preview safely</h2>
+    <p>Previewing code means running code. Treat any snippet you did not write or review as untrusted. Do not paste browser session tokens, private API keys, personal records, payment data, or production credentials into the editor. A preview frame can help you understand what a snippet does visually, but it cannot make unknown code trustworthy. Read unfamiliar JavaScript first, remove network calls you do not need, and use a disposable sample for experiments.</p>
+    <p>Toolyfi’s preview is designed for focused browser-side testing. The frame is intentionally isolated from the tool interface, while output remains visible to you. That is helpful for ordinary markup experiments, but it does not validate server-side code, authentication flows, database queries, browser-extension behaviour, or external API permissions. If a task requires those systems, test it in the approved development environment with appropriate safeguards.</p>
+    <h2>Format code for human review</h2>
+    <p>Formatting is valuable because it exposes structure. Indentation makes nesting visible, which helps you catch a closing tag in the wrong place or a CSS rule that belongs to another selector. Use the Format control as a starting point, then review important blocks yourself. Automatic formatting does not understand your business intent, accessibility requirement, or naming convention. It simply makes the current text easier to scan.</p>
+    <p>Before sharing a snippet, remove unrelated code and replace private values with explicit placeholders such as <code>YOUR_API_URL</code> or <code>EXAMPLE_TOKEN</code>. Include the expected result in a short note. A teammate can diagnose “the second card should align with the first card at 375px” much faster than “the page is broken.” If you export a page, open the downloaded file once to confirm that the expected HTML, CSS, and JavaScript were included.</p>
+    <h2>Understand what a preview can and cannot prove</h2>
+    <p>A successful preview proves that the supplied code can render in that browser frame. It does not prove that every browser, device, email client, search crawler, or production deployment will behave the same way. External fonts, images, scripts, and API calls can behave differently once a page is hosted. Build a preview to validate a local assumption; then run the appropriate project-level checks before release.</p>
+    <p>For HTML email, for example, the workspace is useful for checking table markup and inline styles, but email clients have their own rendering engines and policy restrictions. For structured data, valid JSON-LD syntax is only the first check; it must still accurately describe visible content and follow the relevant search documentation. For a site component, use the preview to refine the isolated component, then test it in the actual layout where global styles and application state are present.</p>
+    <h2>Common preview problems and practical fixes</h2>
+    <h3>My CSS does not seem to apply</h3><p>First confirm that the selector matches the element you wrote. Then inspect ordering: a later rule of equal specificity can override an earlier one. Check spelling in class names, remember that IDs and classes use different selectors, and avoid adding <code>!important</code> before you understand the conflict. If the style is still unclear, reduce the test to one element and one rule.</p>
+    <h3>My JavaScript runs but nothing changes</h3><p>Check the console for an error, confirm that the query selector finds an element, and wait for the document to be available before manipulating it. A spelling mistake in an ID or a script that runs before the element exists is a common cause. Log the selected element and the value you intend to update. Once the minimal version works, add the remaining behavior one piece at a time.</p>
+    <h3>My preview looks different from the page I copied</h3><p>The original page may depend on files, fonts, variables, framework code, or server data that are not included in your snippet. Add dependencies only when you understand why they are needed. Prefer a local reproduction that captures the layout rule or interaction you want to study over a very large copied page that is difficult to reason about.</p>
+    <h2>Use related Toolyfi tools in the right order</h2>
+    <p>Developer workflows are easier when each utility has a clear purpose. Use the <a href="/markdown-to-html-seo.html" style="color:var(--primary)">Markdown to HTML Converter</a> when you are preparing documentation markup. Use the <a href="/json-formatter.html" style="color:var(--primary)">JSON Formatter</a> to inspect a structured-data block or API sample before inserting it into a page. Use the <a href="/csv-to-json.html" style="color:var(--primary)">CSV to JSON Converter</a> when tabular data needs a JSON representation, and use the <a href="/base64-encoder.html" style="color:var(--primary)">Base64 Encoder</a> when you need to encode a small value for a specific technical workflow.</p>
+    <p>Each of these tools should be used for the job it actually performs. Base64 is encoding, not encryption. A JSON formatter is not a schema validator. An HTML preview is not a production security audit. Clear boundaries make a toolkit more trustworthy and help readers choose the right next step.</p>
+    <h2>Final pre-publish checklist</h2>
+    <p>Before turning a preview into a live page, read through the markup once more. Confirm heading order, form labels, keyboard focus, text contrast, meaningful link text, image alternatives, and responsive behaviour. Remove test alerts, debug logs, placeholder copy, and any secret values. Verify that every external URL is intentional and that any analytics, structured data, or legal text accurately reflects the published page.</p>
+    <p>Then test the page where it will actually run. A calm, small preview process catches many defects earlier, but a real deployment deserves its own review. The goal is not to make a prototype look impressive for a moment. The goal is to make the next correct decision obvious, preserve a useful working sample, and ship code that another person can understand and maintain.</p>
+  <h2>Debug layout problems methodically</h2><p>When a layout breaks, avoid changing five CSS rules at once. Start with the box model. Check the element’s display mode, width, padding, border, margin, and overflow. A fixed width can create horizontal scrolling on small screens; a missing <code>min-width: 0</code> on a flex child can make long content overflow; a parent with <code>overflow: hidden</code> can cut off a dropdown or focus outline. Create a small visual test with a background colour or outline while you are identifying the boundary, then remove the diagnostic styling once the rule is clear.</p><p>Flexbox and grid solve different problems. Flexbox is useful for a row or column that distributes available space, such as a header, a button group, or a simple card row. Grid is useful when columns and rows need a more deliberate relationship, such as a pricing comparison or editor layout. Use the preview to test the narrowest expected width first, then expand. If a layout only works at one exact viewport size, simplify it before it reaches a real page.</p><p>Typography is part of layout debugging. A heading that looks fine with one font may wrap differently with another, and a line-height that feels generous on desktop may make a compact mobile card too tall. Test actual content rather than only a short placeholder. Long names, translated text, empty values, and error messages often reveal the constraints that a perfect demo hides.</p><h2>Check accessibility during the prototype stage</h2><p>Accessibility checks are easier when they happen while the component is small. Use a real button for an action and a real link for navigation. Give every form control a label that explains its purpose. Ensure a keyboard user can reach interactive controls in a logical order, see a visible focus state, and dismiss or reverse an action when appropriate. Avoid click-only interactions that cannot be triggered by a keyboard.</p><p>Colour should not be the only way to communicate meaning. An invalid field can use a message and an icon in addition to a red border; a successful state can include a clear sentence instead of only a green dot. Test contrast against the actual background behind text, not an assumed parent colour. For images that communicate information, write alternative text that conveys the purpose. Decorative images can use an empty alternative value so they do not add noise to a screen-reader experience.</p><p>A preview does not replace a complete accessibility audit, but it can help you catch obvious structure problems. Try navigating with the Tab key, reduce the viewport, and temporarily increase browser zoom. If the component becomes difficult to use, address that in the markup and layout rather than hiding the problem with a smaller font or tighter spacing.</p><h2>Work with scripts carefully</h2><p>A small preview is a good place to test a client-side interaction, but scripts deserve discipline. Keep DOM queries close to the event or initialization that uses them. Check whether an element exists before changing it. Avoid assigning user-provided strings with <code>innerHTML</code> unless you have a trusted and appropriate sanitization plan; use <code>textContent</code> when you only need to display text. A prototype that accepts input can accidentally demonstrate an unsafe pattern if it treats arbitrary data as markup.</p><p>Use clear names for state and functions. A function named <code>openMenu</code> should open the menu; a variable named <code>isLoading</code> should be a boolean that represents loading. These small decisions make a sample easier to carry into a real codebase. When debugging, log the smallest useful value, then remove logs that contain private information or that make the console unreadable.</p><p>External libraries can hide the cause of a problem. If you need one in a prototype, document the exact version and the reason it is present. Do not assume a CDN script is available in every environment. A useful preview sample keeps dependencies visible and avoids making an unrelated third-party library look like a requirement for a simple interaction.</p><h2>Preview HTML email with the right expectations</h2><p>HTML email has a more restrictive rendering environment than a normal web page. A preview tool can help you inspect the markup, table structure, inline styles, and basic hierarchy. It cannot reliably emulate every desktop email application, webmail client, image proxy, dark-mode treatment, or tracking policy. Treat the result as a fast first check, then use the mailing platform and a dedicated cross-client test process before sending a campaign.</p><p>For email markup, use simple nested tables when compatibility requires them, keep important styles inline when the target clients demand it, and write meaningful fallback text for images. Avoid assuming that modern CSS layout features, custom fonts, scripts, forms, video, or external stylesheets will be supported. A readable preview is helpful, but the inbox is the final environment that matters.</p><h2>Prepare a clean production handoff</h2><p>Before you hand a prototype to another developer or client, remove experiments that do not belong in the final source. Replace fake text, temporary colours, test endpoints, and placeholder credentials. Verify that links use the intended canonical paths, that asset references are deliberate, and that exported files open without a dependency on the preview page. If the output is a teaching example, label it as an example rather than presenting it as a complete production template.</p><p>Include a small handoff note with the goal of the component, the supported viewport range, the interactions that were tested, and the known limitations. If a preview reproduces a bug, list the browser, exact steps, and expected result. Good handoff notes reduce duplicate debugging work and make an otherwise small utility page more valuable to the reader.</p><h2>Use preview tools as a learning loop</h2><p>The most durable use of an HTML preview tool is deliberate practice. Change one property and observe the result. Swap a block element for an inline element. Test how an empty button, a long string, or a missing image affects the layout. Compare semantic tags such as <code>main</code>, <code>nav</code>, <code>article</code>, and <code>section</code> in a small example. The feedback loop becomes faster when every change has a purpose.</p><p>Save examples that taught you something. A well-named snippet that demonstrates a centered layout, responsive navigation, focus-visible style, or form validation pattern can be more useful than a large collection of unlabelled experiments. Return to those samples when a new project needs a familiar technique, then adapt the pattern to the project’s actual content and design rules.</p><h2>Create a repeatable preview workflow</h2><p>A repeatable workflow makes an online HTML editor more useful than a one-off scratchpad. First, state the question you are trying to answer in one sentence: “Does this navigation wrap cleanly at phone width?” or “Does this form show an understandable error when the field is blank?” Next, isolate only the markup, styling, and script necessary to answer that question. Give the sample a short title in a comment and keep unrelated production code out of it. The preview will load faster, the code will be easier to share, and the result will be easier to trust.</p><p>After the first result appears, test one variation at a time. Change a long label to a short label, replace a populated list with an empty list, resize the viewport, or trigger an error path. Note what changes and what stays stable. This is especially useful for interactive UI states that are difficult to reach in a full application. A sample button can open a menu, a checkbox can reveal an option, and a test dataset can show how a table behaves when it has many rows. The goal is to prove an interface decision with an observable case rather than an assumption.</p><p>When a sample is ready to share, include enough context for a reviewer to respond usefully. Say which browser context you tested, what action to take, what you expected to see, and what occurred instead. If the issue involves an error, copy the exact console message after removing any sensitive details. If it involves a visual difference, describe the viewport and the area of the page. A clear reproduction saves the recipient from reconstructing the problem and creates a helpful record for the next person who encounters it.</p><h2>Keep browser-only tools in perspective</h2><p>The HTML Preview Tool is intentionally lightweight: it helps you write, inspect, and export a small browser-side example without creating an account or configuring a development environment. That simplicity is a strength when the task is focused. It is not the right place to run a build pipeline, store a project history, manage secrets, or test backend behavior. Recognising the boundary prevents both overconfidence and unnecessary complexity.</p><p>For a production page, move the accepted code into version control, run the project’s linters and tests, review changes with the team, and test the deployed result. For a learning exercise, keep the sample as a documented reference and explain what it demonstrates. For a bug report, retain the smallest working reproduction until the issue is resolved. In each case, the preview has done its job when it makes the next correct action clearer.</p></div>
+</section>
+
 <div class="cta-banner">
   <div class="section-tag">Start Coding</div>
   <h2 class="section-title">Ready to <em>Test Your HTML Code Online</em>?</h2>
@@ -600,35 +630,14 @@ button:hover { background: #0284c7; }</textarea>
   <button class="cta-btn" onclick="document.querySelector('.ide-wrapper').scrollIntoView({behavior:'smooth'})">Open the Editor ↑</button>
 </div>
 
-<div style="background:var(--ide-bg2);border-top:1px solid var(--ide-border);padding:16px 0 4px;text-align:center;">
-  <p style="font-size:0.82rem;color:var(--ide-muted2);">Was this tool helpful?</p>
-  <div class="engagement-bar">
-    <button class="eng-btn like" id="likeBtn" onclick="toggleLike()">👍 Helpful <span id="likeCnt">248</span></button>
-    <button class="eng-btn dislike" id="dislikeBtn" onclick="toggleDislike()">👎 Not helpful <span id="dislikeCnt">12</span></button>
-  </div>
-</div>
-
-<div style="background:var(--ide-bg);border-top:1px solid var(--ide-border);">
-  <div class="comments-wrap">
-    <h3 style="color:var(--ide-text-b);font-size:1rem;margin-bottom:18px;">💬 Comments</h3>
-    <div class="comment-form">
-      <input type="text" id="commentName" placeholder="Your name">
-      <textarea id="commentText" placeholder="Leave a comment about this tool..."></textarea>
-      <button class="comment-submit" onclick="submitComment()">Post Comment</button>
-    </div>
-    <div class="comment-list" id="commentList">
-      <div class="comment-item"><div class="comment-meta"><span class="comment-name">Raza Ahmed</span><span class="comment-date">2 days ago</span></div><div class="comment-text">The console panel is a huge upgrade — finally can debug without opening DevTools.</div></div>
-      <div class="comment-item"><div class="comment-meta"><span class="comment-name">Sarah K.</span><span class="comment-date">5 days ago</span></div><div class="comment-text">Share link feature is great for sending quick demos to my team.</div></div>
-    </div>
-  </div>
-</div>
+<section class="section section-bg2" style="padding:28px 24px"><div class="section-inner-narrow"><div class="article-highlight"><strong>Privacy reminder:</strong> review code before running it and never paste tokens, private records, passwords, or production credentials into a shared preview.</div></div></section>
 
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <a href="/" class="nav-logo"><img src="/logo1.png" alt="Toolyfi.com - Free Online Tools" style="height:32px;width:auto;display:block;"></a>
+        <a href="/" class="nav-logo"><img src="/logo.png" alt="Toolyfi.com - Free Online Tools" style="height:32px;width:auto;display:block;"></a>
         <p class="footer-brand-desc">50+ free online tools for developers, writers, and everyday users. No signup required. Ever.</p>
       </div>
       <div>
@@ -739,12 +748,8 @@ function buildHTML() {
 }
 function runPreview() {
   const html = buildHTML();
-  ['pframe','pframe-mobile'].forEach(id => {
-    const fr = document.getElementById(id);
-    if (!fr) return;
-    try { const doc = fr.contentDocument || fr.contentWindow.document; doc.open(); doc.write(html); doc.close(); }
-    catch(e) { fr.srcdoc = html; }
-  });
+  const activeFrame = document.getElementById(isMobileView ? 'pframe-mobile' : 'pframe');
+  if (activeFrame) activeFrame.srcdoc = html;
 }
 window.addEventListener('message', e => {
   if (!e.data || !e.data.tfConsole) return;
@@ -844,23 +849,6 @@ function switchMobileView(view, el) {
   el.classList.add('active');
   document.getElementById('ideBody').setAttribute('data-view', view);
   if (view === 'preview') runPreview();
-}
-let currentRating = 5;
-function setRating(n) { currentRating=n; document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('filled',i<n)); document.getElementById('starLabel').textContent=n+' / 5 — Thank you!'; try{localStorage.setItem('tf_rating_'+PAGE_ID,n);}catch(e){} }
-let liked=false,disliked=false;
-function toggleLike(){ liked=!liked; if(liked&&disliked){disliked=false;document.getElementById('dislikeBtn').classList.remove('active');} document.getElementById('likeBtn').classList.toggle('active',liked); document.getElementById('likeCnt').textContent=liked?249:248; }
-function toggleDislike(){ disliked=!disliked; if(disliked&&liked){liked=false;document.getElementById('likeBtn').classList.remove('active');} document.getElementById('dislikeBtn').classList.toggle('active',disliked); document.getElementById('dislikeCnt').textContent=disliked?13:12; }
-function submitComment(){
-  const name=document.getElementById('commentName').value.trim();
-  const text=document.getElementById('commentText').value.trim();
-  if(!name||!text){alert('Please enter name and comment.');return;}
-  const list=document.getElementById('commentList');
-  const item=document.createElement('div');
-  item.className='comment-item';
-  item.innerHTML=`<div class="comment-meta"><span class="comment-name">${name}</span><span class="comment-date">Just now</span></div><div class="comment-text">${text}</div>`;
-  list.insertBefore(item,list.firstChild);
-  document.getElementById('commentName').value='';
-  document.getElementById('commentText').value='';
 }
 function toggleFaq(btn){ const item=btn.closest('.faq-item'); const isOpen=item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open')); if(!isOpen)item.classList.add('open'); }
 
