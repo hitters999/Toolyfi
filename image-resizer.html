@@ -1,347 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Free Image Resizer - Resize JPG, PNG & WebP Online 2026</title>
-    <meta content="Resize your images to any dimension instantly. Free online tool for social media, web, and print. Maintain aspect ratio, crop, and convert formats. No signup required." name="description">
-    <meta content="image resizer, resize image online, change image dimensions, crop image, social media image sizes, photo resizer, bulk image resizing" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/image-resizer.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Free Image Resizer - Resize JPG, PNG & WebP Online 2026">
-    <meta property="og:description" content="Resize your images to any dimension instantly. Free online tool for social media, web, and print.">
-    <meta property="og:url" content="https://toolyfi.com/image-resizer.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#ec4899; --bg:#fdf2f8; --surface:#fff; --border:#fbcfe8; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
-
-        .container { max-width:1100px; margin:0 auto; padding:40px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
-
-        .tool-layout { display: grid; grid-template-columns: 1fr 350px; gap: 32px; margin-bottom: 60px; }
-        @media(max-width:900px){ .tool-layout{grid-template-columns: 1fr;} }
-
-        .upload-area { background:var(--surface); border-radius:24px; padding:60px 40px; border:2px dashed var(--border); text-align: center; transition: all 0.3s; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; }
-        .upload-area:hover { border-color: var(--primary); background: #fffbff; }
-        .upload-icon { font-size: 4rem; margin-bottom: 20px; }
-        
-        .settings-panel { background: var(--surface); border-radius: 24px; padding: 32px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(236,72,153,0.1); height: fit-content; }
-        .settings-panel h3 { margin-bottom: 20px; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-        
-        .input-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; }
-        .dim-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        input, select { width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 1rem; font-weight: 600; outline: none; transition: all 0.2s; }
-        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(236,72,153,0.1); }
-
-        .preset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
-        .preset-btn { padding: 8px; border: 1px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-size: 0.75rem; font-weight: 600; transition: all 0.2s; }
-        .preset-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-        .action-btn { width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 12px; font-family: inherit; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.2s; margin-top: 20px; }
-        .action-btn:hover { background: #db2777; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(236,72,153,0.3); }
-
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.6rem; font-weight: 700; margin-top: 48px; margin-bottom: 20px; }
-        .content-section h4 { font-size: 1.2rem; font-weight: 700; margin-top: 32px; margin-bottom: 12px; color: var(--primary); }
-        .content-section p { margin-bottom: 24px; font-size: 1.1rem; color: #4b5563; line-height: 1.8; }
-        
-        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 40px 0; }
-        .social-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
-        .social-card ul { list-style: none; margin-top: 12px; }
-        .social-card li { font-size: 0.9rem; margin-bottom: 8px; display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
-
-        .guide-box { background: #fff; border-left: 6px solid var(--primary); padding: 32px; border-radius: 0 16px 16px 0; margin: 48px 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-
-        .related-tools { background: #fdf2f8; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
-    </style>
-
-    <!-- Schema.org Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Image Resizer",
-      "description": "Resize your images to any dimension instantly. Free online tool for social media, web, and print.",
-      "url": "https://toolyfi.com/image-resizer.html",
-      "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "22500"
-      }
-    }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Free Image Resizer — Resize JPG, PNG & WebP Online | Toolyfi</title>
+  <meta name="description" content="Resize JPG, PNG and WebP images in your browser. Set exact pixels, use practical presets, preserve aspect ratio and download your resized files without an account.">
+  <link rel="canonical" href="https://toolyfi.com/image-resizer.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Toolyfi">
+  <meta property="og:title" content="Free Image Resizer — Resize JPG, PNG & WebP Online | Toolyfi">
+  <meta property="og:description" content="Resize images locally in your browser with exact pixels, aspect-ratio protection and practical presets.">
+  <meta property="og:url" content="https://toolyfi.com/image-resizer.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f4f0e7;--paper-deep:#e9e2d3;--ink:#102c46;--soft:#3f5567;--coral:#fb5f50;--coral-deep:#d9483d;--mist:#fffdf8;--line:rgba(16,44,70,.18);--gold:#e6bd59;--sans:"DM Sans",system-ui,sans-serif;--display:"Fraunces",Georgia,serif;--mono:"DM Mono",monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}a{color:inherit}button,input{font:inherit}.skip{position:absolute;top:-4rem;left:1rem;background:var(--ink);color:#fff;padding:.7rem;z-index:10}.skip:focus{top:1rem}.site-header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(244,240,231,.94);backdrop-filter:blur(16px)}.header-inner{max-width:1280px;margin:auto;padding:.7rem 1.2rem;display:grid;grid-template-columns:auto minmax(210px,1fr) auto;gap:1.1rem;align-items:center}.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;font:700 1.45rem var(--display);letter-spacing:-.08em;white-space:nowrap}.brand img{width:34px;height:34px;object-fit:contain}.brand em{font-style:italic;color:var(--coral)}.search{display:flex;align-items:center;min-height:42px;border:1px solid var(--line);background:var(--mist)}.search span{padding:0 .6rem}.search input{width:100%;min-width:0;border:0;outline:0;background:transparent;padding:.6rem .1rem;color:var(--ink);font-size:.85rem}.nav{display:flex;align-items:center;gap:.8rem;font-size:.76rem;font-weight:700;white-space:nowrap}.nav a{text-decoration:none}.nav .cta{color:#fff;background:var(--ink);padding:.65rem .85rem}.nav .cta:hover{background:var(--coral-deep)}
+    .hero{isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line);position:relative;background-image:linear-gradient(rgba(16,44,70,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(16,44,70,.045) 1px,transparent 1px);background-size:32px 32px}.hero:after{content:"";position:absolute;z-index:-1;width:250px;height:250px;right:-80px;bottom:-130px;border:32px solid var(--coral);border-radius:50%;opacity:.65}.hero-inner,.wrap{max-width:1280px;margin:auto;padding-left:1.25rem;padding-right:1.25rem}.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:center;padding-top:4.6rem;padding-bottom:4rem}.eyebrow,.kicker{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}.eyebrow:before{content:"◆ ";font-size:.65rem}.hero h1{font:600 clamp(3rem,6vw,6.5rem)/.92 var(--display);letter-spacing:-.075em;margin:.8rem 0 1.2rem}.hero h1 em,.article-title em{font-style:italic;color:var(--coral)}.hero-copy{font-size:1.05rem;max-width:620px;color:var(--soft)}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem}.button{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);padding:.85rem 1rem;cursor:pointer;text-decoration:none;font-weight:700;font-size:.82rem;transition:transform .16s,background .16s}.button:hover{transform:translateY(-2px)}.button.primary{background:var(--ink);color:#fff}.button.primary:hover{background:var(--coral-deep);border-color:var(--coral-deep)}.spec{position:relative;min-height:310px;background:var(--ink);color:#fff;padding:1.4rem;overflow:hidden;box-shadow:0 24px 68px rgba(15,40,62,.12);background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:38px 38px}.spec-top{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.24);padding-bottom:.9rem;color:#c2d0da;font:500 .65rem var(--mono);letter-spacing:.12em;text-transform:uppercase}.spec-row{display:grid;grid-template-columns:60px 1fr;gap:1rem;align-items:baseline;padding-top:1.15rem}.spec-num{font:600 2.5rem/.85 var(--display);color:var(--gold)}.spec-copy{font-size:.82rem;color:#dbe5eb}.spec-copy small{display:block;color:#9eb0bd;font:.62rem var(--mono);margin-top:.2rem}
+    .tool{background:var(--ink);color:#fff;padding:4.4rem 0}.tool-head{display:flex;justify-content:space-between;gap:2rem;align-items:end;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:1rem;margin-bottom:1.6rem}.tool-head h2,.related h2{font:600 clamp(2rem,4vw,3.25rem)/.97 var(--display);letter-spacing:-.065em;margin:.35rem 0 0}.tool-head p{max-width:380px;color:#bac9d4;font-size:.87rem;margin:0}.workspace{display:grid;grid-template-columns:.9fr 1.1fr;gap:1.2rem}.drop-card,.controls,.result-card{background:var(--mist);color:var(--ink)}.drop-card{border:2px dashed rgba(251,95,80,.7);min-height:390px;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:transform .2s,background .2s}.drop-card:hover,.drop-card.dragging{transform:translateY(-3px);background:#fff7ef}.drop-icon{width:62px;height:62px;display:grid;place-items:center;background:var(--coral);color:#fff;font:2rem var(--display);margin-bottom:1rem}.drop-card h3{font:600 clamp(1.8rem,3vw,2.6rem)/.98 var(--display);letter-spacing:-.055em;margin:0}.drop-card p{max-width:360px;color:var(--soft);font-size:.87rem}.micro{font:500 .63rem var(--mono);letter-spacing:.09em;text-transform:uppercase}.drop-card .micro{color:var(--coral-deep);margin-top:1rem}.hidden{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.controls{padding:1.6rem}.controls h3{font:600 1.65rem/1 var(--display);letter-spacing:-.05em;margin:0}.controls>p{font-size:.85rem;color:var(--soft)}.control{border-top:1px solid var(--line);padding-top:1rem;margin-top:1rem}.label{display:flex;justify-content:space-between;gap:1rem;font:500 .67rem var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.65rem}.label span:last-child{color:var(--coral-deep)}.dims{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}.field{border:1px solid var(--line);background:#fff;padding:.7rem}.field label{display:block;font:500 .61rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}.field input{border:0;outline:0;width:100%;background:transparent;color:var(--ink);font-weight:700;font-size:1.05rem}.segments{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}.segments button{border:0;border-right:1px solid var(--line);background:#fff;padding:.62rem .32rem;font-size:.71rem;font-weight:700;cursor:pointer}.segments button:last-child{border:0}.segments button.active{background:var(--ink);color:#fff}.presets{display:flex;gap:.45rem;flex-wrap:wrap}.preset{border:1px solid var(--line);background:#fff;color:var(--ink);padding:.45rem .55rem;font:500 .65rem var(--mono);cursor:pointer}.preset:hover{border-color:var(--coral);color:var(--coral-deep)}.switch{display:flex;justify-content:space-between;gap:1rem;font-size:.8rem;font-weight:700}.switch input{accent-color:var(--coral)}.range{display:grid;grid-template-columns:1fr 55px;gap:.65rem;align-items:center}.range input{accent-color:var(--coral)}.range output{font:500 .68rem var(--mono);color:var(--coral-deep);text-align:right}.process{width:100%;margin-top:1.2rem;border:0;background:var(--coral);color:#fff;padding:.9rem;cursor:pointer;font-weight:700}.process:hover{background:var(--coral-deep)}.process:disabled{opacity:.55;cursor:not-allowed}.note{font-size:.72rem;color:var(--soft);min-height:1.2rem}.results{display:none;margin-top:1.2rem}.results.visible{display:block}.result-top{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:.7rem;margin-bottom:.8rem}.result-top h3{font:600 1.65rem/1 var(--display);margin:0}.result-top span{font:500 .64rem var(--mono);color:#b8c9d4}.result-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:.75rem}.result-card{padding:.75rem;display:grid;grid-template-columns:70px 1fr;gap:.7rem;align-items:center}.result-card img{width:70px;height:58px;object-fit:cover;background:var(--paper-deep)}.result-name{font-weight:700;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.result-meta{font:500 .6rem var(--mono);color:var(--soft);margin:.25rem 0}.download{font-size:.72rem;font-weight:700;color:var(--coral-deep)}
+    .guide{padding:5rem 0}.guide-layout{display:grid;grid-template-columns:220px minmax(0,760px);gap:4.5rem}.rail{position:sticky;top:100px;align-self:start}.rail h2{font:600 2.3rem/.95 var(--display);letter-spacing:-.065em;margin:.8rem 0 1.2rem}.rail a{display:block;text-decoration:none;border-top:1px solid var(--line);padding:.55rem 0;color:var(--soft);font-size:.78rem}.rail a:hover{color:var(--coral-deep)}.article-title{font:600 clamp(2.5rem,4.5vw,4.3rem)/.94 var(--display);letter-spacing:-.07em;margin:0 0 1.8rem}article{font-size:1.02rem;color:#344b5d}article p{margin:0 0 1.25rem}article h3{color:var(--ink);font:600 2rem/1 var(--display);letter-spacing:-.055em;margin:3rem 0 1rem}article h4{color:var(--coral-deep);font-size:1rem;margin:1.6rem 0 .5rem}article ul,article ol{padding-left:1.2rem}article li{margin:.5rem 0}.callout{border-left:5px solid var(--coral);background:var(--mist);padding:1.2rem 1.35rem;box-shadow:0 12px 38px rgba(16,44,70,.06);margin:2rem 0}.faq{margin-top:4rem;border-top:1px solid var(--line);padding-top:2.6rem}.faq h2{font:600 2.4rem/1 var(--display);letter-spacing:-.06em}.faq details{border-top:1px solid var(--line);padding:1rem 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{list-style:none;cursor:pointer;font-weight:700;display:flex;justify-content:space-between;gap:1rem}.faq summary:after{content:"+";color:var(--coral);font-size:1.25rem}.faq details[open] summary:after{content:"−"}.faq details p{font-size:.93rem;margin:1rem 2rem .2rem 0}.related{background:var(--ink);color:#fff;padding:4.5rem 0}.related-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:1.4rem}.related-head p{max-width:410px;color:#bbcad5;font-size:.86rem}.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem}.related-card{min-height:150px;padding:1rem;background:#183a56;border:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:transform .18s,background .18s}.related-card:hover{transform:translateY(-5px);background:#214765}.related-card small{font:500 .62rem var(--mono);letter-spacing:.08em;color:#ff9b90}.related-card strong{font:600 1.3rem/1.02 var(--display);letter-spacing:-.045em}.related-card span{font-size:.77rem;color:#d7e2e9}.footer{background:var(--paper-deep);padding:2.4rem 1.25rem}.footer-inner{max-width:1280px;margin:auto;display:flex;justify-content:space-between;gap:2rem;align-items:center}.footer-links{display:flex;gap:1rem;flex-wrap:wrap}.footer-links a{text-decoration:none;font-size:.78rem;font-weight:700}.footer-note{font-size:.72rem;color:var(--soft)}
+    @media(max-width:850px){.header-inner{grid-template-columns:auto 1fr;padding:.65rem 1rem}.search{order:3;grid-column:1/-1}.nav a:not(.cta){display:none}.hero-inner{grid-template-columns:1fr;gap:2rem;padding:3.2rem 1rem}.workspace,.guide-layout{grid-template-columns:1fr}.tool-head{display:block}.tool-head p{margin-top:.75rem}.drop-card{min-height:285px}.guide{padding:3.5rem 0}.rail{position:static}.rail nav{display:flex;gap:.8rem;overflow:auto}.rail a{white-space:nowrap;border-top:0;border-bottom:1px solid var(--line)}.related-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{display:block}.footer-links{margin-top:1rem}}@media(max-width:480px){.brand{font-size:1.25rem}.brand img{width:29px;height:29px}.hero h1{font-size:3rem}.actions .button{width:100%}.dims{grid-template-columns:1fr}.segments{grid-template-columns:1fr}.segments button{border-right:0;border-bottom:1px solid var(--line)}.related-grid{grid-template-columns:1fr}.related-head{display:block}.related-head p{margin-top:1rem}}@media(prefers-reduced-motion:no-preference){.hero-inner>*{animation:reveal .6s cubic-bezier(.23,1,.32,1) both}.spec{animation-delay:.1s}@keyframes reveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Toolyfi Image Resizer","url":"https://toolyfi.com/image-resizer.html","applicationCategory":"MultimediaApplication","operatingSystem":"Any","description":"A browser-based image resizer for JPG, PNG and WebP files with exact pixel controls, aspect-ratio protection and downloadable output.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toolyfi","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Image Tools","item":"https://toolyfi.com/#directory"},{"@type":"ListItem","position":3,"name":"Image Resizer","item":"https://toolyfi.com/image-resizer.html"}]},
+    {"@type":"HowTo","name":"How to resize an image online","step":[{"@type":"HowToStep","name":"Choose images","text":"Select JPG, PNG or WebP images from your device."},{"@type":"HowToStep","name":"Set dimensions","text":"Enter a target width and height, choose a preset, and choose whether to preserve the aspect ratio."},{"@type":"HowToStep","name":"Choose output","text":"Select the original format, JPG, PNG or WebP and set a quality preference for JPG or WebP."},{"@type":"HowToStep","name":"Review and download","text":"Create the resized copy, review its dimensions and file size, then download it."}]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this Image Resizer upload my files?","acceptedAnswer":{"@type":"Answer","text":"No. The resizing step runs in the browser using the selected local files."}},{"@type":"Question","name":"Should I keep the aspect ratio locked?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Keeping the ratio avoids stretching. Use crop-to-fill when a fixed frame is required."}},{"@type":"Question","name":"Which output format should I choose?","acceptedAnswer":{"@type":"Answer","text":"Choose JPG for many photographs, PNG when transparency or sharp graphic edges matter, and WebP for modern web delivery when the destination accepts it."}}]}
+  ]}
+  </script>
 </head>
 <body>
-
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
-
-<div class="container">
-    <div class="hero">
-        <h1>Free Online Image Resizer</h1>
-        <p>The fastest way to resize images for social media, websites, and email. Professional quality, 100% free, and no signup required.</p>
+  <a class="skip" href="#resizer">Skip to resizer</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Toolyfi home"><img src="logo.png" alt="Toolyfi logo"><span>tooly<em>fi.</em></span></a>
+      <form class="search" action="index.html#directory" role="search"><span aria-hidden="true">⌕</span><input aria-label="Find a Toolyfi tool" name="q" placeholder="Search tools, workflows, answers…" type="search"></form>
+      <nav class="nav" aria-label="Page navigation"><a href="index.html#directory">All tools</a><a href="#guide">Guide</a><a href="#faq">FAQ</a><a class="cta" href="#resizer">Resize images ↗</a></nav>
     </div>
-
-    <div class="tool-layout">
-        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-            <span class="upload-icon">🖼️</span>
-            <h3>Click to Upload or Drag & Drop</h3>
-            <p>Supports JPG, PNG, WebP, and GIF. Max 20MB.</p>
-            <input type="file" id="fileInput" style="display:none" onchange="handleUpload(this)">
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">02 / Image tools</div>
+          <h1>Size images <em>with intent.</em><br>Keep the shape.</h1>
+          <p class="hero-copy">A practical browser-based image resizer for JPG, PNG and WebP files. Set exact pixels, protect the original ratio, choose a useful output format and download only when the result fits its real destination.</p>
+          <div class="actions"><a class="button primary" href="#resizer">Open resizer ↓</a><a class="button" href="image-compressor.html">Compress after resizing →</a><a class="button" href="#guide">Read the guide →</a></div>
         </div>
-
-        <div class="settings-panel">
-            <h3>Resize Settings</h3>
-            
-            <div class="input-group">
-                <label>Dimensions (px)</label>
-                <div class="dim-inputs">
-                    <input type="number" id="width" placeholder="Width" value="1200">
-                    <input type="number" id="height" placeholder="Height" value="630">
-                </div>
-                <div style="margin-top:8px; font-size:0.8rem; color:var(--muted);">
-                    <input type="checkbox" id="aspectRatio" checked style="width:auto; margin-right:4px;"> Keep Aspect Ratio
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>Social Media Presets</label>
-                <div class="preset-grid">
-                    <button class="preset-btn" onclick="setDim(1200, 630)">FB Post</button>
-                    <button class="preset-btn" onclick="setDim(1080, 1080)">IG Square</button>
-                    <button class="preset-btn" onclick="setDim(1080, 1920)">IG Story</button>
-                    <button class="preset-btn" onclick="setDim(1200, 675)">Twitter</button>
-                    <button class="preset-btn" onclick="setDim(1200, 627)">LinkedIn</button>
-                    <button class="preset-btn" onclick="setDim(1280, 720)">YouTube</button>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>Output Format</label>
-                <select id="format">
-                    <option value="original">Same as Original</option>
-                    <option value="jpg">JPG (Best for Photos)</option>
-                    <option value="png">PNG (Best for Graphics)</option>
-                    <option value="webp">WebP (Best for Web)</option>
-                </select>
-            </div>
-
-            <button class="action-btn" onclick="resizeImage()">Resize & Download</button>
+        <aside class="spec"><div class="spec-top"><span>Toolyfi / local-first utility</span><span>resize</span></div><div class="spec-row"><span class="spec-num">20</span><span class="spec-copy">supported images per batch<small>one image or a small set</small></span></div><div class="spec-row"><span class="spec-num">3</span><span class="spec-copy">output choices<small>original, JPG, PNG or WebP</small></span></div><div class="spec-row"><span class="spec-num">0</span><span class="spec-copy">file uploads required<small>the resize step runs on your device</small></span></div></aside>
+      </div>
+    </section>
+    <section class="tool" id="resizer">
+      <div class="wrap">
+        <div class="tool-head"><div><div class="kicker">03 / Resize</div><h2>Your images.<br>Your dimensions.</h2></div><p>Choose a target, keep proportions when they matter, and create a downloadable copy without sending the selected image away for processing.</p></div>
+        <div class="workspace">
+          <div class="drop-card" id="dropzone" role="button" tabindex="0" aria-label="Select image files or drop them here"><div class="drop-icon">↗</div><h3>Drop images here<br>or choose files.</h3><p>JPG, PNG and WebP are supported. Select up to 20 images, then choose one consistent output recipe for the batch.</p><button class="button primary" id="selectButton" type="button">Select images</button><input class="hidden" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple><span class="micro">Local processing · no account · review before download</span></div>
+          <div class="controls"><h3>Set your output</h3><p>Start with the intended display size. Resize first when an image has far more pixels than the layout will ever show.</p><div class="control"><div class="label"><span>Dimensions in pixels</span><span id="sourceDimensions">Choose an image</span></div><div class="dims"><div class="field"><label for="width">Width</label><input id="width" type="number" min="1" value="1200"></div><div class="field"><label for="height">Height</label><input id="height" type="number" min="1" value="800"></div></div></div><div class="control"><div class="label"><span>Resize rule</span><span id="modeReadout">Fit inside</span></div><div class="segments" id="resizeModes"><button class="active" type="button" data-mode="contain">Fit inside</button><button type="button" data-mode="cover">Crop to fill</button><button type="button" data-mode="stretch">Exact size</button></div></div><div class="control"><div class="switch"><label><input id="keepRatio" type="checkbox" checked> Keep original aspect ratio</label><span class="micro">Recommended</span></div></div><div class="control"><div class="label"><span>Useful presets</span><span>Pixels</span></div><div class="presets"><button class="preset" type="button" data-width="1200" data-height="630">Open Graph 1200×630</button><button class="preset" type="button" data-width="1080" data-height="1080">Square 1080×1080</button><button class="preset" type="button" data-width="1080" data-height="1920">Story 1080×1920</button><button class="preset" type="button" data-width="1280" data-height="720">Video 1280×720</button><button class="preset" type="button" data-width="800" data-height="800">Product 800×800</button></div></div><div class="control"><div class="label"><span>Output format</span><span id="formatReadout">Original</span></div><div class="segments" id="formats"><button class="active" type="button" data-format="auto">Auto</button><button type="button" data-format="image/webp">WebP</button><button type="button" data-format="image/jpeg">JPG</button><button type="button" data-format="image/png">PNG</button></div></div><div class="control"><div class="label"><span>JPG / WebP quality</span><span id="qualityReadout">82%</span></div><div class="range"><input id="quality" type="range" min="50" max="100" value="82"><output id="qualityValue">82%</output></div></div><button class="process" id="processButton" type="button" disabled>Resize selected images →</button><p class="note" id="sourceNote">Choose images to begin. Your selected files stay in this browser while the resize runs.</p></div>
         </div>
-    </div>
-
-    <!-- COMPREHENSIVE CONTENT SECTION (2200+ WORDS) -->
-    <div class="content-section">
-        <h2>The Ultimate Guide to Image Resizing in 2026</h2>
-        <p>In an era where visual content dominates the internet, the ability to quickly and accurately resize images is a superpower for content creators, marketers, and business owners. Whether you're preparing a hero image for your website, a thumbnail for YouTube, or a high-resolution post for Instagram, our <strong>Free Image Resizer</strong> is built to handle it all with professional precision.</p>
-
-        <h3>Why Image Dimensions Matter More Than Ever</h3>
-        <p>Every platform has its own "sweet spot" for image dimensions. Using the wrong size can lead to awkward cropping, blurry visuals, or slow page load times. When you upload a 4000-pixel photo to a space that only needs 400 pixels, you're forcing your users to download 10 times more data than necessary. This kills your website's performance and hurts your SEO rankings.</p>
-
-        <h3>Social Media Image Size Guide 2026</h3>
-        <p>Staying up to date with the ever-changing requirements of social platforms is a full-time job. We've compiled the most current standards to ensure your content looks perfect every time:</p>
-        
-        <div class="social-grid">
-            <div class="social-card">
-                <h4>Instagram</h4>
-                <ul>
-                    <li><span>Square Post:</span> <strong>1080 x 1080 px</strong></li>
-                    <li><span>Portrait Post:</span> <strong>1080 x 1350 px</strong></li>
-                    <li><span>Landscape Post:</span> <strong>1080 x 566 px</strong></li>
-                    <li><span>Stories & Reels:</span> <strong>1080 x 1920 px</strong></li>
-                    <li><span>Profile Photo:</span> <strong>320 x 320 px</strong></li>
-                </ul>
-            </div>
-            <div class="social-card">
-                <h4>Facebook</h4>
-                <ul>
-                    <li><span>Feed Post:</span> <strong>1200 x 630 px</strong></li>
-                    <li><span>Cover Photo:</span> <strong>820 x 312 px</strong></li>
-                    <li><span>Event Image:</span> <strong>1200 x 628 px</strong></li>
-                    <li><span>Group Cover:</span> <strong>1640 x 856 px</strong></li>
-                    <li><span>Stories:</span> <strong>1080 x 1920 px</strong></li>
-                </ul>
-            </div>
-            <div class="social-card">
-                <h4>YouTube</h4>
-                <ul>
-                    <li><span>Thumbnail:</span> <strong>1280 x 720 px</strong></li>
-                    <li><span>Channel Art:</span> <strong>2560 x 1440 px</strong></li>
-                    <li><span>Profile Icon:</span> <strong>800 x 800 px</strong></li>
-                    <li><span>Shorts:</span> <strong>1080 x 1920 px</strong></li>
-                    <li><span>Community Post:</span> <strong>1080 x 1080 px</strong></li>
-                </ul>
-            </div>
-            <div class="social-card">
-                <h4>LinkedIn</h4>
-                <ul>
-                    <li><span>Shared Image:</span> <strong>1200 x 627 px</strong></li>
-                    <li><span>Company Cover:</span> <strong>1128 x 191 px</strong></li>
-                    <li><span>Profile Photo:</span> <strong>400 x 400 px</strong></li>
-                    <li><span>Article Header:</span> <strong>1200 x 644 px</strong></li>
-                    <li><span>Logo:</span> <strong>300 x 300 px</strong></li>
-                </ul>
-            </div>
-        </div>
-
-        <h3>The Science of Image Resizing: How It Works</h3>
-        <p>When you resize an image, you're not just "making it smaller." You're asking an algorithm to decide which pixels to keep and which to discard. This process is called <strong>Resampling</strong>. Our tool uses <strong>Lanczos Resampling</strong>, which is widely considered the gold standard for maintaining sharpness and reducing "aliasing" (those jagged edges you see in low-quality resizers).</p>
-        
-        <h4>Downscaling vs. Upscaling</h4>
-        <p><strong>Downscaling</strong> (making an image smaller) is generally safe and results in a sharper-looking image because you're increasing the pixel density. <strong>Upscaling</strong> (making an image larger) is much trickier. Since the algorithm has to "invent" new pixels, the image can become blurry or pixelated. We recommend never upscaling an image more than 150% of its original size for professional use.</p>
-
-        <div class="guide-box">
-            <h3>Pro Tip: The "Rule of Two" for Web Design</h3>
-            <p>For modern high-resolution displays (like Apple's Retina displays), you should always export your images at <strong>twice the size</strong> they will appear on the screen. If your website has a 400px wide sidebar, resize your image to 800px. This ensures it looks crisp on every device without being unnecessarily heavy.</p>
-        </div>
-
-        <h3>Choosing the Right File Format</h3>
-        <p>Resizing is the perfect time to convert your image to a more efficient format. Here's our 2026 recommendation guide:</p>
-        <ul>
-            <li><strong>WebP:</strong> The absolute best for websites. It offers 30% better compression than JPG with the same quality. All modern browsers now support it.</li>
-            <li><strong>JPG (JPEG):</strong> Still the king for photography. Use this for complex images with many colors and gradients.</li>
-            <li><strong>PNG:</strong> Use this ONLY if you need transparency (like a logo) or if the image contains text that needs to stay perfectly sharp.</li>
-            <li><strong>GIF:</strong> Only for simple animations. For static images, PNG or WebP is always better.</li>
-        </ul>
-
-        <h3>Common Mistakes to Avoid When Resizing</h3>
-        <ol>
-            <li><strong>Breaking the Aspect Ratio:</strong> Never "stretch" an image to fit a space. This makes people look thin or wide and looks unprofessional. Always keep the "Lock Aspect Ratio" checked.</li>
-            <li><strong>Ignoring File Size:</strong> Resizing the dimensions is only half the battle. After resizing, use our <strong>Image Compressor</strong> to strip away unnecessary data.</li>
-            <li><strong>Resizing Multiple Times:</strong> Every time you resize and save a JPG, you lose a little bit of quality. Always start with the original high-resolution file.</li>
-            <li><strong>Using the Wrong Color Space:</strong> For web use, ensure your images are in <strong>sRGB</strong>. CMYK is for print and will look "neon" or distorted on most screens.</li>
-        </ol>
-
-        <h3>Bulk Resizing for E-commerce</h3>
-        <p>If you're running a Shopify or Amazon store, you might have hundreds of product photos that all need to be exactly 1000x1000 pixels. Doing this one by one is impossible. Our tool supports <strong>Bulk Resizing</strong>, allowing you to drag and drop your entire product catalog and apply the same settings to every image in seconds.</p>
-
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-grid">
-            <details>
-                <summary>Is this tool really free for high-resolution images?</summary>
-                <div class="faq-content">Yes! Unlike many other tools that charge for "HD" downloads or add watermarks, Toolyfi allows you to resize and download full-resolution images for free.</div>
-            </details>
-            <details>
-                <summary>Will resizing my image reduce its quality?</summary>
-                <div class="faq-content">Downscaling (making it smaller) actually makes the image look sharper. Upscaling (making it larger) can cause blurriness. Our Lanczos algorithm ensures the best possible result in both cases.</div>
-            </details>
-            <details>
-                <summary>What is the maximum file size I can upload?</summary>
-                <div class="faq-content">We support individual files up to 20MB. For larger files, we recommend using a desktop editor before uploading.</div>
-            </details>
-            <details>
-                <summary>Can I resize images for print?</summary>
-                <div class="faq-content">Yes. For print, you'll want to calculate your dimensions based on 300 DPI. For example, a 4x6 inch photo needs to be 1200x1800 pixels.</div>
-            </details>
-            <details>
-                <summary>Is my data private? Do you store my photos?</summary>
-                <div class="faq-content">Your privacy is our priority. Images are processed in your browser or on temporary secure servers and are deleted immediately after you download them. We never store or share your files.</div>
-            </details>
-            <details>
-                <summary>Does this tool work on my iPhone or Android?</summary>
-                <div class="faq-content">Yes, Toolyfi is fully optimized for mobile browsers. You can take a photo and resize it for Instagram instantly without downloading any apps.</div>
-            </details>
-            <details>
-                <summary>Can I crop my image while resizing?</summary>
-                <div class="faq-content">Yes! If you enter dimensions that don't match the original aspect ratio, our tool will allow you to choose the crop area to ensure you don't lose the most important part of the photo.</div>
-            </details>
-            <details>
-                <summary>What is the best format for my website?</summary>
-                <div class="faq-content">We highly recommend <strong>WebP</strong>. It provides the best balance of small file size and high visual quality for modern web browsers.</div>
-            </details>
-            <details>
-                <summary>How many images can I resize at once?</summary>
-                <div class="faq-content">Our bulk tool supports up to 20 images per batch. There is no limit on how many batches you can process per day.</div>
-            </details>
-            <details>
-                <summary>Do I need to install any software?</summary>
-                <div class="faq-content">No. Toolyfi is a 100% web-based tool. It works in any modern browser like Chrome, Safari, or Firefox.</div>
-            </details>
-        </div>
-
-        <h3>Advanced Resizing: DPI vs. Pixels</h3>
-        <p>A common point of confusion is the difference between DPI (Dots Per Inch) and Pixels. On the web, DPI doesn't matter—only the total pixel count does. A 1000px image is 1000px whether it's set to 72 DPI or 300 DPI. DPI only becomes relevant when you hit the "Print" button, as it tells the printer how many pixels to squeeze into every inch of paper.</p>
-
-        <h3>The Impact of Image Size on Page Speed</h3>
-        <p>Google's "PageSpeed Insights" tool almost always flags "unoptimized images" as the #1 reason for slow websites. By using our resizer to match your images to their display size, you can improve your mobile speed score by 20-30 points instantly. This leads to better user engagement, lower bounce rates, and ultimately, more revenue for your business.</p>
-    </div>
-
-    <div class="related-tools">
-        <h3>Related Image Tools</h3>
-        <div class="related-grid">
-            <a href="image-compressor.html" class="related-link">Image Compressor</a>
-            <a href="bg-remover-object-detection.html" class="related-link">Background Remover</a>
-            <a href="color-picker.html" class="related-link">Online Color Picker</a>
-            <a href="qr-code-generator.html" class="related-link">QR Code Generator</a>
-            <a href="ai-image-generator.html" class="related-link">AI Image Generator</a>
-            <a href="base64-encoder.html" class="related-link">Image to Base64</a>
-            <a href="html-preview-tool.html" class="related-link">HTML Preview Tool</a>
-            <a href="seo-checker.html" class="related-link">Image SEO Checker</a>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Professional Grade · 100% Free · Privacy Focused</p>
-</footer>
-
-<script>
-    function setDim(w, h) {
-        document.getElementById('width').value = w;
-        document.getElementById('height').value = h;
-    }
-
-    function handleUpload(input) {
-        if (input.files && input.files[0]) {
-            alert('Image "' + input.files[0].name + '" uploaded successfully. Adjust your settings and click Resize.');
-        }
-    }
-
-    function resizeImage() {
-        const w = document.getElementById('width').value;
-        const h = document.getElementById('height').value;
-        alert('Processing your image to ' + w + 'x' + h + '... Your download will start in a moment.');
-    }
-</script>
-
+        <div class="results" id="results" aria-live="polite"><div class="result-top"><h3>Resized results</h3><span id="resultSummary">Ready to download</span></div><div class="result-list" id="resultList"></div></div>
+      </div>
+    </section>
+    <section class="guide" id="guide"><div class="wrap guide-layout"><aside class="rail"><span class="kicker">04 / Field guide</span><h2>Resize with a clear job in mind.</h2><nav><a href="#difference">Resize, crop, compress</a><a href="#workflow">A reliable workflow</a><a href="#ratio">Aspect ratio and fit</a><a href="#formats">Formats and quality</a><a href="#use-cases">Publishing use cases</a><a href="#batch">Small batches</a><a href="#seo">Performance and access</a><a href="#mistakes">Common mistakes</a></nav></aside><div><article><h2 class="article-title">A practical guide to <em>image resizing</em> without distortion or guesswork.</h2><p>Image resizing is simple only when the image has no destination. In real work, every image has a job: it may become a product card, an article illustration, a social post, a presentation slide, an email attachment, or a full-width hero. The right dimensions depend on that job. A useful resize workflow does not start by typing a random number into a box. It starts by deciding where people will see the finished image, how much detail they need, and whether the layout needs a precise shape or simply a smaller version of the original.</p><p>This Toolyfi Image Resizer is designed for that practical step. It creates a new copy in your browser from the local image files you select. You can use a preset, enter exact pixels, retain the source aspect ratio, choose how an image should fit a frame, and select a suitable format for download. The guide below explains the decisions behind those controls so that resizing improves the final result instead of causing soft images, unexpected crops, or distorted faces and logos.</p><h3 id="difference">Resize, crop and compress solve different problems</h3><p>These three terms are often used together because a good publishing workflow may include all of them, but they are not interchangeable. Resizing changes the pixel dimensions of an image. Cropping changes the visible area: you remove parts of the image to make a square, a wide banner, or another exact frame. Compression changes how efficiently an image file is stored. It may reduce the file size without changing the pixel dimensions at all.</p><p>Start with the problem you actually have. If a product photo is far larger than the product card that will display it, resizing is the first useful move. If the card needs a square but the photo is wide, a crop-to-fill decision may come next. If the finished image is still heavy for its destination, use <a href="image-compressor.html">Toolyfi Image Compressor</a> after the dimensions are settled. Doing these steps in the right order avoids repeatedly processing the same image and gives you more control over the visual outcome.</p><div class="callout"><strong>A simple rule:</strong> resize when the pixel dimensions are wrong, crop when the frame shape is wrong, and compress when the file weight is still heavier than the destination needs.</div>
+<h3 id="workflow">A reliable resizing workflow</h3>
+<p>A dependable workflow is short enough to repeat. First, keep the original image safe. Use a copy for web, social, email, or client delivery. Second, inspect the final layout. Note the target width, height, and aspect ratio rather than assuming a standard size. Third, choose a resize rule. “Fit inside” preserves the entire image within the dimensions; “crop to fill” produces an exact frame by removing edge areas; “exact size” can stretch an image and should be used only when that effect is intended.</p>
+<p>Next, choose an output format. The original format is a conservative choice when you are preparing a file for a workflow you do not control. JPG is often suitable for photographs that do not need transparency. PNG is useful for transparency, simple graphics, or sharp edges. WebP is often useful for modern website delivery when the destination accepts it. Then review the generated copy at the size people will actually see. A small card image does not need to be inspected as a full-screen photograph, but text, product details, faces, and charts deserve a close look before publishing.</p>
+<p>Finally, name and organize the finished files clearly. A filename that contains the subject and dimensions is far more helpful than a series of files named “final-final-new.” Toolyfi adds a predictable resize suffix to generated downloads. Keep it, or use your own documented naming convention, so that a working copy is never confused with a master asset.</p>
+<h3 id="ratio">Aspect ratio, fit and crop behavior</h3>
+<p>An aspect ratio is the relationship between an image’s width and height. A 1200 by 630 image is wide; a 1080 by 1080 image is square; a 1080 by 1920 image is vertical. Keeping the ratio locked means that when you change one dimension, the other dimension changes proportionally. This is usually the safest default because it avoids stretching. If a portrait becomes unnaturally wide or a logo becomes taller than it should be, the aspect ratio was probably not preserved.</p>
+<p>“Fit inside” is best when all of the original image must remain visible. It scales the image down until it fits within the target box. If the target frame has a different shape, empty space may remain around the image in some layouts. “Crop to fill” is best when every card or banner must have the same exact dimensions. It fills the frame and trims edges as needed. Use it deliberately: the crop may remove important details that sit near an edge. “Exact size” fills the requested width and height by drawing the image into that shape. It can be useful for intentional abstract design, but it can distort ordinary photos and should not be the everyday choice.</p>
+<div class="callout"><strong>Choose the frame before the pixels.</strong> A useful target begins with the destination’s shape. Only then should you decide whether preserving every part of the source or creating a perfectly uniform frame is more important.</div>
+<h3 id="formats">Output formats and quality settings</h3>
+<p>Format choice is part of resizing because the final use matters more than the source file alone. A JPG is usually suitable for a continuous-tone photograph, such as a landscape or lifestyle image. It cannot preserve transparency. A PNG can preserve transparent areas and crisp graphic edges, which makes it useful for logos, interface captures, and illustrations, but a photographic PNG can be larger than expected. WebP can be a useful modern web format because it supports both photography and transparency in many current browsers. Check the destination before committing to any format: a content management system, marketplace, email system, or client workflow may have a specific requirement.</p>
+<p>The quality control in this tool applies to JPG and WebP output. It is a trade-off, not a score for your image. Lower settings create smaller files but can soften fine texture, introduce banding in gradients, or make small writing less clear. Higher settings preserve more detail but may not save as much file weight. Start around the middle, inspect the result at a realistic size, and raise the setting if the image carries important small details. PNG output does not use the same quality setting because browser canvas encoding handles it differently.</p>
+<h3 id="use-cases">Resize for the place people will actually see the image</h3>
+<h4>Website cards and landing pages</h4>
+<p>A card image should be prepared for the card, not for a full-screen gallery. First check the component’s shape and maximum display width. If the card is wide and short, use a source crop that supports a wide composition. If the card is square, choose a square crop that keeps the essential subject centered. Keep decorative images light enough that they do not delay the content visitors came to read. For informative diagrams and screenshots, make sure labels remain readable at the actual rendered size.</p>
+<h4>Social content</h4>
+<p>Social networks change interface details over time, so treat a preset as a useful starting point rather than an eternal rule. The important idea is to begin with a frame that matches the post type, keep key text away from the edges, and preview before publishing. A square is often flexible for feeds; a vertical frame can use more mobile screen space; a wide frame can suit link previews and video thumbnails. Keep a master copy because each platform may need a different crop from the same original photograph.</p>
+<h4>Product images and catalogues</h4>
+<p>Catalogues benefit from consistency. Use the same dimensions for comparable products and avoid random crops that make one listing appear larger than another. Keep enough margin around a product when the design needs breathing room. For materials, fabric, food, jewelry, or other detail-sensitive items, inspect the resized result carefully. A smaller image can still be trustworthy, but only if its texture and color remain useful for a buyer’s decision.</p>
+<h4>Documents and presentations</h4>
+<p>For a document, the visual role matters more than a generic pixel target. A decorative photo can be smaller than a chart or technical screenshot. A projected slide may need more readable detail than an email attachment. If you export a document to PDF, inspect the PDF itself because the document software may recompress images after you have prepared them. Keep the original file available so that one soft image can be corrected without recreating the whole document.</p>
+<h3 id="batch">Small batch workflows that remain organized</h3>
+<p>Batch resizing is useful when the files share a purpose. A group of product thumbnails, article illustrations, or team headshots can usually use one set of dimensions and output rules. A mixed collection of screenshots, transparent logos, photographs and banners often deserves separate batches because each has different visual requirements. Grouping by destination makes review more efficient and reduces surprises.</p>
+<p>Before running a batch, select a target frame and decide whether crop-to-fill or fit-inside behavior is appropriate. Process a representative file first if the batch contains important images. Check the name, output dimensions, format, and visual result. Then apply the same recipe to the rest. This small test is far faster than correcting twenty downloads after you notice that a crop removed a product edge or a transparent logo was converted to a non-transparent format.</p>
+<p>When you complete a batch, keep the source and output folders distinct. The resized files are distribution copies; they are not a replacement for the original asset. This separation helps teams respond when a new marketplace, page component, or social campaign needs another size later. It also makes the process easier to hand to another person because the difference between the master and the working output is visible from the folder structure.</p>
+<h3 id="seo">Image dimensions, page performance and accessibility</h3>
+<p>Well-chosen image dimensions make a page more intentional. A browser should not need to download a very large image only to display it as a small thumbnail. Resizing assets to match a layout can reduce unnecessary file work and helps a designer control the shape of each composition. Compression after resizing can further reduce file weight when the final destination allows it. Use the <a href="image-compressor.html">Image Compressor</a> as the next step when you need a smaller file without changing the finished dimensions.</p>
+<p>Performance is not only about bytes. It is also about clarity. An image that arrives quickly but fails to explain a product, show a chart, or support an instruction is not doing its job. Write useful alt text when an image communicates information. Put essential instructions in real page text rather than hiding them inside a screenshot. Use a descriptive filename and surrounding copy that gives the image context. These habits help people understand a page, help teams manage assets, and make a site more legible to systems that interpret page content.</p>
+<p>Accessibility and visual integrity belong together. If compression turns small labels into fuzzy blocks, a screenshot stops being helpful. If a product’s color shifts noticeably, a customer can make the wrong judgment. If a chart becomes hard to read, the surrounding article loses evidence. Review images through the lens of the people who rely on them, not just the number in the file-size column. When an image contains essential text, consider whether that text should also exist as live HTML so it can be searched, resized, translated, and read with assistive technology.</p>
+<h3 id="mistakes">Common resizing mistakes and how to avoid them</h3>
+<p>The first common mistake is stretching an image because the target frame has a different shape. Keep the aspect ratio locked unless distortion is intentional. The second is enlarging a small image and expecting it to gain genuine detail. Upscaling creates more pixels, but it cannot restore texture or sharpness that does not exist in the source. A larger canvas can be useful for a layout, but it should not be described as a quality improvement.</p>
+<p>The third mistake is using the same format for every image. A transparent logo, a detailed photo, and a text-heavy screenshot are different assets. The fourth is resizing a compressed JPG over and over, which can compound visible artifacts. Start from the best available source when possible. The fifth is treating social presets as a substitute for checking the actual composition. Keep important subject matter away from edges and inspect the final post in the platform’s preview.</p>
+<p>Finally, avoid promising more privacy or technical behavior than the tool actually provides. This page performs the resize in the browser from the selected local file. That makes it useful for many everyday assets, but very large images can still use significant device memory and an animated format may be treated as a static frame. Honest constraints make a utility more trustworthy than exaggerated claims.</p>
+<h3>Before you download: a short quality check</h3>
+<p>Check the final dimensions against the destination. Confirm that important edges are not cropped. View text and small details at a normal scale. Confirm the output format keeps any transparency you need. Keep the source file. Name the resulting copy clearly. If the file is still heavier than the destination needs, use compression after resizing rather than lowering quality blindly. This review takes less than a minute and prevents the majority of avoidable image issues.</p>
+<p>It is useful to think of the final check as a conversation between the image and its destination. A small commerce thumbnail needs quick clarity; a report diagram needs legible labels; a landscape hero needs a composition that survives a wide crop; an email attachment needs a balance between speed and enough visual detail to be understood. The same source photograph can need several different derivatives. That is not wasteful when the versions are deliberately named and each one has a clear job.</p>
+<p>Toolyfi Image Resizer is meant to be the local-first step in that workflow. Choose your files, set a proportionate target, generate a fresh copy, review it, and move to the next publishing step with an image that fits the job. The tool cannot invent missing detail or decide the perfect crop for every subject, but it gives you clear controls so that your own decision is visible in the final output.</p>
+<h3>Building a reusable image recipe</h3>
+<p>When you repeat a task, turn the successful settings into a recipe. A web-card recipe might use a fixed landscape frame, crop-to-fill, WebP output, and a quality setting that looks clean at card size. A catalogue recipe might use a square frame, fit-inside behavior, a white or transparent background, and PNG or WebP output depending on the store’s requirements. A presentation recipe might preserve more pixels and avoid aggressive compression because projected slides reveal artifacts easily.</p>
+<p>Write these recipes down for your team. Include the target dimensions, resize rule, output format, quality preference, naming suffix, and where the final files belong. This turns a one-off web utility into a consistent content operation. It also makes it easier to audit a site later because you know why its visual assets have the sizes and formats they do.</p>
+<h3>A note about very large images</h3>
+<p>Browser-based tools are convenient because they avoid a separate upload workflow, but the browser still needs enough memory to decode and redraw an image. A very high-resolution photograph can take longer to process than a normal web asset, particularly on an older phone. If a large file causes a tab to slow down, reduce the batch size, close other heavy tabs, and work through the files in smaller groups. Keep the original somewhere safe and treat the resized copy as a distribution asset.</p>
+<p>For print-critical, archival, or highly color-managed work, use the page as a practical delivery step rather than as a replacement for a professional master-file process. The browser is excellent for standard web and content tasks. A specialist desktop workflow may be more suitable when a job requires an exact color profile, a complex layered original, or an output standard that the destination specifies precisely.</p>
+<h3>Handing resized images to the next person</h3>
+<p>Before sharing a completed batch, include enough context for the next person to use it correctly. State the intended destination, the dimensions, the output format, and whether the files are final delivery copies or still need compression. If the visual will be placed on a webpage, identify the component or section it belongs to. If it is for a campaign, record the platform and aspect ratio. This avoids a common production problem: a technically correct image being used in the wrong place simply because nobody knew why it had been resized that way.</p>
+<p>A clear handoff also protects the original. Keep the source image in a master folder and place the resized copies in a delivery folder. Give both folders meaningful names. When requirements change, you can return to the master, create a new derivative, and keep the history understandable. That discipline is more valuable than any single preset because it keeps your image system reusable as the website, catalogue, or campaign evolves.</p>
+    </article><section class="faq" id="faq"><div class="kicker">05 / Questions</div><h2>Image Resizer FAQ</h2><details><summary>Does this page upload my images?</summary><p>No. The resizing step runs in the browser from the local files you select. This page does not need to send the selected image to Toolyfi to create the resized copy.</p></details><details><summary>Which image files can I resize?</summary><p>The tool accepts common browser-readable image files including JPG, PNG and WebP. A GIF can be read by the browser, but browser-canvas processing creates a static image from its first frame rather than preserving animation.</p></details><details><summary>Should I keep the aspect ratio locked?</summary><p>Usually, yes. Ratio locking protects the original shape. Use crop-to-fill when you need a uniform frame, or use exact size only when stretching is intentionally part of the design.</p></details><details><summary>Can I resize several images at one time?</summary><p>Yes. Select up to 20 images, set one output recipe, and the page will create a separate downloadable result for each selected file.</p></details><details><summary>Will making an image larger make it sharper?</summary><p>No. Enlargement creates additional pixels but cannot restore missing detail. Start with an image that is large enough for the intended use whenever possible.</p></details><details><summary>Which format should I choose?</summary><p>Choose JPG for many photographs, PNG when transparency or sharp graphic edges matter, and WebP for modern web delivery when the destination supports it.</p></details><details><summary>Why should I resize before compressing?</summary><p>Reducing unnecessary pixel dimensions usually removes more work than compression alone. Resize to the layout first, then use Image Compressor if the final file still needs to be lighter.</p></details><details><summary>Can I use this on a phone?</summary><p>Yes, in a modern mobile browser. Large source images can still use more memory on an older phone, so process a few images at a time and keep the browser open until downloads finish.</p></details></section></div></div></section>
+    <section class="related"><div class="wrap"><div class="related-head"><div><div class="kicker">06 / Next steps</div><h2>Continue the image workflow.</h2></div><p>These are real Toolyfi pages that support the next useful action, not decorative links with nowhere to go.</p></div><div class="related-grid"><a class="related-card" href="image-compressor.html"><small>OPTIMIZE</small><strong>Image<br>Compressor</strong><span>Reduce final file weight.</span></a><a class="related-card" href="bg-remover-object-detection.html"><small>IMAGE</small><strong>Background<br>Remover</strong><span>Prepare a clean cut-out.</span></a><a class="related-card" href="color-picker.html"><small>DESIGN</small><strong>Color<br>Picker</strong><span>Sample an image color.</span></a><a class="related-card" href="ai-image-generator.html"><small>CREATE</small><strong>AI Image<br>Generator</strong><span>Start with a new visual.</span></a><a class="related-card" href="base64-encoder.html"><small>DEV</small><strong>Base64<br>Encoder</strong><span>Encode a web asset.</span></a><a class="related-card" href="seo-checker.html"><small>SEARCH</small><strong>SEO<br>Checker</strong><span>Review page basics.</span></a><a class="related-card" href="html-preview-tool.html"><small>DEV</small><strong>HTML<br>Preview</strong><span>Preview markup safely.</span></a><a class="related-card" href="index.html#directory"><small>ATLAS</small><strong>All Toolyfi<br>Tools</strong><span>Browse the full directory.</span></a></div></div></section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><img src="logo.png" alt=""><span>tooly<em>fi.</em></span></a><p class="footer-note">Practical tools for work that needs to move.</p></div><nav class="footer-links"><a href="index.html#directory">All tools</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></footer>
+  <script>
+  const state={files:[],ratio:null,mode:'contain',format:'auto',urls:[]};const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];const input=$('#fileInput'),drop=$('#dropzone'),pick=$('#selectButton'),process=$('#processButton'),w=$('#width'),h=$('#height'),keep=$('#keepRatio'),quality=$('#quality');
+  const n=v=>Math.max(1,Math.round(Number(v)||1));const bytes=b=>{if(!b)return'0 B';const u=['B','KB','MB'],i=Math.min(Math.floor(Math.log(b)/Math.log(1024)),2);return`${(b/1024**i).toFixed(i?1:0)} ${u[i]}`};
+  function setFiles(files){const accepted=[...files].filter(f=>f.type.startsWith('image/')).slice(0,20);if(!accepted.length){$('#sourceNote').textContent='Choose a JPG, PNG, WebP or another browser-readable image.';return}state.files=accepted;state.urls.forEach(URL.revokeObjectURL);state.urls=[];$('#results').classList.remove('visible');process.disabled=false;$('#sourceNote').textContent=`${accepted.length} image${accepted.length===1?'':'s'} selected. They remain in this browser while the resize runs.`;const url=URL.createObjectURL(accepted[0]),img=new Image();img.onload=()=>{state.ratio=img.naturalWidth/img.naturalHeight;w.value=img.naturalWidth;h.value=img.naturalHeight;$('#sourceDimensions').textContent=`Source ${img.naturalWidth}×${img.naturalHeight}`;URL.revokeObjectURL(url)};img.src=url}
+  pick.addEventListener('click',e=>{e.stopPropagation();input.click()});drop.addEventListener('click',()=>input.click());drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();input.click()}});input.addEventListener('change',()=>setFiles(input.files));['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('dragging')}));['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('dragging')}));drop.addEventListener('drop',e=>setFiles(e.dataTransfer.files));
+  function mirror(source){if(!keep.checked||!state.ratio)return;if(source==='w')h.value=Math.round(n(w.value)/state.ratio);else w.value=Math.round(n(h.value)*state.ratio)}w.addEventListener('input',()=>mirror('w'));h.addEventListener('input',()=>mirror('h'));
+  $$('#resizeModes button').forEach(b=>b.addEventListener('click',()=>{state.mode=b.dataset.mode;$$('#resizeModes button').forEach(x=>x.classList.toggle('active',x===b));$('#modeReadout').textContent=b.textContent}));$$('#formats button').forEach(b=>b.addEventListener('click',()=>{state.format=b.dataset.format;$$('#formats button').forEach(x=>x.classList.toggle('active',x===b));$('#formatReadout').textContent=b.textContent}));$$('.preset').forEach(b=>b.addEventListener('click',()=>{w.value=b.dataset.width;h.value=b.dataset.height;keep.checked=false}));quality.addEventListener('input',()=>{$('#qualityValue').textContent=`${quality.value}%`;$('#qualityReadout').textContent=`${quality.value}%`});
+  const outputType=file=>state.format==='auto'?(['image/jpeg','image/png','image/webp'].includes(file.type)?file.type:'image/png'):state.format;const ext=t=>t==='image/jpeg'?'jpg':t==='image/webp'?'webp':'png';function load(file){return new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject()};img.src=url})}
+  async function resize(file){const img=await load(file),tw=n(w.value),th=n(h.value),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d',{alpha:true}),type=outputType(file);canvas.width=tw;canvas.height=th;let dw=tw,dh=th,x=0,y=0;if(state.mode!=='stretch'){const scale=(state.mode==='contain'?Math.min:Math.max)(tw/img.naturalWidth,th/img.naturalHeight);dw=Math.round(img.naturalWidth*scale);dh=Math.round(img.naturalHeight*scale);x=Math.round((tw-dw)/2);y=Math.round((th-dh)/2)}if(state.mode==='contain'&&type==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,tw,th)}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,x,y,dw,dh);const blob=await new Promise(r=>canvas.toBlob(r,type,Number(quality.value)/100));if(!blob)throw new Error();return{blob,type,tw,th}}
+  const esc=s=>s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));function card(file,r){const url=URL.createObjectURL(r.blob);state.urls.push(url);const base=file.name.replace(/\.[^/.]+$/,''),name=`${base}-toolyfi-${r.tw}x${r.th}.${ext(r.type)}`,delta=file.size?Math.round((1-r.blob.size/file.size)*100):0,el=document.createElement('article');el.className='result-card';el.innerHTML=`<img src="${url}" alt="Resized preview of ${esc(file.name)}"><div><div class="result-name" title="${esc(name)}">${esc(name)}</div><div class="result-meta">${bytes(file.size)} → ${bytes(r.blob.size)} · ${r.tw}×${r.th} · ${delta>=0?delta+'% smaller':'larger output'}</div><a class="download" href="${url}" download="${name}">Download ${ext(r.type).toUpperCase()} ↓</a></div>`;$('#resultList').append(el)}
+  process.addEventListener('click',async()=>{if(!state.files.length)return;process.disabled=true;process.textContent='Creating resized copies…';$('#resultList').innerHTML='';state.urls.forEach(URL.revokeObjectURL);state.urls=[];let done=0;for(const file of state.files){try{card(file,await resize(file));done++}catch{const el=document.createElement('article');el.className='result-card';el.innerHTML=`<div></div><div><div class="result-name">${esc(file.name)}</div><div class="result-meta">Could not process this file in the browser.</div></div>`;$('#resultList').append(el)}}$('#results').classList.add('visible');$('#resultSummary').textContent=`${done} of ${state.files.length} resized locally`;process.disabled=false;process.textContent='Resize selected images →';$('#results').scrollIntoView({behavior:'smooth',block:'start'})});
+  </script>
 </body>
 </html>
