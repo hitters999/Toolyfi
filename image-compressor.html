@@ -28,6 +28,7 @@
     {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Toolyfi upload my image to a server?","acceptedAnswer":{"@type":"Answer","text":"This page processes selected images in the browser using the Canvas API. Your image stays on your device while the page is open."}},{"@type":"Question","name":"Which image formats can I compress?","acceptedAnswer":{"@type":"Answer","text":"The tool accepts JPG, PNG and WebP files. Output choices depend on browser support."}},{"@type":"Question","name":"Will image compression reduce quality?","acceptedAnswer":{"@type":"Answer","text":"Lower quality values make smaller files but can remove visual detail. Review the result and choose a setting that suits your use case."}},{"@type":"Question","name":"Can I compress several images at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select up to 20 supported images, then download each optimized result."}}]}
   ]}
   </script>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
   <a class="skip" href="#compressor">Skip to compressor</a>
@@ -154,5 +155,6 @@
     function escapeHtml(value){return value.replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
     document.getElementById('toolSearch').addEventListener('keydown',event=>{if(event.key==='Enter'){const term=event.currentTarget.value.trim().toLowerCase();if(term.includes('resize'))location.href='image-resizer.html';else if(term.includes('background'))location.href='bg-remover-object-detection.html';else if(term.includes('color'))location.href='color-picker.html';else if(term)location.href='index.html#directory'}});
   </script>
+<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
 </body>
 </html>

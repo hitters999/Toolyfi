@@ -297,6 +297,7 @@ footer a:hover{color:#fff}
   .btn-row{flex-wrap:wrap}
 }
 </style>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
 
@@ -734,7 +735,8 @@ function copyOutput(){
 
 function downloadHTML(){
   if(!lastHTML){ showMsg('Nothing to download yet!', 'error'); return; }
-  const full = '<!DOCTYPE html>\n<html><head><meta charset="UTF-8"><title>Converted Document</title></head><body>\n'+lastHTML+'\n</body></html>';
+  const full = '<!DOCTYPE html>\n<html><head><meta charset="UTF-8"><title>Converted Document</title></head><body>\n'+lastHTML+'\n<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+</body></html>';
   const blob = new Blob([full], {type:'text/html'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);

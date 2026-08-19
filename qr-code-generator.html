@@ -299,6 +299,7 @@ footer a:hover{color:#fff}
 /* Toolyfi Editorial Utility Atlas override: coral, ink, ivory; the QR workflow remains task-first. */
 :root{--primary:#ef6c54;--primary-dark:#cd5946;--primary-light:#fff0eb;--accent:#ef6c54;--dark:#172437;--gray:#617083;--light:#faf8f4;--border:#e6ded4;--white:#fffdf9}.hero{background:linear-gradient(118deg,#172437 0%,#21364f 57%,#a84f41 150%)}.tool-card-header,.cta-section{background:linear-gradient(135deg,#172437,#ef6c54)}header{background:#172437}.toolyfi-visual{max-width:1040px;margin:0 auto 48px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #e6ded4;border-radius:18px;box-shadow:0 18px 40px rgba(23,36,55,.1);background:#f2ede6}.toolyfi-visual figcaption{display:block;text-align:center;color:#617083;font-size:.78rem;line-height:1.5;margin-top:9px}.logo-link img{height:35px!important;width:auto}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}}
 </style>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
 
@@ -995,7 +996,8 @@ function printQR() {
   if(!canvas) { showMsg('Generate a QR code first!', 'error'); return; }
   const dataUrl = canvas.toDataURL('image/png');
   const w = window.open('', '_blank');
-  w.document.write(`<html><head><title>Print QR Code</title></head><body style="display:flex;align-items:center;justify-content:center;height:100vh;margin:0"><img src="${dataUrl}" style="max-width:80%"></body></html>`);
+  w.document.write(`<html><head><title>Print QR Code</title></head><body style="display:flex;align-items:center;justify-content:center;height:100vh;margin:0"><img src="${dataUrl}" style="max-width:80%"><script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+</body></html>`);
   w.document.close();
   setTimeout(() => { w.print(); }, 300);
 }

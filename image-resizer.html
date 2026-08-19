@@ -30,6 +30,7 @@
     {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this Image Resizer upload my files?","acceptedAnswer":{"@type":"Answer","text":"No. The resizing step runs in the browser using the selected local files."}},{"@type":"Question","name":"Should I keep the aspect ratio locked?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Keeping the ratio avoids stretching. Use crop-to-fill when a fixed frame is required."}},{"@type":"Question","name":"Which output format should I choose?","acceptedAnswer":{"@type":"Answer","text":"Choose JPG for many photographs, PNG when transparency or sharp graphic edges matter, and WebP for modern web delivery when the destination accepts it."}}]}
   ]}
   </script>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
   <a class="skip" href="#resizer">Skip to resizer</a>
@@ -124,5 +125,6 @@
   const esc=s=>s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));function card(file,r){const url=URL.createObjectURL(r.blob);state.urls.push(url);const base=file.name.replace(/\.[^/.]+$/,''),name=`${base}-toolyfi-${r.tw}x${r.th}.${ext(r.type)}`,delta=file.size?Math.round((1-r.blob.size/file.size)*100):0,el=document.createElement('article');el.className='result-card';el.innerHTML=`<img src="${url}" alt="Resized preview of ${esc(file.name)}"><div><div class="result-name" title="${esc(name)}">${esc(name)}</div><div class="result-meta">${bytes(file.size)} → ${bytes(r.blob.size)} · ${r.tw}×${r.th} · ${delta>=0?delta+'% smaller':'larger output'}</div><a class="download" href="${url}" download="${name}">Download ${ext(r.type).toUpperCase()} ↓</a></div>`;$('#resultList').append(el)}
   process.addEventListener('click',async()=>{if(!state.files.length)return;process.disabled=true;process.textContent='Creating resized copies…';$('#resultList').innerHTML='';state.urls.forEach(URL.revokeObjectURL);state.urls=[];let done=0;for(const file of state.files){try{card(file,await resize(file));done++}catch{const el=document.createElement('article');el.className='result-card';el.innerHTML=`<div></div><div><div class="result-name">${esc(file.name)}</div><div class="result-meta">Could not process this file in the browser.</div></div>`;$('#resultList').append(el)}}$('#results').classList.add('visible');$('#resultSummary').textContent=`${done} of ${state.files.length} resized locally`;process.disabled=false;process.textContent='Resize selected images →';$('#results').scrollIntoView({behavior:'smooth',block:'start'})});
   </script>
+<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
 </body>
 </html>

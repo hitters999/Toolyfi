@@ -296,6 +296,7 @@ footer { background: var(--ide-sidebar); border-top: 1px solid var(--ide-border)
 }
 @media (max-width: 480px) { .stat-item{min-width:100%;border-right:none;border-bottom:1px solid var(--ide-border)} .footer-top{grid-template-columns:1fr;gap:24px} }
 </style>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
 
@@ -742,7 +743,8 @@ function buildHTML() {
   if (h.includes('</head>')) h = h.replace('</head>', `<style>${c}</style>${consoleHook}</head>`);
   else if (h.includes('<body>')) h = h.replace('<body>', `<style>${c}</style>${consoleHook}<body>`);
   else h = `<style>${c}</style>${consoleHook}${h}`;
-  if (h.includes('</body>')) h = h.replace('</body>', `<script>${j}<\/script></body>`);
+  if (h.includes('<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+</body>')) h = h.replace('</body>', `<script>${j}<\/script></body>`);
   else h += `<script>${j}<\/script>`;
   return h;
 }

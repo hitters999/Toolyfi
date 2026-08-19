@@ -750,6 +750,7 @@ img{max-width:100%;display:block}
   .tg-btn{padding:11px 4px;font-size:11px}
 }
 </style>
+<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
 </head>
 <body>
 
@@ -1137,5 +1138,6 @@ function renderComments(){const list=document.getElementById('commentsList');lis
 function submitComment(){const name=document.getElementById('commentName').value.trim()||'Anonymous';const text=document.getElementById('commentText').value.trim();if(!text){showToast('⚠️ Please write something first');return;}comments.push({name,text,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});localStorage.setItem('toolyfi_seo_comments',JSON.stringify(comments));document.getElementById('commentName').value='';document.getElementById('commentText').value='';renderComments();showToast('✅ Comment posted!');}
 renderComments();
 </script>
+<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
 </body>
 </html>
