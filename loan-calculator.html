@@ -1,601 +1,1817 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Loan EMI Calculator – Calculate Monthly EMI Online Free | Toolyfi</title>
-<meta name="description" content="Free EMI calculator online. Calculate monthly loan payment, total interest and total repayment instantly. Home loan, car loan, personal loan. No signup required."/>
-<meta name="keywords" content="emi calculator, loan calculator, monthly emi, loan emi calculator, home loan calculator, car loan calculator, personal loan calculator, toolyfi"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/loan-calculator.html"/>
-<meta property="og:title" content="Loan EMI Calculator – Free Online | Toolyfi"/>
-<meta property="og:description" content="Calculate monthly EMI, total interest and total repayment for any loan. Free, instant, no signup."/>
-<meta property="og:url" content="https://toolyfi.com/loan-calculator.html"/>
-<meta property="og:type" content="website"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
-<!-- Tidio -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-<!-- Schema -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Loan EMI Calculator","description":"Free online loan EMI calculator — calculate monthly EMI, total interest and total repayment for home loan, car loan, personal loan","url":"https://toolyfi.com/loan-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"4821","bestRating":"5","worstRating":"1"},"creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://toolyfi.com"},{"@type":"ListItem","position":3,"name":"Loan EMI Calculator","item":"https://toolyfi.com/loan-calculator.html"}]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What is EMI?","acceptedAnswer":{"@type":"Answer","text":"EMI stands for Equated Monthly Installment. It is the fixed monthly amount paid to repay a loan, consisting of principal and interest components."}},
-{"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is principal, r is monthly interest rate, and n is number of months."}},
-{"@type":"Question","name":"How can I reduce my EMI?","acceptedAnswer":{"@type":"Answer","text":"Reduce loan amount with a larger down payment, negotiate a lower interest rate, or extend the loan tenure."}},
-{"@type":"Question","name":"Is this EMI calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free with no signup, no hidden charges, and no usage limits."}}
-]}
-</script>
-<style>
-:root {
-  --purple: #6c47ff;
-  --purple-light: #ede9ff;
-  --purple-dark: #4a2fe0;
-  --green: #22c55e;
-  --red: #ef4444;
-  --orange: #f59e0b;
-  --text: #1a1a2e;
-  --text-light: #64748b;
-  --border: #e2e8f0;
-  --bg: #f8f7ff;
-  --white: #ffffff;
-  --card-shadow: 0 4px 24px rgba(108,71,255,0.08);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
-h1,h2,h3,h4 { font-family: 'Sora', sans-serif; }
-.hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #4a2fe0 100%); color: white; padding: 60px 20px 40px; text-align: center; position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 60% 40%, rgba(108,71,255,0.3) 0%, transparent 60%); pointer-events: none; }
-.hero-badge { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 6px 16px; border-radius: 20px; font-size: 0.82em; font-weight: 600; margin-bottom: 18px; letter-spacing: 0.5px; position: relative; }
-.hero h1 { font-size: clamp(1.8em,4vw,2.9em); font-weight: 800; margin-bottom: 12px; line-height: 1.2; position: relative; }
-.hero p { font-size: 1.05em; opacity: 0.85; margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; position: relative; }
-.hero-stats { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; position: relative; }
-.hero-stat { text-align: center; }
-.hero-stat-num { font-size: 1.7em; font-weight: 800; font-family: 'Sora', sans-serif; }
-.hero-stat-label { font-size: 0.76em; opacity: 0.75; margin-top: 2px; }
-.hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; }
-.badge { background: rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 600; border: 1px solid rgba(255,255,255,0.2); }
-.tool-wrapper { max-width: 1100px; margin: -28px auto 0; padding: 0 20px 50px; position: relative; z-index: 2; }
-.tool-card { background: white; border-radius: 24px; box-shadow: 0 24px 80px rgba(108,71,255,0.2); overflow: hidden; }
-.tool-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; }
-.tool-inputs { padding: 36px; border-right: 1px solid var(--border); }
-.tool-inputs h3 { font-size: 1em; font-weight: 700; margin-bottom: 24px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; }
-.form-group { margin-bottom: 22px; }
-.form-label { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.85em; color: var(--purple); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
-.form-label span { color: var(--text); font-size: 1.05em; font-weight: 800; background: var(--purple-light); padding: 2px 10px; border-radius: 6px; }
-.input-wrap { position: relative; }
-.input-prefix { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-weight: 800; color: var(--purple); font-size: 1em; pointer-events: none; }
-.input-suffix { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-light); font-size: 0.9em; pointer-events: none; }
-.form-input { width: 100%; padding: 13px 16px 13px 36px; border: 2px solid var(--border); border-radius: 12px; font-family: 'Sora', sans-serif; font-size: 1.05em; font-weight: 700; color: var(--text); transition: all 0.25s; background: #fafbff; }
-.form-input.no-prefix { padding-left: 16px; }
-.form-input:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(108,71,255,0.1); background: white; }
-.range-wrap { margin-top: 8px; }
-input[type=range] { width: 100%; -webkit-appearance: none; height: 6px; border-radius: 4px; background: var(--border); outline: none; cursor: pointer; }
-input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--purple); border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(108,71,255,0.4); cursor: pointer; }
-input[type=range]::-moz-range-thumb { width: 20px; height: 20px; background: var(--purple); border-radius: 50%; border: 3px solid white; cursor: pointer; }
-.range-labels { display: flex; justify-content: space-between; font-size: 0.76em; color: var(--text-light); margin-top: 4px; }
-.calc-btn { width: 100%; padding: 15px; margin-top: 8px; background: linear-gradient(135deg, #6c47ff, #9c6bff); color: white; border: none; border-radius: 14px; font-size: 1.05em; font-weight: 800; cursor: pointer; font-family: 'Sora', sans-serif; transition: all 0.25s; box-shadow: 0 6px 24px rgba(108,71,255,0.35); letter-spacing: 0.3px; }
-.calc-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(108,71,255,0.45); }
-.calc-btn:active { transform: translateY(0); }
-.tool-results { padding: 36px; background: linear-gradient(160deg, #fafbff 0%, #f0ebff 100%); display: flex; flex-direction: column; justify-content: space-between; }
-.tool-results h3 { font-size: 1em; font-weight: 700; margin-bottom: 24px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; }
-.emi-hero { text-align: center; padding: 28px 20px; background: white; border-radius: 18px; box-shadow: 0 8px 32px rgba(108,71,255,0.12); border: 2px solid var(--purple-light); margin-bottom: 20px; }
-.emi-label { font-size: 0.82em; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
-.emi-value { font-size: 2.8em; font-weight: 900; color: var(--purple); font-family: 'Sora', sans-serif; line-height: 1; margin-bottom: 4px; }
-.emi-sub { font-size: 0.85em; color: var(--text-light); }
-.result-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.res-card { background: white; border-radius: 14px; padding: 16px; box-shadow: 0 4px 16px rgba(108,71,255,0.08); text-align: center; border: 1px solid var(--border); }
-.res-card.green { border-top: 3px solid var(--green); }
-.res-card.orange { border-top: 3px solid var(--orange); }
-.res-card .rc-val { font-size: 1.35em; font-weight: 800; font-family: 'Sora', sans-serif; margin-bottom: 4px; }
-.res-card.green .rc-val { color: #16a34a; }
-.res-card.orange .rc-val { color: #d97706; }
-.res-card .rc-lbl { font-size: 0.78em; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-.donut-wrap { display: flex; align-items: center; gap: 16px; }
-.donut-chart { position: relative; width: 90px; height: 90px; flex-shrink: 0; }
-.donut-chart svg { transform: rotate(-90deg); }
-.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
-.donut-pct { font-size: 0.9em; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--orange); }
-.donut-ptxt { font-size: 0.58em; color: var(--text-light); }
-.donut-legend { flex: 1; }
-.legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 0.84em; }
-.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.stars-section { max-width: 1100px; margin: 0 auto 50px; padding: 0 20px; }
-.stars-card { background: white; border-radius: 16px; padding: 28px 30px; box-shadow: var(--card-shadow); text-align: center; border: 1px solid var(--border); }
-.stars-card h3 { font-size: 1.1em; margin-bottom: 6px; }
-.stars-card p { color: var(--text-light); font-size: 0.9em; margin-bottom: 16px; }
-.star-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 10px; }
-.star-btn { font-size: 2em; cursor: pointer; transition: transform 0.15s; background: none; border: none; }
-.star-btn:hover { transform: scale(1.2); }
-.stars-summary { font-size: 0.88em; color: var(--text-light); }
-.section { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-.section-tag { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 5px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 700; margin-bottom: 14px; letter-spacing: 0.5px; }
-.section-title { font-size: clamp(1.5em,3vw,2.2em); font-weight: 800; margin-bottom: 14px; line-height: 1.3; }
-.section-sub { color: var(--text-light); font-size: 1.05em; max-width: 600px; line-height: 1.7; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 20px; margin-top: 40px; }
-.feature-card { background: white; border-radius: 16px; padding: 28px; box-shadow: var(--card-shadow); border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
-.feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(108,71,255,0.14); }
-.feature-icon { font-size: 2.2em; margin-bottom: 14px; }
-.feature-card h3 { font-size: 1.05em; font-weight: 700; margin-bottom: 8px; }
-.feature-card p { color: var(--text-light); font-size: 0.92em; line-height: 1.6; }
-.feature-tag { display: inline-block; background: var(--purple-light); color: var(--purple); padding: 4px 10px; border-radius: 8px; font-size: 0.78em; font-weight: 700; margin-top: 12px; }
-.bg-light { background: white; }
-.who-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; margin-top: 40px; }
-.who-card { background: var(--bg); border-radius: 16px; padding: 24px 20px; text-align: center; border: 1px solid var(--border); transition: all 0.2s; }
-.who-card:hover { background: var(--purple-light); border-color: var(--purple); transform: translateY(-2px); }
-.who-avatar { font-size: 2.8em; margin-bottom: 12px; }
-.who-card h4 { font-size: 0.95em; font-weight: 700; margin-bottom: 6px; }
-.who-card p { font-size: 0.82em; color: var(--text-light); line-height: 1.5; }
-.faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; }
-.faq-item { background: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-.faq-q { padding: 18px 22px; font-weight: 700; font-size: 0.97em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
-.faq-q:hover { background: var(--bg); }
-.faq-icon { font-size: 1.2em; transition: transform 0.3s; color: var(--purple); flex-shrink: 0; }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; color: var(--text-light); font-size: 0.93em; line-height: 1.7; }
-.faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
-.guide-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 36px; }
-.guide-card { background: white; border-radius: 14px; padding: 22px; border-left: 4px solid var(--purple); box-shadow: var(--card-shadow); }
-.guide-card h4 { font-size: 0.95em; font-weight: 700; margin-bottom: 8px; color: var(--purple); }
-.guide-card p { font-size: 0.88em; color: var(--text-light); line-height: 1.6; }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; margin-top: 30px; }
-.related-card { background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); text-align: center; text-decoration: none; color: var(--text); transition: all 0.2s; }
-.related-card:hover { border-color: var(--purple); background: var(--purple-light); transform: translateY(-2px); }
-.related-card .ricon { font-size: 1.8em; margin-bottom: 8px; }
-.related-card span { font-size: 0.88em; font-weight: 600; display: block; }
-.cta-banner { background: linear-gradient(135deg,#1a1a2e,#4a2fe0); color: white; text-align: center; padding: 70px 20px; }
-.cta-banner h2 { font-size: clamp(1.5em,3vw,2.2em); font-weight: 800; margin-bottom: 14px; }
-.cta-banner p { opacity: 0.85; margin-bottom: 28px; font-size: 1.05em; max-width: 500px; margin-left: auto; margin-right: auto; }
-.cta-btn { display: inline-block; background: white; color: var(--purple); padding: 14px 36px; border-radius: 12px; font-weight: 800; font-size: 1.05em; text-decoration: none; font-family: 'Sora', sans-serif; transition: all 0.2s; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
-.footer-engage { background: white; border-top: 1px solid var(--border); padding: 50px 20px; }
-.engage-inner { max-width: 900px; margin: 0 auto; }
-.engage-title { font-size: 1.3em; font-weight: 800; text-align: center; margin-bottom: 32px; font-family: 'Sora', sans-serif; }
-.like-row { display: flex; gap: 16px; justify-content: center; margin-bottom: 36px; }
-.like-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; border: 2px solid var(--border); font-weight: 700; font-size: 0.95em; cursor: pointer; background: white; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-.like-btn:hover { border-color: var(--purple); }
-.like-btn.liked { background: #f0fdf4; border-color: var(--green); color: #16a34a; }
-.like-btn.disliked { background: #fef2f2; border-color: var(--red); color: #dc2626; }
-.like-icon { font-size: 1.3em; }
-.footer-stars { text-align: center; margin-bottom: 36px; }
-.footer-stars h4 { font-weight: 700; margin-bottom: 10px; }
-.footer-star-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
-.f-star { font-size: 1.8em; cursor: pointer; background: none; border: none; transition: transform 0.15s; }
-.f-star:hover { transform: scale(1.25); }
-.rating-display { font-size: 0.88em; color: var(--text-light); }
-.comments-section h4 { font-weight: 700; margin-bottom: 16px; font-family: 'Sora', sans-serif; }
-.comment-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.comment-input-row { display: flex; gap: 10px; }
-.comment-name { padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9em; width: 180px; }
-.comment-textarea { flex: 1; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9em; resize: none; min-height: 80px; }
-.comment-name:focus, .comment-textarea:focus { outline: none; border-color: var(--purple); }
-.comment-submit { padding: 10px 24px; background: var(--purple); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; align-self: flex-end; }
-.comment-submit:hover { background: var(--purple-dark); }
-.comments-list { display: flex; flex-direction: column; gap: 12px; }
-.comment-item { background: var(--bg); border-radius: 10px; padding: 14px 16px; border: 1px solid var(--border); }
-.comment-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.comment-author { font-weight: 700; font-size: 0.9em; }
-.comment-date { font-size: 0.8em; color: var(--text-light); }
-.comment-body { font-size: 0.92em; color: #374151; line-height: 1.5; }
-.footer-grid-section { background: #0f0f1e; color: white; padding: 50px 20px 30px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand h3 { font-size: 1.3em; font-weight: 800; margin-bottom: 10px; color: #a78bfa; }
-.footer-brand p { font-size: 0.88em; color: #94a3b8; line-height: 1.7; }
-.footer-col h4 { font-size: 0.9em; font-weight: 700; margin-bottom: 14px; color: #e2e8f0; }
-.footer-col a { display: block; font-size: 0.85em; color: #94a3b8; text-decoration: none; margin-bottom: 8px; }
-.footer-col a:hover { color: #a78bfa; }
-.footer-bottom { border-top: 1px solid #2d2d44; padding-top: 20px; text-align: center; font-size: 0.82em; color: #64748b; }
-.article-section { max-width: 860px; margin: 0 auto; padding: 70px 20px; }
-.article-title { font-size: clamp(1.6em,3vw,2.4em); font-weight: 800; margin-bottom: 16px; line-height: 1.3; }
-.article-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
-.meta-tag { background: var(--purple-light); color: var(--purple); padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
-.article-section h2 { font-size: 1.45em; font-weight: 800; margin: 40px 0 14px; padding-top: 10px; border-top: 2px solid var(--border); }
-.article-section h3 { font-size: 1.15em; font-weight: 700; margin: 28px 0 10px; color: var(--purple); }
-.article-section p { font-size: 0.98em; line-height: 1.8; color: #374151; margin-bottom: 16px; }
-.article-section ul, .article-section ol { padding-left: 22px; margin-bottom: 16px; }
-.article-section li { font-size: 0.97em; line-height: 1.8; color: #374151; margin-bottom: 6px; }
-.article-box { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 24px 0; }
-.article-box p { margin: 0; color: var(--text); font-weight: 500; }
-.article-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.93em; }
-.article-table th { background: var(--purple); color: white; padding: 12px 16px; text-align: left; }
-.article-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
-.article-table tr:nth-child(even) td { background: var(--bg); }
-pre.code-block { background: #f8f7ff; padding: 16px; border-radius: 10px; font-size: 0.88em; overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); font-family: 'Courier New', monospace; }
-.toast { position: fixed; bottom: 30px; right: 30px; background: var(--purple); color: white; padding: 14px 22px; border-radius: 12px; display: none; z-index: 1000; font-weight: 700; box-shadow: 0 8px 24px rgba(108,71,255,0.4); }
-.toast.show { display: block; animation: slideIn 0.3s ease; }
-@keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-@media (max-width: 860px) { .tool-inner { grid-template-columns: 1fr; } .tool-inputs { border-right: none; border-bottom: 1px solid var(--border); } .result-cards { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .footer-top { grid-template-columns: 1fr 1fr; } .comment-input-row { flex-direction: column; } .comment-name { width: 100%; } }
-@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } .result-cards { grid-template-columns: 1fr; } }
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-<section class="hero">
-  <div class="hero-badge">💰 Free Financial Tool</div>
-  <h1>Loan EMI Calculator</h1>
-  <p>Calculate your monthly EMI, total interest, and total repayment for any loan — instantly. Home loan, car loan, personal loan.</p>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num">2M+</div><div class="hero-stat-label">EMIs Calculated</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Accurate</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">0ms</div><div class="hero-stat-label">Instant Result</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">Free</div><div class="hero-stat-label">Always</div></div>
-  </div>
-  <div class="hero-badges">
-    <span class="badge">🏠 Home Loan</span>
-    <span class="badge">🚗 Car Loan</span>
-    <span class="badge">💼 Personal Loan</span>
-    <span class="badge">🏢 Business Loan</span>
-    <span class="badge">🔒 Private</span>
-  </div>
-</section>
-<div class="tool-wrapper">
-  <div class="tool-card">
-    <div class="tool-inner">
-      <div class="tool-inputs">
-        <h3>📋 Loan Details</h3>
-        <div class="form-group">
-          <div class="form-label">Loan Amount <span id="lAmtDisplay">$100,000</span></div>
-          <div class="input-wrap">
-            <span class="input-prefix">$</span>
-            <input type="number" class="form-input" id="lAmt" value="100000" min="1000" max="10000000" oninput="syncSlider('lAmt','lAmtSlider');calcLoan()">
-          </div>
-          <div class="range-wrap">
-            <input type="range" id="lAmtSlider" min="10000" max="2000000" value="100000" step="5000" oninput="syncInput('lAmtSlider','lAmt');calcLoan()">
-            <div class="range-labels"><span>$10K</span><span>$2M</span></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-label">Annual Interest Rate <span id="lRateDisplay">8.5%</span></div>
-          <div class="input-wrap">
-            <input type="number" class="form-input no-prefix" id="lRate" value="8.5" min="0.1" max="36" step="0.1" oninput="syncSlider('lRate','lRateSlider');calcLoan()">
-            <span class="input-suffix">%</span>
-          </div>
-          <div class="range-wrap">
-            <input type="range" id="lRateSlider" min="1" max="30" value="8.5" step="0.1" oninput="syncInput('lRateSlider','lRate');calcLoan()">
-            <div class="range-labels"><span>1%</span><span>30%</span></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-label">Loan Term <span id="lTermDisplay">60 months</span></div>
-          <div class="input-wrap">
-            <input type="number" class="form-input no-prefix" id="lTerm" value="60" min="1" max="360" oninput="syncSlider('lTerm','lTermSlider');calcLoan()">
-            <span class="input-suffix">months</span>
-          </div>
-          <div class="range-wrap">
-            <input type="range" id="lTermSlider" min="6" max="360" value="60" step="6" oninput="syncInput('lTermSlider','lTerm');calcLoan()">
-            <div class="range-labels"><span>6 mo</span><span>30 yrs</span></div>
-          </div>
-        </div>
-        <button class="calc-btn" onclick="calcLoan()">💰 Calculate EMI</button>
-      </div>
-      <div class="tool-results">
-        <h3>📊 Your Results</h3>
-        <div class="emi-hero">
-          <div class="emi-label">Monthly EMI</div>
-          <div class="emi-value" id="emiDisplay">$2,028</div>
-          <div class="emi-sub">per month for <span id="emiTermSub">60 months</span></div>
-        </div>
-        <div class="result-cards">
-          <div class="res-card green"><div class="rc-val" id="totalDisplay">$121,665</div><div class="rc-lbl">Total Payment</div></div>
-          <div class="res-card orange"><div class="rc-val" id="interestDisplay">$21,665</div><div class="rc-lbl">Total Interest</div></div>
-        </div>
-        <div class="donut-wrap">
-          <div class="donut-chart">
-            <svg width="90" height="90" viewBox="0 0 90 90">
-              <circle cx="45" cy="45" r="36" fill="none" stroke="#e2e8f0" stroke-width="14"/>
-              <circle id="donutInterest" cx="45" cy="45" r="36" fill="none" stroke="#f59e0b" stroke-width="14" stroke-dasharray="226" stroke-dashoffset="181" stroke-linecap="round"/>
-              <circle id="donutPrincipal" cx="45" cy="45" r="36" fill="none" stroke="#6c47ff" stroke-width="14" stroke-dasharray="226" stroke-dashoffset="45" stroke-linecap="round"/>
-            </svg>
-            <div class="donut-center"><div class="donut-pct" id="interestPct">18%</div><div class="donut-ptxt">interest</div></div>
-          </div>
-          <div class="donut-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#6c47ff"></div><span style="font-size:0.83em"><strong id="principalPctLegend">82%</strong> Principal ($100,000)</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div><span style="font-size:0.83em"><strong id="interestPctLegend">18%</strong> Interest (<span id="interestLegend">$21,665</span>)</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="stars-section">
-  <div class="stars-card">
-    <h3>⭐ Rate This Tool</h3>
-    <p>How helpful was the Loan EMI Calculator?</p>
-    <div class="star-row" id="toolStars">
-      <button class="star-btn" onclick="rateToolStar(1)">⭐</button>
-      <button class="star-btn" onclick="rateToolStar(2)">⭐</button>
-      <button class="star-btn" onclick="rateToolStar(3)">⭐</button>
-      <button class="star-btn" onclick="rateToolStar(4)">⭐</button>
-      <button class="star-btn" onclick="rateToolStar(5)">⭐</button>
-    </div>
-    <div class="stars-summary" id="toolStarSummary">4.9 out of 5 — based on 4,821 ratings</div>
-  </div>
-</div>
-<section class="section">
-  <span class="section-tag">✨ POWERFUL FEATURES</span>
-  <h2 class="section-title">More than just an EMI Calculator</h2>
-  <p class="section-sub">Toolyfi's Loan EMI Calculator gives you a complete picture of your loan — not just the monthly payment, but the full cost breakdown with a visual chart.</p>
-  <div class="features-grid">
-    <div class="feature-card"><div class="feature-icon">⚡</div><h3>Instant EMI Calculation</h3><p>Get your monthly EMI as you type — no button needed. Adjust sliders and see results update in real time.</p><span class="feature-tag">Live Updates</span></div>
-    <div class="feature-card"><div class="feature-icon">🍩</div><h3>Visual Breakdown Chart</h3><p>See exactly what portion of your total repayment is principal vs interest with an interactive donut chart.</p><span class="feature-tag">Visual Analytics</span></div>
-    <div class="feature-card"><div class="feature-icon">🎚️</div><h3>Interactive Sliders</h3><p>Use sliders to quickly explore different loan scenarios — amount, rate, and term — without typing numbers.</p><span class="feature-tag">Easy to Use</span></div>
-    <div class="feature-card"><div class="feature-icon">🔒</div><h3>100% Private</h3><p>All calculations happen in your browser. Your financial data is never sent to any server or stored anywhere.</p><span class="feature-tag">Zero Data Upload</span></div>
-    <div class="feature-card"><div class="feature-icon">📱</div><h3>Works on All Devices</h3><p>Fully responsive for mobile, tablet, and desktop. Calculate EMI from anywhere, on any device.</p><span class="feature-tag">Mobile Ready</span></div>
-  </div>
-</section>
-<div class="bg-light">
-  <section class="section">
-    <span class="section-tag">👥 FOR EVERYONE</span>
-    <h2 class="section-title">Who benefits from this tool?</h2>
-    <p class="section-sub">From first-time homebuyers to seasoned investors — the EMI Calculator helps anyone plan a loan confidently.</p>
-    <div class="who-grid">
-      <div class="who-card"><div class="who-avatar">🏠</div><h4>Home Buyers</h4><p>Calculate mortgage EMI before applying to ensure the monthly payment fits your budget.</p></div>
-      <div class="who-card"><div class="who-avatar">🚗</div><h4>Car Buyers</h4><p>Compare EMI across different loan amounts and tenures to find the best car loan deal.</p></div>
-      <div class="who-card"><div class="who-avatar">💼</div><h4>Business Owners</h4><p>Plan business loan repayments and ensure cash flow can cover monthly EMI obligations.</p></div>
-      <div class="who-card"><div class="who-avatar">🎓</div><h4>Students</h4><p>Calculate education loan EMI to plan repayment after graduation and entering the workforce.</p></div>
-      <div class="who-card"><div class="who-avatar">🏦</div><h4>Bank Customers</h4><p>Compare EMI between multiple banks and lenders to identify the most cost-effective loan.</p></div>
-      <div class="who-card"><div class="who-avatar">📊</div><h4>Financial Planners</h4><p>Use the tool with clients to model different loan scenarios and advise on optimal loan structures.</p></div>
-      <div class="who-card"><div class="who-avatar">🏗️</div><h4>Real Estate Investors</h4><p>Quickly calculate EMI for multiple property loans to assess investment feasibility and ROI.</p></div>
-    </div>
-  </section>
-</div>
-<section class="section">
-  <span class="section-tag">❓ FAQ</span>
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  <p class="section-sub">Everything you need to know about EMI and loan calculations.</p>
-  <div class="faq-list">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is EMI? <span class="faq-icon">+</span></div><div class="faq-a">EMI stands for Equated Monthly Installment. It is the fixed amount you pay to a lender every month to repay a loan. Each EMI payment consists of two components: the principal repayment and the interest charge. Over time, the interest portion decreases and the principal portion increases.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is EMI calculated? <span class="faq-icon">+</span></div><div class="faq-a">EMI is calculated using the standard amortization formula: EMI = P × r × (1 + r)^n / ((1 + r)^n - 1), where P is the principal loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the number of monthly installments.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How can I reduce my EMI? <span class="faq-icon">+</span></div><div class="faq-a">You can reduce your EMI in three ways: (1) Reduce the loan amount by making a larger down payment. (2) Negotiate a lower interest rate with your lender. (3) Extend the loan tenure — a longer repayment period means lower monthly EMI, though you'll pay more total interest.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the difference between flat rate and reducing balance rate? <span class="faq-icon">+</span></div><div class="faq-a">A flat interest rate is calculated on the original loan amount throughout the loan tenure. A reducing balance rate is calculated on the outstanding principal, which decreases with each EMI payment. Our calculator uses the reducing balance method.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is it better to have a shorter or longer loan tenure? <span class="faq-icon">+</span></div><div class="faq-a">A shorter tenure means higher EMI but less total interest paid. A longer tenure means lower EMI but significantly more total interest. Use the sliders in this tool to compare both scenarios.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does prepayment reduce EMI or loan tenure? <span class="faq-icon">+</span></div><div class="faq-a">Prepayment can either reduce your EMI or shorten your loan tenure, depending on your lender's policy. Most financial advisors recommend choosing to reduce the tenure, as this saves more interest over the life of the loan.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this EMI calculator free to use? <span class="faq-icon">+</span></div><div class="faq-a">Yes, Toolyfi's EMI Calculator is 100% free with no hidden charges, no signup required, and no usage limits.</div></div>
-  </div>
-</section>
-<div class="bg-light">
-  <section class="section">
-    <span class="section-tag">📋 LOAN TYPE GUIDE</span>
-    <h2 class="section-title">Typical rates by loan type</h2>
-    <p class="section-sub">Use these typical interest rate ranges as a reference when calculating your EMI.</p>
-    <div class="guide-grid">
-      <div class="guide-card"><h4>🏠 Home Loan</h4><p>Typical rates: 6.5% – 9.5% p.a. Tenure: 10–30 years. Home loans have the lowest rates as they are secured by the property.</p></div>
-      <div class="guide-card"><h4>🚗 Car Loan</h4><p>Typical rates: 7.5% – 12% p.a. Tenure: 1–7 years. Rates vary based on vehicle type (new vs used) and credit score.</p></div>
-      <div class="guide-card"><h4>💼 Personal Loan</h4><p>Typical rates: 10% – 24% p.a. Tenure: 1–5 years. Unsecured loans carry higher rates. Good credit score reduces rate significantly.</p></div>
-      <div class="guide-card"><h4>🎓 Education Loan</h4><p>Typical rates: 7% – 14% p.a. Tenure: 5–15 years. Government-subsidized options available in many countries for eligible students.</p></div>
-    </div>
-  </section>
-</div>
-<section class="section">
-  <span class="section-tag">🔗 MORE TOOLS</span>
-  <h2 class="section-title">Explore More Free Tools</h2>
-  <div class="related-grid">
-    <a href="/percentage-calculator.html" class="related-card"><div class="ricon">💯</div><span>Percentage Calculator</span></a>
-    <a href="/bmi-calculator.html" class="related-card"><div class="ricon">⚖️</div><span>BMI Calculator</span></a>
-    <a href="/currency-converter.html" class="related-card"><div class="ricon">💱</div><span>Currency Converter</span></a>
-    <a href="/age-calculator.html" class="related-card"><div class="ricon">🎂</div><span>Age Calculator</span></a>
-    <a href="/compound-interest-calculator.html" class="related-card"><div class="ricon">📈</div><span>Compound Interest</span></a>
-    <a href="/scientific-calculator.html" class="related-card"><div class="ricon">🔬</div><span>Scientific Calculator</span></a>
-  </div>
-</section>
-<section class="cta-banner">
-  <h2>Plan Your Loan with Confidence</h2>
-  <p>No signup. No limits. No cost. Calculate your EMI and understand the full cost of your loan right now.</p>
-  <a href="#" class="cta-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">💰 Calculate My EMI</a>
-</section>
-<div class="footer-engage">
-  <div class="engage-inner">
-    <div class="engage-title">Was this tool helpful?</div>
-    <div class="like-row">
-      <button class="like-btn" id="likeBtn" onclick="toggleLike()"><span class="like-icon">👍</span> <span id="likeCount">7,432</span> Helpful</button>
-      <button class="like-btn" id="dislikeBtn" onclick="toggleDislike()"><span class="like-icon">👎</span> <span id="dislikeCount">51</span> Not Helpful</button>
-    </div>
-    <div class="footer-stars">
-      <h4>Rate this tool</h4>
-      <div class="footer-star-row" id="footerStars">
-        <button class="f-star" onclick="rateFooterStar(1)">⭐</button>
-        <button class="f-star" onclick="rateFooterStar(2)">⭐</button>
-        <button class="f-star" onclick="rateFooterStar(3)">⭐</button>
-        <button class="f-star" onclick="rateFooterStar(4)">⭐</button>
-        <button class="f-star" onclick="rateFooterStar(5)">⭐</button>
-      </div>
-      <div class="rating-display" id="footerRatingDisplay">⭐ 4.9/5 based on 4,821 reviews</div>
-    </div>
-    <div class="comments-section">
-      <h4>💬 Comments (<span id="commentCount">3</span>)</h4>
-      <div class="comment-box">
-        <div class="comment-input-row">
-          <input class="comment-name" id="commentName" type="text" placeholder="Your name">
-          <textarea class="comment-textarea" id="commentText" placeholder="Share your experience..."></textarea>
-        </div>
-        <button class="comment-submit" onclick="submitComment()">Post Comment</button>
-      </div>
-      <div class="comments-list" id="commentsList">
-        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Arjun P.</span><span class="comment-date">March 30, 2026</span></div><div class="comment-body">Used this before buying my home. The donut chart really helped me understand how much I'd be paying in interest. Eye-opening!</div></div>
-        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Sana M.</span><span class="comment-date">March 27, 2026</span></div><div class="comment-body">The sliders make it super easy to compare different scenarios. I tried 15 year vs 30 year mortgage in seconds. Love this tool!</div></div>
-        <div class="comment-item"><div class="comment-meta"><span class="comment-author">Bilal K.</span><span class="comment-date">March 22, 2026</span></div><div class="comment-body">Clean design, instant results, no ads. Exactly what a financial calculator should be. Shared it with my whole team.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-<footer class="footer-grid-section">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand"><h3>🛠️ Toolyfi</h3><p>Free online tools for everyone. No signup, no limits, no cost. Privacy-first, browser-based tools for financial, developer, and everyday use.</p></div>
-      <div class="footer-col"><h4>Calculators</h4><a href="/loan-calculator.html">Loan EMI</a><a href="/compound-interest-calculator.html">Compound Interest</a><a href="/percentage-calculator.html">Percentage</a><a href="/scientific-calculator.html">Scientific Calc</a></div>
-      <div class="footer-col"><h4>Finance Tools</h4><a href="/currency-converter.html">Currency Converter</a><a href="/invoice-generator.html">Invoice Generator</a><a href="/salary-to-hourly.html">Salary Calculator</a><a href="/tax-refund-tracker.html">Tax Refund</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="/about.html">About Toolyfi</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a><a href="/">Home</a></div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 Toolyfi.com — Free Online Tools. All rights reserved.</p></div>
-  </div>
-</footer>
-<div style="background:white; border-top: 3px solid var(--border);">
-<article class="article-section">
-  <div class="article-meta">
-    <span class="meta-tag">📅 Updated May 2026</span>
-    <span class="meta-tag">⏱️ 11 min read</span>
-    <span class="meta-tag">💰 Financial Guide</span>
-  </div>
-  <h2 class="article-title">Loan EMI Calculator — The Complete 2026 Guide</h2>
-  <p>Taking a loan is one of the most significant financial decisions you can make. Whether it's a home mortgage, a car loan, or a personal loan, understanding exactly how much you will pay each month — and how much of that is interest — is essential before signing any loan agreement.</p>
-  <p>This complete guide explains EMI, how it is calculated, what affects your monthly payment, and how to use this free EMI calculator to plan your loan smarter. All calculations are done instantly in your browser with no signup required.</p>
-  <div class="article-box"><p>✅ <strong>Quick Answer:</strong> EMI (Equated Monthly Installment) is the fixed amount you pay every month to repay a loan. Enter your loan amount, interest rate, and tenure above to calculate your exact EMI instantly.</p></div>
-  <h2>What is EMI?</h2>
-  <p>EMI stands for Equated Monthly Installment. It is the fixed monthly amount a borrower pays to repay a loan over a specified period. Each EMI payment consists of two components: the principal portion (repayment of the original loan amount) and the interest portion (the cost of borrowing).</p>
-  <p>In the early months of a loan, a larger portion of the EMI goes toward interest and a smaller portion reduces the principal. Over time, this ratio reverses — more of each payment goes toward reducing the principal. This is called loan amortization.</p>
-  <h2>How is EMI Calculated?</h2>
-  <p>The standard EMI formula used by banks and financial institutions worldwide is:</p>
-  <pre class="code-block">EMI = P × r × (1 + r)^n
-          ─────────────────────
-             (1 + r)^n − 1
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan EMI Calculator with Amortization Schedule | Toolyfi</title>
+    <meta
+      name="description"
+      content="Calculate a fixed-rate monthly loan payment, total interest, optional extra-payment effect, and an inspectable amortization schedule in your browser."
+    />
+    <meta
+      name="keywords"
+      content="loan EMI calculator, monthly payment calculator, loan amortization schedule, EMI formula, extra payment calculator, fixed rate loan calculator"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/loan-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Loan EMI Calculator with Amortization Schedule | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Inspect a fixed-rate loan payment, principal, interest, and optional extra-payment schedule without a signup."
+    />
+    <meta property="og:url" content="https://toolyfi.com/loan-calculator.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-loan-emi-calculator-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Loan EMI Calculator",
+        "description": "A browser-based fixed-rate loan EMI calculator with an optional extra-payment model and accessible amortization schedule.",
+        "url": "https://toolyfi.com/loan-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "Fixed-rate monthly payment calculation",
+          "Optional monthly extra-payment model",
+          "Principal and interest breakdown",
+          "Accessible amortization schedule"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Loan EMI Calculator",
+            "item": "https://toolyfi.com/loan-calculator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does EMI mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "EMI means equated monthly installment. In this fixed-rate model, it is the regular monthly payment before any optional extra payment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formula does this loan EMI calculator use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For a positive monthly rate, payment = P × r × (1 + r)^n / ((1 + r)^n − 1). P is principal, r is annual rate divided by 1200, and n is monthly periods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool use live lender rates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The calculator uses only the fixed annual rate entered by the visitor and does not retrieve current rates, compare lenders, or make approval decisions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does an extra monthly payment work here?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The entered extra amount is applied after the regular principal portion in each modeled month and can shorten the modeled payoff period."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when the annual rate is zero?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At zero percent, the model divides the loan amount evenly across the entered number of months because no interest accrues in the illustration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can a lender statement differ from this schedule?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A lender may apply fees, insurance, taxes, timing rules, changing rates, prepayment rules, or rounding rules absent from this fixed-rate illustration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the loan calculator include fees or insurance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The result represents the entered principal and stated annual rate only. Fees, insurance, taxes, penalties, and account-specific charges are excluded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the amortization schedule exact?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is exact for this fixed-rate monthly model using full internal precision. Display values round for readability and may not match a lender schedule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this calculator model a variable-rate loan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is designed for one fixed annual nominal rate for the full modeled period. A variable-rate loan requires a separate rate-change schedule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this financial advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This is a mathematical information tool, not personalized financial, lending, tax, accounting, or legal advice."
+            }
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+    <style>
+      /* Editorial Utility Atlas: warm ivory, ink navy, Toolyfi coral, analytic paper-ledger motif. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --muted: #647184;
+        --coral: #ef6c54;
+        --coral-dark: #c85241;
+        --sage: #dce9df;
+        --line: #d9d6ce;
+        --navy-soft: #24354e;
+        --shadow: 0 18px 45px rgba(23, 36, 55, 0.12);
+      }
 
-Where:
-P = Principal loan amount
-r = Monthly interest rate (Annual rate ÷ 12 ÷ 100)
-n = Number of monthly installments (loan tenure in months)</pre>
-  <h3>Example Calculation</h3>
-  <p>For a $100,000 loan at 8.5% annual interest for 5 years (60 months):</p>
-  <ul>
-    <li>P = $100,000</li>
-    <li>r = 8.5 ÷ 12 ÷ 100 = 0.00708</li>
-    <li>n = 60</li>
-    <li><strong>EMI = $2,028 per month</strong></li>
-  </ul>
-  <p>Total repayment = $2,028 × 60 = $121,665. Total interest paid = $21,665 — which is 17.8% of the loan amount.</p>
-  <h2>Factors That Affect Your EMI</h2>
-  <h3>1. Loan Amount (Principal)</h3>
-  <p>The higher the loan amount, the higher the EMI. You can reduce your loan amount by making a larger down payment.</p>
-  <h3>2. Interest Rate</h3>
-  <p>Even a 1% difference in interest rate can change your EMI substantially on large loans. Always compare rates from multiple lenders before finalizing your loan.</p>
-  <h3>3. Loan Tenure</h3>
-  <p>Longer tenure = lower EMI, but higher total interest paid. Shorter tenure = higher EMI, but lower total interest.</p>
-  <table class="article-table">
-    <tr><th>Loan: $100,000 at 9%</th><th>Monthly EMI</th><th>Total Interest</th></tr>
-    <tr><td>5 years (60 months)</td><td>$2,076</td><td>$24,558</td></tr>
-    <tr><td>10 years (120 months)</td><td>$1,267</td><td>$52,044</td></tr>
-    <tr><td>20 years (240 months)</td><td>$900</td><td>$115,938</td></tr>
-    <tr><td>30 years (360 months)</td><td>$805</td><td>$189,664</td></tr>
-  </table>
-  <div class="article-box"><p>📌 <strong>Key insight:</strong> A 30-year loan at 9% costs nearly 2x the original loan amount in total interest. Always calculate the total cost, not just the monthly payment.</p></div>
-  <h2>How to Reduce Your EMI or Total Interest</h2>
-  <ul>
-    <li><strong>Make a larger down payment</strong> — Reduces the principal, directly reducing EMI</li>
-    <li><strong>Improve your credit score</strong> — Higher credit scores unlock lower interest rates</li>
-    <li><strong>Negotiate with lenders</strong> — Banks often negotiate rates for good customers</li>
-    <li><strong>Make prepayments</strong> — Extra payments toward principal reduce future interest significantly</li>
-    <li><strong>Compare multiple lenders</strong> — Even 0.5% rate difference matters significantly on large loans</li>
-  </ul>
-  <h2>EMI Planning Best Practices</h2>
-  <ul>
-    <li><strong>Keep EMI below 40% of income</strong> — Financial advisors recommend your total EMI payments not exceed 40% of your monthly take-home income</li>
-    <li><strong>Build an emergency fund first</strong> — Have 3–6 months of EMI payments saved before taking a loan</li>
-    <li><strong>Calculate total cost, not just EMI</strong> — Always look at total repayment, not just the monthly number</li>
-  </ul>
-  <h2>Conclusion</h2>
-  <p>Toolyfi's free Loan EMI Calculator gives you instant, accurate results with an interactive visual breakdown — helping you see exactly what you're committing to before signing any loan agreement.</p>
-</article>
-</div>
-<div class="toast" id="toast"></div>
-<script>
-function syncInput(sliderId, inputId) {
-  const val = document.getElementById(sliderId).value;
-  document.getElementById(inputId).value = val;
-  updateDisplayLabel(inputId, val);
-}
-function syncSlider(inputId, sliderId) {
-  const val = document.getElementById(inputId).value;
-  document.getElementById(sliderId).value = val;
-  updateDisplayLabel(inputId, val);
-}
-function updateDisplayLabel(id, val) {
-  if (id === 'lAmt') document.getElementById('lAmtDisplay').textContent = '$' + Number(val).toLocaleString();
-  if (id === 'lRate') document.getElementById('lRateDisplay').textContent = val + '%';
-  if (id === 'lTerm') document.getElementById('lTermDisplay').textContent = val + ' months';
-}
-function calcLoan() {
-  const p = parseFloat(document.getElementById('lAmt').value) || 0;
-  const annualRate = parseFloat(document.getElementById('lRate').value) || 0;
-  const n = parseInt(document.getElementById('lTerm').value) || 0;
-  if (!p || !annualRate || !n) return;
-  const r = annualRate / 100 / 12;
-  const emi = p * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
-  const total = emi * n;
-  const interest = total - p;
-  const interestPct = Math.round((interest / total) * 100);
-  const principalPct = 100 - interestPct;
-  document.getElementById('emiDisplay').textContent = '$' + emi.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  document.getElementById('emiTermSub').textContent = n + ' months';
-  document.getElementById('totalDisplay').textContent = '$' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  document.getElementById('interestDisplay').textContent = '$' + interest.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  const circ = 2 * Math.PI * 36;
-  const interestDash = (interestPct / 100) * circ;
-  const principalOffset = circ - interestDash;
-  document.getElementById('donutInterest').setAttribute('stroke-dasharray', circ);
-  document.getElementById('donutInterest').setAttribute('stroke-dashoffset', circ - interestDash);
-  document.getElementById('donutPrincipal').setAttribute('stroke-dasharray', circ);
-  document.getElementById('donutPrincipal').setAttribute('stroke-dashoffset', principalOffset);
-  document.getElementById('interestPct').textContent = interestPct + '%';
-  document.getElementById('principalPctLegend').textContent = principalPct + '%';
-  document.getElementById('interestPctLegend').textContent = interestPct + '%';
-  document.getElementById('interestLegend').textContent = '$' + interest.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-window.addEventListener('DOMContentLoaded', calcLoan);
-function rateToolStar(n) {
-  document.querySelectorAll('#toolStars .star-btn').forEach((b,i) => b.textContent = i < n ? '\u2b50' : '\u2606');
-  document.getElementById('toolStarSummary').textContent = 'You rated this ' + n + '/5 \u2014 Thank you! \U0001f389';
-}
-function rateFooterStar(n) {
-  document.querySelectorAll('#footerStars .f-star').forEach((b,i) => b.textContent = i < n ? '\u2b50' : '\u2606');
-  document.getElementById('footerRatingDisplay').textContent = 'You rated ' + n + '/5 \u2014 Thank you!';
-}
-let liked = false, disliked = false, likes = 7432, dislikes = 51;
-function toggleLike() {
-  if (liked) { liked = false; likes--; } else { liked = true; likes++; if (disliked) { disliked = false; dislikes--; } }
-  updateLikeUI();
-}
-function toggleDislike() {
-  if (disliked) { disliked = false; dislikes--; } else { disliked = true; dislikes++; if (liked) { liked = false; likes--; } }
-  updateLikeUI();
-}
-function updateLikeUI() {
-  document.getElementById('likeCount').textContent = likes.toLocaleString();
-  document.getElementById('dislikeCount').textContent = dislikes.toLocaleString();
-  document.getElementById('likeBtn').className = 'like-btn' + (liked ? ' liked' : '');
-  document.getElementById('dislikeBtn').className = 'like-btn' + (disliked ? ' disliked' : '');
-}
-let commentCount = 3;
-function submitComment() {
-  const name = document.getElementById('commentName').value.trim();
-  const text = document.getElementById('commentText').value.trim();
-  if (!name || !text) { alert('Please enter your name and comment.'); return; }
-  commentCount++;
-  const item = document.createElement('div');
-  item.className = 'comment-item';
-  item.innerHTML = '<div class=\"comment-meta\"><span class=\"comment-author\">' + name + '</span><span class=\"comment-date\">Just now</span></div><div class=\"comment-body\">' + text + '</div>';
-  document.getElementById('commentsList').prepend(item);
-  document.getElementById('commentCount').textContent = commentCount;
-  document.getElementById('commentName').value = '';
-  document.getElementById('commentText').value = '';
-}
-function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--ivory);
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        overflow: hidden;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .breadcrumbs {
+        padding: 26px 0 0;
+        color: var(--muted);
+        font-size: 0.81rem;
+      }
+
+      .breadcrumbs a {
+        text-decoration-color: rgba(239, 108, 84, 0.55);
+        text-underline-offset: 3px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.86fr);
+        gap: clamp(32px, 6vw, 96px);
+        align-items: center;
+        padding: 58px 0 74px;
+      }
+
+      .eyebrow,
+      .kicker {
+        margin: 0 0 15px;
+        color: var(--coral-dark);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, Georgia, serif;
+      }
+
+      h1 {
+        max-width: 670px;
+        margin: 0;
+        font-size: clamp(3rem, 6.2vw, 6.2rem);
+        font-weight: 700;
+        letter-spacing: -0.065em;
+        line-height: 0.9;
+      }
+
+      h1 em {
+        color: var(--coral);
+        font-style: italic;
+      }
+
+      .hero-copy {
+        max-width: 600px;
+        margin: 23px 0 24px;
+        color: #536174;
+        font-size: 1.05rem;
+        line-height: 1.78;
+      }
+
+      .assumption-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
+
+      .assumption-pills span {
+        border: 1px solid var(--line);
+        background: rgba(255, 253, 249, 0.8);
+        padding: 8px 11px;
+        color: var(--ink);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 340px;
+      }
+
+      .hero-art::after {
+        position: absolute;
+        right: 0;
+        bottom: -18px;
+        z-index: 2;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 10px 12px;
+        color: var(--ink);
+        content: "PAYMENT HAS A PATH";
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+      }
+
+      .hero-art img {
+        display: block;
+        width: 100%;
+        min-height: 340px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+      }
+
+      .calculator-section {
+        background: var(--ink);
+        color: #fff;
+        padding: 72px 0;
+      }
+
+      .calculator-lead {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 42px;
+        align-items: end;
+        margin-bottom: 30px;
+      }
+
+      .calculator-lead .kicker {
+        color: #f79784;
+      }
+
+      .calculator-lead h2 {
+        max-width: 580px;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(2.25rem, 4vw, 4rem);
+        letter-spacing: -0.055em;
+        line-height: 0.94;
+      }
+
+      .calculator-lead p:last-child {
+        margin: 0;
+        color: #d7dfe8;
+        font-size: 0.96rem;
+        line-height: 1.75;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(350px, 1.05fr);
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 14px 14px 0 rgba(239, 108, 84, 0.85);
+      }
+
+      .form-panel {
+        padding: 32px;
+        border-right: 1px solid var(--line);
+      }
+
+      .result-panel {
+        padding: 30px;
+        background: var(--sage);
+      }
+
+      .panel-title {
+        margin: 0 0 20px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 17px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 7px;
+        color: #45546a;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .hint {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.7rem;
+        line-height: 1.45;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #b8c0ba;
+        border-radius: 0;
+        background: #fff;
+        padding: 13px 12px;
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      input:focus {
+        outline: 3px solid rgba(239, 108, 84, 0.24);
+        border-color: var(--coral);
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 11px;
+        margin-top: 25px;
+      }
+
+      .btn {
+        border: 1px solid transparent;
+        padding: 13px 17px;
+        cursor: pointer;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        transition:
+          transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+          background 160ms ease;
+      }
+
+      .btn:active {
+        transform: scale(0.97);
+      }
+
+      .btn-primary {
+        background: var(--coral);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--coral-dark);
+      }
+
+      .btn-secondary {
+        border-color: var(--ink);
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .validation {
+        min-height: 22px;
+        margin: 14px 0 0;
+        color: #9b3427;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .result-label {
+        margin: 0;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .payment {
+        margin: 9px 0 2px;
+        font-family: Fraunces, Georgia, serif;
+        font-size: clamp(3rem, 5vw, 5.2rem);
+        font-weight: 700;
+        letter-spacing: -0.075em;
+        line-height: 0.9;
+      }
+
+      .result-context {
+        margin: 11px 0 23px;
+        color: #435468;
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid rgba(23, 36, 55, 0.2);
+        border-left: 1px solid rgba(23, 36, 55, 0.2);
+      }
+
+      .metric {
+        min-height: 99px;
+        border-right: 1px solid rgba(23, 36, 55, 0.2);
+        border-bottom: 1px solid rgba(23, 36, 55, 0.2);
+        padding: 14px;
+      }
+
+      .metric span {
+        display: block;
+        color: #45546a;
+        font-size: 0.64rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .metric strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--ink);
+        font-size: 1.12rem;
+        line-height: 1.1;
+      }
+
+      .model-note {
+        margin: 22px 0 0;
+        border-left: 2px solid var(--coral);
+        padding-left: 12px;
+        color: #45546a;
+        font-size: 0.75rem;
+        line-height: 1.6;
+      }
+
+      .record-section {
+        padding: 70px 0;
+      }
+
+      .record-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 24px;
+      }
+
+      .record-card {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 27px;
+      }
+
+      .record-card h2 {
+        margin: 0 0 13px;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+      }
+
+      .record-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.89rem;
+        line-height: 1.7;
+      }
+
+      #loan-chart {
+        width: 100%;
+        height: 210px;
+        margin-top: 18px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        max-height: 425px;
+        margin-top: 16px;
+        border: 1px solid var(--line);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        font-size: 0.78rem;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid #e8e5de;
+        padding: 11px 10px;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      th:first-child,
+      td:first-child {
+        text-align: left;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        background: var(--ink);
+        color: #fff;
+        font-size: 0.66rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .guide-section {
+        border-top: 1px solid var(--line);
+        background: #f3f0e8;
+        padding: 82px 0;
+      }
+
+      .guide {
+        width: min(850px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .guide > h2 {
+        margin: 0 0 25px;
+        font-size: clamp(2.4rem, 5vw, 4.8rem);
+        letter-spacing: -0.065em;
+        line-height: 0.9;
+      }
+
+      .guide h3 {
+        margin: 50px 0 13px;
+        color: var(--ink);
+        font-size: 1.65rem;
+        letter-spacing: -0.04em;
+      }
+
+      .guide p,
+      .guide li {
+        color: #435164;
+        font-size: 1rem;
+        line-height: 1.85;
+      }
+
+      .guide p {
+        margin: 0 0 18px;
+      }
+
+      .guide ul {
+        padding-left: 22px;
+      }
+
+      .formula {
+        margin: 23px 0;
+        border-left: 4px solid var(--coral);
+        background: var(--paper);
+        padding: 18px 20px;
+        color: var(--ink);
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.28rem;
+        line-height: 1.45;
+      }
+
+      .guide-table {
+        width: 100%;
+        margin: 24px 0;
+        border: 1px solid var(--line);
+        font-size: 0.85rem;
+      }
+
+      .guide-table th {
+        position: static;
+      }
+
+      .guide-table td {
+        text-align: left;
+        vertical-align: top;
+        white-space: normal;
+      }
+
+      .inline-link {
+        color: var(--coral-dark);
+        font-weight: 800;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .faq-section {
+        padding: 72px 0;
+      }
+
+      .faq-intro {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 26px;
+      }
+
+      .faq-intro h2 {
+        margin: 0;
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        letter-spacing: -0.06em;
+        line-height: 0.9;
+      }
+
+      .faq-intro p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.72;
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+      }
+
+      details:last-of-type {
+        border-bottom: 1px solid var(--line);
+      }
+
+      summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 20px 0;
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 800;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        float: right;
+        color: var(--coral);
+        content: "+";
+        font-size: 1.4rem;
+      }
+
+      details[open] summary::after {
+        content: "–";
+      }
+
+      details p {
+        max-width: 850px;
+        margin: 0 0 19px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+
+      .related-section {
+        background: var(--ink);
+        color: #fff;
+        padding: 67px 0;
+      }
+
+      .related-section h2 {
+        margin: 0 0 22px;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: -0.055em;
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .related-grid a {
+        min-height: 155px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 18px;
+        color: #fff;
+        text-decoration: none;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .related-grid a:hover {
+        background: var(--coral);
+        transform: translateY(-4px);
+      }
+
+      .related-grid span {
+        display: block;
+        margin-bottom: 36px;
+        color: #f19a89;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .related-grid strong {
+        display: block;
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 20;
+        transform: translateY(130%);
+        background: var(--ink);
+        padding: 13px 16px;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .toast.show {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 820px) {
+        .hero,
+        .tool-grid,
+        .calculator-lead,
+        .record-grid,
+        .faq-intro {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 38px;
+        }
+
+        .hero-art {
+          min-height: 260px;
+        }
+
+        .hero-art img {
+          min-height: 260px;
+        }
+
+        .calculator-lead {
+          gap: 16px;
+        }
+
+        .form-panel {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .wrap,
+        .guide {
+          width: min(100% - 28px, 1180px);
+        }
+
+        h1 {
+          font-size: 3.25rem;
+        }
+
+        .field-grid,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .field.full {
+          grid-column: auto;
+        }
+
+        .tool-grid {
+          box-shadow: 8px 8px 0 var(--coral);
+        }
+
+        .form-panel,
+        .result-panel,
+        .record-card {
+          padding: 22px;
+        }
+
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main>
+        <div class="wrap breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Loan EMI
+          Calculator
+        </div>
+
+        <section class="hero wrap">
+          <div>
+            <p class="eyebrow">Fixed-rate repayment, made inspectable</p>
+            <h1>See each <em>payment</em> do its work.</h1>
+            <p class="hero-copy">
+              Explore an illustrative fixed-rate loan payment, its interest and principal path, and
+              the effect of an optional regular extra payment. Toolyfi labels each assumption
+              instead of guessing terms.
+            </p>
+            <div class="assumption-pills" aria-label="Calculator principles">
+              <span>Browser-local math</span>
+              <span>Monthly schedule</span>
+              <span>Fixed-rate model</span>
+            </div>
+          </div>
+          <div class="hero-art">
+            <img
+              src="images/toolyfi-loan-emi-calculator-hero.webp"
+              width="2560"
+              height="1440"
+              fetchpriority="high"
+              alt="Editorial paper collage representing a transparent loan repayment schedule with a calculator, ledger, and declining balance path"
+            />
+          </div>
+        </section>
+
+        <section class="calculator-section" id="calculator">
+          <div class="wrap">
+            <div class="calculator-lead">
+              <div>
+                <p class="kicker">Loan EMI Calculator</p>
+                <h2>Enter the model. Then inspect the repayment record.</h2>
+              </div>
+              <p>
+                This calculator models a fully amortizing loan with one fixed nominal annual rate.
+                It does not look up lender offers, fees, insurance, taxes, changing rates,
+                payment-date conventions, or approval terms.
+              </p>
+            </div>
+
+            <div class="tool-grid">
+              <form class="form-panel" id="loan-form" novalidate>
+                <p class="panel-title">Loan assumptions</p>
+                <div class="field-grid">
+                  <div class="field full">
+                    <label for="amount">Loan amount</label>
+                    <input
+                      id="amount"
+                      type="number"
+                      min="0"
+                      max="1000000000"
+                      step="0.01"
+                      value="100000"
+                      inputmode="decimal"
+                    />
+                    <span class="hint"
+                      >The starting principal in your chosen currency. The label does not imply a
+                      live currency conversion.</span
+                    >
+                  </div>
+                  <div class="field">
+                    <label for="rate">Annual rate (%)</label>
+                    <input
+                      id="rate"
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="0.001"
+                      value="7.5"
+                      inputmode="decimal"
+                    />
+                    <span class="hint">A fixed nominal annual rate.</span>
+                  </div>
+                  <div class="field">
+                    <label for="years">Loan term (years)</label>
+                    <input
+                      id="years"
+                      type="number"
+                      min="0.083333"
+                      max="100"
+                      step="0.083333"
+                      value="5"
+                      inputmode="decimal"
+                    />
+                    <span class="hint">Converted to whole monthly periods.</span>
+                  </div>
+                  <div class="field full">
+                    <label for="extra">Optional extra each month</label>
+                    <input
+                      id="extra"
+                      type="number"
+                      min="0"
+                      max="1000000000"
+                      step="0.01"
+                      value="0"
+                      inputmode="decimal"
+                    />
+                    <span class="hint"
+                      >Applied after the regular principal portion in each modeled month. Lender
+                      rules may differ.</span
+                    >
+                  </div>
+                </div>
+                <div class="btn-row">
+                  <button class="btn btn-primary" type="submit">Calculate schedule</button>
+                  <button class="btn btn-secondary" type="button" id="copy-summary">
+                    Copy summary
+                  </button>
+                  <button class="btn btn-secondary" type="button" id="reset">Reset example</button>
+                </div>
+                <p class="validation" id="validation" role="alert" aria-live="polite"></p>
+              </form>
+
+              <section
+                class="result-panel"
+                aria-live="polite"
+                aria-label="Loan calculation results"
+              >
+                <p class="result-label">Scheduled monthly payment</p>
+                <p class="payment" id="monthly-payment">—</p>
+                <p class="result-context" id="result-context">
+                  Enter valid values to generate an illustrative payment path.
+                </p>
+                <div class="metrics">
+                  <div class="metric">
+                    <span>Total paid</span><strong id="total-paid">—</strong>
+                  </div>
+                  <div class="metric">
+                    <span>Total interest</span><strong id="total-interest">—</strong>
+                  </div>
+                  <div class="metric">
+                    <span>Modeled payoff</span><strong id="payoff-period">—</strong>
+                  </div>
+                  <div class="metric">
+                    <span>Interest / principal</span><strong id="interest-ratio">—</strong>
+                  </div>
+                </div>
+                <p class="model-note">
+                  Scope: extra payments are modeled as extra principal paid at the end of each month
+                  after the regular payment. This is a mathematical illustration, not a lender
+                  statement or financial advice.
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="record-section wrap">
+          <div class="record-grid">
+            <article class="record-card">
+              <p class="kicker">Balance path</p>
+              <h2>Principal falls on a schedule.</h2>
+              <p>
+                The line summarizes year-end remaining balance from the exact month-by-month table.
+                It is visual context only; the table remains the readable record.
+              </p>
+              <svg
+                id="loan-chart"
+                viewBox="0 0 620 210"
+                role="img"
+                aria-label="Year-end remaining loan balance chart"
+              ></svg>
+            </article>
+            <article class="record-card">
+              <p class="kicker">Reproducible record</p>
+              <h2>Monthly amortization schedule</h2>
+              <p>
+                Display values round to two decimals. Calculations retain full precision until
+                presentation, and a final payment may be smaller than the regular amount.
+              </p>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Month</th>
+                      <th>Payment</th>
+                      <th>Interest</th>
+                      <th>Principal</th>
+                      <th>Extra</th>
+                      <th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="schedule-body"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section">
+          <article class="guide">
+            <p class="kicker">Loan EMI calculator guide</p>
+            <h2>A payment is a formula, a schedule, and a set of terms.</h2>
+
+            <p>
+              <strong>Quick answer:</strong> a fixed-rate EMI is a regular payment that pays
+              interest on the remaining balance and reduces principal over a stated number of
+              monthly periods. The payment can be calculated from loan amount, annual rate, and
+              term. The result is useful only when those inputs describe the question you are
+              asking. This Toolyfi page makes the repayment schedule visible because one payment
+              figure alone cannot show how interest, principal, and time interact.
+            </p>
+            <p>
+              A loan calculator can produce a precise-looking payment in seconds. That precision is
+              mathematical, not a promise about a lender, a product, or a borrower. A real agreement
+              can include closing costs, insurance, taxes, late charges, payment dates, promotional
+              periods, daily accrual, adjustable rates, minimum balance conditions, prepayment
+              restrictions, or local rules. The model here deliberately leaves those facts outside
+              its boundary. Enter a fixed annual nominal rate and the browser models a
+              straightforward monthly amortization path using the values you provide.
+            </p>
+
+            <h3>Start with the three inputs that define a basic EMI model</h3>
+            <p>
+              The loan amount is the principal at the start of the model. It is not automatically
+              the vehicle price, property price, invoice total, or cash you receive after fees. If
+              fees are financed, if a down payment changes the principal, or if an existing balance
+              is being refinanced, the amount that belongs in the model must be selected
+              deliberately. The annual rate is a fixed nominal percentage entered by you. The term
+              is the planned duration expressed as monthly periods. The page converts the entered
+              years to a whole number of months because the schedule is monthly.
+            </p>
+            <p>
+              These definitions matter because changing any one of them changes what the result
+              means. A smaller principal normally reduces the scheduled payment and total interest
+              in a fixed-rate model. A longer term may lower the regular payment while allowing
+              interest to accrue across more months. A rate is not just a label; it becomes a
+              periodic rate applied to the remaining balance. The calculator has no way to determine
+              whether a rate is available, suitable, legal, or complete for a real person. It only
+              shows the arithmetic consequence of the chosen inputs.
+            </p>
+
+            <h3>The fixed-rate EMI formula and its zero-rate boundary</h3>
+            <p>
+              For a positive monthly rate, the standard payment formula is used for a fully
+              amortizing monthly loan. Let P be the starting principal, r be the monthly rate as a
+              decimal, and n be the total number of monthly payments. In this page, r equals the
+              annual percentage rate entered by the visitor divided by 12 and then divided by 100.
+              The formula calculates the regular monthly payment before any optional extra amount.
+            </p>
+            <div class="formula">
+              Payment = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)
+            </div>
+            <p>
+              A zero rate needs a separate calculation because the formula would otherwise divide by
+              zero. When the annual rate is exactly 0%, no interest accrues in this illustration, so
+              the regular payment equals principal divided by the number of months. That is not an
+              edge case to hide; it is a useful check that the calculator distinguishes the formula
+              from the underlying repayment logic. Negative rates, negative amounts, empty values,
+              and a non-positive term are outside this model and generate a clear guardrail.
+            </p>
+
+            <h3>How amortization changes the composition of each payment</h3>
+            <p>
+              In a fixed-rate amortizing loan, the scheduled monthly payment is generally constant
+              before extra payments. The composition is not constant. Interest for a month is
+              calculated from the balance still outstanding at the beginning of that month. The
+              principal portion is the scheduled payment minus that month's interest. As the balance
+              falls, the interest portion tends to fall and more of the regular payment goes to
+              principal. The schedule displays those parts separately so the result is inspectable.
+            </p>
+            <p>
+              Consider an illustrative amount of 100,000, a fixed 7.5% annual nominal rate, and a
+              five-year term. The monthly rate is 0.075 ÷ 12. The first month's interest is based on
+              the full 100,000 balance. After the first principal reduction, the next month's
+              interest uses a slightly lower balance. Rounding a statement to two decimal places
+              does not change the internal relationship: interest follows the remaining principal,
+              and principal reduction changes the next period's interest.
+            </p>
+
+            <h3>Read the result panel as a set of checks, not a recommendation</h3>
+            <p>
+              The scheduled monthly payment is the regular amount required by this model before the
+              optional extra payment. Total paid is the sum of all displayed-path payments,
+              including any modeled extra principal. Total interest is total paid less the original
+              principal. Modeled payoff describes how many monthly periods the schedule took to
+              reach a zero balance under the selected extra-payment assumption.
+              Interest-to-principal is simply total interest divided by starting principal; it is a
+              comparison aid, not a fee-inclusive annual percentage rate or a measure of
+              affordability.
+            </p>
+            <p>
+              A payment that seems manageable in isolation is not a conclusion about a personal
+              budget. Conversely, a larger payment may be the mathematical consequence of a shorter
+              term and not evidence that one loan is better than another. Use the panel to compare
+              like-for-like scenarios: hold amount and rate fixed while changing term, or hold
+              amount and term fixed while changing rate. Record exactly which inputs you changed.
+              This separates an arithmetic comparison from a guess about future financial
+              circumstances.
+            </p>
+
+            <h3>What an optional extra monthly payment means in this tool</h3>
+            <p>
+              The optional extra field represents an additional amount paid toward principal at the
+              end of every modeled month after the regular payment has been applied. It does not
+              reduce the regular scheduled EMI in this model. Instead, it reduces remaining balance
+              earlier, which can lower later modeled interest and shorten the payoff period. On the
+              final month, the model limits the payment to the remaining amount due so that it does
+              not create a negative balance.
+            </p>
+            <p>
+              Real loans can apply extra money differently. A lender may require an instruction,
+              impose a fee, hold the amount until a due date, recast the payment, shorten the term,
+              calculate interest daily, or limit prepayments. Some products have penalties or
+              special contractual procedures. Therefore, the extra payment output answers a narrow
+              question: what would happen in this fixed-rate monthly schedule if an additional
+              amount reduced principal every month after the regular payment? It does not tell you
+              what a particular institution will do.
+            </p>
+
+            <h3>Worked example: compare regular repayment with a modeled extra</h3>
+            <p>
+              Suppose an illustration starts with 50,000 at 6% per year for 60 monthly periods.
+              First, set the extra field to zero and copy the scheduled payment, total interest, and
+              payoff period into a note. Then keep amount, rate, and term unchanged, but add 100 as
+              the optional extra each month. The regular scheduled payment remains the same in the
+              result panel because the original contract-style payment formula has not changed. The
+              modeled total interest and payoff period, however, change because the balance is being
+              reduced more quickly.
+            </p>
+            <p>
+              The valuable result is not merely the difference in two headline numbers. Inspect the
+              schedule. In the early rows, compare interest with and without the extra amount. Later
+              rows show why early principal reduction can have a cumulative effect in a fixed-rate
+              model: every lower balance becomes the base for a later interest calculation. This is
+              also why the timing and treatment of a real extra payment must be confirmed in actual
+              loan documents before relying on an illustration.
+            </p>
+
+            <h3>Term length changes the question as well as the payment</h3>
+            <p>
+              A longer term typically lowers the required regular monthly payment because the same
+              principal is spread across more periods. But more periods also create more
+              opportunities for interest to accrue under the fixed-rate assumptions. A shorter term
+              usually does the reverse: the required payment rises, while the number of
+              interest-bearing periods falls. Neither outcome automatically decides which term is
+              appropriate. The calculation is one component of an informed process, not a personal
+              lending recommendation.
+            </p>
+            <p>
+              A disciplined comparison changes one driver at a time. Enter the same amount and rate
+              with two terms, then compare payment, total paid, total interest, and ending schedule
+              date. Do not compare a shorter term at one rate with a longer term at another and
+              attribute every difference to term alone. If a real product has different fees, terms,
+              collateral rules, or rate adjustments, note those separately; this calculator
+              intentionally does not make them disappear inside one number.
+            </p>
+
+            <h3>Nominal rate, APR, effective rate, and lender terms are not interchangeable</h3>
+            <p>
+              This calculator asks for one fixed nominal annual rate and converts it to a monthly
+              periodic rate by dividing by 12. That is a stated modeling convention. A quoted APR
+              may include some fees in some contexts, while a nominal interest rate may not. An
+              effective annual rate can reflect compounding in a different way. A lender may also
+              use daily accrual, a 360-day or 365-day convention, payment-date rules,
+              account-specific rounding, or a variable-rate index. Those definitions should not be
+              swapped without checking the document that supplied the rate.
+            </p>
+            <p>
+              Use a rate only after identifying what it represents. If the question is, “What does
+              this particular contract's monthly schedule look like?” lender documentation is the
+              relevant authority. If the question is, “How does a fixed-rate amortization
+              relationship behave when I change an assumption?” this page is designed for that
+              illustrative calculation. Being explicit about the boundary prevents a small formula
+              from pretending to answer a broad financial question.
+            </p>
+
+            <h3>Why real loan statements can differ from a browser schedule</h3>
+            <p>
+              The most common reason is that actual products have terms beyond principal, rate, and
+              term. Fees may be paid upfront or financed. Insurance, taxes, escrow, account
+              maintenance charges, promotional rates, late fees, payment holidays, capitalization
+              rules, and contractual prepayment treatment can all change a real payoff path. Even
+              two loans with the same principal and annual rate can have different payment dates and
+              day-count conventions. A schedule can be mathematically correct for its own
+              assumptions and still not match a statement built from different terms.
+            </p>
+            <p>
+              Rounding also matters. This page preserves unrounded values internally and rounds for
+              display. A lender may round interest every day, every period, or only on a statement.
+              The final payment in the model can be smaller because it only clears the remaining
+              balance. For a decision tied to a real agreement, compare the lender's disclosure or
+              statement with the model inputs and ask the provider how it applies payments. Do not
+              treat a generic calculator as a substitute for the contract.
+            </p>
+
+            <h3>When a monthly EMI calculator is the wrong tool</h3>
+            <p>
+              This page is not designed for revolving credit, interest-only periods, balloon
+              payments, deferred repayment, payment frequency other than monthly, changing rates,
+              irregular one-time prepayments, refinancing, loans with a grace period, or a loan
+              whose payment is determined from a balance after each statement cycle. Those
+              situations require a model that specifies their individual timing rules. The absence
+              of a setting is deliberate; adding a generic control without a transparent formula
+              could make the result look more authoritative than it is.
+            </p>
+            <p>
+              A spreadsheet can be appropriate when you need a documentable scenario with many
+              custom events, such as rate changes and dated one-time payments. For a simple
+              fixed-rate monthly comparison, this tool is faster and keeps the important components
+              visible. A spreadsheet is not inherently more accurate; its accuracy also depends on
+              whether its formulas, date logic, and assumptions match the question.
+            </p>
+
+            <h3>Use a repeatable comparison workflow</h3>
+            <p>
+              First, write down the source and definition of the amount, rate, and term. Second, run
+              a base case with no extra payment and save the summary. Third, change one
+              assumption—perhaps the term or monthly extra—and compare the schedule, not just the
+              headline payment. Fourth, list facts outside the model: fees, insurance, taxes,
+              payment dates, eligibility, changing rates, and any prepayment conditions. Fifth,
+              return to the actual agreement or an appropriate qualified professional when those
+              omitted details are material to a real decision.
+            </p>
+            <p>
+              This process is also useful when comparing an illustrative loan path with other
+              Toolyfi calculations. Use the
+              <a class="inline-link" href="percentage-calculator.html">Percentage Calculator</a> to
+              check a rate change or payment increase, the
+              <a class="inline-link" href="profit-margin-calculator.html"
+                >Profit Margin Calculator</a
+              >
+              to separate price and margin concepts in a business context, or the
+              <a class="inline-link" href="compound-interest-calculator.html"
+                >Compound Interest Calculator</a
+              >
+              to explore a growth model rather than a declining amortization model. Similar
+              mathematics can answer different questions, so label the direction of cash flow and
+              the assumptions before comparing outputs.
+            </p>
+
+            <h3>Common mistakes that make an EMI comparison misleading</h3>
+            <ul>
+              <li>
+                Entering a purchase price when the financed principal is different after a down
+                payment, fee, or trade-in.
+              </li>
+              <li>
+                Using a rate that includes fees as though it were the monthly nominal interest rate
+                in the formula.
+              </li>
+              <li>
+                Comparing payment amounts without also comparing total interest and the modeled
+                payoff period.
+              </li>
+              <li>
+                Assuming a regular extra payment will be accepted or applied as principal by every
+                lender.
+              </li>
+              <li>
+                Reading a rounded schedule total as an account statement rather than an illustration
+                built from selected inputs.
+              </li>
+              <li>
+                Using a fixed-rate model for a loan that can change rate, defer interest, or require
+                a final balloon payment.
+              </li>
+            </ul>
+
+            <h3>Privacy, scope, and responsible use</h3>
+            <p>
+              The calculator performs its arithmetic in your browser. It does not ask you to
+              identify a lender, open an account, upload a statement, or send a loan application.
+              Keep sensitive information out of generic web forms and use the amount, rate, term,
+              and extra-payment fields only for the mathematical scenario you want to inspect. The
+              tool does not store a personal financial profile or generate a lending offer.
+            </p>
+            <p>
+              The output is information, not a recommendation. It does not determine whether you
+              should borrow, prepay, refinance, choose a term, or accept an offer. Financial
+              decisions can depend on facts not in this model, including cash flow, savings, risk
+              tolerance, local regulation, taxes, and contract terms. If a decision depends on those
+              facts, review the relevant agreement and seek appropriate professional assistance. The
+              best use of this page is to make a fixed-rate repayment relationship easier to see and
+              to reproduce.
+            </p>
+
+            <h3>Payment dates and monthly timing are part of the model boundary</h3>
+            <p>
+              A monthly schedule often feels self-explanatory, but a month is not one universal
+              financial interval. Some accounts accrue interest daily. Some use a defined billing
+              cycle, a particular due date, a first payment date different from the disbursement
+              date, or a day-count convention written into the contract. This Toolyfi model uses one
+              clean monthly period at a time. In each period, it calculates interest from the
+              beginning balance, applies the regular payment, then applies any optional extra
+              principal payment. That consistent sequence is deliberately visible so that a visitor
+              can see the calculation instead of assuming it mirrors every possible lender process.
+            </p>
+            <p>
+              If a statement uses daily interest or an unusual first period, it can differ even when
+              the amount, annual rate, and broad term look similar. A payment made earlier in a real
+              cycle can be treated differently than one made at the end; a grace period, overdue
+              payment, or capitalized charge can change the starting balance for the next period.
+              Those facts are not bugs to approximate with a generic control. Write them down
+              separately, consult the relevant disclosure, and only compare this page with a
+              statement when the timing rules are genuinely aligned.
+            </p>
+
+            <h3>Use sensitivity checks to understand the direction of change</h3>
+            <p>
+              A useful calculator session is not limited to one result. Start with a base case and
+              then make a small, documented change. Increase the annual rate by one percentage point
+              while holding amount and term unchanged. The payment and total interest should rise in
+              this fixed-rate model. Restore the base rate, then lengthen the term while keeping
+              amount and rate fixed. The regular payment should fall while the schedule normally has
+              more interest-bearing months. Finally, restore the original term and test an optional
+              extra payment to see whether the modeled payoff period falls. These directional checks
+              help catch input mistakes and clarify why two scenarios differ.
+            </p>
+            <p>
+              Sensitivity is not forecasting. A rate change in the calculator is an input change,
+              not a claim that a market, lender, or personal offer will move by that amount.
+              Likewise, an extra-payment scenario is a conditional arithmetic path, not a
+              recommendation to deploy cash in one way rather than another. Keep the language
+              precise: “under this selected fixed-rate model” is different from “this will happen.”
+              That distinction makes the output easier to audit and prevents a visual payment
+              comparison from becoming an unsupported financial prediction.
+            </p>
+
+            <h3>Check the first, middle, and final rows before relying on a schedule</h3>
+            <p>
+              The table is long because the path matters. A simple three-row review can build
+              confidence in the arithmetic. In the first row, interest should equal the starting
+              balance multiplied by the monthly rate. The scheduled principal should equal the
+              regular payment less that interest. In a middle row, interest should generally be
+              lower if the balance has declined, while the scheduled principal portion generally
+              becomes larger. In the final row, the balance should reach zero without a negative
+              value; the payment may be smaller than the regular payment because it only clears the
+              amount still due.
+            </p>
+            <p>
+              When an optional extra amount is used, look at the extra column as well as the balance
+              column. The model caps the extra applied in the final period so it cannot pay more
+              principal than remains. This is why the final row can look different from earlier
+              rows. A good reconciliation is total paid minus starting principal equals total
+              interest in the model. If those relationships do not make sense, reset the example and
+              re-enter one assumption at a time rather than trusting a copied result.
+            </p>
+
+            <h3>Choose a calculator or spreadsheet based on the question</h3>
+            <p>
+              Use this calculator for a clean fixed-rate monthly illustration with a regular payment
+              and one recurring extra-payment assumption. It is designed to make the core structure
+              visible quickly: payment, interest, principal, balance, and payoff period. A
+              spreadsheet becomes more appropriate when the problem includes many dated events,
+              different interest periods, a sequence of rate changes, temporary payment changes,
+              irregular fees, or a need to preserve a custom scenario as part of an internal record.
+              The choice should follow the complexity of the question, not a belief that one
+              interface is automatically more rigorous.
+            </p>
+            <p>
+              If you move a scenario into a spreadsheet, carry over the definitions rather than only
+              the headline payment. Document the starting balance, the rate basis, monthly rate
+              conversion, number of periods, payment timing, extra-payment timing, and rounding
+              policy. A spreadsheet with an undocumented formula can be less transparent than a
+              browser schedule with clear labels. Conversely, a fixed-rate page should not be
+              stretched to represent a contract that requires a more detailed dated model. In either
+              workflow, source terms from the actual agreement before treating a calculation as
+              operational.
+            </p>
+          </article>
+        </section>
+
+        <section class="faq-section wrap">
+          <div class="faq-intro">
+            <div>
+              <p class="kicker">Questions, answered</p>
+              <h2>Loan EMI FAQs</h2>
+            </div>
+            <p>
+              These answers describe the fixed-rate monthly model on this page. They do not replace
+              terms from a lender, a product disclosure, or personalized advice.
+            </p>
+          </div>
+          <details>
+            <summary>What does EMI mean?</summary>
+            <p>
+              EMI means equated monthly installment. Here it is the regular monthly amount that
+              amortizes the selected fixed-rate loan over the selected term before any optional
+              extra payment.
+            </p>
+          </details>
+          <details>
+            <summary>What formula does the calculator use?</summary>
+            <p>
+              For a positive monthly rate, it uses P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup
+                >n</sup
+              >
+              − 1). P is principal, r is annual rate ÷ 12 ÷ 100, and n is total monthly periods.
+            </p>
+          </details>
+          <details>
+            <summary>How are extra payments modeled?</summary>
+            <p>
+              The optional extra amount is applied after the regular scheduled principal portion at
+              the end of each modeled month. It reduces the modeled balance and can shorten modeled
+              payoff time.
+            </p>
+          </details>
+          <details>
+            <summary>Does this calculator look up live rates?</summary>
+            <p>
+              No. It only uses the fixed annual percentage entered in the rate field. It does not
+              retrieve current lender rates, compare products, or make approval predictions.
+            </p>
+          </details>
+          <details>
+            <summary>What happens at 0% interest?</summary>
+            <p>
+              The model divides the starting principal evenly by the number of monthly periods
+              because there is no interest in the fixed-rate illustration.
+            </p>
+          </details>
+          <details>
+            <summary>Why can a bank schedule differ?</summary>
+            <p>
+              Bank schedules can include different payment dates, fees, taxes, insurance, daily
+              accrual, rounding, changing rates, promotions, and contractual treatment of
+              prepayments.
+            </p>
+          </details>
+          <details>
+            <summary>Does total paid include fees, taxes, or insurance?</summary>
+            <p>
+              No. It includes only the model's principal, fixed interest, and any optional extra
+              monthly payment. Those other charges must be reviewed separately.
+            </p>
+          </details>
+          <details>
+            <summary>Can this model a variable-rate or balloon loan?</summary>
+            <p>
+              No. This page models one fixed nominal annual rate with fully amortizing monthly
+              payments. Variable rates, deferred periods, and balloon terms need their own
+              transparent schedule.
+            </p>
+          </details>
+          <details>
+            <summary>Is the schedule rounded?</summary>
+            <p>
+              Displayed values are rounded to two decimals. The schedule is calculated with full
+              precision internally, and the final payment may be smaller than the standard monthly
+              amount.
+            </p>
+          </details>
+          <details>
+            <summary>Is this financial advice?</summary>
+            <p>
+              No. It is a browser-based arithmetic information tool and not personalized financial,
+              lending, tax, accounting, or legal advice.
+            </p>
+          </details>
+        </section>
+
+        <section class="related-section">
+          <div class="wrap">
+            <p class="kicker">Keep the assumptions visible</p>
+            <h2>More practical calculation tools</h2>
+            <div class="related-grid">
+              <a href="compound-interest-calculator.html"
+                ><span>Growth math</span><strong>Compound Interest</strong></a
+              >
+              <a href="percentage-calculator.html"
+                ><span>Rate math</span><strong>Percentage Calculator</strong></a
+              >
+              <a href="profit-margin-calculator.html"
+                ><span>Pricing math</span><strong>Profit Margin</strong></a
+              >
+              <a href="sales-tax-calculator.html"
+                ><span>Tax math</span><strong>Sales Tax Calculator</strong></a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+      const fields = {
+        amount: document.getElementById("amount"),
+        rate: document.getElementById("rate"),
+        years: document.getElementById("years"),
+        extra: document.getElementById("extra"),
+      };
+
+      const defaultValues = { amount: 100000, rate: 7.5, years: 5, extra: 0 };
+      let latest = null;
+
+      function currency(value) {
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 2,
+        }).format(value);
+      }
+
+      function formatMonths(months) {
+        const years = Math.floor(months / 12);
+        const remainder = months % 12;
+        if (!years) return `${remainder} month${remainder === 1 ? "" : "s"}`;
+        if (!remainder) return `${years} year${years === 1 ? "" : "s"}`;
+        return `${years}y ${remainder}m`;
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(showToast.timer);
+        showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      function clearResults(message) {
+        document.getElementById("monthly-payment").textContent = "—";
+        document.getElementById("total-paid").textContent = "—";
+        document.getElementById("total-interest").textContent = "—";
+        document.getElementById("payoff-period").textContent = "—";
+        document.getElementById("interest-ratio").textContent = "—";
+        document.getElementById("result-context").textContent = message;
+        document.getElementById("schedule-body").innerHTML = "";
+        document.getElementById("loan-chart").innerHTML = "";
+        latest = null;
+      }
+
+      function getInputs() {
+        const values = Object.fromEntries(
+          Object.entries(fields).map(([key, input]) => [key, Number(input.value)]),
+        );
+        if (!Number.isFinite(values.amount) || values.amount <= 0 || values.amount > 1000000000) {
+          return { error: "Enter a loan amount greater than 0 and no more than 1,000,000,000." };
+        }
+        if (!Number.isFinite(values.rate) || values.rate < 0 || values.rate > 100) {
+          return { error: "Enter a fixed annual rate from 0% through 100%." };
+        }
+        if (!Number.isFinite(values.years) || values.years < 1 / 12 || values.years > 100) {
+          return { error: "Enter a loan term from one month through 100 years." };
+        }
+        if (!Number.isFinite(values.extra) || values.extra < 0 || values.extra > 1000000000) {
+          return { error: "Enter an optional extra monthly payment of 0 or more." };
+        }
+        values.months = Math.round(values.years * 12);
+        return { values };
+      }
+
+      function buildSchedule({ amount, rate, months, extra }) {
+        const monthlyRate = rate / 1200;
+        const basePayment =
+          monthlyRate === 0
+            ? amount / months
+            : (amount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+              (Math.pow(1 + monthlyRate, months) - 1);
+        let balance = amount;
+        let totalPaid = 0;
+        let totalInterest = 0;
+        const rows = [];
+        const safetyCap = months + Math.ceil(amount / Math.max(basePayment + extra, 1)) + 24;
+
+        for (let month = 1; balance > 0.0000001 && month <= safetyCap; month += 1) {
+          const interest = balance * monthlyRate;
+          const regularPrincipal = Math.max(0, basePayment - interest);
+          const scheduledPrincipal = Math.min(balance, regularPrincipal);
+          const afterScheduled = Math.max(0, balance - scheduledPrincipal);
+          const appliedExtra = Math.min(afterScheduled, extra);
+          const principal = scheduledPrincipal + appliedExtra;
+          const payment = interest + principal;
+          balance = Math.max(0, balance - principal);
+          totalPaid += payment;
+          totalInterest += interest;
+          rows.push({ month, payment, interest, scheduledPrincipal, appliedExtra, balance });
+        }
+        return { monthlyRate, basePayment, rows, totalPaid, totalInterest };
+      }
+
+      function renderChart(rows) {
+        const svg = document.getElementById("loan-chart");
+        const width = 620;
+        const height = 210;
+        const pad = { left: 46, right: 18, top: 18, bottom: 34 };
+        const yearly = rows.filter((row) => row.month % 12 === 0 || row.month === rows.length);
+        if (!yearly.length) {
+          svg.innerHTML = "";
+          return;
+        }
+        const maxBalance = Math.max(...yearly.map((row) => row.balance), rows[0]?.balance || 1, 1);
+        const minX = pad.left;
+        const maxX = width - pad.right;
+        const minY = pad.top;
+        const maxY = height - pad.bottom;
+        const points = yearly.map((row, index) => {
+          const x =
+            yearly.length === 1
+              ? (minX + maxX) / 2
+              : minX + (index / (yearly.length - 1)) * (maxX - minX);
+          const y = maxY - (row.balance / maxBalance) * (maxY - minY);
+          return { x, y, month: row.month, balance: row.balance };
+        });
+        const line = points.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
+        const area = `${minX},${maxY} ${line} ${maxX},${maxY}`;
+        const labels = points
+          .map(
+            (point) =>
+              `<text x="${point.x}" y="${height - 10}" text-anchor="middle" fill="#647184" font-size="10">${formatMonths(point.month)}</text>`,
+          )
+          .join("");
+        const circles = points
+          .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="4" fill="#ef6c54" />`)
+          .join("");
+        svg.innerHTML = `
+          <line x1="${minX}" y1="${maxY}" x2="${maxX}" y2="${maxY}" stroke="#d9d6ce" />
+          <line x1="${minX}" y1="${minY}" x2="${minX}" y2="${maxY}" stroke="#d9d6ce" />
+          <polygon points="${area}" fill="rgba(239,108,84,0.13)" />
+          <polyline points="${line}" fill="none" stroke="#172437" stroke-width="3" stroke-linejoin="round" />
+          <text x="${minX}" y="12" fill="#647184" font-size="10">Remaining balance</text>
+          ${circles}${labels}
+        `;
+      }
+
+      function renderSchedule(rows) {
+        document.getElementById("schedule-body").innerHTML = rows
+          .map(
+            (row) => `
+          <tr>
+            <td>${row.month}</td>
+            <td>${currency(row.payment)}</td>
+            <td>${currency(row.interest)}</td>
+            <td>${currency(row.scheduledPrincipal)}</td>
+            <td>${currency(row.appliedExtra)}</td>
+            <td>${currency(row.balance)}</td>
+          </tr>
+        `,
+          )
+          .join("");
+      }
+
+      function calculate() {
+        const validation = document.getElementById("validation");
+        const input = getInputs();
+        if (input.error) {
+          validation.textContent = input.error;
+          clearResults(
+            "Correct the highlighted input boundary before using the illustrative result.",
+          );
+          return;
+        }
+        validation.textContent = "";
+        const { values } = input;
+        const result = buildSchedule(values);
+        const payoff = result.rows.length;
+        const interestRatio = (result.totalInterest / values.amount) * 100;
+        document.getElementById("monthly-payment").textContent = currency(result.basePayment);
+        document.getElementById("total-paid").textContent = currency(result.totalPaid);
+        document.getElementById("total-interest").textContent = currency(result.totalInterest);
+        document.getElementById("payoff-period").textContent = formatMonths(payoff);
+        document.getElementById("interest-ratio").textContent = `${interestRatio.toFixed(2)}%`;
+        document.getElementById("result-context").textContent =
+          values.extra > 0
+            ? `${currency(values.extra)} is modeled as an extra principal payment after every regular monthly payment.`
+            : `No optional extra payment is modeled. The schedule has ${values.months} planned monthly periods.`;
+        renderSchedule(result.rows);
+        renderChart(result.rows);
+        latest = { values, ...result, payoff, interestRatio };
+      }
+
+      document.getElementById("loan-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        calculate();
+      });
+
+      Object.values(fields).forEach((field) => field.addEventListener("input", calculate));
+
+      document.getElementById("reset").addEventListener("click", () => {
+        Object.entries(defaultValues).forEach(([key, value]) => {
+          fields[key].value = value;
+        });
+        calculate();
+        showToast("Example values restored.");
+      });
+
+      document.getElementById("copy-summary").addEventListener("click", async () => {
+        if (!latest) {
+          showToast("Calculate a valid scenario first.");
+          return;
+        }
+        const text = [
+          "Toolyfi Loan EMI Calculator — fixed-rate illustration",
+          `Loan amount: ${currency(latest.values.amount)}`,
+          `Annual rate: ${latest.values.rate}%`,
+          `Entered term: ${latest.values.months} months`,
+          `Scheduled monthly payment: ${currency(latest.basePayment)}`,
+          `Extra monthly payment: ${currency(latest.values.extra)}`,
+          `Modeled payoff: ${formatMonths(latest.payoff)}`,
+          `Total paid: ${currency(latest.totalPaid)}`,
+          `Total interest: ${currency(latest.totalInterest)}`,
+          "Scope: fixed rate; excludes fees, taxes, insurance, changing rates, and lender-specific timing.",
+        ].join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Summary copied.");
+        } catch {
+          showToast("Copy was unavailable in this browser.");
+        }
+      });
+
+      calculate();
+    </script>
+    <script src="/toolyfi-brand.js" data-toolyfi-brand="1"></script>
+  </body>
 </html>
