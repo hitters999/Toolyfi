@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CSV to JSON Converter — Free Online Tool | Toolyfi</title>
-<meta name="description" content="Convert CSV to JSON, XML, YAML, and SQL instantly. Free online CSV converter — no signup, no limits, 100% browser-based. Handles large files, quoted fields, and special characters.">
+<meta name="description" content="Convert CSV text to JSON, XML, YAML, or SQL output for inspection, with quoted-field handling and copy/download controls.">
 <meta name="keywords" content="csv to json, csv to json converter, convert csv online, csv to xml, csv to yaml, csv to sql, free csv converter, csv parser online">
 <link rel="canonical" href="https://toolyfi.com/csv-to-json.html">
 <meta property="og:title" content="CSV to JSON Converter — Free Online Tool | Toolyfi">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CSV to JSON Converter | Toolyfi">
-<meta name="twitter:description" content="Convert CSV to JSON, XML, YAML, SQL instantly. Free, no signup, 100% private.">
+<meta name="twitter:description" content="Convert CSV text to JSON, XML, YAML, or SQL output for review in your browser.">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
@@ -26,18 +26,8 @@
 <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
 <!-- JSON-LD Schemas -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CSV to JSON Converter","url":"https://toolyfi.com/csv-to-json.html","description":"Free online CSV to JSON converter. Convert CSV to JSON, XML, YAML, and SQL instantly in your browser.","applicationCategory":"DeveloperApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","worstRating":"1","ratingCount":"3200"},"publisher":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"CSV to JSON Converter","item":"https://toolyfi.com/csv-to-json.html"}]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is CSV to JSON conversion?","acceptedAnswer":{"@type":"Answer","text":"CSV to JSON conversion transforms comma-separated tabular data into structured JSON objects. The CSV header row becomes JSON keys, and each data row becomes a JSON object in an array."}},{"@type":"Question","name":"Is this CSV to JSON converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup, no file size limits, and no hidden charges. Convert unlimited files at no cost."}},{"@type":"Question","name":"Is my CSV data safe?","acceptedAnswer":{"@type":"Answer","text":"100% safe. All conversion happens in your browser using JavaScript. Your data is never sent to any server, never stored, never logged."}},{"@type":"Question","name":"What formats can I convert CSV to?","acceptedAnswer":{"@type":"Answer","text":"You can convert CSV to JSON, XML, YAML, and SQL INSERT statements — all with one click."}},{"@type":"Question","name":"Does it handle large CSV files?","acceptedAnswer":{"@type":"Answer","text":"Yes. Since conversion runs in your browser, it handles files with thousands of rows efficiently. Performance depends on your device memory for very large files."}},{"@type":"Question","name":"Does it support quoted fields and special characters?","acceptedAnswer":{"@type":"Answer","text":"Yes. The smart CSV parser handles quoted fields containing commas, escaped quotes, special characters, and multi-line values correctly."}},{"@type":"Question","name":"What is the difference between CSV and JSON?","acceptedAnswer":{"@type":"Answer","text":"CSV is a flat tabular format with no data types. JSON is a hierarchical format supporting nested objects, arrays, and typed values. JSON is the standard for APIs and web services."}}]}
-</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -226,28 +216,6 @@ textarea.code-area[readonly]{background:rgba(0,229,255,0.02);border-color:rgba(0
 .rel-card span:last-child{font-size:0.82rem;font-weight:600;color:var(--muted);}
 .rel-card:hover span:last-child{color:var(--text);}
 
-/* RATING */
-.rate-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:32px;}
-.rate-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:18px;color:var(--text);}
-.stars{display:flex;gap:6px;margin-bottom:16px;}
-.star{font-size:2rem;cursor:pointer;filter:grayscale(1) brightness(0.4);transition:filter .15s,transform .15s;}
-.star.active,.star:hover{filter:none;transform:scale(1.15);}
-.rating-msg{font-size:0.82rem;color:var(--muted);min-height:20px;margin-bottom:16px;}
-.like-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
-.vote-btn{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:100px;cursor:pointer;font-size:0.875rem;font-weight:600;font-family:var(--font-body);transition:all .2s;}
-.vote-btn.like:hover,.vote-btn.like.active{background:rgba(0,230,118,0.1);border-color:var(--green);color:var(--green);}
-.vote-btn.dislike:hover,.vote-btn.dislike.active{background:rgba(255,82,82,0.1);border-color:var(--red);color:var(--red);}
-.comment-name,.comment-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.875rem;padding:12px 16px;outline:none;margin-bottom:10px;transition:border-color .2s;}
-.comment-name:focus,.comment-textarea:focus{border-color:var(--cyan2);}
-.comment-textarea{min-height:80px;resize:vertical;}
-.comment-submit{background:var(--cyan);color:#080b14;border:none;padding:10px 26px;border-radius:10px;font-weight:700;font-size:0.875rem;cursor:pointer;font-family:var(--font-body);transition:all .2s;}
-.comment-submit:hover{background:#33ecff;}
-.comments-list{margin-top:22px;display:flex;flex-direction:column;gap:10px;}
-.c-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
-.c-author{font-weight:700;font-size:0.82rem;color:var(--cyan);margin-bottom:4px;}
-.c-text{color:var(--muted);font-size:0.85rem;line-height:1.6;}
-.c-date{font-size:0.75rem;color:var(--dim);margin-top:4px;}
-
 /* CTA */
 .cta{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);border-radius:20px;padding:52px 40px;text-align:center;margin-bottom:60px;position:relative;overflow:hidden;}
 .cta::before{content:'';position:absolute;top:-80px;left:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(0,229,255,0.07),transparent 70%);}
@@ -280,12 +248,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20p
   .article{padding:24px 16px;}
 }
 </style>
-</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi CSV to JSON Converter","url":"https://toolyfi.com/csv-to-json.html","description":"A browser-based converter for reviewing CSV text as JSON, XML, YAML, or SQL output.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"CSV to JSON Converter","item":"https://toolyfi.com/csv-to-json.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does CSV to JSON conversion work?","acceptedAnswer":{"@type":"Answer","text":"The header row becomes field names and each data row becomes one JSON object in an array. Review the output before using it in another system."}},{"@type":"Question","name":"Does the parser support quoted fields?","acceptedAnswer":{"@type":"Answer","text":"The page supports standard double-quoted fields and doubled quotes. Inspect unusual exports before relying on the output."}},{"@type":"Question","name":"What output formats are available?","acceptedAnswer":{"@type":"Answer","text":"The page offers JSON, XML, YAML, and SQL text output for review."}},{"@type":"Question","name":"Why do header names matter?","acceptedAnswer":{"@type":"Answer","text":"Header labels become keys or field names in the output. Use clear, unique headers and verify destination naming requirements."}},{"@type":"Question","name":"Are CSV values automatically typed?","acceptedAnswer":{"@type":"Answer","text":"CSV values are treated as text by the converter. Add type validation in the destination workflow when numeric or boolean semantics matter."}},{"@type":"Question","name":"Why can a CSV conversion fail?","acceptedAnswer":{"@type":"Answer","text":"Missing headers, inconsistent columns, unmatched quotes, and unexpected delimiters are common causes. Review the source and status message."}},{"@type":"Question","name":"Can I download the output?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once converted, the displayed output can be copied or downloaded as text for the selected format."}},{"@type":"Question","name":"Should I use a general web page for confidential data?","acceptedAnswer":{"@type":"Answer","text":"Avoid entering passwords, private keys, personal records, or confidential data into general web tools. Use an approved protected workflow instead."}}]}</script><style>/* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral; transparent data transformation without fabricated social proof. */:root{--bg:#FAF8F4;--bg2:#F7F2EB;--bg3:#EEE6DB;--card:#FFFDF9;--card2:#F9F5EF;--border:#E7DED4;--border2:#D9C8BB;--text:#172437;--muted:#5E6B7A;--dim:#87919D;--cyan:#EF6C54;--cyan2:#C9523F;--green:#1F846C;--green2:#156A56;--amber:#AD7125;--amber2:#8D5A1A;--red:#B53D44;--purple:#835B98;--font-head:"Fraunces",Georgia,serif;--font-body:"Plus Jakarta Sans",Arial,sans-serif;--font-mono:Consolas,monospace}body{background:var(--bg);color:var(--text)}nav{background:#172437;border:0}.nav-logo img{width:112px;height:40px;object-fit:contain}.nav-logo-dot{display:none}.breadcrumb{background:#F9F5EF}.hero{padding:66px 20px 50px}.hero-grid{opacity:.3}.hero-badge{background:#FFF1EC;border-color:#F3C2B6;color:#B94B3A}.badge-pulse{background:#EF6C54;animation:none}.hero h1 em{background:none;-webkit-text-fill-color:inherit;color:#C9523F}.hero-sub{color:#596777}.fmt-pill,.hero-tag{background:#FFFDF9;border-color:#E7DED4;color:#5E6B7A}.fmt-pill.active{background:#FFF1EC;border-color:#F3C2B6;color:#B94B3A}.tool-card,.feat-card,.fmt-card,.who-card,.article,.faq-item,.rel-card{background:#FFFDF9;border-color:#E7DED4;box-shadow:none}.tool-title,.sec-title,.article h2{color:#172437}.chip{background:#F9F5EF;border-color:#E7DED4;color:#5E6B7A}.chip.green{background:#EEF8F4;border-color:#C9E9DE;color:#156A56}.fmt-btn{border-color:#D9C8BB;color:#5E6B7A}.fmt-btn.active{background:#FFF1EC;border-color:#EF6C54;color:#B94B3A}.btn-primary{background:#EF6C54;color:#FFF}.btn-green{background:#1F846C;color:#FFF}.btn-ghost{background:#FFFDF9;border-color:#D9C8BB;color:#52606E}textarea.code-area{background:#FBFAF7;color:#172437;border-color:#D9C8BB}textarea.code-area[readonly]{background:#F9F5EF;border-color:#E7DED4}.status-bar{background:#F9F5EF;border-color:#E7DED4}.sec-label{color:#B94B3A}.sec-title em{color:#C9523F}.feat-card:hover,.fmt-card:hover,.who-card:hover,.rel-card:hover{border-color:#EF6C54}.feat-icon{background:#FFF1EC;border-color:#F3C2B6}.feat-card h3,.fmt-card h3,.who-card h4{color:#172437}.feat-card p,.fmt-card p,.who-card p,.article p,.article li{color:#536170}.feat-code{background:#F9F5EF;border-color:#E7DED4;color:#B94B3A}.article h2{border-color:#EF6C54}.article code,.article pre{background:#F9F5EF;border-color:#E7DED4;color:#B94B3A}.info-box{background:#FFF6F2;border-color:#F3C2B6}.article-table th{background:#172437;color:#FFF}.article-table td{border-color:#E7DED4;color:#536170}.faq-q:hover{background:#F9F5EF}.faq-a{color:#536170}.cta,footer{background:#172437;border-color:#172437}.cta h2{color:#FFF}.cta p,footer a,.footer-copy{color:#DDE4EB!important}.cta a{background:#EF6C54;color:#FFF}.toast{background:#1F846C;color:#FFF}</style></head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="https://toolyfi.com" class="nav-logo">🛠️ Toolyfi<span class="nav-logo-dot">.</span></a>
+  <a href="https://toolyfi.com" class="nav-logo"><img src="logo.png" alt="Toolyfi"></a>
   <div class="nav-links">
     <a href="https://toolyfi.com/#tools">Tools</a>
   </div>
@@ -305,20 +273,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20p
   <div class="hero-glow2"></div>
   <div class="hero-badge"><span class="badge-pulse"></span> Free Developer Tool</div>
   <h1>CSV to <em>JSON</em><br>Converter</h1>
-  <p class="hero-sub">Transform any CSV into JSON, XML, YAML, or SQL in milliseconds. Zero uploads. Zero limits. Zero cost.</p>
+  <p class="hero-sub">Convert delimited text to JSON, XML, YAML, or SQL output for review in your browser. Check the source delimiter and header row before conversion.</p>
   <div class="hero-formats">
     <span class="fmt-pill active">JSON</span>
     <span class="fmt-pill">XML</span>
     <span class="fmt-pill">YAML</span>
     <span class="fmt-pill">SQL</span>
   </div>
-  <div class="hero-tags">
-    <span class="hero-tag">⚡ Instant</span>
-    <span class="hero-tag">🔒 100% Private</span>
-    <span class="hero-tag">📁 Large Files</span>
-    <span class="hero-tag">🚫 No Signup</span>
-    <span class="hero-tag">🧠 Smart Parser</span>
-  </div>
+  <div class="hero-tags"><span class="hero-tag">Quoted-field parser</span><span class="hero-tag">4 reviewable formats</span><span class="hero-tag">Copy or download</span><span class="hero-tag">Header-based records</span></div>
 </section>
 
 <!-- TOOL -->
@@ -404,8 +366,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20p
       <div class="feat-card">
         <div class="feat-icon">📁</div>
         <h3>Large File Ready</h3>
-        <p>No file size cap. Process 10,000+ row datasets without slowdowns or timeouts.</p>
-        <div class="feat-code">✓ 10,000+ rows supported</div>
+        <p>Use a small representative sample first, then review performance and memory behaviour on your own device for larger source files.</p>
+        <div class="feat-code">Reviewable browser-side output</div>
       </div>
       <div class="feat-card">
         <div class="feat-icon">📱</div>
@@ -472,90 +434,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20p
 
 <!-- ARTICLE -->
 <div class="wrap">
-  <article class="article">
-    <h2>CSV to JSON Converter — The Complete 2026 Guide</h2>
-    <p>CSV and JSON are two of the most widely used data formats in technology today. CSV (Comma-Separated Values) is loved for its simplicity and spreadsheet compatibility. JSON (JavaScript Object Notation) is the standard for APIs, web apps, and data exchange. Converting between them is a daily need for developers, analysts, and data professionals worldwide.</p>
-    <p>This guide covers everything you need to know: what CSV and JSON are, why conversion matters, how to handle real-world edge cases, and how to use Toolyfi's free <strong>CSV to JSON Converter</strong> for instant results — no signup, no upload, no cost.</p>
-
-    <div class="info-box"><p>✅ <strong>Quick Answer:</strong> Paste your CSV data into the converter above, click "Convert Now," and copy the output instantly. Supports JSON, XML, YAML, and SQL formats.</p></div>
-
-    <h2>What Is CSV Format?</h2>
-    <p>CSV stands for Comma-Separated Values. It is a plain text format where each row is a data record and columns are separated by commas. The first row is typically a header row that names each column. CSV is the universal export format for Excel, Google Sheets, databases, CRMs, and virtually every data-producing system on earth.</p>
-    <pre>Name,Email,Department,Salary
-John Doe,john@example.com,Engineering,85000
-Jane Smith,jane@example.com,Marketing,75000</pre>
-    <p>CSV's strength is its simplicity — any text editor can open it, any spreadsheet can import it. Its weakness is that it has no data types, no support for nested data, and no metadata. That's where JSON comes in.</p>
-
-    <h2>What Is JSON Format?</h2>
-    <p>JSON stands for JavaScript Object Notation. It is the universal standard for data interchange across virtually all modern programming languages and platforms. JSON represents data as key-value pairs in objects and arrays, supporting nested structures, typed values, and complex relationships.</p>
-    <p>Every REST API returns JSON. Every NoSQL database stores JSON. Every modern web app consumes JSON. It is the language of the internet in 2026.</p>
-    <div class="info-box"><p>📌 <strong>Key fact:</strong> JSON has built-in parsing support in Python, JavaScript, Java, Go, Ruby, PHP, Swift, Kotlin, and virtually every other modern language.</p></div>
-
-    <h2>How CSV to JSON Conversion Works</h2>
-    <p>The conversion is straightforward: the first row of the CSV becomes the keys in each JSON object. Every subsequent row becomes a separate JSON object within an array, with values mapped to their corresponding header key.</p>
-    <pre>[
-  {"Name": "John Doe", "Email": "john@example.com", "Department": "Engineering"},
-  {"Name": "Jane Smith", "Email": "jane@example.com", "Department": "Marketing"}
-]</pre>
-
-    <h2>Why Convert CSV to JSON?</h2>
-    <h3>1. API Integration</h3>
-    <p>Most modern APIs expect JSON. If you have data in CSV, you need to convert it before sending to any API endpoint — REST, GraphQL, or webhook.</p>
-    <h3>2. NoSQL Database Import</h3>
-    <p>MongoDB, Firebase, CouchDB, and DynamoDB store data in JSON or BSON. Migrating CSV data to these databases requires JSON as a first step.</p>
-    <h3>3. Frontend Development</h3>
-    <p>React, Vue, and Angular work natively with JSON. Convert your CSV data to JSON and load it directly into your frontend without any extra processing.</p>
-    <h3>4. Data Pipelines</h3>
-    <p>Modern data engineering pipelines consume JSON from data warehouses, analytics tools, and machine learning systems — not raw CSV.</p>
-
-    <h2>Handling CSV Edge Cases</h2>
-    <p>Real-world CSV files are messy. Toolyfi's smart parser handles all common edge cases automatically:</p>
-    <ul>
-      <li><strong>Quoted fields with commas:</strong> <code>"Doe, John"</code> — treated as one value, not two columns.</li>
-      <li><strong>Escaped quotes:</strong> <code>"He said ""hello"""</code> — correctly parsed.</li>
-      <li><strong>Empty fields:</strong> Consecutive commas converted to empty strings in JSON.</li>
-      <li><strong>Special characters:</strong> Properly escaped in XML output per W3C spec.</li>
-      <li><strong>Whitespace:</strong> Trimmed from field values automatically.</li>
-    </ul>
-
-    <h2>CSV vs JSON — When to Use Each</h2>
-    <table class="article-table">
-      <tr><th>Format</th><th>Best For</th><th>Supports Nesting</th><th>API Ready</th></tr>
-      <tr><td>CSV</td><td>Spreadsheets, exports, reports</td><td>No</td><td>No</td></tr>
-      <tr><td>JSON</td><td>APIs, web apps, NoSQL</td><td>Yes</td><td>Yes</td></tr>
-      <tr><td>XML</td><td>Legacy systems, SOAP</td><td>Yes</td><td>Partial</td></tr>
-      <tr><td>YAML</td><td>Config files, DevOps</td><td>Yes</td><td>No</td></tr>
-      <tr><td>SQL</td><td>Relational databases</td><td>No</td><td>No</td></tr>
-    </table>
-
-    <h2>Best Practices for CSV to JSON Conversion</h2>
-    <ul>
-      <li><strong>Validate JSON output</strong> — Use a JSON validator after conversion for complex files.</li>
-      <li><strong>Clean CSV headers</strong> — Remove spaces and special characters from headers for cleaner JSON keys.</li>
-      <li><strong>Check data types</strong> — CSV is all strings; post-process in your app if you need numbers or booleans.</li>
-      <li><strong>Use UTF-8 encoding</strong> — Ensure CSV is UTF-8 encoded before conversion to avoid character issues.</li>
-      <li><strong>Test with sample data first</strong> — Before converting large production files, test with a small sample.</li>
-    </ul>
-
-    <h2>Related Tools on Toolyfi</h2>
-    <p>Use our <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a> to beautify your output, <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a> for data encoding, and <a href="https://toolyfi.com/password-generator.html">Password Generator</a> for secure keys — all free.</p>
-  </article>
+  <article class="article"><h2>CSV to JSON Converter: Complete Practical Guide</h2><p>CSV and JSON are plain-text formats used for different jobs. CSV describes a table of rows and columns. JSON describes arrays, objects, strings, numbers, booleans, and nested structures. This page turns a CSV-style table into reviewable output. The first row is used as field names; each following row becomes one record. A clear conversion is useful for a development task, but it is not the same as validating a destination schema or importing data into production.</p><p>Start with the source, not the output. Identify the delimiter, confirm that the first row contains headers, check that headers are clear and unique, and inspect a small sample before using a large export. A fast conversion can create valid syntax while still preserving a source mistake. Treat the tool as a transformation and review step rather than a replacement for data-quality controls.</p><h2>CSV Is Delimited Text, Not One Universal Dialect</h2><p>CSV usually means comma-separated values, but the same row-and-column pattern may use a semicolon, tab, or pipe. Spreadsheet settings and regional conventions can change the separator. A file that appears to have one column after conversion may simply use a different delimiter than the parser expects. Inspect the original text and use an appropriate conversion workflow rather than assuming every spreadsheet export uses a comma.</p><p>The converter expects a header row so it can create meaningful keys. A source such as <code>name,email,active</code> gives each output object readable fields. If the source has no header, add a deliberate one before conversion. It is better to name an unknown column clearly than to invent a meaning after the data is already moving between systems.</p><h2>Quoted Fields, Empty Values, and Line Breaks</h2><p>Real CSV often contains commas inside a field. The standard way to keep a comma inside one value is to wrap the field in double quotes. A quote inside a quoted field is written as a doubled quote. The browser parser supports those common rules, and it keeps empty fields so the relationship between a header and a missing value remains visible. Review the output when a source comes from a specialised product or contains unusually formatted records.</p><p>Whitespace also needs a conscious decision. A space can be meaningful in an address, description, label, or identifier. Silent cleanup may make a result look neat while changing the source. Clean values deliberately for the destination rules instead of relying on a generic conversion step to decide what a space means.</p><h2>How the JSON Mapping Works</h2><p>Consider a small input with headers <code>name,email</code>. Each later row becomes an object such as <code>{"name":"Ravi","email":"ravi@example.com"}</code>. The complete result is an array. This is convenient for reviewing a set of records in a web application or passing a sample into a JSON-aware tool. It does not infer a business model, relationship, primary key, date format, or validation rule.</p><p>CSV values are text by default. The characters <code>00127</code> could be a number, a postal code, a customer code, or an identifier. Turning it automatically into 127 can remove important leading zeroes. Convert types later only when you know what the destination requires. Dates, currency, phone numbers, boolean flags, and null values should be mapped according to a stated contract rather than guessed from appearance.</p><h2>JSON for APIs and Application Data</h2><p>JSON is common in modern web development because its objects and arrays map naturally to many programming languages. Before sending converted data to an API, check required field names, types, allowed values, pagination, authentication, and error handling. A syntactically valid JSON array can still fail because a required field is absent or an identifier belongs to another environment. Test with a non-sensitive sample before a larger import.</p><p>Open the result in <a href="json-formatter.html">JSON Formatter</a> when you want a more focused inspection of nesting and syntax. Use <a href="base64-encoder.html">Base64 Encoder</a> only when a documented integration explicitly needs encoding. Encoding is not encryption, and neither tool is a substitute for the permissions and validation required by the final system.</p><h2>XML, YAML, and SQL Are Different Workflows</h2><p>XML needs valid element names, so headers with spaces or punctuation can require a destination-specific mapping. YAML is readable for many configuration uses but has indentation and quoting rules that deserve review. SQL output can be useful as a starting draft, but it is plain text—not a guarantee that a table definition, schema, transaction, or permission model is appropriate. Review table names, column types, escaping, constraints, and import policies before executing any statement.</p><p>Every format has a context. JSON may be appropriate for a data exchange; XML may be required by a legacy interface; YAML can be used for configuration; SQL targets a relational database. Choose the format because the receiving system expects it, not because the converter can produce it with one click.</p><h2>Common Problems to Check Before Conversion</h2><p>A missing header row leaves the output without names. An unmatched quote can cause the rest of a line or file to be interpreted as one field. Inconsistent columns can create missing or extra values. An unexpected delimiter can put each line into one field. Character encoding can display replacement characters when a file is not saved as expected. Preserve the original, use a small sample, and inspect the status message before escalating the workflow.</p><p>Duplicate headers also deserve attention. Two columns named <code>status</code> cannot become two distinct object properties without a naming rule. Rename the source headers before conversion or create a clear mapping in the destination. Meaningful headers reduce ambiguity for every later step, including debugging, auditing, and handoff to another developer.</p><h2>Delimiter Selection and Regional Exports</h2><p>A separator is not merely a cosmetic setting. If a spreadsheet uses commas as decimal marks, it may export columns with semicolons instead of commas. Tab-separated reports are also common because tabs are less likely to appear in ordinary prose. Before conversion, open a small source sample and identify the actual character between fields. Do not infer it from the file extension alone. A source named “report.csv” can still use a semicolon or tab depending on the producing system.</p><p>When a conversion yields one long key per row, stop and check the delimiter. When it yields too many fields, inspect whether an unquoted delimiter appears inside a value. A small controlled test—one header row and two data rows—often finds the issue faster than trying to repair a large converted document after the fact.</p><h2>Header Design, Duplicates, and Key Naming</h2><p>Headers are part of a data contract. They should be unique, readable, and stable. A JSON object cannot meaningfully distinguish two columns that share the same name without an explicit mapping. Headers with spaces or punctuation can be valid JSON keys, but a receiving API or database may prefer a naming convention such as <code>snake_case</code> or <code>camelCase</code>. Decide this at the source or document the mapping rather than relying on a generic converter to guess a business name.</p><p>Blank headers are also risky. A record with a value but no field name cannot be interpreted safely by another person or program. Give every column a deliberate label, including temporary or optional columns, and remove exports fields that do not belong in the destination. Clear input creates clear output.</p><h2>Data Types, Nulls, and Identifiers</h2><p>CSV stores characters, so a converter has limited knowledge of meaning. The sequence <code>12</code> might be a quantity, a month, an integer identifier, or a text label. The sequence <code>false</code> might represent a boolean or a literal status word. An empty cell might mean an empty string, missing data, an unknown value, or a null. These decisions belong to the destination schema. Preserve raw text unless you have a documented rule for type conversion.</p><p>Identifiers deserve special attention. Postal codes, account numbers, product codes, and phone numbers can begin with zeroes or contain symbols. Turning them into numeric values can alter them. Large numeric identifiers may also lose precision in software environments that use floating-point numbers. Keep identifier fields as strings unless the destination explicitly documents another representation.</p><h2>Escaping, Injection, and Output Safety</h2><p>Each output format has escaping rules. JSON escapes quotes and control characters. XML escapes reserved markup characters. YAML can require quoting for values that resemble booleans, dates, or special syntax. SQL uses its own quoting and database-specific behaviour. The page can generate a representation, but it cannot decide whether the generated text is safe to execute in a particular system. Treat SQL output as a reviewable draft and use parameterised or approved import methods for real database work.</p><p>Do not paste output into an interpreter, shell, database console, or production endpoint without understanding what it contains. A CSV source can include text that becomes executable or dangerous in another context if a workflow is careless. Validate in a safe environment, restrict privileges, and follow the destination platform’s import guidance.</p><h2>Testing with a Representative Sample</h2><p>A representative sample includes the edge cases that matter: a quoted comma, an empty field, a non-English character, a leading-zero identifier, an apostrophe, a long value, and a row near the expected column count. Converting this small set gives you a concrete way to examine behaviour before processing a full export. Compare the original cells to the output objects line by line.</p><p>If a sample fails, repair the source rule or mapping first. Do not simply search-and-replace the generated output until it appears to work. Reproducible input steps are safer than manual edits because they can be repeated by another person and applied consistently to a later export.</p><h2>From Conversion to Import</h2><p>Successful conversion is the beginning of an import process, not the end. A destination can require authentication, unique keys, foreign-key references, data retention rules, date formatting, pagination, batching, and error handling. A good workflow has a rollback plan and a way to identify which records were accepted or rejected. Use a staging environment when it is available.</p><p>For a one-off developer test, save the generated output with a clear name and retain the source version. For recurring work, write down the delimiter, header mapping, type rules, and destination validation. This turns a convenient browser conversion into a documented process that is easier to audit and maintain.</p><h2>Choosing the Right Tool for the Next Step</h2><p>Use this page when the immediate job is to translate a simple delimited table into text you can inspect. Use a dedicated ETL, database import, spreadsheet, or code pipeline when transformation rules, large-scale processing, error reporting, access control, or scheduled operation are required. The right boundary protects data quality: a focused utility should not claim to replace a complete integration system.</p><p>After conversion, format JSON for review, validate it against the destination, and test a safe sample. If the work involves a public API, read that API’s current documentation rather than assuming a generic array structure is accepted. If the work involves regulated, personal, or confidential data, use the approved environment. These steps are more valuable than any unsupported promise of universal compatibility.</p><h2>Final Conversion Checklist</h2><p>Confirm the source delimiter. Confirm the first row is a header. Check all header names. Review quoted fields and empty cells. Preserve identifiers as text unless a documented type rule applies. Inspect a small generated result. Validate the final format in its real destination. Retain the source and mapping. These checks make a CSV-to-JSON result understandable, repeatable, and easier to troubleshoot.</p><p>Toolyfi’s converter offers a direct browser-side transformation and output controls. It supports a useful part of the workflow: turning visible table text into visible structured text. Use it with an appropriate destination validation process, not as a substitute for it.</p><h2>Quality Control After Conversion</h2><p>Read the output as data, not only as text. Compare the number of output records with the number of intended source rows. Look at the first, middle, and last record. Check a row with an empty cell, one with a quoted comma, and one with a non-English character. Confirm that headers became the expected keys and that no value shifted into a neighbouring field. This targeted review catches most delimiter and quote mistakes without requiring a full manual comparison.</p><p>If a destination provides an error report, use it to improve the source mapping instead of patching only a generated file. A repeatable correction in the source is easier to explain and less likely to fail on the next export. Keep a brief note of the delimiter, field mapping, date convention, and any values intentionally treated as strings. Even small data tasks benefit from this kind of traceability.</p><h2>Small Inputs, Clear Decisions</h2><p>A compact converter is especially valuable when it makes decisions visible. The source text is on one side, the transformed output is on the other, and the user can copy or download only after a review. That layout encourages a deliberate workflow: inspect before moving data onward. It is more reliable than an interface that hides assumptions about headers, values, and formats behind a single promise of automatic success.</p><p>Use the result as a transparent draft for the next system. The final authority is always the actual destination, its current documentation, and the data rules that apply to your work.</p><h2>Document the Result You Use</h2><p>When a converted file becomes part of a handoff, include its source date, the original filename, the chosen output format, and the destination where it was tested. These small notes let another person reproduce the result without trying to infer the transformation from a final JSON file alone. If a source changes later, repeat the same sample check rather than assuming an export remains identical.</p><p>Careful documentation does not slow routine work; it prevents avoidable confusion when a data value is questioned later. The converter supplies a visible intermediate result, while a short record explains why that result was appropriate for the next step.</p><h2>Browser Boundaries and Sensitive Data</h2><p>The conversion logic runs in the browser page, but that does not make all content suitable for a general web tool. Avoid passwords, private keys, personal records, confidential customer exports, regulated information, and unpublished material. Device configuration, browser extensions, clipboard history, screen sharing, and organisational policy are separate concerns. Use the approved workflow when data sensitivity or compliance requirements apply.</p><p>For routine public samples and non-sensitive drafts, a browser converter is useful because source and output remain easy to compare. For important data, retain the source, document the mapping, test the destination, and use the organisation’s permitted import or migration process.</p><h2>A Repeatable Review Checklist</h2><p>Save the original and work on a copy. Confirm the delimiter and header row. Convert a small sample. Inspect keys, values, quotes, empty fields, and special characters. Verify that identifiers have not lost leading zeroes. Validate the result in the actual destination. Test a safe import before a large batch. This routine prevents a small formatting assumption from becoming a much larger data problem.</p><p>Toolyfi provides an inspectable conversion, output format options, copy control, and download control. The receiving system’s schema, field semantics, permissions, security, and production rules are still your responsibility. Honest boundaries make a developer tool more dependable than unverified claims about unlimited scale or automatic correctness.</p><h2>Related Toolyfi Tools</h2><p>Use <a href="json-formatter.html">JSON Formatter</a> to inspect JSON output, <a href="html-preview-tool.html">HTML Preview Tool</a> for front-end snippets, <a href="word-counter.html">Word Counter</a> for text metrics, and <a href="text-trimmer.html">Text Trimmer</a> for copied-text cleanup. Each utility handles a distinct step and should be paired with validation appropriate to the destination.</p></article>
 
   <!-- FAQ -->
   <div class="sec-head" style="margin-bottom:20px;">
     <div class="sec-label">FAQ</div>
     <div class="sec-title">Frequently Asked <em>Questions</em></div>
   </div>
-  <div class="faq-list" style="margin-bottom:48px;">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is CSV to JSON conversion?<span class="faq-arr">▼</span></div><div class="faq-a">CSV to JSON conversion transforms comma-separated tabular data into structured JSON objects. The CSV header row becomes JSON keys, and each data row becomes a JSON object in an array — ready for APIs and web apps.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this CSV to JSON converter free?<span class="faq-arr">▼</span></div><div class="faq-a">Yes — completely free, no signup, no file size limits, no hidden charges. Convert unlimited files at no cost, forever.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my CSV data safe and private?<span class="faq-arr">▼</span></div><div class="faq-a">100% safe. All conversion happens in your browser using JavaScript. Your CSV data is never sent to any server, never stored, and never logged — safe for confidential business or personal data.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What formats can I convert CSV to?<span class="faq-arr">▼</span></div><div class="faq-a">JSON (for APIs and web apps), XML (for legacy systems), YAML (for DevOps config files), and SQL INSERT statements (for databases). Switch format with one click.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can it handle large CSV files?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. Files with tens of thousands of rows work smoothly. Since processing runs in your browser, performance scales with your device's memory and CPU.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does it handle quoted fields and special characters?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. The smart CSV parser handles quoted fields containing commas, escaped quotes, special characters, and empty values correctly — built for real-world CSV files from Excel, Google Sheets, or databases.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the difference between CSV and JSON?<span class="faq-arr">▼</span></div><div class="faq-a">CSV is a flat tabular format with no data types — simple rows and columns of text. JSON is a hierarchical format supporting nested objects, arrays, and typed values. JSON is the standard for APIs and web services.</div></div>
-  </div>
-</div>
+  <div class="faq-list" style="margin-bottom:48px;"><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does CSV to JSON conversion work?<span class="faq-arr">▼</span></div><div class="faq-a">The header row becomes field names and each data row becomes one JSON object in an array. Review the output before using it in another system.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does the parser support quoted fields?<span class="faq-arr">▼</span></div><div class="faq-a">It supports standard double-quoted fields and doubled double quotes. Inspect unusual exports carefully.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What output formats are available?<span class="faq-arr">▼</span></div><div class="faq-a">JSON, XML, YAML, and SQL text output are available for review.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why do headers matter?<span class="faq-arr">▼</span></div><div class="faq-a">They become keys or field names in output. Use unique, meaningful labels and confirm the destination’s requirements.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are values automatically typed?<span class="faq-arr">▼</span></div><div class="faq-a">Values remain text in this converter. Apply destination-aware type validation later.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why can a conversion fail?<span class="faq-arr">▼</span></div><div class="faq-a">Common causes include a missing header, wrong delimiter, inconsistent columns, or unmatched quotes.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I download output?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. Convert first, then use the Download control for selected output text.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I paste confidential data?<span class="faq-arr">▼</span></div><div class="faq-a">Avoid general web tools for confidential or sensitive material. Use an approved protected workflow instead.</div></div></div></div>
 
 <!-- RELATED TOOLS -->
 <div class="wide-wrap">
@@ -565,54 +451,26 @@ Jane Smith,jane@example.com,Marketing,75000</pre>
       <div class="sec-title">More <em>free tools</em></div>
     </div>
     <div class="related-grid">
-      <a href="https://toolyfi.com/json-formatter.html" class="rel-card"><span>🖥️</span><span>JSON Formatter</span></a>
-      <a href="https://toolyfi.com/base64-encoder.html" class="rel-card"><span>🔐</span><span>Base64 Encoder</span></a>
-      <a href="https://toolyfi.com/password-generator.html" class="rel-card"><span>🔑</span><span>Password Generator</span></a>
-      <a href="https://toolyfi.com/morse-code-converter.html" class="rel-card"><span>📡</span><span>Morse Code</span></a>
-      <a href="https://toolyfi.com/word-counter.html" class="rel-card"><span>📝</span><span>Word Counter</span></a>
-      <a href="https://toolyfi.com/qr-code-generator.html" class="rel-card"><span>📱</span><span>QR Generator</span></a>
-      <a href="https://toolyfi.com/case-converter.html" class="rel-card"><span>🔤</span><span>Case Converter</span></a>
-      <a href="https://toolyfi.com/html-preview-tool.html" class="rel-card"><span>💻</span><span>HTML Preview</span></a>
-      <a href="https://toolyfi.com/currency-converter.html" class="rel-card"><span>💱</span><span>Currency Converter</span></a>
-      <a href="https://toolyfi.com/loan-calculator.html" class="rel-card"><span>🏦</span><span>Loan Calculator</span></a>
-      <a href="https://toolyfi.com/bmi-calculator.html" class="rel-card"><span>⚖️</span><span>BMI Calculator</span></a>
-      <a href="https://toolyfi.com/age-calculator.html" class="rel-card"><span>🎂</span><span>Age Calculator</span></a>
-      <a href="https://toolyfi.com/number-to-words.html" class="rel-card"><span>🔢</span><span>Number to Words</span></a>
-      <a href="https://toolyfi.com/text-trimmer.html" class="rel-card"><span>✂️</span><span>Text Trimmer</span></a>
+      <a href="json-formatter.html" class="rel-card"><span>🖥️</span><span>JSON Formatter</span></a>
+      <a href="base64-encoder.html" class="rel-card"><span>🔐</span><span>Base64 Encoder</span></a>
+      <a href="password-generator.html" class="rel-card"><span>🔑</span><span>Password Generator</span></a>
+      <a href="morse-code-converter.html" class="rel-card"><span>📡</span><span>Morse Code</span></a>
+      <a href="word-counter.html" class="rel-card"><span>📝</span><span>Word Counter</span></a>
+      <a href="qr-code-generator.html" class="rel-card"><span>📱</span><span>QR Generator</span></a>
+      <a href="case-converter.html" class="rel-card"><span>🔤</span><span>Case Converter</span></a>
+      <a href="html-preview-tool.html" class="rel-card"><span>💻</span><span>HTML Preview</span></a>
+      <a href="currency-converter.html" class="rel-card"><span>💱</span><span>Currency Converter</span></a>
+      <a href="loan-calculator.html" class="rel-card"><span>🏦</span><span>Loan Calculator</span></a>
+      <a href="bmi-calculator.html" class="rel-card"><span>⚖️</span><span>BMI Calculator</span></a>
+      <a href="age-calculator.html" class="rel-card"><span>🎂</span><span>Age Calculator</span></a>
+      <a href="number-to-words.html" class="rel-card"><span>🔢</span><span>Number to Words</span></a>
+      <a href="text-trimmer.html" class="rel-card"><span>✂️</span><span>Text Trimmer</span></a>
       <a href="https://toolyfi.com/flip-fancy-text-generator.html" class="rel-card"><span>🔃</span><span>Flip Text</span></a>
     </div>
   </div>
 </div>
 
-<!-- RATING -->
-<div class="wrap">
-  <div class="rate-card">
-    <div class="rate-title">⭐ Rate This Tool</div>
-    <div class="stars" id="starRow">
-      <span class="star" onclick="setRating(1)">⭐</span>
-      <span class="star" onclick="setRating(2)">⭐</span>
-      <span class="star" onclick="setRating(3)">⭐</span>
-      <span class="star" onclick="setRating(4)">⭐</span>
-      <span class="star" onclick="setRating(5)">⭐</span>
-    </div>
-    <div class="rating-msg" id="ratingMsg"></div>
-    <div class="rate-title">👍 Was This Helpful?</div>
-    <div class="like-row">
-      <button class="vote-btn like" id="likeBtn" onclick="vote('like')">👍 Helpful <span id="likeCount">0</span></button>
-      <button class="vote-btn dislike" id="dislikeBtn" onclick="vote('dislike')">👎 Not Helpful <span id="dislikeCount">0</span></button>
-    </div>
-    <div class="rate-title">💬 Leave a Comment</div>
-    <input type="text" class="comment-name" id="commentName" placeholder="Your name (optional)">
-    <textarea class="comment-textarea" id="commentInput" placeholder="Share your experience or suggestions..."></textarea>
-    <button class="comment-submit" onclick="submitComment()">Post Comment</button>
-    <div class="comments-list" id="commentsList">
-      <div class="c-item"><div class="c-author">Sarah K.</div><div class="c-text">Super fast! Converted 5,000 rows of customer data to JSON in seconds. Saved me hours of manual work.</div><div class="c-date">28 Mar 2026</div></div>
-      <div class="c-item"><div class="c-author">Dev M.</div><div class="c-text">The SQL output feature is amazing. I can now import CSV files directly into PostgreSQL without writing any scripts.</div><div class="c-date">25 Mar 2026</div></div>
-      <div class="c-item"><div class="c-author">Aisha R.</div><div class="c-text">YAML export is perfect for my Kubernetes configs. Clean output, handles all edge cases. Bookmarked!</div><div class="c-date">20 Mar 2026</div></div>
-    </div>
-  </div>
-
-  <!-- CTA -->
+<!-- CTA -->
   <div class="cta">
     <h2>Explore All Free Tools on Toolyfi</h2>
     <p>40+ calculators, converters, and developer tools — all free, all instant, no sign-up required.</p>
@@ -632,23 +490,23 @@ Jane Smith,jane@example.com,Marketing,75000</pre>
       <div class="footer-col">
         <h4>Dev Tools</h4>
         <a href="https://toolyfi.com/csv-to-json.html">CSV to JSON</a>
-        <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a>
-        <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a>
-        <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview</a>
+        <a href="json-formatter.html">JSON Formatter</a>
+        <a href="base64-encoder.html">Base64 Encoder</a>
+        <a href="html-preview-tool.html">HTML Preview</a>
       </div>
       <div class="footer-col">
         <h4>Text Tools</h4>
-        <a href="https://toolyfi.com/word-counter.html">Word Counter</a>
-        <a href="https://toolyfi.com/case-converter.html">Case Converter</a>
-        <a href="https://toolyfi.com/morse-code-converter.html">Morse Code</a>
-        <a href="https://toolyfi.com/text-trimmer.html">Text Trimmer</a>
+        <a href="word-counter.html">Word Counter</a>
+        <a href="case-converter.html">Case Converter</a>
+        <a href="morse-code-converter.html">Morse Code</a>
+        <a href="text-trimmer.html">Text Trimmer</a>
       </div>
       <div class="footer-col">
         <h4>Calculators</h4>
-        <a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a>
-        <a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a>
-        <a href="https://toolyfi.com/age-calculator.html">Age Calculator</a>
-        <a href="https://toolyfi.com/currency-converter.html">Currency Converter</a>
+        <a href="loan-calculator.html">Loan Calculator</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="age-calculator.html">Age Calculator</a>
+        <a href="currency-converter.html">Currency Converter</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -708,7 +566,7 @@ function toXML(rows){
 }
 function toYAML(rows){
   const h=rows[0];let y='';
-  rows.slice(1).forEach(r=>{y+='- ';let f=true;h.forEach((k,i)=>{y+=(f?'':' ') +`${k}: ${r[i]||''}\n`;f=false;});});
+  rows.slice(1).forEach(r=>{y+='-\n';h.forEach((k,i)=>{y+=`  ${JSON.stringify(k)}: ${JSON.stringify(r[i]||'')}\n`;});});
   return y;
 }
 function toSQL(rows){
@@ -743,7 +601,7 @@ function convertNow(){
 }
 
 function loadSample(){
-  document.getElementById('csvIn').value=`Name,Email,Department,Salary,Country\nJohn Doe,john@example.com,Engineering,85000,USA\nJane Smith,jane@example.com,Marketing,75000,UK\nBob Johnson,bob@example.com,Sales,70000,Canada\nAisha Raza,aisha@example.com,Design,68000,Pakistan`;
+  document.getElementById('csvIn').value=`Name,Email,Department,Salary,Country\nJohn Doe,john@example.com,Engineering,85000,USA\nJane Smith,jane@example.com,Marketing,75000,UK\nBob Johnson,bob@example.com,Sales,70000,Canada\nAisha Khan,aisha@example.com,Design,68000,Pakistan`;
   setStatus(null,'Sample CSV loaded — click Convert Now');
   showMsg('📌 Sample CSV loaded!','ok');
 }
@@ -787,49 +645,6 @@ function toggleFaq(el){
   item.classList.toggle('open');
 }
 
-// RATING
-function setRating(n){
-  document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('active',i<n));
-  const l=['','Terrible','Poor','Okay','Good','Excellent!'];
-  document.getElementById('ratingMsg').textContent=`You rated: ${l[n]} (${n}/5) — Thank you!`;
-  localStorage.setItem('csv_rating',n);
-}
-function vote(type){
-  let likes=+localStorage.getItem('csv_likes')||0;
-  let dislikes=+localStorage.getItem('csv_dislikes')||0;
-  const prev=localStorage.getItem('csv_vote');
-  if(prev===type)return;
-  if(type==='like'){likes++;if(prev==='dislike')dislikes=Math.max(0,dislikes-1);}
-  else{dislikes++;if(prev==='like')likes=Math.max(0,likes-1);}
-  localStorage.setItem('csv_likes',likes);
-  localStorage.setItem('csv_dislikes',dislikes);
-  localStorage.setItem('csv_vote',type);
-  document.getElementById('likeCount').textContent=likes;
-  document.getElementById('dislikeCount').textContent=dislikes;
-  document.getElementById('likeBtn').classList.toggle('active',type==='like');
-  document.getElementById('dislikeBtn').classList.toggle('active',type==='dislike');
-}
-function submitComment(){
-  const name=document.getElementById('commentName').value.trim()||'Anonymous';
-  const text=document.getElementById('commentInput').value.trim();
-  if(!text)return;
-  const d=document.createElement('div');d.className='c-item';
-  d.innerHTML=`<div class="c-author">${name}</div><div class="c-text">${text}</div><div class="c-date">Just now</div>`;
-  document.getElementById('commentsList').prepend(d);
-  document.getElementById('commentInput').value='';
-  document.getElementById('commentName').value='';
-}
-function renderComments(){
-  document.getElementById('likeCount').textContent=localStorage.getItem('csv_likes')||0;
-  document.getElementById('dislikeCount').textContent=localStorage.getItem('csv_dislikes')||0;
-  const v=localStorage.getItem('csv_vote');
-  if(v==='like')document.getElementById('likeBtn').classList.add('active');
-  if(v==='dislike')document.getElementById('dislikeBtn').classList.add('active');
-  const r=localStorage.getItem('csv_rating');
-  if(r)setRating(+r);
-}
-
-renderComments();
 setStatus(null,'Ready — paste CSV and click Convert Now');
 </script>
 </body>
