@@ -1,337 +1,1193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Salary to Hourly Calculator - Convert Annual Pay to Hourly Rate 2026</title>
-    <meta content="Convert your annual salary to hourly wage instantly. See monthly, weekly, and daily breakdowns. Free calculator for US workers. Perfect for freelancers and job negotiations." name="description">
-    <meta content="salary to hourly, annual to hourly, wage converter, hourly rate calculator, salary negotiation tool, pay breakdown, US salary calculator" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/salary-to-hourly.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Salary to Hourly Calculator - Convert Annual Pay to Hourly Rate 2026">
-    <meta property="og:description" content="Convert your annual salary to hourly wage instantly. See monthly, weekly, and daily breakdowns.">
-    <meta property="og:url" content="https://toolyfi.com/salary-to-hourly.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#6366f1; --bg:#f5f3ff; --surface:#fff; --border:#e0e7ff; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
-
-        .container { max-width:1000px; margin:0 auto; padding:40px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
-
-        .calc-card { background:var(--surface); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(99,102,241,0.1); margin-bottom: 60px; }
-        
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-        @media(max-width:600px){ .input-grid{grid-template-columns: 1fr;} }
-        
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-        .input-wrap { position: relative; display: flex; align-items: center; }
-        .input-icon { position: absolute; left: 16px; font-weight: 800; color: var(--primary); }
-        input { width: 100%; padding: 14px 16px 14px 40px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1rem; font-weight: 700; outline: none; transition: all 0.2s; }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99,102,241,0.1); }
-
-        .breakdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        @media(max-width:768px){ .breakdown-grid{grid-template-columns: 1fr 1fr;} }
-        .breakdown-item { background: #f8fafc; padding: 20px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
-        .breakdown-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-        .breakdown-val { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
-        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
-        
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
-        @media(max-width:700px){ .info-grid{grid-template-columns: 1fr;} }
-        .info-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
-        .info-card h4 { color: var(--primary); margin-bottom: 12px; }
-
-        .wage-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-        .wage-table th, .wage-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
-        .wage-table th { background: #f5f3ff; font-weight: 700; }
-
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-
-        .related-tools { background: #f5f3ff; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
-    </style>
-
-    <!-- Schema.org Markup -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Salary to Hourly Calculator: Gross Pay Conversion | Toolyfi</title>
+    <meta
+      name="description"
+      content="Convert annual, monthly, or weekly gross pay into hourly, daily, weekly, monthly, and annual equivalents with editable work assumptions."
+    />
+    <link rel="canonical" href="https://toolyfi.com/salary-to-hourly.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta
+      property="og:title"
+      content="Salary to Hourly Calculator: Gross Pay Conversion | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Use annual, monthly, or weekly gross pay with your own hours, weeks, and days assumptions."
+    />
+    <meta property="og:url" content="https://toolyfi.com/salary-to-hourly.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-salary-to-hourly-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Salary to Hourly Calculator",
-      "description": "Convert your annual salary to hourly wage instantly. See monthly, weekly, and daily breakdowns.",
-      "url": "https://toolyfi.com/salary-to-hourly.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "10200"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Salary to Hourly Calculator",
+        "url": "https://toolyfi.com/salary-to-hourly.html",
+        "description": "A browser calculator for converting user-entered annual, monthly, or weekly gross pay into time-based equivalents.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": "Annual, monthly, and weekly gross-pay modes; editable hours per week, weeks per year, and days per week; visible browser-side formulas"
       }
-    }
     </script>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
-
-<div class="container">
-    <div class="hero">
-        <h1>Salary to Hourly Calculator</h1>
-        <p>Instantly convert your annual salary into an hourly, daily, weekly, and monthly wage. Perfect for job negotiations and financial planning.</p>
-    </div>
-
-    <div class="calc-card">
-        <div class="input-grid">
-            <div>
-                <label>Annual Salary ($)</label>
-                <div class="input-wrap">
-                    <span class="input-icon">$</span>
-                    <input type="number" id="annualSalary" value="50000" oninput="calculate()">
-                </div>
-            </div>
-            <div>
-                <label>Hours Per Week</label>
-                <div class="input-wrap">
-                    <span class="input-icon">⏱️</span>
-                    <input type="number" id="hoursPerWeek" value="40" oninput="calculate()">
-                </div>
-            </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Salary to Hourly Calculator",
+            "item": "https://toolyfi.com/salary-to-hourly.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is hourly gross pay calculated from annual pay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculation divides annual gross pay by hours per week multiplied by weeks per year."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is monthly pay converted to hourly pay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Monthly gross pay is multiplied by 12 to obtain an annual equivalent, then divided by annual working hours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is weekly pay converted to hourly pay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Weekly gross pay is divided by the hours per week you enter; the page also derives an annual equivalent using the selected weeks per year."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can I edit weeks per year?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Weeks per year is an explicit work-pattern assumption, so the calculation shows your selected value rather than silently fixing one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can I edit days per week?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The daily equivalent depends on the days-per-week assumption. Editing it makes that assumption visible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator estimate take-home pay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It performs gross-pay arithmetic from your entries and does not calculate deductions, withholding, or take-home pay."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator include overtime?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It does not determine overtime rates, eligibility, or employment rules. Enter the gross pay and work pattern you want to compare."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use different currency units?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The ratio works with any one currency unit as long as the pay amount and displayed results are interpreted in that same unit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if hours or weeks are zero?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculator displays an explanation because an hourly result cannot be calculated with zero or negative work-time inputs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this employment, tax, or contract advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The page provides transparent gross-pay arithmetic only and does not interpret a contract, classification, tax treatment, or workplace rule."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, and coral signals; prioritize explicit work assumptions and formula-first feedback. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --coral: #ef6c54;
+        --rose: #f7e4df;
+        --sage: #dfe7dc;
+        --line: #d9d6cf;
+        --muted: #647083;
+        --deep: #102033;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      .page {
+        max-width: 1180px;
+        margin: auto;
+        padding: 38px 24px 86px;
+      }
+      .crumb {
+        margin: 16px 0 22px;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+      .crumb a {
+        color: inherit;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        align-items: center;
+        gap: 54px;
+        padding: 25px 0 62px;
+      }
+      .hero h1,
+      .guide h2,
+      .related h2 {
+        font-family: Fraunces, serif;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+      }
+      .hero h1 {
+        margin: 15px 0 22px;
+        font-size: clamp(3rem, 6vw, 5.4rem);
+      }
+      .hero em {
+        color: var(--coral);
+        font-style: italic;
+      }
+      .hero p {
+        max-width: 590px;
+        color: var(--muted);
+      }
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .button {
+        border: 1px solid var(--ink);
+        background: transparent;
+        padding: 12px 17px;
+        color: var(--ink);
+        cursor: pointer;
+        font: 800 0.8rem inherit;
+        text-decoration: none;
+      }
+      .primary {
+        border-color: var(--coral);
+        background: var(--coral);
+        color: #fff;
+      }
+      .facts {
+        margin-top: 25px;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .facts span::before {
+        padding: 0 6px;
+        color: var(--coral);
+        content: "•";
+      }
+      .hero-art {
+        position: relative;
+        background: #eee6d8;
+        padding: 16px;
+        box-shadow: 9px 10px 0 var(--deep);
+        transform: rotate(1deg);
+      }
+      .hero-art img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+      .hero-art figcaption {
+        position: absolute;
+        right: 6%;
+        bottom: 5%;
+        background: #fff;
+        padding: 6px 9px;
+        font-size: 0.64rem;
+        font-weight: 800;
+      }
+      .calc-wrap {
+        margin: 0 -24px;
+        background: var(--deep);
+        padding: clamp(24px, 5vw, 54px);
+        color: #fff;
+      }
+      .calc-head {
+        display: flex;
+        max-width: 1132px;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 0 auto 28px;
+      }
+      .calc-head h2 {
+        margin: 0;
+        font:
+          700 clamp(2rem, 4vw, 3.5rem) / 1 Fraunces,
+          serif;
+        letter-spacing: -0.04em;
+      }
+      .calc-head p {
+        max-width: 410px;
+        margin: 0;
+        color: #c4ccd7;
+        font-size: 0.88rem;
+      }
+      .calc {
+        display: grid;
+        max-width: 1132px;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 24px;
+        margin: auto;
+      }
+      .panel,
+      .result {
+        padding: 26px;
+      }
+      .panel {
+        background: #fff;
+        color: var(--ink);
+      }
+      .panel h3,
+      .result h3 {
+        margin: 0 0 18px;
+        font:
+          700 1.55rem Fraunces,
+          serif;
+      }
+      .modes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .mode {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 9px 11px;
+        color: var(--ink);
+        cursor: pointer;
+        font: 800 0.73rem inherit;
+      }
+      .mode.active {
+        border-color: var(--coral);
+        background: var(--coral);
+        color: #fff;
+      }
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .field {
+        margin-bottom: 17px;
+      }
+      .field.wide {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .field input {
+        width: 100%;
+        border: 1px solid var(--line);
+        padding: 12px;
+        color: var(--ink);
+        font: 700 1rem inherit;
+      }
+      .input-hint {
+        display: block;
+        margin-top: 5px;
+        color: #647083;
+        font-size: 0.71rem;
+      }
+      .note {
+        margin: 4px 0 0;
+        border-left: 4px solid var(--coral);
+        background: #fffaf7;
+        padding: 15px 17px;
+        color: #4d5968;
+        font-size: 0.84rem;
+      }
+      .result {
+        display: flex;
+        flex-direction: column;
+        background: var(--sage);
+        color: var(--ink);
+      }
+      .result .main {
+        margin: 21px 0 7px;
+        font:
+          800 clamp(2.8rem, 6vw, 4.4rem) / 0.95 Fraunces,
+          serif;
+        letter-spacing: -0.06em;
+      }
+      .result .subcopy {
+        margin: 0;
+        color: #526355;
+        font-size: 0.82rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 18px 0;
+        background: #f5f8f2;
+      }
+      .grid div {
+        border-right: 1px solid #cdd7c9;
+        border-bottom: 1px solid #cdd7c9;
+        padding: 13px;
+      }
+      .grid div:nth-child(2n) {
+        border-right: 0;
+      }
+      .grid span {
+        display: block;
+        color: #536454;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .formula {
+        margin-top: auto;
+        background: #fff;
+        padding: 13px;
+        color: #415047;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+      }
+      .guide {
+        max-width: 850px;
+        margin: 78px auto 0;
+      }
+      .guide h2 {
+        margin: 62px 0 18px;
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+      }
+      .guide h3 {
+        margin: 35px 0 12px;
+        font:
+          700 1.45rem Fraunces,
+          serif;
+      }
+      .guide p,
+      .guide li {
+        color: #3f4b5d;
+      }
+      .toc {
+        background: #f0ede6;
+        padding: 20px;
+      }
+      .toc a {
+        display: inline-block;
+        margin: 4px 14px 4px 0;
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .formula-example {
+        margin: 24px 0;
+        background: var(--rose);
+        padding: 20px;
+        color: #4d3430;
+      }
+      .formula-example strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--ink);
+      }
+      .faq {
+        margin-top: 64px;
+      }
+      .faq h2 {
+        margin: 0 0 23px;
+        font:
+          700 clamp(2.2rem, 4vw, 3.6rem) / 1 Fraunces,
+          serif;
+        letter-spacing: -0.04em;
+      }
+      .faq details {
+        border-top: 1px solid var(--line);
+        padding: 16px 0;
+      }
+      .faq details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 800;
+      }
+      .faq p {
+        color: #536073;
+        font-size: 0.9rem;
+      }
+      .related {
+        margin-top: 70px;
+        background: var(--deep);
+        padding: 38px;
+        color: #fff;
+      }
+      .related h2 {
+        margin: 0 0 23px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related a {
+        display: flex;
+        min-height: 125px;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #fff;
+        padding: 17px;
+        color: var(--ink);
+        font:
+          700 1.1rem / 1.08 Fraunces,
+          serif;
+        text-decoration: none;
+      }
+      .related small {
+        color: var(--coral);
+        font:
+          800 0.62rem "Plus Jakarta Sans",
+          sans-serif;
+        letter-spacing: 0.08em;
+      }
+      @media (max-width: 800px) {
+        .page {
+          padding: 26px 18px 62px;
+        }
+        .hero,
+        .calc {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .hero-art {
+          order: -1;
+        }
+        .calc-wrap {
+          margin: 0 -18px;
+          padding: 30px 18px;
+        }
+        .calc-head {
+          display: block;
+        }
+        .calc-head p {
+          margin-top: 12px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 450px) {
+        .field-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="crumb">
+        <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Salary to
+        Hourly Calculator
+      </p>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Gross pay, made comparable</div>
+          <h1>Put your pay on an <em>hourly</em> basis.</h1>
+          <p>
+            Convert annual, monthly, or weekly gross pay using your own hours, weeks, and days
+            assumptions. Toolyfi shows every derived time-based equivalent and the formula behind
+            it.
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#calculator">Open calculator</a>
+            <a class="button" href="#guide">Read the conversion guide</a>
+          </div>
+          <div class="facts">
+            <span>Runs in your browser</span><span>Gross arithmetic only</span
+            ><span>Assumptions shown</span>
+          </div>
         </div>
-
-        <div class="breakdown-grid">
-            <div class="breakdown-item">
-                <div class="breakdown-label">Hourly</div>
-                <div id="hourlyVal" class="breakdown-val">$24.04</div>
+        <figure class="hero-art">
+          <img
+            src="images/toolyfi-salary-to-hourly-hero.webp"
+            width="2560"
+            height="1440"
+            fetchpriority="high"
+            alt="Editorial desk collage with clock, payroll sheet, calculator, and marked work calendar"
+          />
+          <figcaption>Pay needs a time basis</figcaption>
+        </figure>
+      </section>
+    </main>
+    <section class="calc-wrap" id="calculator">
+      <div class="calc-head">
+        <h2>Choose the pay period.<br />Show the work pattern.</h2>
+        <p>
+          Hourly gross pay equals annual gross pay divided by hours per week multiplied by weeks per
+          year. The page keeps each input visible rather than assuming it silently.
+        </p>
+      </div>
+      <div class="calc">
+        <section class="panel">
+          <h3>Start with the pay you know</h3>
+          <div class="modes" aria-label="Select pay period">
+            <button class="mode active" type="button" data-mode="annual">Annual gross pay</button>
+            <button class="mode" type="button" data-mode="monthly">Monthly gross pay</button>
+            <button class="mode" type="button" data-mode="weekly">Weekly gross pay</button>
+          </div>
+          <div class="field-grid">
+            <div class="field wide">
+              <label for="pay" id="pay-label">Annual gross pay</label>
+              <input id="pay" type="number" inputmode="decimal" min="0" step="0.01" value="50000" />
+              <small class="input-hint" id="pay-hint"
+                >Enter the gross annual amount you want to convert.</small
+              >
             </div>
-            <div class="breakdown-item">
-                <div class="breakdown-label">Daily</div>
-                <div id="dailyVal" class="breakdown-val">$192.31</div>
+            <div class="field">
+              <label for="hours">Hours per week</label>
+              <input
+                id="hours"
+                type="number"
+                inputmode="decimal"
+                min="0.01"
+                step="0.01"
+                value="40"
+              />
             </div>
-            <div class="breakdown-item">
-                <div class="breakdown-label">Weekly</div>
-                <div id="weeklyVal" class="breakdown-val">$961.54</div>
+            <div class="field">
+              <label for="weeks">Weeks per year</label>
+              <input
+                id="weeks"
+                type="number"
+                inputmode="decimal"
+                min="0.01"
+                step="0.01"
+                value="52"
+              />
             </div>
-            <div class="breakdown-item">
-                <div class="breakdown-label">Monthly</div>
-                <div id="monthlyVal" class="breakdown-val">$4,166.67</div>
+            <div class="field wide">
+              <label for="days">Days per week</label>
+              <input id="days" type="number" inputmode="decimal" min="0.01" step="0.01" value="5" />
+              <small class="input-hint">Used only to derive the daily gross-pay equivalent.</small>
             </div>
+          </div>
+          <p class="note">
+            This is transparent gross-pay arithmetic, not take-home, tax, overtime, benefit,
+            employment-classification, or contract guidance. Use an amount and time pattern that
+            match the comparison you want to make.
+          </p>
+        </section>
+        <section class="result" aria-live="polite">
+          <h3>Your hourly equivalent</h3>
+          <p id="hourly" class="main">—</p>
+          <p id="result-note" class="subcopy">
+            Enter positive values to calculate gross equivalents.
+          </p>
+          <div class="grid">
+            <div><span>Annual</span><b id="annual">—</b></div>
+            <div><span>Monthly</span><b id="monthly">—</b></div>
+            <div><span>Weekly</span><b id="weekly">—</b></div>
+            <div><span>Daily</span><b id="daily">—</b></div>
+          </div>
+          <div id="formula" class="formula">Enter your values to see the conversion formula.</div>
+        </section>
+      </div>
+    </section>
+    <main class="page">
+      <article class="guide" id="guide">
+        <div class="eyebrow">Salary to hourly calculator guide</div>
+        <h2>Salary to hourly conversion is a time-unit calculation, not a pay verdict.</h2>
+        <p>
+          A salary figure and an hourly figure can describe the same gross-pay amount only when they
+          refer to the same work pattern. That is why a simple salary divided by 2,080 shortcut is
+          not enough for every situation. The shortcut embeds 40 hours per week and 52 weeks per
+          year. It can be useful when those are your chosen inputs, but it becomes misleading when
+          hours, working weeks, or the pay period differ. This calculator makes every denominator
+          visible before it produces an hourly equivalent.
+        </p>
+        <p>
+          Toolyfi performs browser-side arithmetic from figures you enter. It can turn annual,
+          monthly, or weekly gross pay into annual, monthly, weekly, daily, and hourly equivalents.
+          It does not know your jurisdiction, deductions, tax position, benefit value, overtime
+          rules, employer policy, employment status, contract terms, or actual hours worked. The
+          result is a clear conversion within the selected assumptions, not a statement about
+          take-home pay or what a workplace must pay.
+        </p>
+        <nav class="toc">
+          <a href="#formula-basics">Core formula</a><a href="#annual">Annual input</a
+          ><a href="#monthly-mode">Monthly input</a><a href="#weekly-mode">Weekly input</a
+          ><a href="#assumptions">Work assumptions</a><a href="#daily">Daily output</a
+          ><a href="#examples">Worked examples</a><a href="#compare">Compare pay figures</a
+          ><a href="#limits">Scope and limits</a>
+        </nav>
+        <h2 id="formula-basics">Start with the annual hours you actually want to model</h2>
+        <p>
+          The central relationship is straightforward: hourly gross pay equals annual gross pay
+          divided by total annual working hours. Total annual working hours equal hours per week
+          multiplied by weeks per year. Written together, the formula is hourly rate = annual pay ÷
+          (hours per week × weeks per year). The multiplication in the denominator matters. A salary
+          amount alone cannot reveal an hourly equivalent without a work-time assumption.
+        </p>
+        <p>
+          For example, 50,000 divided by 40 hours per week multiplied by 52 weeks gives 50,000 ÷
+          2,080, which is approximately 24.04 per hour. The calculation becomes different if you
+          enter 35 hours per week, 48 weeks per year, or another pattern. There is no hidden
+          preference in the tool for one work pattern. You select the values, and the formula line
+          repeats the relationship used for that result.
+        </p>
+        <div class="formula-example">
+          <strong>Visible annual example</strong>
+          50,000 annual gross pay ÷ (40 hours per week × 52 weeks per year) = 24.04 gross per hour.
         </div>
-    </div>
-
-    <!-- COMPREHENSIVE CONTENT SECTION -->
-    <div class="content-section">
-        <h2>Understanding Your Pay: The Salary to Hourly Guide</h2>
-        <p>Whether you're negotiating a new job offer, planning your freelance rates, or just curious about your true earning power, knowing your hourly rate is essential. Our <strong>Salary to Hourly Calculator</strong> provides a comprehensive breakdown of your earnings across multiple timeframes, helping you make informed financial decisions in 2026.</p>
-
-        <h3>How to Use the Salary to Hourly Converter</h3>
-        <p>Using our tool is simple and takes less than 10 seconds:</p>
-        <ol>
-            <li><strong>Enter Annual Salary:</strong> Type in your total gross annual pay (before taxes).</li>
-            <li><strong>Adjust Hours:</strong> The default is 40 hours per week, but you can adjust this if you work part-time or overtime.</li>
-            <li><strong>View Results:</strong> The calculator instantly updates to show your hourly, daily, weekly, and monthly earnings.</li>
-        </ol>
-
-        <h3>Why Knowing Your Hourly Rate is Critical</h3>
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>1. Job Negotiations</h4>
-                <p>When a recruiter asks for your salary expectations, knowing your hourly equivalent helps you compare offers that might have different structures (e.g., 35 vs 40 hour weeks).</p>
-            </div>
-            <div class="info-card">
-                <h4>2. Freelance Pricing</h4>
-                <p>If you're moving from a full-time job to freelancing, you need to know your base hourly rate to ensure you're charging enough to cover your own taxes and benefits.</p>
-            </div>
-            <div class="info-card">
-                <h4>3. Overtime Value</h4>
-                <p>Knowing your hourly rate helps you calculate exactly how much an extra hour of work is worth to you, helping you decide if that overtime is truly worth your time.</p>
-            </div>
-            <div class="info-card">
-                <h4>4. Budgeting & Planning</h4>
-                <p>Seeing your monthly and weekly breakdown makes it much easier to create a realistic budget for rent, car payments, and savings goals.</p>
-            </div>
+        <p>
+          The word “gross” is important here. It identifies the input as a stated pay amount before
+          any deductions or individual treatment that this page does not model. A gross amount may
+          appear on an offer, invoice, pay schedule, planning note, or another record, but its
+          treatment can vary outside this calculator. If you need to compare two amounts, use the
+          same gross-pay scope for both. Mixing a pre-deduction figure with an after-deduction
+          figure creates a comparison problem before any division occurs.
+        </p>
+        <h2 id="annual">Convert annual gross pay without burying the work pattern</h2>
+        <p>
+          Annual mode is for a gross-pay figure already stated for a year. Enter the annual figure,
+          then choose the hours per week and weeks per year that match the situation you want to
+          inspect. The calculator derives a weekly equivalent by dividing annual pay by the selected
+          weeks. It derives a monthly equivalent by dividing annual pay by 12. It derives a daily
+          equivalent from the weekly amount divided by your selected days per week. Finally, it
+          derives the hourly amount by dividing annual pay by annual hours.
+        </p>
+        <p>
+          This output set is intended to be internally consistent. If the annual amount is 50,000
+          and you use 52 weeks, the weekly equivalent is 961.54 before display rounding. If you then
+          use 40 hours per week, the hourly equivalent is 24.04. If you use five days per week, the
+          daily equivalent is 192.31. Each figure comes from the same annual number and selected
+          time pattern; none is a separate forecast or promise of an actual payment schedule.
+        </p>
+        <p>
+          Keep a distinction between an annual label and a real period of paid work. An annual
+          amount may be paid in installments, may cover a fixed term, or may be subject to terms not
+          visible in a single number. This calculator does not interpret those conditions. Its
+          purpose is narrower: if you decide the annual gross amount and work-time inputs belong
+          together, it will show the arithmetic conversion. Record those inputs with any result you
+          need to revisit later.
+        </p>
+        <h2 id="monthly-mode">
+          Convert monthly gross pay by first making the annual amount explicit
+        </h2>
+        <p>
+          Monthly mode performs a two-step conversion. It first multiplies the entered monthly gross
+          pay by 12 to create an annual equivalent. It then divides that annual equivalent by hours
+          per week multiplied by weeks per year. For 3,000 per month with 40 hours per week and 52
+          weeks per year, the calculation is (3,000 × 12) ÷ (40 × 52), which gives about 17.31 per
+          hour. Showing the annual step makes the formula easier to audit than using an unexplained
+          monthly-hours shortcut.
+        </p>
+        <p>
+          The number 12 is a conversion between months and the annual period used by this model. The
+          selected weeks per year still controls the annual work-time denominator. If you select a
+          different number of weeks, the page does not alter the 12-month conversion; it changes the
+          annual hours used for the hourly and weekly relationships. This separation is deliberate.
+          It prevents a monthly amount from creating an invisible assumption about paid or worked
+          weeks.
+        </p>
+        <p>
+          Monthly mode does not determine whether a real payment is made on a particular calendar
+          date, whether a month has more working days, or whether an amount has been adjusted for an
+          absence. Those matters need source documents and the relevant terms. Here, monthly means
+          only the gross amount you choose to annualize by multiplying by 12. The value is then
+          converted with the work pattern you explicitly provide.
+        </p>
+        <h2 id="weekly-mode">Convert weekly gross pay with the weekly hours you enter</h2>
+        <p>
+          Weekly mode starts closer to the hourly relationship. When a weekly gross-pay amount and
+          hours per week are known, hourly gross pay is weekly pay divided by hours per week. The
+          calculator also uses the selected weeks per year to derive an annual equivalent, then
+          derives a monthly equivalent by dividing that annual amount by 12. This makes the result
+          cards speak to one selected model rather than presenting unrelated periodic amounts.
+        </p>
+        <p>
+          Suppose you enter weekly gross pay of 800 and 40 hours per week. The hourly result is
+          20.00 because 800 ÷ 40 = 20. The weeks-per-year field does not change that direct
+          weekly-to-hourly division, but it does change the annual and monthly equivalents displayed
+          beside it. With 52 weeks selected, the annual equivalent is 41,600. With a different
+          selection, the annual amount changes because you have asked the calculator to model a
+          different number of weekly periods.
+        </p>
+        <p>
+          This distinction is useful when comparing a known weekly figure with an annual figure.
+          First, decide whether both values use a matching work pattern. Then use the same
+          hours-per-week and weeks-per-year inputs for the comparison. Do not assume that a weekly
+          amount automatically represents every week of a calendar year. The calculator cannot
+          decide that factual question, but it does expose where the assumption enters the
+          arithmetic.
+        </p>
+        <h2 id="assumptions">Make hours, weeks, and days assumptions visible</h2>
+        <p>
+          The work-time inputs are not decoration. Hours per week controls the hourly denominator.
+          Weeks per year controls the annual hours and the relationship between a weekly input and
+          its annual equivalent. Days per week controls only the daily equivalent. Each field is
+          editable so a visitor can model the work pattern they have chosen without pretending that
+          every salary has the same schedule. If an input is unknown, it is safer to identify it as
+          an assumption than to treat the default as a fact about a job, agreement, or worker.
+        </p>
+        <p>
+          A common default of 40 hours per week and 52 weeks per year produces 2,080 annual hours,
+          but it is only the result of 40 multiplied by 52. The calculator does not label that
+          result as a universal standard. Changing either field changes the hourly calculation. For
+          example, the same 50,000 annual figure divided by 35 × 52 produces about 27.47 per hour,
+          because the chosen annual hours are lower. That is arithmetic, not a claim that one
+          arrangement is better than another.
+        </p>
+        <p>
+          The days-per-week input belongs to the daily card, not the hourly calculation. A five-day
+          assumption turns a weekly equivalent into five daily portions. A four-day assumption turns
+          the same weekly equivalent into four daily portions. This result should not be confused
+          with a legal daily rate, a timesheet calculation, or a guaranteed daily payment. It is a
+          division of your selected weekly gross equivalent by the days number you entered.
+        </p>
+        <h2 id="daily">Read the daily figure as a selected weekly division</h2>
+        <p>
+          Daily pay can be useful as a compact comparison unit, but it deserves a clear label. This
+          page calculates daily gross equivalent as weekly gross equivalent divided by days per
+          week. In annual mode, that is annual pay ÷ (weeks per year × days per week). In monthly
+          mode, the page first creates an annual equivalent, then applies the same time denominator.
+          In weekly mode, it divides the weekly amount by selected days per week.
+        </p>
+        <p>
+          Consider 50,000 annual gross pay with 52 weeks and five days. The daily equivalent is
+          50,000 ÷ (52 × 5), or about 192.31. If you change days per week from five to four while
+          keeping annual pay and weeks fixed, the displayed daily figure becomes higher because the
+          same weekly amount is being spread across fewer selected days. The hourly figure does not
+          change unless hours per week or weeks per year changes. Seeing that difference helps
+          prevent the daily card from being mistaken for an independent calculation.
+        </p>
+        <p>
+          Day-based calculations can be especially sensitive to the words used around them. A “day”
+          may mean a scheduled workday, a billable day, a calendar day, or something defined by a
+          contract. Toolyfi does not classify it for you. Enter the number of days per week that
+          matches your own comparison and keep the definition with your notes. The result is only as
+          specific as the chosen input.
+        </p>
+        <h2 id="examples">Use worked examples to verify the formula, not to set a target</h2>
+        <p>
+          A transparent example can help you spot a denominator error. Start with annual gross pay
+          of 50,000, 40 hours per week, and 52 weeks per year. Annual hours are 2,080. Dividing
+          50,000 by 2,080 gives 24.03846..., displayed as 24.04. The same input creates 4,166.67
+          monthly, 961.54 weekly, and 192.31 daily when five days per week are selected. The
+          calculator uses fuller precision internally and formats the cards for readability.
+        </p>
+        <div class="formula-example">
+          <strong>Visible monthly example</strong>
+          (3,000 monthly gross pay × 12) ÷ (40 hours per week × 52 weeks per year) = 17.31 gross per
+          hour.
         </div>
-
-        <h3>US Salary Standards & Minimum Wage Comparison</h3>
-        <p>In the United States, the federal minimum wage remains a baseline, but many states have significantly higher rates. Here's how common annual salaries break down into hourly wages (based on a 40-hour week):</p>
-        <table class="wage-table">
-            <thead>
-                <tr>
-                    <th>Annual Salary</th>
-                    <th>Hourly Wage</th>
-                    <th>Weekly Pay</th>
-                    <th>Monthly Pay</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>$30,000</td>
-                    <td>$14.42</td>
-                    <td>$576.92</td>
-                    <td>$2,500.00</td>
-                </tr>
-                <tr>
-                    <td>$50,000</td>
-                    <td>$24.04</td>
-                    <td>$961.54</td>
-                    <td>$4,166.67</td>
-                </tr>
-                <tr>
-                    <td>$75,000</td>
-                    <td>$36.06</td>
-                    <td>$1,442.31</td>
-                    <td>$6,250.00</td>
-                </tr>
-                <tr>
-                    <td>$100,000</td>
-                    <td>$48.08</td>
-                    <td>$1,923.08</td>
-                    <td>$8,333.33</td>
-                </tr>
-                <tr>
-                    <td>$150,000</td>
-                    <td>$72.12</td>
-                    <td>$2,884.62</td>
-                    <td>$12,500.00</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Freelancer vs. Employee: The "Hidden" Costs</h3>
-        <p>If you are a freelancer in the US, your hourly rate needs to be higher than an employee's to account for:</p>
-        <ul>
-            <li><strong>Self-Employment Tax:</strong> You pay both the employer and employee portions of Social Security and Medicare (approx. 15.3%).</li>
-            <li><strong>Health Insurance:</strong> Employees often have subsidized plans; freelancers pay full market rates.</li>
-            <li><strong>Unpaid Time Off:</strong> No paid vacations or sick days. You only earn when you work.</li>
-            <li><strong>Equipment & Software:</strong> You are responsible for your own laptop, office space, and tools.</li>
-        </ul>
-
-        <h3>5 Tips for Salary Negotiation in 2026</h3>
-        <ol>
-            <li><strong>Research the Market:</strong> Use sites like Glassdoor or Payscale to find the average for your role and location.</li>
-            <li><strong>Focus on Value:</strong> Don't just ask for more money; explain the ROI you bring to the company.</li>
-            <li><strong>Consider the Full Package:</strong> Sometimes a slightly lower salary is worth it for better health benefits, 401k matching, or remote work flexibility.</li>
-            <li><strong>Know Your "Walk-Away" Number:</strong> Have a clear minimum hourly rate in mind before you start the conversation.</li>
-            <li><strong>Get it in Writing:</strong> Never stop at a verbal agreement. Ensure the final offer letter reflects the agreed-upon salary and hours.</li>
-        </ol>
-
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-grid">
-            <details>
-                <summary>How many work hours are in a year?</summary>
-                <div class="faq-content">For a standard 40-hour work week, there are 2,080 work hours in a year (40 hours x 52 weeks). Our calculator uses this standard as the baseline.</div>
-            </details>
-            <details>
-                <summary>Does this calculator include taxes?</summary>
-                <div class="faq-content">No, this tool calculates "Gross Pay" (before taxes). Your "Take-Home Pay" will be lower depending on your state, filing status, and deductions.</div>
-            </details>
-            <details>
-                <summary>What is the difference between salary and hourly pay?</summary>
-                <div class="faq-content">Salaried employees earn a fixed amount regardless of hours worked (usually), while hourly employees are paid for every hour they work, often including overtime pay.</div>
-            </details>
-            <details>
-                <summary>How do I calculate my rate if I work 35 hours a week?</summary>
-                <div class="faq-content">Simply change the "Hours Per Week" field in our calculator to 35, and it will automatically adjust all the values for you.</div>
-            </details>
-            <details>
-                <summary>Is a $50,000 salary good in the US?</summary>
-                <div class="faq-content">It depends heavily on your location. In rural areas, $50k can provide a comfortable life, while in cities like San Francisco or NYC, it may be challenging due to high rent.</div>
-            </details>
-            <details>
-                <summary>How do I convert my hourly rate back to a salary?</summary>
-                <div class="faq-content">Multiply your hourly rate by 2,080 (for a 40-hour week). For example, $25/hr x 2,080 = $52,000 per year.</div>
-            </details>
-            <details>
-                <summary>What is the federal minimum wage in 2026?</summary>
-                <div class="faq-content">The federal minimum wage is $7.25 per hour, though many states and cities have implemented much higher local minimums (often $15-$20/hr).</div>
-            </details>
-            <details>
-                <summary>Does this tool work for part-time jobs?</summary>
-                <div class="faq-content">Yes! Just enter your expected annual earnings and the number of hours you plan to work per week.</div>
-            </details>
-            <details>
-                <summary>How many weeks are in a work year?</summary>
-                <div class="faq-content">There are 52 weeks in a year. Some people calculate based on 50 weeks to account for 2 weeks of unpaid vacation.</div>
-            </details>
-            <details>
-                <summary>Can I use this for job interviews?</summary>
-                <div class="faq-content">Absolutely. It's a great tool to have open on your phone or laptop during a negotiation to quickly check the hourly value of an offer.</div>
-            </details>
-        </div>
-    </div>
-
-    <div class="related-tools">
-        <h3>Related Career & Finance Tools</h3>
+        <p>
+          Next, take monthly gross pay of 3,000 with the same 40-hour and 52-week pattern. The
+          annual equivalent is 36,000. Dividing 36,000 by 2,080 gives 17.30769..., displayed as
+          17.31 hourly. This is not a comparison between two offers or a statement about
+          affordability; it simply shows how a monthly input fits the selected annual time
+          denominator. If you change the weeks field, run the calculation again rather than
+          adjusting the rounded output by hand.
+        </p>
+        <p>
+          A third check begins with a weekly figure. Enter 800 weekly gross pay, 40 hours per week,
+          52 weeks per year, and five days per week. The hourly equivalent is 20.00, the daily
+          equivalent is 160.00, and the annual equivalent is 41,600. The 52-week selection is
+          visible in the annual result; it is not required to turn 800 into 20 per hour. This is why
+          each card should be read alongside the formula, not isolated from the inputs that
+          generated it.
+        </p>
+        <h2 id="compare">Compare two gross-pay figures with a matching basis</h2>
+        <p>
+          A conversion can make two differently stated pay figures easier to compare, but only after
+          you choose a matching scope. If one figure is annual gross pay and another is monthly
+          gross pay, use annual and monthly modes with the same hours and weeks assumptions. Then
+          write down the two hourly outputs alongside the inputs. A difference in hourly results may
+          come from the pay amounts, from the selected work-time denominator, or from both. Keeping
+          the denominator visible makes that distinction possible.
+        </p>
+        <p>
+          Do not compare a gross figure to a take-home figure through this tool. Do not add a
+          benefit, tax, reimbursement, unpaid-time, overtime, commission, bonus, or expense estimate
+          unless you first decide exactly how it belongs in the gross amount you enter. The page
+          does not classify such items, and it has no live data source to make those decisions. It
+          is more honest to run separate, well-labeled scenarios than to force unrelated amounts
+          into a single answer.
+        </p>
+        <p>
+          Scenario notes are practical. A note might read: “Scenario A: annual gross pay 50,000; 40
+          hours/week; 52 weeks/year; 5 days/week; hourly gross equivalent 24.04.” A second note
+          could use a different stated monthly amount and the same time inputs. Anyone reviewing the
+          notes can repeat the arithmetic. A bare statement such as “the hourly rate is 24.04” gives
+          no way to know whether the number uses the same work pattern.
+        </p>
+        <h2 id="gross-scope">Keep gross-pay conversion separate from take-home calculations</h2>
+        <p>
+          An hourly gross equivalent is not the same thing as take-home pay. This calculator begins
+          with a gross amount you enter and divides it across a time pattern you also enter. It does
+          not subtract deductions, withholding, contributions, expenses, reimbursements, benefits,
+          or any other item that could change what is received or retained. Calling the output
+          “gross” is not a disclaimer added after the calculation; it is a description of the exact
+          scope of the formula.
+        </p>
+        <p>
+          This distinction matters when two records use different labels. A monthly amount shown
+          before deductions and a deposit amount received after deductions should not be put into
+          two modes and treated as equivalent inputs. They are different quantities. First identify
+          which value is gross, net, reimbursed, estimated, or otherwise defined in the record you
+          are reading. Then use this page only with a gross figure that matches the question. If the
+          question itself is about deductions or the money received after them, this compact
+          time-unit converter does not have the needed inputs or policy context.
+        </p>
+        <p>
+          The same boundary applies to additional pay components. A fixed gross amount, a one-off
+          gross bonus, a reimbursement, a commission, an expense, and a benefit valuation may each
+          need a different definition before they can be combined. Toolyfi does not tell you whether
+          to include any of them. Rather than hiding that uncertainty inside a rate, write a
+          separate scenario for each defined amount. The calculator will then make the arithmetic
+          for that scenario repeatable without implying that it has interpreted a payroll record or
+          agreement.
+        </p>
+        <p>
+          Conversion also does not establish an overtime rate, an eligibility category, a minimum
+          rate, a pay obligation, or a contract term. Those questions depend on facts and rules
+          outside a browser formula. If you have a number that already includes different hours or
+          periods, label it accurately before converting it. The calculator is most useful when it
+          stays modest: it turns one stated gross-pay amount into consistent time-based equivalents
+          using the assumptions you can see and change.
+        </p>
+        <h2 id="recording">Create a reproducible conversion note for every comparison</h2>
+        <p>
+          A reliable conversion note records more than the final hourly card. Include the input
+          period, gross-pay amount, hours per week, weeks per year, days per week, and the
+          calculated hourly amount. For an annual input, you might write: “Annual gross pay 50,000;
+          40 hours/week; 52 weeks/year; 5 days/week; annual hours 2,080; hourly gross equivalent
+          24.04.” The note makes clear that the number came from a particular denominator rather
+          than a generic salary rule.
+        </p>
+        <p>
+          For a monthly input, include the annualization step. A compact record could read: “Monthly
+          gross pay 3,000; annual equivalent 36,000; 40 hours/week; 52 weeks/year; hourly gross
+          equivalent 17.31.” The value 36,000 is useful because it explains exactly how the monthly
+          amount entered the yearly formula. For weekly mode, preserve the weekly input and the
+          selected weeks per year because that selected weeks value changes the annual and monthly
+          cards even though the direct weekly-to-hourly division uses hours per week.
+        </p>
+        <p>
+          Keeping a note also helps distinguish a formula output from a later decision. You may
+          choose to discuss, accept, reject, budget around, or record a pay figure for reasons that
+          the calculator does not model. Place that decision rationale in a different sentence. One
+          sentence can state the inputs and resulting conversion; another can state the context or
+          action taken. This small separation prevents an exact arithmetic result from being misread
+          as an assessment of a job, employer, contract, or financial outcome.
+        </p>
+        <p>
+          When several scenarios are needed, a spreadsheet may be a better record system. Make one
+          row per scenario, keep the input period and time assumptions in separate columns, and
+          store the formula rather than only a rounded display result. This calculator can still be
+          useful as a one-scenario check before you extend the logic to many rows. The goal is not
+          to create more numbers; it is to preserve the meaning of the numbers that are already
+          being compared.
+        </p>
+        <h2 id="rounding">Round the display, preserve the inputs</h2>
+        <p>
+          Currency cards are usually easier to read at two decimal places, but a division can have
+          more digits. The calculator therefore formats displayed results rather than altering the
+          underlying entered values. A displayed 24.04 comes from a value slightly above 24.038.
+          When a comparison is close, use the input values and shown formula rather than trying to
+          reverse a result from a rounded card. This is especially important when multiplying a
+          rounded hourly result back into a long period.
+        </p>
+        <p>
+          The same principle applies when an amount must be written to a fixed increment elsewhere.
+          Use the calculator to see the unambiguous conversion based on the values entered. If you
+          choose a rounded amount for another record, enter that selected amount into the relevant
+          mode and inspect the new output. A calculator can show arithmetic clearly; it should not
+          hide the fact that a later rounding decision has changed an input.
+        </p>
+        <h2 id="limits">Know what this gross-pay calculator does not decide</h2>
+        <p>
+          The page does not calculate take-home pay, tax withholding, deductions, contribution
+          amounts, benefit value, overtime premiums, statutory entitlements, minimum wage
+          compliance, leave, classification, payroll timing, or contract obligations. It does not
+          use a country, region, employer, job title, market salary figure, or live exchange rate.
+          Those omissions are intentional. They keep the result tied to the exact arithmetic that
+          can be shown in the browser from your selected pay and time inputs.
+        </p>
+        <p>
+          A zero or negative pay entry cannot produce a meaningful positive gross-pay rate in this
+          tool, and zero or negative hours, weeks, or days would make a necessary denominator
+          invalid. The calculator responds with an explanatory state rather than inventing a result.
+          If a record has an unusual value, confirm its definition before trying to convert it. A
+          formula is dependable only when its inputs describe the same scenario.
+        </p>
+        <p>
+          Use a spreadsheet or a formal payroll, accounting, or employment workflow when you need to
+          retain multiple periods, pay components, tax treatment, time records, or legal terms. Use
+          this page for one visible gross-pay conversion at a time. The
+          <a href="percentage-calculator.html">Percentage Calculator</a> can separately check a
+          stated percentage change, while the
+          <a href="profit-margin-calculator.html">Profit Margin Calculator</a>
+          addresses pricing math rather than pay conversion. Keeping those tasks separate prevents a
+          quick arithmetic check from taking on claims it cannot support.
+        </p>
+      </article>
+      <section class="faq">
+        <h2>Questions, answered directly.</h2>
+        <details>
+          <summary>How is hourly gross pay calculated from annual pay?</summary>
+          <p>Annual gross pay is divided by hours per week multiplied by weeks per year.</p>
+        </details>
+        <details>
+          <summary>How is monthly pay converted to hourly pay?</summary>
+          <p>
+            Monthly gross pay is multiplied by 12, then divided by the annual working hours you
+            enter.
+          </p>
+        </details>
+        <details>
+          <summary>How is weekly pay converted to hourly pay?</summary>
+          <p>Weekly gross pay is divided by the hours per week you enter.</p>
+        </details>
+        <details>
+          <summary>Why can I edit weeks per year?</summary>
+          <p>
+            The field keeps the annual work-time assumption explicit instead of silently fixing it.
+          </p>
+        </details>
+        <details>
+          <summary>Why can I edit days per week?</summary>
+          <p>The selected days per week is used to derive the daily gross-pay equivalent.</p>
+        </details>
+        <details>
+          <summary>Does this estimate take-home pay?</summary>
+          <p>
+            No. It performs gross-pay arithmetic only and does not calculate deductions or
+            withholding.
+          </p>
+        </details>
+        <details>
+          <summary>Does the calculator include overtime?</summary>
+          <p>No. It does not determine overtime rates, eligibility, or employment rules.</p>
+        </details>
+        <details>
+          <summary>Can I use another currency unit?</summary>
+          <p>
+            Yes, if the selected pay amount and results are interpreted in the same currency unit.
+          </p>
+        </details>
+        <details>
+          <summary>What if hours or weeks are zero?</summary>
+          <p>
+            The calculator shows an explanation because it cannot divide pay by zero or negative
+            work time.
+          </p>
+        </details>
+        <details>
+          <summary>Is this employment, tax, or contract advice?</summary>
+          <p>
+            No. It is a transparent gross-pay conversion, not an interpretation of rules or terms.
+          </p>
+        </details>
+      </section>
+      <section class="related">
+        <h2>Continue with related arithmetic.</h2>
         <div class="related-grid">
-            <a href="resume-builder.html" class="related-link">Free Resume Builder</a>
-            <a href="tax-refund-tracker.html" class="related-link">Tax Refund Tracker</a>
-            <a href="tip-calculator.html" class="related-link">Tip & Bill Splitter</a>
-            <a href="profit-margin-calculator.html" class="related-link">Profit Margin Calc</a>
-            <a href="sales-tax-calculator.html" class="related-link">Sales Tax Calculator</a>
-            <a href="invoice-generator.html" class="related-link">Invoice Generator</a>
-            <a href="compound-interest-calculator.html" class="related-link">Interest Calculator</a>
-            <a href="currency-converter.html" class="related-link">Currency Converter</a>
+          <a href="percentage-calculator.html"><small>RATE MATH</small>Percentage Calculator</a>
+          <a href="profit-margin-calculator.html"
+            ><small>PRICING MATH</small>Profit Margin Calculator</a
+          >
+          <a href="invoice-generator.html"><small>RECORDS</small>Invoice Generator</a>
+          <a href="sales-tax-calculator.html"><small>CHECKOUT MATH</small>Sales Tax Calculator</a>
         </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Accurate · Professional · US Standard Calculations</p>
-</footer>
-
-<script>
-    function calculate() {
-        const salary = parseFloat(document.getElementById('annualSalary').value) || 0;
-        const hours = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
-
-        const weekly = salary / 52;
-        const hourly = weekly / hours;
-        const daily = hourly * (hours / 5); // Assuming 5 day work week
-        const monthly = salary / 12;
-
-        document.getElementById('hourlyVal').innerText = '$' + hourly.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('dailyVal').innerText = '$' + daily.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('weeklyVal').innerText = '$' + weekly.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('monthlyVal').innerText = '$' + monthly.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      </section>
+    </main>
+    <script>
+      /* Toolyfi Editorial Utility Atlas: calculate gross-pay ratios locally, expose every time assumption, and never imply taxes or employment rules. */
+      (() => {
+        const $ = (id) => document.getElementById(id);
+        let mode = "annual";
+        const labels = {
+          annual: {
+            label: "Annual gross pay",
+            hint: "Enter the gross annual amount you want to convert.",
+            value: "50000",
+          },
+          monthly: {
+            label: "Monthly gross pay",
+            hint: "The calculator multiplies this gross amount by 12 for its annual equivalent.",
+            value: "3000",
+          },
+          weekly: {
+            label: "Weekly gross pay",
+            hint: "The calculator uses your selected weeks per year for its annual equivalent.",
+            value: "800",
+          },
+        };
+        const money = (value) =>
+          Number.isFinite(value)
+            ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(value)
+            : "—";
+        const reset = (message, formula) => {
+          $("hourly").textContent = "Check values";
+          $("result-note").textContent = message;
+          ["annual", "monthly", "weekly", "daily"].forEach((id) => ($(id).textContent = "—"));
+          $("formula").textContent = formula;
+        };
+        const calculate = () => {
+          const pay = Number.parseFloat($("pay").value);
+          const hours = Number.parseFloat($("hours").value);
+          const weeks = Number.parseFloat($("weeks").value);
+          const days = Number.parseFloat($("days").value);
+          if (!Number.isFinite(pay) || pay <= 0) {
+            reset(
+              "Enter a gross-pay amount greater than zero.",
+              "A positive gross-pay input is required.",
+            );
+            return;
+          }
+          if (!Number.isFinite(hours) || hours <= 0) {
+            reset(
+              "Enter hours per week greater than zero.",
+              "Hourly gross pay cannot be calculated with zero or negative hours per week.",
+            );
+            return;
+          }
+          if (!Number.isFinite(weeks) || weeks <= 0) {
+            reset(
+              "Enter weeks per year greater than zero.",
+              "Annual working hours cannot be calculated with zero or negative weeks per year.",
+            );
+            return;
+          }
+          if (!Number.isFinite(days) || days <= 0) {
+            reset(
+              "Enter days per week greater than zero.",
+              "A daily equivalent cannot be calculated with zero or negative days per week.",
+            );
+            return;
+          }
+          const annual = mode === "annual" ? pay : mode === "monthly" ? pay * 12 : pay * weeks;
+          const monthly = annual / 12;
+          const weekly = annual / weeks;
+          const daily = weekly / days;
+          const hourly = annual / (hours * weeks);
+          $("hourly").textContent = money(hourly);
+          $("result-note").textContent =
+            "Gross-pay equivalents from the values and time pattern you selected.";
+          $("annual").textContent = money(annual);
+          $("monthly").textContent = money(monthly);
+          $("weekly").textContent = money(weekly);
+          $("daily").textContent = money(daily);
+          const formula =
+            mode === "annual"
+              ? `${money(pay)} ÷ (${hours} hours/week × ${weeks} weeks/year) = ${money(hourly)} per hour.`
+              : mode === "monthly"
+                ? `(${money(pay)} × 12) ÷ (${hours} hours/week × ${weeks} weeks/year) = ${money(hourly)} per hour.`
+                : `${money(pay)} weekly gross pay ÷ ${hours} hours/week = ${money(hourly)} per hour; annual equivalent uses ${weeks} selected weeks.`;
+          $("formula").textContent = formula;
+        };
+        document.querySelectorAll(".mode").forEach((button) => {
+          button.addEventListener("click", () => {
+            mode = button.dataset.mode;
+            document
+              .querySelectorAll(".mode")
+              .forEach((item) => item.classList.toggle("active", item === button));
+            $("pay-label").textContent = labels[mode].label;
+            $("pay-hint").textContent = labels[mode].hint;
+            $("pay").value = labels[mode].value;
+            calculate();
+          });
+        });
+        ["pay", "hours", "weeks", "days"].forEach((id) =>
+          $(id).addEventListener("input", calculate),
+        );
+        calculate();
+      })();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
