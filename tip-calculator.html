@@ -1,344 +1,1388 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Tip Calculator - Calculate Tips & Split Bills Instantly Free</title>
-    <meta content="Calculate tips and split bills with friends instantly. Free tip calculator with 15-20% presets. Works for restaurants, bars, delivery, and services." name="description">
-    <meta content="tip calculator, split bill, tipping guide USA, restaurant tip, delivery tip, gratuity calculator, split check online" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/tip-calculator.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Tip Calculator - Calculate Tips & Split Bills Instantly Free">
-    <meta property="og:description" content="Calculate tips and split bills with friends instantly. Free tip calculator with 15-20% presets.">
-    <meta property="og:url" content="https://toolyfi.com/tip-calculator.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#10b981; --bg:#ecfdf5; --surface:#fff; --border:#a7f3d0; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
-
-        .container { max-width:900px; margin:0 auto; padding:40px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
-
-        .calc-card { background:var(--surface); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(16,185,129,0.1); margin-bottom: 60px; }
-        
-        .input-row { margin-bottom: 24px; }
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-        .input-wrap { position: relative; display: flex; align-items: center; }
-        .input-icon { position: absolute; left: 16px; font-weight: 800; color: var(--primary); }
-        input { width: 100%; padding: 16px 16px 16px 40px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.2rem; font-weight: 700; outline: none; transition: all 0.2s; }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(16,185,129,0.1); }
-
-        .tip-presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
-        .preset-btn { padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-weight: 700; transition: all 0.2s; }
-        .preset-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; padding-top: 32px; border-top: 2px dashed var(--border); }
-        @media(max-width:500px){ .result-grid{grid-template-columns: 1fr;} }
-        .result-item { background: #f0fdf4; padding: 20px; border-radius: 16px; text-align: center; }
-        .result-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-        .result-val { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
-        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
-        
-        .etiquette-list { background: white; padding: 32px; border-radius: 16px; border: 1px solid var(--border); margin: 40px 0; }
-        .etiquette-item { display: flex; gap: 16px; margin-bottom: 20px; }
-        .etiquette-icon { font-size: 1.5rem; }
-
-        .state-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-        .state-table th, .state-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
-        .state-table th { background: #f0fdf4; font-weight: 700; }
-
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-
-        .related-tools { background: #ecfdf5; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
-    </style>
-
-    <!-- Schema.org Markup -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tip Calculator: Split a Bill, Tax & Rounding | Toolyfi</title>
+    <meta
+      name="description"
+      content="Calculate a tip, add optional tax, split a bill, and choose rounding locally in your browser. See every amount and formula before you pay."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://toolyfi.com/tip-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta property="og:title" content="Tip Calculator: Split a Bill, Tax & Rounding | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Work out tip, tax, total, and a per-person split with the method shown."
+    />
+    <meta property="og:url" content="https://toolyfi.com/tip-calculator.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Tip Calculator",
-      "description": "Calculate tips and split bills with friends instantly. Free tip calculator with 15-20% presets.",
-      "url": "https://toolyfi.com/tip-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "reviewCount": "5400"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Tip Calculator",
+        "url": "https://toolyfi.com/tip-calculator.html",
+        "description": "A browser-side calculator for a tip, optional tax, bill split, and rounding.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": "Percent or fixed-amount tip, optional tax, split bill, rounding, visible calculation formula, browser-local history"
       }
-    }
     </script>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
-
-<div class="container">
-    <div class="hero">
-        <h1>Free Tip Calculator & Bill Splitter</h1>
-        <p>Quickly calculate the perfect tip and split the bill among friends. No more awkward math at the dinner table.</p>
-    </div>
-
-    <div class="calc-card">
-        <div class="input-row">
-            <label>Bill Amount</label>
-            <div class="input-wrap">
-                <span class="input-icon">$</span>
-                <input type="number" id="billAmount" placeholder="0.00" oninput="calculate()">
-            </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tip Calculator",
+            "item": "https://toolyfi.com/tip-calculator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is the tip calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For a percentage tip, the tool divides the entered percent by 100 and multiplies it by the selected tip base. A fixed tip is added as entered."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I include tax?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can enter a tax rate and choose whether the tip base is the pre-tax bill or bill plus tax."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator know local rules?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Enter the rate and choices that apply to your situation. The calculator performs arithmetic only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the split include tax and tip?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The per-person total divides the calculated final total by the number of people you enter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does rounding change?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rounding can adjust the tip, the total, or the per-person amount. The page explains which basis it used."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my bill sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Calculations run in the browser. Saved history remains in the current browser until you clear it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a fixed tip?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Switch from percent to amount and enter the exact amount you want to add."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a tip equal a service charge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not necessarily. Read the bill and applicable terms; this calculator does not determine whether a charge has already been added."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the result be used for accounting or tax filing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a transparent estimate from your entered numbers, not accounting, tax, legal, or financial advice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does a split sometimes leave a cent difference?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Currency is often displayed to two decimals. Splitting a total can create a remainder of one or more cents; agree how to allocate it."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral signals, generous editorial spacing. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --coral: #ef6c54;
+        --sage: #dfe7dc;
+        --line: #d9d6cf;
+        --muted: #647083;
+        --deep: #102033;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      .page {
+        max-width: 1180px;
+        margin: auto;
+        padding: 38px 24px 86px;
+      }
+      .crumbs {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin: 16px 0 22px;
+      }
+      .crumbs a {
+        color: inherit;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.03fr 0.97fr;
+        gap: 54px;
+        align-items: center;
+        padding: 25px 0 62px;
+      }
+      .hero h1,
+      .guide h2,
+      .related h2 {
+        font-family: Fraunces, serif;
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        margin: 15px 0 22px;
+        max-width: 650px;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .hero p {
+        max-width: 590px;
+        font-size: 1.03rem;
+        color: var(--muted);
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--ink);
+        padding: 12px 17px;
+        background: transparent;
+        color: var(--ink);
+        font: 700 0.84rem inherit;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          transform 0.16s ease,
+          background 0.16s ease;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+      }
+      .button.primary {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: #fff;
+      }
+      .truths {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--muted);
+      }
+      .truths span:before {
+        content: "•";
+        color: var(--coral);
+        padding-right: 6px;
+      }
+      .hero-art {
+        position: relative;
+        background: #eee6d8;
+        padding: 16px;
+        box-shadow: 9px 10px 0 var(--deep);
+        transform: rotate(1.2deg);
+      }
+      .hero-art img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .hero-art figcaption {
+        position: absolute;
+        right: 7%;
+        bottom: 5%;
+        margin: 0;
+        background: #fff;
+        padding: 6px 9px;
+        font-size: 0.65rem;
+        font-weight: 800;
+      }
+      .calc-zone {
+        background: var(--deep);
+        padding: clamp(24px, 5vw, 54px);
+        margin: 0 -24px;
+        color: #fff;
+      }
+      .calc-intro {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+        max-width: 1132px;
+        margin: 0 auto 28px;
+      }
+      .calc-intro h2 {
+        font:
+          700 clamp(2rem, 4vw, 3.5rem) / 1 Fraunces,
+          serif;
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+      .calc-intro p {
+        max-width: 390px;
+        color: #c4ccd7;
+        margin: 0;
+        font-size: 0.88rem;
+      }
+      .calculator {
+        max-width: 1132px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+      }
+      .panel {
+        background: #fff;
+        color: var(--ink);
+        padding: 26px;
+      }
+      .panel h3 {
+        font:
+          700 1rem Fraunces,
+          serif;
+        margin: 0 0 19px;
+        font-size: 1.55rem;
+      }
+      .field {
+        margin: 0 0 17px;
+      }
+      .field label,
+      .field legend {
+        display: block;
+        font-size: 0.69rem;
+        color: var(--muted);
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        margin: 0 0 7px;
+      }
+      .field input,
+      .field select {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: #fff;
+        padding: 12px;
+        font:
+          700 1rem "Plus Jakarta Sans",
+          sans-serif;
+        color: var(--ink);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .switches {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .mode {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 9px 11px;
+        font: 800 0.74rem inherit;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .mode.active {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: #fff;
+      }
+      .check {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+      .check input {
+        accent-color: var(--coral);
+        margin-top: 4px;
+      }
+      .mini {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin: 3px 0 0;
+      }
+      .result-panel {
+        background: var(--sage);
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+      }
+      .result-panel h3 {
+        font:
+          700 1.45rem Fraunces,
+          serif;
+        margin: 0;
+      }
+      .kicker {
+        font-size: 0.68rem;
+        color: #536454;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 7px 0 22px;
+      }
+      .main-total {
+        font:
+          800 clamp(2.8rem, 6vw, 4.4rem) / 0.95 Fraunces,
+          serif;
+        letter-spacing: -0.06em;
+        margin: 0 0 7px;
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin: 18px 0;
+        background: #f5f8f2;
+      }
+      .detail {
+        padding: 13px;
+        border-right: 1px solid #cdd7c9;
+        border-bottom: 1px solid #cdd7c9;
+      }
+      .detail:nth-child(2n) {
+        border-right: 0;
+      }
+      .detail b {
+        display: block;
+        font-size: 1.05rem;
+      }
+      .detail span {
+        font-size: 0.69rem;
+        color: #536454;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .formula {
+        background: #fff;
+        padding: 13px;
+        font-size: 0.78rem;
+        color: #415047;
+        margin-top: auto;
+        overflow-wrap: anywhere;
+      }
+      .utility-row {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 13px;
+      }
+      .utility-row button {
+        border: 1px solid #869586;
+        background: transparent;
+        padding: 9px 10px;
+        font: 800 0.71rem inherit;
+        color: #324232;
+        cursor: pointer;
+      }
+      .notice {
+        min-height: 20px;
+        font-size: 0.76rem;
+        color: #345134;
+        margin-top: 10px;
+      }
+      .history {
+        max-width: 1132px;
+        margin: 24px auto 0;
+        background: #172b3e;
+        padding: 17px;
+        color: #dce2ea;
+      }
+      .history-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: center;
+      }
+      .history h3 {
+        font-size: 0.82rem;
+        margin: 0;
+      }
+      .history button {
+        border: 0;
+        background: transparent;
+        color: #fff;
+        text-decoration: underline;
+        font: 700 0.72rem inherit;
+        cursor: pointer;
+      }
+      .history-list {
+        font-size: 0.75rem;
+        margin-top: 9px;
+        color: #c8d1dc;
+      }
+      .guide {
+        max-width: 850px;
+        margin: 78px auto 0;
+      }
+      .guide h2 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        margin: 62px 0 18px;
+      }
+      .guide h3 {
+        font:
+          700 1.45rem Fraunces,
+          serif;
+        margin: 35px 0 12px;
+      }
+      .guide p {
+        font-size: 1rem;
+        color: #3f4b5d;
+      }
+      .guide li {
+        margin: 7px 0;
+        color: #3f4b5d;
+      }
+      .note {
+        border-left: 4px solid var(--coral);
+        padding: 16px 18px;
+        background: #fff;
+        margin: 26px 0;
+      }
+      .toc {
+        background: #f0ede6;
+        padding: 22px;
+        margin: 35px 0;
+      }
+      .toc a {
+        display: inline-block;
+        margin: 5px 15px 5px 0;
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .faq {
+        margin-top: 65px;
+      }
+      .faq h2 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+      }
+      .faq details {
+        border-top: 1px solid var(--line);
+        padding: 16px 0;
+      }
+      .faq details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 800;
+        padding-right: 20px;
+      }
+      .faq p {
+        color: #536073;
+        font-size: 0.9rem;
+        max-width: 780px;
+      }
+      .related {
+        margin-top: 70px;
+        padding: 38px;
+        background: var(--deep);
+        color: #fff;
+      }
+      .related h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        margin: 0 0 23px;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related a {
+        min-height: 135px;
+        background: #fff;
+        color: var(--ink);
+        padding: 17px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font:
+          700 1.1rem/1.08 Fraunces,
+          serif;
+      }
+      .related small {
+        font:
+          800 0.63rem "Plus Jakarta Sans",
+          sans-serif;
+        color: var(--coral);
+        letter-spacing: 0.08em;
+      }
+      .scope {
+        max-width: 850px;
+        margin: 34px auto 0;
+        padding: 19px;
+        background: #f0ede6;
+        color: #536073;
+        font-size: 0.8rem;
+      }
+      @media (max-width: 800px) {
+        .page {
+          padding: 26px 18px 62px;
+        }
+        .hero,
+        .calculator {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .hero {
+          padding-top: 12px;
+        }
+        .hero-art {
+          order: -1;
+          margin: 0 4px;
+        }
+        .calc-zone {
+          margin: 0 -18px;
+          padding: 30px 18px;
+        }
+        .calc-intro {
+          display: block;
+        }
+        .calc-intro p {
+          margin-top: 12px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .guide {
+          margin-top: 54px;
+        }
+        .row {
+          grid-template-columns: 1fr;
+        }
+        .main-total {
+          font-size: 3.3rem;
+        }
+      }
+      @media (max-width: 450px) {
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .panel,
+        .result-panel {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="crumbs">
+        <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Tip
+        Calculator
+      </p>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Clear bill math, before you pay</div>
+          <h1>Split the <em>bill</em>. Keep the method visible.</h1>
+          <p>
+            Enter a bill, an optional tax rate, your chosen tip, and the people sharing it. Toolyfi
+            shows the tip base, total, per-person amount, and rounding effect in one local
+            calculation.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#calculator">Open calculator</a
+            ><a class="button" href="#guide">Read the method</a>
+          </div>
+          <div class="truths">
+            <span>Runs in your browser</span><span>No sign-up</span><span>Formula shown</span>
+          </div>
         </div>
-
-        <div class="input-row">
-            <label>Tip Percentage</label>
-            <div class="input-wrap">
-                <span class="input-icon">%</span>
-                <input type="number" id="tipPercent" value="18" oninput="calculate()">
+        <figure class="hero-art">
+          <img
+            src="images/toolyfi-tip-calculator-hero.webp"
+            alt="Editorial paper collage of a restaurant bill, percentage mark, calculator and shared payment tokens"
+          />
+          <figcaption>Tip, total, split</figcaption>
+        </figure>
+      </section>
+    </main>
+    <section class="calc-zone" id="calculator">
+      <div class="calc-intro">
+        <h2>Decide the basis first.<br />Then calculate.</h2>
+        <p>
+          A percentage can apply to the pre-tax bill or to bill plus tax. Choose explicitly; Toolyfi
+          never assumes which one you intended.
+        </p>
+      </div>
+      <div class="calculator">
+        <section class="panel" aria-label="Tip calculator inputs">
+          <h3>Your bill details</h3>
+          <div class="field">
+            <label for="bill">Bill before tax</label
+            ><input
+              id="bill"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="Example: 48.75"
+            />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="tax">Optional tax rate (%)</label
+              ><input
+                id="tax"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="Example: 8.25"
+              />
             </div>
-            <div class="tip-presets">
-                <button class="preset-btn" onclick="setTip(15)">15%</button>
-                <button class="preset-btn active" onclick="setTip(18)">18%</button>
-                <button class="preset-btn" onclick="setTip(20)">20%</button>
-                <button class="preset-btn" onclick="setTip(25)">25%</button>
+            <div class="field">
+              <label for="people">People sharing</label
+              ><input id="people" type="number" inputmode="numeric" min="1" step="1" value="1" />
             </div>
+          </div>
+          <div class="field">
+            <label>Tip method</label>
+            <div class="switches">
+              <button class="mode active" type="button" data-mode="percent">Percent of base</button
+              ><button class="mode" type="button" data-mode="amount">Fixed amount</button>
+            </div>
+          </div>
+          <div class="field" id="percent-field">
+            <label for="tip-percent">Tip percentage</label
+            ><input
+              id="tip-percent"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              value="18"
+            />
+            <div class="switches" style="margin-top: 9px">
+              <button class="mode" type="button" data-preset="15">15%</button
+              ><button class="mode active" type="button" data-preset="18">18%</button
+              ><button class="mode" type="button" data-preset="20">20%</button
+              ><button class="mode" type="button" data-preset="25">25%</button>
+            </div>
+          </div>
+          <div class="field" id="amount-field" hidden>
+            <label for="tip-amount">Fixed tip amount</label
+            ><input
+              id="tip-amount"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="Example: 8.00"
+            />
+          </div>
+          <label class="check"
+            ><input id="tip-on-tax" type="checkbox" /><span
+              >Calculate a percentage tip on bill plus tax.<br /><small
+                >Unchecked means the percentage applies to the pre-tax bill only.</small
+              ></span
+            ></label
+          >
+          <div class="field" style="margin-top: 18px">
+            <label for="rounding">Rounding choice</label
+            ><select id="rounding">
+              <option value="none">No rounding</option>
+              <option value="tip">Round the tip up to a whole amount</option>
+              <option value="total">Round the final total up to a whole amount</option>
+              <option value="per-person">Round each person’s share up to a whole amount</option>
+            </select>
+          </div>
+        </section>
+        <section class="result-panel" aria-live="polite">
+          <h3>Your total</h3>
+          <p class="kicker">Enter a bill to begin</p>
+          <p id="total" class="main-total">—</p>
+          <p id="total-label" class="mini">Total after tax and tip</p>
+          <div class="detail-grid">
+            <div class="detail"><span>Bill</span><b id="bill-out">—</b></div>
+            <div class="detail"><span>Tax</span><b id="tax-out">—</b></div>
+            <div class="detail"><span>Tip</span><b id="tip-out">—</b></div>
+            <div class="detail"><span>Each person</span><b id="each-out">—</b></div>
+          </div>
+          <div id="formula" class="formula">Enter your figures to see the exact calculation.</div>
+          <div class="utility-row">
+            <button id="copy" type="button">Copy summary</button
+            ><button id="save" type="button">Save locally</button
+            ><button id="reset" type="button">Reset</button>
+          </div>
+          <div id="notice" class="notice"></div>
+        </section>
+      </div>
+      <section class="history">
+        <div class="history-head">
+          <h3>Saved only in this browser</h3>
+          <button id="clear-history" type="button">Clear history</button>
         </div>
-
-        <div class="input-row">
-            <label>Number of People</label>
-            <div class="input-wrap">
-                <span class="input-icon">👥</span>
-                <input type="number" id="numPeople" value="1" oninput="calculate()">
-            </div>
+        <div id="history-list" class="history-list">No saved calculations in this browser.</div>
+      </section>
+    </section>
+    <main class="page">
+      <article class="guide" id="guide">
+        <div class="eyebrow">Tip calculator guide</div>
+        <h2>Use the right total—not just a familiar percentage.</h2>
+        <p>
+          A tip calculation becomes simple once its parts are named. There is a bill before tax, an
+          optional tax amount, a tip base, a tip amount, and a final total. When several people are
+          sharing the payment, there is also a division step. Those elements are often compressed
+          into one number at a checkout screen, which is why it helps to make the arithmetic
+          visible. This page focuses on the calculation itself. It does not decide what amount is
+          appropriate, whether a charge is already included, or what local custom, contract, venue
+          policy, or law applies.
+        </p>
+        <nav class="toc" aria-label="Guide sections">
+          <a href="#parts">The parts of a bill</a><a href="#percent">Percentage tips</a
+          ><a href="#tax-basis">Tax and tip basis</a><a href="#split">Splitting</a
+          ><a href="#rounding-guide">Rounding</a><a href="#check">Check a result</a
+          ><a href="#privacy">Privacy</a>
+        </nav>
+        <h2 id="parts">The five parts of a transparent calculation</h2>
+        <p>
+          Start with the bill before tax. In this calculator, that is the amount you enter in the
+          first field. If you also enter a tax percentage, the tool calculates tax by multiplying
+          the bill by the rate converted to a decimal. For example, a bill of 48.75 with an entered
+          tax rate of 8.25% has calculated tax of 48.75 × 0.0825, or 4.021875 before currency
+          display rounding. The bill plus tax is then 52.771875.
+        </p>
+        <p>
+          Next comes the tip base. A percentage tip can be calculated on the bill before tax, or on
+          bill plus the tax amount. Neither approach should be silently assumed. The checkbox
+          exposes the choice. A fixed amount has no percentage base; it is added exactly as entered.
+          Finally, the total is bill plus tax plus tip. When a bill is split evenly, divide that
+          final total by the entered number of people.
+        </p>
+        <div class="note">
+          <strong>Read the receipt first.</strong> A visible calculation cannot establish whether an
+          establishment has already added a service charge, whether a price is tax-inclusive, or
+          what a group has agreed to pay. Confirm those facts from the bill and relevant terms
+          before choosing the tool’s inputs.
         </div>
-
-        <div class="result-grid">
-            <div class="result-item">
-                <div class="result-label">Tip Amount</div>
-                <div id="tipAmount" class="result-val">$0.00</div>
-            </div>
-            <div class="result-item">
-                <div class="result-label">Total Per Person</div>
-                <div id="totalPerPerson" class="result-val">$0.00</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- COMPREHENSIVE CONTENT SECTION -->
-    <div class="content-section">
-        <h2>Mastering Tip Culture in the USA: A 2026 Guide</h2>
-        <p>Tipping in the United States can be a complex social minefield. Unlike many other countries where service is included in the price, tipping in the US is a fundamental part of the service industry's wage structure. Our <strong>Free Tip Calculator</strong> is designed to help you navigate these social norms with ease and accuracy.</p>
-
-        <h3>Why Tipping Matters in America</h3>
-        <p>In the US, many service workers (especially in restaurants) earn a "tipped minimum wage," which is significantly lower than the standard minimum wage. Tips aren't just a "bonus"—they are the primary source of income for millions of workers. A standard tip shows appreciation for good service and ensures the staff is fairly compensated.</p>
-
-        <h3>Standard Tipping Percentages by Service Type</h3>
-        <div class="etiquette-list">
-            <div class="etiquette-item">
-                <div class="etiquette-icon">🍽️</div>
-                <div>
-                    <h4>Sit-down Restaurants: 18% - 22%</h4>
-                    <p>The gold standard for full service. 15% is now considered the absolute minimum for adequate service, while 20%+ is standard for good service.</p>
-                </div>
-            </div>
-            <div class="etiquette-item">
-                <div class="etiquette-icon">☕</div>
-                <div>
-                    <h4>Coffee Shops & Counter Service: $1 - $2 or 10%</h4>
-                    <p>While not strictly required, tipping your barista is common practice, especially for complex orders.</p>
-                </div>
-            </div>
-            <div class="etiquette-item">
-                <div class="etiquette-icon">🚗</div>
-                <div>
-                    <h4>Uber, Lyft & Taxis: 15% - 20%</h4>
-                    <p>Rideshare apps have made tipping easy. 15% is standard, but consider more for long trips or help with luggage.</p>
-                </div>
-            </div>
-            <div class="etiquette-item">
-                <div class="etiquette-icon">🍕</div>
-                <div>
-                    <h4>Food Delivery: $5 Minimum or 15%</h4>
-                    <p>Always consider the distance and weather. If it's raining or snowing, a higher tip is greatly appreciated.</p>
-                </div>
-            </div>
-            <div class="etiquette-item">
-                <div class="etiquette-icon">💇</div>
-                <div>
-                    <h4>Salons & Spas: 20%</h4>
-                    <p>For haircuts, massages, or nail services, 20% is the standard expectation for professional service.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3>Regional Tipping Guide: State Differences</h3>
-        <p>While 20% is a safe bet anywhere in the US, local norms can vary slightly based on the cost of living and local laws:</p>
-        <table class="state-table">
-            <thead>
-                <tr>
-                    <th>Region / State</th>
-                    <th>Average Tip</th>
-                    <th>Local Norms</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>New York / NYC</td>
-                    <td>20% - 25%</td>
-                    <td>High cost of living makes 20% the absolute floor in Manhattan.</td>
-                </tr>
-                <tr>
-                    <td>California</td>
-                    <td>18% - 20%</td>
-                    <td>Servers earn full minimum wage here, but 18%+ is still standard.</td>
-                </tr>
-                <tr>
-                    <td>Texas / South</td>
-                    <td>15% - 20%</td>
-                    <td>Southern hospitality often comes with generous tipping for great service.</td>
-                </tr>
-                <tr>
-                    <td>Florida</td>
-                    <td>18% - 22%</td>
-                    <td>Heavy tourism areas often have "automatic gratuity" for large groups.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>5-Point Tip Etiquette Guide</h3>
-        <ol>
-            <li><strong>Tip on the Pre-Tax Amount:</strong> Technically, you only need to tip on the cost of food and drink, not the sales tax. However, many people tip on the total for simplicity.</li>
-            <li><strong>Check for "Service Charge":</strong> Some restaurants, especially in tourist hubs or for groups of 6+, add an automatic 18-20% service charge. Check your bill before adding more.</li>
-            <li><strong>Don't "Stiff" for Kitchen Errors:</strong> If your steak is overcooked, that's usually the kitchen's fault, not the server's. Ask for a manager instead of withholding the tip.</li>
-            <li><strong>Cash is King:</strong> While credit card tips are fine, servers often prefer cash as they can take it home the same day.</li>
-            <li><strong>Takeout Tipping:</strong> While not as high as sit-down, a 10% tip for the staff who packaged your order is a kind gesture.</li>
-        </ol>
-
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-grid">
-            <details>
-                <summary>Do I have to tip on a takeout order?</summary>
-                <div class="faq-content">It's not strictly required like sit-down service, but 10% is common and appreciated for the effort of preparing and packaging your meal correctly.</div>
-            </details>
-            <details>
-                <summary>How much should I tip my Uber or Lyft driver?</summary>
-                <div class="faq-content">15% to 20% is standard. If the driver was exceptionally helpful with bags or navigated difficult traffic, 20-25% is a great way to show thanks.</div>
-            </details>
-            <details>
-                <summary>What if the service was truly terrible?</summary>
-                <div class="faq-content">Instead of leaving $0, leave a very small tip (like 10%) and speak to a manager. Leaving nothing is often interpreted as "forgetting," while a small tip sends a clear message about the service quality.</div>
-            </details>
-            <details>
-                <summary>Should I tip on the total bill including tax?</summary>
-                <div class="faq-content">Standard etiquette says you tip on the subtotal (before tax). However, most modern POS systems calculate the suggested tip on the total. Both are acceptable.</div>
-            </details>
-            <details>
-                <summary>How do I split a bill with 5 people?</summary>
-                <div class="faq-content">Simply enter the total bill, your desired tip %, and "5" in the number of people field. Our tool will tell you exactly what each person owes.</div>
-            </details>
-            <details>
-                <summary>Is tipping required in fast-food restaurants?</summary>
-                <div class="faq-content">No. Tipping is generally not expected at fast-food chains like McDonald's or Subway, though some may have a "tip jar" for spare change.</div>
-            </details>
-            <details>
-                <summary>Do I tip at an open bar at a wedding?</summary>
-                <div class="faq-content">Yes, usually $1-$2 per drink is appropriate for the bartender, even if the drinks are free for you.</div>
-            </details>
-            <details>
-                <summary>What is a "gratuity" vs a "tip"?</summary>
-                <div class="faq-content">They are essentially the same thing. "Gratuity" is often the formal term used on bills, especially when it's automatically added for large groups.</div>
-            </details>
-            <details>
-                <summary>How much do I tip for a hotel bellhop?</summary>
-                <div class="faq-content">$2-$5 per bag is standard depending on the weight and the luxury level of the hotel.</div>
-            </details>
-            <details>
-                <summary>Should I tip my hair stylist?</summary>
-                <div class="faq-content">Yes, 20% is the standard for hair and beauty services in the US.</div>
-            </details>
-        </div>
-    </div>
-
-    <div class="related-tools">
-        <h3>Related Finance Tools</h3>
+        <h2 id="percent">How percentage tips work</h2>
+        <p>
+          A percentage is a rate per hundred. To find 18% of a chosen base, divide 18 by 100 and
+          multiply by that base. If the base is 48.75, the tip is 48.75 × 0.18 = 8.775 before
+          display rounding. Add it to the rest of the total only after you have identified the right
+          base. A familiar percent is not a replacement for the question “percent of what?”
+        </p>
+        <p>
+          The percentage buttons are shortcuts for entering a number, not recommendations and not
+          claims about an expected amount. You can replace them with any non-negative rate. A fixed
+          tip can be more suitable when a group has agreed an exact amount, when you are working
+          from a receipt with a stated amount, or when you simply do not want a rate-based
+          calculation. Switching modes makes the difference clear: a percent is multiplied by a
+          base; a fixed amount is not.
+        </p>
+        <h3>Why the formula matters</h3>
+        <p>
+          The formula box records the actual values used. This is useful when you need to explain a
+          split, double-check a terminal total, or copy the calculation into a message. It also
+          reveals mistakes early. If a percentage tip looks unexpectedly high, look first at the
+          basis selection and the tax field rather than trying to infer the method from a final
+          rounded number.
+        </p>
+        <h2 id="tax-basis">Tax: included, excluded, and separately shown</h2>
+        <p>
+          Tax treatment can make two seemingly identical tip calculations differ. When a receipt
+          lists a bill before tax and a tax line, entering both lets you inspect each contribution.
+          If the listed price already includes tax, use the pre-tax field only for a known pre-tax
+          amount; otherwise, a percentage may be applied to an incorrect base. If the page is being
+          used to compare a final total, reverse-tax arithmetic belongs in a dedicated workflow such
+          as the <a href="sales-tax-calculator.html">Sales Tax Calculator</a>, where the rate is
+          still supplied by you.
+        </p>
+        <p>
+          For a percent tip on bill plus tax, this tool first computes the tax and adds it to the
+          bill. It then applies the selected percentage to that combined amount. For a percent tip
+          on bill only, the tax is still part of the final payment, but it is excluded from the
+          percentage base. The difference is transparent in the displayed formula. Do not treat the
+          tool as a source of tax rates, taxability, or payment obligations; it contains no live
+          location or product data.
+        </p>
+        <h2 id="split">Splitting the final total fairly</h2>
+        <p>
+          An even split follows one clear calculation: total after tax and tip divided by the number
+          of people. This works best when everyone has agreed to share the whole payment evenly. If
+          people ordered items of different values, have different contributions, or want to exclude
+          a charge, a single equal split is merely a starting point. Calculate the agreed amounts
+          separately and use the even result only as a comparison.
+        </p>
+        <p>
+          Currency display is usually limited to two decimal places, but division can produce
+          repeating decimals. A total of 100.00 divided among three people is 33.333… each. Showing
+          33.33 three times leaves one cent unallocated. The calculator states the unrounded
+          computation in its formula, while the display uses normal two-decimal currency formatting.
+          Decide with the group how to assign any remainder rather than assuming the displayed
+          per-person figure exactly reconstructs the total.
+        </p>
+        <h2 id="rounding-guide">What each rounding option changes</h2>
+        <p>
+          Rounding is a choice about which quantity should become convenient, not an invisible
+          cosmetic change. “Round tip up” raises the tip to the next whole amount and recalculates
+          the total. “Round total up” finds the smallest whole total that is not less than the
+          computed total, then treats the difference as part of the tip. “Round each person up”
+          rounds a person’s share up, then multiplies that share by the number of people; it can
+          produce a final group total that is higher than the exact total because convenience is
+          being applied to every share.
+        </p>
+        <p>
+          These options are useful for planning a payment, but they should be described honestly.
+          Rounding upward does not discover an objectively correct amount. It changes the calculated
+          amount according to the selected method. The formula line names that method so you can
+          choose it intentionally and compare it with no rounding before committing to a payment.
+        </p>
+        <h2 id="check">A short check before you copy or pay</h2>
+        <p>
+          First, look at the bill field. Is it the figure you meant to use—before tax rather than an
+          already-taxed total? Second, inspect the tax rate. A rate entered as 8.25 should mean
+          8.25%, not 0.0825%. Third, inspect the basis note in the formula: is the percentage being
+          taken from bill only or bill plus tax? Fourth, verify the people count. A valid split
+          cannot have zero people. Finally, see whether a rounding option is active and whether the
+          difference is acceptable to the group.
+        </p>
+        <p>
+          These checks are deliberately practical rather than prescriptive. The calculator can
+          evaluate arithmetic from the input; it cannot verify receipt terms, card-processing rules,
+          reimbursements, work expenses, or social expectations. If the number will become an
+          expense record, a business payment, or a disputed amount, preserve the receipt and consult
+          the relevant source rather than relying on a browser calculation alone.
+        </p>
+        <h2 id="examples">Worked examples: trace the numbers, not a rule</h2>
+        <p>
+          A worked example is useful because it separates the arithmetic from a decision about what
+          to enter. Imagine an entered bill before tax of 48.75, an entered tax rate of 8.25%, a
+          percentage of 18%, and three people. The tax is 48.75 × 0.0825 = 4.021875. If the
+          percentage basis includes tax, the tip base is 48.75 + 4.021875 = 52.771875. The tip is
+          52.771875 × 0.18 = 9.4989375. The calculated total is then 48.75 + 4.021875 + 9.4989375 =
+          62.2708125. Dividing that amount evenly by three produces 20.7569375 before currency
+          display rounding.
+        </p>
+        <p>
+          The calculator displays ordinary currency values to two decimal places, so the same
+          example presents 4.02 in tax, 9.50 in tip, 62.27 total, and 20.76 per person. Those
+          display values help a group communicate a payment, but they should not hide the original
+          sequence. Three displayed shares of 20.76 sum to 62.28, one cent more than the displayed
+          62.27 total. That does not mean the formula has failed. It is a result of representing a
+          repeating share in whole cents. The group can assign that cent in a way it agrees is fair,
+          or one person can make a slightly different payment.
+        </p>
+        <p>
+          Now keep the bill and tax the same but select a fixed tip of 10.00. The unrounded total is
+          48.75 + 4.021875 + 10.00 = 62.771875. If you then choose “round the final total up,” the
+          final total becomes 63.00. The additional 0.228125 is assigned to the tip so that bill,
+          tax, tip, and total still reconcile. This is why Toolyfi’s formula should say both that
+          the fixed amount began at 10.00 and that a rounding adjustment was added; calling 10.23 a
+          fixed entry would be misleading.
+        </p>
+        <h2 id="uneven">When an equal split is not the question</h2>
+        <p>
+          An equal split is only one way to divide a payment. It may be reasonable when each person
+          agrees to share everything equally, such as a shared booking or a group purchase. It can
+          be unsuitable when the bill contains items of very different values, when one person has
+          already paid a deposit, when someone is excluded from a particular charge, or when a group
+          has agreed to a different arrangement. The calculator does not allocate items or decide
+          who owes what; it shows the outcome of an equal division of the entered total.
+        </p>
+        <p>
+          For an unequal split, begin by listing the agreed personal amounts before applying any
+          shared charge. If the group wants to split a tip proportionally, calculate each person’s
+          pre-tip share divided by the combined relevant base, then multiply by the total selected
+          tip. If a group wants to split tax evenly but a tip proportionally, those are separate
+          arithmetic steps. Write them separately instead of trying to force all charges into one
+          percentage. A visible worksheet, itemized receipt, or payment record can be more
+          appropriate than a one-number tool when the arrangement matters.
+        </p>
+        <p>
+          Suppose two people have item amounts of 30 and 20 and decide to share a tip
+          proportionally. Their pre-tip total is 50. If the selected tip is 10, the first share is
+          30 ÷ 50 × 10 = 6, and the second is 20 ÷ 50 × 10 = 4. The amounts need not be based on a
+          social norm; they follow the group’s chosen method. State the method in plain language so
+          that no one has to reverse-engineer a final number after the fact.
+        </p>
+        <h2 id="service-charge">Service charges, automatic additions, and labels</h2>
+        <p>
+          Receipts may contain labels that look similar while functioning differently. A tax line,
+          service charge, gratuity, delivery fee, booking fee, surcharge, or voluntary tip can each
+          be displayed separately. Their name alone does not establish how they are treated under a
+          venue’s terms or under applicable rules. Before adding an amount in this calculator,
+          inspect the receipt and any information provided by the seller. If an amount has already
+          been added, entering it again as tax or tip would double-count it.
+        </p>
+        <p>
+          Toolyfi deliberately does not convert receipt language into a recommendation. It cannot
+          read your invoice, determine whether a charge is mandatory, determine who receives it,
+          decide if an extra amount is appropriate, or apply local consumer and employment rules.
+          The relevant facts may depend on the venue, country, region, payment method, group size,
+          product, and date. Use the calculator after you have chosen the amounts and categories you
+          intend to calculate.
+        </p>
+        <h2 id="rounding-detail">Rounding is a policy choice, not hidden precision</h2>
+        <p>
+          There are several mathematically valid ways to round a payment, but they do different
+          things. Rounding the tip upward changes the tip and leaves the bill and calculated tax
+          untouched. Rounding the total upward changes the final total; the difference becomes part
+          of the tip for the purpose of the calculation. Rounding each person’s payment upward
+          begins with an even share, rounds every share, and then multiplies it back by the people
+          count. With three or more people, the last option can have a larger cumulative effect
+          because it applies convenience separately to each person.
+        </p>
+        <p>
+          Rounding to currency display is different from intentionally rounding up. Currency
+          formatting commonly shows two decimals because many payment systems use cents or
+          comparable minor units. That formatting does not choose a higher amount. An explicit
+          round-up option does. Toolyfi labels the option and describes the adjustment so the result
+          can be compared with the unrounded calculation. If an exact payment platform accepts minor
+          units only, use the total it displays and resolve any split remainder deliberately.
+        </p>
+        <h2 id="compare">Comparing options without over-interpreting them</h2>
+        <p>
+          You may want to compare several scenarios: a percentage based on bill only, a percentage
+          based on bill plus tax, a fixed amount, and one or more rounding choices. Treat each as a
+          separate set of inputs, not as an automatic escalation. Copying or saving a summary lets
+          you place the options side by side with the method attached. A comparison is more useful
+          when it says what changed: “same bill, tax excluded from tip base” is clearer than two
+          unexplained totals.
+        </p>
+        <p>
+          The calculator has no hidden rate table, location lookup, personalization, price
+          prediction, or advice engine. It does not know the type of venue, quality of service,
+          currency, group agreement, or legal treatment. That limitation is intentional. A
+          dependable arithmetic tool should distinguish a number it can calculate from the
+          contextual judgment that belongs to the people involved and their confirmed information.
+        </p>
+        <h2 id="record">Keeping a useful calculation record</h2>
+        <p>
+          When the result needs to be shared, preserve the inputs and formula rather than only the
+          final amount. A useful note identifies the bill before tax, the entered tax rate or tax
+          amount source, whether tax was in the tip base, the percentage or fixed amount, the people
+          count, and any rounding choice. The Copy summary button is designed for that lightweight
+          communication. It is not an invoice and does not create a payment record.
+        </p>
+        <p>
+          The Save locally button is intentionally narrow. It keeps up to five short summaries in
+          the browser storage for the current browser profile. Clearing browser data, changing
+          devices, using private browsing, or clearing the in-page history can remove those records.
+          Do not use local storage as evidence of payment, an accounting ledger, a reimbursement
+          file, or a secure place for sensitive card or personal data. Store official documentation
+          through the channels appropriate for the transaction.
+        </p>
+        <h2 id="mistakes">Common input mistakes this page helps expose</h2>
+        <p>
+          A common error is entering an after-tax total into the “bill before tax” field and then
+          also entering tax. That applies tax twice. Another is typing 0.18 in the percentage field
+          while meaning 18%; the field expects a percentage, so 0.18 means eighteen hundredths of
+          one percent. A third is leaving a previous people count in place. A fourth is assuming a
+          percentage button changed the tip method after you switched to fixed amount. The selected
+          method is shown in the interface, and the formula provides a second check.
+        </p>
+        <p>
+          A more subtle error is treating the two-decimal display as the full internal calculation
+          while also expecting every equal share to sum perfectly after separate rounding. Another
+          is forgetting that “round each person up” is not equivalent to “round the total up.” The
+          tool describes these outcomes so you can catch the discrepancy before a payment
+          conversation becomes confusing. If the formula does not match your intended question,
+          change the inputs or method rather than relying on a plausible-looking total.
+        </p>
+        <h2 id="reconcile">Reconcile the result with the payment you can actually make</h2>
+        <p>
+          Before a payment is made, compare the calculator’s displayed total with the amount
+          accepted by the payment method. Some payment interfaces may calculate or display values
+          differently because they use their own stored tax, receipt, currency, or rounding rules. A
+          difference does not prove either side is wrong; it means the underlying inputs or rounding
+          policy should be checked. Start with the receipt’s listed subtotal and charges, then
+          compare the rate, tax basis, tip method, and group count one at a time.
+        </p>
+        <p>
+          If one person pays the full amount and others reimburse them, record the exact method used
+          rather than telling everyone to reproduce a rounded estimate. A clear message might say:
+          “The receipt total was 62.27, calculated from a 48.75 bill, 4.02 tax, and 9.50 tip; three
+          even shares display as 20.76, so we need to decide who covers the one-cent remainder.”
+          This is easier to verify than sending an unexplained payment request. It also reduces the
+          chance that someone adds a tip or tax twice while trying to work backwards from a final
+          number.
+        </p>
+        <p>
+          Currency selection is outside this page’s arithmetic. The dollar symbol is a display
+          convention used to make examples and totals readable; it is not a representation of an
+          exchange rate, a payment currency, or an offer to convert money. The same percentage and
+          division relationships apply to many currencies, but payment services may use different
+          minor-unit rules and exchange-rate timing. For cross-currency work, confirm the real
+          payment amount and any conversion terms with the relevant provider instead of treating a
+          generic formatted output as a settlement instruction.
+        </p>
+        <h2 id="validate-inputs">A five-second input validation routine</h2>
+        <p>
+          Before you copy a total, take a short pause to compare the on-screen values with the
+          source document. Does the first input match the subtotal you intend to use? If there is
+          tax, is it a percentage rate rather than a money amount? Is the people count an integer
+          that includes everyone sharing? Is the selected method percent or fixed amount? Finally,
+          is rounding set to the choice you expect? This routine is deliberately brief, but it
+          catches the most common mismatch: using an after-tax value as a pre-tax bill while also
+          adding tax again.
+        </p>
+        <p>
+          When a result still looks surprising, run the same scenario twice: once with no rounding
+          and once with your preferred rounding rule. The difference identifies the cost of that
+          convenience choice. Then change only one input, such as whether tax is in the tip base,
+          and compare the displayed formula. Changing one thing at a time is more reliable than
+          replacing all inputs at once, especially when the calculation is being discussed by more
+          than one person.
+        </p>
+        <h2 id="privacy">Privacy and scope</h2>
+        <p>
+          Toolyfi calculates the figures on this page with JavaScript in the current browser. Typing
+          a bill into the fields does not submit it to a calculation service. The optional Save
+          locally button stores a short summary in local browser storage so it can be shown on this
+          device until you clear it. Local browser storage is not a secure record for sensitive
+          information; do not use it as a substitute for proper payment, accounting, payroll, or
+          reimbursement documentation.
+        </p>
+        <p>
+          This page provides arithmetic, not tax, financial, legal, employment, accounting,
+          consumer-protection, or hospitality advice. Rates, charges, service practices, and rights
+          can depend on location, product, agreement, and facts not available to the tool. Enter the
+          values you have confirmed, read the resulting method, and obtain qualified advice where a
+          real-world decision needs it.
+        </p>
+      </article>
+      <section class="faq" aria-label="Frequently asked questions">
+        <h2>Questions, answered directly.</h2>
+        <details>
+          <summary>How is the tip calculated?</summary>
+          <p>
+            A percentage tip is the selected base multiplied by your entered percent divided by 100.
+            A fixed tip is added as entered.
+          </p>
+        </details>
+        <details>
+          <summary>Can I include tax in the tip base?</summary>
+          <p>
+            Yes. Enter the tax rate and use the checkbox to include or exclude the calculated tax
+            from the percentage base.
+          </p>
+        </details>
+        <details>
+          <summary>Can I split among more than two people?</summary>
+          <p>
+            Yes. Enter any whole number of people greater than zero. The page divides the calculated
+            final total evenly.
+          </p>
+        </details>
+        <details>
+          <summary>Why is there a one-cent split difference sometimes?</summary>
+          <p>
+            Equal division may create repeating decimals. Currency display rounds to cents, so the
+            group can decide how to allocate a remainder.
+          </p>
+        </details>
+        <details>
+          <summary>Can I use a fixed tip amount?</summary>
+          <p>Yes. Choose “Fixed amount” and enter the exact amount you want to add.</p>
+        </details>
+        <details>
+          <summary>Does the calculator look up tax rates?</summary>
+          <p>
+            No. It uses only the rate you enter and makes no claim that a rate is current or
+            applicable to a purchase.
+          </p>
+        </details>
+        <details>
+          <summary>What if a charge is already on the receipt?</summary>
+          <p>
+            Read the receipt and relevant terms. The calculator does not determine whether an
+            existing charge is a tip, service charge, tax, or something else.
+          </p>
+        </details>
+        <details>
+          <summary>Does rounding change the tip?</summary>
+          <p>
+            It can. The tool explains whether it rounded the tip, total, or each person’s share and
+            includes the effect in the formula.
+          </p>
+        </details>
+        <details>
+          <summary>Are my inputs sent online?</summary>
+          <p>
+            No. The calculations run locally. Saved summaries stay in current-browser storage until
+            removed.
+          </p>
+        </details>
+        <details>
+          <summary>Can I treat this as tax or accounting advice?</summary>
+          <p>
+            No. It is a transparent arithmetic tool. Use qualified sources for specific reporting,
+            tax, legal, accounting, or payment decisions.
+          </p>
+        </details>
+      </section>
+      <section class="related">
+        <h2>Continue with a related calculation.</h2>
         <div class="related-grid">
-            <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
-            <a href="profit-margin-calculator.html" class="related-link">Profit Margin Calc</a>
-            <a href="sales-tax-calculator.html" class="related-link">Sales Tax Calculator</a>
-            <a href="currency-converter.html" class="related-link">Currency Converter</a>
-            <a href="compound-interest-calculator.html" class="related-link">Interest Calculator</a>
-            <a href="loan-calculator.html" class="related-link">Loan & Mortgage Calc</a>
-            <a href="invoice-generator.html" class="related-link">Invoice Generator</a>
-            <a href="percentage-calculator.html" class="related-link">Percentage Calculator</a>
+          <a href="percentage-calculator.html"><small>RATE MATH</small>Percentage Calculator</a
+          ><a href="sales-tax-calculator.html"><small>CHECKOUT MATH</small>Sales Tax Calculator</a
+          ><a href="profit-margin-calculator.html"
+            ><small>PRICING MATH</small>Profit Margin Calculator</a
+          ><a href="invoice-generator.html"><small>BILLING</small>Invoice Generator</a>
         </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Accurate · Fast · US Etiquette Guide Included</p>
-</footer>
-
-<script>
-    function setTip(val) {
-        document.getElementById('tipPercent').value = val;
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if(parseInt(btn.innerText) === val) btn.classList.add('active');
+      </section>
+      <p class="scope">
+        Toolyfi Tip Calculator runs arithmetic from values you enter. It does not supply local
+        rates, determine applicable charges, or replace receipt review and professional advice.
+      </p>
+    </main>
+    <script>
+      /* Toolyfi Editorial Utility Atlas: calculation feedback must be immediate, explicit, and never imply undisclosed external data. */
+      (() => {
+        const $ = (id) => document.getElementById(id);
+        const inputs = [
+          "bill",
+          "tax",
+          "people",
+          "tip-percent",
+          "tip-amount",
+          "tip-on-tax",
+          "rounding",
+        ];
+        let mode = "percent";
+        const money = (n) =>
+          Number.isFinite(n)
+            ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n)
+            : "—";
+        const clean = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+        const values = {};
+        const calc = () => {
+          const bill = Math.max(0, Number($("bill").value) || 0);
+          const rate = Math.max(0, Number($("tax").value) || 0);
+          const people = Math.max(1, Math.floor(Number($("people").value) || 1));
+          const tax = bill * (rate / 100);
+          const base = bill + ($("tip-on-tax").checked ? tax : 0);
+          let tip =
+            mode === "percent"
+              ? base * (Math.max(0, Number($("tip-percent").value) || 0) / 100)
+              : Math.max(0, Number($("tip-amount").value) || 0);
+          const originalTip = tip;
+          const rounding = $("rounding").value;
+          let total = bill + tax + tip;
+          let each = total / people;
+          let roundNote = "No rounding applied.";
+          if (rounding === "tip") {
+            tip = Math.ceil(tip);
+            total = bill + tax + tip;
+            each = total / people;
+            roundNote = "Tip rounded up to a whole amount.";
+          }
+          if (rounding === "total") {
+            const rounded = Math.ceil(total);
+            tip += rounded - total;
+            total = rounded;
+            each = total / people;
+            roundNote = "Final total rounded up to a whole amount; difference added to tip.";
+          }
+          if (rounding === "per-person") {
+            each = Math.ceil(each);
+            total = each * people;
+            tip = total - bill - tax;
+            roundNote =
+              "Each person’s share rounded up; the resulting total is based on that rounded share.";
+          }
+          values.bill = bill;
+          values.tax = tax;
+          values.tip = tip;
+          values.total = total;
+          values.each = each;
+          values.people = people;
+          values.summary = `Bill ${money(bill)} | Tax ${money(tax)} | Tip ${money(tip)} | Total ${money(total)} | ${people} person${people === 1 ? "" : "s"}: ${money(each)}`;
+          $("total").textContent = bill ? money(clean(total)) : "—";
+          $("bill-out").textContent = bill ? money(clean(bill)) : "—";
+          $("tax-out").textContent = bill ? money(clean(tax)) : "—";
+          $("tip-out").textContent = bill ? money(clean(tip)) : "—";
+          $("each-out").textContent = bill ? money(clean(each)) : "—";
+          $("total-label").textContent = bill
+            ? `${people} person${people === 1 ? "" : "s"} · ${roundNote}`
+            : "Total after tax and tip";
+          const tipPart =
+            mode === "percent"
+              ? `${$("tip-percent").value || 0}% × ${money(clean(base))}`
+              : `fixed ${money(clean(originalTip))}`;
+          const roundingPart =
+            tip !== originalTip
+              ? ` The rounding adjustment changed the tip by ${money(clean(tip - originalTip))}.`
+              : "";
+          const taxPart = rate
+            ? `${money(clean(bill))} × ${rate}% = ${money(clean(tax))}`
+            : "No tax entered";
+          $("formula").textContent = bill
+            ? `Tax: ${taxPart}. Tip: ${tipPart}. Total: ${money(clean(bill))} + ${money(clean(tax))} + ${money(clean(tip))} = ${money(clean(total))}. ${roundNote}${roundingPart}`
+            : "Enter your figures to see the exact calculation.";
+        };
+        document.querySelectorAll("[data-mode]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            mode = btn.dataset.mode;
+            document
+              .querySelectorAll("[data-mode]")
+              .forEach((b) => b.classList.toggle("active", b === btn));
+            $("percent-field").hidden = mode !== "percent";
+            $("amount-field").hidden = mode !== "amount";
+            calc();
+          }),
+        );
+        document.querySelectorAll("[data-preset]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            $("tip-percent").value = btn.dataset.preset;
+            document
+              .querySelectorAll("[data-preset]")
+              .forEach((b) => b.classList.toggle("active", b === btn));
+            calc();
+          }),
+        );
+        inputs.forEach((id) =>
+          $(id).addEventListener(
+            id === "tip-on-tax" || id === "rounding" ? "change" : "input",
+            calc,
+          ),
+        );
+        const history = () => {
+          const list = JSON.parse(localStorage.getItem("toolyfi-tip-history") || "[]");
+          $("history-list").textContent = list.length
+            ? list.map((x) => `${x.when}: ${x.summary}`).join(" · ")
+            : "No saved calculations in this browser.";
+        };
+        $("copy").addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(values.summary || "");
+            $("notice").textContent = "Summary copied.";
+          } catch {
+            $("notice").textContent = "Copy is unavailable in this browser.";
+          }
         });
-        calculate();
-    }
-
-    function calculate() {
-        const bill = parseFloat(document.getElementById('billAmount').value) || 0;
-        const tipP = parseFloat(document.getElementById('tipPercent').value) || 0;
-        const people = parseInt(document.getElementById('numPeople').value) || 1;
-
-        const totalTip = bill * (tipP / 100);
-        const totalBill = bill + totalTip;
-        const perPerson = totalBill / people;
-
-        document.getElementById('tipAmount').innerText = '$' + totalTip.toFixed(2);
-        document.getElementById('totalPerPerson').innerText = '$' + perPerson.toFixed(2);
-    }
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+        $("save").addEventListener("click", () => {
+          if (!values.summary) {
+            $("notice").textContent = "Enter a bill before saving.";
+            return;
+          }
+          const list = JSON.parse(localStorage.getItem("toolyfi-tip-history") || "[]");
+          list.unshift({ when: new Date().toLocaleString(), summary: values.summary });
+          localStorage.setItem("toolyfi-tip-history", JSON.stringify(list.slice(0, 5)));
+          history();
+          $("notice").textContent = "Saved in this browser.";
+        });
+        $("clear-history").addEventListener("click", () => {
+          localStorage.removeItem("toolyfi-tip-history");
+          history();
+        });
+        $("reset").addEventListener("click", () => {
+          ["bill", "tax", "tip-amount"].forEach((id) => ($(id).value = ""));
+          $("people").value = "1";
+          $("tip-percent").value = "18";
+          $("tip-on-tax").checked = false;
+          $("rounding").value = "none";
+          mode = "percent";
+          document.querySelector('[data-mode="percent"]').click();
+          $("notice").textContent = "Calculator reset.";
+        });
+        history();
+        calc();
+      })();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
