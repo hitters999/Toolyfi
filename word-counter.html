@@ -152,22 +152,21 @@ html
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi Word Counter","url":"https://toolyfi.com/word-counter.html","description":"A browser-based text counter that reports words, characters with and without whitespace, sentences, paragraphs, and reading-time estimates from the text you enter.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"Word Counter","item":"https://toolyfi.com/word-counter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this word counter count words?","acceptedAnswer":{"@type":"Answer","text":"The page segments the entered text in the browser and counts word-like tokens. Different applications can apply their own counting rules, so check a strict final destination when required."}},{"@type":"Question","name":"Does it count characters with spaces?","acceptedAnswer":{"@type":"Answer","text":"Yes. The page displays characters with whitespace and characters after whitespace is removed."}},{"@type":"Question","name":"How is reading time estimated?","acceptedAnswer":{"@type":"Answer","text":"The estimate is based on a stated average reading speed and is only an approximation. Actual reading time varies by reader, language, layout, and content."}},{"@type":"Question","name":"Why may counts differ from Word or Google Docs?","acceptedAnswer":{"@type":"Answer","text":"Applications can differ in how they treat hyphenation, Unicode, punctuation, embedded content, fields, and formatting. Use the destination application's count for a strict requirement."}},{"@type":"Question","name":"Does the page count paragraphs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Non-empty text blocks separated by blank lines are counted as paragraphs."}},{"@type":"Question","name":"Is sentence count exact for every text?","acceptedAnswer":{"@type":"Answer","text":"Sentence counting is a useful heuristic based on terminal punctuation. Abbreviations, quotations, headings, and unusual punctuation can require manual review."}},{"@type":"Question","name":"Can I copy the count summary?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Copy Stats control places the visible summary on your clipboard when the browser permits clipboard access."}},{"@type":"Question","name":"Should I enter confidential text?","acceptedAnswer":{"@type":"Answer","text":"Avoid entering passwords, private keys, sensitive personal information, or confidential material into general web tools. Device and browser context remain important."}}]}</script><style>
 /* Toolyfi Editorial Utility Atlas — warm ivory, ink navy, coral; counts must be plain, explainable, and easy to verify. */
 :root{--p1:#172437;--p2:#C9523F;--p3:#EF6C54;--p4:#FFF1EC;--pk:#F47B64;--bg:#FAF8F4;--surface:#FFFDF9;--border:#E7DED4;--t1:#172437;--t2:#4D5966;--t3:#6B7785;--shadow-sm:0 2px 12px rgba(23,36,55,.06);--shadow-md:0 16px 40px rgba(23,36,55,.1);--shadow-glow:0 0 0 transparent;--r:16px}body{font-family:'Plus Jakarta Sans',Arial,sans-serif}h1,h2,h3{font-family:'Fraunces',Georgia,serif}header{background:#172437;box-shadow:none}.logo img{width:112px;height:40px;object-fit:contain;object-position:left center}.logo-gem,.logo-text,.free-badge{display:none}.cta,.btn-primary{background:#EF6C54}.h1-gradient{background:none;-webkit-text-fill-color:inherit;color:#172437}.h1-gradient span{color:#C9523F}.badge{background:#FFF1EC;color:#B94B3A}.quick-answer,.takeaway{background:#FFF6F2;border-color:#EF6C54}.tool-widget{border-top:4px solid #EF6C54}.stats-display>div{background:#F8F4EE;padding:12px;border-radius:10px}.stat-card{border-color:#EF6C54}.stat-number{background:none;-webkit-text-fill-color:inherit;color:#B94B3A}.step-number{background:#EF6C54}.feature-card:hover,.use-card:hover{border-color:#EF6C54}.feature-card::after,.use-card::after{background:#EF6C54}.article h2{border-color:#EF6C54}.faq-question{background:#F8F4EE}.q-badge{background:#EF6C54}.cta-banner{background:#172437;color:#FFFDF9;padding:32px;border-radius:16px}.related-card{background:#FFFDF9;border:1px solid #E7DED4}.related-card:hover{border-color:#EF6C54}footer{background:#172437!important;color:#E8DED4}.copy-btn{background:#C9523F}@media(max-width:640px){.logo img{width:96px}}
-</style><style>/* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */.toolyfi-visual{max-width:1040px;margin:0 auto 42px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #E7DED4;border-radius:18px;background:#F7F2EB;box-shadow:0 18px 40px rgba(23,36,55,.09)}.toolyfi-visual figcaption{margin-top:9px;color:#607080;font-size:.78rem;line-height:1.45;text-align:center}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}.toolyfi-visual figcaption{font-size:.72rem}}</style></head>
+</style><style>/* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */.toolyfi-visual{max-width:1040px;margin:0 auto 42px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #E7DED4;border-radius:18px;background:#F7F2EB;box-shadow:0 18px 40px rgba(23,36,55,.09)}.toolyfi-visual figcaption{margin-top:9px;color:#607080;font-size:.78rem;line-height:1.45;text-align:center}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}.toolyfi-visual figcaption{font-size:.72rem}}</style><style>
+/* Word Counter recovery — tool-first mobile UX, visible branding, compact hierarchy, and graceful image failure. */
+.brand-home{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff}.brand-orbit{display:block;width:26px;height:26px;border:3px solid #ef6c54;border-radius:8px;position:relative;box-shadow:inset 0 0 0 4px #172437}.brand-orbit:before,.brand-orbit:after{content:"";position:absolute;background:#ef6c54;border-radius:50%}.brand-orbit:before{width:6px;height:6px;right:-5px;top:3px}.brand-orbit:after{width:5px;height:5px;left:3px;bottom:-4px}.brand-wordmark{font:800 20px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:-.05em}.tool-widget{max-width:900px;background:#fffdf9;border:1px solid #e7ded4;border-top:5px solid #ef6c54;border-radius:20px;padding:clamp(20px,4vw,34px);box-shadow:0 18px 44px rgba(23,36,55,.09)}.tool-topline{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;margin-bottom:16px}.tool-kicker{color:#c9523f;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.tool-topline h2{font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.1;margin:7px 0}.tool-topline p{margin:0;color:#607080;font-size:.92rem}.privacy-chip{white-space:nowrap;background:#f7f1ea;color:#435568;border:1px solid #e7ded4;border-radius:999px;padding:7px 10px;font-size:.74rem;font-weight:700}.tool-widget textarea{min-height:230px;border:1.5px solid #d8cec3;background:#fff;border-radius:14px;font-size:16px;line-height:1.65;padding:18px;box-shadow:inset 0 1px 0 rgba(23,36,55,.03)}.tool-widget textarea:focus{border-color:#ef6c54;box-shadow:0 0 0 4px rgba(239,108,84,.14)}.tool-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:13px}.tool-actions .clear-btn,.tool-actions .copy-btn{width:auto;margin:0;border-radius:10px;padding:10px 14px;font:700 .86rem 'Plus Jakarta Sans',sans-serif;cursor:pointer}.tool-actions .clear-btn{background:#f8f3ed;color:#435568;border:1px solid #e7ded4}.tool-actions .copy-btn{background:#c9523f;color:#fff;border:1px solid #c9523f}.tool-actions .copy-btn.copied{background:#3b8078;border-color:#3b8078}.copy-status{color:#3b8078;font-size:.8rem;font-weight:700}.stats-display{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:18px}.stats-display>div{padding:13px 12px!important;border:1px solid #eee4db;font-size:.82rem}.stats-display span{display:block;font:700 1.4rem/1.2 Fraunces,Georgia,serif;color:#172437;margin-top:3px}.toolyfi-visual{margin-top:28px}.toolyfi-visual.is-missing{display:none}.top-ad{min-height:0;padding:10px 16px;margin:10px auto 0;box-shadow:none;border:1px solid #eee6de}.top-ad .ad-label{margin:0;font-size:.62rem}.hero{padding:2.4rem 0 1.4rem}.hero p{max-width:740px;margin:0 auto}.meta-row{gap:.8rem 1.25rem;font-size:.76rem}.quick-answer{margin:1.4rem auto 2rem}.footer-grid a{display:inline-block;margin-top:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:640px){header{position:sticky;top:0}nav.container{padding:.62rem 16px}.brand-orbit{width:23px;height:23px}.brand-wordmark{font-size:18px}.nav-links{display:none}.cta{padding:.55rem .85rem;font-size:.78rem}.top-ad{display:none}.breadcrumb{padding:.68rem 16px;font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hero{padding:1.7rem 16px 1.15rem}.badge{font-size:.68rem;padding:.35rem .62rem;margin-bottom:.55rem}.h1-gradient{font-size:clamp(1.8rem,8vw,2.25rem);line-height:1.08;margin:.3rem 0 .65rem}.hero p{font-size:.86rem;line-height:1.55}.meta-row{justify-content:flex-start;gap:.38rem .75rem;font-size:.67rem}.tool-widget{margin:1rem 16px 0;border-radius:16px;padding:18px}.tool-topline{display:block}.privacy-chip{display:inline-block;margin-top:10px}.tool-widget textarea{min-height:185px;padding:14px}.stats-display{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.stats-display>div{font-size:.73rem;padding:10px!important}.stats-display span{font-size:1.18rem}.toolyfi-visual{padding:0 16px;margin:22px auto 24px}.toolyfi-visual img{max-height:245px;object-position:center;border-radius:14px}.toolyfi-visual figcaption{font-size:.68rem}.quick-answer{padding:16px;margin:1.2rem 16px}.stats-row{margin:2rem 16px}.article,.how-works,.grid-section,.faq,.related{margin:2.4rem 16px}.cta-banner{margin:2.5rem 16px}.footer-grid{grid-template-columns:1fr 1fr}.footer-logo{font-size:1.05rem}.copy-status{width:100%;font-size:.75rem}}
+</style></head>
 <body>
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">
-                <div class="logo-gem">🛠️</div>
-                <div class="logo-text">Toolyfi</div>
-                <div class="free-badge">Free Tools</div>
-            </div>
+            <a class="brand-home" href="index.html" aria-label="Toolyfi home"><span class="brand-orbit" aria-hidden="true"></span><span class="brand-wordmark">Toolyfi</span></a>
             <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/index.html#tools">Tools</a>
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
 
             </div>
-            <a href="#tool-widget" class="cta">Try Free Tools</a>
+            <a href="#tool-widget" class="cta">Start counting</a>
         </nav>
     </header>
 
@@ -177,7 +176,7 @@ html
     </nav>
 
     <!-- Top Ad -->
-    <div class="ad-unit container">
+    <div class="ad-unit top-ad container">
         <div class="ad-label">Advertisement</div>
         <ins class="adsbygoogle"
              style="display:block"
@@ -196,7 +195,7 @@ html
         <h1 class="h1-gradient">Free <span>Word Counter</span> Online</h1>
         <p>Count words, characters, sentences, paragraphs, and an estimated reading time from the text you enter—then verify strict limits in the final destination.</p>
         <div class="meta-row"><span>Live text update</span><span>Words and characters</span><span>Reading-time estimate</span><span>Copy-ready summary</span></div>
-    </section><figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-word-counter-hero.webp" width="1200" height="800" alt="Editorial writing sheet with abstract paragraph lines, coral highlights, and an elegant word-counting frame." decoding="async"><figcaption>Toolyfi visual guide: a unique illustration of this tool’s core task.</figcaption></figure>
+    </section>
 
     <!-- Quick Answer -->
     <section class="quick-answer container">
@@ -205,9 +204,9 @@ html
 
     <!-- Tool Widget -->
     <section id="tool-widget" class="tool-widget container">
-        <h2 style="margin-top:0;">Word Counter Tool</h2>
-        <textarea id="textInput" placeholder="Paste or type your text here... Supports essays, articles, blogs, anything!"></textarea>
-        <button class="btn-primary" onclick="clearText()">Clear text</button>
+        <div class="tool-topline"><div><span class="tool-kicker">Live editor</span><h2 style="margin-top:0;">Paste text. See the count.</h2><p>Words, characters, paragraphs and read time update while you type.</p></div><span class="privacy-chip">Runs in your browser</span></div>
+        <label class="sr-only" for="textInput">Text to count</label><textarea id="textInput" placeholder="Start typing or paste your text here…"></textarea>
+        <div class="tool-actions"><button class="clear-btn" onclick="clearText()">Clear</button><button class="copy-btn" onclick="copyOutput()" style="display:none;" id="copyBtn">Copy summary</button><span id="copyStatus" class="copy-status" role="status" aria-live="polite"></span></div>
         <div id="output" class="output">
             <div class="stats-display">
                 <div>Words: <span id="wordCount">0</span></div>
@@ -217,9 +216,10 @@ html
                 <div>Paragraphs: <span id="paraCount">0</span></div>
                 <div>Reading Time: <span id="readTime">0</span> min</div>
             </div>
-            <button class="copy-btn" onclick="copyOutput()" style="display:none;" id="copyBtn">📋 Copy Stats</button>
+            
         </div>
     </section>
+    <figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-word-counter-hero.webp" width="1200" height="800" alt="Editorial writing sheet with abstract paragraph lines, coral highlights, and an elegant word-counting frame." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('is-missing')"><figcaption>A visual cue for drafting and reviewing length—your live counter stays above.</figcaption></figure>
 
     <!-- Stats Row -->
     <section class="stats-row container"><div class="stat-card"><div class="stat-number">↻</div><div>Live updates</div></div><div class="stat-card"><div class="stat-number">⌘</div><div>Copy summary</div></div><div class="stat-card"><div class="stat-number">¶</div><div>Paragraph view</div></div><div class="stat-card"><div class="stat-number">≈</div><div>Read-time estimate</div></div></section>
@@ -234,7 +234,7 @@ html
             </div>
             <div class="step-card">
                 <div class="step-number">2</div>
-                <div>Click 'Count Words' for instant results</div>
+                <div>Counts update automatically while you type or paste</div>
             </div>
             <div class="step-card">
                 <div class="step-number">3</div>
@@ -390,8 +390,8 @@ html
                 </div>
                 <div>
                     <h4>Resources</h4>
-                    <br>
-
+                    <a href="text-trimmer.html" style="color: var(--p4);">Text Trimmer</a><br>
+                    <a href="special-characters-counter.html" style="color: var(--p4);">Special Characters</a>
                 </div>
                 <div>
                     <h4>Company</h4>
@@ -408,5 +408,5 @@ html
         </div>
     </footer>
 
-    <script>const input=document.getElementById('textInput');const countWords=()=>{const text=input.value;const segmenter=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter(undefined,{granularity:'word'}):null;const words=segmenter?[...segmenter.segment(text)].filter(s=>s.isWordLike).length:(text.trim()?text.trim().split(/\s+/).length:0);const chars=[...text].length;const charsNoSpace=[...text.replace(/\s/g,'')].length;const sentences=text.trim()?text.split(/(?<=[.!?])\s+|[\n]+/).filter(s=>/[\p{L}\p{N}]/u.test(s)).length:0;const paras=text.split(/\n\s*\n/).filter(p=>p.trim()).length;const read=words?Math.max(1,Math.ceil(words/200)):0;document.getElementById('wordCount').textContent=words;document.getElementById('charCount').textContent=chars;document.getElementById('charNoSpace').textContent=charsNoSpace;document.getElementById('sentenceCount').textContent=sentences;document.getElementById('paraCount').textContent=paras;document.getElementById('readTime').textContent=read;document.getElementById('copyBtn').style.display=words||chars?'inline-block':'none';};function copyOutput(){const t='Words: '+document.getElementById('wordCount').textContent+' | Characters: '+document.getElementById('charCount').textContent+' | Characters without spaces: '+document.getElementById('charNoSpace').textContent+' | Sentences: '+document.getElementById('sentenceCount').textContent+' | Paragraphs: '+document.getElementById('paraCount').textContent+' | Reading time: '+document.getElementById('readTime').textContent+' min';navigator.clipboard?.writeText(t);}function clearText(){input.value='';countWords();input.focus();}function toggleFaq(el){el.parentElement.classList.toggle('active')}input.addEventListener('input',countWords);countWords();</script></body>
+    <script>const input=document.getElementById('textInput');const countWords=()=>{const text=input.value;const segmenter=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter(undefined,{granularity:'word'}):null;const words=segmenter?[...segmenter.segment(text)].filter(s=>s.isWordLike).length:(text.trim()?text.trim().split(/\s+/).length:0);const chars=[...text].length;const charsNoSpace=[...text.replace(/\s/g,'')].length;const sentences=text.trim()?text.split(/(?<=[.!?])\s+|[\n]+/).filter(s=>/[\p{L}\p{N}]/u.test(s)).length:0;const paras=text.split(/\n\s*\n/).filter(p=>p.trim()).length;const read=words?Math.max(1,Math.ceil(words/200)):0;document.getElementById('wordCount').textContent=words;document.getElementById('charCount').textContent=chars;document.getElementById('charNoSpace').textContent=charsNoSpace;document.getElementById('sentenceCount').textContent=sentences;document.getElementById('paraCount').textContent=paras;document.getElementById('readTime').textContent=read;document.getElementById('copyBtn').style.display=words||chars?'inline-block':'none';};async function copyOutput(){const t='Words: '+document.getElementById('wordCount').textContent+' | Characters: '+document.getElementById('charCount').textContent+' | Characters without spaces: '+document.getElementById('charNoSpace').textContent+' | Sentences: '+document.getElementById('sentenceCount').textContent+' | Paragraphs: '+document.getElementById('paraCount').textContent+' | Reading time: '+document.getElementById('readTime').textContent+' min';try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(t);const btn=document.getElementById('copyBtn');btn.textContent='Copied';btn.classList.add('copied');document.getElementById('copyStatus').textContent='Summary copied to clipboard.';setTimeout(()=>{btn.textContent='Copy summary';btn.classList.remove('copied');document.getElementById('copyStatus').textContent='';},1800)}catch(e){document.getElementById('copyStatus').textContent='Clipboard access was unavailable. Select the stats manually.';}}function clearText(){input.value='';countWords();input.focus();}function toggleFaq(el){el.parentElement.classList.toggle('active')}input.addEventListener('input',countWords);countWords();</script></body>
 </html>
