@@ -1,323 +1,1150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Profit Margin Calculator - Calculate Business Profit & Markup Free</title>
-    <meta content="Calculate profit margin, markup, and revenue instantly. Free calculator for small business owners. See industry benchmarks and improvement strategies." name="description">
-    <meta content="profit margin calculator, markup calculator, business profit, gross margin, net profit, retail margin, e-commerce profit, markup vs margin" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/profit-margin-calculator.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Profit Margin Calculator - Calculate Business Profit & Markup Free">
-    <meta property="og:description" content="Calculate profit margin, markup, and revenue instantly. Free calculator for small business owners.">
-    <meta property="og:url" content="https://toolyfi.com/profit-margin-calculator.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#0891b2; --bg:#ecfeff; --surface:#fff; --border:#cffafe; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
-
-        .container { max-width:1000px; margin:0 auto; padding:40px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
-
-        .calc-card { background:var(--surface); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(8,145,178,0.1); margin-bottom: 60px; }
-        
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-        @media(max-width:600px){ .input-grid{grid-template-columns: 1fr;} }
-        
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-        .input-wrap { position: relative; display: flex; align-items: center; }
-        .input-icon { position: absolute; left: 16px; font-weight: 800; color: var(--primary); }
-        input { width: 100%; padding: 14px 16px 14px 40px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1rem; font-weight: 700; outline: none; transition: all 0.2s; }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(8,145,178,0.1); }
-
-        .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        @media(max-width:768px){ .result-grid{grid-template-columns: 1fr;} }
-        .result-item { background: #f0f9ff; padding: 24px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
-        .result-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-        .result-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
-
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
-        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
-        
-        .benchmark-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-        .benchmark-table th, .benchmark-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
-        .benchmark-table th { background: #ecfeff; font-weight: 700; }
-
-        .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
-        @media(max-width:700px){ .strategy-grid{grid-template-columns: 1fr;} }
-        .strategy-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
-        .strategy-card h4 { color: var(--primary); margin-bottom: 12px; }
-
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-
-        .related-tools { background: #ecfeff; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
-    </style>
-
-    <!-- Schema.org Markup -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Profit Margin Calculator: Margin, Markup & Price | Toolyfi</title>
+    <meta
+      name="description"
+      content="Calculate profit, gross margin, markup, and a target selling price from values you enter. See the formula in your browser."
+    />
+    <link rel="canonical" href="https://toolyfi.com/profit-margin-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta
+      property="og:title"
+      content="Profit Margin Calculator: Margin, Markup & Price | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Separate margin from markup with formula-backed local calculations."
+    />
+    <meta property="og:url" content="https://toolyfi.com/profit-margin-calculator.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Profit Margin Calculator",
-      "description": "Calculate profit margin, markup, and revenue instantly. Free calculator for small business owners.",
-      "url": "https://toolyfi.com/profit-margin-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "4200"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Profit Margin Calculator",
+        "url": "https://toolyfi.com/profit-margin-calculator.html",
+        "description": "A local browser calculator for profit, gross margin, markup, and target selling price.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": "Cost and selling-price analysis, target margin pricing, visible formulas, browser-side arithmetic"
       }
-    }
     </script>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
-
-<div class="container">
-    <div class="hero">
-        <h1>Profit Margin Calculator</h1>
-        <p>Instantly calculate your gross profit, margin percentage, and markup. Essential for e-commerce, retail, and service-based businesses.</p>
-    </div>
-
-    <div class="calc-card">
-        <div class="input-grid">
-            <div>
-                <label>Cost of Item ($)</label>
-                <div class="input-wrap">
-                    <span class="input-icon">$</span>
-                    <input type="number" id="cost" value="50" oninput="calculate()">
-                </div>
-            </div>
-            <div>
-                <label>Selling Price ($)</label>
-                <div class="input-wrap">
-                    <span class="input-icon">$</span>
-                    <input type="number" id="price" value="100" oninput="calculate()">
-                </div>
-            </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Profit Margin Calculator",
+            "item": "https://toolyfi.com/profit-margin-calculator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is profit margin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Profit margin is profit divided by selling price, expressed as a percentage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is markup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Markup is profit divided by cost, expressed as a percentage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are margin and markup different?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They use different denominators: margin uses selling price and markup uses cost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I price for a target margin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide cost by one minus the target margin in decimal form."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can target margin be 100 percent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This simple pricing formula is undefined at a target margin of 100 percent or higher."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this net profit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Only if your entered cost includes every cost relevant to the calculation. The tool does not classify costs for you."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator use live market data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It performs arithmetic from your entries only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are negative results possible?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A selling price below cost produces a negative profit, margin, and markup."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this include tax?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Choose and document the inputs that suit your use case; use a dedicated tax calculation when needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this business or accounting advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It provides transparent arithmetic, not accounting, tax, investment, financial, or pricing advice."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory and ink with coral signals; use deliberate asymmetry and formula-first feedback. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --coral: #ef6c54;
+        --sage: #dfe7dc;
+        --line: #d9d6cf;
+        --muted: #647083;
+        --deep: #102033;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      .page {
+        max-width: 1180px;
+        margin: auto;
+        padding: 38px 24px 86px;
+      }
+      .crumb {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin: 16px 0 22px;
+      }
+      .crumb a {
+        color: inherit;
+      }
+      .eyebrow {
+        font-size: 0.7rem;
+        color: var(--coral);
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.03fr 0.97fr;
+        align-items: center;
+        gap: 54px;
+        padding: 25px 0 62px;
+      }
+      .hero h1,
+      .guide h2,
+      .related h2 {
+        font-family: Fraunces, serif;
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 6vw, 5.4rem);
+        margin: 15px 0 22px;
+      }
+      .hero em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .hero p {
+        color: var(--muted);
+        max-width: 590px;
+      }
+      .buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .button {
+        border: 1px solid var(--ink);
+        padding: 12px 17px;
+        color: var(--ink);
+        background: transparent;
+        text-decoration: none;
+        font: 800 0.8rem inherit;
+        cursor: pointer;
+      }
+      .primary {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: #fff;
+      }
+      .facts {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--muted);
+        margin-top: 25px;
+      }
+      .facts span:before {
+        content: "•";
+        color: var(--coral);
+        padding: 0 6px;
+      }
+      .hero-art {
+        padding: 16px;
+        background: #eee6d8;
+        box-shadow: 9px 10px 0 var(--deep);
+        transform: rotate(-1deg);
+        position: relative;
+      }
+      .hero-art img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .hero-art figcaption {
+        position: absolute;
+        right: 6%;
+        bottom: 5%;
+        background: #fff;
+        padding: 6px 9px;
+        font-size: 0.64rem;
+        font-weight: 800;
+      }
+      .calc-wrap {
+        background: var(--deep);
+        color: #fff;
+        margin: 0 -24px;
+        padding: clamp(24px, 5vw, 54px);
+      }
+      .calc-head {
+        max-width: 1132px;
+        margin: 0 auto 28px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+      }
+      .calc-head h2 {
+        font:
+          700 clamp(2rem, 4vw, 3.5rem) / 1 Fraunces,
+          serif;
+        margin: 0;
+        letter-spacing: -0.04em;
+      }
+      .calc-head p {
+        margin: 0;
+        max-width: 390px;
+        color: #c4ccd7;
+        font-size: 0.88rem;
+      }
+      .calc {
+        max-width: 1132px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+      }
+      .panel {
+        background: #fff;
+        color: var(--ink);
+        padding: 26px;
+      }
+      .panel h3 {
+        font:
+          700 1.55rem Fraunces,
+          serif;
+        margin: 0 0 18px;
+      }
+      .modes {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .mode {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 9px 11px;
+        font: 800 0.73rem inherit;
+        cursor: pointer;
+      }
+      .mode.active {
+        background: var(--coral);
+        color: #fff;
+        border-color: var(--coral);
+      }
+      .field {
+        margin-bottom: 17px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--muted);
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+      .field input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--line);
+        font: 700 1rem inherit;
+        color: var(--ink);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .result {
+        background: var(--sage);
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+      }
+      .result h3 {
+        font:
+          700 1.45rem Fraunces,
+          serif;
+        margin: 0;
+      }
+      .result .main {
+        font:
+          800 clamp(2.8rem, 6vw, 4.4rem) / 0.95 Fraunces,
+          serif;
+        letter-spacing: -0.06em;
+        margin: 21px 0 7px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 18px 0;
+        background: #f5f8f2;
+      }
+      .grid div {
+        padding: 13px;
+        border-right: 1px solid #cdd7c9;
+        border-bottom: 1px solid #cdd7c9;
+      }
+      .grid div:nth-child(2n) {
+        border-right: 0;
+      }
+      .grid span {
+        display: block;
+        font-size: 0.66rem;
+        color: #536454;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .formula {
+        margin-top: auto;
+        background: #fff;
+        padding: 13px;
+        color: #415047;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+      }
+      .guide {
+        max-width: 850px;
+        margin: 78px auto 0;
+      }
+      .guide h2 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        margin: 62px 0 18px;
+      }
+      .guide h3 {
+        font:
+          700 1.45rem Fraunces,
+          serif;
+        margin: 35px 0 12px;
+      }
+      .guide p,
+      .guide li {
+        color: #3f4b5d;
+      }
+      .note {
+        border-left: 4px solid var(--coral);
+        padding: 16px 18px;
+        background: #fff;
+        margin: 25px 0;
+      }
+      .toc {
+        padding: 20px;
+        background: #f0ede6;
+      }
+      .toc a {
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 800;
+        margin: 4px 14px 4px 0;
+        display: inline-block;
+      }
+      .faq {
+        margin-top: 64px;
+      }
+      .faq h2 {
+        font:
+          700 clamp(2.2rem, 4vw, 3.6rem) / 1 Fraunces,
+          serif;
+        letter-spacing: -0.04em;
+      }
+      .faq details {
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq summary {
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .faq p {
+        color: #536073;
+        font-size: 0.9rem;
+      }
+      .related {
+        margin-top: 70px;
+        padding: 38px;
+        background: var(--deep);
+        color: #fff;
+      }
+      .related h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        margin: 0 0 23px;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related a {
+        background: #fff;
+        color: var(--ink);
+        min-height: 125px;
+        padding: 17px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font:
+          700 1.1rem/1.08 Fraunces,
+          serif;
+      }
+      .related small {
+        font:
+          800 0.62rem "Plus Jakarta Sans",
+          sans-serif;
+        color: var(--coral);
+        letter-spacing: 0.08em;
+      }
+      @media (max-width: 800px) {
+        .page {
+          padding: 26px 18px 62px;
+        }
+        .hero,
+        .calc {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .hero-art {
+          order: -1;
+        }
+        .calc-wrap {
+          margin: 0 -18px;
+          padding: 30px 18px;
+        }
+        .calc-head {
+          display: block;
+        }
+        .calc-head p {
+          margin-top: 12px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 450px) {
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="crumb">
+        <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Profit
+        Margin Calculator
+      </p>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Pricing math, made inspectable</div>
+          <h1>Know the <em>margin</em>—not just the price.</h1>
+          <p>
+            Compare cost and selling price, or work backward from a target margin. Toolyfi shows
+            profit, margin, markup, and the formula that connects them.
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#calculator">Open calculator</a
+            ><a class="button" href="#guide">Read the formulas</a>
+          </div>
+          <div class="facts">
+            <span>Runs in your browser</span><span>No sign-up</span><span>Formula shown</span>
+          </div>
         </div>
-
-        <div class="result-grid">
-            <div class="result-item">
-                <div class="result-label">Gross Profit</div>
-                <div id="profitVal" class="result-val">$50.00</div>
+        <figure class="hero-art">
+          <img
+            src="images/toolyfi-profit-margin-calculator-hero.webp"
+            alt="Editorial paper collage of balance scale, price tag, calculator and pricing ledger"
+          />
+          <figcaption>Margin is not markup</figcaption>
+        </figure>
+      </section>
+    </main>
+    <section class="calc-wrap" id="calculator">
+      <div class="calc-head">
+        <h2>Start with the denominator.<br />Then compare the rates.</h2>
+        <p>
+          Margin uses selling price as its denominator. Markup uses cost. The same profit produces
+          two different percentages.
+        </p>
+      </div>
+      <div class="calc">
+        <section class="panel">
+          <h3>Choose your question</h3>
+          <div class="modes">
+            <button class="mode active" type="button" data-mode="analyze">
+              Analyze cost &amp; price</button
+            ><button class="mode" type="button" data-mode="target">Plan from target margin</button>
+          </div>
+          <div id="analyze-fields">
+            <div class="row">
+              <div class="field">
+                <label for="cost">Cost</label
+                ><input
+                  id="cost"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  value="80"
+                />
+              </div>
+              <div class="field">
+                <label for="price">Selling price</label
+                ><input
+                  id="price"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  value="100"
+                />
+              </div>
             </div>
-            <div class="result-item">
-                <div class="result-label">Profit Margin</div>
-                <div id="marginVal" class="result-val">50.00%</div>
+          </div>
+          <div id="target-fields" hidden>
+            <div class="row">
+              <div class="field">
+                <label for="target-cost">Cost</label
+                ><input
+                  id="target-cost"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  value="80"
+                />
+              </div>
+              <div class="field">
+                <label for="target-margin">Target margin (%)</label
+                ><input
+                  id="target-margin"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  max="99.999"
+                  step="0.01"
+                  value="20"
+                />
+              </div>
             </div>
-            <div class="result-item">
-                <div class="result-label">Markup</div>
-                <div id="markupVal" class="result-val">100.00%</div>
-            </div>
+          </div>
+          <div class="note">
+            Use costs that match your question. The tool does not decide which costs belong in gross
+            profit, contribution margin, or net profit.
+          </div>
+        </section>
+        <section class="result" aria-live="polite">
+          <h3>Your calculation</h3>
+          <p id="main" class="main">—</p>
+          <p id="main-label">Enter values to begin.</p>
+          <div class="grid">
+            <div><span>Profit</span><b id="profit">—</b></div>
+            <div><span>Margin</span><b id="margin">—</b></div>
+            <div><span>Markup</span><b id="markup">—</b></div>
+            <div><span>Revenue multiplier</span><b id="multiplier">—</b></div>
+          </div>
+          <div id="formula" class="formula">Enter values to see the calculation method.</div>
+        </section>
+      </div>
+    </section>
+    <main class="page">
+      <article class="guide" id="guide">
+        <div class="eyebrow">Profit margin calculator guide</div>
+        <h2>Profit, margin, and markup answer related—but different—questions.</h2>
+        <p>
+          Pricing language can appear interchangeable because the same sale produces all of the
+          numbers. Cost, selling price, and profit are connected, yet each percentage uses a
+          different starting point. This calculator is designed to make that denominator visible. It
+          gives transparent arithmetic from values you enter; it does not decide what a product
+          should cost, which expenses you should include, how a market will behave, or what price is
+          appropriate for a business.
+        </p>
+        <nav class="toc">
+          <a href="#terms">Core terms</a><a href="#margin">Margin</a><a href="#markup">Markup</a
+          ><a href="#target">Target price</a><a href="#scenarios">Worked scenarios</a
+          ><a href="#target-workflow">Target-price workflow</a
+          ><a href="#mistakes">Common mistakes</a
+          ><a href="#multiplier-use">Multiplier and spreadsheets</a><a href="#scope">Scope</a>
+        </nav>
+        <h2 id="terms">Start with the three money values</h2>
+        <p>
+          Cost is the amount included in your calculation as the cost of making, obtaining, or
+          delivering a unit. Selling price, also called revenue for one sale in this simplified
+          model, is what the customer pays before any choices you make about tax treatment. Profit
+          is selling price minus cost. If cost is 80 and selling price is 100, profit is 20. That
+          subtraction is the common numerator for both margin and markup.
+        </p>
+        <p>
+          The word “profit” alone does not say whether every cost has been included. A page may
+          discuss gross profit, contribution, operating profit, or net profit, but those labels
+          depend on a defined cost set and accounting treatment. Toolyfi deliberately leaves that
+          classification to you. State what the cost figure contains before comparing results
+          between products, periods, or businesses.
+        </p>
+        <h2 id="margin">Margin is profit as a share of selling price</h2>
+        <p>
+          Margin equals profit divided by selling price, multiplied by 100. With cost 80 and selling
+          price 100, profit is 20 and margin is 20 ÷ 100 × 100 = 20%. It describes the portion of
+          the sale price remaining after the entered cost. The denominator is the final selling
+          price, so margin is bounded below 100% when cost is non-negative and price is positive.
+        </p>
+        <h2 id="markup">Markup is profit as a share of cost</h2>
+        <p>
+          Markup equals profit divided by cost, multiplied by 100. In the same 80-cost and 100-price
+          example, markup is 20 ÷ 80 × 100 = 25%. Margin and markup are not conflicting answers.
+          They are different ratios describing the same 20 profit. Treating them as interchangeable
+          can create a pricing error because asking for a 20% margin is not the same as adding a 20%
+          markup.
+        </p>
+        <div class="note">
+          <strong>Visible check:</strong> if cost is positive and price is greater than cost, markup
+          is higher than margin because the markup denominator is the smaller cost amount.
         </div>
-    </div>
-
-    <!-- COMPREHENSIVE CONTENT SECTION -->
-    <div class="content-section">
-        <h2>The Business Owner's Guide to Profit Margins in 2026</h2>
-        <p>Profit margin is the single most important metric for any business. It tells you not just how much money you're making, but how healthy your business model truly is. Our <strong>Free Profit Margin Calculator</strong> helps you quickly determine your margins so you can price your products for success and ensure long-term sustainability.</p>
-
-        <h3>Markup vs. Margin: What's the Difference?</h3>
-        <p>This is one of the most common points of confusion for new business owners. While both relate to profit, they are calculated differently:</p>
-        <ul>
-            <li><strong>Markup:</strong> This is the percentage added to the <em>cost</em> to reach the selling price. Formula: (Profit / Cost) x 100.</li>
-            <li><strong>Profit Margin:</strong> This is the percentage of the <em>selling price</em> that is profit. Formula: (Profit / Selling Price) x 100.</li>
-        </ul>
-        <p><strong>Example:</strong> If you buy an item for $50 and sell it for $100, your profit is $50. Your markup is 100% (you doubled the cost), but your profit margin is 50% (half of the final price is profit).</p>
-
-        <h3>Industry Benchmarks: What is a "Good" Margin?</h3>
-        <p>Profit margins vary wildly depending on your industry. Here are the standard benchmarks for 2026:</p>
-        <table class="benchmark-table">
-            <thead>
-                <tr>
-                    <th>Industry</th>
-                    <th>Average Gross Margin</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>SaaS / Software</td>
-                    <td>70% - 90%</td>
-                    <td>High initial development cost, but very low cost per additional user.</td>
-                </tr>
-                <tr>
-                    <td>Retail (Clothing)</td>
-                    <td>45% - 60%</td>
-                    <td>Needs to cover high overhead like rent and inventory risk.</td>
-                </tr>
-                <tr>
-                    <td>E-commerce (Dropshipping)</td>
-                    <td>15% - 30%</td>
-                    <td>Lower margins due to high competition and marketing costs.</td>
-                </tr>
-                <tr>
-                    <td>Restaurants</td>
-                    <td>60% - 70%</td>
-                    <td>High gross margin on food, but net profit is often low (3-5%) after labor.</td>
-                </tr>
-                <tr>
-                    <td>Consulting / Services</td>
-                    <td>80% - 95%</td>
-                    <td>Main cost is time. Very high margins if you don't have a large office.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>7 Strategies to Improve Your Profit Margins</h3>
-        <div class="strategy-grid">
-            <div class="strategy-card">
-                <h4>1. Reduce Cost of Goods (COGS)</h4>
-                <p>Negotiate better rates with suppliers or buy in bulk to lower your per-unit cost.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>2. Increase Your Prices</h4>
-                <p>Small price increases (even 2-5%) can have a massive impact on your bottom line without scaring away customers.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>3. Optimize Your Inventory</h4>
-                <p>Don't let cash sit in slow-moving stock. Focus on high-turnover items that keep cash flowing.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>4. Upsell & Cross-sell</h4>
-                <p>It's much cheaper to sell more to an existing customer than to find a new one. Offer related products at checkout.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>5. Automate Operations</h4>
-                <p>Use tools like Toolyfi to automate repetitive tasks, reducing the labor cost associated with each sale.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>6. Focus on High-Margin Products</h4>
-                <p>Identify which 20% of your products generate 80% of your profit and focus your marketing efforts there.</p>
-            </div>
-            <div class="strategy-card">
-                <h4>7. Reduce Waste</h4>
-                <p>Audit your processes to find where you're losing money on returns, damaged goods, or inefficient shipping.</p>
-            </div>
-        </div>
-
-        <h3>Real-World Business Examples</h3>
-        <p><strong>The Amazon Model:</strong> Amazon often operates on thin margins for its retail business to capture market share, while its AWS (Cloud) business operates on massive margins to fund the company's growth.</p>
-        <p><strong>The Local Coffee Shop:</strong> A cup of coffee might cost $0.50 to make and sell for $4.00 (87% margin). However, after paying for the barista, the rent, and the electricity, the "Net Profit" might only be $0.20 per cup.</p>
-
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-grid">
-            <details>
-                <summary>What is a healthy profit margin for a small business?</summary>
-                <div class="faq-content">Generally, a 10% net profit margin is considered average, 20% is high, and 5% is low. However, this depends entirely on your industry and business stage.</div>
-            </details>
-            <details>
-                <summary>How do I calculate margin if I have multiple costs?</summary>
-                <div class="faq-content">Add up all direct costs (materials, labor, shipping) to get your total "Cost of Item," then use that total in our calculator.</div>
-            </details>
-            <details>
-                <summary>Can I have a markup of over 100%?</summary>
-                <div class="faq-content">Yes! If you buy something for $1 and sell it for $10, your markup is 900%. However, your profit margin can never exceed 100%.</div>
-            </details>
-            <details>
-                <summary>What is the difference between Gross and Net profit?</summary>
-                <div class="faq-content">Gross profit is Revenue minus COGS. Net profit is what's left after <em>all</em> expenses (rent, taxes, salaries, marketing) are paid.</div>
-            </details>
-            <details>
-                <summary>How often should I check my margins?</summary>
-                <div class="faq-content">At a minimum, you should audit your margins quarterly. If you're in a fast-moving industry like e-commerce, monthly checks are recommended.</div>
-            </details>
-            <details>
-                <summary>Does this calculator work for services?</summary>
-                <div class="faq-content">Yes. For services, your "Cost" is usually the hourly rate you pay yourself or your staff plus any direct software or material costs.</div>
-            </details>
-            <details>
-                <summary>Why is my margin decreasing even though sales are up?</summary>
-                <div class="faq-content">This usually happens if your costs (shipping, materials, ads) are rising faster than your prices. This is known as "margin compression."</div>
-            </details>
-            <details>
-                <summary>How do I calculate the selling price for a 40% margin?</summary>
-                <div class="faq-content">Formula: Cost / (1 - 0.40). If your cost is $60, your price should be $100.</div>
-            </details>
-            <details>
-                <summary>Is 20% a good margin for dropshipping?</summary>
-                <div class="faq-content">Yes, 20% is a very solid margin for dropshipping, provided your ad costs (CPA) don't eat up that entire 20%.</div>
-            </details>
-            <details>
-                <summary>What is "Contribution Margin"?</summary>
-                <div class="faq-content">This is the selling price per unit minus the variable cost per unit. It shows how much each sale contributes to covering your fixed costs (like rent).</div>
-            </details>
-        </div>
-    </div>
-
-    <div class="related-tools">
-        <h3>Related Business Tools</h3>
+        <h2 id="target">Planning a price from target margin</h2>
+        <p>
+          To plan a selling price from a target margin, first convert the percent to a decimal. Then
+          divide cost by one minus that decimal. For cost 80 and a 20% target margin: 80 ÷ (1 −
+          0.20) = 100. The resulting 100 price leaves 20 profit, which is 20% of 100. This is
+          different from adding 20% of cost; that would produce 96, whose margin is only about
+          16.67%.
+        </p>
+        <p>
+          A target margin of 100% or more is not valid in this simple formula because one minus the
+          decimal target becomes zero or negative. The calculator shows a guardrail rather than
+          inventing a price. Negative or zero costs may have a meaning in a specific accounting
+          record, but they do not support a normal markup calculation; check the underlying inputs
+          before relying on a percentage.
+        </p>
+        <h2 id="scope">How to use a result responsibly</h2>
+        <p>
+          Use the result as a transparent arithmetic checkpoint. It can help compare two chosen
+          prices, verify a quoted markup, or identify the selling price implied by a selected
+          target. It cannot model discounts, returns, card fees, taxability, inventory losses, fixed
+          expenses, demand, competition, accounting standards, or tax obligations unless you first
+          incorporate those factors into the inputs appropriately. When a real decision depends on
+          such factors, obtain the relevant business, accounting, or financial advice.
+        </p>
+        <p>
+          The values stay in the current browser during the calculation. Toolyfi does not supply
+          live competitor prices, currency conversion, benchmarks, customer data, or forecasts. This
+          scope is a strength: you can see exactly which numbers and formulas produced the result
+          rather than trusting a hidden recommendation.
+        </p>
+        <h2 id="discounts">Discounts change the selling-price denominator</h2>
+        <p>
+          A planned margin calculated from a list price can change as soon as a discount is applied.
+          If an item costs 80 and sells for 100, the simple model returns 20 profit and 20% margin.
+          If the actual selling price becomes 90, profit falls to 10 and margin becomes 10 ÷ 90, or
+          about 11.11%. The cost did not change, but the denominator and numerator both did. For
+          that reason, calculate from the price you expect to receive rather than from a price that
+          is only displayed.
+        </p>
+        <p>
+          More than one adjustment can make the path hard to see. A percentage discount, a
+          promotional credit, a bundled offer, a refund, or a payment fee may each affect the
+          relevant sale amount differently. Do not add percentages together automatically. Write the
+          actual price after each chosen adjustment, decide which costs are included in the model,
+          then use the cost-and-price mode to inspect the resulting profit, margin, and markup. The
+          calculator does not know whether a price has already included another charge.
+        </p>
+        <h2 id="cost-check">Define cost before comparing a result</h2>
+        <p>
+          Two people can get different margins from the same transaction while both use the formula
+          correctly, because they include different costs. One may use only a purchase price;
+          another may include delivery, direct packaging, payment processing, direct labour, or a
+          stated allocation. Neither selection should be hidden. Name the cost basis in a report or
+          spreadsheet so a later comparison does not accidentally compare a gross-margin figure with
+          a contribution or net result.
+        </p>
+        <p>
+          A practical check is to list the values already included in your cost entry and the values
+          not included. If you revise the cost, run the calculation again rather than trying to
+          adjust the displayed margin mentally. With a positive selling price, every additional
+          entered cost decreases profit and margin one-for-one in currency terms, but the percentage
+          effect depends on the sale price. That relationship is why an explicit input is more
+          useful than a generic statement about a healthy percentage.
+        </p>
+        <h2 id="compare-prices">Compare selected prices one at a time</h2>
+        <p>
+          When considering several selected prices, keep the same cost basis and change only price
+          for each scenario. With an entered cost of 80, prices of 90, 100, and 110 produce profits
+          of 10, 20, and 30. The margins are about 11.11%, 20%, and 27.27%; markups are 12.5%, 25%,
+          and 37.5%. The difference between those percentage sequences is not a software quirk. Each
+          sequence is using a different denominator.
+        </p>
+        <p>
+          This comparison does not decide which price should be used. Demand, agreements, taxes,
+          fixed costs, returns, payment terms, and competitive information can all matter but are
+          not part of this arithmetic. If you need to retain a scenario, write down its inputs and
+          definition instead of treating the final percentage as self-explanatory. The formula area
+          is intended to support that traceability.
+        </p>
+        <h2 id="interpret">Interpret zero and negative results carefully</h2>
+        <p>
+          A selling price equal to cost produces zero profit, zero margin, and zero markup in this
+          model. A price below cost produces negative profit. The arithmetic is still useful because
+          it shows the direction and amount of the gap, but its business meaning depends on facts
+          outside the tool. A negative result might reflect a deliberate promotion, an incomplete
+          cost entry, a returned item, a loss-making sale, or a different accounting classification.
+          The calculator cannot distinguish among those possibilities.
+        </p>
+        <p>
+          When cost is zero, markup cannot be calculated because it would divide by zero. Margin can
+          still be calculated from a positive price and zero entered cost, but do not let that
+          result imply every real cost is zero. Check whether the selected model is the right one. A
+          guardrail is preferable to a polished-looking percentage that hides an undefined
+          denominator.
+        </p>
+        <h2 id="mix">Do not average percentages without the underlying amounts</h2>
+        <p>
+          A set of products can have several different margins, but an ordinary average of their
+          percentages may not describe the combined result. Imagine one sale with 10 profit on 100
+          revenue and another with 50 profit on 500 revenue. Each has a 10% margin, so the simple
+          average happens to agree with the combined 60 profit divided by 600 revenue. That
+          agreement is a result of the revenue weights being aligned. It is not a rule that every
+          list of margins can be averaged.
+        </p>
+        <p>
+          To calculate a combined margin, add the chosen profits and divide by the combined chosen
+          selling prices. The same discipline applies to markup: add the chosen profits and divide
+          by the combined chosen costs. Preserve the individual entries when possible, because a
+          single percentage cannot reveal which product, period, discount, or cost change created
+          the total. This page is a one-scenario calculator; it does not aggregate a product
+          catalogue for you.
+        </p>
+        <h2 id="rounding">Round for display, keep the formula for checking</h2>
+        <p>
+          Currency is often displayed to two decimal places, while a division can produce more
+          digits. The tool calculates with the entered number and then formats its visible money and
+          percentage values. A displayed 16.67% is a readable approximation, not a substitute for
+          the cost and price that created it. When a close comparison matters, use the formula line
+          and the original inputs rather than trying to reconstruct a value from a rounded
+          percentage.
+        </p>
+        <p>
+          Rounding can also affect a target price if a real payment system accepts only particular
+          price increments. First calculate the unrounded target price, then choose a permitted
+          displayed price and run that selected price through analysis mode. This shows the actual
+          margin and markup after your chosen rounding. It is clearer than calling the rounded price
+          a precise target-margin result when the chosen price differs from the formula’s output.
+        </p>
+        <h2 id="revenue">Revenue is not the same as cash received</h2>
+        <p>
+          In the small model on this page, selling price is used as the revenue denominator. That
+          does not mean every business record labels or recognizes money in exactly the same way.
+          Payment timing, invoices, refunds, deposits, taxes, chargebacks, and contract terms can
+          affect what appears in an account or bank balance. If you are comparing this calculator
+          with a report, confirm that its numerator and denominator refer to the same defined period
+          and transaction set before treating any difference as an error.
+        </p>
+        <p>
+          The same caution applies to costs paid at a different time than a sale. This calculator
+          can illustrate a unit-level relationship from the values entered; it does not prepare
+          cash-flow projections, financial statements, invoices, tax returns, or forecasts. For a
+          decision that depends on those matters, keep source records and consult the appropriate
+          qualified source.
+        </p>
+        <h2 id="scenarios">Work through the same formula in two different scenarios</h2>
+        <p>
+          A worked example is useful only when its inputs are visible. Consider a product scenario
+          in which a seller chooses an entered cost of 48 for one item and an entered selling price
+          of 75. The calculator subtracts 48 from 75, giving 27 of profit in this narrow model.
+          Margin is then 27 divided by 75, or 36%. Markup is 27 divided by 48, or 56.25%. The
+          outputs do not say whether 48 is a complete cost. It might be only the purchase cost, or
+          it might include a chosen set of direct delivery and packaging costs. The transparent part
+          is that the percentage follows exactly from the two entries.
+        </p>
+        <p>
+          Now consider a service scenario. A consultant may enter 180 as the cost assigned to a
+          defined piece of work and 300 as the chosen selling price. The arithmetic gives 120 of
+          profit, 40% margin, and about 66.67% markup. The formula is the same as the product
+          example, even though the underlying cost may contain a different mix of labour, contractor
+          work, software, travel, or other selected amounts. A label such as “service margin” does
+          not change the denominator. It only describes the context in which a person selected the
+          cost input.
+        </p>
+        <p>
+          These examples are illustrations, not suggested prices or sector benchmarks. A transaction
+          can carry terms, taxes, discounts, payment fees, refunds, or costs that the compact
+          calculation does not model automatically. The practical lesson is to repeat the process
+          with your defined inputs: state the scenario, enter its cost, enter the price actually
+          being compared, and retain the shown formula with the output. That makes a later review
+          possible without guessing which number was used as the denominator.
+        </p>
+        <p>
+          An example can also show why a small price change should be recalculated rather than
+          applied as a percentage shortcut. Using the product cost of 48, an 80 selling price gives
+          32 profit and a 40% margin. Reducing the selected price to 72 gives 24 profit and a 33.33%
+          margin. Profit changed by 8, but margin did not simply fall by ten percentage points
+          because both the profit and selling-price denominator changed. Analysis mode is designed
+          for this direct comparison: keep the same cost definition, replace the candidate price,
+          and read the new result.
+        </p>
+        <h2 id="target-workflow">
+          Use target-margin mode as a formula check, then verify the chosen price
+        </h2>
+        <p>
+          Target-margin mode starts with a different question: “What price does this selected cost
+          imply if I want this particular margin percentage?” The page converts the selected
+          percentage to a decimal, subtracts it from one, and divides cost by the remainder. For an
+          entered cost of 48 and a target margin of 40%, the calculation is 48 ÷ (1 − 0.40), which
+          produces 80. The resulting profit is 32 and 32 divided by 80 returns to 40%. This circular
+          check is the reason the formula uses one minus the target margin rather than adding that
+          percentage to cost.
+        </p>
+        <p>
+          A practical workflow has two separate steps. First, use target mode to calculate the
+          unrounded mathematical price for the exact cost and target that you entered. Second, if a
+          checkout system, price list, contract, or business decision uses a different display
+          price, switch to analysis mode and enter that chosen price. For example, a target formula
+          might return 79.9833, while an actual system can use only 79.99 or 80.00. Analysis mode
+          makes the margin after that selection explicit instead of silently treating a rounded
+          number as an exact target result.
+        </p>
+        <p>
+          The mode is not a recommendation engine. It does not know whether a customer will accept a
+          price, whether a discount will be applied, which taxes appear at checkout, or whether
+          costs will change. It is a way to expose the arithmetic implied by an assumption. Keep the
+          target itself distinct from the output: a target is an input chosen by the user, while the
+          price, profit, and markup are the formula results that follow from it.
+        </p>
+        <p>
+          It is also useful to test sensitivity with a few deliberately named scenarios instead of
+          one apparently final answer. Enter the same defined cost with two or three target margins
+          and record the resulting prices. If the cost changes, enter the revised cost and run the
+          same targets again. The calculator does not store a scenario sheet, but the formula line
+          gives a reproducible note for each comparison. Avoid implying that one result is certain
+          just because the arithmetic is exact; the calculation is conditional on the values
+          entered.
+        </p>
+        <h2 id="mistakes">Common margin-and-markup mistakes start with the denominator</h2>
+        <p>
+          The most common practical mistake is to use the word margin when the calculation actually
+          adds a percentage to cost. If cost is 100, adding 30% of cost produces a price of 130. The
+          profit is 30, so markup is 30%, but margin is 30 divided by 130, or about 23.08%. A 30%
+          target margin needs a different calculation: 100 ÷ (1 − 0.30) = about 142.86. The gap is
+          not a rounding issue; it comes from the difference between cost and selling price as the
+          base.
+        </p>
+        <p>
+          A second mistake is to compare percentages whose cost definitions are different. One
+          report might use an item purchase cost, while another includes direct packing and
+          processing. Both figures can be calculated accurately from their inputs, but a comparison
+          without labels can be misleading. Before comparing a result across items or periods, write
+          the cost definition beside it. If the purpose is to compare like with like, use the same
+          definition in each scenario. If the purpose is to understand a change in definition,
+          retain both sets rather than collapsing them into a single unlabeled percentage.
+        </p>
+        <p>
+          A third mistake is to calculate from a list price when the relevant price is the amount
+          after a known adjustment. A 20% margin at a listed price does not remain a 20% margin
+          after a discount unless cost and price happen to change in a matching way. Similarly, an
+          amount described as tax-inclusive or tax-exclusive needs a consistent treatment before it
+          is used as a selling-price input. Use the
+          <a href="sales-tax-calculator.html">Sales Tax Calculator</a>
+          to separate a rate and tax-inclusive amount where appropriate, then document which amount
+          you carried into this calculation. This page does not infer that choice.
+        </p>
+        <p>
+          Finally, do not treat a percentage as a complete explanation. A high-looking markup may be
+          paired with a lower margin, and neither percentage identifies fixed expenses, demand,
+          payment timing, or an accounting classification. The useful sequence is simpler: preserve
+          the selected cost and price, identify the ratio being discussed, and let the formula make
+          the denominator visible. That process is more reliable than converting a remembered
+          percentage mentally or adopting an unlabeled number from another worksheet.
+        </p>
+        <h2 id="multiplier-use">Read the revenue multiplier as a ratio, not a recommendation</h2>
+        <p>
+          The revenue multiplier on this page is selling price divided by cost. In the 80-cost,
+          100-price example, it is 1.25× because 100 is 1.25 times 80. This compact ratio is useful
+          as a quick consistency check: with positive cost, a multiplier above 1 means price is
+          above the entered cost; 1 means price equals the entered cost; and a number below 1 means
+          price is below it. The multiplier does not replace margin or markup, because it does not
+          express the difference as a percentage of either denominator.
+        </p>
+        <p>
+          The ratio can make repeated formula checks easier. A 1.50× price-to-cost relationship
+          means that each selected price is one and a half times its entered cost. The implied
+          markup is 50%, while the implied margin is one-third, or about 33.33%. Reading all three
+          measures together prevents a multiplier from being mistakenly reported as a percentage. It
+          is still conditional on the cost definition: changing the cost entry changes every output,
+          including the multiplier.
+        </p>
+        <p>
+          Use this calculator when you want a single transparent scenario, a quick formula check, or
+          a readable explanation to accompany a chosen pair of values. Use a spreadsheet or an
+          accounting workflow when you need to retain many products, dates, currencies, quantities,
+          taxes, discounts, or defined cost categories. A spreadsheet can hold the inputs and
+          formulas across rows; this page can help validate the logic for one row before that
+          broader work begins. The two approaches serve different scopes rather than competing for
+          the same task.
+        </p>
+        <p>
+          When moving a result into a spreadsheet, transfer the defined inputs and formula rather
+          than only the displayed percentage. For example, record “cost 80; selling price 100;
+          profit = price − cost; margin = profit ÷ price; markup = profit ÷ cost.” That format makes
+          it easier to find a changed denominator later. For percentage arithmetic outside pricing,
+          the
+          <a href="percentage-calculator.html">Percentage Calculator</a> can check a percentage
+          change or portion separately. For a bill-level sharing question, the
+          <a href="tip-calculator.html">Tip Calculator</a> addresses a different calculation
+          entirely.
+        </p>
+        <h2 id="record">A reproducible calculation note</h2>
+        <p>
+          A useful note records the date, product or scenario name, cost definition, selected
+          selling price, whether the price was pre- or post-adjustment, and the resulting formula.
+          For example: “Scenario A: entered cost 80 includes purchase and direct delivery; entered
+          selling price 100; profit 20; margin 20%; markup 25%.” Someone reading that note can
+          repeat the same arithmetic. A statement such as “margin is 20%” is much less useful when
+          its inputs are not known.
+        </p>
+        <p>
+          Keep the calculation note separate from any decision rationale. You may have selected a
+          price for reasons outside the scope of the arithmetic, such as a written agreement or a
+          time-limited offer. Distinguishing facts, entered assumptions, formula outputs, and
+          decisions prevents a transparent calculator result from being misread as a recommendation
+          or a market prediction.
+        </p>
+      </article>
+      <section class="faq">
+        <h2>Questions, answered directly.</h2>
+        <details>
+          <summary>What is profit margin?</summary>
+          <p>Profit margin is profit divided by selling price, expressed as a percentage.</p>
+        </details>
+        <details>
+          <summary>What is markup?</summary>
+          <p>Markup is profit divided by cost, expressed as a percentage.</p>
+        </details>
+        <details>
+          <summary>Why are they different?</summary>
+          <p>They use different denominators. Margin uses selling price; markup uses cost.</p>
+        </details>
+        <details>
+          <summary>How is target price calculated?</summary>
+          <p>Target price equals cost divided by one minus the target margin as a decimal.</p>
+        </details>
+        <details>
+          <summary>Can target margin be 100%?</summary>
+          <p>No. This model has no finite price at 100% or higher.</p>
+        </details>
+        <details>
+          <summary>Is this net profit?</summary>
+          <p>
+            Only if your entered cost includes the costs relevant to a net-profit calculation. The
+            page does not classify costs.
+          </p>
+        </details>
+        <details>
+          <summary>Can a result be negative?</summary>
+          <p>Yes. A selling price below cost produces negative profit, margin, and markup.</p>
+        </details>
+        <details>
+          <summary>Does it use tax?</summary>
+          <p>
+            No. Enter inputs that fit your chosen question; tax needs its own confirmed treatment.
+          </p>
+        </details>
+        <details>
+          <summary>Does the tool use live data?</summary>
+          <p>No. It calculates from the values you enter in this browser.</p>
+        </details>
+        <details>
+          <summary>Is this pricing or accounting advice?</summary>
+          <p>No. It provides arithmetic only.</p>
+        </details>
+      </section>
+      <section class="related">
+        <h2>Continue with related arithmetic.</h2>
         <div class="related-grid">
-            <a href="sales-tax-calculator.html" class="related-link">Sales Tax Calculator</a>
-            <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
-            <a href="invoice-generator.html" class="related-link">Free Invoice Generator</a>
-            <a href="currency-converter.html" class="related-link">Currency Converter</a>
-            <a href="compound-interest-calculator.html" class="related-link">Interest Calculator</a>
-            <a href="percentage-calculator.html" class="related-link">Percentage Calculator</a>
-            <a href="qr-code-generator.html" class="related-link">QR Code Generator</a>
-            <a href="unit-converter.html" class="related-link">Unit Converter Online</a>
+          <a href="percentage-calculator.html"><small>RATE MATH</small>Percentage Calculator</a
+          ><a href="sales-tax-calculator.html"><small>CHECKOUT MATH</small>Sales Tax Calculator</a
+          ><a href="tip-calculator.html"><small>BILL MATH</small>Tip Calculator</a
+          ><a href="invoice-generator.html"><small>BILLING</small>Invoice Generator</a>
         </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Accurate · Professional · Business Growth Focused</p>
-</footer>
-
-<script>
-    function calculate() {
-        const cost = parseFloat(document.getElementById('cost').value) || 0;
-        const price = parseFloat(document.getElementById('price').value) || 0;
-
-        const profit = price - cost;
-        const margin = price > 0 ? (profit / price) * 100 : 0;
-        const markup = cost > 0 ? (profit / cost) * 100 : 0;
-
-        document.getElementById('profitVal').innerText = '$' + profit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('marginVal').innerText = margin.toFixed(2) + '%';
-        document.getElementById('markupVal').innerText = markup.toFixed(2) + '%';
-    }
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      </section>
+    </main>
+    <script>
+      /* Toolyfi Editorial Utility Atlas: calculate locally, expose inputs and formulas, never imply live business data. */ (() => {
+        const $ = (id) => document.getElementById(id);
+        let mode = "analyze";
+        const money = (n) =>
+          Number.isFinite(n)
+            ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n)
+            : "—";
+        const pct = (n) => (Number.isFinite(n) ? `${n.toFixed(2)}%` : "—");
+        function put({ cost, price, formula, note }) {
+          const profit = price - cost,
+            margin = price > 0 ? (profit / price) * 100 : NaN,
+            markup = cost > 0 ? (profit / cost) * 100 : NaN,
+            multiplier = cost > 0 ? price / cost : NaN;
+          $("main").textContent = Number.isFinite(price) ? money(price) : "Check values";
+          $("main-label").textContent = note;
+          $("profit").textContent = money(profit);
+          $("margin").textContent = pct(margin);
+          $("markup").textContent = pct(markup);
+          $("multiplier").textContent = Number.isFinite(multiplier)
+            ? `${multiplier.toFixed(2)}×`
+            : "—";
+          $("formula").textContent = formula;
+        }
+        function calc() {
+          if (mode === "analyze") {
+            const cost = Math.max(0, Number($("cost").value) || 0),
+              price = Math.max(0, Number($("price").value) || 0);
+            put({
+              cost,
+              price,
+              note: "Selling price from your entry.",
+              formula: `Profit = ${money(price)} − ${money(cost)} = ${money(price - cost)}. Margin = profit ÷ selling price. Markup = profit ÷ cost.`,
+            });
+          } else {
+            const cost = Math.max(0, Number($("target-cost").value) || 0),
+              margin = Number($("target-margin").value);
+            if (!(margin >= 0 && margin < 100)) {
+              put({
+                cost,
+                price: NaN,
+                note: "Choose a target margin from 0% up to, but not including, 100%.",
+                formula: "Target price is undefined when the target margin is 100% or higher.",
+              });
+              return;
+            }
+            const price = cost / (1 - margin / 100);
+            put({
+              cost,
+              price,
+              note: `Price implied by your ${margin}% target margin.`,
+              formula: `Selling price = ${money(cost)} ÷ (1 − ${margin / 100}) = ${money(price)}.`,
+            });
+          }
+        }
+        document.querySelectorAll("[data-mode]").forEach((b) =>
+          b.addEventListener("click", () => {
+            mode = b.dataset.mode;
+            document
+              .querySelectorAll("[data-mode]")
+              .forEach((x) => x.classList.toggle("active", x === b));
+            $("analyze-fields").hidden = mode !== "analyze";
+            $("target-fields").hidden = mode !== "target";
+            calc();
+          }),
+        );
+        ["cost", "price", "target-cost", "target-margin"].forEach((id) =>
+          $(id).addEventListener("input", calc),
+        );
+        calc();
+      })();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
