@@ -1,347 +1,1181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Sales Tax Calculator - Calculate Tax & Total Price by US State 2026</title>
-    <meta content="Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items. Free calculator for e-commerce and business." name="description">
-    <meta content="sales tax calculator, US sales tax, state tax rates, calculate tax online, e-commerce sales tax, tax free states, local sales tax" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/sales-tax-calculator.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Sales Tax Calculator - Calculate Tax & Total Price by US State 2026">
-    <meta property="og:description" content="Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items.">
-    <meta property="og:url" content="https://toolyfi.com/sales-tax-calculator.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary:#f59e0b; --bg:#fffbeb; --surface:#fff; --border:#fef3c7; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
-
-        .container { max-width:1000px; margin:0 auto; padding:40px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
-
-        .calc-card { background:var(--surface); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(245,158,11,0.1); margin-bottom: 60px; }
-        
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
-        @media(max-width:600px){ .input-grid{grid-template-columns: 1fr;} }
-        
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-        .input-wrap { position: relative; display: flex; align-items: center; }
-        .input-icon { position: absolute; left: 16px; font-weight: 800; color: var(--primary); }
-        input, select { width: 100%; padding: 14px 16px 14px 40px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1rem; font-weight: 700; outline: none; transition: all 0.2s; appearance: none; background: white; }
-        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(245,158,11,0.1); }
-
-        .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        @media(max-width:768px){ .result-grid{grid-template-columns: 1fr;} }
-        .result-item { background: #fffbeb; padding: 24px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
-        .result-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
-        .result-val { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
-
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
-        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
-        
-        .tax-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-        .tax-table th, .tax-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
-        .tax-table th { background: #fffbeb; font-weight: 700; }
-
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
-        @media(max-width:700px){ .info-grid{grid-template-columns: 1fr;} }
-        .info-card { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
-        .info-card h4 { color: var(--primary); margin-bottom: 12px; }
-
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-
-        .related-tools { background: #fffbeb; padding: 40px 20px; border-radius: 16px; margin-top: 60px; border: 1px solid var(--border); }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
-    </style>
-
-    <!-- Schema.org Markup -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sales Tax Calculator: Add, Reverse & Find Rate | Toolyfi</title>
+    <meta
+      name="description"
+      content="Add tax to a pre-tax price, reverse a tax-inclusive total, or find a rate from amounts you enter. Transparent browser-side arithmetic."
+    />
+    <link rel="canonical" href="https://toolyfi.com/sales-tax-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta property="og:title" content="Sales Tax Calculator: Add, Reverse & Find Rate | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Use your confirmed rate with clear pre-tax and tax-inclusive modes."
+    />
+    <meta property="og:url" content="https://toolyfi.com/sales-tax-calculator.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-sales-tax-calculator-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Sales Tax Calculator",
-      "description": "Calculate sales tax for any US state instantly. View all 50 state tax rates, local taxes, and tax-free items.",
-      "url": "https://toolyfi.com/sales-tax-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "reviewCount": "3800"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Sales Tax Calculator",
+        "url": "https://toolyfi.com/sales-tax-calculator.html",
+        "description": "A browser calculator that adds tax to a pre-tax price, reverses a tax-inclusive total, or finds a rate from user-entered amounts.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": "User-entered tax rate, add-tax mode, reverse-tax mode, find-rate mode, visible formulas, browser-side arithmetic"
       }
-    }
     </script>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
-
-<div class="container">
-    <div class="hero">
-        <h1>US Sales Tax Calculator</h1>
-        <p>Calculate sales tax for any US state instantly. Includes state rates, local tax estimates, and total price breakdown for 2026.</p>
-    </div>
-
-    <div class="calc-card">
-        <div class="input-grid">
-            <div>
-                <label>Amount ($)</label>
-                <div class="input-wrap">
-                    <span class="input-icon">$</span>
-                    <input type="number" id="amount" value="100" oninput="calculate()">
-                </div>
-            </div>
-            <div>
-                <label>US State</label>
-                <div class="input-wrap">
-                    <span class="input-icon">📍</span>
-                    <select id="state" onchange="calculate()">
-                        <option value="0">Select State</option>
-                        <option value="4">Alabama (4%)</option>
-                        <option value="0">Alaska (0%)</option>
-                        <option value="5.6">Arizona (5.6%)</option>
-                        <option value="6.5">Arkansas (6.5%)</option>
-                        <option value="7.25">California (7.25%)</option>
-                        <option value="2.9">Colorado (2.9%)</option>
-                        <option value="6.35">Connecticut (6.35%)</option>
-                        <option value="0">Delaware (0%)</option>
-                        <option value="6">Florida (6%)</option>
-                        <option value="4">Georgia (4%)</option>
-                        <option value="4">Hawaii (4%)</option>
-                        <option value="6">Idaho (6%)</option>
-                        <option value="6.25">Illinois (6.25%)</option>
-                        <option value="7">Indiana (7%)</option>
-                        <option value="6">Iowa (6%)</option>
-                        <option value="6.5">Kansas (6.5%)</option>
-                        <option value="6">Kentucky (6%)</option>
-                        <option value="4.45">Louisiana (4.45%)</option>
-                        <option value="5.5">Maine (5.5%)</option>
-                        <option value="6">Maryland (6%)</option>
-                        <option value="6.25">Massachusetts (6.25%)</option>
-                        <option value="6">Michigan (6%)</option>
-                        <option value="6.875">Minnesota (6.875%)</option>
-                        <option value="7">Mississippi (7%)</option>
-                        <option value="4.225">Missouri (4.225%)</option>
-                        <option value="0">Montana (0%)</option>
-                        <option value="5.5">Nebraska (5.5%)</option>
-                        <option value="6.85">Nevada (6.85%)</option>
-                        <option value="0">New Hampshire (0%)</option>
-                        <option value="6.625">New Jersey (6.625%)</option>
-                        <option value="5.125">New Mexico (5.125%)</option>
-                        <option value="4">New York (4%)</option>
-                        <option value="4.75">North Carolina (4.75%)</option>
-                        <option value="5">North Dakota (5%)</option>
-                        <option value="5.75">Ohio (5.75%)</option>
-                        <option value="4.5">Oklahoma (4.5%)</option>
-                        <option value="0">Oregon (0%)</option>
-                        <option value="6">Pennsylvania (6%)</option>
-                        <option value="7">Rhode Island (7%)</option>
-                        <option value="6">South Carolina (6%)</option>
-                        <option value="4.5">South Dakota (4.5%)</option>
-                        <option value="7">Tennessee (7%)</option>
-                        <option value="6.25">Texas (6.25%)</option>
-                        <option value="4.85">Utah (4.85%)</option>
-                        <option value="6">Vermont (6%)</option>
-                        <option value="4.3">Virginia (4.3%)</option>
-                        <option value="6.5">Washington (6.5%)</option>
-                        <option value="6">West Virginia (6%)</option>
-                        <option value="5">Wisconsin (5%)</option>
-                        <option value="4">Wyoming (4%)</option>
-                    </select>
-                </div>
-            </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sales Tax Calculator",
+            "item": "https://toolyfi.com/sales-tax-calculator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I add tax to a pre-tax price?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Multiply the pre-tax price by the rate as a decimal for tax, then add tax to the pre-tax price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I reverse tax from a tax-inclusive total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the tax-inclusive total by one plus the rate as a decimal, then subtract the result from the total."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find a rate from a price and tax amount?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the known tax amount by the pre-tax price and multiply by 100."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a tax-inclusive total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is an amount that already includes the selected tax amount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a pre-tax price?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is the amount before the selected tax is added in this arithmetic model."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator look up a local tax rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. You enter a rate that you have confirmed for your own situation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator determine whether an item is taxable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It performs arithmetic only and does not classify products, exemptions, or transactions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a zero percent rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A zero rate produces zero tax and makes pre-tax and tax-inclusive amounts the same."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why should I not add tax to a tax-inclusive total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Adding tax to an amount that already includes it applies the selected rate twice in the arithmetic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this tax, legal, accounting, or financial advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It provides transparent arithmetic from the figures entered, not advice or transaction-specific treatment."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral signals; make tax-inclusive status and user-entered rates unmistakable. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --coral: #ef6c54;
+        --sage: #dfe7dc;
+        --line: #d9d6cf;
+        --muted: #647083;
+        --deep: #102033;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      .page {
+        max-width: 1180px;
+        margin: auto;
+        padding: 38px 24px 86px;
+      }
+      .crumb {
+        margin: 16px 0 22px;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+      .crumb a {
+        color: inherit;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.03fr 0.97fr;
+        align-items: center;
+        gap: 54px;
+        padding: 25px 0 62px;
+      }
+      .hero h1,
+      .guide h2,
+      .related h2 {
+        font-family: Fraunces, serif;
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 6vw, 5.4rem);
+        margin: 15px 0 22px;
+      }
+      .hero em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .hero p {
+        color: var(--muted);
+        max-width: 590px;
+      }
+      .buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .button {
+        border: 1px solid var(--ink);
+        padding: 12px 17px;
+        color: var(--ink);
+        background: transparent;
+        text-decoration: none;
+        font: 800 0.8rem inherit;
+      }
+      .primary {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: #fff;
+      }
+      .facts {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--muted);
+        margin-top: 25px;
+      }
+      .facts span:before {
+        content: "•";
+        color: var(--coral);
+        padding: 0 6px;
+      }
+      .hero-art {
+        padding: 16px;
+        background: #eee6d8;
+        box-shadow: 9px 10px 0 var(--deep);
+        transform: rotate(-1deg);
+        position: relative;
+      }
+      .hero-art img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .hero-art figcaption {
+        position: absolute;
+        right: 6%;
+        bottom: 5%;
+        background: #fff;
+        padding: 6px 9px;
+        font-size: 0.64rem;
+        font-weight: 800;
+      }
+      .calc-wrap {
+        background: var(--deep);
+        color: #fff;
+        margin: 0 -24px;
+        padding: clamp(24px, 5vw, 54px);
+      }
+      .calc-head {
+        max-width: 1132px;
+        margin: 0 auto 28px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+      }
+      .calc-head h2 {
+        font:
+          700 clamp(2rem, 4vw, 3.5rem) / 1 Fraunces,
+          serif;
+        margin: 0;
+        letter-spacing: -0.04em;
+      }
+      .calc-head p {
+        margin: 0;
+        max-width: 400px;
+        color: #c4ccd7;
+        font-size: 0.88rem;
+      }
+      .calc {
+        max-width: 1132px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 24px;
+      }
+      .panel {
+        background: #fff;
+        color: var(--ink);
+        padding: 26px;
+      }
+      .panel h3,
+      .result h3 {
+        font:
+          700 1.55rem Fraunces,
+          serif;
+        margin: 0 0 18px;
+      }
+      .modes {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .mode {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 9px 11px;
+        color: var(--ink);
+        font: 800 0.73rem inherit;
+        cursor: pointer;
+      }
+      .mode.active {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: #fff;
+      }
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .field {
+        margin-bottom: 17px;
+      }
+      .field.wide {
+        grid-column: 1/-1;
+      }
+      .field label {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--muted);
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+      .field input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--line);
+        font: 700 1rem inherit;
+        color: var(--ink);
+      }
+      .hint {
+        display: block;
+        font-size: 0.71rem;
+        color: #647083;
+        margin-top: 5px;
+      }
+      .note {
+        border-left: 4px solid var(--coral);
+        padding: 15px 17px;
+        background: #fffaf7;
+        color: #4d5968;
+        font-size: 0.84rem;
+        margin: 4px 0 0;
+      }
+      .result {
+        background: var(--sage);
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        color: var(--ink);
+      }
+      .result .main {
+        font:
+          800 clamp(2.8rem, 6vw, 4.4rem) / 0.95 Fraunces,
+          serif;
+        letter-spacing: -0.06em;
+        margin: 21px 0 7px;
+      }
+      .result .sub {
+        margin: 0;
+        color: #526355;
+        font-size: 0.82rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 18px 0;
+        background: #f5f8f2;
+      }
+      .grid div {
+        padding: 13px;
+        border-right: 1px solid #cdd7c9;
+        border-bottom: 1px solid #cdd7c9;
+      }
+      .grid div:nth-child(2n) {
+        border-right: 0;
+      }
+      .grid span {
+        display: block;
+        font-size: 0.66rem;
+        color: #536454;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .formula {
+        margin-top: auto;
+        background: #fff;
+        padding: 13px;
+        color: #415047;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+      }
+      .guide {
+        max-width: 850px;
+        margin: 78px auto 0;
+      }
+      .guide h2 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        margin: 62px 0 18px;
+      }
+      .guide p,
+      .guide li {
+        color: #3f4b5d;
+      }
+      .toc {
+        padding: 20px;
+        background: #f0ede6;
+      }
+      .toc a {
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 800;
+        margin: 4px 14px 4px 0;
+        display: inline-block;
+      }
+      .callout {
+        background: #f7e4df;
+        color: #4d3430;
+        padding: 20px;
+        margin: 24px 0;
+      }
+      .callout strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 5px;
+      }
+      .faq {
+        margin-top: 64px;
+      }
+      .faq h2 {
+        font:
+          700 clamp(2.2rem, 4vw, 3.6rem) / 1 Fraunces,
+          serif;
+        letter-spacing: -0.04em;
+      }
+      .faq details {
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq summary {
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .faq p {
+        color: #536073;
+        font-size: 0.9rem;
+      }
+      .related {
+        margin-top: 70px;
+        padding: 38px;
+        background: var(--deep);
+        color: #fff;
+      }
+      .related h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        margin: 0 0 23px;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related a {
+        background: #fff;
+        color: var(--ink);
+        min-height: 125px;
+        padding: 17px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font:
+          700 1.1rem/1.08 Fraunces,
+          serif;
+      }
+      .related small {
+        font:
+          800 0.62rem "Plus Jakarta Sans",
+          sans-serif;
+        color: var(--coral);
+        letter-spacing: 0.08em;
+      }
+      @media (max-width: 800px) {
+        .page {
+          padding: 26px 18px 62px;
+        }
+        .hero,
+        .calc {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .hero-art {
+          order: -1;
+        }
+        .calc-wrap {
+          margin: 0 -18px;
+          padding: 30px 18px;
+        }
+        .calc-head {
+          display: block;
+        }
+        .calc-head p {
+          margin-top: 12px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 450px) {
+        .field-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="crumb">
+        <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Sales Tax
+        Calculator
+      </p>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Tax arithmetic, made inspectable</div>
+          <h1>Know what the <em>total</em> includes.</h1>
+          <p>
+            Add tax to a pre-tax price, reverse a tax-inclusive total, or find a rate from amounts
+            you enter. Toolyfi shows the calculation and never guesses your rate.
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#calculator">Open calculator</a
+            ><a class="button" href="#guide">Read the formulas</a>
+          </div>
+          <div class="facts">
+            <span>Runs in your browser</span><span>Your rate, your input</span
+            ><span>Formula shown</span>
+          </div>
         </div>
-
-        <div class="result-grid">
-            <div class="result-item">
-                <div class="result-label">Base Amount</div>
-                <div id="baseVal" class="result-val">$100.00</div>
+        <figure class="hero-art">
+          <img
+            src="images/toolyfi-sales-tax-calculator-hero.webp"
+            width="2560"
+            height="1440"
+            fetchpriority="high"
+            alt="Editorial paper collage of receipt, price tag, calculator, and tax percentage stamp"
+          />
+          <figcaption>Inclusive is not exclusive</figcaption>
+        </figure>
+      </section>
+    </main>
+    <section class="calc-wrap" id="calculator">
+      <div class="calc-head">
+        <h2>Name the amount first.<br />Then apply the rate.</h2>
+        <p>
+          Enter a rate you have confirmed for your own situation. This page does not look up
+          locality, product, exemption, or transaction treatment.
+        </p>
+      </div>
+      <div class="calc">
+        <section class="panel">
+          <h3>Choose your question</h3>
+          <div class="modes">
+            <button class="mode active" type="button" data-mode="add">
+              Add tax to pre-tax price</button
+            ><button class="mode" type="button" data-mode="reverse">
+              Reverse tax-inclusive total</button
+            ><button class="mode" type="button" data-mode="rate">Find rate from known tax</button>
+          </div>
+          <div class="field-grid">
+            <div class="field wide">
+              <label id="amount-label" for="amount">Pre-tax price</label
+              ><input
+                id="amount"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                value="70"
+              /><small class="hint" id="amount-hint"
+                >This amount excludes the selected tax in add-tax mode.</small
+              >
             </div>
-            <div class="result-item">
-                <div class="result-label">Tax Amount</div>
-                <div id="taxVal" class="result-val">$0.00</div>
+            <div class="field" id="rate-field">
+              <label for="rate">Tax rate (%)</label
+              ><input
+                id="rate"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.0001"
+                value="6.5"
+              /><small class="hint">Enter a rate you have confirmed.</small>
             </div>
-            <div class="result-item">
-                <div class="result-label">Total Price</div>
-                <div id="totalVal" class="result-val">$100.00</div>
+            <div class="field" id="tax-field" hidden>
+              <label for="known-tax">Known tax amount</label
+              ><input
+                id="known-tax"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                value="4.55"
+              /><small class="hint">Used to derive a rate from your amounts.</small>
             </div>
+          </div>
+          <p class="note">
+            Arithmetic only: locality, date, product category, exemption, taxability, and law can
+            affect a real transaction. Confirm the rate and treatment independently before relying
+            on an outcome.
+          </p>
+        </section>
+        <section class="result" aria-live="polite">
+          <h3>Your calculation</h3>
+          <p id="main" class="main">—</p>
+          <p id="sub" class="sub">Enter values to calculate.</p>
+          <div class="grid">
+            <div><span>Pre-tax price</span><b id="pretax">—</b></div>
+            <div><span>Tax amount</span><b id="tax">—</b></div>
+            <div><span>Tax-inclusive total</span><b id="total">—</b></div>
+            <div><span>Rate</span><b id="rate-result">—</b></div>
+          </div>
+          <div id="formula" class="formula">Enter values to see the arithmetic method.</div>
+        </section>
+      </div>
+    </section>
+    <main class="page">
+      <article class="guide" id="guide">
+        <div class="eyebrow">Sales tax calculator guide</div>
+        <h2>Sales-tax arithmetic begins by identifying whether the amount already includes tax.</h2>
+        <p>
+          A tax calculation can look simple until the same number is treated as both a pre-tax price
+          and a tax-inclusive total. Those descriptions are not interchangeable. A pre-tax price is
+          the amount before the rate is applied in this arithmetic model. A tax-inclusive total
+          already contains both the pre-tax amount and the tax amount. Toolyfi separates those
+          questions into distinct modes so that a visitor can see exactly which value is being
+          multiplied, divided, or subtracted.
+        </p>
+        <p>
+          This page takes a deliberately narrow approach. You provide the rate, the price, or the
+          known tax amount. The calculator performs local arithmetic from those figures and displays
+          its formula. It does not fetch a live rate, identify a place, decide whether a good or
+          service is taxable, apply an exemption, interpret a receipt, classify a tax, or provide
+          tax, legal, accounting, or financial advice. A real transaction can depend on locality,
+          date, product category, customer status, and law; those facts must be confirmed outside
+          this calculator.
+        </p>
+        <nav class="toc">
+          <a href="#terms">Core terms</a><a href="#add">Add tax</a><a href="#reverse">Reverse tax</a
+          ><a href="#find">Find rate</a><a href="#inclusive">Inclusive vs exclusive</a
+          ><a href="#examples">Worked examples</a><a href="#rounding">Rounding</a
+          ><a href="#records">Keep a record</a><a href="#scope">Scope</a>
+        </nav>
+        <h2 id="terms">Start with four values and one decimal conversion</h2>
+        <p>
+          The four values on this page are pre-tax price, tax rate, tax amount, and tax-inclusive
+          total. The pre-tax price is the base amount before the selected rate is applied. The tax
+          rate is entered as a percentage for readability but converted to a decimal in the
+          formulas. A rate of 6.5% becomes 0.065. The tax amount is the base amount multiplied by
+          that decimal. The tax-inclusive total is the base amount plus the calculated tax amount.
+        </p>
+        <p>
+          Writing the rate in both forms helps prevent a common input error. The calculator accepts
+          6.5 in the rate field because the field is labeled as a percent. It then divides by 100
+          before multiplying. If you are checking arithmetic manually, use 0.065 rather than 6.5 in
+          the multiplication. For a pre-tax price of 70, tax at 6.5% is 70 × 0.065 = 4.55. The total
+          is 70 + 4.55 = 74.55. The rate is not an amount of currency; it is a ratio applied to the
+          defined base.
+        </p>
+        <p>
+          The terms describe arithmetic roles, not a conclusion about any transaction. A receipt
+          might use different language such as subtotal, net, total, charge, amount due, inclusive
+          price, or tax collected. Before entering a number, decide which role it has in your
+          question. If the figure already includes tax, start in reverse mode. If it is a base
+          amount before the selected rate, start in add-tax mode. If you know the base and tax
+          figures but not the percentage, use find-rate mode.
+        </p>
+        <h2 id="add">Add tax only when the starting amount is pre-tax</h2>
+        <p>
+          Add-tax mode answers a narrow question: “If this entered amount excludes tax, what tax and
+          total follow from the rate I enter?” The formula is tax = pre-tax price × rate decimal.
+          The total formula is pre-tax price × (1 + rate decimal). With a pre-tax price of 70 and a
+          rate of 6.5%, the decimal is 0.065. Tax is 70 × 0.065 = 4.55. Total is 70 × 1.065 = 74.55.
+          Both calculations reach the same tax-inclusive total because adding 4.55 to 70 is
+          equivalent to multiplying 70 by 1.065.
+        </p>
+        <div class="callout">
+          <strong>Visible add-tax example</strong>70 pre-tax price × 0.065 = 4.55 tax; 70 + 4.55 =
+          74.55 tax-inclusive total.
         </div>
-    </div>
-
-    <!-- COMPREHENSIVE CONTENT SECTION -->
-    <div class="content-section">
-        <h2>The Complete Guide to US Sales Tax in 2026</h2>
-        <p>Navigating the US sales tax system can be a daunting task for both consumers and business owners. Unlike many countries with a national Value Added Tax (VAT), the United States has a decentralized system where each state, and often each city or county, sets its own rates. Our <strong>Free Sales Tax Calculator</strong> simplifies this complexity, providing instant calculations for all 50 states.</p>
-
-        <h3>How to Use the Sales Tax Calculator</h3>
-        <p>Our tool is designed for speed and accuracy:</p>
-        <ol>
-            <li><strong>Enter the Amount:</strong> Type in the pre-tax price of the item or service.</li>
-            <li><strong>Select Your State:</strong> Choose the US state from the dropdown menu. The calculator automatically applies the current 2026 state-level rate.</li>
-            <li><strong>Review the Breakdown:</strong> Instantly see the base price, the tax amount, and the final total you'll pay at checkout.</li>
-        </ol>
-
-        <h3>US Sales Tax: State-by-State Breakdown</h3>
-        <p>While some states have high rates to fund public services, others have no sales tax at all. Here are the key categories for 2026:</p>
-        
-        <div class="info-grid">
-            <div class="info-card">
-                <h4>States with NO Sales Tax</h4>
-                <p>Five US states do not collect any state-level sales tax, making them popular destinations for major purchases:</p>
-                <ul>
-                    <li><strong>Delaware:</strong> The most famous tax-free state.</li>
-                    <li><strong>Montana:</strong> No state or local sales tax.</li>
-                    <li><strong>New Hampshire:</strong> No sales tax on most goods.</li>
-                    <li><strong>Oregon:</strong> A major tax-free hub on the West Coast.</li>
-                    <li><strong>Alaska:</strong> No state tax, though some local municipalities may charge small fees.</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h4>States with the Highest Rates</h4>
-                <p>These states have the highest base rates, though local taxes can push these even higher:</p>
-                <ul>
-                    <li><strong>California:</strong> 7.25% (Base)</li>
-                    <li><strong>Indiana, Mississippi, Rhode Island, Tennessee:</strong> 7.00%</li>
-                    <li><strong>Minnesota:</strong> 6.875%</li>
-                    <li><strong>Nevada:</strong> 6.85%</li>
-                    <li><strong>New Jersey:</strong> 6.625%</li>
-                </ul>
-            </div>
+        <p>
+          Use this mode only after you have identified the starting figure as tax-exclusive for your
+          selected calculation. Adding a rate to an amount that already includes tax applies the
+          percentage to a larger base than intended and produces a second layer of tax in the
+          arithmetic. The calculator cannot recognize a receipt automatically, so the amount label
+          changes with the mode to make your starting interpretation visible.
+        </p>
+        <p>
+          It can be useful to preserve the exact rate you entered beside the output. A note such as
+          “pre-tax amount 70; entered rate 6.5%; tax 4.55; total 74.55” is repeatable. A note that
+          says only “total 74.55” does not say whether tax was added, whether the rate was
+          confirmed, or whether the starting amount was tax-inclusive. The formula shown in the tool
+          is intended to support that traceability.
+        </p>
+        <h2 id="reverse">Reverse a tax-inclusive total with division, not subtraction</h2>
+        <p>
+          Reverse-tax mode is for a total that already includes the selected tax. The pre-tax price
+          is not found by subtracting the rate percentage directly from the total. Instead, divide
+          the total by one plus the rate decimal. The formula is pre-tax price = tax-inclusive total
+          ÷ (1 + rate decimal). Then tax amount equals total minus the pre-tax result. This division
+          removes the factor that was used to create the total.
+        </p>
+        <p>
+          For a tax-inclusive total of 108 and an entered rate of 8%, the factor is 1.08. Dividing
+          108 by 1.08 gives 100 pre-tax. The tax amount is 108 − 100 = 8. The calculation can be
+          checked by adding 8 back to 100. Simply taking 8% of 108 would give 8.64, which is not the
+          same question because it treats the tax-inclusive total as if it were the pre-tax base.
+        </p>
+        <div class="callout">
+          <strong>Visible reverse-tax example</strong>108 tax-inclusive total ÷ 1.08 = 100 pre-tax
+          price; 108 − 100 = 8 tax amount.
         </div>
-
-        <h3>Understanding Local vs. State Tax</h3>
-        <p>The rate you see in our dropdown is the <strong>State-Level Rate</strong>. However, in many states, cities and counties add their own "Local Option" taxes. For example:</p>
-        <ul>
-            <li><strong>New York:</strong> The state rate is 4%, but in New York City, the total sales tax is 8.875% due to local additions.</li>
-            <li><strong>Illinois:</strong> The state rate is 6.25%, but in Chicago, the total can exceed 10%.</li>
-            <li><strong>Texas:</strong> The state rate is 6.25%, but most cities add 2%, bringing the total to 8.25%.</li>
-        </ul>
-
-        <h3>Tax-Free Items & Sales Tax Holidays</h3>
-        <p>Many states offer exemptions for specific categories of goods to reduce the burden on families:</p>
-        <ul>
-            <li><strong>Groceries:</strong> Most states do not tax "unprepared" food items.</li>
-            <li><strong>Prescription Drugs:</strong> Almost all states exempt necessary medications.</li>
-            <li><strong>Clothing:</strong> Some states (like Pennsylvania and New Jersey) do not tax most clothing items.</li>
-            <li><strong>Sales Tax Holidays:</strong> Many states (like Florida and Texas) have "Back to School" weekends where sales tax is waived on clothes and school supplies.</li>
-        </ul>
-
-        <h3>E-commerce & The "Wayfair" Rule</h3>
-        <p>If you are an online business owner, you must be aware of <strong>Economic Nexus</strong>. Following the 2018 Supreme Court ruling (South Dakota v. Wayfair), states can require online retailers to collect sales tax even if they don't have a physical presence in that state, provided they meet certain sales thresholds (usually $100,000 in sales or 200 transactions per year).</p>
-
-        <h3>Frequently Asked Questions</h3>
-        <div class="faq-grid">
-            <details>
-                <summary>Why is the tax higher at the store than on this calculator?</summary>
-                <div class="faq-content">Our calculator uses the base state rate. Your local city or county likely adds an additional 1-4% on top of the state rate.</div>
-            </details>
-            <details>
-                <summary>Do I have to pay sales tax on online purchases?</summary>
-                <div class="faq-content">Yes, most major online retailers (like Amazon) now collect sales tax based on your shipping address. If they don't, you are technically required to pay "Use Tax" to your state.</div>
-            </details>
-            <details>
-                <summary>Which state has the lowest sales tax?</summary>
-                <div class="faq-content">Excluding the five states with 0% tax, Colorado has the lowest state-level rate at 2.9%.</div>
-            </details>
-            <details>
-                <summary>Is there a national sales tax in the USA?</summary>
-                <div class="faq-content">No. The US federal government does not collect a national sales tax. All sales taxes are managed at the state and local levels.</div>
-            </details>
-            <details>
-                <summary>Do tourists have to pay sales tax?</summary>
-                <div class="faq-content">Yes, everyone who makes a purchase in a taxable state must pay the tax. Unlike some European countries, the US does not have a widespread system for tourists to claim tax refunds at the airport.</div>
-            </details>
-            <details>
-                <summary>Are services taxable?</summary>
-                <div class="faq-content">This varies by state. Some states (like Hawaii and New Mexico) tax almost all services, while others (like California) generally only tax tangible goods.</div>
-            </details>
-            <details>
-                <summary>What is "Use Tax"?</summary>
-                <div class="faq-content">Use tax is a tax on the storage, use, or consumption of a taxable item or service on which no sales tax was paid. It's designed to prevent people from avoiding tax by buying out-of-state.</div>
-            </details>
-            <details>
-                <summary>How do I calculate tax manually?</summary>
-                <div class="faq-content">Multiply the price by the tax rate (as a decimal). For example, $100 x 0.07 = $7.00 tax. Total = $107.00.</div>
-            </details>
-            <details>
-                <summary>Do I pay tax on shipping costs?</summary>
-                <div class="faq-content">This depends on the state. Some states consider shipping part of the taxable sale, while others exempt it if it's listed as a separate line item.</div>
-            </details>
-            <details>
-                <summary>What is a Resale Certificate?</summary>
-                <div class="faq-content">A document that allows businesses to buy goods tax-free if they intend to resell them to customers (who will then pay the sales tax).</div>
-            </details>
-        </div>
-    </div>
-
-    <div class="related-tools">
-        <h3>Related Financial Tools</h3>
+        <p>
+          Reverse mode makes the inclusive status explicit because price labels can be ambiguous. A
+          total may include tax, fees, discounts, shipping, or other components that are outside
+          this simple two-part model. Do not assume that every total can be separated with one rate.
+          Enter a total only when you have chosen to model it as pre-tax price plus tax at one
+          stated rate. If that relationship is not known, the page should not be used to invent it.
+        </p>
+        <h2 id="find">Find a rate from a known pre-tax price and known tax amount</h2>
+        <p>
+          Find-rate mode starts with two money values instead of a rate. It divides the known tax
+          amount by the known pre-tax price and multiplies by 100. The formula is rate percent =
+          known tax amount ÷ pre-tax price × 100. If the pre-tax price is 70 and known tax is 4.55,
+          the result is 4.55 ÷ 70 × 100 = 6.5%. The page also shows the tax-inclusive total from the
+          two values entered.
+        </p>
+        <p>
+          This calculation discovers the ratio implied by your entries; it does not confirm that the
+          rate is correct for a location or transaction. A rate derived from rounded money amounts
+          may differ slightly from a rate shown elsewhere. For example, a tax amount rounded to two
+          decimals can make a ratio appear as 6.49% or 6.50% depending on the underlying figures.
+          Treat the result as arithmetic evidence about the numbers entered, not a tax-rate lookup.
+        </p>
+        <p>
+          The pre-tax price must be greater than zero in find-rate mode because it is the
+          denominator. If it is zero or negative, the page displays an explanation rather than a
+          numeric rate. This is a useful guardrail: a polished percentage with an undefined
+          denominator would hide a formula problem. Review the source amounts before substituting a
+          different input merely to obtain an output.
+        </p>
+        <h2 id="inclusive">Tax-inclusive and tax-exclusive labels prevent double counting</h2>
+        <p>
+          Tax-exclusive means the listed amount does not include the selected tax in the arithmetic
+          model. Add-tax mode starts there. Tax-inclusive means the listed amount already includes
+          the selected tax. Reverse-tax mode starts there. The distinction is not just vocabulary.
+          It changes whether the rate is multiplied against a base or divided out of a total. A rate
+          can be correct while the answer is still wrong if the amount is placed in the wrong mode.
+        </p>
+        <p>
+          A simple check is to ask whether applying the rate one more time would create a new
+          charge. If yes, the amount may already be inclusive and should be reversed rather than
+          taxed again. If the amount is clearly identified as a base, subtotal, or pre-tax price for
+          your purpose, add-tax mode may be appropriate. When a document is unclear, do not let the
+          calculator choose a meaning. Keep the ambiguity in your working note and obtain the source
+          information required to resolve it.
+        </p>
+        <p>
+          Tax-inclusive arithmetic is also not a label for every amount paid. A total can contain
+          non-tax components that the basic formula does not separate. Toolyfi models only a pre-tax
+          amount plus a tax amount at the user-entered rate. Do not use reverse mode to allocate
+          discounts, fees, multiple rates, tax-exempt portions, or non-tax charges unless you have
+          already made a defined calculation outside this page that reduces the question to these
+          two parts.
+        </p>
+        <h2 id="examples">Use worked examples to check your formula path</h2>
+        <p>
+          Example one uses add-tax mode. Enter 70 as the pre-tax price and 6.5 as the rate percent.
+          The calculator converts 6.5% to 0.065, calculates 4.55 tax, and returns a 74.55
+          tax-inclusive total. The input order is important: the 70 base excludes the selected tax.
+          The result can be checked in two ways: 70 + 4.55 = 74.55, and 70 × 1.065 = 74.55.
+        </p>
+        <p>
+          Example two uses reverse mode. Enter 108 as the tax-inclusive total and 8 as the rate
+          percent. The factor is 1.08. Dividing 108 by 1.08 returns 100 pre-tax, and subtracting 100
+          from 108 returns 8 tax. The check is 100 × 0.08 = 8. This sequence demonstrates why
+          reverse calculation needs division first: the tax portion is based on the pre-tax 100, not
+          on the inclusive 108.
+        </p>
+        <p>
+          Example three uses find-rate mode. Enter 200 as pre-tax price and 15 as known tax amount.
+          The implied rate is 15 ÷ 200 × 100 = 7.5%. The tool displays an inclusive total of 215. If
+          the tax amount was rounded in another record, the shown rate may be an approximation of
+          the underlying relationship. Preserve the original money values and use the output as a
+          transparent ratio, not as a claim that the rate applies to any other item or time.
+        </p>
+        <h2 id="rounding">Round displayed money, then recheck the chosen amount</h2>
+        <p>
+          Currency is commonly displayed to two decimal places, while tax arithmetic can create more
+          digits. The calculator uses the figures entered for its calculations and formats the
+          visible amounts for readability. A displayed result can therefore be a rounded
+          presentation of a longer decimal. When an exact comparison matters, retain the entered
+          price, rate, and formula. Do not try to reconstruct a rate or base only from a rounded
+          card.
+        </p>
+        <p>
+          Rounding matters especially in reverse mode. Divide the inclusive total by the rate factor
+          first, then view the displayed pre-tax and tax amounts. If a payment system uses a
+          particular rounding rule or decimal increment, enter the selected amount and run the mode
+          again to see the arithmetic result from that chosen input. The page does not claim to
+          mirror any merchant, jurisdiction, invoice, accounting, or payment-system rounding
+          practice.
+        </p>
+        <p>
+          Do not solve a rounding question by adding a second tax calculation. If the total already
+          includes the rate, reverse it. If the base excludes it, add it. If a known tax amount is
+          driving the question, find its implied rate. Keeping the mode aligned with the amount’s
+          status is more important than adding extra decimal places to a calculation that begins
+          with the wrong denominator.
+        </p>
+        <h2 id="mixed">Do not force mixed amounts into a single-rate calculation</h2>
+        <p>
+          A single-rate calculation works when the entered base, selected rate, and total describe
+          one defined relationship. It is not designed to split an amount that contains several
+          rates, a taxable part and an exempt part, a discount that applies to only one component, a
+          fee, a shipping charge, or another non-tax amount. Combining unlike components first and
+          applying one rate can produce a clean-looking number that does not answer the question
+          actually being asked. The limitation is about the inputs, not about the multiplication.
+        </p>
+        <p>
+          For example, imagine a record with two pre-tax items that have different confirmed rates.
+          Add-tax mode can check each item separately by using its own base and rate. Add the
+          resulting amounts only after the separate arithmetic is clear. The calculator does not
+          identify which rate belongs to which item, and it does not decide whether two items should
+          be grouped. A simple repeatable process is more useful than a one-field shortcut that
+          hides the rate definition.
+        </p>
+        <p>
+          The same caution applies to an inclusive total that contains more than one component.
+          Reverse mode divides one total by one rate factor. If different parts of the total were
+          subject to different rates, or if a part was not tax at all, the result no longer
+          represents a single pre-tax amount plus tax at one stated rate. Keep components separate
+          until the necessary source information supports a defined calculation. If the record
+          cannot be reduced to one base and one rate, use a detailed worksheet or an appropriate
+          accounting process rather than asking this page to infer the missing parts.
+        </p>
+        <p>
+          Discount timing deserves the same explicit treatment. A discount can change the base used
+          in a calculation, but the page does not decide when or whether that happens. Do not
+          subtract a percentage from a total and assume that the rate will remain unchanged. Write
+          the amount you have chosen to treat as pre-tax, then apply the confirmed rate in add-tax
+          mode. If you later select a different price, enter that price as a new scenario and
+          preserve its formula. The
+          <a href="percentage-calculator.html">Percentage Calculator</a> can separately check the
+          arithmetic of a stated discount percentage without turning it into a tax-treatment rule.
+        </p>
+        <h2 id="confirmation">Use the calculator after confirmation, not as a rate source</h2>
+        <p>
+          The rate field is intentionally blank of location suggestions and rate tables. A tax rate
+          can vary with facts the page cannot see, including where a transaction is treated as
+          occurring, the date, the category of product or service, exemption status, and governing
+          law. Supplying a rate in a browser field is not the same as confirming that the rate
+          applies. Toolyfi therefore treats the rate as an input you selected, not as information
+          supplied by the website.
+        </p>
+        <p>
+          A practical workflow separates verification from arithmetic. First, identify the amount as
+          pre-tax or tax-inclusive. Second, confirm the rate and treatment using the source
+          appropriate to the actual transaction. Third, enter the values in the matching mode and
+          retain the output with the input label. If the source later changes or the transaction
+          details differ, repeat the process with the revised figures instead of treating an old
+          calculation as a permanent rule.
+        </p>
+        <p>
+          That workflow also makes uncertainty visible. When a rate is unknown, find-rate mode can
+          show the ratio implied by a known base and tax amount, but it cannot certify the ratio.
+          When a total has unclear components, reverse mode can test an assumption, but it cannot
+          establish that the assumption is correct. The calculator helps you explain what follows
+          from chosen numbers; it does not eliminate the need to understand what those numbers
+          represent.
+        </p>
+        <p>
+          Use a simple single-scenario calculator when you need a visible formula check. Use a
+          spreadsheet when many line items, dates, rates, components, or records must be preserved.
+          Use qualified official, tax, legal, or accounting sources for questions about
+          applicability or obligations. These tools serve different jobs. Keeping them separate
+          produces a more honest result and reduces the risk that a mathematical output is mistaken
+          for a transaction-specific conclusion.
+        </p>
+        <p>
+          Rechecking a scenario is often faster than repairing a result after its labels have been
+          lost. Return to the original amount, confirm whether it was pre-tax or inclusive, and
+          enter the rate or tax amount again in the matching mode. If the output changes, compare
+          the inputs rather than assuming that a formula failed. A revised price, different rate, or
+          different understanding of what the total includes is enough to create a legitimately
+          different result.
+        </p>
+        <h2 id="records">Keep a reproducible tax-arithmetic note</h2>
+        <p>
+          A useful note identifies the mode, amount label, entered rate or known tax amount, and
+          result. For add-tax mode: “pre-tax price 70; entered rate 6.5%; calculated tax 4.55;
+          tax-inclusive total 74.55.” For reverse mode: “tax-inclusive total 108; entered rate 8%;
+          calculated pre-tax price 100; tax 8.” For find-rate mode: “pre-tax price 70; known tax
+          4.55; implied rate 6.5%; total 74.55.” These notes describe arithmetic without implying
+          any legal conclusion.
+        </p>
+        <p>
+          Separate the calculation record from a claim about applicability. A rate may have been
+          supplied by a document, a source, a receipt, or an assumption that needs independent
+          confirmation. Write that context in a different note rather than presenting a calculator
+          output as proof that a rate is current or applicable. This page has no location lookup,
+          product database, date database, or exemption engine. Its strength is that each input and
+          formula can be inspected.
+        </p>
+        <p>
+          For many products, rates, dates, or components, use a spreadsheet or appropriate
+          accounting workflow. Keep each scenario in its own row with columns for amount status,
+          entered rate, calculated tax, and total. This calculator is best for a single visible
+          scenario or a formula check. The
+          <a href="percentage-calculator.html">Percentage Calculator</a> can check a percentage
+          relationship separately, while the
+          <a href="profit-margin-calculator.html">Profit Margin Calculator</a> addresses price and
+          cost rather than tax treatment.
+        </p>
+        <h2 id="scope">Know the scope before using a result in a real transaction</h2>
+        <p>
+          This page does not determine a live rate, sales or use tax treatment, VAT, GST, product
+          classification, exemption, nexus, filing obligation, tax period, taxability, or
+          customer-specific outcome. It does not contain a state, city, country, ZIP-code, or
+          address rate table. It does not claim that a rate is current, complete, or suitable for a
+          purchase. Enter a rate you have confirmed from the source relevant to your situation, and
+          treat the result as arithmetic support only.
+        </p>
+        <p>
+          Real treatment can vary because locality, date, product category, threshold, exemption,
+          buyer status, seller status, and law can matter. An amount may also include other charges
+          that are not part of the two-value pre-tax-plus-tax model. If those factors could change
+          an action, record, or filing, seek the appropriate official, legal, tax, or accounting
+          source. The calculator should not be used to replace that verification.
+        </p>
+        <p>
+          Zero is a valid entered rate and produces zero tax: pre-tax and inclusive amounts are the
+          same. Negative price, tax, or rate inputs do not fit the ordinary purchase scenario
+          modeled here and produce a readable guardrail. A guardrail is not a limitation to work
+          around; it indicates that the entered values no longer support the formula the page
+          promises to show.
+        </p>
+      </article>
+      <section class="faq">
+        <h2>Questions, answered directly.</h2>
+        <details>
+          <summary>How do I add tax to a pre-tax price?</summary>
+          <p>
+            Multiply the pre-tax price by the rate as a decimal for tax, then add tax to the price.
+          </p>
+        </details>
+        <details>
+          <summary>How do I reverse tax from a tax-inclusive total?</summary>
+          <p>
+            Divide the total by one plus the rate decimal, then subtract pre-tax price from the
+            total.
+          </p>
+        </details>
+        <details>
+          <summary>How do I find a rate from a price and tax amount?</summary>
+          <p>Divide known tax by pre-tax price and multiply by 100.</p>
+        </details>
+        <details>
+          <summary>What is a tax-inclusive total?</summary>
+          <p>It is an amount that already includes the selected tax amount in this model.</p>
+        </details>
+        <details>
+          <summary>What is a pre-tax price?</summary>
+          <p>It is the amount before the selected tax is added in this arithmetic model.</p>
+        </details>
+        <details>
+          <summary>Does this calculator look up a local rate?</summary>
+          <p>No. Enter a rate that you have independently confirmed for your situation.</p>
+        </details>
+        <details>
+          <summary>Does it determine whether an item is taxable?</summary>
+          <p>
+            No. It performs arithmetic and does not classify products, exemptions, or transactions.
+          </p>
+        </details>
+        <details>
+          <summary>Can I use a zero percent rate?</summary>
+          <p>Yes. A zero rate creates zero tax and identical pre-tax and inclusive amounts.</p>
+        </details>
+        <details>
+          <summary>Why should I not add tax to a tax-inclusive total?</summary>
+          <p>That would apply the rate to an amount that already contains it in the arithmetic.</p>
+        </details>
+        <details>
+          <summary>Is this tax, legal, accounting, or financial advice?</summary>
+          <p>No. This page provides transparent arithmetic only.</p>
+        </details>
+      </section>
+      <section class="related">
+        <h2>Continue with related arithmetic.</h2>
         <div class="related-grid">
-            <a href="profit-margin-calculator.html" class="related-link">Profit Margin Calc</a>
-            <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
-            <a href="invoice-generator.html" class="related-link">Free Invoice Generator</a>
-            <a href="tip-calculator.html" class="related-link">Tip & Bill Splitter</a>
-            <a href="currency-converter.html" class="related-link">Currency Converter</a>
-            <a href="compound-interest-calculator.html" class="related-link">Interest Calculator</a>
-            <a href="percentage-calculator.html" class="related-link">Percentage Calculator</a>
-            <a href="tax-refund-tracker.html" class="related-link">Tax Refund Tracker</a>
+          <a href="percentage-calculator.html"><small>RATE MATH</small>Percentage Calculator</a
+          ><a href="profit-margin-calculator.html"
+            ><small>PRICING MATH</small>Profit Margin Calculator</a
+          ><a href="invoice-generator.html"><small>RECORDS</small>Invoice Generator</a
+          ><a href="tip-calculator.html"><small>BILL MATH</small>Tip Calculator</a>
         </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Updated for 2026 · Accurate State Rates · US Tax Guide</p>
-</footer>
-
-<script>
-    function calculate() {
-        const amount = parseFloat(document.getElementById('amount').value) || 0;
-        const rate = parseFloat(document.getElementById('state').value) || 0;
-
-        const tax = amount * (rate / 100);
-        const total = amount + tax;
-
-        document.getElementById('baseVal').innerText = '$' + amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('taxVal').innerText = '$' + tax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('totalVal').innerText = '$' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      </section>
+    </main>
+    <script>
+      /* Toolyfi Editorial Utility Atlas: calculate user-entered tax arithmetic locally, show pre-tax versus inclusive labels, and never imply a live tax lookup. */
+      (() => {
+        const $ = (id) => document.getElementById(id);
+        let mode = "add";
+        const money = (n) =>
+          Number.isFinite(n)
+            ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n)
+            : "—";
+        const percent = (n) =>
+          Number.isFinite(n) ? `${n.toFixed(4).replace(/\.?(0+)$/, "")}%` : "—";
+        const reset = (note, formula) => {
+          $("main").textContent = "Check values";
+          $("sub").textContent = note;
+          ["pretax", "tax", "total", "rate-result"].forEach((id) => ($(id).textContent = "—"));
+          $("formula").textContent = formula;
+        };
+        const fields = {
+          add: {
+            label: "Pre-tax price",
+            hint: "This amount excludes the selected tax in add-tax mode.",
+            amount: "70",
+            rate: "6.5",
+          },
+          reverse: {
+            label: "Tax-inclusive total",
+            hint: "This amount already includes the selected tax in reverse mode.",
+            amount: "108",
+            rate: "8",
+          },
+          rate: {
+            label: "Pre-tax price",
+            hint: "Use the base amount paired with the known tax amount.",
+            amount: "70",
+            tax: "4.55",
+          },
+        };
+        function calculate() {
+          const amount = parseFloat($("amount").value);
+          const rate = parseFloat($("rate").value);
+          const known = parseFloat($("known-tax").value);
+          if (!Number.isFinite(amount) || amount < 0) {
+            reset(
+              "Enter an amount of zero or greater.",
+              "A non-negative money amount is required.",
+            );
+            return;
+          }
+          if (mode === "rate") {
+            if (!(amount > 0) || !Number.isFinite(known) || known < 0) {
+              reset(
+                "Find-rate mode needs a pre-tax price above zero and a known tax amount of zero or greater.",
+                "Rate = known tax amount ÷ pre-tax price × 100.",
+              );
+              return;
+            }
+            const derived = (known / amount) * 100,
+              total = amount + known;
+            $("main").textContent = percent(derived);
+            $("sub").textContent =
+              "Rate implied by the pre-tax price and known tax amount you entered.";
+            $("pretax").textContent = money(amount);
+            $("tax").textContent = money(known);
+            $("total").textContent = money(total);
+            $("rate-result").textContent = percent(derived);
+            $("formula").textContent =
+              `${money(known)} ÷ ${money(amount)} × 100 = ${percent(derived)}.`;
+            return;
+          }
+          if (!Number.isFinite(rate) || rate < 0) {
+            reset(
+              "Enter a tax rate of zero percent or greater.",
+              "Rate must be a non-negative percentage.",
+            );
+            return;
+          }
+          const decimal = rate / 100;
+          if (mode === "add") {
+            const tax = amount * decimal,
+              total = amount + tax;
+            $("main").textContent = money(total);
+            $("sub").textContent = "Tax-inclusive total from your pre-tax price and entered rate.";
+            $("pretax").textContent = money(amount);
+            $("tax").textContent = money(tax);
+            $("total").textContent = money(total);
+            $("rate-result").textContent = percent(rate);
+            $("formula").textContent =
+              `${money(amount)} × ${decimal} = ${money(tax)} tax; ${money(amount)} + ${money(tax)} = ${money(total)}.`;
+            return;
+          }
+          const factor = 1 + decimal;
+          if (!(factor > 0)) {
+            reset(
+              "The entered rate does not create a valid reverse-tax factor.",
+              "Pre-tax price = tax-inclusive total ÷ (1 + rate decimal).",
+            );
+            return;
+          }
+          const pretax = amount / factor,
+            tax = amount - pretax;
+          $("main").textContent = money(pretax);
+          $("sub").textContent =
+            "Pre-tax price separated from your tax-inclusive total and entered rate.";
+          $("pretax").textContent = money(pretax);
+          $("tax").textContent = money(tax);
+          $("total").textContent = money(amount);
+          $("rate-result").textContent = percent(rate);
+          $("formula").textContent =
+            `${money(amount)} ÷ (1 + ${decimal}) = ${money(pretax)}; ${money(amount)} − ${money(pretax)} = ${money(tax)} tax.`;
+        }
+        document.querySelectorAll(".mode").forEach((button) =>
+          button.addEventListener("click", () => {
+            mode = button.dataset.mode;
+            document
+              .querySelectorAll(".mode")
+              .forEach((item) => item.classList.toggle("active", item === button));
+            const f = fields[mode];
+            $("amount-label").textContent = f.label;
+            $("amount-hint").textContent = f.hint;
+            $("amount").value = f.amount;
+            $("rate-field").hidden = mode === "rate";
+            $("tax-field").hidden = mode !== "rate";
+            if (mode === "rate") $("known-tax").value = f.tax;
+            else $("rate").value = f.rate;
+            calculate();
+          }),
+        );
+        ["amount", "rate", "known-tax"].forEach((id) => $(id).addEventListener("input", calculate));
+        calculate();
+      })();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
