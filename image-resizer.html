@@ -31,6 +31,8 @@
   ]}
   </script>
 <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
 </head>
 <body>
   <a class="skip" href="#resizer">Skip to resizer</a>
@@ -126,5 +128,6 @@
   process.addEventListener('click',async()=>{if(!state.files.length)return;process.disabled=true;process.textContent='Creating resized copies…';$('#resultList').innerHTML='';state.urls.forEach(URL.revokeObjectURL);state.urls=[];let done=0;for(const file of state.files){try{card(file,await resize(file));done++}catch{const el=document.createElement('article');el.className='result-card';el.innerHTML=`<div></div><div><div class="result-name">${esc(file.name)}</div><div class="result-meta">Could not process this file in the browser.</div></div>`;$('#resultList').append(el)}}$('#results').classList.add('visible');$('#resultSummary').textContent=`${done} of ${state.files.length} resized locally`;process.disabled=false;process.textContent='Resize selected images →';$('#results').scrollIntoView({behavior:'smooth',block:'start'})});
   </script>
 <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+    <script src="/pwa-register.js" defer></script>
 </body>
 </html>

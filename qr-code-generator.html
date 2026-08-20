@@ -1494,7 +1494,9 @@
       }
     </style>
     <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
-  </head>
+      <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
+</head>
   <body>
     <header>
       <a href="https://toolyfi.com" class="logo-link">
@@ -3080,7 +3082,8 @@
         const printStyle =
           "display:flex;align-items:center;justify-content:center;height:100vh;margin:0";
         const printHtml = `<html><head><title>Print QR Code</title></head><body style="${printStyle}">`;
-        w.document.write(`${printHtml}<img src="${dataUrl}" style="max-width:80%"></body></html>`);
+        w.document.write(`${printHtml}<img src="${dataUrl}" style="max-width:80%">    <script src="/pwa-register.js" defer></script>
+</body></html>`);
         w.document.close();
         setTimeout(() => {
           w.print();

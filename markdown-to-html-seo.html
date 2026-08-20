@@ -1659,7 +1659,9 @@
       }
     </style>
     <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
-  </head>
+      <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
+</head>
   <body>
     <header class="site-header">
       <a href="index.html" class="logo" aria-label="Toolyfi home"
@@ -2797,7 +2799,8 @@
         const full =
           '<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Converted Document</title></head><body>\n' +
           lastHTML +
-          "\n</body></html>";
+          "\n    <script src="/pwa-register.js" defer></script>
+</body></html>";
         const blob = new Blob([full], { type: "text/html" });
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
