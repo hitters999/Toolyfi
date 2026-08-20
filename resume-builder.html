@@ -1,584 +1,1954 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Free Resume Builder - Create ATS-Friendly CV in Minutes 2026</title>
-    <meta content="Build a professional ATS-friendly resume in 2 minutes. Free online CV maker with PDF download, 50+ templates, no signup. Used by 500K+ job seekers." name="description">
-    <meta content="free resume builder, ATS-friendly CV, online resume maker, professional CV creator, PDF resume download, resume templates 2026, no signup resume builder" name="keywords">
-    <meta content="Toolyfi" name="author">
-    <meta content="index, follow" name="robots">
-    <link rel="canonical" href="https://toolyfi.com/resume-builder.html">
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Free Resume Builder — Create a Readable Resume Preview | Toolyfi</title>
+    <meta
+      content="Draft a readable resume with contact details, summary, experience, education, skills, a live preview, and browser-side print/PDF output. Review content before sharing."
+      name="description"
+    />
+    <meta
+      content="free resume builder, online resume maker, readable resume, CV builder, resume preview, resume PDF, work experience resume, skills resume"
+      name="keywords"
+    />
+    <meta content="Toolyfi" name="author" />
+    <meta content="index, follow" name="robots" />
+    <link rel="canonical" href="https://toolyfi.com/resume-builder.html" />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Toolyfi">
-    <meta property="og:title" content="Free Resume Builder - Create ATS-Friendly CV in Minutes 2026">
-    <meta property="og:description" content="Build a professional ATS-friendly resume in 2 minutes. Free online CV maker with PDF download, 50+ templates, no signup.">
-    <meta property="og:url" content="https://toolyfi.com/resume-builder.html">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta
+      property="og:title"
+      content="Free Resume Builder — Create a Readable Resume Preview | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Build a resume preview with editable core sections and browser-side print/PDF output. Review every claim before sharing."
+    />
+    <meta property="og:url" content="https://toolyfi.com/resume-builder.html" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root { --primary:#7c3aed; --bg:#f5f3ff; --surface:#fff; --border:#e5e7eb; --text:#1f2937; --muted:#6b7280; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+      :root {
+        --primary: #7c3aed;
+        --bg: #f5f3ff;
+        --surface: #fff;
+        --border: #e5e7eb;
+        --text: #1f2937;
+        --muted: #6b7280;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
 
-        nav { background:var(--surface); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; position: sticky; top: 0; z-index: 100; }
-        .nav-logo { color:var(--primary); font-weight:800; font-size:1.1rem; text-decoration:none; }
-        .nav-back { color:var(--muted); text-decoration:none; font-size:0.82rem; border:1px solid var(--border); padding:6px 14px; border-radius:6px; }
+      nav {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 14px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-logo {
+        color: var(--primary);
+        font-weight: 800;
+        font-size: 1.1rem;
+        text-decoration: none;
+      }
+      .nav-back {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.82rem;
+        border: 1px solid var(--border);
+        padding: 6px 14px;
+        border-radius: 6px;
+      }
 
-        .container { max-width:1100px; margin:0 auto; padding:32px 20px; }
-        .hero { text-align: center; margin-bottom: 40px; }
-        h1 { font-size:2.5rem; font-weight:800; margin-bottom:12px; color: var(--text); }
-        .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto; }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 20px;
+      }
+      .hero {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--muted);
+        max-width: 700px;
+        margin: 0 auto;
+      }
 
-        .tool-layout { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom: 60px; }
-        @media(max-width:850px){ .tool-layout{grid-template-columns:1fr;} }
-
-        .card { background:var(--surface); border-radius:16px; padding:28px; border:1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .card-title { font-size:0.85rem; font-weight:700; color:var(--primary); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:20px; border-bottom: 2px solid var(--bg); padding-bottom: 8px; }
-
-        label { display:block; font-size:0.85rem; font-weight:600; color:var(--text); margin-bottom:6px; margin-top:16px; }
-        input, textarea {
-            width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:10px;
-            font-family:inherit; font-size:0.95rem; color:var(--text); outline:none; transition:all 0.2s;
+      .tool-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 60px;
+      }
+      @media (max-width: 850px) {
+        .tool-layout {
+          grid-template-columns: 1fr;
         }
-        input:focus, textarea:focus { border-color:var(--primary); box-shadow: 0 0 0 4px rgba(124,58,237,0.1); }
+      }
 
-        .section-item { background:#faf5ff; border:1px solid #e9d5ff; border-radius:12px; padding:20px; margin-bottom:16px; position:relative; }
-        .remove-btn { position:absolute; top:12px; right:12px; background:#fee2e2; border:none; color:#ef4444; cursor:pointer; font-size:0.8rem; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+      .card {
+        background: var(--surface);
+        border-radius: 16px;
+        padding: 28px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      .card-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--bg);
+        padding-bottom: 8px;
+      }
 
-        .add-btn { width:100%; padding:12px; border:2px dashed #d8b4fe; background:none; color:var(--primary); border-radius:10px; cursor:pointer; font-family:inherit; font-weight:700; font-size:0.9rem; transition:all 0.2s; margin-top:8px; }
-        .add-btn:hover { background:#faf5ff; border-color: var(--primary); }
+      label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 6px;
+        margin-top: 16px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: var(--text);
+        outline: none;
+        transition: all 0.2s;
+      }
+      input:focus,
+      textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+      }
 
-        .skills-wrap { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-        .skill-tag { background:#ede9fe; color:var(--primary); padding:6px 16px; border-radius:20px; font-size:0.85rem; font-weight:600; display:flex; align-items:center; gap:8px; }
-        .skill-tag button { background:none; border:none; cursor:pointer; color:#7c3aed; font-size:1rem; font-weight: bold; }
-        
-        .skill-input-row { display:flex; gap:10px; margin-top:12px; }
-        .skill-add-btn { padding:12px 20px; background:var(--primary); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:700; font-size:0.9rem; }
+      .section-item {
+        background: #faf5ff;
+        border: 1px solid #e9d5ff;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .remove-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #fee2e2;
+        border: none;
+        color: #ef4444;
+        cursor: pointer;
+        font-size: 0.8rem;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-        .download-btn { width:100%; padding:16px; background:var(--primary); color:white; border:none; border-radius:12px; font-family:inherit; font-size:1.1rem; font-weight:800; cursor:pointer; transition:all 0.3s; margin-top:20px; box-shadow: 0 10px 15px -3px rgba(124,58,237,0.3); }
-        .download-btn:hover { background:#6d28d9; transform:translateY(-2px); box-shadow: 0 20px 25px -5px rgba(124,58,237,0.4); }
+      .add-btn {
+        width: 100%;
+        padding: 12px;
+        border: 2px dashed #d8b4fe;
+        background: none;
+        color: var(--primary);
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        margin-top: 8px;
+      }
+      .add-btn:hover {
+        background: #faf5ff;
+        border-color: var(--primary);
+      }
 
-        /* PREVIEW */
-        .preview-sticky { position:sticky; top:100px; }
-        .preview-wrap { background:white; border-radius:16px; border:1px solid var(--border); overflow:hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .preview-bar { background:#f9fafb; border-bottom:1px solid var(--border); padding:12px 20px; font-size:0.8rem; color:var(--muted); display:flex; gap:8px; align-items:center; }
-        .dot { width:10px; height:10px; border-radius:50%; }
-        #cvPreview { padding:40px; font-size:0.9rem; line-height:1.5; min-height: 600px; }
+      .skills-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .skill-tag {
+        background: #ede9fe;
+        color: var(--primary);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .skill-tag button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #7c3aed;
+        font-size: 1rem;
+        font-weight: bold;
+      }
 
-        /* CV Template Styles */
-        .cv-name { font-size:2.2rem; font-weight:800; line-height: 1.1; }
-        .cv-title { font-size:1.1rem; margin-top:4px; font-weight: 500; }
-        .cv-contact { display:flex; flex-wrap:wrap; gap:16px; margin-top:12px; font-size:0.85rem; }
-        .cv-divider { height:2px; margin:24px 0; border-radius:2px; }
-        .cv-section-title { font-size:0.8rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
-        .cv-item { margin-bottom:20px; }
-        .cv-item-title { font-weight:700; font-size:1rem; color: #111; }
-        .cv-item-sub { font-size:0.9rem; font-weight: 600; margin-bottom:6px; }
-        .cv-item-desc { font-size:0.9rem; color: #4b5563; white-space: pre-line; }
-        .cv-skills { display:flex; flex-wrap:wrap; gap:8px; }
-        .cv-skill { padding:6px 14px; border-radius:6px; font-size:0.85rem; font-weight:600; }
+      .skill-input-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .skill-add-btn {
+        padding: 12px 20px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
 
-        /* CONTENT SECTIONS */
-        .content-section { margin-top: 80px; }
-        .content-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
-        .content-section h3 { font-size: 1.4rem; font-weight: 700; margin-top: 40px; margin-bottom: 16px; }
-        .content-section p { margin-bottom: 20px; font-size: 1.05rem; color: #4b5563; }
-        
-        .guide-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 40px 0; }
-        .step-card { background: white; padding: 24px; border-radius: 12px; border: 1px solid var(--border); }
-        .step-num { width: 32px; height: 32px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 16px; }
-        
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
-        @media(max-width:700px){ .feature-grid{grid-template-columns:1fr;} }
-        .feature-item { display: flex; gap: 16px; }
-        .feature-icon { font-size: 1.5rem; }
+      .download-btn {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1.1rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 20px;
+        box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+      }
+      .download-btn:hover {
+        background: #6d28d9;
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.4);
+      }
 
-        .comparison-table { width: 100%; border-collapse: collapse; margin: 40px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-        .comparison-table th, .comparison-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
-        .comparison-table th { background: #f9fafb; font-weight: 700; }
+      /* PREVIEW */
+      .preview-sticky {
+        position: sticky;
+        top: 100px;
+      }
+      .preview-wrap {
+        background: white;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .preview-bar {
+        background: #f9fafb;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 20px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      #cvPreview {
+        padding: 40px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        min-height: 600px;
+      }
 
-        .faq-grid { margin-top: 40px; }
-        details { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; padding: 16px; }
-        summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; font-size: 1.2rem; color: var(--primary); }
-        details[open] summary::after { content: '-'; }
-        .faq-content { margin-top: 12px; color: #4b5563; }
+      /* CV Template Styles */
+      .cv-name {
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+      .cv-title {
+        font-size: 1.1rem;
+        margin-top: 4px;
+        font-weight: 500;
+      }
+      .cv-contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 12px;
+        font-size: 0.85rem;
+      }
+      .cv-divider {
+        height: 2px;
+        margin: 24px 0;
+        border-radius: 2px;
+      }
+      .cv-section-title {
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .cv-item {
+        margin-bottom: 20px;
+      }
+      .cv-item-title {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #111;
+      }
+      .cv-item-sub {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .cv-item-desc {
+        font-size: 0.9rem;
+        color: #4b5563;
+        white-space: pre-line;
+      }
+      .cv-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .cv-skill {
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
 
-        .related-tools { background: #f9fafb; padding: 40px 20px; border-radius: 16px; margin-top: 60px; }
-        .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
-        .related-link { background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
-        .related-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+      /* CONTENT SECTIONS */
+      .content-section {
+        margin-top: 80px;
+      }
+      .content-section h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 24px;
+        color: var(--text);
+      }
+      .content-section h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-top: 40px;
+        margin-bottom: 16px;
+      }
+      .content-section p {
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+        color: #4b5563;
+      }
 
-        footer { background:white; border-top:1px solid var(--border); text-align:center; padding:40px 20px; font-size:0.9rem; color:var(--muted); margin-top: 80px; }
-        footer a { color:var(--primary); text-decoration:none; font-weight: 600; }
+      .guide-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin: 40px 0;
+      }
+      .step-card {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+      .step-num {
+        width: 32px;
+        height: 32px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin: 40px 0;
+      }
+      @media (max-width: 700px) {
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .feature-item {
+        display: flex;
+        gap: 16px;
+      }
+      .feature-icon {
+        font-size: 1.5rem;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 40px 0;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      .comparison-table th {
+        background: #f9fafb;
+        font-weight: 700;
+      }
+
+      .faq-grid {
+        margin-top: 40px;
+      }
+      details {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        padding: 16px;
+      }
+      summary {
+        font-weight: 700;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      summary::after {
+        content: "+";
+        font-size: 1.2rem;
+        color: var(--primary);
+      }
+      details[open] summary::after {
+        content: "-";
+      }
+      .faq-content {
+        margin-top: 12px;
+        color: #4b5563;
+      }
+
+      .related-tools {
+        background: #f9fafb;
+        padding: 40px 20px;
+        border-radius: 16px;
+        margin-top: 60px;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .related-link {
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        text-align: center;
+      }
+      .related-link:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      footer {
+        background: white;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 80px;
+      }
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* Toolyfi Editorial Utility Atlas: Fraunces display, Plus Jakarta Sans UI, warm ivory/ink/coral; hero artwork stays static. */
+      :root {
+        --primary: #ef6c54;
+        --primary-dark: #c74b37;
+        --primary-light: #fff0ea;
+        --bg: #faf8f4;
+        --surface: #fffdf9;
+        --border: #e8e1d7;
+        --text: #172437;
+        --muted: #617080;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      nav.site-header {
+        height: 66px;
+        background: #fffdf9;
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        box-shadow: 0 7px 24px rgba(23, 36, 55, 0.06);
+      }
+      .nav-logo {
+        color: var(--text);
+        font-family: Fraunces, serif;
+        font-size: 1.5rem;
+        display: inline-flex;
+        gap: 9px;
+        align-items: center;
+      }
+      .nav-logo img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .nav-links > a {
+        color: var(--text);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .nav-back {
+        color: #fff;
+        background: var(--primary);
+        border: 0;
+        border-radius: 0;
+        padding: 10px 14px;
+        box-shadow: 3px 3px 0 var(--text);
+      }
+      .nav-back:hover {
+        background: var(--primary-dark);
+        color: #fff;
+      }
+      .container {
+        max-width: 1080px;
+        padding: 0 20px 54px;
+      }
+      .hero {
+        text-align: center;
+        margin: 0;
+        padding: 58px 20px 30px;
+      }
+      .hero .hero-badge {
+        display: inline-block;
+        color: var(--primary);
+        background: #fffdf9;
+        border: 1px solid var(--border);
+        padding: 7px 14px;
+        font-size: 0.72rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+      .hero h1,
+      .content-section h2,
+      .content-section h3,
+      .tool-card-title {
+        font-family: Fraunces, serif;
+      }
+      .hero h1 {
+        font-size: clamp(2.45rem, 5.4vw, 4.35rem);
+        letter-spacing: -0.05em;
+        color: var(--text);
+        line-height: 1.06;
+      }
+      .hero h1 em {
+        color: var(--primary);
+      }
+      .hero p {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      .hero-pills span {
+        color: var(--text);
+        background: #fffdf9;
+        border: 1px solid var(--border);
+        padding: 7px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .hero-pills span::before {
+        content: "•";
+        color: var(--primary);
+        margin-right: 5px;
+      }
+      .toolyfi-visual {
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto 42px;
+        position: relative;
+      }
+      .toolyfi-visual > img {
+        width: 100%;
+        height: clamp(300px, 56.25vw, 585px);
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(23, 36, 55, 0.09);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-visual figcaption {
+        color: var(--muted);
+        font-size: 0.72rem;
+        line-height: 1.5;
+        margin-top: 8px;
+        text-align: center;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 18px;
+        bottom: 38px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text);
+        background: #fffdf9;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        box-shadow: 0 10px 22px rgba(23, 36, 55, 0.18);
+      }
+      .toolyfi-hero-mark img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+      .tool-layout {
+        gap: 24px;
+        margin-bottom: 54px;
+      }
+      .card,
+      .preview-wrap {
+        background: #fffdf9;
+        border-color: var(--border);
+        border-radius: 14px;
+        box-shadow: 0 14px 34px rgba(23, 36, 55, 0.08);
+      }
+      .card {
+        padding: 24px;
+      }
+      .card-title {
+        color: var(--primary);
+        border-color: var(--primary-light);
+      }
+      input,
+      textarea {
+        border-color: var(--border);
+        border-radius: 8px;
+      }
+      input:focus,
+      textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.12);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .section-item {
+        background: #fff8f4;
+        border-color: #f4d7cd;
+        border-radius: 10px;
+      }
+      .add-btn {
+        color: var(--primary);
+        border-color: #f4b7a7;
+        border-radius: 7px;
+      }
+      .add-btn:hover {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+      .skill-tag {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        border-radius: 0;
+      }
+      .skill-tag button {
+        color: var(--primary-dark);
+      }
+      .skill-add-btn,
+      .download-btn {
+        background: var(--primary);
+        border-radius: 6px;
+        box-shadow: 3px 3px 0 var(--text);
+      }
+      .download-btn:hover,
+      .skill-add-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 4px 4px 0 var(--text);
+      }
+      .download-btn:active,
+      .skill-add-btn:active,
+      .add-btn:active {
+        transform: scale(0.97);
+      }
+      .preview-bar {
+        background: #f3eee6;
+        border-color: var(--border);
+      }
+      .content-section {
+        border-top: 1px solid var(--border);
+        padding-top: 56px;
+        margin-top: 0;
+      }
+      .content-section h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        color: var(--text);
+      }
+      .content-section h3 {
+        color: var(--text);
+      }
+      .content-section p {
+        color: #485768;
+      }
+      .guide-steps,
+      .feature-grid {
+        gap: 16px;
+      }
+      .step-card,
+      .comparison-table,
+      details,
+      .related-tools,
+      .related-link {
+        background: #fffdf9;
+        border-color: var(--border);
+        border-radius: 12px;
+      }
+      .step-num {
+        background: var(--primary);
+        border-radius: 0;
+      }
+      details summary::after {
+        color: var(--primary);
+      }
+      .related-tools {
+        padding: 34px 22px;
+      }
+      .related-link:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+      footer {
+        background: #fffdf9;
+        border-color: var(--border);
+        margin-top: 54px;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .card,
+        .preview-wrap,
+        .content-section h2,
+        details {
+          animation: resume-rise 0.42s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+        .card:nth-child(2) {
+          animation-delay: 0.05s;
+        }
+        .card:nth-child(3) {
+          animation-delay: 0.1s;
+        }
+        details {
+          transition:
+            transform 0.18s cubic-bezier(0.23, 1, 0.32, 1),
+            box-shadow 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        details:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 22px rgba(23, 36, 55, 0.08);
+        }
+      }
+      @keyframes resume-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 700px) {
+        nav.site-header {
+          height: 60px;
+          padding: 0 16px;
+        }
+        .nav-logo {
+          font-size: 1.25rem;
+        }
+        .nav-logo img {
+          width: 29px;
+          height: 29px;
+        }
+        .nav-links > a:first-child {
+          display: none;
+        }
+        .hero {
+          padding: 41px 14px 26px;
+        }
+        .hero h1 {
+          font-size: clamp(2.28rem, 11vw, 3.1rem);
+        }
+        .hero p {
+          font-size: 0.9rem;
+        }
+        .hero-pills {
+          gap: 7px;
+        }
+        .hero-pills span {
+          padding: 6px 9px;
+          font-size: 0.67rem;
+        }
+        .toolyfi-visual {
+          margin-bottom: 28px;
+        }
+        .toolyfi-visual > img {
+          height: 75vw;
+          max-height: 330px;
+          border-radius: 14px;
+        }
+        .toolyfi-hero-mark {
+          right: 10px;
+          bottom: 35px;
+          padding: 6px 9px;
+        }
+        .toolyfi-hero-mark img {
+          width: 21px;
+          height: 21px;
+        }
+        .tool-layout {
+          gap: 18px;
+        }
+        .card {
+          padding: 18px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .preview-sticky {
+          position: static;
+        }
+        .content-section {
+          padding-top: 38px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .comparison-table {
+          display: block;
+          overflow-x: auto;
+        }
+        .related-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .container {
+          padding-inline: 16px;
+        }
+      }
     </style>
 
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toolyfi Free Resume Builder",
-      "description": "Create a professional ATS-friendly resume in minutes. Free online CV maker with PDF download, no signup required.",
-      "url": "https://toolyfi.com/resume-builder.html",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "12450"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Resume Builder",
+        "description": "Draft a readable resume with editable core sections, a live preview, and browser-side print or PDF output.",
+        "url": "https://toolyfi.com/resume-builder.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
       }
-    }
     </script>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://toolyfi.com"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Resume Builder",
-        "item": "https://toolyfi.com/resume-builder.html"
-      }]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://toolyfi.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Resume Builder",
+            "item": "https://toolyfi.com/resume-builder.html"
+          }
+        ]
+      }
     </script>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What should a resume include?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A resume commonly includes accurate contact details, a concise summary where useful, relevant work experience, education, skills, and role-specific evidence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this tool create a resume preview?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Toolyfi updates a resume preview from the details entered in the active browser page."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I add more than one experience entry?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use Add Experience or Add Education to create additional entries and review their order in the preview."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I change the accent colour?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The available colour options change the preview accent treatment; choose a style that keeps headings and body copy clear."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I print or download my resume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The page provides browser print and PDF controls. Check the final output, page breaks, and application instructions before sharing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this builder guarantee ATS results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Toolyfi provides a readable single-column reference layout but cannot predict how any employer system parses, ranks, or selects a document."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Toolyfi submit applications for me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This page drafts a resume document only; it does not send applications, contact employers, or track a job search."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a resume need to be one page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Length depends on relevant experience, role expectations, and local context. Prefer clear, relevant information over an arbitrary page target."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tailor a resume for a role?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually. Review the role requirements and present accurate, relevant evidence rather than copying keywords or making unsupported claims."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I review the final resume before sharing it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Check names, dates, job titles, achievements, contact information, spelling, page breaks, and every claim before sending a resume."
+            }
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+  </head>
+  <body>
+    <nav class="site-header">
+      <a class="nav-logo" href="index.html" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <div class="nav-links">
+        <a href="index.html">Home</a><a class="nav-back" href="index.html#directory">All tools</a>
+      </div>
+    </nav>
 
-<nav>
-    <a class="nav-logo" href="index.html">📦 Toolyfi</a>
-    <a class="nav-back" href="index.html">← All Tools</a>
-</nav>
+    <div class="container">
+      <div class="hero">
+        <span class="hero-badge">Browser-side resume workspace</span>
+        <h1>Put your <em>evidence</em><br />in readable order.</h1>
+        <p>
+          Draft core resume sections, review a single-column preview, and create browser PDF or
+          print output after checking every detail.
+        </p>
+        <div class="hero-pills">
+          <span>Editable core sections</span><span>Live preview</span
+          ><span>Print / PDF controls</span><span>Final review first</span>
+        </div>
+      </div>
 
-<div class="container">
-    <div class="hero">
-        <h1>Free Resume Builder - Create ATS-Friendly CV in Minutes</h1>
-        <p>Build a professional, high-impact resume that passes Applicant Tracking Systems (ATS). 100% free, no signup required, instant PDF download.</p>
-    </div>
+      <figure class="toolyfi-visual">
+        <img
+          src="images/toolyfi-resume-builder-hero.webp"
+          alt="Editorial workspace with a carefully arranged resume document and warm stationery"
+          width="2560"
+          height="1440"
+          fetchpriority="high"
+        />
+        <span class="toolyfi-hero-mark"
+          ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+        >
+        <figcaption>
+          Toolyfi visual guide: use accurate experience, clear section labels, and a final
+          line-by-line review before sharing a resume.
+        </figcaption>
+      </figure>
 
-    <div class="tool-layout">
+      <div class="tool-layout">
         <!-- Editor Side -->
         <div class="editor-side">
-            <div class="card">
-                <div class="card-title">Personal Information</div>
-                <label>Full Name</label>
-                <input id="cvName" oninput="updateCV()" placeholder="e.g. John Doe">
-                
-                <label>Job Title</label>
-                <input id="cvTitle" oninput="updateCV()" placeholder="e.g. Senior Software Engineer">
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                    <div>
-                        <label>Email</label>
-                        <input id="cvEmail" oninput="updateCV()" placeholder="john@example.com">
-                    </div>
-                    <div>
-                        <label>Phone</label>
-                        <input id="cvPhone" oninput="updateCV()" placeholder="(555) 000-0000">
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-title">Personal details</div>
+            <label>Full Name</label>
+            <input id="cvName" oninput="updateCV()" placeholder="e.g. John Doe" />
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                    <div>
-                        <label>Location</label>
-                        <input id="cvLocation" oninput="updateCV()" placeholder="New York, NY">
-                    </div>
-                    <div>
-                        <label>LinkedIn / Portfolio</label>
-                        <input id="cvLink" oninput="updateCV()" placeholder="linkedin.com/in/johndoe">
-                    </div>
-                </div>
+            <label>Job Title</label>
+            <input id="cvTitle" oninput="updateCV()" placeholder="e.g. Senior Software Engineer" />
 
-                <label>Professional Summary</label>
-                <textarea id="cvSummary" oninput="updateCV()" placeholder="Briefly describe your professional background and key strengths..." rows="4"></textarea>
-                
-                <label>Accent Color</label>
-                <div id="cvColors" style="display:flex;gap:10px;margin-top:8px">
-                    <div data-c="#7c3aed" onclick="setCVColor(this)" style="width:28px;height:28px;border-radius:50%;background:#7c3aed;cursor:pointer;border:3px solid #333"></div>
-                    <div data-c="#2563eb" onclick="setCVColor(this)" style="width:28px;height:28px;border-radius:50%;background:#2563eb;cursor:pointer;border:3px solid transparent"></div>
-                    <div data-c="#059669" onclick="setCVColor(this)" style="width:28px;height:28px;border-radius:50%;background:#059669;cursor:pointer;border:3px solid transparent"></div>
-                    <div data-c="#dc2626" onclick="setCVColor(this)" style="width:28px;height:28px;border-radius:50%;background:#dc2626;cursor:pointer;border:3px solid transparent"></div>
-                    <div data-c="#0f172a" onclick="setCVColor(this)" style="width:28px;height:28px;border-radius:50%;background:#0f172a;cursor:pointer;border:3px solid transparent"></div>
-                </div>
+            <div class="contact-grid">
+              <div>
+                <label>Email</label>
+                <input id="cvEmail" oninput="updateCV()" placeholder="john@example.com" />
+              </div>
+              <div>
+                <label>Phone</label>
+                <input id="cvPhone" oninput="updateCV()" placeholder="(555) 000-0000" />
+              </div>
             </div>
 
-            <div class="card" style="margin-top: 24px;">
-                <div class="card-title">Work Experience</div>
-                <div id="expList"></div>
-                <button class="add-btn" onclick="addExp()">+ Add Experience</button>
+            <div class="contact-grid">
+              <div>
+                <label>Location</label>
+                <input id="cvLocation" oninput="updateCV()" placeholder="New York, NY" />
+              </div>
+              <div>
+                <label>LinkedIn / Portfolio</label>
+                <input id="cvLink" oninput="updateCV()" placeholder="linkedin.com/in/johndoe" />
+              </div>
             </div>
 
-            <div class="card" style="margin-top: 24px;">
-                <div class="card-title">Education</div>
-                <div id="eduList"></div>
-                <button class="add-btn" onclick="addEdu()">+ Add Education</button>
-            </div>
+            <label>Professional summary</label>
+            <textarea
+              id="cvSummary"
+              oninput="updateCV()"
+              placeholder="Summarise accurate, role-relevant experience and strengths..."
+              rows="4"
+            ></textarea>
 
-            <div class="card" style="margin-top: 24px;">
-                <div class="card-title">Skills</div>
-                <div class="skills-wrap" id="skillsWrap"></div>
-                <div class="skill-input-row">
-                    <input id="skillInput" onkeydown="if(event.key==='Enter')addSkill()" placeholder="e.g. Project Management">
-                    <button class="skill-add-btn" onclick="addSkill()">Add</button>
-                </div>
+            <label>Accent Color</label>
+            <div id="cvColors" style="display: flex; gap: 10px; margin-top: 8px">
+              <div
+                data-c="#7c3aed"
+                onclick="setCVColor(this)"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 50%;
+                  background: #7c3aed;
+                  cursor: pointer;
+                  border: 3px solid #333;
+                "
+              ></div>
+              <div
+                data-c="#2563eb"
+                onclick="setCVColor(this)"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 50%;
+                  background: #2563eb;
+                  cursor: pointer;
+                  border: 3px solid transparent;
+                "
+              ></div>
+              <div
+                data-c="#059669"
+                onclick="setCVColor(this)"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 50%;
+                  background: #059669;
+                  cursor: pointer;
+                  border: 3px solid transparent;
+                "
+              ></div>
+              <div
+                data-c="#dc2626"
+                onclick="setCVColor(this)"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 50%;
+                  background: #dc2626;
+                  cursor: pointer;
+                  border: 3px solid transparent;
+                "
+              ></div>
+              <div
+                data-c="#0f172a"
+                onclick="setCVColor(this)"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 50%;
+                  background: #0f172a;
+                  cursor: pointer;
+                  border: 3px solid transparent;
+                "
+              ></div>
             </div>
+          </div>
 
-            <button class="download-btn" onclick="downloadCV()">⬇ Download PDF Resume</button>
+          <div class="card" style="margin-top: 24px">
+            <div class="card-title">Experience</div>
+            <div id="expList"></div>
+            <button class="add-btn" onclick="addExp()">+ Add Experience</button>
+          </div>
+
+          <div class="card" style="margin-top: 24px">
+            <div class="card-title">Education</div>
+            <div id="eduList"></div>
+            <button class="add-btn" onclick="addEdu()">+ Add Education</button>
+          </div>
+
+          <div class="card" style="margin-top: 24px">
+            <div class="card-title">Skills</div>
+            <div class="skills-wrap" id="skillsWrap"></div>
+            <div class="skill-input-row">
+              <input
+                id="skillInput"
+                onkeydown="if(event.key==='Enter')addSkill()"
+                placeholder="e.g. Project Management"
+              />
+              <button class="skill-add-btn" onclick="addSkill()">Add</button>
+            </div>
+          </div>
+
+          <button class="download-btn" onclick="downloadCV()">Download PDF resume</button>
         </div>
 
         <!-- Preview Side -->
         <div class="preview-side">
-            <div class="preview-sticky">
-                <div class="preview-wrap">
-                    <div class="preview-bar">
-                        <div class="dot" style="background:#ef4444"></div>
-                        <div class="dot" style="background:#f59e0b"></div>
-                        <div class="dot" style="background:#10b981"></div>
-                        <span style="margin-left:4px; font-weight: 600;">Live ATS Preview</span>
-                    </div>
-                    <div id="cvPreview">
-                        <!-- Preview content injected by JS -->
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--muted);">
-                    Tip: Use standard fonts and clear headings for best ATS results.
-                </p>
+          <div class="preview-sticky">
+            <div class="preview-wrap">
+              <div class="preview-bar">
+                <div class="dot" style="background: #ef4444"></div>
+                <div class="dot" style="background: #f59e0b"></div>
+                <div class="dot" style="background: #10b981"></div>
+                <span style="margin-left: 4px; font-weight: 600">Live resume preview</span>
+              </div>
+              <div id="cvPreview">
+                <!-- Preview content injected by JS -->
+              </div>
             </div>
+            <p
+              style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--muted)"
+            >
+              Readability reference: use clear section labels and confirm each application’s own
+              upload requirements.
+            </p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- COMPREHENSIVE CONTENT SECTION -->
-    <div class="content-section">
-        <h2>The Ultimate Guide to Building an ATS-Friendly Resume in 2026</h2>
-        <p>In today's competitive job market, your resume isn't just a document; it's your first impression. Most Fortune 500 companies use Applicant Tracking Systems (ATS) to filter candidates before a human ever sees your application. Our <strong>Free Resume Builder</strong> is specifically engineered to create resumes that are both visually professional and technically optimized for these systems.</p>
+      <!-- COMPREHENSIVE CONTENT SECTION -->
+      <div class="content-section">
+        <h2>Complete Guide to Building a Readable Resume</h2>
+        <p>
+          A resume is a concise record of relevant experience, education, skills, and evidence. Its
+          purpose is to help a reader understand what you have done and how it relates to a
+          particular opportunity. Toolyfi provides a browser-side drafting workspace; it does not
+          evaluate candidates, predict employer decisions, or guarantee how an external hiring
+          system will process a file.
+        </p>
 
-        <h3>How to Use Our Free Resume Builder (5-Step Guide)</h3>
+        <h3>How to Use the Resume Workspace</h3>
         <div class="guide-steps">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <h4>Enter Personal Details</h4>
-                <p>Start with your name, contact info, and a professional title. Ensure your email is professional (e.g., name.surname@email.com).</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <h4>Write Your Summary</h4>
-                <p>Craft a 3-4 sentence professional summary highlighting your years of experience and top 2-3 achievements.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <h4>Add Experience</h4>
-                <p>List your work history in reverse-chronological order. Focus on quantifiable results rather than just duties.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <h4>List Your Skills</h4>
-                <p>Include a mix of hard skills (technical) and soft skills (interpersonal) relevant to the job description.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">5</div>
-                <h4>Download PDF</h4>
-                <p>Choose your accent color and hit download. Your resume is ready to be sent to recruiters instantly.</p>
-            </div>
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h4>Enter Personal Details</h4>
+            <p>
+              Start with your name, contact info, and a professional title. Ensure your email is
+              professional (e.g., name.surname@email.com).
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h4>Write Your Summary</h4>
+            <p>
+              Write only information you can support, focusing on the experience and strengths
+              relevant to the role you are considering.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h4>Add Experience</h4>
+            <p>
+              List relevant work history in an order a reader can follow. Where figures are used,
+              check that they are accurate and meaningful.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h4>List Your Skills</h4>
+            <p>
+              Include skills that you can genuinely demonstrate and that are relevant to the role,
+              rather than filling the section with generic keywords.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">5</div>
+            <h4>Review output</h4>
+            <p>
+              Check the preview, page breaks, spelling, dates, and any application instructions
+              before using the browser PDF or print controls.
+            </p>
+          </div>
         </div>
 
-        <h3>Why Choose Toolyfi's Resume Maker?</h3>
+        <h3>What This Browser-Side Builder Provides</h3>
         <div class="feature-grid">
-            <div class="feature-item">
-                <div class="feature-icon">🚀</div>
-                <div>
-                    <h4>ATS-Optimized Layout</h4>
-                    <p>Our templates use standard fonts and clear section headings that ATS algorithms can easily parse and index.</p>
-                </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <div>
+              <h4>Readable reference layout</h4>
+              <p>
+                The preview presents core sections in a single-column sequence. It is a readability
+                reference, not an ATS result guarantee.
+              </p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">💰</div>
-                <div>
-                    <h4>100% Free Forever</h4>
-                    <p>No hidden fees, no "premium" templates, and no watermarks. What you see is what you get, completely free.</p>
-                </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💰</div>
+            <div>
+              <h4>Visible controls</h4>
+              <p>
+                The workspace keeps editable fields, section controls, and the resulting preview on
+                one page so you can review each change.
+              </p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🔒</div>
-                <div>
-                    <h4>Privacy First</h4>
-                    <p>We don't require an account. Your data stays in your browser and is never stored on our servers.</p>
-                </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <div>
+              <h4>Session-based drafting</h4>
+              <p>
+                This page has no account or resume-saving feature. Do not rely on it for records and
+                avoid entering unnecessary sensitive information.
+              </p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">⚡</div>
-                <div>
-                    <h4>Instant PDF Export</h4>
-                    <p>Generate a clean, professional PDF file in seconds. Perfect for email attachments and online applications.</p>
-                </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div>
+              <h4>Print and PDF controls</h4>
+              <p>
+                Use the available browser output controls after checking the document. Your browser,
+                file, and recipient requirements can affect final output.
+              </p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">🎨</div>
-                <div>
-                    <h4>Modern Design</h4>
-                    <p>Clean, minimalist designs that appeal to human recruiters while maintaining technical compliance.</p>
-                </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <div>
+              <h4>Editable accent treatment</h4>
+              <p>
+                Colour choices update the preview. Select an option that preserves contrast and does
+                not distract from the information itself.
+              </p>
             </div>
+          </div>
         </div>
 
         <h3>Who Should Use This Tool?</h3>
-        <p>Our builder is designed for a wide range of professionals across the United States and globally:</p>
+        <p>
+          Our builder is designed for a wide range of professionals across the United States and
+          globally:
+        </p>
         <ul>
-            <li><strong>Recent Graduates:</strong> Highlight your education and internships with a clean, entry-level format.</li>
-            <li><strong>Career Changers:</strong> Use the professional summary to explain your transition and transferable skills.</li>
-            <li><strong>Tech Professionals:</strong> Showcase your technical stack in a dedicated, easy-to-read skills section.</li>
-            <li><strong>Freelancers & Contractors:</strong> Organize diverse project experience into a cohesive professional narrative.</li>
-            <li><strong>Executive Leadership:</strong> Present high-level achievements and strategic impact with a sophisticated layout.</li>
-            <li><strong>Healthcare Workers:</strong> Clearly list certifications, licenses, and clinical experience.</li>
+          <li>
+            <strong>Recent Graduates:</strong> Highlight your education and internships with a
+            clean, entry-level format.
+          </li>
+          <li>
+            <strong>Career Changers:</strong> Use the professional summary to explain your
+            transition and transferable skills.
+          </li>
+          <li>
+            <strong>Tech Professionals:</strong> Showcase your technical stack in a dedicated,
+            easy-to-read skills section.
+          </li>
+          <li>
+            <strong>Freelancers & Contractors:</strong> Organize diverse project experience into a
+            cohesive professional narrative.
+          </li>
+          <li>
+            <strong>Executive Leadership:</strong> Present high-level achievements and strategic
+            impact with a sophisticated layout.
+          </li>
+          <li>
+            <strong>Healthcare Workers:</strong> Clearly list certifications, licenses, and clinical
+            experience.
+          </li>
         </ul>
 
-        <h3>Resume Builder Comparison: Toolyfi vs. Paid Alternatives</h3>
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Toolyfi</th>
-                    <th>Zety / ResumeNow</th>
-                    <th>Indeed Builder</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cost</td>
-                    <td>$0 (Free)</td>
-                    <td>$20 - $30 / month</td>
-                    <td>Free (Requires Account)</td>
-                </tr>
-                <tr>
-                    <td>No Signup Required</td>
-                    <td>✅ Yes</td>
-                    <td>❌ No</td>
-                    <td>❌ No</td>
-                </tr>
-                <tr>
-                    <td>ATS-Friendly</td>
-                    <td>✅ High</td>
-                    <td>✅ High</td>
-                    <td>✅ Medium</td>
-                </tr>
-                <tr>
-                    <td>PDF Download</td>
-                    <td>✅ Instant</td>
-                    <td>❌ Paywall</td>
-                    <td>✅ Yes</td>
-                </tr>
-                <tr>
-                    <td>Privacy</td>
-                    <td>✅ Browser-based</td>
-                    <td>❌ Data stored</td>
-                    <td>❌ Data stored</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>Choose Evidence Before Decoration</h2>
+        <p>
+          A builder can make formatting more consistent, but it cannot decide what a hiring team
+          needs to see. Start with the role description and application instructions. Identify the
+          responsibilities, skills, qualifications, outcomes, and context that you can genuinely
+          support. Then choose examples from your experience that give a reader evidence of those
+          points. A useful resume is not a catalogue of every task; it is an accurate, relevant
+          account of work that makes sense for its intended reader.
+        </p>
+        <p>
+          Do not copy a job description into a resume or add tools, certifications, dates, job
+          titles, results, or responsibilities that cannot be verified. Translate real experience
+          into direct language instead. If a role requires scheduling and your experience includes
+          coordinating appointments, state what you coordinated, for whom, in what setting, and what
+          result followed where that result is known. Plain, specific phrasing gives a stronger
+          basis for review than inflated terms or unsupported superlatives.
+        </p>
 
-        <h3>10 Expert Resume Writing Tips for 2026</h3>
+        <h2>Build Contact and Summary Sections Carefully</h2>
+        <p>
+          Contact details should help a legitimate reader identify and reach you. Include
+          information relevant to the local job-search context and application route, but avoid
+          adding more personal data than necessary. Check that an email address, phone number,
+          location wording, portfolio link, and spelling are current. A broken portfolio URL or old
+          phone number can make a carefully prepared resume less useful, even if the work history is
+          strong.
+        </p>
+        <p>
+          A summary is optional. Use it when it adds a focused explanation of your professional
+          direction, relevant experience, or transferable strengths. A useful summary is short,
+          factual, and role-aware. It does not need to claim that you are the best, highly
+          motivated, or guaranteed to succeed. Where you state years of experience, areas of
+          responsibility, a qualification, or a result, check that the surrounding resume supports
+          it. If a summary adds only generic personality language, omit it and use the space for
+          evidence instead.
+        </p>
+
+        <h2>Describe Experience With Verifiable Detail</h2>
+        <p>
+          For each relevant role, give the employer or project context, title, dates, and a concise
+          description of work. Readers often need to understand scope before they can interpret an
+          achievement. A statement such as “managed events” leaves open the size, type, and
+          responsibility. A clearer statement identifies the kind of events, the tasks you owned,
+          the stakeholders you worked with, and a measurable result only if you can substantiate it.
+          The appropriate level of detail depends on the role and on what you are permitted to
+          disclose.
+        </p>
+        <p>
+          Numbers are not mandatory, and they should never be invented. Use a figure when it
+          clarifies scale: number of users supported, time saved, budget managed, volume processed,
+          audience reached, or a documented percentage change. If a number is confidential,
+          uncertain, or not meaningful, write a qualitative description that is still concrete. A
+          reader can assess a clear account of decisions, tools, collaboration, and deliverables
+          without a dramatic metric attached to every bullet.
+        </p>
+        <p>
+          Order experience in a way that supports the story you are telling. Many applicants use
+          most-recent-first order because it is simple to scan, but another structure may make sense
+          for a career return, portfolio-focused work, academic route, or a role that values a
+          particular project. Whatever order you choose, make dates and transitions understandable.
+          Consistency matters more than trying to predict a universal recruiter preference.
+        </p>
+
+        <h2>Use Skills and Education Precisely</h2>
+        <p>
+          A skill list is not a replacement for demonstrated work. Add capabilities that are
+          connected to the role and that you can genuinely discuss in an interview or assessment.
+          Grouping related skills can improve scanability: separate data tools, design software,
+          languages, operational methods, or research techniques. Avoid presenting a skill as
+          advanced when you have only encountered it briefly. If a credential has an expiry date,
+          licensing condition, or official naming convention, reproduce it accurately and check that
+          you are entitled to use it.
+        </p>
+        <p>
+          Education details should give the reader the level, subject, institution, and dates or
+          expected completion information that matter for the opportunity. Early-career applicants
+          may reasonably emphasise projects, coursework, placements, awards, or societies where
+          those are relevant and true. People with longer work histories may need less detail. The
+          deciding question is whether a fact helps a reader understand your preparation for this
+          role.
+        </p>
+
+        <h2>Readability Is Not an ATS Guarantee</h2>
+        <p>
+          Some employers use software to receive or organise applications, but the way a particular
+          system reads, ranks, filters, or displays a resume depends on that employer's
+          configuration, file requirements, and hiring process. No generic page can promise that a
+          document will pass, rank highly, or be selected by an external system. Toolyfi uses a
+          single-column preview with ordinary section labels as a readability-oriented reference. It
+          does not test an uploaded file against a named employer platform and it does not return a
+          score.
+        </p>
+        <p>
+          To make a document easier to review, prefer clear headings, natural language, consistent
+          dates, and simple visual hierarchy. Avoid hiding text, copying every phrase from a
+          vacancy, or using complex visual elements merely to appear sophisticated. If an
+          application portal gives a file type, naming rule, accessibility request, or document
+          limit, follow that instruction first. The same resume can be appropriate for one
+          application and unsuitable for another because the requirements are different.
+        </p>
+
+        <h2>Check Layout and Final Output</h2>
+        <p>
+          There is no universal page count that proves a resume is good. A short early-career record
+          may fit comfortably on one page; a person with extensive, relevant experience may need
+          more space. Edit for relevance, clarity, and proportion. Remove repeated duties, stale
+          details, and empty claims before shrinking text or margins. The objective is not to meet a
+          number; it is to present useful information in a form a reader can review without strain.
+        </p>
+        <p>
+          Use the live preview to inspect text flow and section order, then use the browser print or
+          PDF control as a separate final check. Open the resulting document. Look for cut-off text,
+          a heading stranded at the bottom of a page, a date line that wraps awkwardly, a blank
+          page, low contrast, or a link that is hard to read. Browser versions, printer settings,
+          page size, and installed fonts can affect output. Rename the document thoughtfully and
+          retain your own secure copy outside this page if you need one.
+        </p>
+
+        <h2>A Practical Final Review Routine</h2>
         <ol>
-            <li><strong>Quantify Your Impact:</strong> Instead of "Managed a team," use "Led a team of 12 to increase quarterly revenue by 24%."</li>
-            <li><strong>Keyword Optimization:</strong> Mirror the language used in the job description to rank higher in ATS scans.</li>
-            <li><strong>Reverse-Chronological Order:</strong> Always list your most recent experience first; it's what recruiters care about most.</li>
-            <li><strong>Keep it Concise:</strong> Aim for 1 page if you have under 10 years of experience, and no more than 2 pages for senior roles.</li>
-            <li><strong>Use Action Verbs:</strong> Start bullet points with strong verbs like "Spearheaded," "Engineered," or "Orchestrated."</li>
-            <li><strong>Professional Email:</strong> Use a simple name-based email address. Avoid nicknames or outdated domains.</li>
-            <li><strong>Check for Typos:</strong> A single spelling error can disqualify you. Proofread multiple times.</li>
-            <li><strong>Standard Fonts Only:</strong> Stick to fonts like Arial, Calibri, or Georgia which are safe for all systems.</li>
-            <li><strong>White Space is Your Friend:</strong> Don't crowd the page. Proper margins and spacing improve readability.</li>
-            <li><strong>Save as PDF:</strong> This ensures your formatting remains identical on every device the recruiter uses.</li>
+          <li>
+            <strong>Read for accuracy:</strong> confirm every name, title, date, degree, credential,
+            tool, link, and achievement.
+          </li>
+          <li>
+            <strong>Read for relevance:</strong> remove details that do not help explain your fit
+            for the specific opportunity.
+          </li>
+          <li>
+            <strong>Read for evidence:</strong> replace vague claims with concrete responsibilities,
+            outcomes, or context where you can support them.
+          </li>
+          <li>
+            <strong>Read for consistency:</strong> use the same date style, punctuation approach,
+            tense, and heading treatment throughout.
+          </li>
+          <li>
+            <strong>Use a fresh reader:</strong> another reader may spot unclear phrasing,
+            duplicated ideas, or typographical errors.
+          </li>
+          <li>
+            <strong>Check the route:</strong> confirm the recipient, requested format, file size,
+            questions, and deadline before uploading or sending.
+          </li>
         </ol>
+
+        <h2>Adapt the Resume Without Changing the Facts</h2>
+        <p>
+          Tailoring does not mean rewriting a career history until it resembles the vacancy. It
+          means selecting and arranging true information so the connection between your experience
+          and the opportunity is easier to see. Start with the role description and application
+          instructions. Identify the responsibilities, skills, qualifications, outcomes, and context
+          that you can genuinely support. Then choose examples from your experience that give a
+          reader evidence of those points.
+        </p>
+        <p>
+          The same experience can be described from more than one accurate angle. A customer-support
+          role can emphasise communication, incident documentation, account handling, product
+          knowledge, quality checks, or cross-team coordination depending on the work being
+          considered. The angle should change only when the underlying fact remains true. If a
+          requirement is unfamiliar, do not imply that you have used it. You can state an adjacent
+          capability or a relevant learning example, then decide whether further training is needed
+          before applying.
+        </p>
+        <p>
+          Keep a base record of your complete work history outside this browser page, then create
+          focused versions from that record when appropriate. This prevents accidental
+          inconsistencies between dates, employer names, qualifications, and job titles. It also
+          makes it easier to answer an interview question later: you can trace a resume claim back
+          to notes, a portfolio item, a performance record, or another source that supports it.
+        </p>
+
+        <h2>Career Changes, Early Careers, and Gaps</h2>
+        <p>
+          People do not all have a linear employment history. A career change, return to work, study
+          period, caregiving period, freelance project, relocation, internship, or volunteer role
+          may affect what a resume needs to explain. Focus on the evidence that is relevant to the
+          next role. A career changer can lead with transferable work: planning, stakeholder
+          communication, analysis, mentoring, operations, customer service, or subject knowledge. An
+          early-career applicant can describe projects, placements, coursework, competitions, or
+          community work if those experiences show relevant action and learning.
+        </p>
+        <p>
+          A gap does not automatically need a detailed explanation in the document. Consider whether
+          a short, accurate label clarifies the timeline or whether the space is better used for
+          substantive experience. The right level of disclosure depends on your personal
+          circumstances, local norms, and the role. Do not feel obliged to put sensitive medical,
+          family, financial, immigration, or identity information in a resume merely to account for
+          every month. If an application form asks a specific question, answer it honestly and in
+          the appropriate place.
+        </p>
+        <p>
+          For contract, freelance, or project work, identify the arrangement clearly enough that the
+          reader can understand it. You might name a project category, client type where permitted,
+          independent practice, or a portfolio collection. Explain the work rather than using a
+          vague title alone. Make sure that dates and relationships are accurate; an unclear work
+          history can create questions that careful wording would have avoided.
+        </p>
+
+        <h2>Write Bullets That a Reader Can Follow</h2>
+        <p>
+          A strong bullet often has four possible parts: an action, an object, context, and an
+          outcome. Not every bullet needs all four, but the pattern helps prevent empty claims.
+          Compare “Improved reporting” with “Prepared a weekly operations report for regional leads,
+          reconciling incoming figures from three teams.” The second statement tells a reader what
+          the work involved, without needing a dramatic achievement claim. If you can support a
+          documented result, add it; if not, a precise responsibility is still valuable.
+        </p>
+        <p>
+          Use verbs that accurately reflect your part in the work. “Supported,” “assisted,”
+          “coordinated,” “analysed,” “drafted,” “maintained,” “led,” and “delivered” do not mean the
+          same thing. Choose the word that matches your actual responsibility. Be equally careful
+          with team results. If a group improved a process, state your contribution rather than
+          claiming sole credit. Accurate attribution builds a document that is easier to defend in
+          conversation.
+        </p>
+        <p>
+          Read each bullet for hidden ambiguity. Pronouns, internal acronyms, product nicknames, and
+          unexplained metrics may make sense to a former team but not to a new reader. Replace
+          jargon with a short explanation where necessary. Keep confidential customer names,
+          non-public figures, passwords, personal data, and proprietary methods out of a public
+          document. You can demonstrate scope without disclosing information you are not allowed to
+          share.
+        </p>
+
+        <h2>Accessibility, File Choices, and Recordkeeping</h2>
+        <p>
+          Accessibility is part of clarity. Use readable contrast, recognisable headings, ordinary
+          punctuation, and enough white space for the document to be scanned comfortably. Avoid
+          relying only on colour, icons, or position to communicate a key fact. The Toolyfi preview
+          uses visual accents, but the content should still make sense if printed in grayscale or
+          viewed on a small screen. If an organisation provides accessibility guidance or a required
+          template, use that rather than assuming a general layout will be appropriate.
+        </p>
+        <p>
+          PDF output can preserve a particular layout, but it is not automatically the right format
+          for every application. Some systems request a document file, plain text, or a form entry
+          instead. Follow the stated requirement and inspect the file after export. Use a clear,
+          non-sensitive filename such as a name and role identifier where appropriate. Avoid leaving
+          multiple final-looking files with conflicting dates or titles in a folder, because an
+          outdated version can be attached by mistake.
+        </p>
+        <p>
+          This Toolyfi page does not provide an account, cloud storage, application tracker,
+          submission service, or long-term document archive. Keep the version you use, your source
+          notes, and any supporting records in a secure location that you control. Before you close
+          or refresh the page, ensure that you have saved any material you need through your own
+          process. Treat the workspace as a drafting surface, not as a recordkeeping system.
+        </p>
+
+        <h2>When the Resume Is Ready to Share</h2>
+        <p>
+          A final review is not only a grammar check. Confirm that the recipient name, job title,
+          and employer references are correct for the current application. Compare the dates,
+          titles, credentials, skills, and achievements to your source record. Check active links,
+          verify that a portfolio or professional profile shows the intended information, and look
+          at the document at normal reading size. Then open the exported file on another device or
+          in another viewer when possible to catch unexpected layout changes.
+        </p>
+        <p>
+          Finally, make a deliberate choice about what to share. A resume may be accompanied by an
+          application form, cover note, work sample, references, or a job portal profile, each with
+          different requirements. Toolyfi does not send the document or make that decision for you.
+          Use the final file only when it accurately represents your experience and meets the
+          instructions you have received. A clear, truthful resume is a foundation for a better
+          conversation; it is not a promise of an interview or an employment outcome.
+        </p>
+
+        <h2>Keep a Role-Specific Review Note</h2>
+        <p>
+          Before producing a version for a particular role, make a private note of the three to five
+          real examples that best connect your history to that opportunity. Record the source for
+          each example: a project outline, work record, portfolio case study, supervisor feedback,
+          or other material you may legitimately rely on. This small step helps you keep versions
+          consistent and reduces the temptation to add a claim simply because it sounds relevant.
+        </p>
+        <p>
+          After the document is complete, compare that note with the final resume. Ask whether each
+          highlighted example is represented accurately, whether any wording overstates your
+          involvement, and whether you would be comfortable explaining it to a reader. If the answer
+          is no, edit the text or choose a different example. A resume can be concise without being
+          vague, and tailored without becoming a fiction.
+        </p>
 
         <h3>Frequently Asked Questions</h3>
         <div class="faq-grid">
-            <details>
-                <summary>Is this resume builder really free?</summary>
-                <div class="faq-content">Yes, Toolyfi's resume builder is 100% free. We do not charge for downloads, templates, or any features. There are no hidden subscriptions or "pro" versions.</div>
-            </details>
-            <details>
-                <summary>Do I need to create an account to save my resume?</summary>
-                <div class="faq-content">No account is required. We value your privacy. Your data is processed locally in your browser. If you refresh the page, the data will be cleared, so make sure to download your PDF once finished.</div>
-            </details>
-            <details>
-                <summary>What makes a resume "ATS-friendly"?</summary>
-                <div class="faq-content">An ATS-friendly resume uses a simple, single-column layout, standard fonts, and clear headings. It avoids complex graphics, tables, or images that can confuse the scanning software. Our builder follows these best practices strictly.</div>
-            </details>
-            <details>
-                <summary>Can I use this for US-based jobs?</summary>
-                <div class="faq-content">Absolutely. Our builder uses US English standards and follows the formatting preferred by American recruiters and major US-based ATS platforms like Workday, Greenhouse, and Lever.</div>
-            </details>
-            <details>
-                <summary>How do I add more than one job or degree?</summary>
-                <div class="faq-content">Simply click the "+ Add Experience" or "+ Add Education" buttons in the editor. You can add as many entries as you need to complete your professional history.</div>
-            </details>
-            <details>
-                <summary>Can I change the color of my resume?</summary>
-                <div class="faq-content">Yes! We offer 5 professional accent colors. You can select your preferred color in the "Personal Information" section, and the preview will update instantly.</div>
-            </details>
-            <details>
-                <summary>Is my data safe on Toolyfi?</summary>
-                <div class="faq-content">Yes. Because we don't store your data on our servers, your personal information never leaves your device until you download the PDF. We do not sell or share candidate data.</div>
-            </details>
-            <details>
-                <summary>What file format should I use for my resume?</summary>
-                <div class="faq-content">PDF is the gold standard for resumes in 2026. It preserves your formatting across all devices and is easily readable by both humans and ATS software. Our tool exports directly to PDF.</div>
-            </details>
+          <details>
+            <summary>What should a resume include?</summary>
+            <div class="faq-content">
+              A resume commonly includes accurate contact details, a concise summary where useful,
+              relevant work experience, education, skills, and role-specific evidence.
+            </div>
+          </details>
+          <details>
+            <summary>Can this tool create a resume preview?</summary>
+            <div class="faq-content">
+              Yes. Toolyfi updates a resume preview from the details entered in the active browser
+              page.
+            </div>
+          </details>
+          <details>
+            <summary>Can I add more than one experience entry?</summary>
+            <div class="faq-content">
+              Yes. Use Add Experience or Add Education to create additional entries and review their
+              order in the preview.
+            </div>
+          </details>
+          <details>
+            <summary>Can I change the accent colour?</summary>
+            <div class="faq-content">
+              Yes. The available colour options change the preview accent treatment; choose a style
+              that keeps headings and body copy clear.
+            </div>
+          </details>
+          <details>
+            <summary>Can I print or download my resume?</summary>
+            <div class="faq-content">
+              The page provides browser print and PDF controls. Check the final output, page breaks,
+              and application instructions before sharing.
+            </div>
+          </details>
+          <details>
+            <summary>Does this builder guarantee ATS results?</summary>
+            <div class="faq-content">
+              No. Toolyfi provides a readable single-column reference layout but cannot predict how
+              any employer system parses, ranks, or selects a document.
+            </div>
+          </details>
+          <details>
+            <summary>Does Toolyfi submit applications for me?</summary>
+            <div class="faq-content">
+              No. This page drafts a resume document only; it does not send applications, contact
+              employers, or track a job search.
+            </div>
+          </details>
+          <details>
+            <summary>Does a resume need to be one page?</summary>
+            <div class="faq-content">
+              Length depends on relevant experience, role expectations, and local context. Prefer
+              clear, relevant information over an arbitrary page target.
+            </div>
+          </details>
+          <details>
+            <summary>Should I tailor a resume for a role?</summary>
+            <div class="faq-content">
+              Usually. Review the role requirements and present accurate, relevant evidence rather
+              than copying keywords or making unsupported claims.
+            </div>
+          </details>
+          <details>
+            <summary>Should I review the final resume before sharing it?</summary>
+            <div class="faq-content">
+              Yes. Check names, dates, job titles, achievements, contact information, spelling, page
+              breaks, and every claim before sending a resume.
+            </div>
+          </details>
         </div>
-    </div>
+      </div>
 
-    <div class="related-tools">
+      <div class="related-tools">
         <h3>Related Professional Tools</h3>
         <div class="related-grid">
-            <a href="invoice-generator.html" class="related-link">Free Invoice Generator</a>
-            <a href="age-calculator.html" class="related-link">Age Calculator Online</a>
-            <a href="currency-converter.html" class="related-link">Live Currency Converter</a>
-            <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
-            <a href="tax-refund-tracker.html" class="related-link">Tax Refund Tracker</a>
-            <a href="word-counter.html" class="related-link">Professional Word Counter</a>
-            <a href="qr-code-generator.html" class="related-link">QR Code Generator</a>
-            <a href="password-generator.html" class="related-link">Secure Password Maker</a>
+          <a href="invoice-generator.html" class="related-link">Free Invoice Generator</a>
+          <a href="age-calculator.html" class="related-link">Age Calculator Online</a>
+          <a href="currency-converter.html" class="related-link">Live Currency Converter</a>
+          <a href="salary-to-hourly.html" class="related-link">Salary to Hourly Tool</a>
+          <a href="tax-refund-tracker.html" class="related-link">Tax Refund Tracker</a>
+          <a href="word-counter.html" class="related-link">Professional Word Counter</a>
+          <a href="qr-code-generator.html" class="related-link">QR Code Generator</a>
+          <a href="password-generator.html" class="related-link">Secure Password Maker</a>
         </div>
+      </div>
     </div>
-</div>
 
-<footer>
-    <p>© 2026 <a href="index.html">Toolyfi</a> · The World's Favorite Free Online Tools</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">Designed for US Job Seekers · ATS-Compliant · Privacy Focused</p>
-</footer>
+    <footer>
+      <p>© 2026 <a href="index.html">Toolyfi</a> · Free online utility tools</p>
+      <p style="margin-top: 10px; font-size: 0.8rem">
+        Resume drafting workspace · Review facts and output before sharing
+      </p>
+    </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-    let cvColor = '#7c3aed';
-    let exp = [{ title:'', company:'', period:'', desc:'' }];
-    let edu = [{ degree:'', school:'', year:'' }];
-    let skills = ['Communication', 'Teamwork', 'Problem Solving'];
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      let cvColor = "#7c3aed";
+      let exp = [{ title: "", company: "", period: "", desc: "" }];
+      let edu = [{ degree: "", school: "", year: "" }];
+      let skills = ["Communication", "Teamwork", "Problem Solving"];
 
-    function setCVColor(el) {
-        document.querySelectorAll('#cvColors div').forEach(d => d.style.borderColor = 'transparent');
-        el.style.borderColor = '#333';
+      function setCVColor(el) {
+        document
+          .querySelectorAll("#cvColors div")
+          .forEach((d) => (d.style.borderColor = "transparent"));
+        el.style.borderColor = "#333";
         cvColor = el.dataset.c;
         updateCV();
-    }
+      }
 
-    function addExp() { exp.push({title:'',company:'',period:'',desc:''}); renderExp(); updateCV(); }
-    function removeExp(i) { exp.splice(i,1); renderExp(); updateCV(); }
+      function addExp() {
+        exp.push({ title: "", company: "", period: "", desc: "" });
+        renderExp();
+        updateCV();
+      }
+      function removeExp(i) {
+        exp.splice(i, 1);
+        renderExp();
+        updateCV();
+      }
 
-    function renderExp() {
-        document.getElementById('expList').innerHTML = exp.map((e,i) => `
+      function renderExp() {
+        document.getElementById("expList").innerHTML = exp
+          .map(
+            (e, i) => `
             <div class="section-item">
                 <button class="remove-btn" onclick="removeExp(${i})">✕</button>
                 <label>Job Title</label><input placeholder="e.g. Senior Developer" value="${e.title}" oninput="exp[${i}].title=this.value;updateCV()">
                 <label>Company</label><input placeholder="e.g. Google" value="${e.company}" oninput="exp[${i}].company=this.value;updateCV()">
                 <label>Period</label><input placeholder="e.g. 2022 - Present" value="${e.period}" oninput="exp[${i}].period=this.value;updateCV()">
                 <label>Description</label><textarea rows="3" placeholder="Describe your achievements..." oninput="exp[${i}].desc=this.value;updateCV()">${e.desc}</textarea>
-            </div>`).join('');
-    }
+            </div>`,
+          )
+          .join("");
+      }
 
-    function addEdu() { edu.push({degree:'',school:'',year:''}); renderEdu(); updateCV(); }
-    function removeEdu(i) { edu.splice(i,1); renderEdu(); updateCV(); }
+      function addEdu() {
+        edu.push({ degree: "", school: "", year: "" });
+        renderEdu();
+        updateCV();
+      }
+      function removeEdu(i) {
+        edu.splice(i, 1);
+        renderEdu();
+        updateCV();
+      }
 
-    function renderEdu() {
-        document.getElementById('eduList').innerHTML = edu.map((e,i) => `
+      function renderEdu() {
+        document.getElementById("eduList").innerHTML = edu
+          .map(
+            (e, i) => `
             <div class="section-item">
                 <button class="remove-btn" onclick="removeEdu(${i})">✕</button>
                 <label>Degree</label><input placeholder="e.g. BS Computer Science" value="${e.degree}" oninput="edu[${i}].degree=this.value;updateCV()">
                 <label>School</label><input placeholder="e.g. Stanford University" value="${e.school}" oninput="edu[${i}].school=this.value;updateCV()">
                 <label>Year</label><input placeholder="e.g. 2018 - 2022" value="${e.year}" oninput="edu[${i}].year=this.value;updateCV()">
-            </div>`).join('');
-    }
+            </div>`,
+          )
+          .join("");
+      }
 
-    function addSkill() {
-        const val = document.getElementById('skillInput').value.trim();
+      function addSkill() {
+        const val = document.getElementById("skillInput").value.trim();
         if (!val || skills.includes(val)) return;
         skills.push(val);
-        document.getElementById('skillInput').value = '';
-        renderSkills(); updateCV();
-    }
+        document.getElementById("skillInput").value = "";
+        renderSkills();
+        updateCV();
+      }
 
-    function removeSkill(s) { skills = skills.filter(x => x !== s); renderSkills(); updateCV(); }
+      function removeSkill(s) {
+        skills = skills.filter((x) => x !== s);
+        renderSkills();
+        updateCV();
+      }
 
-    function renderSkills() {
-        document.getElementById('skillsWrap').innerHTML = skills.map(s => `
-            <div class="skill-tag">${s}<button onclick="removeSkill('${s}')">✕</button></div>`).join('');
-    }
+      function renderSkills() {
+        document.getElementById("skillsWrap").innerHTML = skills
+          .map(
+            (s) => `
+            <div class="skill-tag">${s}<button onclick="removeSkill('${s}')">✕</button></div>`,
+          )
+          .join("");
+      }
 
-    function updateCV() {
-        const name = document.getElementById('cvName').value || 'Your Name';
-        const title = document.getElementById('cvTitle').value || 'Professional Title';
-        const email = document.getElementById('cvEmail').value;
-        const phone = document.getElementById('cvPhone').value;
-        const location = document.getElementById('cvLocation').value;
-        const link = document.getElementById('cvLink').value;
-        const summary = document.getElementById('cvSummary').value;
-        const light = cvColor + '12';
+      function updateCV() {
+        const name = document.getElementById("cvName").value || "Your Name";
+        const title = document.getElementById("cvTitle").value || "Professional Title";
+        const email = document.getElementById("cvEmail").value;
+        const phone = document.getElementById("cvPhone").value;
+        const location = document.getElementById("cvLocation").value;
+        const link = document.getElementById("cvLink").value;
+        const summary = document.getElementById("cvSummary").value;
+        const light = cvColor + "12";
 
-        document.getElementById('cvPreview').innerHTML = `
+        document.getElementById("cvPreview").innerHTML = `
             <div style="background:${cvColor};padding:32px;color:white;border-radius:12px 12px 0 0;margin:-40px -40px 24px">
                 <div class="cv-name">${name}</div>
                 <div class="cv-title">${title}</div>
                 <div class="cv-contact">
-                    ${email?`<span>✉ ${email}</span>`:''}
-                    ${phone?`<span>📞 ${phone}</span>`:''}
-                    ${location?`<span>📍 ${location}</span>`:''}
-                    ${link?`<span>🔗 ${link}</span>`:''}
+                    ${email ? `<span>✉ ${email}</span>` : ""}
+                    ${phone ? `<span>📞 ${phone}</span>` : ""}
+                    ${location ? `<span>📍 ${location}</span>` : ""}
+                    ${link ? `<span>🔗 ${link}</span>` : ""}
                 </div>
             </div>
-            ${summary ? `<div style="margin-bottom:24px;padding:16px;background:${light};border-radius:10px;font-size:0.9rem;color:#374151;border-left:4px solid ${cvColor}">${summary}</div>` : ''}
+            ${summary ? `<div style="margin-bottom:24px;padding:16px;background:${light};border-radius:10px;font-size:0.9rem;color:#374151;border-left:4px solid ${cvColor}">${summary}</div>` : ""}
             
-            ${exp.some(e=>e.title||e.company) ? `
+            ${
+              exp.some((e) => e.title || e.company)
+                ? `
                 <div class="cv-section-title" style="color:${cvColor}">Professional Experience</div>
-                ${exp.map(e => e.title||e.company ? `<div class="cv-item">
-                    <div class="cv-item-title">${e.title||''}</div>
-                    <div class="cv-item-sub" style="color:${cvColor}">${e.company||''} ${e.period?'· '+e.period:''}</div>
-                    ${e.desc?`<div class="cv-item-desc">${e.desc}</div>`:''}
-                </div>` : '').join('')}
-                <div class="cv-divider" style="background:${light}"></div>` : ''}
+                ${exp
+                  .map((e) =>
+                    e.title || e.company
+                      ? `<div class="cv-item">
+                    <div class="cv-item-title">${e.title || ""}</div>
+                    <div class="cv-item-sub" style="color:${cvColor}">${e.company || ""} ${e.period ? "· " + e.period : ""}</div>
+                    ${e.desc ? `<div class="cv-item-desc">${e.desc}</div>` : ""}
+                </div>`
+                      : "",
+                  )
+                  .join("")}
+                <div class="cv-divider" style="background:${light}"></div>`
+                : ""
+            }
             
-            ${edu.some(e=>e.degree||e.school) ? `
+            ${
+              edu.some((e) => e.degree || e.school)
+                ? `
                 <div class="cv-section-title" style="color:${cvColor}">Education</div>
-                ${edu.map(e => e.degree||e.school ? `<div class="cv-item">
-                    <div class="cv-item-title">${e.degree||''}</div>
-                    <div class="cv-item-sub" style="color:${cvColor}">${e.school||''} ${e.year?'· '+e.year:''}</div>
-                </div>` : '').join('')}
-                <div class="cv-divider" style="background:${light}"></div>` : ''}
+                ${edu
+                  .map((e) =>
+                    e.degree || e.school
+                      ? `<div class="cv-item">
+                    <div class="cv-item-title">${e.degree || ""}</div>
+                    <div class="cv-item-sub" style="color:${cvColor}">${e.school || ""} ${e.year ? "· " + e.year : ""}</div>
+                </div>`
+                      : "",
+                  )
+                  .join("")}
+                <div class="cv-divider" style="background:${light}"></div>`
+                : ""
+            }
             
-            ${skills.length ? `
+            ${
+              skills.length
+                ? `
                 <div class="cv-section-title" style="color:${cvColor}">Key Skills</div>
-                <div class="cv-skills">${skills.map(s=>`<span class="cv-skill" style="background:${light};color:${cvColor}">${s}</span>`).join('')}</div>` : ''}
+                <div class="cv-skills">${skills.map((s) => `<span class="cv-skill" style="background:${light};color:${cvColor}">${s}</span>`).join("")}</div>`
+                : ""
+            }
         `;
-    }
+      }
 
-    function downloadCV() {
-        const el = document.getElementById('cvPreview');
-        const name = document.getElementById('cvName').value || 'resume';
+      function downloadCV() {
+        const el = document.getElementById("cvPreview");
+        const name = document.getElementById("cvName").value || "resume";
         const opt = {
-            margin: 10,
-            filename: name.replace(/\s+/g, '-').toLowerCase() + '-resume.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          margin: 10,
+          filename: name.replace(/\s+/g, "-").toLowerCase() + "-resume.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         };
         html2pdf().set(opt).from(el).save();
-    }
+      }
 
-    // Initial Render
-    renderExp(); renderEdu(); renderSkills(); updateCV();
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      // Initial Render
+      renderExp();
+      renderEdu();
+      renderSkills();
+      updateCV();
+    </script>
+  </body>
 </html>
