@@ -285,6 +285,41 @@
         font-weight: 700;
       }
 
+      /* Toolyfi motion: animate reading order and UI states, never source hero imagery. */
+      .hero-copy-sequence.reveal,
+      .tool-heading.motion-sequence.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-copy-sequence > *,
+      .tool-heading.motion-sequence > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 520ms var(--ease-out),
+          transform 520ms var(--ease-out);
+      }
+      .hero-copy-sequence.visible > *,
+      .tool-heading.motion-sequence.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hero-copy-sequence > :nth-child(1),
+      .tool-heading.motion-sequence > :nth-child(1) {
+        transition-delay: 30ms;
+      }
+      .hero-copy-sequence > :nth-child(2),
+      .tool-heading.motion-sequence > :nth-child(2) {
+        transition-delay: 95ms;
+      }
+      .hero-copy-sequence > :nth-child(3) {
+        transition-delay: 160ms;
+      }
+      .hero-copy-sequence > :nth-child(4) {
+        transition-delay: 225ms;
+      }
+
       .hero-visual {
         position: relative;
         min-height: 0;
@@ -405,6 +440,17 @@
         grid-template-columns: minmax(310px, 0.92fr) minmax(360px, 1.08fr);
         background: var(--white);
         box-shadow: 12px 12px 0 var(--coral);
+      }
+      .workspace-entrance.reveal {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+        transition:
+          opacity 560ms var(--ease-out),
+          transform 560ms var(--ease-out);
+      }
+      .workspace-entrance.reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
       .input-panel {
         padding: clamp(25px, 4vw, 48px);
@@ -747,6 +793,21 @@
         color: var(--ink-soft);
         font-size: 0.84rem;
       }
+      .section-grid.visible .method-item {
+        animation: item-rise 460ms var(--ease-out) both;
+      }
+      .section-grid.visible .method-item:nth-child(1) {
+        animation-delay: 70ms;
+      }
+      .section-grid.visible .method-item:nth-child(2) {
+        animation-delay: 130ms;
+      }
+      .section-grid.visible .method-item:nth-child(3) {
+        animation-delay: 190ms;
+      }
+      .section-grid.visible .method-item:nth-child(4) {
+        animation-delay: 250ms;
+      }
 
       .guide {
         padding: 90px 0;
@@ -861,6 +922,9 @@
         font-size: 0.9rem;
         line-height: 1.75;
       }
+      details[open] p {
+        animation: faq-answer-in 260ms var(--ease-out) both;
+      }
 
       .related-tools {
         padding: 70px 0;
@@ -907,6 +971,21 @@
         letter-spacing: -0.035em;
         line-height: 1;
       }
+      .related-tools .wrap.visible .related-grid a {
+        animation: card-rise 440ms var(--ease-out) both;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(1) {
+        animation-delay: 60ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(2) {
+        animation-delay: 120ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(3) {
+        animation-delay: 180ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(4) {
+        animation-delay: 240ms;
+      }
 
       .reveal {
         opacity: 0;
@@ -918,6 +997,36 @@
       .reveal.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+      @keyframes item-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes faq-answer-in {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes card-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
       @media (prefers-reduced-motion: reduce) {
         *,
@@ -931,6 +1040,12 @@
         .reveal {
           opacity: 1;
           transform: none;
+        }
+        .hero-copy-sequence > *,
+        .tool-heading.motion-sequence > * {
+          opacity: 1;
+          transform: none;
+          transition: none;
         }
       }
       @media (max-width: 1100px) {
@@ -1038,7 +1153,7 @@
         </div>
 
         <section class="hero wrap">
-          <div class="reveal">
+          <div class="hero-copy-sequence reveal">
             <p class="eyebrow">Calendar arithmetic, explained</p>
             <h1>Time passes. Your <em>date math</em> should stay clear.</h1>
             <p class="hero-copy">
@@ -1052,7 +1167,7 @@
             </div>
           </div>
           <figure
-            class="hero-visual reveal"
+            class="hero-visual"
             aria-label="Editorial illustration of a blank calendar, clock, and milestone timeline"
           >
             <img
@@ -1085,7 +1200,7 @@
 
         <section class="tool-zone">
           <div class="wrap">
-            <div class="tool-heading reveal">
+            <div class="tool-heading motion-sequence reveal">
               <div>
                 <p class="eyebrow">Transparent dates</p>
                 <h2>Pick two dates.<br />Read the <em>interval.</em></h2>
@@ -1097,7 +1212,7 @@
               </p>
             </div>
 
-            <div class="calculator-shell reveal">
+            <div class="calculator-shell workspace-entrance reveal">
               <section class="input-panel" aria-labelledby="input-heading">
                 <p class="panel-kicker">Your dates</p>
                 <h3 id="input-heading">Choose a calculation.</h3>
