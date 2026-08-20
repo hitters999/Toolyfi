@@ -1,1146 +1,2917 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Special Characters Counter Online — Count Symbols, Punctuation & Emoji Free | Toolyfi</title>
-  <meta name="description" content="Free special characters counter online. Count symbols, punctuation marks, emoji & every character type instantly. No signup, no watermark. Try now!">
-  <meta name="keywords" content="special characters counter online, count special characters in text, symbol counter online, punctuation counter online, emoji counter online, word counter with special characters">
-  <meta name="author" content="Toolyfi">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://toolyfi.com/special-characters-counter.html">
-  <meta property="og:title" content="Special Characters Counter Online — Count Symbols, Punctuation & Emoji Free">
-  <meta property="og:description" content="Count special characters, symbols, punctuation & emoji in any text instantly. Free, no signup, no watermark.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toolyfi.com/special-characters-counter.html">
-  <meta property="og:site_name" content="Toolyfi">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Special Characters Counter Online | Toolyfi">
-  <meta name="twitter:description" content="Count symbols, punctuation & emoji instantly. Free forever, no signup.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Special Characters Counter Online — Count Symbols, Punctuation & Emoji Free | Toolyfi
+    </title>
+    <meta
+      name="description"
+      content="Count visible characters, punctuation, selected symbols, whitespace, and emoji clusters in a browser-based text workspace."
+    />
+    <meta
+      name="keywords"
+      content="special characters counter online, count special characters in text, symbol counter online, punctuation counter online, emoji counter online, word counter with special characters"
+    />
+    <meta name="author" content="Toolyfi" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/special-characters-counter.html" />
+    <meta
+      property="og:title"
+      content="Special Characters Counter Online — Count Symbols, Punctuation & Emoji Free"
+    />
+    <meta
+      property="og:description"
+      content="Inspect visible characters, punctuation, symbols, whitespace, and emoji clusters in a browser-based text workspace."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/special-characters-counter.html" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Special Characters Counter Online | Toolyfi" />
+    <meta
+      name="twitter:description"
+      content="Inspect symbols, punctuation, whitespace, and emoji clusters in a browser-based text workspace."
+    />
 
-  <!-- JSON-LD: WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Special Characters Counter",
-    "url": "https://toolyfi.com/special-characters-counter.html",
-    "description": "Free online special characters counter. Count symbols, punctuation marks, emoji and every character type instantly.",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Any",
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-  }
-  </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Special Characters Counter",
+            "url": "https://toolyfi.com/special-characters-counter.html",
+            "description": "Browser-based special character counter for visible characters, whitespace, selected symbols, and emoji clusters.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com" },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Text Tools",
+                "item": "https://toolyfi.com/#directory"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Special Characters Counter",
+                "item": "https://toolyfi.com/special-characters-counter.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does a special characters counter measure?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It counts visible characters and selected categories: punctuation, brackets, math marks, currency signs, web marks, emoji, numbers, and whitespace."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are visible characters counted?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Where available, the page uses browser grapheme segmentation, which is closer to visible text than string length for many emoji and Unicode sequences."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do spaces, tabs, and line breaks count?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "They are included in the overall visible-text analysis. The no-spaces metric removes whitespace graphemes so both measures can be compared."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are emoji counted as special characters?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The page treats visible emoji clusters as a dedicated category. Platforms may apply their own weighted or encoding rules, so verify the final text in a strict destination."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does the counter work with Urdu, Arabic, and other Unicode text?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The analysis operates on Unicode text. Word and platform rules can differ by language, encoding, and application, so test hard requirements in the final system."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use the social gauges as publishing guarantees?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. They are reference budgets only. Social platforms, SMS providers, URLs, attachments, and weighted character policies can change the final count."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why can another app show a different character count?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Apps can count UTF-16 units, code points, grapheme clusters, bytes, or weighted characters. Emoji, flags, marks, and line endings can make results differ."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I copy the count summary?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Select Copy Stats after entering text to copy the current tool summary to the device clipboard when browser permission is available."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does a special character count validate my input?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The page helps inspect a sample. Production validation belongs in the receiving application with its own allowed-character, length, normalization, and security rules."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is a special characters counter an SEO ranking tool?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. It can help review the composition and length of a title or description, but it does not determine search rankings or provide a universal search-display limit."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
 
-  <!-- JSON-LD: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem","position": 1,"name": "Home","item": "https://toolyfi.com"},
-      {"@type": "ListItem","position": 2,"name": "Text Tools","item": "https://toolyfi.com/#dev-tools"},
-      {"@type": "ListItem","position": 3,"name": "Special Characters Counter","item": "https://toolyfi.com/special-characters-counter.html"}
-    ]
-  }
-  </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-  <!-- JSON-LD: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"What is a special characters counter?","acceptedAnswer":{"@type":"Answer","text":"A special characters counter is a free online tool that counts symbols, punctuation marks, emoji, numbers and every character type in your text separately. Unlike basic word counters, it breaks down exactly how many @, #, $, !, ?, and other special characters are in your content."}},
-      {"@type":"Question","name":"How do I count special characters in text online?","acceptedAnswer":{"@type":"Answer","text":"Paste your text into Toolyfi Special Characters Counter and instantly see a full breakdown — total words, characters, punctuation count, symbol count, emoji count, number count and more. No signup required."}},
-      {"@type":"Question","name":"Do special characters count as words?","acceptedAnswer":{"@type":"Answer","text":"No, special characters like @, #, $, !, ? do not count as words. They count as characters. Most word counters skip them, but our tool counts them separately in every category."}},
-      {"@type":"Question","name":"Which special characters are counted?","acceptedAnswer":{"@type":"Answer","text":"Our tool counts all special characters including punctuation (. , ; : ! ?), brackets ({ } [ ] ( )), math symbols (+ - * / = %), currency signs ($ £ € ¥), web symbols (@ # & _), slashes (\\ /), and emoji."}},
-      {"@type":"Question","name":"Why do special characters matter in SEO?","acceptedAnswer":{"@type":"Answer","text":"Special characters affect readability scores, meta description length, and keyword density calculations. Too many symbols can lower readability grade and flag content as spammy. Our tool helps you optimize the right balance."}},
-      {"@type":"Question","name":"Is the special characters counter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. No account, no signup, no watermark, no limits. Use it unlimited times for any length of text."}},
-      {"@type":"Question","name":"Does it count emoji as special characters?","acceptedAnswer":{"@type":"Answer","text":"Yes! Emoji are counted separately in their own category. Note that most platforms count each emoji as 2 characters since emoji use 2 bytes in UTF-8 encoding."}},
-      {"@type":"Question","name":"Can I use this for social media character limits?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The tool shows real-time character count against Twitter/X (280), Instagram (2,200), LinkedIn (3,000) and other platform limits, helping you stay within bounds."}}
-    ]
-  }
-  </script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+    <style>
+      :root {
+        --primary: #ef6c54;
+        --primary-dark: #c95743;
+        --primary-light: #fff0eb;
+        --accent: #f3b443;
+        --dark: #0f172a;
+        --gray: #64748b;
+        --light: #f8fafc;
+        --border: #e2e8f0;
+        --white: #ffffff;
+        --green: #10b981;
+        --purple: #8b5cf6;
+        --red: #ef4444;
+        --orange: #f97316;
+        --pink: #ec4899;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+      /* ===== HEADER ===== */
+      header {
+        background: var(--dark);
+        padding: 0 5%;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+      }
+      header nav {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .logo-dot {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 7px 12px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+      .nav-cta {
+        background: var(--primary) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        border-radius: 20px !important;
+        padding: 7px 16px !important;
+      }
 
-  <style>
-    :root {
-      --primary: #ef6c54;
-      --primary-dark: #c95743;
-      --primary-light: #fff0eb;
-      --accent: #f3b443;
-      --dark: #0f172a;
-      --gray: #64748b;
-      --light: #f8fafc;
-      --border: #e2e8f0;
-      --white: #ffffff;
-      --green: #10b981;
-      --purple: #8b5cf6;
-      --red: #ef4444;
-      --orange: #f97316;
-      --pink: #ec4899;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--light); color: var(--dark); overflow-x: hidden; }
+      /* ===== AD ===== */
+      .ad-wrap {
+        max-width: 1000px;
+        margin: 16px auto;
+        padding: 0 20px;
+      }
+      .ad-label {
+        font-size: 0.6rem;
+        color: #cbd5e1;
+        text-align: center;
+        margin-bottom: 3px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-    /* ===== HEADER ===== */
-    header { background: var(--dark); padding: 0 5%; height: 64px; display: flex; align-items: center; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
-    header nav { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.25rem; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 6px; }
-    .logo-dot { color: var(--accent); }
-    .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; padding: 7px 12px; border-radius: 8px; font-size: .85rem; font-weight: 500; transition: all .2s; }
-    .nav-links a:hover { background: rgba(255,255,255,0.1); color: white; }
-    .nav-cta { background: var(--primary) !important; color: white !important; font-weight: 700 !important; border-radius: 20px !important; padding: 7px 16px !important; }
+      /* ===== BREADCRUMB ===== */
+      .breadcrumb {
+        max-width: 1000px;
+        margin: 12px auto 0;
+        padding: 0 20px;
+        font-size: 0.78rem;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .breadcrumb a {
+        color: var(--gray);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--primary);
+      }
 
-    /* ===== AD ===== */
-    .ad-wrap { max-width: 1000px; margin: 16px auto; padding: 0 20px; }
-    .ad-label { font-size: .6rem; color: #cbd5e1; text-align: center; margin-bottom: 3px; letter-spacing: 1px; text-transform: uppercase; }
+      /* ===== HERO ===== */
+      .hero {
+        background: var(--dark);
+        padding: 64px 20px 100px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-glow-1 {
+        position: absolute;
+        top: -80px;
+        left: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-glow-2 {
+        position: absolute;
+        bottom: -80px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(14, 165, 233, 0.12);
+        border: 1px solid rgba(14, 165, 233, 0.25);
+        color: var(--primary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 22px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        animation: fadeDown 0.5s ease both;
+      }
+      .hero h1 {
+        font-size: clamp(1.9rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: white;
+        line-height: 1.18;
+        margin-bottom: 18px;
+        animation: fadeUp 0.6s ease 0.1s both;
+      }
+      .hero h1 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--accent);
+      }
+      .hero-sub {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.05rem;
+        max-width: 580px;
+        margin: 0 auto 28px;
+        line-height: 1.7;
+        animation: fadeUp 0.6s ease 0.2s both;
+      }
+      .trust-pills {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s ease 0.3s both;
+      }
+      .trust-pill {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.75);
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-size: 0.76rem;
+        font-weight: 600;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pop {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.18);
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
 
-    /* ===== BREADCRUMB ===== */
-    .breadcrumb { max-width: 1000px; margin: 12px auto 0; padding: 0 20px; font-size: .78rem; color: var(--gray); display: flex; align-items: center; gap: 5px; }
-    .breadcrumb a { color: var(--gray); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--primary); }
+      /* ===== TOOL CARD ===== */
+      .tool-wrap {
+        max-width: 1000px;
+        margin: -56px auto 0;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+      }
+      .tool-card {
+        background: white;
+        border-radius: 22px;
+        box-shadow:
+          0 24px 64px rgba(15, 23, 42, 0.18),
+          0 0 0 1px rgba(14, 165, 233, 0.08);
+        overflow: hidden;
+        animation: fadeUp 0.7s ease 0.4s both;
+      }
+      .tool-topbar {
+        background: linear-gradient(135deg, #0f172a, #1e3a5f);
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .dots {
+        display: flex;
+        gap: 7px;
+      }
+      .dots span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .dots span:nth-child(1) {
+        background: #ef4444;
+      }
+      .dots span:nth-child(2) {
+        background: #f59e0b;
+      }
+      .dots span:nth-child(3) {
+        background: #10b981;
+      }
+      .tool-topbar-title {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 4px;
+      }
+      .tool-chips {
+        margin-left: auto;
+        display: flex;
+        gap: 7px;
+      }
+      .chip {
+        background: rgba(14, 165, 233, 0.18);
+        color: var(--primary);
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
 
-    /* ===== HERO ===== */
-    .hero {
-      background: var(--dark);
-      padding: 64px 20px 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-glow-1 { position: absolute; top: -80px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%); pointer-events: none; }
-    .hero-glow-2 { position: absolute; bottom: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%); pointer-events: none; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(14,165,233,0.12); border: 1px solid rgba(14,165,233,0.25);
-      color: var(--primary); font-size: .72rem; font-weight: 700;
-      padding: 6px 16px; border-radius: 50px; margin-bottom: 22px;
-      text-transform: uppercase; letter-spacing: .6px;
-      animation: fadeDown .5s ease both;
-    }
-    .hero h1 {
-      font-size: clamp(1.9rem, 5vw, 3.2rem);
-      font-weight: 800; color: white; line-height: 1.18;
-      margin-bottom: 18px;
-      animation: fadeUp .6s ease .1s both;
-    }
-    .hero h1 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
-    .hero-sub {
-      color: rgba(255,255,255,0.6); font-size: 1.05rem;
-      max-width: 580px; margin: 0 auto 28px; line-height: 1.7;
-      animation: fadeUp .6s ease .2s both;
-    }
-    .trust-pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; animation: fadeUp .6s ease .3s both; }
-    .trust-pill {
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.75); padding: 5px 14px;
-      border-radius: 50px; font-size: .76rem; font-weight: 600;
-    }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes pop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+      /* ===== TOOLBAR (WordCounter.net style) ===== */
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        padding: 12px 20px;
+        background: var(--light);
+        border-bottom: 1px solid var(--border);
+      }
+      .tb-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: white;
+        border: 1.5px solid var(--border);
+        color: var(--gray);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .tb-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-light);
+      }
+      .tb-btn.active {
+        border-color: var(--primary);
+        color: white;
+        background: var(--primary);
+      }
+      .tb-sep {
+        width: 1px;
+        height: 24px;
+        background: var(--border);
+        margin: 0 4px;
+      }
 
-    /* ===== TOOL CARD ===== */
-    .tool-wrap { max-width: 1000px; margin: -56px auto 0; padding: 0 20px; position: relative; z-index: 10; }
-    .tool-card {
-      background: white; border-radius: 22px;
-      box-shadow: 0 24px 64px rgba(15,23,42,0.18), 0 0 0 1px rgba(14,165,233,0.08);
-      overflow: hidden;
-      animation: fadeUp .7s ease .4s both;
-    }
-    .tool-topbar {
-      background: linear-gradient(135deg, #0f172a, #1e3a5f);
-      padding: 14px 20px; display: flex; align-items: center; gap: 12px;
-    }
-    .dots { display: flex; gap: 7px; }
-    .dots span { width: 12px; height: 12px; border-radius: 50%; }
-    .dots span:nth-child(1) { background: #ef4444; }
-    .dots span:nth-child(2) { background: #f59e0b; }
-    .dots span:nth-child(3) { background: #10b981; }
-    .tool-topbar-title { color: rgba(255,255,255,0.6); font-size: .8rem; font-weight: 600; margin-left: 4px; }
-    .tool-chips { margin-left: auto; display: flex; gap: 7px; }
-    .chip { background: rgba(14,165,233,0.18); color: var(--primary); font-size: .68rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+      /* ===== TEXTAREA ===== */
+      .textarea-wrap {
+        padding: 0 20px 16px;
+      }
+      .textarea-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 12px 0 8px;
+      }
+      #main-textarea {
+        width: 100%;
+        min-height: 200px;
+        background: #f8fafc;
+        border: 2px solid var(--border);
+        border-radius: 14px;
+        padding: 16px 18px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.93rem;
+        color: var(--dark);
+        resize: vertical;
+        line-height: 1.75;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      #main-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+      }
+      #main-textarea::placeholder {
+        color: #94a3b8;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
 
-    /* ===== TOOLBAR (WordCounter.net style) ===== */
-    .toolbar {
-      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-      padding: 12px 20px; background: var(--light); border-bottom: 1px solid var(--border);
-    }
-    .tb-btn {
-      display: flex; align-items: center; gap: 5px;
-      background: white; border: 1.5px solid var(--border);
-      color: var(--gray); padding: 6px 12px; border-radius: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-size: .75rem; font-weight: 600;
-      cursor: pointer; transition: all .2s; white-space: nowrap;
-    }
-    .tb-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-    .tb-btn.active { border-color: var(--primary); color: white; background: var(--primary); }
-    .tb-sep { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+      /* ===== MAIN STATS GRID ===== */
+      .main-stats {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      .ms-box {
+        padding: 16px 10px;
+        text-align: center;
+        border-right: 1px solid var(--border);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .ms-box:last-child {
+        border-right: none;
+      }
+      .ms-box:hover {
+        background: var(--primary-light);
+      }
+      .ms-val {
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: var(--dark);
+        font-family: "JetBrains Mono", monospace;
+        display: block;
+        line-height: 1;
+        margin-bottom: 5px;
+        transition:
+          transform 0.2s,
+          color 0.2s;
+      }
+      .ms-val.bump {
+        animation: pop 0.3s ease;
+      }
+      .ms-label {
+        font-size: 0.62rem;
+        font-weight: 700;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
 
-    /* ===== TEXTAREA ===== */
-    .textarea-wrap { padding: 0 20px 16px; }
-    .textarea-label { font-size: .68rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .8px; padding: 12px 0 8px; }
-    #main-textarea {
-      width: 100%; min-height: 200px;
-      background: #f8fafc; border: 2px solid var(--border);
-      border-radius: 14px; padding: 16px 18px;
-      font-family: 'JetBrains Mono', monospace; font-size: .93rem;
-      color: var(--dark); resize: vertical; line-height: 1.75;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    #main-textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(14,165,233,0.1); }
-    #main-textarea::placeholder { color: #94a3b8; font-family: 'Plus Jakarta Sans', sans-serif; }
+      /* ===== SPECIAL CHARS SECTION ===== */
+      .sc-section {
+        padding: 20px;
+        border-top: 2px dashed var(--border);
+        background: #fafbfc;
+      }
+      .sc-title {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--dark);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .sc-title span {
+        background: var(--primary);
+        color: white;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 0.65rem;
+      }
+      .sc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+      }
+      .sc-box {
+        background: white;
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 12px;
+        text-align: center;
+        transition: all 0.2s;
+        cursor: default;
+      }
+      .sc-box:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(14, 165, 233, 0.12);
+      }
+      .sc-icon {
+        font-size: 1.4rem;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .sc-count {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        font-family: "JetBrains Mono", monospace;
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+        transition: transform 0.2s;
+      }
+      .sc-count.bump {
+        animation: pop 0.3s ease;
+      }
+      .sc-name {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+      .sc-chars {
+        font-size: 0.6rem;
+        color: #94a3b8;
+        margin-top: 2px;
+        font-family: "JetBrains Mono", monospace;
+      }
 
-    /* ===== MAIN STATS GRID ===== */
-    .main-stats {
-      display: grid; grid-template-columns: repeat(6, 1fr);
-      gap: 0; border-top: 1px solid var(--border);
-    }
-    .ms-box {
-      padding: 16px 10px; text-align: center; border-right: 1px solid var(--border);
-      cursor: pointer; transition: background .2s;
-    }
-    .ms-box:last-child { border-right: none; }
-    .ms-box:hover { background: var(--primary-light); }
-    .ms-val {
-      font-size: 1.7rem; font-weight: 800; color: var(--dark);
-      font-family: 'JetBrains Mono', monospace; display: block; line-height: 1;
-      margin-bottom: 5px; transition: transform .2s, color .2s;
-    }
-    .ms-val.bump { animation: pop .3s ease; }
-    .ms-label { font-size: .62rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+      /* category colors */
+      .sc-box.cat-punct {
+        border-color: rgba(14, 165, 233, 0.2);
+      }
+      .sc-box.cat-bracket {
+        border-color: rgba(139, 92, 246, 0.2);
+      }
+      .sc-box.cat-math {
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .sc-box.cat-currency {
+        border-color: rgba(245, 158, 11, 0.2);
+      }
+      .sc-box.cat-web {
+        border-color: rgba(239, 68, 68, 0.2);
+      }
+      .sc-box.cat-emoji {
+        border-color: rgba(236, 72, 153, 0.2);
+      }
+      .sc-box.cat-number {
+        border-color: rgba(249, 115, 22, 0.2);
+      }
+      .sc-box.cat-space {
+        border-color: rgba(100, 116, 139, 0.2);
+      }
 
-    /* ===== SPECIAL CHARS SECTION ===== */
-    .sc-section { padding: 20px; border-top: 2px dashed var(--border); background: #fafbfc; }
-    .sc-title { font-size: .8rem; font-weight: 800; color: var(--dark); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-    .sc-title span { background: var(--primary); color: white; padding: 2px 10px; border-radius: 20px; font-size: .65rem; }
-    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-    .sc-box {
-      background: white; border: 1.5px solid var(--border);
-      border-radius: 12px; padding: 14px 12px; text-align: center;
-      transition: all .2s; cursor: default;
-    }
-    .sc-box:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(14,165,233,0.12); }
-    .sc-icon { font-size: 1.4rem; margin-bottom: 6px; display: block; }
-    .sc-count { font-size: 1.5rem; font-weight: 800; color: var(--dark); font-family: 'JetBrains Mono', monospace; display: block; line-height: 1; margin-bottom: 4px; transition: transform .2s; }
-    .sc-count.bump { animation: pop .3s ease; }
-    .sc-name { font-size: .65rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .4px; }
-    .sc-chars { font-size: .6rem; color: #94a3b8; margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+      /* ===== SOCIAL LIMITS ===== */
+      .social-limits {
+        padding: 16px 20px;
+        border-top: 1px solid var(--border);
+        background: white;
+      }
+      .sl-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 12px;
+      }
+      .sl-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .sl-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sl-name {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--dark);
+        width: 110px;
+        min-width: 110px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .sl-bar-wrap {
+        flex: 1;
+        height: 8px;
+        background: var(--border);
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .sl-bar {
+        height: 100%;
+        border-radius: 50px;
+        transition:
+          width 0.4s ease,
+          background 0.3s;
+      }
+      .sl-count {
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        min-width: 70px;
+        text-align: right;
+      }
+      .sl-ok {
+        color: var(--green);
+      }
+      .sl-warn {
+        color: var(--accent);
+      }
+      .sl-over {
+        color: var(--red);
+      }
 
-    /* category colors */
-    .sc-box.cat-punct { border-color: rgba(14,165,233,0.2); }
-    .sc-box.cat-bracket { border-color: rgba(139,92,246,0.2); }
-    .sc-box.cat-math { border-color: rgba(16,185,129,0.2); }
-    .sc-box.cat-currency { border-color: rgba(245,158,11,0.2); }
-    .sc-box.cat-web { border-color: rgba(239,68,68,0.2); }
-    .sc-box.cat-emoji { border-color: rgba(236,72,153,0.2); }
-    .sc-box.cat-number { border-color: rgba(249,115,22,0.2); }
-    .sc-box.cat-space { border-color: rgba(100,116,139,0.2); }
+      /* ===== ACTION BTNS ===== */
+      .tool-actions {
+        padding: 14px 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-clear {
+        background: white;
+        border: 2px solid var(--border);
+        color: var(--gray);
+        padding: 9px 18px;
+        border-radius: 10px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+        font-size: 0.82rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-clear:hover {
+        border-color: var(--red);
+        color: var(--red);
+      }
+      .btn-copy {
+        background: var(--primary-light);
+        border: 2px solid rgba(14, 165, 233, 0.3);
+        color: var(--primary-dark);
+        padding: 9px 18px;
+        border-radius: 10px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+        font-size: 0.82rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-copy:hover {
+        background: var(--primary);
+        color: white;
+      }
 
-    /* ===== SOCIAL LIMITS ===== */
-    .social-limits { padding: 16px 20px; border-top: 1px solid var(--border); background: white; }
-    .sl-title { font-size: .72rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 12px; }
-    .sl-list { display: flex; flex-direction: column; gap: 8px; }
-    .sl-row { display: flex; align-items: center; gap: 10px; }
-    .sl-name { font-size: .78rem; font-weight: 700; color: var(--dark); width: 110px; min-width: 110px; display: flex; align-items: center; gap: 6px; }
-    .sl-bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
-    .sl-bar { height: 100%; border-radius: 50px; transition: width .4s ease, background .3s; }
-    .sl-count { font-size: .75rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; min-width: 70px; text-align: right; }
-    .sl-ok { color: var(--green); }
-    .sl-warn { color: var(--accent); }
-    .sl-over { color: var(--red); }
+      /* ===== STATS BAR ===== */
+      .stats-bar {
+        max-width: 1000px;
+        margin: 32px auto 0;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .sb-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 22px 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+      .sb-num {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .sb-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--gray);
+        margin-top: 4px;
+      }
 
-    /* ===== ACTION BTNS ===== */
-    .tool-actions { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .btn-clear { background: white; border: 2px solid var(--border); color: var(--gray); padding: 9px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .82rem; cursor: pointer; transition: all .2s; }
-    .btn-clear:hover { border-color: var(--red); color: var(--red); }
-    .btn-copy { background: var(--primary-light); border: 2px solid rgba(14,165,233,0.3); color: var(--primary-dark); padding: 9px 18px; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .82rem; cursor: pointer; transition: all .2s; }
-    .btn-copy:hover { background: var(--primary); color: white; }
+      /* ===== SECTION WRAPPERS ===== */
+      .section {
+        max-width: 1000px;
+        margin: 48px auto 0;
+        padding: 0 20px;
+      }
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .section-title em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--primary);
+      }
+      .section-sub {
+        color: var(--gray);
+        font-size: 0.97rem;
+        margin-bottom: 28px;
+        line-height: 1.6;
+      }
 
-    /* ===== STAR RATING ===== */
-    .star-section { padding: 20px; border-top: 1px solid var(--border); text-align: center; background: #fafbfc; }
-    .star-label { font-size: .78rem; font-weight: 700; color: var(--gray); margin-bottom: 10px; }
-    .stars-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 6px; }
-    .star-btn { background: none; border: none; font-size: 1.9rem; cursor: pointer; color: #e2e8f0; transition: color .15s, transform .15s; }
-    .star-btn:hover, .star-btn.lit { color: var(--accent); transform: scale(1.15); }
-    .star-info { font-size: .78rem; color: var(--gray); }
+      /* ===== FEATURE CARDS ===== */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .feat-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        transition: all 0.2s;
+      }
+      .feat-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(14, 165, 233, 0.1);
+      }
+      .feat-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+      }
+      .feat-card h3 {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .feat-card p {
+        font-size: 0.87rem;
+        color: var(--gray);
+        line-height: 1.65;
+      }
 
-    /* ===== STATS BAR ===== */
-    .stats-bar { max-width: 1000px; margin: 32px auto 0; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .sb-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 22px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    .sb-num { font-size: 2rem; font-weight: 800; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
-    .sb-label { font-size: .75rem; font-weight: 600; color: var(--gray); margin-top: 4px; }
+      /* ===== WHO BENEFITS ===== */
+      .who-section {
+        background: var(--dark);
+        margin-top: 48px;
+        padding: 56px 20px;
+      }
+      .who-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .who-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 8px;
+      }
+      .who-title em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--accent);
+      }
+      .who-sub {
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 32px;
+        font-size: 0.95rem;
+      }
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .who-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 22px;
+        transition: all 0.2s;
+      }
+      .who-card:hover {
+        background: rgba(14, 165, 233, 0.1);
+        border-color: rgba(14, 165, 233, 0.3);
+      }
+      .who-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      .who-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 6px;
+      }
+      .who-card p {
+        font-size: 0.83rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+      }
 
-    /* ===== SECTION WRAPPERS ===== */
-    .section { max-width: 1000px; margin: 48px auto 0; padding: 0 20px; }
-    .section-title { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .section-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--primary); }
-    .section-sub { color: var(--gray); font-size: .97rem; margin-bottom: 28px; line-height: 1.6; }
+      /* ===== FAQ ===== */
+      .faq-section {
+        max-width: 1000px;
+        margin: 48px auto 0;
+        padding: 0 20px;
+      }
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .faq-item {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: box-shadow 0.2s;
+      }
+      .faq-item:hover {
+        box-shadow: 0 4px 16px rgba(14, 165, 233, 0.08);
+      }
+      .faq-q {
+        padding: 18px 22px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--dark);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        user-select: none;
+      }
+      .faq-q::after {
+        content: "+";
+        font-size: 1.4rem;
+        color: var(--primary);
+        font-weight: 300;
+        transition: transform 0.3s;
+        min-width: 20px;
+        text-align: center;
+      }
+      .faq-item.open .faq-q::after {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        padding: 0 22px;
+        color: var(--gray);
+        font-size: 0.92rem;
+        line-height: 1.78;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          padding 0.3s;
+      }
+      .faq-item.open .faq-a {
+        max-height: 300px;
+        padding: 0 22px 18px;
+      }
 
-    /* ===== FEATURE CARDS ===== */
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .feat-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: all .2s; }
-    .feat-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(14,165,233,0.1); }
-    .feat-icon { font-size: 2rem; margin-bottom: 12px; }
-    .feat-card h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .feat-card p { font-size: .87rem; color: var(--gray); line-height: 1.65; }
+      /* ===== ARTICLE ===== */
+      .article-section {
+        max-width: 1000px;
+        margin: 48px auto 0;
+        padding: 0 20px;
+      }
+      .article-body h2 {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin: 48px 0 16px;
+        padding-left: 16px;
+        border-left: 4px solid var(--primary);
+        line-height: 1.3;
+        scroll-margin-top: 80px;
+      }
+      .article-body h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 24px 0 10px;
+      }
+      .article-body p {
+        color: #334155;
+        margin-bottom: 18px;
+        font-size: 0.97rem;
+        line-height: 1.85;
+      }
+      .article-body ul,
+      .article-body ol {
+        color: #334155;
+        padding-left: 24px;
+        margin-bottom: 18px;
+      }
+      .article-body li {
+        margin-bottom: 10px;
+        font-size: 0.96rem;
+        line-height: 1.78;
+      }
+      .article-body strong {
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+      .article-body a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .article-body a:hover {
+        text-decoration: underline;
+      }
+      .article-highlight {
+        background: linear-gradient(135deg, #fff7ed, #fef3c7);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        border-left: 4px solid var(--accent);
+        border-radius: 0 14px 14px 0;
+        padding: 18px 22px;
+        margin: 24px 0;
+      }
+      .ah-label {
+        font-size: 0.66rem;
+        font-weight: 800;
+        color: #92400e;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 8px;
+      }
+      .article-highlight p {
+        color: #78350f;
+        margin: 0;
+        font-weight: 500;
+        font-size: 0.94rem;
+        line-height: 1.7;
+      }
+      .article-table-wrap {
+        overflow-x: auto;
+        margin: 24px 0;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      }
+      .article-table-wrap table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .article-table-wrap thead th {
+        background: var(--dark);
+        color: white;
+        padding: 13px 16px;
+        text-align: left;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+      .article-table-wrap tbody td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        color: #334155;
+      }
+      .article-table-wrap tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .article-table-wrap tbody tr:hover {
+        background: var(--light);
+      }
+      code {
+        background: #f1f5f9;
+        border: 1px solid var(--border);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85em;
+        color: var(--primary-dark);
+      }
 
-    /* ===== WHO BENEFITS ===== */
-    .who-section { background: var(--dark); margin-top: 48px; padding: 56px 20px; }
-    .who-inner { max-width: 1000px; margin: 0 auto; }
-    .who-title { font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 8px; }
-    .who-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
-    .who-sub { color: rgba(255,255,255,0.55); margin-bottom: 32px; font-size: .95rem; }
-    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .who-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 22px; transition: all .2s; }
-    .who-card:hover { background: rgba(14,165,233,0.1); border-color: rgba(14,165,233,0.3); }
-    .who-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .who-card h3 { font-size: .95rem; font-weight: 700; color: white; margin-bottom: 6px; }
-    .who-card p { font-size: .83rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+      /* ===== CTA BANNER ===== */
+      .cta-banner {
+        max-width: 1000px;
+        margin: 48px auto 0;
+        padding: 0 20px;
+      }
+      .cta-inner {
+        background: linear-gradient(135deg, var(--dark), #1e3a5f);
+        border-radius: 22px;
+        padding: 48px 36px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-glow {
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.15), transparent 70%);
+        pointer-events: none;
+      }
+      .cta-inner h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      .cta-inner h2 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--accent);
+      }
+      .cta-inner p {
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 26px;
+        font-size: 0.97rem;
+        position: relative;
+      }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        font-weight: 800;
+        padding: 14px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        font-size: 1rem;
+        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+        position: relative;
+      }
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 40px rgba(14, 165, 233, 0.45);
+      }
 
-    /* ===== FAQ ===== */
-    .faq-section { max-width: 1000px; margin: 48px auto 0; padding: 0 20px; }
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
-    .faq-item { background: white; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: box-shadow .2s; }
-    .faq-item:hover { box-shadow: 0 4px 16px rgba(14,165,233,0.08); }
-    .faq-q { padding: 18px 22px; font-weight: 700; font-size: .95rem; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
-    .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--primary); font-weight: 300; transition: transform .3s; min-width: 20px; text-align: center; }
-    .faq-item.open .faq-q::after { transform: rotate(45deg); }
-    .faq-a { padding: 0 22px; color: var(--gray); font-size: .92rem; line-height: 1.78; max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; }
-    .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
+      /* ===== FOOTER TOOLS ===== */
+      .footer-tools {
+        background: var(--dark);
+        margin-top: 56px;
+        padding: 48px 20px 36px;
+      }
+      .ft-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .ft-title {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      .ft-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+        gap: 9px;
+      }
+      .ft-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 10px;
+        padding: 11px 14px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        transition: all 0.2s;
+      }
+      .ft-card:hover {
+        background: rgba(14, 165, 233, 0.12);
+        border-color: rgba(14, 165, 233, 0.25);
+      }
+      .ft-card .fi {
+        font-size: 1rem;
+      }
+      .ft-card .fn {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.77rem;
+        font-weight: 600;
+      }
 
-    /* ===== ARTICLE ===== */
-    .article-section { max-width: 1000px; margin: 48px auto 0; padding: 0 20px; }
-    .article-body h2 { font-size: 1.35rem; font-weight: 800; color: var(--dark); margin: 48px 0 16px; padding-left: 16px; border-left: 4px solid var(--primary); line-height: 1.3; scroll-margin-top: 80px; }
-    .article-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 24px 0 10px; }
-    .article-body p { color: #334155; margin-bottom: 18px; font-size: .97rem; line-height: 1.85; }
-    .article-body ul, .article-body ol { color: #334155; padding-left: 24px; margin-bottom: 18px; }
-    .article-body li { margin-bottom: 10px; font-size: .96rem; line-height: 1.78; }
-    .article-body strong { color: var(--primary-dark); font-weight: 700; }
-    .article-body a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .article-body a:hover { text-decoration: underline; }
-    .article-highlight { background: linear-gradient(135deg, #fff7ed, #fef3c7); border: 1px solid rgba(245,158,11,0.25); border-left: 4px solid var(--accent); border-radius: 0 14px 14px 0; padding: 18px 22px; margin: 24px 0; }
-    .ah-label { font-size: .66rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
-    .article-highlight p { color: #78350f; margin: 0; font-weight: 500; font-size: .94rem; line-height: 1.7; }
-    .article-table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
-    .article-table-wrap table { width: 100%; border-collapse: collapse; }
-    .article-table-wrap thead th { background: var(--dark); color: white; padding: 13px 16px; text-align: left; font-size: .82rem; font-weight: 700; }
-    .article-table-wrap tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: .9rem; color: #334155; }
-    .article-table-wrap tbody tr:last-child td { border-bottom: none; }
-    .article-table-wrap tbody tr:hover { background: var(--light); }
-    code { background: #f1f5f9; border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .85em; color: var(--primary-dark); }
+      /* ===== FOOTER ===== */
+      footer {
+        background: #060e1b;
+        color: rgba(255, 255, 255, 0.35);
+        text-align: center;
+        padding: 28px 20px;
+        font-size: 0.8rem;
+      }
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
 
-    /* ===== RATING WIDGET ===== */
-    .rating-widget { max-width: 1000px; margin: 48px auto 0; padding: 0 20px; }
-    .rw-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 36px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
-    .rw-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 28px; }
-    .rw-stars-row { display: flex; gap: 8px; margin-bottom: 8px; }
-    .rw-star { background: none; border: none; font-size: 2.2rem; cursor: pointer; color: #e2e8f0; transition: color .15s, transform .15s; }
-    .rw-star:hover, .rw-star.lit { color: var(--accent); transform: scale(1.15); }
-    .rw-info { color: var(--gray); font-size: .82rem; margin-bottom: 24px; }
-    .rw-bar-section { margin-bottom: 24px; }
-    .rw-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .rw-bar-label { font-size: .78rem; color: var(--gray); width: 40px; min-width: 40px; text-align: right; }
-    .rw-bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
-    .rw-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--primary)); border-radius: 50px; transition: width .5s ease; }
-    .rw-bar-count { font-size: .75rem; color: var(--gray); width: 30px; }
-    .rw-react { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
-    .rw-btn { background: var(--light); border: 2px solid var(--border); color: var(--gray); padding: 10px 22px; border-radius: 50px; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .88rem; transition: all .25s; display: flex; align-items: center; gap: 7px; }
-    .rw-btn:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
-    .comment-wrap > p { font-size: .82rem; font-weight: 700; color: var(--gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .5px; }
-    .comment-input { width: 100%; padding: 12px 16px; background: var(--light); border: 2px solid var(--border); border-radius: 12px; color: var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; font-size: .93rem; margin-bottom: 10px; resize: vertical; transition: border-color .2s; }
-    .comment-input:focus { outline: none; border-color: var(--primary); }
-    .submit-btn { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; padding: 11px 28px; border-radius: 50px; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .9rem; transition: opacity .2s, transform .2s; }
-    .submit-btn:hover { opacity: .9; transform: translateY(-1px); }
-    #rw-comments { margin-top: 20px; }
-    .c-item { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
-    .c-author { font-weight: 700; color: var(--primary); font-size: .82rem; margin-bottom: 4px; }
-    .c-text { color: #334155; font-size: .9rem; line-height: 1.6; }
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .main-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .features-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .who-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stats-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 520px) {
+        .main-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ms-box {
+          border-bottom: 1px solid var(--border);
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        .who-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 44px 20px 90px;
+        }
+        .hero h1 {
+          font-size: 1.75rem;
+        }
+        .nav-links a:not(.nav-cta) {
+          display: none;
+        }
+        .sc-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stats-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .toolbar {
+          gap: 4px;
+        }
+        .tb-btn {
+          font-size: 0.68rem;
+          padding: 5px 8px;
+        }
+      }
 
-    /* ===== CTA BANNER ===== */
-    .cta-banner { max-width: 1000px; margin: 48px auto 0; padding: 0 20px; }
-    .cta-inner { background: linear-gradient(135deg, var(--dark), #1e3a5f); border-radius: 22px; padding: 48px 36px; text-align: center; position: relative; overflow: hidden; }
-    .cta-glow { position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%); pointer-events: none; }
-    .cta-inner h2 { font-size: 1.6rem; font-weight: 800; color: white; margin-bottom: 10px; position: relative; }
-    .cta-inner h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
-    .cta-inner p { color: rgba(255,255,255,0.65); margin-bottom: 26px; font-size: .97rem; position: relative; }
-    .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; font-weight: 800; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: transform .2s, box-shadow .2s; font-size: 1rem; box-shadow: 0 8px 24px rgba(14,165,233,0.3); position: relative; }
-    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(14,165,233,0.45); }
+      /* Toolyfi Editorial Utility Atlas: warm ivory surface, ink hierarchy, coral accents, static editorial visual, and interactive live counter. */
+      :root {
+        --primary: #ef6c54;
+        --primary-dark: #c95743;
+        --primary-light: #fff0eb;
+        --accent: #ef6c54;
+        --dark: #172437;
+        --gray: #627084;
+        --light: #faf8f4;
+        --border: rgba(23, 36, 55, 0.16);
+        --white: #fff;
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      body {
+        background: var(--light);
+        color: var(--dark);
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px max(20px, calc((100% - 1200px) / 2));
+        background: rgba(250, 248, 244, 0.96);
+        border-bottom: 1px solid rgba(23, 36, 55, 0.15);
+        box-shadow: 0 8px 22px rgba(23, 36, 55, 0.08);
+        backdrop-filter: blur(14px);
+      }
+      .site-header .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #172437;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.48rem;
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 1;
+        text-decoration: none;
+      }
+      .site-header .logo img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+      .site-header nav {
+        display: flex;
+        align-items: center;
+        justify-content: initial;
+        width: auto;
+        max-width: none;
+        margin: 0;
+        gap: 18px;
+      }
+      .site-header nav a {
+        color: #172437;
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition: color 0.16s var(--ease-out);
+      }
+      .site-header nav a:hover,
+      .site-header nav a:focus-visible {
+        color: var(--primary);
+      }
+      .breadcrumb {
+        max-width: 1160px;
+        padding: 14px 20px;
+        margin: 0 auto;
+      }
+      .hero {
+        background: #172437;
+        padding: 54px 20px 36px;
+      }
+      .hero-glow-1 {
+        background: radial-gradient(circle, rgba(239, 108, 84, 0.16), transparent 70%);
+      }
+      .hero-glow-2 {
+        background: radial-gradient(circle, rgba(239, 108, 84, 0.11), transparent 70%);
+      }
+      .hero h1,
+      .section-title,
+      .who-title,
+      .article-body h2,
+      .cta-inner h2 {
+        font-family: "Fraunces", Georgia, serif;
+      }
+      .hero h1 em,
+      .section-title em,
+      .who-title em,
+      .cta-inner h2 em {
+        font-family: "Fraunces", Georgia, serif !important;
+        color: var(--primary) !important;
+      }
+      .hero-badge {
+        color: #ffe2d8;
+        background: rgba(239, 108, 84, 0.1);
+        border-color: rgba(239, 108, 84, 0.35);
+      }
+      .trust-pill {
+        color: #f7eee9;
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+      .toolyfi-visual {
+        position: relative;
+        width: min(calc(100% - 32px), 1160px);
+        aspect-ratio: 16 / 9;
+        margin: 0 auto 32px;
+        overflow: hidden;
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        border-radius: 14px;
+        background: #172437;
+        box-shadow: 0 18px 42px rgba(23, 36, 55, 0.2);
+      }
+      .toolyfi-visual > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 11px;
+        background: rgba(250, 248, 244, 0.94);
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        border-radius: 8px;
+        color: #172437;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 0.94rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+      }
+      .toolyfi-hero-mark img {
+        display: block;
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+      }
+      .tool-wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+      }
+      .tool-card {
+        border: 1px solid rgba(23, 36, 55, 0.14);
+        border-radius: 18px;
+        box-shadow: 0 16px 44px rgba(23, 36, 55, 0.13);
+      }
+      .tool-topbar,
+      .cta-inner,
+      .footer-tools {
+        background: #172437;
+      }
+      .chip {
+        color: #ffe2d8;
+        background: rgba(239, 108, 84, 0.16);
+      }
+      .tb-btn,
+      .btn-clear,
+      .btn-copy {
+        transition:
+          transform 0.16s var(--ease-out),
+          color 0.16s var(--ease-out),
+          background 0.16s var(--ease-out),
+          border-color 0.16s var(--ease-out);
+      }
+      .tb-btn:active,
+      .btn-clear:active,
+      .btn-copy:active,
+      .cta-btn:active {
+        transform: scale(0.97);
+      }
+      .btn-copy {
+        border-color: rgba(239, 108, 84, 0.3);
+        color: var(--primary-dark);
+      }
+      .btn-copy:hover {
+        background: var(--primary);
+      }
+      .faq-q {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        text-align: left;
+      }
+      .faq-q:focus-visible {
+        outline: 3px solid rgba(239, 108, 84, 0.25);
+        outline-offset: -3px;
+      }
+      .cta-inner {
+        border-radius: 18px;
+      }
+      .cta-btn {
+        background: #ef6c54;
+        box-shadow: 0 8px 24px rgba(239, 108, 84, 0.26);
+      }
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.24rem;
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        text-decoration: none;
+      }
+      .footer-brand img {
+        display: block;
+        width: 31px;
+        height: 31px;
+        object-fit: contain;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .tool-card,
+        .feat-card,
+        .who-card,
+        .sb-card {
+          animation: tf-rise 0.46s var(--ease-out) both;
+        }
+        .feat-card:nth-child(2),
+        .who-card:nth-child(2),
+        .sb-card:nth-child(2) {
+          animation-delay: 0.06s;
+        }
+        .feat-card:nth-child(3),
+        .who-card:nth-child(3),
+        .sb-card:nth-child(3) {
+          animation-delay: 0.12s;
+        }
+      }
+      @keyframes tf-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 640px) {
+        .site-header {
+          min-height: 62px;
+          padding: 8px 14px;
+          gap: 12px;
+        }
+        .site-header .logo {
+          gap: 8px;
+          font-size: 1.28rem;
+        }
+        .site-header .logo img {
+          width: 34px;
+          height: 34px;
+        }
+        .site-header nav {
+          gap: 12px;
+        }
+        .site-header nav a {
+          font-size: 0.7rem;
+        }
+        .toolyfi-visual {
+          width: calc(100% - 24px);
+          aspect-ratio: 4 / 3;
+          margin-bottom: 22px;
+          border-radius: 10px;
+        }
+        .toolyfi-hero-mark {
+          right: 10px;
+          bottom: 10px;
+          gap: 6px;
+          padding: 6px 9px;
+          font-size: 0.82rem;
+        }
+        .toolyfi-hero-mark img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+      @media (max-width: 480px) {
+        .site-header nav a:first-child {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
 
-    /* ===== FOOTER TOOLS ===== */
-    .footer-tools { background: var(--dark); margin-top: 56px; padding: 48px 20px 36px; }
-    .ft-inner { max-width: 1100px; margin: 0 auto; }
-    .ft-title { color: rgba(255,255,255,0.5); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-    .ft-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 9px; }
-    .ft-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 11px 14px; text-decoration: none; display: flex; align-items: center; gap: 9px; transition: all .2s; }
-    .ft-card:hover { background: rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.25); }
-    .ft-card .fi { font-size: 1rem; }
-    .ft-card .fn { color: rgba(255,255,255,0.7); font-size: .77rem; font-weight: 600; }
+    <!-- AD TOP -->
 
-    /* ===== FOOTER ===== */
-    footer { background: #060e1b; color: rgba(255,255,255,0.35); text-align: center; padding: 28px 20px; font-size: .8rem; }
-    footer a { color: var(--primary); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .main-stats { grid-template-columns: repeat(3, 1fr); }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .who-grid { grid-template-columns: 1fr 1fr; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 520px) {
-      .main-stats { grid-template-columns: repeat(2, 1fr); }
-      .ms-box { border-bottom: 1px solid var(--border); }
-      .features-grid { grid-template-columns: 1fr; }
-      .who-grid { grid-template-columns: 1fr; }
-      .hero { padding: 44px 20px 90px; }
-      .hero h1 { font-size: 1.75rem; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .sc-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .toolbar { gap: 4px; }
-      .tb-btn { font-size: .68rem; padding: 5px 8px; }
-    }
-  </style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<!-- HEADER -->
-<header>
-  <nav>
-    <a href="/" class="logo"><img src="/logo.png" alt="Toolyfi" style="height:42px;width:auto;display:block"></a>
-    <div class="nav-links">
-      <a href="https://toolyfi.com">Home</a>
-      <a href="https://toolyfi.com/#tools">Tools</a>
-    
-      <a href="https://toolyfi.com/word-counter.html" class="nav-cta">Word Counter</a>
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <a href="index.html#directory">Text Tools</a> › Special
+      Characters Counter
     </div>
-  </nav>
-</header>
 
-<!-- AD TOP -->
-
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="https://toolyfi.com">Home</a> ›
-  <a href="https://toolyfi.com/#tools">Tools</a> ›
-  Special Characters Counter
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-glow-1"></div>
-  <div class="hero-glow-2"></div>
-  <div class="hero-badge">🔣 Browser-based text analysis</div>
-  <h1>Free <em>Special Characters</em><br>Counter Online</h1>
-  <p class="hero-sub">Count symbols, punctuation, emoji, numbers & every character type instantly. Review visible characters, spaces, selected symbols, and emoji in one browser-based workspace.</p>
-  <div class="trust-pills">
-    <span class="trust-pill">✓ 100% Free</span>
-    <span class="trust-pill">✓ No Signup</span>
-    <span class="trust-pill">✓ No Watermark</span>
-    <span class="trust-pill">✓ All Languages</span>
-    <span class="trust-pill">✓ Emoji Counted</span>
-  </div>
-</div>
-
-<!-- TOOL CARD -->
-<div class="tool-wrap">
-  <div class="tool-card">
-    <!-- Top bar -->
-    <div class="tool-topbar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="tool-topbar-title">🔣 Special Characters Counter — Toolyfi</div>
-      <div class="tool-chips">
-        <span class="chip">⚡ Instant</span>
-        <span class="chip">🎯 Per Category</span>
-        <span class="chip">😀 Emoji Count</span>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-badge">Browser-based text analysis</div>
+      <h1>Special Characters <em>Counter</em><br />for Unicode-aware text review</h1>
+      <p class="hero-sub">
+        Inspect visible characters, whitespace, selected symbols, and emoji clusters in a live
+        browser workspace. Use reference budgets as a starting point, then confirm strict rules in
+        the destination system.
+      </p>
+      <div class="trust-pills">
+        <span class="trust-pill">✓ Visible character count</span>
+        <span class="trust-pill">✓ Grapheme-aware where supported</span>
+        <span class="trust-pill">✓ Category breakdown</span>
+        <span class="trust-pill">✓ Copyable summary</span>
       </div>
     </div>
 
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <button class="tb-btn" onclick="clearText()">🗑️ Clear</button>
-      <button class="tb-btn" onclick="copyStats()">📋 Copy Stats</button>
-      <div class="tb-sep"></div>
-      <button class="tb-btn" id="btn-dark" onclick="toggleDark()">🌙 Dark Mode</button>
-      <button class="tb-btn" onclick="pasteText()">📥 Paste</button>
-      <div class="tb-sep"></div>
-      <span style="font-size:.72rem;color:var(--gray);font-weight:600;margin-left:4px;">Category breakdown updates as you type</span>
-    </div>
+    <figure class="toolyfi-visual">
+      <img
+        src="images/toolyfi-special-characters-counter-hero.webp"
+        alt="Toolyfi special characters counter workspace with symbols, emoji, and Unicode text analysis"
+        width="2560"
+        height="1440"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <span class="toolyfi-hero-mark"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+      >
+    </figure>
 
-    <!-- Textarea -->
-    <div class="textarea-wrap">
-      <div class="textarea-label">Paste or type your text</div>
-      <textarea id="main-textarea" placeholder="Paste any text here... symbols, code, emoji — everything gets counted instantly ✨
-Example: Hello @World! Price is $99.99 (50% off) 🎉 #deal"></textarea>
-    </div>
-
-    <!-- Main Stats -->
-    <div class="main-stats">
-      <div class="ms-box" title="Total words">
-        <span class="ms-val" id="s-words">0</span>
-        <span class="ms-label">Words</span>
-      </div>
-      <div class="ms-box" title="Total characters including spaces">
-        <span class="ms-val" id="s-chars">0</span>
-        <span class="ms-label">Characters</span>
-      </div>
-      <div class="ms-box" title="Characters without spaces">
-        <span class="ms-val" id="s-nospace">0</span>
-        <span class="ms-label">No Spaces</span>
-      </div>
-      <div class="ms-box" title="Number of sentences">
-        <span class="ms-val" id="s-sent">0</span>
-        <span class="ms-label">Sentences</span>
-      </div>
-      <div class="ms-box" title="Number of lines">
-        <span class="ms-val" id="s-lines">0</span>
-        <span class="ms-label">Lines</span>
-      </div>
-      <div class="ms-box" title="Estimated reading time">
-        <span class="ms-val" id="s-read">0m</span>
-        <span class="ms-label">Read Time</span>
-      </div>
-    </div>
-
-    <!-- Special Characters Breakdown -->
-    <div class="sc-section">
-      <div class="sc-title">🔣 Special Characters Breakdown <span>UNIQUE</span></div>
-      <div class="sc-grid">
-        <div class="sc-box cat-punct">
-          <span class="sc-icon">❗</span>
-          <span class="sc-count" id="sc-punct">0</span>
-          <span class="sc-name">Punctuation</span>
-          <span class="sc-chars">. , ; : ! ? ' " - —</span>
+    <!-- TOOL CARD -->
+    <div class="tool-wrap">
+      <div class="tool-card">
+        <!-- Top bar -->
+        <div class="tool-topbar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="tool-topbar-title">🔣 Special Characters Counter — Toolyfi</div>
+          <div class="tool-chips">
+            <span class="chip">⚡ Instant</span>
+            <span class="chip">🎯 Per Category</span>
+            <span class="chip">😀 Emoji Count</span>
+          </div>
         </div>
-        <div class="sc-box cat-bracket">
-          <span class="sc-icon">🔲</span>
-          <span class="sc-count" id="sc-bracket">0</span>
-          <span class="sc-name">Brackets</span>
-          <span class="sc-chars">( ) [ ] { } &lt; &gt;</span>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <button class="tb-btn" onclick="clearText()">🗑️ Clear</button>
+          <button class="tb-btn" onclick="copyStats()">📋 Copy Stats</button>
+          <div class="tb-sep"></div>
+          <button class="tb-btn" id="btn-dark" onclick="toggleDark()">🌙 Dark Mode</button>
+          <button class="tb-btn" onclick="pasteText()">📥 Paste</button>
+          <div class="tb-sep"></div>
+          <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600; margin-left: 4px"
+            >Category breakdown updates as you type</span
+          >
         </div>
-        <div class="sc-box cat-math">
-          <span class="sc-icon">➕</span>
-          <span class="sc-count" id="sc-math">0</span>
-          <span class="sc-name">Math / Logic</span>
-          <span class="sc-chars">+ - * / = % ^ ~</span>
+
+        <!-- Textarea -->
+        <div class="textarea-wrap">
+          <div class="textarea-label">Paste or type your text</div>
+          <textarea
+            id="main-textarea"
+            placeholder="Paste any text here... symbols, code, emoji — everything gets counted instantly ✨
+Example: Hello @World! Price is $99.99 (50% off) 🎉 #deal"
+          ></textarea>
         </div>
-        <div class="sc-box cat-currency">
-          <span class="sc-icon">💰</span>
-          <span class="sc-count" id="sc-currency">0</span>
-          <span class="sc-name">Currency</span>
-          <span class="sc-chars">$ £ € ¥ ₹ ¢ ₩</span>
+
+        <!-- Main Stats -->
+        <div class="main-stats">
+          <div class="ms-box" title="Total words">
+            <span class="ms-val" id="s-words">0</span>
+            <span class="ms-label">Words</span>
+          </div>
+          <div class="ms-box" title="Total characters including spaces">
+            <span class="ms-val" id="s-chars">0</span>
+            <span class="ms-label">Characters</span>
+          </div>
+          <div class="ms-box" title="Characters without spaces">
+            <span class="ms-val" id="s-nospace">0</span>
+            <span class="ms-label">No Spaces</span>
+          </div>
+          <div class="ms-box" title="Number of sentences">
+            <span class="ms-val" id="s-sent">0</span>
+            <span class="ms-label">Sentences</span>
+          </div>
+          <div class="ms-box" title="Number of lines">
+            <span class="ms-val" id="s-lines">0</span>
+            <span class="ms-label">Lines</span>
+          </div>
+          <div class="ms-box" title="Estimated reading time">
+            <span class="ms-val" id="s-read">0m</span>
+            <span class="ms-label">Read Time</span>
+          </div>
         </div>
-        <div class="sc-box cat-web">
-          <span class="sc-icon">🌐</span>
-          <span class="sc-count" id="sc-web">0</span>
-          <span class="sc-name">Web / Social</span>
-          <span class="sc-chars">@ # & _ | \ /</span>
+
+        <!-- Special Characters Breakdown -->
+        <div class="sc-section">
+          <div class="sc-title">🔣 Special Characters Breakdown <span>UNIQUE</span></div>
+          <div class="sc-grid">
+            <div class="sc-box cat-punct">
+              <span class="sc-icon">❗</span>
+              <span class="sc-count" id="sc-punct">0</span>
+              <span class="sc-name">Punctuation</span>
+              <span class="sc-chars">. , ; : ! ? ' " - —</span>
+            </div>
+            <div class="sc-box cat-bracket">
+              <span class="sc-icon">🔲</span>
+              <span class="sc-count" id="sc-bracket">0</span>
+              <span class="sc-name">Brackets</span>
+              <span class="sc-chars">( ) [ ] { } &lt; &gt;</span>
+            </div>
+            <div class="sc-box cat-math">
+              <span class="sc-icon">➕</span>
+              <span class="sc-count" id="sc-math">0</span>
+              <span class="sc-name">Math / Logic</span>
+              <span class="sc-chars">+ - * / = % ^ ~</span>
+            </div>
+            <div class="sc-box cat-currency">
+              <span class="sc-icon">💰</span>
+              <span class="sc-count" id="sc-currency">0</span>
+              <span class="sc-name">Currency</span>
+              <span class="sc-chars">$ £ € ¥ ₹ ¢ ₩</span>
+            </div>
+            <div class="sc-box cat-web">
+              <span class="sc-icon">🌐</span>
+              <span class="sc-count" id="sc-web">0</span>
+              <span class="sc-name">Web / Social</span>
+              <span class="sc-chars">@ # & _ | \ /</span>
+            </div>
+            <div class="sc-box cat-emoji">
+              <span class="sc-icon">😀</span>
+              <span class="sc-count" id="sc-emoji">0</span>
+              <span class="sc-name">Emoji</span>
+              <span class="sc-chars">😀 🔥 ✅ 🎉 💯</span>
+            </div>
+            <div class="sc-box cat-number">
+              <span class="sc-icon">🔢</span>
+              <span class="sc-count" id="sc-numbers">0</span>
+              <span class="sc-name">Numbers</span>
+              <span class="sc-chars">0 1 2 3 4 5 6 7 8 9</span>
+            </div>
+            <div class="sc-box cat-space">
+              <span class="sc-icon">⬜</span>
+              <span class="sc-count" id="sc-spaces">0</span>
+              <span class="sc-name">Spaces</span>
+              <span class="sc-chars">space tab newline</span>
+            </div>
+          </div>
         </div>
-        <div class="sc-box cat-emoji">
-          <span class="sc-icon">😀</span>
-          <span class="sc-count" id="sc-emoji">0</span>
-          <span class="sc-name">Emoji</span>
-          <span class="sc-chars">😀 🔥 ✅ 🎉 💯</span>
+
+        <!-- Social Media Limits -->
+        <div class="social-limits">
+          <div class="sl-title">Reference text budgets — destination rules can differ</div>
+          <div class="sl-list">
+            <div class="sl-row">
+              <span class="sl-name">X post reference</span>
+              <div class="sl-bar-wrap">
+                <div
+                  class="sl-bar"
+                  id="sl-twitter"
+                  style="width: 0%; background: var(--primary)"
+                ></div>
+              </div>
+              <span class="sl-count" id="sl-twitter-txt">0 / 280</span>
+            </div>
+            <div class="sl-row">
+              <span class="sl-name">Instagram reference</span>
+              <div class="sl-bar-wrap">
+                <div class="sl-bar" id="sl-ig" style="width: 0%; background: var(--pink)"></div>
+              </div>
+              <span class="sl-count" id="sl-ig-txt">0 / 2,200</span>
+            </div>
+            <div class="sl-row">
+              <span class="sl-name">LinkedIn reference</span>
+              <div class="sl-bar-wrap">
+                <div class="sl-bar" id="sl-li" style="width: 0%; background: #0077b5"></div>
+              </div>
+              <span class="sl-count" id="sl-li-txt">0 / 3,000</span>
+            </div>
+            <div class="sl-row">
+              <span class="sl-name">SMS reference</span>
+              <div class="sl-bar-wrap">
+                <div class="sl-bar" id="sl-sms" style="width: 0%; background: var(--green)"></div>
+              </div>
+              <span class="sl-count" id="sl-sms-txt">0 / 160</span>
+            </div>
+            <div class="sl-row">
+              <span class="sl-name">Title writing guide</span>
+              <div class="sl-bar-wrap">
+                <div class="sl-bar" id="sl-meta" style="width: 0%; background: var(--accent)"></div>
+              </div>
+              <span class="sl-count" id="sl-meta-txt">0 / 60</span>
+            </div>
+          </div>
         </div>
-        <div class="sc-box cat-number">
-          <span class="sc-icon">🔢</span>
-          <span class="sc-count" id="sc-numbers">0</span>
-          <span class="sc-name">Numbers</span>
-          <span class="sc-chars">0 1 2 3 4 5 6 7 8 9</span>
-        </div>
-        <div class="sc-box cat-space">
-          <span class="sc-icon">⬜</span>
-          <span class="sc-count" id="sc-spaces">0</span>
-          <span class="sc-name">Spaces</span>
-          <span class="sc-chars">space tab newline</span>
+
+        <!-- Action Buttons -->
+        <div class="tool-actions">
+          <button class="btn-clear" onclick="clearText()">🗑️ Clear All</button>
+          <button class="btn-copy" onclick="copyStats()">📋 Copy Stats</button>
         </div>
       </div>
     </div>
 
-    <!-- Social Media Limits -->
-    <div class="social-limits">
-      <div class="sl-title">📱 Social Media Character Limits</div>
-      <div class="sl-list">
-        <div class="sl-row">
-          <span class="sl-name">🐦 Twitter/X</span>
-          <div class="sl-bar-wrap"><div class="sl-bar" id="sl-twitter" style="width:0%;background:var(--primary)"></div></div>
-          <span class="sl-count" id="sl-twitter-txt">0 / 280</span>
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="sb-card">
+        <div class="sb-num">8</div>
+        <div class="sb-label">Inspection categories</div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-num">UTF-8</div>
+        <div class="sb-label">Unicode-aware text</div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-num">Live</div>
+        <div class="sb-label">Updates while typing</div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-num">Local</div>
+        <div class="sb-label">Browser processing</div>
+      </div>
+    </div>
+
+    <!-- AD MID -->
+    <div class="ad-wrap" style="margin-top: 32px">
+      <div class="ad-label">Advertisement</div>
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247154689"
+        data-ad-slot="AUTO"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- MORE THAN JUST A TOOL -->
+    <div class="section" style="margin-top: 48px">
+      <div class="section-title">Focused <em>text inspection</em></div>
+      <p class="section-sub">
+        The editor pairs familiar total counts with a visible category breakdown for punctuation,
+        brackets, math symbols, currency, web/social marks, emoji, numbers, and whitespace.
+      </p>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon">🔣</div>
+          <h3>Special Characters Breakdown</h3>
+          <p>
+            Eight-category breakdown: punctuation, brackets, math, currency, web symbols, emoji,
+            numbers and spaces — counted separately.
+          </p>
         </div>
-        <div class="sl-row">
-          <span class="sl-name">📸 Instagram</span>
-          <div class="sl-bar-wrap"><div class="sl-bar" id="sl-ig" style="width:0%;background:var(--pink)"></div></div>
-          <span class="sl-count" id="sl-ig-txt">0 / 2,200</span>
+        <div class="feat-card">
+          <div class="feat-icon">😀</div>
+          <h3>Emoji Counter Online</h3>
+          <p>
+            Count every emoji in your text instantly. Know exactly how many 🔥✅🎉 are in your
+            social media post before publishing.
+          </p>
         </div>
-        <div class="sl-row">
-          <span class="sl-name">💼 LinkedIn</span>
-          <div class="sl-bar-wrap"><div class="sl-bar" id="sl-li" style="width:0%;background:#0077b5"></div></div>
-          <span class="sl-count" id="sl-li-txt">0 / 3,000</span>
+        <div class="feat-card">
+          <div class="feat-icon">📱</div>
+          <h3>Social Media Limits</h3>
+          <p>
+            Reference gauges for common text-length workflows; verify each destination’s current
+            composer rule before publishing.
+          </p>
         </div>
-        <div class="sl-row">
-          <span class="sl-name">📧 SMS</span>
-          <div class="sl-bar-wrap"><div class="sl-bar" id="sl-sms" style="width:0%;background:var(--green)"></div></div>
-          <span class="sl-count" id="sl-sms-txt">0 / 160</span>
+        <div class="feat-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Real-Time Counting</h3>
+          <p>
+            Every stat updates as you type — no button to click, no delay. Instant feedback on every
+            keystroke.
+          </p>
         </div>
-        <div class="sl-row">
-          <span class="sl-name">🔍 Meta Title</span>
-          <div class="sl-bar-wrap"><div class="sl-bar" id="sl-meta" style="width:0%;background:var(--accent)"></div></div>
-          <span class="sl-count" id="sl-meta-txt">0 / 60</span>
+        <div class="feat-card">
+          <div class="feat-icon">🌍</div>
+          <h3>All Languages Supported</h3>
+          <p>
+            Works with English, Urdu, Arabic, Hindi, Chinese and any Unicode text. Special chars
+            counted accurately in all scripts.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🌙</div>
+          <h3>Dark Mode</h3>
+          <p>
+            Toggle dark mode for comfortable late-night writing sessions. Your preference is
+            remembered automatically.
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="tool-actions">
-      <button class="btn-clear" onclick="clearText()">🗑️ Clear All</button>
-      <button class="btn-copy" onclick="copyStats()">📋 Copy Stats</button>
-    </div>
-  </div>
-</div>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="sb-card"><div class="sb-num">8</div><div class="sb-label">Inspection categories</div></div>
-  <div class="sb-card"><div class="sb-num">UTF-8</div><div class="sb-label">Unicode-aware text</div></div>
-  <div class="sb-card"><div class="sb-num">Live</div><div class="sb-label">Updates while typing</div></div>
-  <div class="sb-card"><div class="sb-num">Local</div><div class="sb-label">Browser processing</div></div>
-</div>
-
-<!-- AD MID -->
-<div class="ad-wrap" style="margin-top:32px;">
-  <div class="ad-label">Advertisement</div>
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
-
-<!-- MORE THAN JUST A TOOL -->
-<div class="section" style="margin-top:48px;">
-  <div class="section-title">More Than Just a <em>Word Counter</em></div>
-  <p class="section-sub">The editor pairs familiar total counts with a visible category breakdown for punctuation, brackets, math symbols, currency, web/social marks, emoji, numbers, and whitespace.</p>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon">🔣</div>
-      <h3>Special Characters Breakdown</h3>
-      <p>Eight-category breakdown: punctuation, brackets, math, currency, web symbols, emoji, numbers and spaces — counted separately.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">😀</div>
-      <h3>Emoji Counter Online</h3>
-      <p>Count every emoji in your text instantly. Know exactly how many 🔥✅🎉 are in your social media post before publishing.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📱</div>
-      <h3>Social Media Limits</h3>
-      <p>Reference gauges for common text-length workflows; verify each destination’s current composer rule before publishing.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">⚡</div>
-      <h3>Real-Time Counting</h3>
-      <p>Every stat updates as you type — no button to click, no delay. Instant feedback on every keystroke.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🌍</div>
-      <h3>All Languages Supported</h3>
-      <p>Works with English, Urdu, Arabic, Hindi, Chinese and any Unicode text. Special chars counted accurately in all scripts.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🌙</div>
-      <h3>Dark Mode</h3>
-      <p>Toggle dark mode for comfortable late-night writing sessions. Your preference is remembered automatically.</p>
-    </div>
-  </div>
-</div>
-
-<!-- WHO BENEFITS -->
-<div class="who-section">
-  <div class="who-inner">
-    <div class="who-title">Who <em>Benefits</em> from Special Characters Counter?</div>
-    <p class="who-sub">From coders to copywriters — anyone who works with text needs to know what's in it.</p>
-    <div class="who-grid">
-      <div class="who-card">
-        <div class="who-icon">✍️</div>
-        <h3>Content Writers</h3>
-        <p>Optimize punctuation density for readability. Inspect punctuation choices before publishing.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">💻</div>
-        <h3>Developers & Coders</h3>
-        <p>Count special chars in code strings, regex patterns, and API inputs. Catch errors before they hit production.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">📱</div>
-        <h3>Social Media Managers</h3>
-        <p>Stay within platform limits. Know exactly how many emoji you've used before posting to Instagram or Twitter.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">🎓</div>
-        <h3>Students & Academics</h3>
-        <p>Check essays for proper punctuation usage. Meet word and character limits for university submissions.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">🔍</div>
-        <h3>SEO Specialists</h3>
-        <p>Optimize meta titles and descriptions to exact character limits. Count symbols in schema markup.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">📧</div>
-        <h3>Email Marketers</h3>
-        <p>Perfect subject lines under 60 characters. Count emoji in email subjects to boost open rates strategically.</p>
+    <!-- WHO BENEFITS -->
+    <div class="who-section">
+      <div class="who-inner">
+        <div class="who-title">Who <em>Benefits</em> from Special Characters Counter?</div>
+        <p class="who-sub">
+          From coders to copywriters — anyone who works with text needs to know what's in it.
+        </p>
+        <div class="who-grid">
+          <div class="who-card">
+            <div class="who-icon">✍️</div>
+            <h3>Content Writers</h3>
+            <p>
+              Optimize punctuation density for readability. Inspect punctuation choices before
+              publishing.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">💻</div>
+            <h3>Developers & Coders</h3>
+            <p>
+              Count special chars in code strings, regex patterns, and API inputs. Catch errors
+              before they hit production.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">📱</div>
+            <h3>Social Media Managers</h3>
+            <p>
+              Stay within platform limits. Know exactly how many emoji you've used before posting to
+              Instagram or Twitter.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🎓</div>
+            <h3>Students & Academics</h3>
+            <p>
+              Check essays for proper punctuation usage. Meet word and character limits for
+              university submissions.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🔍</div>
+            <h3>SEO Specialists</h3>
+            <p>
+              Optimize meta titles and descriptions to exact character limits. Count symbols in
+              schema markup.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">📧</div>
+            <h3>Email Marketers</h3>
+            <p>
+              Perfect subject lines under 60 characters. Count emoji in email subjects to boost open
+              rates strategically.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- FAQ -->
-<div class="faq-section">
-  <div class="section-title" style="margin-bottom:8px;">Frequently Asked <em style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)">Questions</em></div>
-  <p class="section-sub" style="margin-bottom:24px;">Everything you need to know about counting special characters online.</p>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">What is a special characters counter?</div>
-      <div class="faq-a">A special characters counter is a free online tool that counts symbols, punctuation marks, emoji, numbers and every character type in your text separately. Unlike basic word counters, it breaks down exactly how many @, #, $, !, ?, and other special characters are in your content.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How do I count special characters in text online?</div>
-      <div class="faq-a">Paste your text into Toolyfi Special Characters Counter and instantly see a full breakdown — total words, characters, punctuation count, symbol count, emoji count, number count and more. Results appear in real time, no button needed. No signup required.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Do special characters count as words?</div>
-      <div class="faq-a">No, special characters like @, #, $, !, ? do not count as words. They count as characters. Most word counters skip them entirely, but our tool counts them separately in 8 categories — giving you complete visibility into your text.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which special characters are counted?</div>
-      <div class="faq-a">Our tool counts all special characters including: Punctuation (. , ; : ! ? ' " - —), Brackets ({ } [ ] ( ) &lt; &gt;), Math symbols (+ - * / = % ^ ~), Currency signs ($ £ € ¥ ₹), Web/Social symbols (@ # & _ | \ /), Emoji (😀🔥✅), Numbers (0-9), and Spaces.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Does it count emoji as special characters?</div>
-      <div class="faq-a">Yes. The counter treats visible emoji clusters as a dedicated category where browser grapheme segmentation is available. A platform may apply different weighted counting rules, so verify the final caption in its own composer when a limit is strict.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Why do special characters matter in SEO?</div>
-      <div class="faq-a">Special characters affect the visible length and readability of a title, description, or snippet. This page helps you inspect composition and length, but it does not determine search rankings or establish a universal title or description limit.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I use this for social media character limits?</div>
-      <div class="faq-a">The page provides reference gauges for common workflows. Platform, SMS, and search-display rules can change or count some content differently, so confirm the final text in the destination service.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Is the special characters counter free?</div>
-      <div class="faq-a">Yes, 100% free. No account, no signup, no watermark, no limits. Use it unlimited times for any length of text — from a single tweet to a full novel manuscript.</div>
-    </div>
-  </div>
-</div>
-
-<!-- AD PRE-ARTICLE -->
-<div class="ad-wrap" style="margin-top:48px;">
-  <div class="ad-label">Advertisement</div>
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
-
-<!-- SEO ARTICLE -->
-<div class="article-section">
-  <div class="article-body">
-
-    <h2>Special Characters Counter Online — Complete Guide 2026</h2>
-    <p>A <strong>special characters counter online</strong> is a tool that goes beyond basic word counting — it identifies and counts every non-letter character in your text: punctuation marks, symbols, emoji, currency signs, brackets, and more. While every word processor tells you how many words you have, none of them tell you how many <code>@</code> signs, <code>$</code> symbols, or 🔥 emoji are in your content. That gap is exactly what this tool fills.</p>
-    <p>Whether you're a developer counting special chars in a code string, a social media manager tracking emoji usage, or an SEO writer optimizing punctuation density — understanding your special character count gives you data no other tool provides.</p>
-
-    <div class="article-highlight">
-      <div class="ah-label">💡 Key Insight</div>
-      <p>Most word counters count total characters but skip the breakdown. Toolyfi's special characters counter is a browser-based tool that shows an eight-category breakdown: punctuation, brackets, math symbols, currency, web/social symbols, emoji, numbers, and spaces — all counted separately in real time.</p>
-    </div>
-
-    <h2>What Is a Special Characters Counter?</h2>
-    <p>A <strong>special characters counter</strong> is an online tool that analyzes text and counts every character type separately. Standard characters are letters (A–Z, a–z) and numbers (0–9). Everything else is a "special character" — from the humble period (<code>.</code>) to emoji (😀) to currency symbols (<code>$</code>, <code>€</code>, <code>£</code>).</p>
-    <p>The concept of counting special characters became important as digital content evolved. Early word processors often focused on words and total characters. Modern writing workflows add platform limits, multilingual text, emoji, code, and structured fields, which makes composition inspection more useful.</p>
-    <p>Today, special character counting matters across many fields: <strong>copywriting</strong> (reviewing punctuation and spacing), <strong>programming</strong> (inspecting input strings), <strong>social media</strong> (checking caption composition), and <strong>content operations</strong> (reviewing length before a final preview).</p>
-
-    <h2>How to Use the Special Characters Counter — Step by Step</h2>
-
-    <h3>Step 1: Open Toolyfi Special Characters Counter</h3>
-    <p>Visit <a href="https://toolyfi.com/special-characters-counter.html">toolyfi.com/special-characters-counter.html</a> — no login, no signup, no download. The tool loads instantly in any browser on any device.</p>
-
-    <h3>Step 2: Paste or Type Your Text</h3>
-    <p>Copy any text from any source — a Word document, email, social media post, code file, or anything else — and paste it into the text box. Or type directly. The tool supports all Unicode text including Urdu, Arabic, Chinese, and emoji.</p>
-
-    <h3>Step 3: Read Your Results Instantly</h3>
-    <p>Results appear in real time as you type or paste. You'll see six main stats at the top (words, characters, characters without spaces, sentences, lines, reading time) and then the 8-category special characters breakdown below.</p>
-
-    <h3>Step 4: Check Social Media Limits</h3>
-    <p>Scroll to the social media limits section to see color-coded progress bars showing how your character count compares against Twitter/X (280), Instagram (2,200), LinkedIn (3,000), SMS (160), and Meta title (60) limits.</p>
-
-    <h3>Step 5: Copy Your Stats</h3>
-    <p>Click the "Copy Stats" button to copy a formatted summary of all your counts to the clipboard — ready to paste into a report, document, or message.</p>
-
-    <h2>Complete List of Special Characters We Count</h2>
-    <p>Our tool counts special characters in 8 distinct categories, giving you complete visibility into your text composition:</p>
-
-    <div class="article-table-wrap">
-      <table>
-        <thead><tr><th>Category</th><th>Characters Included</th><th>Common Use</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Punctuation</strong></td><td>. , ; : ! ? ' " - — … ·</td><td>Sentence structure, readability</td></tr>
-          <tr><td><strong>Brackets</strong></td><td>( ) [ ] { } &lt; &gt;</td><td>Code, citations, grouping</td></tr>
-          <tr><td><strong>Math / Logic</strong></td><td>+ - * / = % ^ ~ ≠ ≤ ≥</td><td>Formulas, code, comparisons</td></tr>
-          <tr><td><strong>Currency</strong></td><td>$ £ € ¥ ₹ ¢ ₩ ₪</td><td>Prices, financial content</td></tr>
-          <tr><td><strong>Web / Social</strong></td><td>@ # & _ | \ / ` </td><td>Email, hashtags, URLs, code</td></tr>
-          <tr><td><strong>Emoji</strong></td><td>😀 🔥 ✅ 🎉 💯 and all Unicode emoji</td><td>Social media, marketing</td></tr>
-          <tr><td><strong>Numbers</strong></td><td>0 1 2 3 4 5 6 7 8 9</td><td>Data, dates, measurements</td></tr>
-          <tr><td><strong>Spaces</strong></td><td>Space, tab, newline</td><td>Formatting, readability</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2>Why Count Special Characters? Real-World Use Cases</h2>
-
-    <h3>SEO and Content Writing</h3>
-    <p>Search engines analyze content structure, and <strong>punctuation density</strong> is one signal of text quality. Content with excessive exclamation marks (<code>!!!</code>) or symbols (<code>$$$</code>) can be flagged as spammy. A punctuation count can help you notice repeated marks or accidental copy-paste artifacts. It cannot determine content quality or ranking performance on its own.</p>
-    <p>Search interfaces can truncate or generate snippets differently. Use the count as a drafting reference, then evaluate the final title and description in your own search-preview or publishing workflow.</p>
-
-    <h3>Social Media Management</h3>
-    <p>Every major platform has character limits that apply to special characters too. Emoji and non-Latin text can be counted differently across publishing platforms. Use the dedicated emoji card to inspect your draft, then check the final value in the destination composer before publishing.</p>
-    <p>Instagram hashtags use the <code>#</code> symbol — and Instagram allows up to 30 hashtags per post. Our web/social symbol counter tells you exactly how many <code>#</code> signs are in your caption, so you never accidentally exceed the limit.</p>
-
-    <h3>Software Development</h3>
-    <p>Developers frequently need to <strong>count special characters in strings</strong> for validation, regex matching, and input sanitization. A password policy requiring "at least 2 special characters" needs a quick verification tool. Our special characters counter handles this in seconds — paste the string, see the count instantly.</p>
-    <p>When working with APIs and databases, special characters like <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>"</code>, and <code>'</code> require escaping. Our bracket and web symbol counters flag these characters immediately.</p>
-
-    <h3>Academic Writing</h3>
-    <p>University submission portals often enforce character limits rather than word limits for abstracts and summaries. Students writing a 500-character abstract need to count every character — including punctuation. Our tool makes this instant and accurate across all languages including Arabic and Urdu academic texts.</p>
-
-    <h3>Email Marketing</h3>
-    <p>Email subject lines benefit from clear, relevant copy. The emoji count is useful for reviewing a draft, but it does not predict deliverability, spam treatment, or engagement. Test within your own email program and audience context.</p>
-
-    <div class="article-highlight"><div class="ah-label">Practical note</div><p>Character and emoji counts make a draft easier to inspect. They do not predict campaign results, spam outcomes, or audience response.</p></div>
-
-    <h2>Choose the right counting approach</h2>
-    <p>Different tools report text length in different units. Choose the measurement that matches the receiving system: visible characters, code points, bytes, or a platform-specific weighted count.</p>
-
-    <div class="article-table-wrap">
-      <table>
-        <thead><tr><th>Tool</th><th>Special Chars Breakdown</th><th>Emoji Count</th><th>Social Limits</th><th>Free & No Login</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Toolyfi (this tool)</strong></td><td>✅ 8 categories</td><td>✅ Yes</td><td>✅ 5 platforms</td><td>✅ Yes</td></tr>
-          <tr><td>WordCounter.net</td><td>❌ No</td><td>❌ No</td><td>❌ No</td><td>✅ Yes</td></tr>
-          <tr><td>ZeroGPT Word Counter</td><td>❌ No</td><td>❌ No</td><td>⚠️ 3 platforms</td><td>✅ Yes</td></tr>
-          <tr><td>CharacterCounter.com</td><td>❌ No</td><td>❌ No</td><td>⚠️ Partial</td><td>✅ Yes</td></tr>
-          <tr><td>Grammarly</td><td>❌ No</td><td>❌ No</td><td>❌ No</td><td>❌ Login required</td></tr>
-          <tr><td>Microsoft Word</td><td>❌ No</td><td>❌ No</td><td>❌ No</td><td>❌ Paid</td></tr>
-        </tbody>
-      </table>
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="section-title" style="margin-bottom: 8px">
+        Frequently Asked
+        <em
+          style="
+            font-family: &quot;Instrument Serif&quot;, serif;
+            font-style: italic;
+            color: var(--primary);
+          "
+          >Questions</em
+        >
+      </div>
+      <p class="section-sub" style="margin-bottom: 24px">
+        Everything you need to know about counting special characters online.
+      </p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            What does a special characters counter measure?
+          </button>
+          <div class="faq-a">
+            It counts visible characters and shows the selected categories in the current text:
+            punctuation, brackets, math marks, currency signs, web marks, emoji, numbers, and
+            whitespace.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            How are visible characters counted?
+          </button>
+          <div class="faq-a">
+            Where available, the page uses browser grapheme segmentation. That is closer to a
+            reader-visible character than JavaScript string length for many combined emoji and
+            Unicode sequences.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Do spaces, tabs, and line breaks count?
+          </button>
+          <div class="faq-a">
+            They are included in the overall visible-text analysis. The no-spaces metric removes
+            whitespace graphemes so you can compare both measures.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Are emoji counted as special characters?
+          </button>
+          <div class="faq-a">
+            The page treats visible emoji clusters as a dedicated category. Platforms can apply
+            their own weighted or encoding rules, so verify strict final text in the destination.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Does the counter work with Urdu, Arabic, and other Unicode text?
+          </button>
+          <div class="faq-a">
+            The analysis operates on Unicode text. Word and destination-platform rules can differ by
+            language, encoding, and application, so test a hard requirement in its final system.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Can I use the social gauges as publishing guarantees?
+          </button>
+          <div class="faq-a">
+            No. They are reference budgets only. Social platforms, SMS providers, URLs, attachments,
+            and weighted-character policies can change the final count.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Why can another app show a different character count?
+          </button>
+          <div class="faq-a">
+            Applications can count UTF-16 units, Unicode code points, grapheme clusters, bytes, or
+            weighted characters. Emoji, flags, combining marks, and pasted line endings make the
+            difference clearer.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Can I copy the count summary?
+          </button>
+          <div class="faq-a">
+            Yes. Select Copy Stats after entering text to copy the current tool summary to the
+            device clipboard when browser permission is available.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Does a special character count validate my input?
+          </button>
+          <div class="faq-a">
+            No. The page helps inspect a sample. Production validation belongs in the application
+            receiving the input with its own allowed-character, length, normalization, and security
+            rules.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Is a special characters counter an SEO ranking tool?
+          </button>
+          <div class="faq-a">
+            No. It can help review the composition and length of a title or description, but it does
+            not determine rankings or provide a universal search-display limit.
+          </div>
+        </div>
+      </div>
     </div>
 
-    <h2>Practical editing habits for special characters</h2>
-    <ul>
-      <li><strong>Punctuation:</strong> Use punctuation to make the intended sentence structure clear; review repeated marks that were not intentional.</li>
-      <li><strong>Emoji:</strong> Use them when they add clear meaning or tone, and check the final platform count before publishing.</li>
-      <li><strong>Titles and descriptions:</strong> Draft for clarity and relevance, then preview the final text in the publishing system that will display it.</li>
-      <li><strong>Currency symbols:</strong> Use a consistent currency format that your reader and publishing context understand.</li>
-      <li><strong>Code in content:</strong> When embedding code in articles, special characters like <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code> must be HTML-encoded. Count them first, then replace systematically.</li>
-      <li><strong>Hashtags:</strong> Review each marker and tag for relevance to the audience and the platform’s current posting guidelines.</li>
-    </ul>
-
-    <h2>Related Tools on Toolyfi</h2>
-    <p>Combine the Special Characters Counter with these free Toolyfi tools for a complete text workflow:</p>
-    <ul>
-      <li><a href="https://toolyfi.com/word-counter.html">📝 Word Counter</a> — Count words, sentences, paragraphs and reading time instantly</li>
-      <li><a href="https://toolyfi.com/case-converter.html">🔡 Case Converter</a> — Convert text to UPPERCASE, lowercase or Title Case</li>
-      <li><a href="https://toolyfi.com/json-formatter.html">🖥️ JSON Formatter</a> — Format and validate JSON with special character escaping</li>
-      <li><a href="https://toolyfi.com/base64-encoder.html">🔐 Base64 Encoder</a> — Encode/decode text including special characters to Base64</li>
-    </ul>
-
-    <h2>How Special Characters Affect Readability Scores</h2>
-    <p>Readability formulas like Flesch-Kincaid and Gunning Fog use sentence length and word complexity. But <strong>punctuation directly controls sentence length</strong> — more periods = shorter sentences = higher readability score. Understanding your punctuation count is therefore essential for anyone targeting a specific readability grade.</p>
-    <p>Content for general audiences should target a Flesch Reading Ease score of 60–70 (Grade 8–9 level). This typically means sentences of 15–20 words with appropriate punctuation every 2–3 sentences. Our sentence counter and punctuation counter give you the data to hit this target precisely.</p>
-    <p>For technical content targeting developers or academics, a lower readability score is acceptable. Complex sentences with multiple clauses (separated by semicolons and em-dashes) are expected. Our tool helps you confirm the right density for your specific audience.</p>
-
-    <h2>Special Characters in Different Languages</h2>
-    <p>Different languages use different special characters. Arabic uses <strong>Arabic punctuation marks</strong> (؟ ، ؛) that are separate from English punctuation. Urdu uses similar Arabic-script punctuation. Our tool counts all Unicode punctuation, so it works accurately for all right-to-left and left-to-right languages.</p>
-    <p>Chinese and Japanese text uses <strong>fullwidth characters</strong> — including fullwidth punctuation (。、！？) that look similar to English punctuation but are separate Unicode characters. These are counted correctly in the punctuation category.</p>
-    <p>Developers working with <strong>multilingual applications</strong> often need to count special characters across multiple scripts. Paste any combination of English, Arabic, Hindi, and Chinese text — our tool handles it all accurately.</p>
-
-    <h2>Conclusion</h2>
-    <p>The <strong>Toolyfi Special Characters Counter</strong> gives you a live view of visible characters, whitespace, selected character categories, and emoji clusters. Use it to inspect code-like strings, captions, titles, summaries, and other text before you move to the system that will ultimately enforce its own rules.</p>
-    <p>Paste a non-sensitive draft above, inspect the result, and then verify strict platform or application limits at the final destination.</p>
-
-  </div>
-<h2>Count text units with the right expectation</h2><p>Character counting sounds simple until text includes accented letters, Urdu or Arabic script, CJK characters, line breaks, and emoji. A visible symbol can be represented by more than one underlying code point, particularly when it uses a skin-tone modifier, a flag pair, or a zero-width joiner. This tool uses browser grapheme segmentation when the browser supports it, which is closer to what a reader sees as one character than a raw JavaScript string length. A platform may still use a different rule for its own composer, so treat the platform meters as a practical reference rather than a publishing guarantee.</p><p>Use the total count when a form says “characters,” compare the no-whitespace count when a brief excludes spaces, and use the category cards to understand what is actually present. The punctuation, brackets, math, currency, web/social, numbers, spaces, and emoji cards are designed as an inspection aid. Some marks can belong to more than one familiar category in human writing, so the category total should not be added together as if it were a separate character total.</p><h2>Check a caption or short text before publishing</h2><p>Start with your final wording, then paste it into the editor. Check the total visible-character count, remove repeated punctuation, and decide whether each emoji, hashtag, link marker, price symbol, or line break adds useful meaning. If you are preparing an X post, Instagram caption, LinkedIn post, SMS, title, or description, use the gauge as a quick estimate and then verify the final text in the destination platform. URLs, weighted Unicode characters, attachment metadata, and platform policy changes can alter the final count.</p><p>For SMS, character limits also depend on the encoding and the messaging provider. A visible emoji or non-Latin character may cause a message to use a Unicode encoding with different segmentation rules. Do not use a general counter as a billing estimate. Check the message service’s documentation and use its test environment before a real campaign.</p><h2>Use category counts for quality control</h2><p>Category counts are valuable for spotting accidental changes. A copied spreadsheet cell may bring hidden tabs or line breaks. A text field intended to allow letters and numbers may contain an unexpected currency sign, bracket, or control character. A code sample might require an exact number of quotation marks, ampersands, angle brackets, or backslashes. The tool gives you a fast visual overview before you add rules to a form validator, regular expression, CSV file, or template.</p><p>For normal editorial writing, symbols are not automatically good or bad. Multiple exclamation marks can be intentional in a headline; an em dash can make a sentence clearer; a currency sign can be essential. The useful question is whether the text says what you intend and meets the destination’s real limits. This page measures composition. It does not score quality, read language fluency, determine spam, or predict search performance.</p><h2>Work safely with copied text</h2><p>The counter runs in the browser and does not need an account for the counting action. Even so, avoid using public tools as a place to store confidential information. Do not paste passwords, private customer data, API keys, medical records, unpublished contracts, or access tokens into any general-purpose web page. Use a redacted test string if you only need to check a format or validation rule.</p><p>When a longer workflow is needed, use the <a href="/word-counter.html">Word Counter</a> for words and reading time, the <a href="/text-trimmer.html">Text Trimmer</a> to remove accidental spaces and blank lines, the <a href="/case-converter.html">Case Converter</a> to standardise text casing, and the <a href="/base64-encoder.html">Base64 Encoder</a> only when a system specifically asks for a reversible transport encoding. Each utility has a different role; no counter encrypts, sanitizes, or validates a value by itself.</p><h2>Common counting questions</h2><h3>Why is the count different from another app?</h3><p>Different applications may count code units, Unicode code points, grapheme clusters, or weighted characters. Text with emoji, regional flags, combining accents, or non-Latin scripts makes those differences more visible. Compare the same final text in the destination composer when a hard limit matters.</p><h3>Do line breaks and tabs count?</h3><p>They are whitespace and are included in the total visible text analysis. The no-whitespace figure removes spaces, tabs, and line breaks so you can compare both views. A target system can use its own handling, especially when it normalises pasted content.</p><h3>Can this replace input validation?</h3><p>No. Use it to inspect an example or prototype a rule. Production validation belongs in the application that receives the input, using clear requirements for length, allowed characters, normalisation, encoding, and security.</p><h2>Final checklist</h2><ol><li>Paste the final version of the text, not an earlier draft.</li><li>Choose the count that matches the receiving system’s requirement.</li><li>Inspect unusual category results such as unexpected line breaks, symbols, or emoji.</li><li>Verify platform-specific limits in the final destination when the limit is strict.</li><li>Keep sensitive text out of shared drafts and public troubleshooting examples.</li></ol><p>A special characters counter is most helpful when it makes the next editing decision clearer. Use the live breakdown to understand your text, keep the final content readable, and confirm important limits where they are actually enforced.</p>
-
-<h2>Understand characters, code points, and bytes</h2><p>A character that looks simple on screen is not always stored as one byte or one JavaScript code unit. UTF-8 uses a variable number of bytes, so an English letter may use one byte while a non-Latin character or emoji may use more. A grapheme cluster is closer to a reader’s visual unit: it can join several code points into one displayed symbol, as happens with some flags and family emoji. That is why a raw byte count, a raw string length, and a visible-character count can disagree without any tool being “wrong.” They are answering different questions.</p><p>When an integration documents a maximum size in bytes, use a byte-aware check in that integration. When a form says “maximum 50 characters,” clarify whether it means visible characters, code points, or the storage system’s length. The tool above is designed for everyday visible-text inspection. It gives a practical result for editing and previews, but the system that enforces a rule is always the final authority.</p><h2>Use text limits without inventing SEO rules</h2><p>Text length is one input to a clear title, description, caption, email subject, or form response. It is not a ranking formula. Search results can show different snippets for different queries, social networks can revise their composer behaviour, and messaging providers can apply their own encoding rules. Instead of writing to a magic number, write a useful message first, then check whether it is truncated or rejected in the system where it will appear.</p><p>For an editorial review, copy the working line into the counter, scan for accidental double spaces or duplicated punctuation, and test a concise alternative. For an interface, use the count to decide whether a hint, validation message, or remaining-character indicator would help. Then implement the actual rule in the destination application and test its error state with real inputs.</p><h2>Examples of careful category review</h2><p>A product title such as <code>Summer offer — 50% off! 🎉</code> has punctuation, a dash, a percentage sign, an exclamation mark, an emoji, a number, and spaces. The category cards make that composition obvious. A developer can use the same workflow on a templated URL, a configuration value, or an escaped HTML snippet. A writer can use it to notice an unintended run of exclamation marks or a stray tab copied from a spreadsheet.</p><p>If you work with multilingual content, check an example from the real language rather than an English substitute. Arabic and Urdu punctuation, fullwidth East Asian punctuation, and combining marks can behave differently from Latin text in different applications. The counter can help you inspect the visible content, while the target CMS, database, or messaging system should be tested with the final characters it receives.</p><h2>Keep the workflow small and repeatable</h2><p>The most reliable pattern is simple: paste a non-sensitive final draft, inspect the counts, make one intentional edit, and check again. Copy the summary when it helps a review or handoff, but do not treat a text counter as a source of audience, ranking, billing, legal, or security advice. Keep the original copy in the approved document or repository, and use this workspace to answer a focused question about composition and length.</p>
-<h2>Make the count actionable</h2><p>After reviewing a result, make one purposeful change rather than chasing a theoretical perfect score. Remove an accidental duplicate symbol, preserve an intentional language-specific mark, shorten a caption for its actual destination, or document why a validation rule permits a character. Then recount the finished text. That loop keeps the counter useful as an editing aid instead of turning a simple measurement into a substitute for clear writing, tested product requirements, or platform-specific validation.</p>
-<h2>Scope of this text analysis</h2><p>This counter measures the text placed in its editor at that moment. It does not preserve a document, compare versions, inspect hidden formatting outside pasted content, or resolve how every downstream service will normalise Unicode. Those boundaries are useful: the result stays focused on a visible draft and can be checked again after a change. If a workflow depends on an exact field limit, test the final submitted text through the same form, API, message service, or publishing screen that will receive it. Pair the counter with explicit product requirements and your own final preview rather than assuming a general-purpose measurement is a universal validator.</p></div>
-</div>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <div class="cta-inner">
-    <div class="cta-glow"></div>
-    <h2>Count <em>Every Character</em> — Free Forever</h2>
-    <p>No signup. No watermark. No limits. A practical text-inspection workspace for your next edit.</p>
-    <a href="#" onclick="document.getElementById('main-textarea').focus();window.scrollTo({top:0,behavior:'smooth'});return false;" class="cta-btn">Start Counting Now →</a>
-  </div>
-</div>
-
-<!-- FOOTER TOOLS -->
-<div class="footer-tools">
-  <div class="ft-inner">
-    <div class="ft-title">🛠️ More Free Tools on Toolyfi</div>
-    <div class="ft-grid">
-      <a href="https://toolyfi.com/word-counter.html" class="ft-card"><span class="fi">📝</span><span class="fn">Word Counter</span></a>
-      <a href="https://toolyfi.com/qr-code-generator.html" class="ft-card"><span class="fi">📱</span><span class="fn">QR Code Generator</span></a>
-      <a href="https://toolyfi.com/image-resizer.html" class="ft-card"><span class="fi">✂️</span><span class="fn">Image Resizer</span></a>
-      <a href="https://toolyfi.com/image-compressor.html" class="ft-card"><span class="fi">🗜️</span><span class="fn">Image Compressor</span></a>
-      <a href="https://toolyfi.com/base64-encoder.html" class="ft-card"><span class="fi">🔐</span><span class="fn">Base64 Encoder</span></a>
-      <a href="https://toolyfi.com/password-generator.html" class="ft-card"><span class="fi">🔑</span><span class="fn">Password Generator</span></a>
-      <a href="https://toolyfi.com/age-calculator.html" class="ft-card"><span class="fi">🎂</span><span class="fn">Age Calculator</span></a>
-      <a href="https://toolyfi.com/bmi-calculator.html" class="ft-card"><span class="fi">⚖️</span><span class="fn">BMI Calculator</span></a>
-      <a href="https://toolyfi.com/currency-converter.html" class="ft-card"><span class="fi">💱</span><span class="fn">Currency Converter</span></a>
-      <a href="https://toolyfi.com/json-formatter.html" class="ft-card"><span class="fi">🖥️</span><span class="fn">JSON Formatter</span></a>
-      <a href="https://toolyfi.com/csv-to-json.html" class="ft-card"><span class="fi">📊</span><span class="fn">CSV to JSON</span></a>
-      <a href="https://toolyfi.com/invoice-generator.html" class="ft-card"><span class="fi">🧾</span><span class="fn">Invoice Generator</span></a>
-      <a href="https://toolyfi.com/resume-builder.html" class="ft-card"><span class="fi">📄</span><span class="fn">Resume Builder</span></a>
-      <a href="https://toolyfi.com/tip-calculator.html" class="ft-card"><span class="fi">💰</span><span class="fn">Tip Calculator</span></a>
-      <a href="https://toolyfi.com/scientific-calculator.html" class="ft-card"><span class="fi">🧮</span><span class="fn">Scientific Calculator</span></a>
+    <!-- AD PRE-ARTICLE -->
+    <div class="ad-wrap" style="margin-top: 48px">
+      <div class="ad-label">Advertisement</div>
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247154689"
+        data-ad-slot="AUTO"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
-  </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools. No Signup. No Watermark. No Limits.</p>
-  <p style="margin-top:8px;">
-    <a href="https://toolyfi.com">Home</a> &nbsp;|&nbsp;
-    <a href="https://toolyfi.com/#tools">Tools</a> &nbsp;|&nbsp;
-    
-    <a href="https://toolyfi.com/about.html">About</a> &nbsp;|&nbsp;
-    <a href="https://toolyfi.com/privacy.html">Privacy</a> &nbsp;|&nbsp;
-    <a href="https://toolyfi.com/terms.html">Terms</a>
-  </p>
-</footer>
+    <!-- SEO ARTICLE -->
+    <div class="article-section">
+      <div class="article-body">
+        <h2>Special Characters Counter — practical text inspection guide</h2>
+        <p>
+          A <strong>special characters counter online</strong> is a tool that goes beyond basic word
+          counting — it identifies and counts every non-letter character in your text: punctuation
+          marks, symbols, emoji, currency signs, brackets, and more. While every word processor
+          tells you how many words you have, none of them tell you how many <code>@</code> signs,
+          <code>$</code> symbols, or 🔥 emoji are in your content. That gap is exactly what this
+          tool fills.
+        </p>
+        <p>
+          Whether you're a developer counting special chars in a code string, a social media manager
+          tracking emoji usage, or an SEO writer optimizing punctuation density — understanding your
+          special character count gives you data no other tool provides.
+        </p>
 
-<!-- TIDIO -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+        <div class="article-highlight">
+          <div class="ah-label">💡 Key Insight</div>
+          <p>
+            Most word counters count total characters but skip the breakdown. Toolyfi's special
+            characters counter is a browser-based tool that shows an eight-category breakdown:
+            punctuation, brackets, math symbols, currency, web/social symbols, emoji, numbers, and
+            spaces — all counted separately in real time.
+          </p>
+        </div>
 
-<script>
-// ===== CORE COUNTER =====
-const PAGE_ID = 'special-characters-counter';
-const ta = document.getElementById('main-textarea');
+        <h2>What Is a Special Characters Counter?</h2>
+        <p>
+          A <strong>special characters counter</strong> is an online tool that analyzes text and
+          counts every character type separately. Standard characters are letters (A–Z, a–z) and
+          numbers (0–9). Everything else is a "special character" — from the humble period
+          (<code>.</code>) to emoji (😀) to currency symbols (<code>$</code>, <code>€</code>,
+          <code>£</code>).
+        </p>
+        <p>
+          The concept of counting special characters became important as digital content evolved.
+          Early word processors often focused on words and total characters. Modern writing
+          workflows add platform limits, multilingual text, emoji, code, and structured fields,
+          which makes composition inspection more useful.
+        </p>
+        <p>
+          Today, special character counting matters across many fields:
+          <strong>copywriting</strong> (reviewing punctuation and spacing),
+          <strong>programming</strong> (inspecting input strings),
+          <strong>social media</strong> (checking caption composition), and
+          <strong>content operations</strong> (reviewing length before a final preview).
+        </p>
 
-// Emoji regex (Unicode)
-const emojiRegex = /\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}/gu;
+        <h2>How to Use the Special Characters Counter — Step by Step</h2>
 
-function countAll() {
-  const text = ta.value;
+        <h3>Step 1: Open Toolyfi Special Characters Counter</h3>
+        <p>
+          Visit
+          <a href="/special-characters-counter.html">toolyfi.com/special-characters-counter.html</a>
+          — no login, no signup, no download. The tool loads instantly in any browser on any device.
+        </p>
 
-  // Main stats
-  const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).filter(w => w.length > 0).length;
-  const graphemes = typeof Intl !== 'undefined' && Intl.Segmenter ? Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(text), item => item.segment) : Array.from(text);
-  const chars = graphemes.length;
-  const noSpace = graphemes.filter(char => !/^\s$/u.test(char)).length;
-  const sentences = text.trim() === '' ? 0 : (text.match(/[.!?؟]+/g) || []).length;
-  const lines = text === '' ? 0 : text.split('\n').length;
-  const readMin = words === 0 ? '0m' : (Math.ceil(words / 200) < 1 ? '<1m' : Math.ceil(words / 200) + 'm');
+        <h3>Step 2: Paste or Type Your Text</h3>
+        <p>
+          Copy any text from any source — a Word document, email, social media post, code file, or
+          anything else — and paste it into the text box. Or type directly. The tool supports all
+          Unicode text including Urdu, Arabic, Chinese, and emoji.
+        </p>
 
-  setVal('s-words', words.toLocaleString());
-  setVal('s-chars', chars.toLocaleString());
-  setVal('s-nospace', noSpace.toLocaleString());
-  setVal('s-sent', sentences.toLocaleString());
-  setVal('s-lines', lines.toLocaleString());
-  setVal('s-read', readMin);
+        <h3>Step 3: Read Your Results Instantly</h3>
+        <p>
+          Results appear in real time as you type or paste. You'll see six main stats at the top
+          (words, characters, characters without spaces, sentences, lines, reading time) and then
+          the 8-category special characters breakdown below.
+        </p>
 
-  // Special chars
-  const punctChars = /[.,;:!?'"''\-–—…·،؛؟]/g;
-  const bracketChars = /[(){}\[\]<>]/g;
-  const mathChars = /[+\-*/=%^~≠≤≥÷×]/g;
-  const currencyChars = /[$£€¥₹¢₩₪฿₺₽]/g;
-  const webChars = /[@#&_|\\\/`]/g;
-  const numberChars = /[0-9٠-٩]/g;
-  const spaceChars = /[\s]/g;
+        <h3>Step 4: Check Social Media Limits</h3>
+        <p>
+          Scroll to the social media limits section to see color-coded progress bars showing how
+          your character count compares against Twitter/X (280), Instagram (2,200), LinkedIn
+          (3,000), SMS (160), and Meta title (60) limits.
+        </p>
 
-  // Remove emoji from text for other counting
-  const isEmojiCluster = cluster => /\p{Extended_Pictographic}|\p{Regional_Indicator}/u.test(cluster);
-  const textNoEmoji = graphemes.filter(cluster => !isEmojiCluster(cluster)).join('');
+        <h3>Step 5: Copy Your Stats</h3>
+        <p>
+          Click the "Copy Stats" button to copy a formatted summary of all your counts to the
+          clipboard — ready to paste into a report, document, or message.
+        </p>
 
-  const punct = (textNoEmoji.match(punctChars) || []).length;
-  const bracket = (textNoEmoji.match(bracketChars) || []).length;
-  const math = (textNoEmoji.match(mathChars) || []).length;
-  const currency = (textNoEmoji.match(currencyChars) || []).length;
-  const web = (textNoEmoji.match(webChars) || []).length;
-  const numbers = (textNoEmoji.match(numberChars) || []).length;
-  const spaces = (text.match(spaceChars) || []).length;
+        <h2>Complete List of Special Characters We Count</h2>
+        <p>
+          Our tool counts special characters in 8 distinct categories, giving you complete
+          visibility into your text composition:
+        </p>
 
-  // Emoji count
-  const emojiCount = graphemes.filter(isEmojiCluster).length;
+        <div class="article-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Measurement</th>
+                <th>What this page shows</th>
+                <th>Use it for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Visible characters</td>
+                <td>Grapheme-aware count where the browser supports it</td>
+                <td>Editing and plain-text review</td>
+              </tr>
+              <tr>
+                <td>No-spaces count</td>
+                <td>Visible count excluding whitespace graphemes</td>
+                <td>Briefs that explicitly exclude whitespace</td>
+              </tr>
+              <tr>
+                <td>Category totals</td>
+                <td>Selected punctuation, symbols, emoji, numbers, and whitespace</td>
+                <td>Composition inspection</td>
+              </tr>
+              <tr>
+                <td>Reference gauges</td>
+                <td>Approximate text budgets, not destination validation</td>
+                <td>Early drafting only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-  scSet('sc-punct', punct);
-  scSet('sc-bracket', bracket);
-  scSet('sc-math', math);
-  scSet('sc-currency', currency);
-  scSet('sc-web', web);
-  scSet('sc-emoji', emojiCount);
-  scSet('sc-numbers', numbers);
-  scSet('sc-spaces', spaces);
+        <h2>Practical editing habits for special characters</h2>
+        <ul>
+          <li>
+            <strong>Punctuation:</strong> Use punctuation to make the intended sentence structure
+            clear; review repeated marks that were not intentional.
+          </li>
+          <li>
+            <strong>Emoji:</strong> Use them when they add clear meaning or tone, and check the
+            final platform count before publishing.
+          </li>
+          <li>
+            <strong>Titles and descriptions:</strong> Draft for clarity and relevance, then preview
+            the final text in the publishing system that will display it.
+          </li>
+          <li>
+            <strong>Currency symbols:</strong> Use a consistent currency format that your reader and
+            publishing context understand.
+          </li>
+          <li>
+            <strong>Code in content:</strong> When embedding code in articles, special characters
+            like <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code> must be HTML-encoded.
+            Count them first, then replace systematically.
+          </li>
+          <li>
+            <strong>Hashtags:</strong> Review each marker and tag for relevance to the audience and
+            the platform’s current posting guidelines.
+          </li>
+        </ul>
 
-  // Social limits
-  updateSocial('sl-twitter', 'sl-twitter-txt', chars, 280);
-  updateSocial('sl-ig', 'sl-ig-txt', chars, 2200);
-  updateSocial('sl-li', 'sl-li-txt', chars, 3000);
-  updateSocial('sl-sms', 'sl-sms-txt', chars, 160);
-  updateSocial('sl-meta', 'sl-meta-txt', chars, 60);
-}
+        <h2>Related Tools on Toolyfi</h2>
+        <p>
+          Combine the Special Characters Counter with these free Toolyfi tools for a complete text
+          workflow:
+        </p>
+        <ul>
+          <li>
+            <a href="/word-counter.html">📝 Word Counter</a> — Count words, sentences, paragraphs
+            and reading time instantly
+          </li>
+          <li>
+            <a href="/case-converter.html">🔡 Case Converter</a> — Convert text to UPPERCASE,
+            lowercase or Title Case
+          </li>
+          <li>
+            <a href="/json-formatter.html">🖥️ JSON Formatter</a> — Format and validate JSON with
+            special character escaping
+          </li>
+          <li>
+            <a href="/base64-encoder.html">🔐 Base64 Encoder</a> — Encode/decode text including
+            special characters to Base64
+          </li>
+        </ul>
 
-function setVal(id, val) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  if (el.textContent !== String(val)) {
-    el.textContent = val;
-    el.classList.remove('bump');
-    void el.offsetWidth;
-    el.classList.add('bump');
-    setTimeout(() => el.classList.remove('bump'), 300);
-  }
-}
+        <h2>How Special Characters Affect Readability Scores</h2>
+        <p>
+          Readability formulas like Flesch-Kincaid and Gunning Fog use sentence length and word
+          complexity. But <strong>punctuation directly controls sentence length</strong> — more
+          periods = shorter sentences = higher readability score. Understanding your punctuation
+          count is therefore essential for anyone targeting a specific readability grade.
+        </p>
+        <p>
+          Content for general audiences should target a Flesch Reading Ease score of 60–70 (Grade
+          8–9 level). This typically means sentences of 15–20 words with appropriate punctuation
+          every 2–3 sentences. Our sentence counter and punctuation counter give you the data to hit
+          this target precisely.
+        </p>
+        <p>
+          For technical content targeting developers or academics, a lower readability score is
+          acceptable. Complex sentences with multiple clauses (separated by semicolons and
+          em-dashes) are expected. Our tool helps you confirm the right density for your specific
+          audience.
+        </p>
 
-function scSet(id, val) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const disp = val.toLocaleString();
-  if (el.textContent !== disp) {
-    el.textContent = disp;
-    el.classList.remove('bump');
-    void el.offsetWidth;
-    el.classList.add('bump');
-    setTimeout(() => el.classList.remove('bump'), 300);
-  }
-}
+        <h2>Special Characters in Different Languages</h2>
+        <p>
+          Different languages use different special characters. Arabic uses
+          <strong>Arabic punctuation marks</strong> (؟ ، ؛) that are separate from English
+          punctuation. Urdu uses similar Arabic-script punctuation. Our tool counts all Unicode
+          punctuation, so it works accurately for all right-to-left and left-to-right languages.
+        </p>
+        <p>
+          Chinese and Japanese text uses <strong>fullwidth characters</strong> — including fullwidth
+          punctuation (。、！？) that look similar to English punctuation but are separate Unicode
+          characters. These are counted correctly in the punctuation category.
+        </p>
+        <p>
+          Developers working with <strong>multilingual applications</strong> often need to count
+          special characters across multiple scripts. Paste any combination of English, Arabic,
+          Hindi, and Chinese text — our tool handles it all accurately.
+        </p>
 
-function updateSocial(barId, txtId, chars, limit) {
-  const pct = Math.min((chars / limit) * 100, 100);
-  const bar = document.getElementById(barId);
-  const txt = document.getElementById(txtId);
-  if (!bar || !txt) return;
-  bar.style.width = pct + '%';
-  const remaining = limit - chars;
-  if (chars > limit) {
-    bar.style.background = 'var(--red)';
-    txt.textContent = (chars - limit).toLocaleString() + ' over';
-    txt.className = 'sl-count sl-over';
-  } else if (pct > 80) {
-    bar.style.background = 'var(--accent)';
-    txt.textContent = chars.toLocaleString() + ' / ' + limit.toLocaleString();
-    txt.className = 'sl-count sl-warn';
-  } else {
-    txt.textContent = chars.toLocaleString() + ' / ' + limit.toLocaleString();
-    txt.className = 'sl-count sl-ok';
-  }
-}
+        <h2>Review Unicode text before a hard limit becomes a problem</h2>
+        <p>
+          A reliable counting workflow begins with the kind of unit that the receiving system
+          actually uses. A writing brief may mean visible characters, while a database column can be
+          measured in code units or bytes. A messaging service can use a different alphabet and
+          segmentation rule. The same short string can therefore pass one field and fail another
+          without either result being a mistake. Treat the first count as a way to ask a better
+          question: which unit does this destination document, and which final text will it receive
+          after normalisation?
+        </p>
+        <p>
+          Copy and paste can introduce details a person does not immediately notice. A line copied
+          from a spreadsheet may carry a tab. A note copied from a rich editor may contain a
+          nonbreaking space, curly quotation mark, or an extra newline. A software example may carry
+          backslashes and angle brackets that must be escaped before it reaches HTML or JSON. Before
+          shortening the writing itself, look at the category cards. A surprising whitespace or
+          punctuation total often points to a formatting issue that can be removed without changing
+          the message.
+        </p>
 
-ta.addEventListener('input', countAll);
+        <h2>Use a repeatable review sequence for captions, forms, and code-like text</h2>
+        <p>
+          For a caption or short description, draft the useful version first. Paste it into the
+          counter and inspect visible characters, no-whitespace characters, emoji clusters, and
+          symbols. Make one intentional edit, then recount. If the text will be published on a
+          platform with a hard composer rule, place the final version in that platform before
+          publishing. A generic meter cannot know whether a URL is shortened, whether an attachment
+          adds metadata, or whether the service uses weighted characters. The reference gauges are
+          most useful early in a draft, not as a final compliance statement.
+        </p>
+        <p>
+          For a form or developer workflow, use a representative but non-sensitive example. Check
+          the categories the receiving code cares about: brackets and quotes for a structured
+          snippet, currency signs for a price field, or punctuation and whitespace for a validation
+          rule. Then implement the actual rule where the input is accepted. A browser counter can
+          demonstrate what is present in one value; it cannot substitute for server-side validation,
+          canonicalisation, logging policy, error handling, or authorization controls.
+        </p>
 
-// ===== CLEAR =====
-function clearText() {
-  ta.value = '';
-  countAll();
-  ta.focus();
-}
+        <h2>Interpret category totals without double-counting their meaning</h2>
+        <p>
+          The category cards answer different editorial questions, so their totals should not be
+          added together to create a second overall character count. A dash can read like
+          punctuation in a sentence and like a mathematical operator in code. A number can appear
+          next to a currency sign. An emoji can be made from multiple underlying code points but
+          appear as one cluster to the reader. The visible-character total remains the broad view of
+          the current draft; the category cards are a diagnostic view that helps explain why a line
+          looks or behaves a certain way.
+        </p>
+        <p>
+          This distinction matters in multilingual text. An Arabic question mark, an Urdu
+          punctuation mark, a fullwidth East Asian comma, or a composed accent can be visually
+          familiar while being represented differently from an English keyboard character. A
+          grapheme-aware browser count is useful for reviewing what a reader sees, but a target API,
+          database, or message provider still has the final say on its accepted length and encoding.
+          Test the exact final value in the same integration when a rejection, truncation, or charge
+          would have a meaningful consequence.
+        </p>
 
-// ===== COPY STATS =====
-function copyStats() {
-  const lines = [
-    '📊 Toolyfi Special Characters Counter Results',
-    '─────────────────────────────',
-    `Words: ${document.getElementById('s-words').textContent}`,
-    `Characters: ${document.getElementById('s-chars').textContent}`,
-    `Characters (no spaces): ${document.getElementById('s-nospace').textContent}`,
-    `Sentences: ${document.getElementById('s-sent').textContent}`,
-    `Lines: ${document.getElementById('s-lines').textContent}`,
-    `Read Time: ${document.getElementById('s-read').textContent}`,
-    '─────────────────────────────',
-    '🔣 Special Characters:',
-    `Punctuation: ${document.getElementById('sc-punct').textContent}`,
-    `Brackets: ${document.getElementById('sc-bracket').textContent}`,
-    `Math/Logic: ${document.getElementById('sc-math').textContent}`,
-    `Currency: ${document.getElementById('sc-currency').textContent}`,
-    `Web/Social: ${document.getElementById('sc-web').textContent}`,
-    `Emoji: ${document.getElementById('sc-emoji').textContent}`,
-    `Numbers: ${document.getElementById('sc-numbers').textContent}`,
-    `Spaces: ${document.getElementById('sc-spaces').textContent}`,
-    '─────────────────────────────',
-    'Counted by toolyfi.com/special-characters-counter.html'
-  ];
-  navigator.clipboard.writeText(lines.join('\n')).then(() => {
-    const btn = document.querySelector('.btn-copy');
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => btn.textContent = '📋 Copy Stats', 2000);
-  });
-}
+        <h2>Conclusion</h2>
+        <p>
+          The <strong>Toolyfi Special Characters Counter</strong> gives you a live view of visible
+          characters, whitespace, selected character categories, and emoji clusters. Use it to
+          inspect code-like strings, captions, titles, summaries, and other text before you move to
+          the system that will ultimately enforce its own rules.
+        </p>
+        <p>
+          Paste a non-sensitive draft above, inspect the result, and then verify strict platform or
+          application limits at the final destination.
+        </p>
+        <h2>Count text units with the right expectation</h2>
+        <p>
+          Character counting sounds simple until text includes accented letters, Urdu or Arabic
+          script, CJK characters, line breaks, and emoji. A visible symbol can be represented by
+          more than one underlying code point, particularly when it uses a skin-tone modifier, a
+          flag pair, or a zero-width joiner. This tool uses browser grapheme segmentation when the
+          browser supports it, which is closer to what a reader sees as one character than a raw
+          JavaScript string length. A platform may still use a different rule for its own composer,
+          so treat the platform meters as a practical reference rather than a publishing guarantee.
+        </p>
+        <p>
+          Use the total count when a form says “characters,” compare the no-whitespace count when a
+          brief excludes spaces, and use the category cards to understand what is actually present.
+          The punctuation, brackets, math, currency, web/social, numbers, spaces, and emoji cards
+          are designed as an inspection aid. Some marks can belong to more than one familiar
+          category in human writing, so the category total should not be added together as if it
+          were a separate character total.
+        </p>
+        <h2>Check a caption or short text before publishing</h2>
+        <p>
+          Start with your final wording, then paste it into the editor. Check the total
+          visible-character count, remove repeated punctuation, and decide whether each emoji,
+          hashtag, link marker, price symbol, or line break adds useful meaning. If you are
+          preparing an X post, Instagram caption, LinkedIn post, SMS, title, or description, use the
+          gauge as a quick estimate and then verify the final text in the destination platform.
+          URLs, weighted Unicode characters, attachment metadata, and platform policy changes can
+          alter the final count.
+        </p>
+        <p>
+          For SMS, character limits also depend on the encoding and the messaging provider. A
+          visible emoji or non-Latin character may cause a message to use a Unicode encoding with
+          different segmentation rules. Do not use a general counter as a billing estimate. Check
+          the message service’s documentation and use its test environment before a real campaign.
+        </p>
+        <h2>Use category counts for quality control</h2>
+        <p>
+          Category counts are valuable for spotting accidental changes. A copied spreadsheet cell
+          may bring hidden tabs or line breaks. A text field intended to allow letters and numbers
+          may contain an unexpected currency sign, bracket, or control character. A code sample
+          might require an exact number of quotation marks, ampersands, angle brackets, or
+          backslashes. The tool gives you a fast visual overview before you add rules to a form
+          validator, regular expression, CSV file, or template.
+        </p>
+        <p>
+          For normal editorial writing, symbols are not automatically good or bad. Multiple
+          exclamation marks can be intentional in a headline; an em dash can make a sentence
+          clearer; a currency sign can be essential. The useful question is whether the text says
+          what you intend and meets the destination’s real limits. This page measures composition.
+          It does not score quality, read language fluency, determine spam, or predict search
+          performance.
+        </p>
+        <h2>Work safely with copied text</h2>
+        <p>
+          The counter runs in the browser and does not need an account for the counting action. Even
+          so, avoid using public tools as a place to store confidential information. Do not paste
+          passwords, private customer data, API keys, medical records, unpublished contracts, or
+          access tokens into any general-purpose web page. Use a redacted test string if you only
+          need to check a format or validation rule.
+        </p>
+        <p>
+          When a longer workflow is needed, use the
+          <a href="/word-counter.html">Word Counter</a> for words and reading time, the
+          <a href="/text-trimmer.html">Text Trimmer</a> to remove accidental spaces and blank lines,
+          the <a href="/case-converter.html">Case Converter</a> to standardise text casing, and the
+          <a href="/base64-encoder.html">Base64 Encoder</a> only when a system specifically asks for
+          a reversible transport encoding. Each utility has a different role; no counter encrypts,
+          sanitizes, or validates a value by itself.
+        </p>
+        <h2>Common counting questions</h2>
+        <h3>Why is the count different from another app?</h3>
+        <p>
+          Different applications may count code units, Unicode code points, grapheme clusters, or
+          weighted characters. Text with emoji, regional flags, combining accents, or non-Latin
+          scripts makes those differences more visible. Compare the same final text in the
+          destination composer when a hard limit matters.
+        </p>
+        <h3>Do line breaks and tabs count?</h3>
+        <p>
+          They are whitespace and are included in the total visible text analysis. The no-whitespace
+          figure removes spaces, tabs, and line breaks so you can compare both views. A target
+          system can use its own handling, especially when it normalises pasted content.
+        </p>
+        <h3>Can this replace input validation?</h3>
+        <p>
+          No. Use it to inspect an example or prototype a rule. Production validation belongs in the
+          application that receives the input, using clear requirements for length, allowed
+          characters, normalisation, encoding, and security.
+        </p>
+        <h2>Final checklist</h2>
+        <ol>
+          <li>Paste the final version of the text, not an earlier draft.</li>
+          <li>Choose the count that matches the receiving system’s requirement.</li>
+          <li>
+            Inspect unusual category results such as unexpected line breaks, symbols, or emoji.
+          </li>
+          <li>
+            Verify platform-specific limits in the final destination when the limit is strict.
+          </li>
+          <li>Keep sensitive text out of shared drafts and public troubleshooting examples.</li>
+        </ol>
+        <p>
+          A special characters counter is most helpful when it makes the next editing decision
+          clearer. Use the live breakdown to understand your text, keep the final content readable,
+          and confirm important limits where they are actually enforced.
+        </p>
 
-// ===== PASTE =====
-async function pasteText() {
-  try {
-    const text = await navigator.clipboard.readText();
-    ta.value = text;
-    countAll();
-  } catch { ta.focus(); }
-}
+        <h2>Understand characters, code points, and bytes</h2>
+        <p>
+          A character that looks simple on screen is not always stored as one byte or one JavaScript
+          code unit. UTF-8 uses a variable number of bytes, so an English letter may use one byte
+          while a non-Latin character or emoji may use more. A grapheme cluster is closer to a
+          reader’s visual unit: it can join several code points into one displayed symbol, as
+          happens with some flags and family emoji. That is why a raw byte count, a raw string
+          length, and a visible-character count can disagree without any tool being “wrong.” They
+          are answering different questions.
+        </p>
+        <p>
+          When an integration documents a maximum size in bytes, use a byte-aware check in that
+          integration. When a form says “maximum 50 characters,” clarify whether it means visible
+          characters, code points, or the storage system’s length. The tool above is designed for
+          everyday visible-text inspection. It gives a practical result for editing and previews,
+          but the system that enforces a rule is always the final authority.
+        </p>
+        <h2>Use text limits without inventing SEO rules</h2>
+        <p>
+          Text length is one input to a clear title, description, caption, email subject, or form
+          response. It is not a ranking formula. Search results can show different snippets for
+          different queries, social networks can revise their composer behaviour, and messaging
+          providers can apply their own encoding rules. Instead of writing to a magic number, write
+          a useful message first, then check whether it is truncated or rejected in the system where
+          it will appear.
+        </p>
+        <p>
+          For an editorial review, copy the working line into the counter, scan for accidental
+          double spaces or duplicated punctuation, and test a concise alternative. For an interface,
+          use the count to decide whether a hint, validation message, or remaining-character
+          indicator would help. Then implement the actual rule in the destination application and
+          test its error state with real inputs.
+        </p>
+        <h2>Examples of careful category review</h2>
+        <p>
+          A product title such as <code>Summer offer — 50% off! 🎉</code> has punctuation, a dash, a
+          percentage sign, an exclamation mark, an emoji, a number, and spaces. The category cards
+          make that composition obvious. A developer can use the same workflow on a templated URL, a
+          configuration value, or an escaped HTML snippet. A writer can use it to notice an
+          unintended run of exclamation marks or a stray tab copied from a spreadsheet.
+        </p>
+        <p>
+          If you work with multilingual content, check an example from the real language rather than
+          an English substitute. Arabic and Urdu punctuation, fullwidth East Asian punctuation, and
+          combining marks can behave differently from Latin text in different applications. The
+          counter can help you inspect the visible content, while the target CMS, database, or
+          messaging system should be tested with the final characters it receives.
+        </p>
+        <h2>Keep the workflow small and repeatable</h2>
+        <p>
+          The most reliable pattern is simple: paste a non-sensitive final draft, inspect the
+          counts, make one intentional edit, and check again. Copy the summary when it helps a
+          review or handoff, but do not treat a text counter as a source of audience, ranking,
+          billing, legal, or security advice. Keep the original copy in the approved document or
+          repository, and use this workspace to answer a focused question about composition and
+          length.
+        </p>
+        <h2>Make the count actionable</h2>
+        <p>
+          After reviewing a result, make one purposeful change rather than chasing a theoretical
+          perfect score. Remove an accidental duplicate symbol, preserve an intentional
+          language-specific mark, shorten a caption for its actual destination, or document why a
+          validation rule permits a character. Then recount the finished text. That loop keeps the
+          counter useful as an editing aid instead of turning a simple measurement into a substitute
+          for clear writing, tested product requirements, or platform-specific validation.
+        </p>
+        <h2>Scope of this text analysis</h2>
+        <p>
+          This counter measures the text placed in its editor at that moment. It does not preserve a
+          document, compare versions, inspect hidden formatting outside pasted content, or resolve
+          how every downstream service will normalise Unicode. Those boundaries are useful: the
+          result stays focused on a visible draft and can be checked again after a change. If a
+          workflow depends on an exact field limit, test the final submitted text through the same
+          form, API, message service, or publishing screen that will receive it. Pair the counter
+          with explicit product requirements and your own final preview rather than assuming a
+          general-purpose measurement is a universal validator.
+        </p>
+      </div>
+    </div>
 
-// ===== DARK MODE =====
-let darkMode = localStorage.getItem('tf_dark_' + PAGE_ID) === 'true';
-function applyDark() {
-  if (darkMode) {
-    document.documentElement.style.setProperty('--light', '#1e293b');
-    document.documentElement.style.setProperty('--border', '#334155');
-    document.documentElement.style.setProperty('--white', '#0f172a');
-    document.body.style.background = '#0f172a';
-    document.getElementById('btn-dark').textContent = '☀️ Light Mode';
-    document.getElementById('btn-dark').classList.add('active');
-  } else {
-    document.documentElement.style.setProperty('--light', '#f8fafc');
-    document.documentElement.style.setProperty('--border', '#e2e8f0');
-    document.documentElement.style.setProperty('--white', '#ffffff');
-    document.body.style.background = '#f8fafc';
-    document.getElementById('btn-dark').textContent = '🌙 Dark Mode';
-    document.getElementById('btn-dark').classList.remove('active');
-  }
-}
-function toggleDark() {
-  darkMode = !darkMode;
-  localStorage.setItem('tf_dark_' + PAGE_ID, darkMode);
-  applyDark();
-}
-applyDark();
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-inner">
+        <div class="cta-glow"></div>
+        <h2>Inspect <em>the next draft</em> with intent</h2>
+        <p>
+          Review the live text breakdown, make a purposeful edit, then check strict limits where the
+          text will actually be submitted.
+        </p>
+        <a
+          href="#"
+          onclick="document.getElementById('main-textarea').focus();window.scrollTo({top:0,behavior:'smooth'});return false;"
+          class="cta-btn"
+          >Start Counting Now →</a
+        >
+      </div>
+    </div>
 
-// ===== FAQ =====
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
+    <!-- FOOTER TOOLS -->
+    <div class="footer-tools">
+      <div class="ft-inner">
+        <div class="ft-title">🛠️ More Free Tools on Toolyfi</div>
+        <div class="ft-grid">
+          <a href="/word-counter.html" class="ft-card"
+            ><span class="fi">📝</span><span class="fn">Word Counter</span></a
+          >
+          <a href="/qr-code-generator.html" class="ft-card"
+            ><span class="fi">📱</span><span class="fn">QR Code Generator</span></a
+          >
+          <a href="/image-resizer.html" class="ft-card"
+            ><span class="fi">✂️</span><span class="fn">Image Resizer</span></a
+          >
+          <a href="/image-compressor.html" class="ft-card"
+            ><span class="fi">🗜️</span><span class="fn">Image Compressor</span></a
+          >
+          <a href="/base64-encoder.html" class="ft-card"
+            ><span class="fi">🔐</span><span class="fn">Base64 Encoder</span></a
+          >
+          <a href="/password-generator.html" class="ft-card"
+            ><span class="fi">🔑</span><span class="fn">Password Generator</span></a
+          >
+          <a href="/age-calculator.html" class="ft-card"
+            ><span class="fi">🎂</span><span class="fn">Age Calculator</span></a
+          >
+          <a href="/bmi-calculator.html" class="ft-card"
+            ><span class="fi">⚖️</span><span class="fn">BMI Calculator</span></a
+          >
+          <a href="/currency-converter.html" class="ft-card"
+            ><span class="fi">💱</span><span class="fn">Currency Converter</span></a
+          >
+          <a href="/json-formatter.html" class="ft-card"
+            ><span class="fi">🖥️</span><span class="fn">JSON Formatter</span></a
+          >
+          <a href="/csv-to-json.html" class="ft-card"
+            ><span class="fi">📊</span><span class="fn">CSV to JSON</span></a
+          >
+          <a href="/invoice-generator.html" class="ft-card"
+            ><span class="fi">🧾</span><span class="fn">Invoice Generator</span></a
+          >
+          <a href="/resume-builder.html" class="ft-card"
+            ><span class="fi">📄</span><span class="fn">Resume Builder</span></a
+          >
+          <a href="/tip-calculator.html" class="ft-card"
+            ><span class="fi">💰</span><span class="fn">Tip Calculator</span></a
+          >
+          <a href="/scientific-calculator.html" class="ft-card"
+            ><span class="fi">🧮</span><span class="fn">Scientific Calculator</span></a
+          >
+        </div>
+      </div>
+    </div>
 
-countAll();
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+    <!-- FOOTER -->
+    <footer>
+      <a href="index.html" class="footer-brand"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <p>
+        A growing collection of browser-based tools for developers, writers, and everyday tasks.
+      </p>
+      <p style="margin-top: 8px">
+        <a href="index.html">Home</a> &nbsp;|&nbsp;
+        <a href="index.html#directory">All tools</a> &nbsp;|&nbsp;
+        <a href="about.html">About</a> &nbsp;|&nbsp;
+        <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+        <a href="terms.html">Terms</a>
+      </p>
+    </footer>
+
+    <script>
+      // ===== CORE COUNTER =====
+      const PAGE_ID = "special-characters-counter";
+      const ta = document.getElementById("main-textarea");
+
+      // Emoji regex (Unicode)
+      const emojiRegex = /\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}/gu;
+
+      function countAll() {
+        const text = ta.value;
+
+        // Main stats
+        const words =
+          text.trim() === ""
+            ? 0
+            : text
+                .trim()
+                .split(/\s+/)
+                .filter((w) => w.length > 0).length;
+        const graphemes =
+          typeof Intl !== "undefined" && Intl.Segmenter
+            ? Array.from(
+                new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(text),
+                (item) => item.segment,
+              )
+            : Array.from(text);
+        const chars = graphemes.length;
+        const noSpace = graphemes.filter((char) => !/^\s$/u.test(char)).length;
+        const sentences = text.trim() === "" ? 0 : (text.match(/[.!?؟]+/g) || []).length;
+        const lines = text === "" ? 0 : text.split("\n").length;
+        const readMin =
+          words === 0 ? "0m" : Math.ceil(words / 200) < 1 ? "<1m" : Math.ceil(words / 200) + "m";
+
+        setVal("s-words", words.toLocaleString());
+        setVal("s-chars", chars.toLocaleString());
+        setVal("s-nospace", noSpace.toLocaleString());
+        setVal("s-sent", sentences.toLocaleString());
+        setVal("s-lines", lines.toLocaleString());
+        setVal("s-read", readMin);
+
+        // Special chars
+        const punctChars = /[.,;:!?'"''\-–—…·،؛؟]/g;
+        const bracketChars = /[(){}\[\]<>]/g;
+        const mathChars = /[+\-*/=%^~≠≤≥÷×]/g;
+        const currencyChars = /[$£€¥₹¢₩₪฿₺₽]/g;
+        const webChars = /[@#&_|\\\/`]/g;
+        const numberChars = /[0-9٠-٩]/g;
+        const spaceChars = /[\s]/g;
+
+        // Remove emoji from text for other counting
+        const isEmojiCluster = (cluster) =>
+          /\p{Extended_Pictographic}|\p{Regional_Indicator}/u.test(cluster);
+        const textNoEmoji = graphemes.filter((cluster) => !isEmojiCluster(cluster)).join("");
+
+        const punct = (textNoEmoji.match(punctChars) || []).length;
+        const bracket = (textNoEmoji.match(bracketChars) || []).length;
+        const math = (textNoEmoji.match(mathChars) || []).length;
+        const currency = (textNoEmoji.match(currencyChars) || []).length;
+        const web = (textNoEmoji.match(webChars) || []).length;
+        const numbers = (textNoEmoji.match(numberChars) || []).length;
+        const spaces = (text.match(spaceChars) || []).length;
+
+        // Emoji count
+        const emojiCount = graphemes.filter(isEmojiCluster).length;
+
+        scSet("sc-punct", punct);
+        scSet("sc-bracket", bracket);
+        scSet("sc-math", math);
+        scSet("sc-currency", currency);
+        scSet("sc-web", web);
+        scSet("sc-emoji", emojiCount);
+        scSet("sc-numbers", numbers);
+        scSet("sc-spaces", spaces);
+
+        // Social limits
+        updateSocial("sl-twitter", "sl-twitter-txt", chars, 280);
+        updateSocial("sl-ig", "sl-ig-txt", chars, 2200);
+        updateSocial("sl-li", "sl-li-txt", chars, 3000);
+        updateSocial("sl-sms", "sl-sms-txt", chars, 160);
+        updateSocial("sl-meta", "sl-meta-txt", chars, 60);
+      }
+
+      function setVal(id, val) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.textContent !== String(val)) {
+          el.textContent = val;
+          el.classList.remove("bump");
+          void el.offsetWidth;
+          el.classList.add("bump");
+          setTimeout(() => el.classList.remove("bump"), 300);
+        }
+      }
+
+      function scSet(id, val) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const disp = val.toLocaleString();
+        if (el.textContent !== disp) {
+          el.textContent = disp;
+          el.classList.remove("bump");
+          void el.offsetWidth;
+          el.classList.add("bump");
+          setTimeout(() => el.classList.remove("bump"), 300);
+        }
+      }
+
+      function updateSocial(barId, txtId, chars, limit) {
+        const pct = Math.min((chars / limit) * 100, 100);
+        const bar = document.getElementById(barId);
+        const txt = document.getElementById(txtId);
+        if (!bar || !txt) return;
+        bar.style.width = pct + "%";
+        const remaining = limit - chars;
+        if (chars > limit) {
+          bar.style.background = "var(--red)";
+          txt.textContent = (chars - limit).toLocaleString() + " over";
+          txt.className = "sl-count sl-over";
+        } else if (pct > 80) {
+          bar.style.background = "var(--accent)";
+          txt.textContent = chars.toLocaleString() + " / " + limit.toLocaleString();
+          txt.className = "sl-count sl-warn";
+        } else {
+          txt.textContent = chars.toLocaleString() + " / " + limit.toLocaleString();
+          txt.className = "sl-count sl-ok";
+        }
+      }
+
+      ta.addEventListener("input", countAll);
+
+      // ===== CLEAR =====
+      function clearText() {
+        ta.value = "";
+        countAll();
+        ta.focus();
+      }
+
+      // ===== COPY STATS =====
+      function copyStats() {
+        const lines = [
+          "📊 Toolyfi Special Characters Counter Results",
+          "─────────────────────────────",
+          `Words: ${document.getElementById("s-words").textContent}`,
+          `Characters: ${document.getElementById("s-chars").textContent}`,
+          `Characters (no spaces): ${document.getElementById("s-nospace").textContent}`,
+          `Sentences: ${document.getElementById("s-sent").textContent}`,
+          `Lines: ${document.getElementById("s-lines").textContent}`,
+          `Read Time: ${document.getElementById("s-read").textContent}`,
+          "─────────────────────────────",
+          "🔣 Special Characters:",
+          `Punctuation: ${document.getElementById("sc-punct").textContent}`,
+          `Brackets: ${document.getElementById("sc-bracket").textContent}`,
+          `Math/Logic: ${document.getElementById("sc-math").textContent}`,
+          `Currency: ${document.getElementById("sc-currency").textContent}`,
+          `Web/Social: ${document.getElementById("sc-web").textContent}`,
+          `Emoji: ${document.getElementById("sc-emoji").textContent}`,
+          `Numbers: ${document.getElementById("sc-numbers").textContent}`,
+          `Spaces: ${document.getElementById("sc-spaces").textContent}`,
+          "─────────────────────────────",
+          "Counted by toolyfi.com/special-characters-counter.html",
+        ];
+        navigator.clipboard.writeText(lines.join("\n")).then(() => {
+          const btn = document.querySelector(".btn-copy");
+          btn.textContent = "✅ Copied!";
+          setTimeout(() => (btn.textContent = "📋 Copy Stats"), 2000);
+        });
+      }
+
+      // ===== PASTE =====
+      async function pasteText() {
+        try {
+          const text = await navigator.clipboard.readText();
+          ta.value = text;
+          countAll();
+        } catch {
+          ta.focus();
+        }
+      }
+
+      // ===== DARK MODE =====
+      let darkMode = localStorage.getItem("tf_dark_" + PAGE_ID) === "true";
+      function applyDark() {
+        if (darkMode) {
+          document.documentElement.style.setProperty("--light", "#1e293b");
+          document.documentElement.style.setProperty("--border", "#334155");
+          document.documentElement.style.setProperty("--white", "#0f172a");
+          document.body.style.background = "#0f172a";
+          document.getElementById("btn-dark").textContent = "☀️ Light Mode";
+          document.getElementById("btn-dark").classList.add("active");
+        } else {
+          document.documentElement.style.setProperty("--light", "#f8fafc");
+          document.documentElement.style.setProperty("--border", "#e2e8f0");
+          document.documentElement.style.setProperty("--white", "#ffffff");
+          document.body.style.background = "#f8fafc";
+          document.getElementById("btn-dark").textContent = "🌙 Dark Mode";
+          document.getElementById("btn-dark").classList.remove("active");
+        }
+      }
+      function toggleDark() {
+        darkMode = !darkMode;
+        localStorage.setItem("tf_dark_" + PAGE_ID, darkMode);
+        applyDark();
+      }
+      applyDark();
+
+      // ===== FAQ =====
+      document.querySelectorAll(".faq-q").forEach((q) => {
+        q.addEventListener("click", () => {
+          const item = q.parentElement;
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item").forEach((i) => {
+            i.classList.remove("open");
+            const button = i.querySelector(".faq-q");
+            if (button) button.setAttribute("aria-expanded", "false");
+          });
+          if (!isOpen) {
+            item.classList.add("open");
+            q.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      countAll();
+    </script>
+  </body>
 </html>
