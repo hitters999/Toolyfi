@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UUID Generator: Secure Browser-Local v4 IDs | Toolyfi</title>
+    <meta
+      name="description"
+      content="Generate cryptographically random UUID v4 values locally in your browser. Create batches, choose a practical format, inspect a UUID, copy, or download the result."
+    />
+    <meta
+      name="keywords"
+      content="UUID generator, UUID v4 generator, GUID generator, random UUID online, UUID validator, bulk UUID generator"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/uuid-generator.html" />
+    <meta property="og:title" content="UUID Generator: Secure Browser-Local v4 IDs | Toolyfi" />
+    <meta
+      property="og:description"
+      content="A browser-local UUID v4 generator, formatter, batch exporter, and representation inspector."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/uuid-generator.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-uuid-generator-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi UUID Generator",
+        "url": "https://toolyfi.com/uuid-generator.html",
+        "description": "A browser-local tool that creates cryptographically random UUID v4 values, formats batches, and checks UUID representations.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "UUID Generator",
+            "item": "https://toolyfi.com/uuid-generator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a UUID?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A UUID is a 128-bit identifier commonly written as 32 hexadecimal digits in an 8-4-4-4-12 layout."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What UUID version does this tool generate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It generates random UUID v4 values through crypto.randomUUID() in a supporting secure browser context."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are UUIDs generated locally?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Generation, formatting, validation, copying, and downloads run in your browser. This page does not send or retain the values."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I generate many UUIDs at once?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Choose a batch size from 1 to 100, then copy or download the generated local list."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a UUID the same as a GUID?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GUID is a Microsoft term commonly used for the same 128-bit UUID representation. Presentation conventions may differ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a valid UUID prove that an ID exists?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Validation checks representation only. It cannot confirm that an identifier exists, is authorized, or belongs to a particular record."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are v4 UUIDs collision-free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No random identifier can offer an absolute guarantee. Use a database unique constraint or the relevant system safeguard where uniqueness matters."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use UUIDs as passwords or security tokens?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Do not assume that a UUID meets a system’s security-token requirements. Follow the target system’s documented credential and entropy requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do compact, braced, and URN formats mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "They are presentation forms of the same UUID bytes: compact removes hyphens, braced wraps the canonical form, and URN adds the urn:uuid prefix."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is crypto.randomUUID unavailable in my browser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The method requires a supporting secure context. Update the browser or use a documented server-side UUID library for the target environment."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: secure local UUID v4 workflow, warm ivory/ink/coral, static hero only. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fff;
+        --ink: #172437;
+        --muted: #657184;
+        --coral: #ef6c54;
+        --soft: #fff0eb;
+        --blue: #e8f0f5;
+        --sage: #e8f2ec;
+        --line: #e5dfd6;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+        margin: 0;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .site-header {
+        align-items: center;
+        background: rgba(250, 248, 244, 0.96);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        padding: 15px clamp(18px, 4vw, 58px);
+        position: relative;
+        z-index: 4;
+      }
+      .logo {
+        align-items: center;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 1.48rem;
+        font-weight: 800;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo img {
+        height: 34px;
+        width: 34px;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        color: var(--muted);
+        font-size: 0.83rem;
+        padding: 22px 0 8px;
+      }
+      .crumbs a {
+        font-weight: 700;
+      }
+      .hero {
+        display: grid;
+        gap: 34px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+        padding: 52px 0 62px;
+      }
+      .eyebrow {
+        align-items: center;
+        color: var(--coral);
+        display: flex;
+        font-size: 0.75rem;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        background: var(--coral);
+        content: "";
+        height: 2px;
+        width: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+      }
+      h1 {
+        font-size: clamp(3.2rem, 7vw, 6.8rem);
+        margin: 18px 0 22px;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .lead {
+        color: #516072;
+        font-size: 1.07rem;
+        max-width: 600px;
+      }
+      .trust {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: #445269;
+        font-size: 0.83rem;
+        font-weight: 700;
+        margin-top: 28px;
+        padding: 14px 17px;
+      }
+      .trust strong {
+        color: var(--coral);
+        margin-right: 8px;
+      }
+      .toolyfi-visual {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .toolyfi-visual > img {
+        animation: none !important;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        transform: none !important;
+        transition: none !important;
+        width: 100%;
+      }
+      .toolyfi-hero-mark {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.93);
+        border-radius: 999px;
+        bottom: 14px;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        gap: 6px;
+        padding: 7px 11px;
+        position: absolute;
+        right: 14px;
+      }
+      .toolyfi-hero-mark img {
+        height: 24px;
+        width: 24px;
+      }
+      .uuid-layout {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 20px;
+      }
+      .generator-panel,
+      .inspect-panel {
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+      .inspect-panel {
+        background: var(--blue);
+      }
+      .panel-kicker {
+        color: var(--coral);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .generator-panel h3,
+      .inspect-panel h3 {
+        font-size: 1.7rem;
+        margin: 5px 0 10px;
+      }
+      .control-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      label {
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+      select {
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        display: block;
+        margin-top: 5px;
+        padding: 10px;
+        width: 100%;
+      }
+      .uuid-list {
+        border-top: 1px solid var(--line);
+        margin-top: 18px;
+        max-height: 430px;
+        overflow: auto;
+      }
+      .uuid-row {
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        padding: 10px 0;
+      }
+      .uuid-row code {
+        font-size: 0.84rem;
+        overflow-wrap: anywhere;
+      }
+      .uuid-row button {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        font-size: 0.75rem;
+        font-weight: 800;
+        padding: 6px 9px;
+      }
+      .empty {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .inspect-panel textarea {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--line);
+        min-height: 125px;
+        margin: 14px 0;
+      }
+      .inspect-result {
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 0.82rem;
+        margin-top: 15px;
+        min-height: 86px;
+        padding: 12px;
+        overflow-wrap: anywhere;
+      }
+      @media (max-width: 780px) {
+        .uuid-layout,
+        .control-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .tool {
+        background: var(--paper);
+        border-top: 4px solid var(--coral);
+        box-shadow: var(--shadow);
+        margin-bottom: 74px;
+        padding: clamp(22px, 4vw, 46px);
+      }
+      .tool-top {
+        align-items: end;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+      .tool h2 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        margin: 0;
+      }
+      .tool-top p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0;
+        max-width: 430px;
+      }
+      .mode-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+      .mode {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #516072;
+        font-size: 0.82rem;
+        font-weight: 800;
+        padding: 10px 13px;
+        transition:
+          background 160ms var(--ease),
+          color 160ms var(--ease),
+          transform 160ms var(--ease);
+      }
+      .mode.active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+      }
+      .mode:active,
+      .action:active {
+        transform: scale(0.97);
+      }
+      .mode-note {
+        background: var(--blue);
+        border-left: 3px solid #7da9bc;
+        color: #3a5667;
+        font-size: 0.84rem;
+        margin: 0 0 20px;
+        padding: 10px 14px;
+      }
+      .work-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1fr auto 1fr;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        min-width: 0;
+      }
+      .panel-label {
+        align-items: center;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        font-size: 0.77rem;
+        font-weight: 800;
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        padding: 11px 13px;
+        text-transform: uppercase;
+      }
+      textarea {
+        border: 0;
+        color: var(--ink);
+        display: block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        min-height: 260px;
+        outline: none;
+        padding: 15px;
+        resize: vertical;
+        width: 100%;
+      }
+      .output {
+        background: #fcfcfb;
+        min-height: 260px;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+      .rail {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+      }
+      .action {
+        background: var(--ink);
+        border: 0;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        height: 44px;
+        transition:
+          transform 160ms var(--ease),
+          background 160ms var(--ease);
+        width: 44px;
+      }
+      .action:hover {
+        background: var(--coral);
+      }
+      .action.small {
+        border-radius: 999px;
+        font-size: 0.78rem;
+        height: auto;
+        padding: 10px 13px;
+        width: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .action.ghost {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .status {
+        color: var(--muted);
+        font-size: 0.81rem;
+        margin: 13px 0 0;
+        min-height: 24px;
+      }
+      .status.error {
+        color: #a63b2b;
+        font-weight: 700;
+      }
+      .metrics {
+        display: grid;
+        gap: 11px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 25px;
+      }
+      .metric {
+        border-top: 1px solid var(--line);
+        padding-top: 11px;
+      }
+      .metric b {
+        display: block;
+        font-family: Fraunces, serif;
+        font-size: 1.42rem;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+      .analysis {
+        background: var(--sage);
+        margin-top: 28px;
+        padding: 20px;
+      }
+      .analysis[hidden] {
+        display: none;
+      }
+      .analysis h3 {
+        font-size: 1.5rem;
+        margin: 0 0 8px;
+      }
+      .parts {
+        display: grid;
+        gap: 9px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .part {
+        background: rgba(255, 255, 255, 0.68);
+        padding: 10px;
+      }
+      .part span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .part code {
+        font-size: 0.84rem;
+        overflow-wrap: anywhere;
+      }
+      .query-list {
+        margin: 15px 0 0;
+      }
+      .query-list li {
+        font-size: 0.86rem;
+        margin-bottom: 5px;
+      }
+      .principles {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 0.7fr 1.3fr;
+        padding: 54px 0 66px;
+      }
+      .principles h2 {
+        font-size: clamp(2.25rem, 4.2vw, 4rem);
+        margin: 0;
+      }
+      .principles p {
+        color: var(--muted);
+        margin: 0;
+      }
+      article {
+        border-top: 1px solid var(--line);
+        padding: 66px 0 44px;
+      }
+      article > p:first-of-type {
+        color: var(--muted);
+        font-size: 1.08rem;
+        max-width: 850px;
+      }
+      article h2 {
+        font-size: clamp(2.35rem, 5vw, 4.8rem);
+        margin: 8px 0 22px;
+        max-width: 830px;
+      }
+      article h3 {
+        font-size: 1.75rem;
+        margin: 42px 0 12px;
+      }
+      article p,
+      article li {
+        max-width: 850px;
+      }
+      article li {
+        margin-bottom: 9px;
+      }
+      blockquote {
+        border-left: 3px solid var(--coral);
+        color: #405069;
+        font-family: Fraunces, serif;
+        font-size: 1.28rem;
+        margin: 28px 0;
+        max-width: 800px;
+        padding: 8px 0 8px 20px;
+      }
+      .faq {
+        background: var(--ink);
+        color: #fff;
+        margin: 26px calc(50% - 50vw) 0;
+        padding: 68px max(18px, calc((100vw - 1084px) / 2));
+      }
+      .faq h2 {
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        margin: 0 0 25px;
+      }
+      details {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 900px;
+        padding: 17px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-family: Fraunces, serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      details p {
+        color: #d8e1eb;
+        max-width: 760px;
+      }
+      .related {
+        padding: 60px 0;
+      }
+      .related h2 {
+        font-size: 2.5rem;
+        margin: 0 0 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-links a {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-weight: 800;
+        padding: 12px 15px;
+        text-decoration: none;
+        transition:
+          transform 160ms var(--ease),
+          border-color 160ms var(--ease);
+      }
+      .related-links a:hover {
+        border-color: var(--coral);
+        transform: translateY(-2px);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        gap: 14px;
+        justify-content: space-between;
+        padding: 25px clamp(18px, 4vw, 58px);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 480ms var(--ease),
+          transform 480ms var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 780px) {
+        .site-header nav a:first-child {
+          display: none;
+        }
+        .hero,
+        .principles {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 34px 0 42px;
+        }
+        .toolyfi-visual {
+          aspect-ratio: 4 / 3;
+        }
+        .toolyfi-hero-mark {
+          bottom: 10px;
+          right: 10px;
+        }
+        .tool-top,
+        .work-grid {
+          align-items: stretch;
+          grid-template-columns: 1fr;
+        }
+        .tool-top {
+          display: block;
+        }
+        .tool-top p {
+          margin-top: 12px;
+        }
+        .rail {
+          flex-direction: row;
+          order: 2;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .parts {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs">
+          <a href="index.html">Home</a> / <a href="index.html#directory">All tools</a> / UUID
+          Generator
+        </div>
+        <section class="hero">
+          <div class="reveal">
+            <span class="eyebrow">Browser-local v4 generation</span>
+            <h1>Make the <em>identifier.</em> Keep the boundary.</h1>
+            <p class="lead">
+              Create UUID v4 values with your browser’s cryptographic random source, format a
+              practical batch, and inspect a pasted representation without sending it anywhere.
+            </p>
+            <p class="trust">
+              <strong>Local by design:</strong> Generation, validation, copy, and download happen in
+              this browser. No list is sent or stored by this page.
+            </p>
+          </div>
+          <figure class="toolyfi-visual reveal">
+            <img
+              src="images/toolyfi-uuid-generator-hero.webp"
+              alt="Abstract index cards with randomized geometric marks and stationery on an ivory desk"
+              fetchpriority="high"
+            />
+            <span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool reveal uuid-tool" aria-labelledby="tool-title">
+          <div class="tool-top">
+            <div><h2 id="tool-title">UUID v4 Generator</h2></div>
+            <p>
+              One source of randomness, clear presentation choices, and a separate local check for
+              an existing UUID.
+            </p>
+          </div>
+          <div class="uuid-layout">
+            <section class="generator-panel" aria-labelledby="generate-title">
+              <div class="panel-kicker">Generate</div>
+              <h3 id="generate-title">A controlled local batch</h3>
+              <div class="control-grid">
+                <label
+                  >Batch size
+                  <select id="count">
+                    <option value="1">1 UUID</option>
+                    <option value="5">5 UUIDs</option>
+                    <option value="10">10 UUIDs</option>
+                    <option value="25">25 UUIDs</option>
+                    <option value="50">50 UUIDs</option>
+                    <option value="100">100 UUIDs</option>
+                  </select></label
+                ><label
+                  >Presentation
+                  <select id="format">
+                    <option value="canonical">Canonical lowercase</option>
+                    <option value="upper">Uppercase</option>
+                    <option value="compact">Compact (no hyphens)</option>
+                    <option value="braced">Braced</option>
+                    <option value="urn">URN</option>
+                  </select></label
+                >
+              </div>
+              <div class="actions">
+                <button class="action small" id="generate" type="button">Generate v4 UUIDs</button
+                ><button class="action small ghost" id="copy-all" type="button">Copy all</button
+                ><button class="action small ghost" id="download" type="button">
+                  Download .txt
+                </button>
+              </div>
+              <p class="status" id="status" aria-live="polite">
+                Ready. Values are created only when you choose Generate.
+              </p>
+              <div class="uuid-list" id="uuid-list" aria-live="polite">
+                <p class="empty">Your generated UUID v4 batch will appear here.</p>
+              </div>
+            </section>
+            <aside class="inspect-panel" aria-labelledby="inspect-title">
+              <div class="panel-kicker">Inspect</div>
+              <h3 id="inspect-title">Check a representation</h3>
+              <p>
+                Validate shape and normalize a canonical, compact, braced, or URN UUID. This does
+                not check a database or service.
+              </p>
+              <textarea
+                id="inspect-input"
+                spellcheck="false"
+                placeholder="Paste one UUID or GUID"
+              ></textarea
+              ><button class="action small" id="inspect" type="button">Inspect UUID</button>
+              <div class="inspect-result" id="inspect-result" aria-live="polite">
+                No UUID inspected yet.
+              </div>
+            </aside>
+          </div>
+          <div class="metrics">
+            <div class="metric"><b id="batch-count">0</b><span>CURRENT BATCH</span></div>
+            <div class="metric"><b>v4</b><span>GENERATED VERSION</span></div>
+            <div class="metric"><b>36</b><span>CANONICAL CHARACTERS</span></div>
+            <div class="metric"><b>Local</b><span>PROCESSING BOUNDARY</span></div>
+          </div>
+        </section>
+        <section class="principles reveal">
+          <h2>A random identifier is useful only when the boundary is clear.</h2>
+          <p>
+            <strong>Generation</strong> gives you a random v4 representation.
+            <strong>Validation</strong> checks whether pasted text has a recognizable UUID shape.
+            Neither action proves a record exists, replaces a uniqueness constraint, or makes a
+            value into an authorization credential.
+          </p>
+        </section>
+        <article class="article reveal">
+          <span class="eyebrow">Practical guide · UUID v4</span>
+          <h2>
+            Generate a UUID deliberately: random bytes, stable format, clear system boundaries
+          </h2>
+          <p>
+            A UUID generator feels like a one-click utility because the visible output is compact:
+            five hexadecimal groups separated by hyphens. The useful decision sits behind that
+            shape. What kind of identifier does the receiving system expect, where will it be
+            created, how will it be checked for uniqueness, and what should the identifier never be
+            asked to prove? This Toolyfi page creates random version 4 UUIDs only, with the
+            browser’s cryptographic random facility in a supporting secure context. It does not
+            contact a database, reserve an ID, query a service, or retain a generation history. That
+            narrow boundary makes the output practical for local examples, fixtures, draft data, and
+            workflows where the receiver has an appropriate uniqueness safeguard.
+          </p>
+          <h3>Begin with what a UUID is and is not</h3>
+          <p>
+            A UUID is a 128-bit identifier. The familiar canonical text representation uses 32
+            hexadecimal characters grouped as 8-4-4-4-12, producing 36 characters when four hyphens
+            are included. The version and variant occupy particular bits so that compatible software
+            can recognize how a value was formed. A version 4 UUID uses random bits except for those
+            required markers. People often call the same kind of value a GUID, especially in
+            Microsoft-oriented documentation. The names can coexist in a workflow, but the receiving
+            API, database, or framework should define the exact representation it accepts.
+          </p>
+          <p>
+            A UUID is not a database constraint, an ownership record, a password, an access token,
+            or proof that a row exists. A syntactically valid value can still be unknown to a
+            system. A newly generated value can still collide in theory with an existing value.
+            Random v4 UUIDs make accidental collisions extremely unlikely in ordinary practical
+            uses, but the property that enforces uniqueness belongs to the system that stores or
+            accepts the ID. Put a unique constraint or equivalent collision-handling rule in the
+            data layer when correctness depends on it.
+          </p>
+          <h3>Why this page generates v4 only</h3>
+          <p>
+            UUID versions have different semantics. Some versions derive information from time, a
+            namespace and name, or an ordered layout. This page intentionally stays with version 4
+            because its browser-native generation path is direct and auditable:
+            <code>crypto.randomUUID()</code> returns a random v4 UUID in a supporting secure browser
+            context. There is no need to imitate a timestamped version, invent a node identifier, or
+            claim a namespace hash. If your application requires a name-based UUID, a time-ordered
+            UUID, or a particular library-specific version, generate it with the documented library
+            or platform facility that owns that requirement.
+          </p>
+          <p>
+            Keeping a tool narrow avoids a misleading selection menu. A list of versions is not
+            automatically more useful if each one has different deployment, privacy, ordering, and
+            compatibility implications. Choose v4 when a random opaque identifier is the stated
+            requirement. Choose a server-side library, database default, or application standard
+            when the requirement includes transaction ownership, record creation, chronological
+            ordering, deterministic names, or an integration contract. The correct generator is part
+            of the system design, not simply the one with the most buttons.
+          </p>
+          <h3>Understand the browser-local generation boundary</h3>
+          <p>
+            On this page, generation runs in the browser. The value is placed into the visible local
+            list, and copy or download actions operate on that current list. The page does not send
+            the list to a Toolyfi service, does not create an account, and does not persist a
+            history. That is useful when you need a few fixture identifiers without installing
+            software or sharing an internal example with an external converter. It is still sensible
+            to consider your surrounding environment: a clipboard manager, screen recording, shared
+            browser profile, or downloaded file can have its own retention rules.
+          </p>
+          <p>
+            Browser cryptographic APIs are designed for secure contexts, typically HTTPS. If a
+            browser does not expose <code>crypto.randomUUID()</code>, this page reports that
+            limitation instead of quietly substituting a weaker pseudo-random formula. Do not treat
+            that message as an invitation to use a predictable fallback for a security-sensitive
+            task. Update the browser, use the application’s supported server-side library, or use
+            the platform facility recommended by the system that will own the ID.
+          </p>
+          <h3>Use batches as a local production aid, not a production write path</h3>
+          <p>
+            A batch helps with fixtures, mock responses, test records, documentation tables, and
+            examples. A small local batch can make a test case concrete without adding a dependency.
+            Select the count you actually need, generate once, and copy or download the list in a
+            stable presentation. This tool limits one generation to 100 values to keep the workflow
+            readable and intentional. If you require millions of IDs, an offline migration,
+            coordinated distributed creation, or a bulk import protocol, use the source-controlled
+            script, data platform, or database mechanism designed for that job.
+          </p>
+          <p>
+            For seed data, make the source of the IDs clear. A test suite may benefit from fixed
+            UUID literals so a failure can be reproduced. A demo-data generator may benefit from
+            fresh v4 values each run. A production database often benefits from its own default,
+            where the insert and uniqueness check occur close together. None of those choices is
+            universally best. The important part is that code and documentation tell the next
+            maintainer whether the ID is sample data, an externally supplied identifier, or a value
+            the storage layer creates.
+          </p>
+          <h3>Choose presentation for the receiver, not for appearance</h3>
+          <p>
+            The canonical lowercase representation is usually the easiest default because it is
+            readable and widely recognized. Uppercase UUIDs carry the same hexadecimal data but may
+            match a legacy interface or documentation style. Compact output removes hyphens for
+            systems that explicitly expect 32 hexadecimal characters. Braces are a familiar
+            presentation in some Windows-oriented workflows. A URN adds the
+            <code>urn:uuid:</code> prefix for a context that expects that URI-like naming form.
+            Formatting changes the text presentation; it does not generate a different random value
+            or add database meaning.
+          </p>
+          <p>
+            Pick one convention per interface and normalize at a documented boundary. Inconsistent
+            casing and optional braces can make logs, snapshots, and string comparisons noisier than
+            they need to be. Some libraries normalize before comparing, while another integration
+            may treat the raw text more literally. The local inspector can show the canonical form
+            of a single input, but a receiver’s own documentation determines what it accepts. When a
+            protocol specifies exact casing, prefixes, or serialization, follow that protocol rather
+            than choosing the format that looks shortest.
+          </p>
+          <h3>Validation answers a limited and useful question</h3>
+          <p>
+            The inspection panel checks whether a pasted string can be interpreted as a UUID-shaped
+            value in canonical, compact, braced, or URN form. It reports a normalized canonical
+            representation, a detected version nibble, and a basic RFC variant indication. This is
+            helpful for a log excerpt, fixture file, or API response where you need to distinguish a
+            malformed identifier from ordinary text. It does not connect to a database and cannot
+            say whether the ID belongs to a customer, was issued by a service, or is permitted in
+            the workflow you are investigating.
+          </p>
+          <p>
+            Do not turn lexical validation into authorization. A service must still authenticate the
+            caller, authorize the requested record, and enforce its own business rules. An API that
+            accepts an ID in a route should not reveal or permit a record merely because the string
+            follows a UUID pattern. Similarly, an application should not use UUID appearance as a
+            substitute for schema validation of the surrounding request. Good identifier handling
+            uses format checks as one small guardrail alongside access control, unique indexes,
+            relationships, and audit rules.
+          </p>
+          <h3>UUID randomness does not make a value a secret</h3>
+          <p>
+            A random v4 UUID has useful random bits, but that statement alone does not define a
+            password policy, bearer-token design, session mechanism, recovery link, or cryptographic
+            protocol. A target system might require a longer secret, rotation, expiration, hashing,
+            binding to a session, or a different encoding. Follow that system’s documented
+            requirements. Never infer that any UUID produced by a general utility is appropriate to
+            place in a public URL, a credential field, or a security control simply because the
+            generator is cryptographic.
+          </p>
+          <p>
+            Keep generated identifiers out of screenshots and public bug reports when they are
+            connected to real records. Even opaque IDs can be sensitive in context, especially when
+            paired with account details, documents, internal routes, or service logs. Use
+            non-production samples in guides and demos. If an identifier is part of a sensitive link
+            and you believe it was exposed, follow the issuing service’s revocation or rotation
+            guidance. Creating a new random string does not automatically invalidate the old one.
+          </p>
+          <h3>Test where the ID will actually be used</h3>
+          <p>
+            A local list confirms that the browser created well-formed v4 strings. It does not prove
+            a specific SDK, ORM, database column, message schema, or remote API behaves as expected.
+            Build a small test in the target environment. Insert a non-sensitive fixture, read it
+            through the normal path, verify the serialized form, and confirm that a duplicate is
+            handled according to the system’s intended rule. If a database has a UUID type and
+            generation default, exercise that mechanism rather than testing only a copied text
+            literal.
+          </p>
+          <p>
+            When an integration rejects a UUID, collect the exact input representation, the expected
+            field type, the receiver’s error, and the documented contract. Do not regenerate values
+            repeatedly until one happens to be accepted. The issue may be braces, a URN prefix,
+            casing, a compact form, an absent hyphen, a field length, or an unrelated authorization
+            rule. One controlled test input with a clear format is more useful than a large sequence
+            of fresh random values, because it makes the mismatch reproducible.
+          </p>
+          <h3>Plan for storage and indexing separately</h3>
+          <p>
+            Random UUIDs can be appealing when identifiers need to be created independently across
+            clients or services, and when sequential IDs would reveal ordering in an external
+            interface. Those benefits come with storage considerations. Different databases and
+            index types can have different performance characteristics for randomly distributed
+            keys. Some systems use binary representations, optimized UUID types, or alternative
+            ordered identifiers for particular workloads. Those are architecture choices that should
+            be evaluated with the database, access patterns, and operational requirements in
+            view—not decided by a browser generator.
+          </p>
+          <p>
+            If your system already has a convention, follow it. A mature codebase may require a
+            database-generated UUID, a framework-specific type, or a particular migration rule.
+            Introducing a locally generated UUID because it is convenient can bypass validation,
+            traceability, or transaction design. Use this utility to prepare local samples or
+            controlled fixtures when that fits the project’s policy. For a live write, let the
+            designated system own the creation process unless the interface explicitly asks a client
+            to supply the identifier.
+          </p>
+          <h3>A disciplined UUID workflow</h3>
+          <p>
+            First state the purpose: fixture, mock payload, documentation sample, migration,
+            client-created record, or production database row. Next identify the owner of uniqueness
+            and the accepted format. Generate a small local v4 batch only if browser-created random
+            IDs meet that contract. Format for the receiver, keep a copy of the source list where
+            the workflow permits, and test a non-sensitive value end to end. Use the inspector to
+            clarify a representation copied from logs, not to infer ownership or permission.
+          </p>
+          <p>
+            Finally, record the boundary. A brief note such as “UUIDs generated by PostgreSQL
+            default,” “fixtures use fixed canonical v4 values,” or “client supplies v4 IDs through
+            the documented API” prevents confusion later. The most useful identifier is not merely
+            random. It is created at the correct layer, stored under the correct constraint,
+            represented in the expected form, and handled with the right privacy and authorization
+            controls.
+          </p>
+          <h3>Model identifiers as data, not decoration</h3>
+          <p>
+            A UUID is often shown in a user interface because it is easy to copy, but its primary
+            purpose is to identify data inside a model. Decide which entity owns the identifier,
+            when it becomes available, and which relationships reference it. A client-created draft
+            might need an ID before it is synchronized. A server-created record might not need one
+            until an accepted transaction is committed. A migration might need stable IDs only for a
+            fixed test dataset. These are different lifecycle questions, and a string generator
+            cannot resolve them for the application.
+          </p>
+          <p>
+            Avoid making an identifier carry business meaning that belongs in separate fields. A
+            UUID should not be silently treated as a date, customer category, access tier, or
+            sequence number just because it is present in a record. Keeping it opaque reduces
+            accidental coupling between a representation and an assumption. If people need a
+            human-friendly reference, add a clearly designed label, slug, display code, or title.
+            The UUID can remain the stable technical key while the product offers a safer and
+            clearer surface for people.
+          </p>
+          <p>
+            This separation also improves maintenance. Logs can include both an opaque ID and a
+            concise operation name. Support tools can resolve an ID through authenticated systems
+            without exposing entire records in a URL. Test fixtures can use predictable labels while
+            still exercising UUID fields. A good data model makes it obvious when a string is an
+            identifier, when it is a credential, and when it is merely a presentation value.
+          </p>
+          <h3>Make migrations and fixtures reproducible</h3>
+          <p>
+            Freshly generated values are useful for exploratory testing, but repeatable work often
+            benefits from fixed fixture identifiers. If a unit test, API example, or migration
+            depends on a particular record relationship, commit the relevant canonical UUID literals
+            alongside the test rather than generating new values at run time. The fixed literal
+            allows a failure to be reproduced and makes fixture diffs easier to review. Keep those
+            literals clearly labeled as non-production sample data.
+          </p>
+          <p>
+            In contrast, a data-generation script might intentionally create a new v4 value for
+            every ephemeral row. That is reasonable when the script is the documented owner and the
+            target storage layer checks uniqueness. Do not mix the two patterns accidentally. A
+            migration that inserts fixed reference rows should not change its IDs every time it
+            runs. A concurrency test intended to simulate independent clients should not reuse one
+            copied value. State the purpose first, then select a reproducible or fresh workflow
+            accordingly.
+          </p>
+          <p>
+            Before importing a large set of values, test a small batch in the real schema. Confirm
+            the column type, the accepted text form, serialization behavior, conflict handling, and
+            rollback plan. A download from a browser tool is just a text file; it has no awareness
+            of delimiters in a CSV, a database transaction, or the ordering requirements of your
+            import. Use the platform’s documented import and verification steps when the data
+            matters.
+          </p>
+          <h3>Interoperability is an explicit contract</h3>
+          <p>
+            UUIDs travel through JSON, SQL, URL paths, queues, logs, and command-line tools. Each
+            boundary can have a slightly different expectation. One API may accept canonical
+            lowercase strings only. Another may normalize a compact representation. A database
+            driver may expose a native UUID type instead of a plain string. A message schema may
+            require a specific field name and version. Treat those choices as contract details.
+            Capture them in an API definition, type declaration, migration, or integration test
+            instead of relying on a teammate’s memory of what “a GUID” looked like in another
+            system.
+          </p>
+          <p>
+            The most reliable integration test includes one known value written in the required form
+            and verifies the receiver’s parsed representation. Then test one value generated through
+            the normal production path. If the two differ, investigate the owner of normalization.
+            Avoid solving a mismatch by changing the case or stripping punctuation until the client
+            accepts it. That can conceal the actual contract error and leave the next service
+            boundary broken. A UUID has a stable binary concept; text formats are still interfaces
+            that need agreement.
+          </p>
+          <p>
+            If an external system uses the term GUID, check whether it supplies a version, braces,
+            casing, or serialization requirement. Do not assume the label itself tells you enough.
+            The local inspector is intentionally descriptive: it recognizes common textual forms and
+            reports a normalized one. It does not claim that a remote vendor will accept every form
+            it recognizes. Documentation for the receiver remains the authority.
+          </p>
+          <h3>Design logs and observability with privacy in mind</h3>
+          <p>
+            UUIDs can make it easier to correlate an event across logs, traces, and support tools.
+            That benefit depends on context. Log an ID alongside a clear event name and a carefully
+            selected set of non-sensitive metadata. Do not assume that an opaque identifier is
+            harmless to share publicly; it may link records across systems or appear next to
+            personal data. Use your organization’s retention, redaction, and access policies when
+            adding identifiers to observability surfaces.
+          </p>
+          <p>
+            In documentation and error messages, prefer representative sample values that cannot be
+            mistaken for real customer records. If a production error requires an identifier, route
+            it through the authenticated operational channel designed for that purpose. Copying an
+            ID into an unrelated chat, screenshot, issue title, or public URL can create a new
+            disclosure path. The browser-local boundary of this generator minimizes one kind of
+            sharing, but every downstream copy and paste still needs its own judgment.
+          </p>
+          <h3>Debug failures by separating shape from semantics</h3>
+          <p>
+            A malformed UUID error is a representation problem: wrong length, invalid hexadecimal
+            character, misplaced hyphen, or unsupported wrapper. A “record not found” error is a
+            system-state problem: the ID may be valid but absent in the chosen environment. A
+            permission error is an authorization problem: the ID may name a real record but the
+            caller may not be allowed to access it. A duplicate-key error is a storage constraint
+            result. Do not merge these categories into one generic “UUID issue.” Their remedies are
+            different.
+          </p>
+          <p>
+            Start with the original value and its source. Check its presentation with the local
+            inspector, then compare the normalized result with the receiver’s documented form.
+            Verify the environment, caller identity, request payload, and storage state separately.
+            If a collision is suspected, use the system’s constraint or lookup mechanism rather than
+            probability estimates alone. This sequence keeps investigation factual and avoids the
+            common mistake of generating a new random string before learning why the first value
+            failed.
+          </p>
+          <p>
+            A simple record of input, source, selected format, target system, observed result, and
+            next check is often enough to resolve an identifier problem quickly. It is not a
+            substitute for operational monitoring or incident handling, but it makes local
+            reproduction possible. The goal is not to produce more random values. The goal is to
+            understand which layer owns identity and which layer rejected the representation or
+            request.
+          </p>
+          <h3>Source and related reading</h3>
+          <p>
+            For the browser method used here, see
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID"
+              rel="noopener noreferrer"
+              target="_blank"
+              >MDN’s Crypto.randomUUID reference</a
+            >, which documents a cryptographically secure v4 UUID method and its secure-context
+            requirement. Read the specification and your application’s own library documentation
+            when version choice or persistence behavior matters. Toolyfi keeps this page focused on
+            local v4 generation, presentation, and format inspection rather than pretending to
+            choose an identifier architecture for you.
+          </p>
+        </article>
+      </div>
+      <section class="faq">
+        <div class="shell">
+          <span class="eyebrow">Questions, answered</span>
+          <h2>UUID v4 FAQ</h2>
+          <details>
+            <summary>What is a UUID?</summary>
+            <p>
+              A UUID is a 128-bit identifier commonly written as 32 hexadecimal digits in an
+              8-4-4-4-12 layout.
+            </p>
+          </details>
+          <details>
+            <summary>What UUID version does this tool generate?</summary>
+            <p>
+              It generates random UUID v4 values through crypto.randomUUID() in a supporting secure
+              browser context.
+            </p>
+          </details>
+          <details>
+            <summary>Are UUIDs generated locally?</summary>
+            <p>
+              Yes. Generation, formatting, validation, copying, and downloads run in your browser.
+              This page does not send or retain the values.
+            </p>
+          </details>
+          <details>
+            <summary>Can I generate many UUIDs at once?</summary>
+            <p>
+              Yes. Choose a batch size from 1 to 100, then copy or download the generated local
+              list.
+            </p>
+          </details>
+          <details>
+            <summary>Is a UUID the same as a GUID?</summary>
+            <p>
+              GUID is a Microsoft term commonly used for the same 128-bit UUID representation.
+              Presentation conventions may differ.
+            </p>
+          </details>
+          <details>
+            <summary>Does a valid UUID prove that an ID exists?</summary>
+            <p>
+              No. Validation checks representation only. It cannot confirm that an identifier
+              exists, is authorized, or belongs to a particular record.
+            </p>
+          </details>
+          <details>
+            <summary>Are v4 UUIDs collision-free?</summary>
+            <p>
+              No random identifier can offer an absolute guarantee. Use a database unique constraint
+              or the relevant system safeguard where uniqueness matters.
+            </p>
+          </details>
+          <details>
+            <summary>Can I use UUIDs as passwords or security tokens?</summary>
+            <p>
+              Do not assume that a UUID meets a system’s security-token requirements. Follow the
+              target system’s documented credential and entropy requirements.
+            </p>
+          </details>
+          <details>
+            <summary>What do compact, braced, and URN formats mean?</summary>
+            <p>
+              They are presentation forms of the same UUID bytes: compact removes hyphens, braced
+              wraps the canonical form, and URN adds the urn:uuid prefix.
+            </p>
+          </details>
+          <details>
+            <summary>Why is crypto.randomUUID unavailable in my browser?</summary>
+            <p>
+              The method requires a supporting secure context. Update the browser or use a
+              documented server-side UUID library for the target environment.
+            </p>
+          </details>
+        </div>
+      </section>
+      <div class="shell related reveal">
+        <span class="eyebrow">Keep working</span>
+        <h2>Related browser-local tools</h2>
+        <div class="related-links">
+          <a href="password-generator.html">Password Generator</a
+          ><a href="json-formatter.html">JSON Formatter</a
+          ><a href="base64-encoder-decoder.html">Base64 Encoder</a
+          ><a href="random-number-generator.html">Random Number Generator</a
+          ><a href="index.html#directory">All tools</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>Toolyfi — Free tools for real work.</span
+      ><span
+        ><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> ·
+        <a href="contact.html">Contact</a></span
+      >
+    </footer>
+    <script src="pwa-register.js" defer></script>
+    <script>
+      // Toolyfi Editorial Utility Atlas: secure browser-local v4 generation, formatting, and lexical inspection.
+      const list = document.querySelector("#uuid-list");
+      const status = document.querySelector("#status");
+      let values = [];
+      const canonical = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      const setStatus = (message, error = false) => {
+        status.textContent = message;
+        status.className = error ? "status error" : "status";
+      };
+      const normalize = (value) => {
+        let clean = value
+          .trim()
+          .replace(/^urn:uuid:/i, "")
+          .replace(/^{/, "")
+          .replace(/}$/, "")
+          .replace(/-/g, "");
+        if (!/^[0-9a-f]{32}$/i.test(clean)) return null;
+        return clean.toLowerCase().replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, "$1-$2-$3-$4-$5");
+      };
+      const format = (value) => {
+        const choice = document.querySelector("#format").value;
+        if (choice === "upper") return value.toUpperCase();
+        if (choice === "compact") return value.replace(/-/g, "");
+        if (choice === "braced") return "{" + value + "}";
+        if (choice === "urn") return "urn:uuid:" + value;
+        return value;
+      };
+      const render = () => {
+        list.innerHTML = values.length
+          ? values
+              .map(
+                (value, index) =>
+                  '<div class="uuid-row"><code>' +
+                  format(value) +
+                  '</code><button data-copy="' +
+                  index +
+                  '" type="button">Copy</button></div>',
+              )
+              .join("")
+          : '<p class="empty">Your generated UUID v4 batch will appear here.</p>';
+        document.querySelector("#batch-count").textContent = values.length;
+        list.querySelectorAll("[data-copy]").forEach((button) =>
+          button.addEventListener("click", async () => {
+            await copy(format(values[Number(button.dataset.copy)]));
+            setStatus("One UUID copied locally.");
+          }),
+        );
+      };
+      const copy = async (text) => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const area = document.createElement("textarea");
+          area.value = text;
+          document.body.append(area);
+          area.select();
+          document.execCommand("copy");
+          area.remove();
+        }
+      };
+      document.querySelector("#generate").addEventListener("click", () => {
+        if (!window.crypto?.randomUUID)
+          return setStatus(
+            "This browser does not expose crypto.randomUUID() in the current context.",
+            true,
+          );
+        values = Array.from({ length: Number(document.querySelector("#count").value) }, () =>
+          crypto.randomUUID(),
+        );
+        render();
+        setStatus(
+          values.length +
+            " UUID v4 value" +
+            (values.length === 1 ? "" : "s") +
+            " generated locally.",
+        );
+      });
+      document.querySelector("#format").addEventListener("change", render);
+      document.querySelector("#copy-all").addEventListener("click", async () => {
+        if (!values.length) return setStatus("Generate a batch before copying.", true);
+        await copy(values.map(format).join("\n"));
+        setStatus("Current batch copied locally.");
+      });
+      document.querySelector("#download").addEventListener("click", () => {
+        if (!values.length) return setStatus("Generate a batch before downloading.", true);
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(
+          new Blob([values.map(format).join("\n")], { type: "text/plain;charset=utf-8" }),
+        );
+        link.download = "toolyfi-uuid-v4.txt";
+        link.click();
+        URL.revokeObjectURL(link.href);
+        setStatus("Current local batch downloaded.");
+      });
+      document.querySelector("#inspect").addEventListener("click", () => {
+        const raw = document.querySelector("#inspect-input").value;
+        const value = normalize(raw);
+        const result = document.querySelector("#inspect-result");
+        if (!value) {
+          result.innerHTML =
+            "<strong>Not a recognized UUID representation.</strong><br>Use 32 hexadecimal digits, with optional hyphens, braces, or urn:uuid prefix.";
+          return;
+        }
+        const version = value[14];
+        const variant = ["8", "9", "a", "b"].includes(value[19])
+          ? "RFC 4122 / 9562 variant pattern"
+          : "non-standard variant bits";
+        result.innerHTML =
+          "<strong>Recognized UUID representation</strong><br><code>" +
+          value +
+          "</code><br>Version nibble: v" +
+          version +
+          " · " +
+          variant +
+          "<br><small>Format recognition does not confirm existence, ownership, or authorization.</small>";
+      });
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
