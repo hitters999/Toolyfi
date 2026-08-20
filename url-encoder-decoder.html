@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Encoder & Decoder: Local Percent-Encoding Tool | Toolyfi</title>
+    <meta
+      name="description"
+      content="Encode or decode URL components and full URIs locally in your browser. Compare native JavaScript modes, inspect query parameters, handle malformed input, copy, or download the result."
+    />
+    <meta
+      name="keywords"
+      content="URL encoder decoder, percent encoding tool, encodeURIComponent, decodeURIComponent, URL decode online, URI component encoder"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/url-encoder-decoder.html" />
+    <meta
+      property="og:title"
+      content="URL Encoder & Decoder: Local Percent-Encoding Tool | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="A browser-local URL encoder and decoder for components, full URIs, form values, and RFC 3986-aware percent encoding."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/url-encoder-decoder.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-url-encoder-decoder-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi URL Encoder & Decoder",
+        "url": "https://toolyfi.com/url-encoder-decoder.html",
+        "description": "A browser-local tool for encoding and decoding URL components and full URIs with clear error handling.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "URL Encoder & Decoder",
+            "item": "https://toolyfi.com/url-encoder-decoder.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is URL percent encoding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Percent encoding represents bytes with a percent sign and two hexadecimal digits so data can safely appear in the relevant URI component."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I use encodeURIComponent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use it for a value inserted into a query parameter, path segment, or another URI component. It encodes structural characters as data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I use encodeURI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use encodeURI for a complete URI when its separators should remain separators. Do not use it for one query value that can contain separators as data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does URL decoding fail?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A decoder can reject malformed percent escapes or invalid UTF-8 sequences. This page reports the native browser error instead of silently changing input."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does plus mean space in a URL?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not in generic URI percent encoding. Plus means space only in application/x-www-form-urlencoded values, so choose form-value mode only for that format."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool send my URL anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Transformations and optional URL inspection run with browser APIs on this page. The tool does not fetch, submit, or store the text you enter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I encode emoji and non-English text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Native JavaScript encoding represents supported Unicode text through UTF-8 percent escape sequences. Lone surrogate code units can still cause an explicit native error."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the RFC 3986 component mode change?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It starts with encodeURIComponent and also encodes !, apostrophe, parentheses, and asterisk for a stricter RFC 3986 component treatment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use the output as proof that a URL is safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Encoding changes representation, not trustworthiness. Inspect the destination, domain, permissions, and context before opening or sharing an unfamiliar link."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I verify an encoded value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Swap to move output into input and reverse the operation. A matching round trip checks representation, not a destination service or API contract."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: URL component transformation, warm ivory/ink/coral, static hero only. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fff;
+        --ink: #172437;
+        --muted: #657184;
+        --coral: #ef6c54;
+        --soft: #fff0eb;
+        --blue: #e8f0f5;
+        --sage: #e8f2ec;
+        --line: #e5dfd6;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+        margin: 0;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .site-header {
+        align-items: center;
+        background: rgba(250, 248, 244, 0.96);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        padding: 15px clamp(18px, 4vw, 58px);
+        position: relative;
+        z-index: 4;
+      }
+      .logo {
+        align-items: center;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 1.48rem;
+        font-weight: 800;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo img {
+        height: 34px;
+        width: 34px;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        color: var(--muted);
+        font-size: 0.83rem;
+        padding: 22px 0 8px;
+      }
+      .crumbs a {
+        font-weight: 700;
+      }
+      .hero {
+        display: grid;
+        gap: 34px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+        padding: 52px 0 62px;
+      }
+      .eyebrow {
+        align-items: center;
+        color: var(--coral);
+        display: flex;
+        font-size: 0.75rem;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        background: var(--coral);
+        content: "";
+        height: 2px;
+        width: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+      }
+      h1 {
+        font-size: clamp(3.2rem, 7vw, 6.8rem);
+        margin: 18px 0 22px;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .lead {
+        color: #516072;
+        font-size: 1.07rem;
+        max-width: 600px;
+      }
+      .trust {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: #445269;
+        font-size: 0.83rem;
+        font-weight: 700;
+        margin-top: 28px;
+        padding: 14px 17px;
+      }
+      .trust strong {
+        color: var(--coral);
+        margin-right: 8px;
+      }
+      .toolyfi-visual {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .toolyfi-visual > img {
+        animation: none !important;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        transform: none !important;
+        transition: none !important;
+        width: 100%;
+      }
+      .toolyfi-hero-mark {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.93);
+        border-radius: 999px;
+        bottom: 14px;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        gap: 6px;
+        padding: 7px 11px;
+        position: absolute;
+        right: 14px;
+      }
+      .toolyfi-hero-mark img {
+        height: 24px;
+        width: 24px;
+      }
+      .tool {
+        background: var(--paper);
+        border-top: 4px solid var(--coral);
+        box-shadow: var(--shadow);
+        margin-bottom: 74px;
+        padding: clamp(22px, 4vw, 46px);
+      }
+      .tool-top {
+        align-items: end;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+      .tool h2 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        margin: 0;
+      }
+      .tool-top p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0;
+        max-width: 430px;
+      }
+      .mode-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+      .mode {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #516072;
+        font-size: 0.82rem;
+        font-weight: 800;
+        padding: 10px 13px;
+        transition:
+          background 160ms var(--ease),
+          color 160ms var(--ease),
+          transform 160ms var(--ease);
+      }
+      .mode.active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+      }
+      .mode:active,
+      .action:active {
+        transform: scale(0.97);
+      }
+      .mode-note {
+        background: var(--blue);
+        border-left: 3px solid #7da9bc;
+        color: #3a5667;
+        font-size: 0.84rem;
+        margin: 0 0 20px;
+        padding: 10px 14px;
+      }
+      .work-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1fr auto 1fr;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        min-width: 0;
+      }
+      .panel-label {
+        align-items: center;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        font-size: 0.77rem;
+        font-weight: 800;
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        padding: 11px 13px;
+        text-transform: uppercase;
+      }
+      textarea {
+        border: 0;
+        color: var(--ink);
+        display: block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        min-height: 260px;
+        outline: none;
+        padding: 15px;
+        resize: vertical;
+        width: 100%;
+      }
+      .output {
+        background: #fcfcfb;
+        min-height: 260px;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+      .rail {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+      }
+      .action {
+        background: var(--ink);
+        border: 0;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        height: 44px;
+        transition:
+          transform 160ms var(--ease),
+          background 160ms var(--ease);
+        width: 44px;
+      }
+      .action:hover {
+        background: var(--coral);
+      }
+      .action.small {
+        border-radius: 999px;
+        font-size: 0.78rem;
+        height: auto;
+        padding: 10px 13px;
+        width: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .action.ghost {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .status {
+        color: var(--muted);
+        font-size: 0.81rem;
+        margin: 13px 0 0;
+        min-height: 24px;
+      }
+      .status.error {
+        color: #a63b2b;
+        font-weight: 700;
+      }
+      .metrics {
+        display: grid;
+        gap: 11px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 25px;
+      }
+      .metric {
+        border-top: 1px solid var(--line);
+        padding-top: 11px;
+      }
+      .metric b {
+        display: block;
+        font-family: Fraunces, serif;
+        font-size: 1.42rem;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+      .analysis {
+        background: var(--sage);
+        margin-top: 28px;
+        padding: 20px;
+      }
+      .analysis[hidden] {
+        display: none;
+      }
+      .analysis h3 {
+        font-size: 1.5rem;
+        margin: 0 0 8px;
+      }
+      .parts {
+        display: grid;
+        gap: 9px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .part {
+        background: rgba(255, 255, 255, 0.68);
+        padding: 10px;
+      }
+      .part span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .part code {
+        font-size: 0.84rem;
+        overflow-wrap: anywhere;
+      }
+      .query-list {
+        margin: 15px 0 0;
+      }
+      .query-list li {
+        font-size: 0.86rem;
+        margin-bottom: 5px;
+      }
+      .principles {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 0.7fr 1.3fr;
+        padding: 54px 0 66px;
+      }
+      .principles h2 {
+        font-size: clamp(2.25rem, 4.2vw, 4rem);
+        margin: 0;
+      }
+      .principles p {
+        color: var(--muted);
+        margin: 0;
+      }
+      article {
+        border-top: 1px solid var(--line);
+        padding: 66px 0 44px;
+      }
+      article > p:first-of-type {
+        color: var(--muted);
+        font-size: 1.08rem;
+        max-width: 850px;
+      }
+      article h2 {
+        font-size: clamp(2.35rem, 5vw, 4.8rem);
+        margin: 8px 0 22px;
+        max-width: 830px;
+      }
+      article h3 {
+        font-size: 1.75rem;
+        margin: 42px 0 12px;
+      }
+      article p,
+      article li {
+        max-width: 850px;
+      }
+      article li {
+        margin-bottom: 9px;
+      }
+      blockquote {
+        border-left: 3px solid var(--coral);
+        color: #405069;
+        font-family: Fraunces, serif;
+        font-size: 1.28rem;
+        margin: 28px 0;
+        max-width: 800px;
+        padding: 8px 0 8px 20px;
+      }
+      .faq {
+        background: var(--ink);
+        color: #fff;
+        margin: 26px calc(50% - 50vw) 0;
+        padding: 68px max(18px, calc((100vw - 1084px) / 2));
+      }
+      .faq h2 {
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        margin: 0 0 25px;
+      }
+      details {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 900px;
+        padding: 17px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-family: Fraunces, serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      details p {
+        color: #d8e1eb;
+        max-width: 760px;
+      }
+      .related {
+        padding: 60px 0;
+      }
+      .related h2 {
+        font-size: 2.5rem;
+        margin: 0 0 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-links a {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-weight: 800;
+        padding: 12px 15px;
+        text-decoration: none;
+        transition:
+          transform 160ms var(--ease),
+          border-color 160ms var(--ease);
+      }
+      .related-links a:hover {
+        border-color: var(--coral);
+        transform: translateY(-2px);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        gap: 14px;
+        justify-content: space-between;
+        padding: 25px clamp(18px, 4vw, 58px);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 480ms var(--ease),
+          transform 480ms var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 780px) {
+        .site-header nav a:first-child {
+          display: none;
+        }
+        .hero,
+        .principles {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 34px 0 42px;
+        }
+        .toolyfi-visual {
+          aspect-ratio: 4 / 3;
+        }
+        .toolyfi-hero-mark {
+          bottom: 10px;
+          right: 10px;
+        }
+        .tool-top,
+        .work-grid {
+          align-items: stretch;
+          grid-template-columns: 1fr;
+        }
+        .tool-top {
+          display: block;
+        }
+        .tool-top p {
+          margin-top: 12px;
+        }
+        .rail {
+          flex-direction: row;
+          order: 2;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .parts {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs">
+          <a href="index.html">Home</a> / <a href="index.html#directory">All tools</a> / URL Encoder
+          &amp; Decoder
+        </div>
+        <section class="hero">
+          <div class="reveal">
+            <span class="eyebrow">Browser-local conversion</span>
+            <h1>Keep the <em>meaning.</em> Change the representation.</h1>
+            <p class="lead">
+              Encode a component, preserve a complete URI, decode percent escapes, or inspect a URL
+              you already understand. Nothing entered here is fetched or sent by this page.
+            </p>
+            <p class="trust">
+              <strong>Local by design:</strong> This utility transforms text in your browser. It
+              does not open, validate, or retrieve the destination.
+            </p>
+          </div>
+          <figure class="toolyfi-visual reveal">
+            <img
+              src="images/toolyfi-url-encoder-decoder-hero.webp"
+              alt="Abstract paper route lines and percent tokens arranged with stationery on an ivory desk"
+              fetchpriority="high"
+            />
+            <span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool reveal" aria-labelledby="tool-title">
+          <div class="tool-top">
+            <div><h2 id="tool-title">URL Encoder &amp; Decoder</h2></div>
+            <p>
+              Choose what the text represents first. A component and a complete URI have different
+              separators to preserve.
+            </p>
+          </div>
+          <div class="mode-row" role="tablist" aria-label="Encoding method">
+            <button
+              class="mode active"
+              data-mode="component-encode"
+              role="tab"
+              aria-selected="true"
+            >
+              Encode component
+            </button>
+            <button class="mode" data-mode="component-decode" role="tab" aria-selected="false">
+              Decode component
+            </button>
+            <button class="mode" data-mode="uri-encode" role="tab" aria-selected="false">
+              Encode full URI
+            </button>
+            <button class="mode" data-mode="uri-decode" role="tab" aria-selected="false">
+              Decode full URI
+            </button>
+            <button class="mode" data-mode="rfc3986" role="tab" aria-selected="false">
+              RFC 3986 component
+            </button>
+            <button class="mode" data-mode="form-decode" role="tab" aria-selected="false">
+              Decode form value
+            </button>
+          </div>
+          <p class="mode-note" id="mode-note">
+            Use this for data that belongs inside one URI component, such as a query parameter
+            value. Structural characters become data.
+          </p>
+          <div class="work-grid">
+            <div class="panel">
+              <div class="panel-label">
+                <span>Input</span><span id="input-count">0 characters</span>
+              </div>
+              <textarea
+                id="input"
+                spellcheck="false"
+                placeholder="Type or paste text here. Example: Jack & Jill / café"
+              ></textarea>
+            </div>
+            <div class="rail">
+              <button class="action" id="swap" type="button" aria-label="Swap input and output">
+                ⇄</button
+              ><button class="action small ghost" id="clear" type="button">Clear</button>
+            </div>
+            <div class="panel">
+              <div class="panel-label">
+                <span>Output</span><span id="output-count">0 characters</span>
+              </div>
+              <textarea
+                class="output"
+                id="output"
+                readonly
+                aria-label="Converted result"
+              ></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="action small" id="copy" type="button">Copy result</button
+            ><button class="action small ghost" id="download" type="button">Download .txt</button>
+          </div>
+          <p class="status" id="status" aria-live="polite">Ready for a local conversion.</p>
+          <div class="metrics">
+            <div class="metric"><b id="input-size">0</b><span>INPUT CHARACTERS</span></div>
+            <div class="metric"><b id="output-size">0</b><span>OUTPUT CHARACTERS</span></div>
+            <div class="metric"><b id="escape-count">0</b><span>PERCENT ESCAPES</span></div>
+            <div class="metric"><b id="change">—</b><span>SIZE CHANGE</span></div>
+          </div>
+          <section class="analysis" id="analysis" hidden aria-labelledby="analysis-title">
+            <h3 id="analysis-title">URL inspection</h3>
+            <p id="analysis-note">
+              A locally parsed view of a complete URL. This does not request the address.
+            </p>
+            <div class="parts" id="parts"></div>
+            <ul class="query-list" id="query-list"></ul>
+          </section>
+        </section>
+        <section class="principles reveal">
+          <h2>Small encoding choice. Big structural difference.</h2>
+          <p>
+            <strong>Component mode</strong> treats separators like <code>&amp;</code>,
+            <code>=</code>, <code>/</code>, and <code>?</code> as data.
+            <strong>Full URI mode</strong> leaves those separators available to describe a scheme,
+            path, query, and fragment. The tool intentionally shows the method you selected instead
+            of guessing your intent.
+          </p>
+        </section>
+        <article class="article reveal">
+          <span class="eyebrow">Practical guide · URL encoding</span>
+          <h2>Use URL encoding to preserve data without confusing the structure around it</h2>
+          <p>
+            A URL encoder is easy to treat as a text cleaner: paste a string, click a button, and
+            accept whatever symbols appear. That approach works until the text has a role. A URL can
+            contain structure, values, identifiers, paths, fragments, and form data. Each part has a
+            different job. Percent encoding is not a claim that a destination is valid, safe,
+            reachable, or suitable. It is a way to represent bytes where the relevant URI context
+            needs a restricted character set. This Toolyfi page stays deliberately local: it changes
+            the representation you enter but never fetches the address, follows a redirect, or
+            checks a server response.
+          </p>
+
+          <h3>Start by identifying the thing you are encoding</h3>
+          <p>
+            The most important question is not “Which encoder is strongest?” It is “What does this
+            text become next?” If the text will be one value in a query parameter, it is a
+            component. For example, the phrase <code>Jack &amp; Jill</code> needs the ampersand
+            encoded when it is the value for <code>q</code>; otherwise a server may see a second
+            parameter. If you are preparing an entire address such as
+            <code>https://example.test/search?q=tea</code>, the colon, slashes, question mark,
+            equals sign, and ampersand already carry structure. Encoding all of those signs as data
+            would change the way the address is parsed. Native JavaScript offers separate methods
+            for these two situations, and a useful tool should make the distinction visible rather
+            than silently selecting one.
+          </p>
+          <p>
+            <code>encodeURIComponent()</code> is usually the appropriate first choice for
+            user-entered fields that will be placed into a URI component. It protects characters
+            that could otherwise become delimiters. <code>encodeURI()</code> is less aggressive
+            because it preserves URI syntax characters in a complete address. Neither method is a
+            universal repair tool. If an API asks for a particular serialization, a server-specific
+            signing rule, or a form body, follow that contract. The result from a general utility is
+            an inspection aid and a representation helper, not a substitute for the destination’s
+            documentation.
+          </p>
+
+          <h3>What percent encoding actually represents</h3>
+          <p>
+            Percent encoding writes an octet as a percent sign followed by two hexadecimal digits. A
+            familiar example is a space written as <code>%20</code>. For Unicode text, the browser
+            first represents the character using UTF-8 bytes and then writes each byte as an escape.
+            This is why a single visible character can become several percent escapes. The output
+            may look longer, but its role is not to be readable in isolation; it is to keep data
+            separate from URI delimiters and make the intended bytes transportable in the relevant
+            context.
+          </p>
+          <p>
+            RFC 3986 distinguishes unreserved characters from reserved characters. Letters, digits,
+            hyphens, periods, underscores, and tildes are normally safe as literal data. Reserved
+            characters can have a structural purpose depending on where they appear. A slash may
+            divide path segments; a question mark may start a query; a hash may begin a fragment.
+            The same character can be data in one place and syntax in another. That context is why
+            this page has an RFC 3986 component option rather than presenting one string as “the
+            correct encoded URL” for every use case.
+          </p>
+          <blockquote>
+            Encoding changes how text is represented in a URI context. It does not make an
+            unfamiliar destination trustworthy, and it does not prove that a server will accept a
+            particular request.
+          </blockquote>
+
+          <h3>Component encoding and full URI encoding are not interchangeable</h3>
+          <p>
+            Consider a site search. If a person searches for <code>red &amp; blue</code>, the
+            intended value contains an ampersand. A component encoder turns that ampersand into
+            data, allowing the application to keep it inside one parameter value. If the application
+            concatenates plain text instead, the ampersand may split the query into unexpected
+            fields. This is an integrity problem, not merely a cosmetic one. Encoding at the
+            boundary where data is inserted is simpler and safer than trying to repair a finished
+            URL after its parts have become ambiguous.
+          </p>
+          <p>
+            Now consider a completed URI: <code>https://example.test/find?q=red%20blue#notes</code>.
+            It already has a scheme, authority, path, query, and fragment. An entire-URI encoder
+            preserves its delimiters so that the shape remains visible to a URI parser. It can
+            encode spaces and non-ASCII characters without turning the separator between
+            <code>q</code> and its value into data. Do not use a whole-URI method for a raw value
+            simply because the output appears shorter. The shortest representation is not the
+            criterion; preserving the correct structure is.
+          </p>
+
+          <h3>Decode carefully because failure is useful information</h3>
+          <p>
+            Decoding is not guaranteed to succeed. A standalone percent sign, a percent sign
+            followed by non-hexadecimal characters, or an invalid UTF-8 byte sequence can cause a
+            native decoder to throw a URI error. Some tools quietly replace characters or remove a
+            malformed escape. That may be convenient for a display, but it can also hide the exact
+            data problem you need to resolve. Toolyfi leaves the input untouched and shows a clear
+            local error message. Copy the error context, inspect the percent escapes, and return to
+            the source system if you need to know what representation was intended.
+          </p>
+          <p>
+            A repeated decode can also change meaning. A value such as <code>%252F</code> decodes
+            once to <code>%2F</code> and twice to a slash. Whether a second decode is correct
+            depends on how many layers of serialization have occurred in the system that produced
+            the value. Do not keep decoding until the string “looks normal.” Record the source, the
+            expected field type, and the number of transformations applied. A controlled one-step
+            operation is easier to audit than an accidental chain of conversions.
+          </p>
+
+          <h3>Plus signs belong to a separate form convention</h3>
+          <p>
+            One common source of confusion is the plus sign. Generic URI percent encoding uses
+            <code>%20</code> for a space. HTML form serialization under
+            <code>application/x-www-form-urlencoded</code> commonly uses <code>+</code> for a space
+            in a form value. Those conventions overlap often enough that people treat them as
+            identical, but they are not identical. A literal plus can be meaningful data. Replacing
+            every plus sign with a space before a generic decode could damage that data.
+          </p>
+          <p>
+            For that reason, the page includes an explicit “Decode form value” mode. It first treats
+            plus signs as spaces and then decodes the value. Use it only when you know the string
+            came from a form-style field or query serialization that follows that convention. For a
+            generic component or complete URI, use the normal decoder and preserve plus signs unless
+            the relevant specification says otherwise. Naming the mode makes the choice reviewable
+            for the next person who reads the output.
+          </p>
+
+          <h3>Unicode, emoji, and malformed text</h3>
+          <p>
+            Modern browser methods handle ordinary Unicode text, including accented letters and many
+            emoji, by working from UTF-8 sequences. A value such as <code>café</code> becomes a
+            short sequence with the encoded byte values for the accented character. A visual emoji
+            can require multiple code units and several bytes. That length increase is expected and
+            does not mean the text has been corrupted. The useful test is whether one appropriate
+            encode followed by one matching decode returns the original well-formed string.
+          </p>
+          <p>
+            There is an edge case worth keeping in mind when text comes from a low-level source: a
+            lone UTF-16 surrogate code unit. Native encode methods can reject it because it does not
+            form a valid Unicode scalar value. The page reports that error rather than silently
+            deciding how to repair it. If your application owns the input pipeline, normalize or
+            validate text at the right boundary and document the decision. If you are investigating
+            third-party data, keep a copy of the original and seek a source-specific explanation
+            before replacing bytes.
+          </p>
+
+          <h3>Use the local inspection panel as a reading aid</h3>
+          <p>
+            When the current input can be parsed as a complete absolute URL, Toolyfi shows a local
+            breakdown of the protocol, host, path, query, and fragment. Query parameters appear as
+            decoded key/value pairs. This panel does not make any network request. It simply uses
+            the browser’s URL parser to display what a complete address contains. It is useful for
+            checking whether a value landed in the parameter you expected or whether an encoded
+            separator has become part of the path.
+          </p>
+          <p>
+            Parsing is not the same as validation. A browser can parse a syntactically shaped
+            address even if its host does not exist, its service is unavailable, or its destination
+            is unsafe. Treat the panel as a structural lens. Before opening a link, independently
+            consider the domain spelling, the channel that supplied it, the permissions it requests,
+            and whether sensitive information might be exposed. If a link concerns an account,
+            payment, identity, health, or a professional decision, use the organization’s verified
+            route rather than relying on a decoded string alone.
+          </p>
+
+          <h3>Build URLs from parts instead of concatenating guesses</h3>
+          <p>
+            In application code, it is often better to use APIs that understand URL structure than
+            to assemble a query with manual string concatenation. The browser’s <code>URL</code> and
+            <code>URLSearchParams</code> interfaces can help you separate a base address from
+            parameter names and values. Add a value through the appropriate API, inspect the
+            generated URL, and test the exact result that will be sent. This does not remove the
+            need to understand encoding, but it reduces the chance that one delimiter is
+            accidentally treated as user data or one user value is accidentally treated as a
+            delimiter.
+          </p>
+          <p>
+            When you do need a text utility, write down the contract in a small sentence: “This
+            field is a query value,” “This is a complete callback URI,” or “This comes from a form
+            body.” Choose the mode that follows that statement, preserve the original input, and use
+            Swap to test the inverse operation. A quick round trip will not prove that a remote
+            service behaves correctly, but it can reveal a mismatch between the representation you
+            produced and the representation you expected.
+          </p>
+
+          <h3>Respect security and privacy boundaries</h3>
+          <p>
+            URL encoding is sometimes mentioned alongside injection prevention, but it is only one
+            context-specific representation step. It is not HTML escaping, SQL parameterization,
+            command escaping, authentication, authorization, malware scanning, or a complete
+            input-validation strategy. Use the output only in the URI context it was prepared for.
+            When data crosses into a different context, use that context’s correct mechanism. For
+            example, a value safe in a URL query is not automatically safe to insert as HTML or
+            execute as a command.
+          </p>
+          <p>
+            This tool performs no external fetches, so it is appropriate for reviewing a draft link,
+            a non-secret example, or a value you want to transform locally. Still, take care with
+            secrets. URLs can contain tokens, reset links, document identifiers, account data, and
+            search terms. Avoid sharing them in screenshots, chat messages, or public issue
+            trackers. If a token may have been exposed, follow the issuing service’s documented
+            rotation or revocation process rather than assuming percent encoding concealed the
+            value.
+          </p>
+
+          <h3>Think about normalization before comparing two addresses</h3>
+          <p>
+            Two strings can look different while naming the same practical resource, and two
+            similar-looking strings can behave differently at a particular service. Case rules,
+            default ports, trailing slashes, dot segments, percent escapes, query ordering, and
+            fragments can all affect a comparison. Generic URI syntax explains broad concepts, but
+            an individual protocol or application can define additional comparison and normalization
+            rules. Do not use a visual “looks the same” test as a production identity check. Write
+            down the exact comparison rule required by the system you are working with.
+          </p>
+          <p>
+            Percent-encoding case is a simple example. The hexadecimal digits in an escape are
+            commonly rendered in uppercase, but code should not rely on a string’s visual casing
+            alone where specifications define equivalence. A more important example is decoding an
+            encoded reserved character. An encoded slash can be data inside one component; decoding
+            it too early can turn it into a path separator. That means a normalization step must be
+            applied only in the layer that understands the component’s meaning. The right workflow
+            is not “decode everything”; it is “preserve the structure until the responsible layer is
+            ready to interpret it.”
+          </p>
+          <p>
+            When debugging a mismatch, compare components one at a time. Record the scheme, host,
+            port, path, each query key and value, and fragment separately. Identify where an
+            application constructed the value and where it serialized it. If a proxy, framework,
+            analytics tag, redirect system, or API client touches the URL afterward, check each
+            boundary. The smallest repeatable sample is usually more useful than a large production
+            address because it reveals which delimiter or byte changed. A local converter helps you
+            produce the sample; system logs and specifications explain the end-to-end behavior.
+          </p>
+
+          <h3>Preserve delimiter intent in paths, queries, and fragments</h3>
+          <p>
+            Paths, queries, and fragments all use familiar punctuation, yet they have different
+            roles. A slash can divide path segments. An ampersand and equals sign often separate
+            query fields. A hash introduces a fragment that a browser may handle locally after the
+            rest of the URI is resolved. If a user-controlled string is intended to be a value
+            inside any one of these regions, encode it as a component before inserting it. If your
+            program receives an already-complete address, preserve its existing separators while you
+            inspect it. The distinction makes route handling more predictable and avoids
+            accidentally creating new fields or path segments.
+          </p>
+          <p>
+            Query values deserve particular care because they are often assembled from search text,
+            filters, callbacks, and identifiers. Use a structured parameter API when possible. If
+            you must manually inspect a result, test values containing spaces, a literal plus, an
+            ampersand, an equals sign, a slash, a question mark, a hash, and one Unicode character.
+            Each test checks a different assumption. A correct output for a space does not prove
+            correct output for an ampersand, and a correct output for one form convention does not
+            prove that a generic URI decoder should treat plus as a space.
+          </p>
+          <p>
+            Fragments are also easy to misread in security reviews. A fragment is not normally sent
+            in an HTTP request in the same way as the path and query, but client-side applications
+            can interpret it and may use it for routing or state. Do not treat its local nature as a
+            guarantee of safety. Follow the rules of the receiving application, avoid placing
+            secrets in shareable URLs, and test the complete client flow with non-sensitive
+            examples. Encoding is one small representation tool in a broader design that must
+            include appropriate validation and authorization.
+          </p>
+
+          <h3>Document the boundary between display and transport</h3>
+          <p>
+            Readable text and transport representation serve different people. A human might need to
+            see an international name, a search phrase, or a title exactly as written. A URI
+            component might need the UTF-8 percent-encoded representation of those same characters.
+            Keep both where your workflow allows it: retain the original for review and produce the
+            encoded value only at the point of insertion. This makes logs, tests, and support
+            conversations easier to understand. It also reduces the temptation to decode a stored
+            value repeatedly just to make it readable on screen.
+          </p>
+          <p>
+            For user interfaces, label encoded fields clearly and provide a copy action that copies
+            exactly what the program will use. Avoid auto-decoding a value in a way that could make
+            it look safer, shorter, or more familiar than it is. In a developer handoff, include an
+            example input, its expected representation, the method selected, and the component where
+            it belongs. A future maintainer should not need to infer whether an apparent plus sign
+            was intentional data or a form-style space.
+          </p>
+          <p>
+            Local transformations are especially helpful when you need to explain a result without
+            giving a third party access to a sensitive draft. This page does not submit input, keep
+            a history, or issue a network request. That boundary is useful but it does not eliminate
+            browser, clipboard, screen-sharing, or organizational retention risks outside the page.
+            Treat the text you paste according to its sensitivity, minimize copies, and remove
+            secrets from examples. Good representation hygiene includes deciding what should not be
+            placed in a URL at all.
+          </p>
+
+          <h3>Test the receiver, not only the encoder</h3>
+          <p>
+            A round-trip check confirms that matching native operations can reproduce a well-formed
+            value in the browser. It does not prove that a server, library, gateway, signing
+            process, or framework will apply the same operation at the same time. Build tests around
+            the actual receiving system. Include an expected request or URI in version-controlled
+            tests, use a non-production endpoint where available, and verify the parsed value after
+            the receiver processes it. If a tool or framework already exposes a parameter-building
+            interface, prefer that maintained interface over custom string assembly.
+          </p>
+          <p>
+            When an integration fails, identify the failure layer before changing the
+            representation. An error can come from an authorization rule, an unavailable host, a
+            route definition, an application validator, a missing parameter, or an unexpected
+            content type. Re-encoding an address will not solve most of those problems. Conversely,
+            a malformed escape error is evidence that the representation itself needs attention.
+            Keeping the categories separate prevents a debugging session from turning into repeated
+            transformations that obscure the original input.
+          </p>
+          <p>
+            Use a small test ledger when an address matters to a workflow: source input, selected
+            mode, output, receiver expectation, receiver result, and any relevant specification
+            link. This is lightweight documentation, not bureaucracy. It gives you a reversible
+            trail and lets another person reproduce the decision. The most dependable URL work is
+            explicit about context: who produces the data, which component receives it, what
+            representation is expected, and how the receiver interprets it.
+          </p>
+
+          <h3>A reliable debugging workflow</h3>
+          <p>
+            Start with the unmodified input and label its source. Next, decide whether it is a
+            component, an entire URI, or a form-encoded value. Run exactly one local transform.
+            Compare the character count, percent-escape count, and structure panel where relevant.
+            If the output will go into an application, test it in a non-production environment using
+            non-sensitive sample data. Keep the sample narrow enough to identify the behavior: one
+            space, one ampersand, one slash, one non-ASCII character, and one plus sign can expose
+            most context mistakes quickly.
+          </p>
+          <p>
+            If decoding fails, do not translate the failure into an invented value. Preserve the
+            original bytes or escaped text, identify the producer, and determine whether a different
+            charset, double encoding, truncated transport, or form convention was involved. If a URL
+            is being signed, canonicalized, or compared by a service, check that service’s exact
+            rules. Order, hexadecimal case, preserved delimiters, and normalization policies can
+            matter. A general encoder gives you visibility; a protocol contract tells you what to
+            send.
+          </p>
+
+          <h3>Reference sources and related reading</h3>
+          <p>
+            For the generic URI model, read
+            <a
+              href="https://www.rfc-editor.org/rfc/rfc3986"
+              rel="noopener noreferrer"
+              target="_blank"
+              >RFC 3986</a
+            >, especially its discussion of percent encoding, reserved characters, and when to
+            encode or decode. For the native browser method used by component mode, see
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"
+              rel="noopener noreferrer"
+              target="_blank"
+              >MDN’s encodeURIComponent reference</a
+            >. Those sources explain principles; your application’s own API and framework
+            documentation should define its required request format.
+          </p>
+          <p>
+            Use the tool below for representation checks, then continue with a related Toolyfi
+            utility when the next step is text cleanup, Base64 inspection, JSON formatting, or
+            testing a small HTML snippet. The best workflow keeps each operation narrow and
+            reversible. You should be able to say what was encoded, where it will be used, which
+            rule applied, and how you verified the result.
+          </p>
+        </article>
+      </div>
+      <section class="faq">
+        <div class="shell">
+          <span class="eyebrow">Questions, answered</span>
+          <h2>URL encoding FAQ</h2>
+          <details>
+            <summary>What is URL percent encoding?</summary>
+            <p>
+              It represents bytes with a percent sign and two hexadecimal digits so data can safely
+              appear in the relevant URI component.
+            </p>
+          </details>
+          <details>
+            <summary>When should I use encodeURIComponent?</summary>
+            <p>
+              Use it for a value inserted into a query parameter, path segment, or another
+              individual URI component. It encodes structural characters as data.
+            </p>
+          </details>
+          <details>
+            <summary>When should I use encodeURI?</summary>
+            <p>
+              Use it for a complete URI whose structural separators should remain separators. It is
+              not the right method for an individual query value.
+            </p>
+          </details>
+          <details>
+            <summary>Why does URL decoding fail?</summary>
+            <p>
+              Malformed percent escapes or byte sequences that do not form valid UTF-8 can make a
+              native decoder throw. This tool leaves the input unchanged and reports the error.
+            </p>
+          </details>
+          <details>
+            <summary>Does plus mean space in a URL?</summary>
+            <p>
+              Not in generic URI percent encoding. Plus means space only in the specific
+              application/x-www-form-urlencoded convention, so use the explicit form-value mode when
+              appropriate.
+            </p>
+          </details>
+          <details>
+            <summary>Does this tool send my URL anywhere?</summary>
+            <p>
+              No. The page uses browser APIs to transform and inspect text locally. It does not
+              fetch, submit, or store the text you enter.
+            </p>
+          </details>
+          <details>
+            <summary>Can I encode emoji and non-English text?</summary>
+            <p>
+              Yes. Supported Unicode text is represented through UTF-8 percent escapes. A lone
+              surrogate code unit can still cause an explicit browser error.
+            </p>
+          </details>
+          <details>
+            <summary>What does RFC 3986 component mode change?</summary>
+            <p>
+              It additionally escapes the characters <code>!</code>, apostrophe, parentheses, and
+              asterisk after component encoding for a stricter reserved-character treatment.
+            </p>
+          </details>
+          <details>
+            <summary>Can encoding prove that a URL is safe?</summary>
+            <p>
+              No. Encoding changes representation only. Inspect the domain and context before
+              opening or sharing an unfamiliar destination.
+            </p>
+          </details>
+          <details>
+            <summary>How do I verify an encoded value?</summary>
+            <p>
+              Use Swap to move the output into the input and reverse the operation. A round trip
+              checks representation, not remote-service behavior.
+            </p>
+          </details>
+        </div>
+      </section>
+      <div class="shell related reveal">
+        <span class="eyebrow">Keep working</span>
+        <h2>Related browser-local tools</h2>
+        <div class="related-links">
+          <a href="base64-encoder-decoder.html">Base64 Encoder</a
+          ><a href="json-formatter.html">JSON Formatter</a
+          ><a href="html-preview-tool.html">HTML Preview</a
+          ><a href="case-converter.html">Case Converter</a
+          ><a href="word-counter.html">Word Counter</a><a href="index.html#directory">All tools</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>Toolyfi — Free tools for real work.</span
+      ><span
+        ><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> ·
+        <a href="contact.html">Contact</a></span
+      >
+    </footer>
+    <script src="pwa-register.js" defer></script>
+    <script>
+      // Toolyfi Editorial Utility Atlas: browser-local URL representation only; no network requests or storage.
+      const input = document.getElementById("input");
+      const output = document.getElementById("output");
+      const status = document.getElementById("status");
+      const modeNote = document.getElementById("mode-note");
+      const analysis = document.getElementById("analysis");
+      const parts = document.getElementById("parts");
+      const queryList = document.getElementById("query-list");
+      let mode = "component-encode";
+      const descriptions = {
+        "component-encode":
+          "Use this for data that belongs inside one URI component, such as a query parameter value. Structural characters become data.",
+        "component-decode":
+          "Use this for a percent-encoded component. Invalid percent escapes are reported without changing the input.",
+        "uri-encode":
+          "Use this for a complete URI whose separators should stay structural. It does not validate or retrieve the destination.",
+        "uri-decode":
+          "Use this for a fully percent-encoded URI representation. It preserves the distinction between a plus sign and a space.",
+        rfc3986:
+          "Use this for a component when a stricter RFC 3986 reserved-character treatment is required by the receiving specification.",
+        "form-decode":
+          "Use only for application/x-www-form-urlencoded values. In this convention, plus signs represent spaces before percent decoding.",
+      };
+      function countEscapes(value) {
+        return (value.match(/%[0-9a-fA-F]{2}/g) || []).length;
+      }
+      function textSize(value) {
+        return Array.from(value).length;
+      }
+      function setStatus(message, error = false) {
+        status.textContent = message;
+        status.className = error ? "status error" : "status";
+      }
+      function transform(value) {
+        if (!value) return "";
+        if (mode === "component-encode") return encodeURIComponent(value);
+        if (mode === "component-decode") return decodeURIComponent(value);
+        if (mode === "uri-encode") return encodeURI(value);
+        if (mode === "uri-decode") return decodeURI(value);
+        if (mode === "form-decode") return decodeURIComponent(value.replace(/\+/g, " "));
+        return encodeURIComponent(value).replace(
+          /[!'()*]/g,
+          (char) => `%${char.charCodeAt(0).toString(16).toUpperCase()}`,
+        );
+      }
+      function tryInspect(value) {
+        analysis.hidden = true;
+        parts.innerHTML = "";
+        queryList.innerHTML = "";
+        const candidate = value.trim();
+        if (!/^https?:\/\//i.test(candidate)) return;
+        try {
+          const url = new URL(candidate);
+          const rows = [
+            ["Protocol", url.protocol],
+            ["Host", url.host],
+            ["Path", url.pathname || "/"],
+            ["Query", url.search || "—"],
+            ["Fragment", url.hash || "—"],
+          ];
+          parts.innerHTML = rows
+            .map(
+              ([label, value]) =>
+                `<div class="part"><span>${label}</span><code>${escapeHtml(value)}</code></div>`,
+            )
+            .join("");
+          const parameters = [...url.searchParams.entries()];
+          queryList.innerHTML = parameters.length
+            ? `<strong>Decoded query parameters</strong>${parameters.map(([key, value]) => `<li><code>${escapeHtml(key)}</code> = <code>${escapeHtml(value)}</code></li>`).join("")}`
+            : "<strong>No query parameters detected.</strong>";
+          analysis.hidden = false;
+        } catch {
+          /* A complete URL is optional; leave the inspector hidden for invalid URLs. */
+        }
+      }
+      function escapeHtml(value) {
+        return String(value).replace(
+          /[&<>'"]/g,
+          (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char],
+        );
+      }
+      function update() {
+        const source = input.value;
+        document.getElementById("input-count").textContent = `${textSize(source)} characters`;
+        document.getElementById("input-size").textContent = textSize(source);
+        try {
+          const result = transform(source);
+          output.value = result;
+          document.getElementById("output-count").textContent = `${textSize(result)} characters`;
+          document.getElementById("output-size").textContent = textSize(result);
+          document.getElementById("escape-count").textContent = countEscapes(result);
+          document.getElementById("change").textContent = source
+            ? `${Math.round(((result.length - source.length) / source.length) * 100)}%`
+            : "—";
+          setStatus(
+            source ? "Converted locally in your browser." : "Ready for a local conversion.",
+          );
+          tryInspect(mode.includes("decode") ? result : source);
+        } catch (error) {
+          output.value = "";
+          document.getElementById("output-count").textContent = "0 characters";
+          document.getElementById("output-size").textContent = "0";
+          document.getElementById("escape-count").textContent = "0";
+          document.getElementById("change").textContent = "—";
+          analysis.hidden = true;
+          setStatus(
+            `Could not ${mode.includes("decode") ? "decode" : "encode"}: ${error.message}. Check malformed percent escapes or unsupported text.`,
+            true,
+          );
+        }
+      }
+      document.querySelectorAll(".mode").forEach((button) =>
+        button.addEventListener("click", () => {
+          mode = button.dataset.mode;
+          document.querySelectorAll(".mode").forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-selected", active);
+          });
+          modeNote.textContent = descriptions[mode];
+          update();
+        }),
+      );
+      input.addEventListener("input", update);
+      document.getElementById("swap").addEventListener("click", () => {
+        if (!output.value) return;
+        input.value = output.value;
+        const pairs = {
+          "component-encode": "component-decode",
+          "component-decode": "component-encode",
+          "uri-encode": "uri-decode",
+          "uri-decode": "uri-encode",
+          rfc3986: "component-decode",
+          "form-decode": "component-encode",
+        };
+        const next = pairs[mode];
+        document.querySelector(`.mode[data-mode="${next}"]`).click();
+        setStatus("Output moved into input; the inverse mode is selected.");
+      });
+      document.getElementById("clear").addEventListener("click", () => {
+        input.value = "";
+        output.value = "";
+        update();
+        input.focus();
+      });
+      document.getElementById("copy").addEventListener("click", async () => {
+        if (!output.value) return setStatus("Create a result before copying.", true);
+        try {
+          await navigator.clipboard.writeText(output.value);
+          setStatus("Result copied to your clipboard.");
+        } catch {
+          output.select();
+          document.execCommand("copy");
+          setStatus("Result selected and copied where your browser permits.");
+        }
+      });
+      document.getElementById("download").addEventListener("click", () => {
+        if (!output.value) return setStatus("Create a result before downloading.", true);
+        const blob = new Blob([output.value], { type: "text/plain;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "toolyfi-url-result.txt";
+        link.click();
+        URL.revokeObjectURL(link.href);
+        setStatus("Downloaded your local text result.");
+      });
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+      update();
+    </script>
+  </body>
+</html>
