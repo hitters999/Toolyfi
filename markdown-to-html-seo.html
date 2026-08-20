@@ -1,792 +1,2871 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convert Markdown to clean HTML in your browser. Preview common Markdown, tables, task lists, code blocks, and download or copy the output.">
-<meta name="author" content="Toolyfi">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="#0a1f2e">
-<title>Markdown to HTML Converter — Free Live Preview & GFM Support | Toolyfi</title>
-<meta property="og:title" content="Markdown to HTML Converter — Free Live Preview Tool | Toolyfi">
-<meta property="og:description" content="Convert common Markdown to clean HTML with a local preview, file input, copy, and download controls.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolyfi.com/markdown-to-html-seo.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Markdown to HTML Converter | Toolyfi">
-<meta name="twitter:description" content="A browser-based Markdown to HTML converter with local preview and export controls.">
-<link rel="canonical" href="https://toolyfi.com/markdown-to-html-seo.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
-
-<!-- Static Schema -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Markdown to HTML Converter","description":"Browser-based Markdown to HTML converter with a rendered preview, raw output, local file input, copy, and download controls.","url":"https://toolyfi.com/markdown-to-html-seo.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Organization","name":"Toolyfi","url":"https://toolyfi.com"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://toolyfi.com"},{"@type":"ListItem","position":3,"name":"Markdown to HTML Converter","item":"https://toolyfi.com/markdown-to-html-seo.html"}]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-  {"@type":"Question","name":"Is this Markdown to HTML converter free to use?","acceptedAnswer":{"@type":"Answer","text":"The converter runs in your browser and does not require an account for its normal paste, preview, copy, and download workflow."}},
-  {"@type":"Question","name":"Which Markdown syntax does this converter support?","acceptedAnswer":{"@type":"Answer","text":"It supports common headings, emphasis, links, lists, code blocks, task lists, blockquotes, horizontal rules, tables, and strikethrough. Complex Markdown extensions may render differently across platforms."}},
-  {"@type":"Question","name":"Can I upload a .md file instead of typing?","acceptedAnswer":{"@type":"Answer","text":"Yes, drag and drop any .md, .markdown, or .txt file directly onto the input box, or click to browse and select a file from your device."}},
-  {"@type":"Question","name":"Does my Markdown content get uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Every conversion happens locally in your browser using JavaScript. Your content is never sent to, stored on, or logged by any server."}},
-  {"@type":"Question","name":"Can I download the converted HTML as a file?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Download .html button to save the output as a standalone HTML file, or use Copy HTML to place it directly on your clipboard."}},
-  {"@type":"Question","name":"Does the tool show a live rendered preview, not just raw HTML?","acceptedAnswer":{"@type":"Answer","text":"Yes. Toggle between the Rendered Preview tab (see exactly how it will look on the web) and the Raw HTML tab (copy the actual markup) at any time."}},
-  {"@type":"Question","name":"Does the preview execute scripts from my Markdown?","acceptedAnswer":{"@type":"Answer","text":"The converter generates a limited HTML output from Markdown syntax. It does not provide a script-execution environment for pasted Markdown."}}
-]}
-</script>
-
-<style>
-:root{
-  --primary:#ff6e61;
-  --primary-dark:#b64138;
-  --primary-light:#ffede9;
-  --accent:#c659ff;
-  --dark:#0a1f2e;
-  --gray:#516572;
-  --light:#f7f2e9;
-  --border:#d8d0c3;
-  --white:#fff;
-  --shadow:0 4px 24px rgba(14,165,233,0.10);
-  --shadow-lg:0 12px 48px rgba(14,165,233,0.16);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
-
-header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:74px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.08rem;letter-spacing:.08em;color:#fff;text-decoration:none}
-.logo img{display:block;width:39px;height:39px;object-fit:contain}
-nav{display:flex;gap:4px}
-nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
-nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
-
-.ad-top{background:var(--light);border-bottom:1px solid var(--border);padding:10px 0;text-align:center}
-.ad-label{font-size:.65rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
-
-.hero{background:linear-gradient(135deg,#0a1f2e 0%,#12374c 60%,#274f58 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,black,transparent);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
-.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
-.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)}
-.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:600px;margin:0 auto 40px;line-height:1.7}
-.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600}
-.trust-pill span{color:var(--accent)}
-
-.tool-section{max-width:1100px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
-.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
-.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.tool-card-header h2{color:#fff;font-size:1.2rem;font-weight:700}
-.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
-.stat-chip{background:rgba(255,255,255,0.2);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700}
-.tool-body{padding:32px}
-
-.upload-zone{border:2px dashed var(--border);border-radius:14px;padding:16px 20px;text-align:center;margin-bottom:16px;transition:all .2s;cursor:pointer;background:var(--light)}
-.upload-zone.drag{border-color:var(--primary);background:var(--primary-light)}
-.upload-zone p{font-size:.85rem;color:var(--gray);font-weight:600}
-.upload-zone input{display:none}
-
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px}
-.editor-col label{display:block;font-weight:700;font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
-.editor-col textarea{width:100%;min-height:380px;padding:18px;border:2px solid var(--border);border-radius:14px;font-family:'Courier New',monospace;font-size:.9rem;resize:vertical;color:var(--dark);background:var(--light);transition:all .2s}
-.editor-col textarea:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(14,165,233,0.08)}
-
-.output-tabs{display:flex;gap:8px;margin-bottom:8px}
-.tab-btn{background:var(--light);border:2px solid var(--border);color:var(--gray);padding:8px 16px;border-radius:10px;font-size:.8rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.output-box{min-height:380px;max-height:380px;overflow:auto;background:var(--light);border:2px solid var(--border);border-radius:14px;padding:20px;font-size:.92rem;line-height:1.7;color:var(--dark)}
-.output-box.raw{font-family:'Courier New',monospace;font-size:.82rem;white-space:pre-wrap;word-break:break-word}
-.output-box h1,.output-box h2,.output-box h3{margin:14px 0 8px;font-weight:800}
-.output-box p{margin-bottom:10px}
-.output-box ul,.output-box ol{margin:0 0 10px 24px}
-.output-box code{background:#e0f2fe;padding:2px 6px;border-radius:4px;font-family:monospace}
-.output-box pre{background:var(--dark);color:#e0f2fe;padding:14px;border-radius:10px;overflow-x:auto;margin-bottom:10px}
-.output-box pre code{background:none;color:inherit;padding:0}
-.output-box table{border-collapse:collapse;width:100%;margin-bottom:12px}
-.output-box th,.output-box td{border:1px solid var(--border);padding:8px 12px;text-align:left}
-.output-box th{background:#e0f2fe}
-.output-box blockquote{border-left:4px solid var(--primary);padding-left:14px;color:var(--gray);margin-bottom:10px}
-.output-placeholder{text-align:center;color:#94a3b8;padding:60px 0}
-.output-placeholder .ph-icon{font-size:3rem;margin-bottom:8px}
-
-
-.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.btn-primary{background:var(--primary);color:#fff;border:none;padding:14px 24px;border-radius:12px;font-size:.95rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.35)}
-.btn-primary:active,.btn-success:active,.btn-sm:active{transform:scale(0.97)}
-.btn-success{background:#10b981;color:#fff;border:none;padding:14px 20px;border-radius:12px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.btn-success:hover{background:#059669}
-.btn-sm{background:var(--light);border:2px solid var(--border);color:var(--gray);padding:14px 16px;border-radius:12px;font-size:.82rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.btn-sm:hover{border-color:var(--primary);color:var(--primary)}
-
-.msg{padding:11px 16px;border-radius:10px;font-size:.88rem;font-weight:600;margin-bottom:16px;display:none}
-.msg.show{display:block}
-.msg.success{background:#ecfdf5;color:#059669;border-left:4px solid #10b981}
-.msg.error{background:#fef2f2;color:#dc2626;border-left:4px solid #dc2626}
-
-.ad-mid{text-align:center;padding:20px;background:var(--light);border-top:1px solid var(--border);margin-top:24px;border-radius:12px}
-
-.stats-bar{background:var(--dark);padding:40px 20px}
-.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.sbar-item .sval{font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px}
-.sbar-item .slbl{color:rgba(255,255,255,0.55);font-size:.82rem;font-weight:600}
-
-.section{max-width:980px;margin:0 auto;padding:80px 24px}
-.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary-dark);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
-.section-title{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
-.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
-.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
-
-.more-section{background:var(--light);padding:80px 24px}
-.more-inner{max-width:980px;margin:0 auto}
-.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
-.more-features{display:flex;flex-direction:column;gap:12px}
-.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
-.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
-.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
-.more-feat-text p{font-size:.85rem;color:var(--gray)}
-.more-visual{background:linear-gradient(135deg,#0c2a4a,#0369a1);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
-.more-vis-row{background:rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
-.more-vis-label{font-size:.88rem;font-weight:700;color:#fff}
-.more-vis-sub{font-size:.78rem;color:rgba(255,255,255,0.6)}
-.more-vis-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:6px;background:rgba(14,165,233,0.2);color:#7dd3fc}
-
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
-.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
-.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.feat-card:hover::before{opacity:1}
-.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
-.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
-.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
-
-.who-section{background:var(--dark);padding:80px 24px}
-.who-inner{max-width:980px;margin:0 auto}
-.who-section .section-title{color:#fff}
-.who-section .section-sub{color:rgba(255,255,255,0.55)}
-.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
-.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
-.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
-.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
-.who-card p{color:rgba(255,255,255,0.5);font-size:.88rem;line-height:1.7}
-
-.faq-section{background:var(--light);padding:80px 24px}
-.faq-inner{max-width:760px;margin:0 auto}
-.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
-.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
-.faq-item.open{border-color:var(--primary)}
-.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.95rem}
-.faq-q .arrow{font-size:1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
-.faq-item.open .arrow{transform:rotate(180deg)}
-.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.92rem}
-.faq-item.open .faq-a{display:block}
-
-.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
-.article-section h2{font-size:1.85rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
-.article-section h3{font-size:1.25rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
-.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
-.article-section ul,.article-section ol{margin:16px 0 20px 28px}
-.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
-.article-section strong{color:var(--primary-dark);font-weight:700}
-.article-section a{color:var(--primary-dark);font-weight:600;text-decoration:none}
-.article-section a:hover{text-decoration:underline}
-.article-section code{background:var(--primary-light);padding:2px 7px;border-radius:5px;font-family:monospace;color:var(--primary-dark)}
-.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
-.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
-
-.tf-widget{max-width:860px;margin:0 auto;padding:0 20px 60px}
-.tf-widget-card{background:#fff;border:2px solid var(--border);border-radius:20px;overflow:hidden}
-.tf-rating-bar{background:linear-gradient(135deg,#f8fafc,#f1f5f9);padding:28px 32px;border-bottom:1px solid var(--border)}
-.tf-rating-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px}
-.tf-rating-left h3{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:4px}
-.tf-rating-left p{font-size:.82rem;color:var(--gray);font-weight:600}
-.tf-avg-display{text-align:center}
-.tf-avg-num{font-size:3rem;font-weight:800;color:var(--dark);line-height:1}
-.tf-avg-stars{font-size:1.4rem;letter-spacing:2px;margin:4px 0}
-.tf-avg-count{font-size:.75rem;color:#94a3b8;font-weight:600}
-.tf-star-input{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.tf-star-input span{font-size:.85rem;font-weight:700;color:var(--gray)}
-.tf-stars{display:flex;gap:4px;direction:rtl}
-.tf-stars input{display:none}
-.tf-stars label{font-size:2rem;cursor:pointer;color:#e2e8f0;transition:color .15s;line-height:1}
-.tf-stars:hover label,.tf-stars label:hover,.tf-stars label:hover~label,.tf-stars input:checked~label{color:#f59e0b}
-.tf-rating-bars{margin-top:16px}
-.tf-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.tf-bar-lbl{font-size:.75rem;font-weight:700;color:var(--gray);width:32px;text-align:right}
-.tf-bar-track{flex:1;height:8px;background:#e2e8f0;border-radius:100px;overflow:hidden}
-.tf-bar-fill{height:100%;background:#f59e0b;border-radius:100px;transition:width .5s ease}
-.tf-bar-cnt{font-size:.72rem;font-weight:700;color:#94a3b8;width:20px}
-.tf-reactions{display:flex;align-items:center;gap:12px;padding:16px 32px;border-bottom:1px solid var(--border);background:#fff;flex-wrap:wrap}
-.tf-react-label{font-size:.82rem;font-weight:700;color:var(--gray)}
-.tf-react-btn{display:flex;align-items:center;gap:6px;background:var(--light);border:2px solid var(--border);border-radius:100px;padding:8px 18px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;color:var(--gray)}
-.tf-react-btn:hover{border-color:#94a3b8;color:var(--dark)}
-.tf-react-btn.liked{background:#dcfce7;border-color:#10b981;color:#059669}
-.tf-react-btn.disliked{background:#fee2e2;border-color:#ef4444;color:#dc2626}
-.tf-react-count{font-weight:800}
-.tf-comments-section{padding:24px 32px}
-.tf-comments-title{font-size:.95rem;font-weight:800;color:var(--dark);margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.tf-comment-form input,.tf-comment-form textarea{width:100%;border:2px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--dark);background:var(--light);transition:all .2s;margin-bottom:10px}
-.tf-comment-form input:focus,.tf-comment-form textarea:focus{outline:none;border-color:var(--primary);background:#fff}
-.tf-comment-form textarea{min-height:90px;resize:vertical}
-.tf-submit-btn{background:var(--primary);color:#fff;border:none;padding:11px 24px;border-radius:10px;font-size:.88rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.tf-submit-btn:hover{background:var(--primary-dark)}
-.tf-comments-list{display:flex;flex-direction:column;gap:14px;margin-top:16px}
-.tf-comment-item{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
-.tf-comment-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.tf-comment-name{font-weight:700;font-size:.88rem;color:var(--dark)}
-.tf-comment-date{font-size:.75rem;color:#94a3b8;font-weight:600}
-.tf-comment-stars{font-size:.85rem;color:#f59e0b;margin-bottom:6px}
-.tf-comment-text{font-size:.88rem;color:#374151;line-height:1.7}
-.tf-no-comments{text-align:center;color:#94a3b8;font-size:.88rem;font-weight:600;padding:20px 0}
-
-.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
-.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:16px}
-.cta-section p{color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:36px}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
-
-.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
-.tools-footer-inner{max-width:980px;margin:0 auto}
-.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
-.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s}
-.tool-link:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
-
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:12px 24px;border-radius:100px;font-size:.88rem;font-weight:600;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-footer{background:var(--dark);padding:32px 24px;text-align:center}
-footer p{color:rgba(255,255,255,0.4);font-size:.85rem;margin-bottom:6px}
-footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
-footer a:hover{color:#fff}
-
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-@media(max-width:900px){
-  .editor-grid{grid-template-columns:1fr}
-  .more-grid{grid-template-columns:1fr}
-  .more-visual{display:none}
-}
-@media(max-width:768px){
-  header{padding:0 16px}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .feat-grid{grid-template-columns:1fr}
-  .who-grid{grid-template-columns:1fr 1fr}
-  .tools-grid{grid-template-columns:repeat(2,1fr)}
-  .tf-reactions{padding:16px 20px}
-  .tf-rating-bar,.tf-comments-section{padding:20px}
-}
-@media(max-width:480px){
-  .hero{padding:56px 16px 72px}
-  .tool-body{padding:20px}
-  .who-grid{grid-template-columns:1fr}
-  .btn-row{flex-wrap:wrap}
-}
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<header>
-  <a href="https://toolyfi.com/" class="logo"><img src="logo.png" alt="Toolyfi" />TOOLYFI</a>
-  <nav>
-    <a href="https://toolyfi.com">Home</a>
-    <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a>
-    <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview</a>
-  </nav>
-</header>
-
-<div class="ad-top">
-  <div class="ad-label">Advertisement</div>
-  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
-
-<section class="hero">
-  <div class="hero-badge">Markdown workspace · local browser processing</div>
-  <h1>Free <em>Markdown to HTML</em><br>Converter with Live Preview</h1>
-  <p class="hero-sub">Turn common Markdown into clean HTML in your browser. Paste or load a local file, inspect the rendered output, then copy or download the markup.</p>
-  <div class="trust-pills">
-    <div class="trust-pill"><span>✓</span> Runs locally</div>
-    <div class="trust-pill"><span>✓</span> No account needed</div>
-    <div class="trust-pill"><span>✓</span> Common Markdown</div>
-    <div class="trust-pill"><span>✓</span> Live Preview</div>
-    <div class="trust-pill"><span>✓</span> Runs In Browser</div>
-  </div>
-</section>
-
-<div class="tool-section">
-  <div class="tool-card">
-    <div class="tool-card-header">
-      <h2>📝 Markdown to HTML Converter</h2>
-      <div class="stat-chips">
-        <div class="stat-chip">⚡ Instant</div>
-        <div class="stat-chip">📊 GFM Tables</div>
-        <div class="stat-chip">📥 Download .html</div>
-      </div>
-    </div>
-    <div class="tool-body">
-      <div class="msg" id="msg"></div>
-
-      <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-        <p>📁 Drag & drop a .md, .markdown or .txt file here, or click to browse</p>
-        <input type="file" id="fileInput" accept=".md,.markdown,.txt">
-      </div>
-
-      <div class="editor-grid">
-        <div class="editor-col">
-          <label>Markdown Input</label>
-          <textarea id="markdown" placeholder="# Heading&#10;## Subheading&#10;**Bold** *italic* ~~strikethrough~~&#10;- [ ] Task item&#10;- [x] Done item&#10;[Link](https://example.com)&#10;&#10;| Col A | Col B |&#10;|---|---|&#10;| 1 | 2 |"></textarea>
-        </div>
-        <div class="editor-col">
-          <label>Output</label>
-          <div class="output-tabs">
-            <button class="tab-btn active" id="tabPreview" onclick="switchTab('preview')">👁️ Rendered Preview</button>
-            <button class="tab-btn" id="tabRaw" onclick="switchTab('raw')">🔤 Raw HTML</button>
-          </div>
-          <div class="output-box" id="outputPreview">
-            <div class="output-placeholder"><div class="ph-icon">📝</div><p>Your rendered HTML preview appears here</p></div>
-          </div>
-          <div class="output-box raw" id="outputRaw" style="display:none;">
-            <div class="output-placeholder"><div class="ph-icon">🔤</div><p>Raw HTML source appears here</p></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn-primary" onclick="copyOutput()">📋 Copy HTML</button>
-        <button class="btn-success" onclick="downloadHTML()">📥 Download .html</button>
-        <button class="btn-sm" onclick="clearTool()">🗑️ Clear</button>
-      </div>
-
-      <div class="ad-mid">
-        <div class="ad-label">Advertisement</div>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="sbar-item"><div class="sval">Local</div><div class="slbl">Browser processing</div></div>
-    <div class="sbar-item"><div class="sval">GFM-style</div><div class="slbl">Common syntax support</div></div>
-    <div class="sbar-item"><div class="sval">Copy</div><div class="slbl">Clean HTML output</div></div>
-    <div class="sbar-item"><div class="sval">Export</div><div class="slbl">Download .html</div></div>
-  </div>
-</div>
-
-<div class="more-section">
-  <div class="more-inner">
-    <div class="section-tag reveal">Beyond Basic</div>
-    <h2 class="section-title reveal">More than just a <em>markdown converter</em></h2>
-    <p class="section-sub reveal">Most free converters only show raw HTML text. Toolyfi shows you a real rendered preview, full GitHub Flavored Markdown syntax, and lets you export exactly the way you need it.</p>
-    <div class="more-grid">
-      <div>
-        <div class="more-features">
-          <div class="more-feat reveal"><div class="more-feat-ico">👁️</div><div class="more-feat-text"><h4>Rendered Live Preview</h4><p>See exactly how your content looks on the web, not just raw tags.</p></div></div>
-          <div class="more-feat reveal"><div class="more-feat-ico">📊</div><div class="more-feat-text"><h4>GFM Tables & Task Lists</h4><p>Pipe tables and checkbox task lists convert correctly, every time.</p></div></div>
-          <div class="more-feat reveal"><div class="more-feat-ico">📁</div><div class="more-feat-text"><h4>Drag & Drop File Upload</h4><p>Drop a .md file directly — no need to copy-paste large documents.</p></div></div>
-          <div class="more-feat reveal"><div class="more-feat-ico">📥</div><div class="more-feat-text"><h4>One-Click Download</h4><p>Export a ready-to-use .html file instead of just copying text.</p></div></div>
-        </div>
-      </div>
-      <div class="more-visual">
-        <div class="more-vis-row"><span class="more-vis-label">Tables</span><span class="more-vis-sub">Pipe syntax → HTML table</span><span class="more-vis-badge">Most popular</span></div>
-        <div class="more-vis-row"><span class="more-vis-label">Task Lists</span><span class="more-vis-sub">- [x] → checkbox</span><span class="more-vis-badge">🔥 GFM</span></div>
-        <div class="more-vis-row"><span class="more-vis-label">Code Fences</span><span class="more-vis-sub">Syntax-styled blocks</span><span class="more-vis-badge">Pro feature</span></div>
-        <div class="more-vis-row"><span class="more-vis-label">Autolinks</span><span class="more-vis-sub">Bare URLs → clickable</span><span class="more-vis-badge">One click</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="section">
-  <div class="section-tag reveal">Features</div>
-  <h2 class="section-title reveal">Everything you need in<br>one <em>free tool</em></h2>
-  <p class="section-sub reveal">Built to handle real-world Markdown — README files, blog drafts, documentation, and notes — with zero setup.</p>
-  <div class="feat-grid">
-    <div class="feat-card reveal"><span class="feat-icon">⚡</span><h3>Instant Conversion</h3><p>HTML updates as you type. No convert button, no delay, no page reload.</p></div>
-    <div class="feat-card reveal"><span class="feat-icon">📊</span><h3>GitHub Flavored Markdown</h3><p>Tables, task lists, strikethrough, and autolinks — the same syntax GitHub uses.</p></div>
-    <div class="feat-card reveal"><span class="feat-icon">👁️</span><h3>Dual Output View</h3><p>Switch between a rendered visual preview and raw copyable HTML source.</p></div>
-    <div class="feat-card reveal"><span class="feat-icon">📁</span><h3>File Upload Support</h3><p>Drag a .md file onto the page or click to browse from your device.</p></div>
-    <div class="feat-card reveal"><span class="feat-icon">📥</span><h3>Export Your Way</h3><p>Copy HTML to clipboard or download a complete standalone .html file.</p></div>
-    <div class="feat-card reveal"><span class="feat-icon">🔒</span><h3>100% Private</h3><p>Everything runs in your browser. Your Markdown is never sent to any server.</p></div>
-  </div>
-</section>
-
-<div class="who-section">
-  <div class="who-inner">
-    <div class="section-tag reveal" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
-    <h2 class="section-title reveal">Who benefits from a<br><em>Markdown converter?</em></h2>
-    <p class="section-sub reveal">From developers publishing docs to writers preparing blog posts, converting Markdown to HTML is a daily task for many roles.</p>
-    <div class="who-grid">
-      <div class="who-card reveal"><span class="who-emoji">👨‍💻</span><h3>Developers</h3><p>Convert README files, changelogs, and API docs into web-ready HTML.</p></div>
-      <div class="who-card reveal"><span class="who-emoji">✍️</span><h3>Bloggers & Writers</h3><p>Draft posts in Markdown, then convert for CMS platforms that need HTML.</p></div>
-      <div class="who-card reveal"><span class="who-emoji">📚</span><h3>Technical Writers</h3><p>Turn documentation written in Markdown into structured HTML pages.</p></div>
-      <div class="who-card reveal"><span class="who-emoji">📧</span><h3>Email Marketers</h3><p>Format newsletter content quickly without hand-coding HTML tags.</p></div>
-      <div class="who-card reveal"><span class="who-emoji">🎓</span><h3>Students & Researchers</h3><p>Convert notes and reports for submission on web-based platforms.</p></div>
-      <div class="who-card reveal"><span class="who-emoji">🏢</span><h3>Knowledge Base Teams</h3><p>Publish internal wikis and support articles from Markdown source files.</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="faq-section">
-  <div class="faq-inner">
-    <div class="section-tag reveal">FAQ</div>
-    <h2 class="section-title reveal">Frequently asked <em>questions</em></h2>
-    <div class="faq-list">
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Is this Markdown to HTML converter really free? <span class="arrow">▼</span></div><div class="faq-a">Yes, completely free with no signup, no watermark, and no limits. Convert unlimited Markdown to HTML forever.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Does it support GitHub Flavored Markdown (GFM)? <span class="arrow">▼</span></div><div class="faq-a">Yes. Tables, task lists with checkboxes, strikethrough text, fenced code blocks, and auto-linked URLs are all supported alongside standard CommonMark syntax.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Can I upload a .md file instead of typing? <span class="arrow">▼</span></div><div class="faq-a">Yes, drag and drop any .md, .markdown, or .txt file directly onto the input box, or click to browse and select a file from your device.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Does my Markdown content get uploaded to a server? <span class="arrow">▼</span></div><div class="faq-a">No. Every conversion happens locally in your browser using JavaScript. Your content is never sent to, stored on, or logged by any server.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Can I download the converted HTML as a file? <span class="arrow">▼</span></div><div class="faq-a">Yes. Use the Download .html button to save the output as a standalone HTML file, or use Copy HTML to place it directly on your clipboard.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">Does the tool show a live rendered preview, not just raw HTML? <span class="arrow">▼</span></div><div class="faq-a">Yes. Toggle between the Rendered Preview tab, which shows exactly how content will look on the web, and the Raw HTML tab, which gives you the copyable markup.</div></div>
-      <div class="faq-item reveal"><div class="faq-q" onclick="toggleFaq(this)">What Markdown syntax is supported? <span class="arrow">▼</span></div><div class="faq-a">Headings, bold, italic, strikethrough, blockquotes, ordered and unordered lists, task list checkboxes, tables, fenced and inline code, links, images, horizontal rules, and auto-linked URLs.</div></div>
-    </div>
-  </div>
-</div>
-
-<div style="text-align:center;padding:24px;background:#fff;border-top:1px solid var(--border)">
-  <div class="ad-label">Advertisement</div>
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247154689" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-</div>
-
-<div class="article-section">
-  <h2>Markdown to HTML Converter — The Complete Guide</h2>
-  <p>Converting Markdown to HTML is one of the most common tasks in modern web publishing, and it's exactly what this free Markdown to HTML converter is built to handle. Whether you're a developer preparing a README file, a blogger drafting a post, or a technical writer formatting documentation, you eventually need HTML because that's the only language browsers actually render. This guide walks through what Markdown is, how conversion works, which syntax this tool supports, and how to get the cleanest possible HTML output every time.</p>
-  <p>Unlike many converters that only spit out a wall of raw HTML text, this tool gives you a genuine rendered preview alongside the raw source, full GitHub Flavored Markdown support, drag-and-drop file upload, and a one-click download — all running entirely in your browser with nothing ever sent to a server.</p>
-
-  <h2>What Is Markdown and Why Convert It to HTML?</h2>
-  <p>Markdown is a lightweight markup language created by John Gruber in 2004. It uses plain, readable symbols — a <code>#</code> for a heading, <code>**</code> around bold text, a <code>-</code> for a list item — instead of verbose angle-bracket tags. That readability is exactly why platforms like GitHub, GitLab, Reddit, Discord, and Slack all adopted it as their default formatting language for comments, README files, and documentation.</p>
-  <p>The problem is that browsers don't understand Markdown at all. A browser only renders HTML: <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, and so on. Static site generators like Jekyll and Hugo, content management systems like WordPress, and even email clients all require HTML for final rendering. So while Markdown is the ideal writing format, HTML is the ideal publishing format — and conversion is the bridge between the two.</p>
-
-  <h2>How to Use This Markdown to HTML Converter</h2>
-  <h3>Step 1: Add Your Markdown</h3>
-  <p>Type or paste your Markdown directly into the input box on the left, or drag and drop a <code>.md</code>, <code>.markdown</code>, or <code>.txt</code> file onto the upload zone above it. Large files load instantly since everything happens client-side.</p>
-  <h3>Step 2: Watch the Live Preview Update</h3>
-  <p>As soon as you start typing, the Rendered Preview tab shows exactly how your content will look once published — proper heading sizes, styled tables, highlighted code blocks, and clickable links.</p>
-  <h3>Step 3: Copy or Download the HTML</h3>
-  <p>Switch to the Raw HTML tab to see the underlying markup, then use Copy HTML to place it on your clipboard, or Download .html to save a complete, ready-to-use file.</p>
-
-  <h2>GitHub Flavored Markdown (GFM) Support</h2>
-  <p>Standard Markdown covers the basics — headings, bold, italic, links, and simple lists — but most real-world content today is written using GitHub Flavored Markdown, an extended specification that adds features developers actually rely on. This converter supports the full GFM feature set:</p>
-  <ul>
-    <li><strong>Tables:</strong> Pipe-separated columns with a header row convert into a properly structured HTML <code>&lt;table&gt;</code>.</li>
-    <li><strong>Task Lists:</strong> <code>- [ ]</code> and <code>- [x]</code> render as real checkbox elements, matching how GitHub displays them.</li>
-    <li><strong>Strikethrough:</strong> Wrapping text in <code>~~tildes~~</code> produces properly struck-through HTML.</li>
-    <li><strong>Fenced Code Blocks:</strong> Triple backticks create a distinct, styled code block separate from inline code.</li>
-    <li><strong>Autolinks:</strong> Bare URLs typed directly into text are automatically turned into clickable links.</li>
-  </ul>
-
-  <div class="article-highlight"><p>💡 Pro tip: Always leave a blank line before and after a table or code block. Markdown parsers rely on that spacing to correctly detect where a block element starts and ends.</p></div>
-
-  <h2>Live Preview vs. Raw HTML: Why Both Matter</h2>
-  <p>Many free converters only show you a text box full of HTML tags, which makes it hard to verify formatting before you publish. This tool solves that by giving you two views of the same conversion. The Rendered Preview tab lets you visually confirm that headings, tables, and code blocks look correct — catching spacing issues or malformed syntax before they reach production. The Raw HTML tab then gives you the exact markup to copy into a CMS, static site generator, or custom project.</p>
-
-  <h2>Best Practices for Writing Clean Markdown</h2>
-  <ul>
-    <li><strong>Use a logical heading hierarchy</strong> — don't skip from an H1 straight to an H3; move through H2 first for cleaner document structure and better SEO.</li>
-    <li><strong>Add a language tag to code fences</strong> like <code>```javascript</code> so the code block is clearly labeled and easier to scan.</li>
-    <li><strong>Keep table columns aligned</strong> with consistent pipe spacing to avoid parsing errors in stricter renderers.</li>
-    <li><strong>Use descriptive link text</strong> instead of "click here" — both for accessibility and for how search engines evaluate anchor text.</li>
-    <li><strong>Leave blank lines between block elements</strong> such as paragraphs, lists, tables, and code fences so the parser detects boundaries correctly.</li>
-  </ul>
-
-  <h2>Common Use Cases for Markdown to HTML Conversion</h2>
-  <p><strong>Documentation:</strong> GitHub README files, API references, and internal wikis are almost always written in Markdown first, then need HTML for hosted documentation sites. <strong>Blogging:</strong> Static site generators like Jekyll, Hugo, and Gatsby store posts as Markdown and compile them to HTML during build. <strong>Email Campaigns:</strong> Marketing teams often draft newsletter copy in Markdown for simplicity, then convert to HTML for email service providers. <strong>Knowledge Bases:</strong> Support teams write help articles in Markdown for version control friendliness, converting to HTML for the final published page.</p>
-
-  <h2>SEO Benefits of Clean, Semantic HTML</h2>
-  <p>Markdown's rigid structure — one <code>#</code> per top-level heading, clear list markers, explicit link syntax — tends to produce cleaner, more semantic HTML than manually typed markup. Proper heading hierarchy helps search engines understand a page's structure and topic relevance. Consistent anchor text on links carries more contextual weight than generic phrases. Well-formed tables remain accessible to screen readers and crawlers alike. Writing in Markdown and converting to HTML through a reliable tool is a simple way to keep both readability and search visibility intact.</p>
-
-  <h2>Security and Privacy</h2>
-  <p>Because everything runs client-side in your browser using JavaScript, your Markdown content is never uploaded, logged, or stored anywhere. There's no server round-trip, no account required, and no data retention — the conversion happens entirely on your device, which also means it works fast regardless of document size.</p>
-
-  <h2>Common Markdown, GFM-Style Syntax, and Parser Differences</h2>
-  <p>Markdown is deliberately small, but the ecosystem around it is not. A README rendered by GitHub, a note rendered by a documentation platform, and a post rendered by a CMS can all make slightly different choices about the same source text. That is why a preview is a useful publishing check rather than a promise that every destination will look identical. This Toolyfi converter handles the practical syntax most people reach for: headings, paragraphs, emphasis, links, lists, blockquotes, fenced code, task lists, tables, and strikethrough.</p>
-  <p>For portability, keep source files simple. Avoid relying on custom plugins unless the destination explicitly documents them. A table that looks right in a preview can still be inconvenient on a narrow phone screen; a large image can make an exported file slow; and HTML embedded inside Markdown can be filtered by a CMS. If a document will be used in more than one place, test the exported HTML in the final platform as well as in the converter.</p>
-
-  <h2>Build a Reliable Heading Structure Before You Convert</h2>
-  <p>Clean HTML begins with a clear outline. Use a single top-level <code>#</code> heading for the page topic, then use <code>##</code> headings for major sections and <code>###</code> headings only for meaningful subsections. A heading should summarize the content that follows it; it should not be used solely to make text appear larger. This approach helps readers scan a document, helps assistive technology communicate the structure, and makes the exported HTML easier to style later.</p>
-  <p>A simple test is to read only your headings in order. If they still tell the story of the document, the outline is doing its job. If they repeat the same phrase, skip from level one to level four, or describe unrelated ideas, revise the Markdown before exporting. Conversion cannot repair a weak information architecture; it can only preserve it in HTML tags.</p>
-
-  <h2>Use Lists and Tables for the Right Job</h2>
-  <p>Lists are best for steps, requirements, options, or short grouped items. Use an ordered list when the order changes the outcome, such as a deployment sequence or troubleshooting process. Use an unordered list when the items are peers, such as supported file types. Task lists are helpful for a personal checklist, but remember that the generated checkboxes in a static HTML export are informational unless you add application logic separately.</p>
-  <p>Tables are useful when readers need to compare the same attributes across several rows. They are not a replacement for a long paragraph or a complex layout. Keep column labels short, avoid nesting lists inside cells, and do not use a table merely to force text into columns. For a responsive site, test whether the table still makes sense on a small display. Sometimes a sequence of descriptive headings and short paragraphs is more accessible than a wide comparison table.</p>
-
-  <h2>Write Links That Still Make Sense Out of Context</h2>
-  <p>Markdown makes links easy to write, but good links require editorial judgment. The words inside square brackets should tell a reader where the destination leads. “Read the HTML preview guide” is more useful than “click here,” especially when a screen reader presents links as a list. When linking to an external source, verify that the destination uses HTTPS and that the content is relevant to the claim you are making.</p>
-  <p>For internal documentation, link related concepts rather than repeating an entire explanation on every page. In Toolyfi, a Markdown user may naturally need the <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview Tool</a> to test an exported snippet, the <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a> when documenting API examples, or the <a href="https://toolyfi.com/word-counter.html">Word Counter</a> when editing a concise reference. These pathways help people complete a task; they are not decorative links.</p>
-
-  <h2>Code Blocks Need Context, Not Just Formatting</h2>
-  <p>Use inline code for short file names, commands, configuration keys, or a single value. Use fenced blocks for multi-line examples. Put the language after the opening fence when you know it, such as <code>```html</code> or <code>```javascript</code>, so another reader can identify the example quickly. Before publishing, check that indentation did not change meaning and that any token, password, account identifier, or private URL has been removed.</p>
-  <p>A helpful code example is complete enough to explain the idea but small enough to inspect. If a snippet depends on a library, browser feature, or server setting, state that before the code. If the output cannot be reproduced in a static browser-only tool, say so. This makes the guide more useful than an unexplained block of syntax and avoids creating a promise that the converter itself does not make.</p>
-
-  <h2>From Preview to a Publishable HTML File</h2>
-  <p>The preview is an editorial workspace. The raw HTML is the handoff format. Copy raw HTML when you need to paste an article into a CMS, an email template, or an existing HTML page. Download a complete file when you need a quick standalone document or a starting point for a static page. The downloaded file contains the converted body markup inside a basic HTML document; it does not include a full visual design system, analytics setup, custom CSS framework, or content-security policy for a production website.</p>
-  <p>Before putting exported HTML on a public site, check the page title, heading hierarchy, image alternative text, external links, and responsive layout. Add the site’s own stylesheet rather than relying on a tool preview’s appearance. If you publish to a CMS that sanitizes HTML, compare the final rendered page with your source because the platform may remove attributes or change embedded elements.</p>
-
-  <h2>Troubleshooting a Markdown Conversion</h2>
-  <p>If a heading appears as normal text, make sure the hash symbol is followed by a space. If bold text does not render, verify that the opening and closing markers match. If a table becomes paragraphs, check that the header separator uses dashes and pipes on the next line. If a code block never closes, add a matching set of three backticks on its own line. These are small source-level corrections, but they often solve the output issue immediately.</p>
-  <p>When a link is not clickable, look for a missing closing parenthesis or a malformed URL. When a list breaks unexpectedly, leave a blank line before it and keep indentation consistent. If special characters look different after export, confirm that the final HTML document declares UTF-8. The downloader produced by this tool uses a UTF-8 meta declaration for that reason. For more complex documents, reduce the source to a small working example and add sections back one at a time.</p>
-
-  <h2>Use Markdown as a Writing Format, Not an SEO Shortcut</h2>
-  <p>Markdown can encourage orderly writing, but it is not a shortcut to search visibility. Search systems evaluate the helpfulness, accuracy, accessibility, and originality of the final page rather than rewarding a particular authoring syntax. The useful habit is to write a clear answer, use descriptive headings, include real examples, and keep the HTML semantic after conversion. Do not add repeated keywords or headings simply because a query is popular.</p>
-  <p>For a technical article, readers should be able to understand what the page does, what it does not do, and how to verify their result. That same clarity helps search engines and AI-powered answer systems quote a page accurately. The goal is not to force a rich result; it is to make a document genuinely easy to read, navigate, and reuse.</p>
-
-  <h2>Accessibility Checks Before You Publish</h2>
-  <p>A conversion workflow is also a good time to check whether the source is understandable to more than one kind of reader. Give every meaningful image useful alternative text in the Markdown image syntax. An alternative description should explain the purpose of the image, not repeat “image of” or guess at details. If an image is only decorative, an empty alternative text value can be appropriate in the final HTML so assistive technology can skip it.</p>
-  <p>Use headings in order, make link text descriptive, and do not rely on color alone to communicate a warning or status. For a tutorial, write steps as a numbered list instead of a paragraph that starts with “first,” “next,” and “finally.” For a comparison, label columns clearly. These habits improve readability on small screens as well as in assistive technology. Markdown does not automatically make content accessible; it gives you a compact source format in which accessible choices are easy to preserve.</p>
-  <p>If the final page contains interactive widgets, forms, or embedded media, test those elements in the publishing platform after you paste the HTML. The converter can generate the content structure, but keyboard focus, captions, form labels, color contrast, and responsive behavior are responsibilities of the final site. A short manual review at this stage catches more real-world issues than adding extra syntax to a source file.</p>
-
-  <h2>Create a Simple Documentation Handoff</h2>
-  <p>Teams often use Markdown because it separates writing from publishing. To keep that advantage, store the source file alongside any images, diagrams, and notes required to update it. Use a meaningful file name, such as <code>api-error-handling-guide.md</code>, rather than a generic final version name. At the top of a shared document, note the audience, the owner, the date it was last checked, and any source links that support factual statements. That information is more useful than decorating a document with unnecessary badges.</p>
-  <p>When handing HTML to another person, include both the raw HTML and the original Markdown. The recipient may need to edit wording, adapt class names to a site theme, or re-run the content through a different renderer. A Markdown source is much easier to maintain than a large block of hand-edited HTML. If an exported document will be sent by email, remember that email clients frequently restrict CSS and HTML features; use a separate email template rather than assuming a web export will render the same way.</p>
-  <p>For product documentation, keep code samples versioned and test examples after a release. For a blog, retain the source draft so you can update a section without losing the original headings and link choices. For internal notes, record decisions in plain language near the relevant list or table. A clean handoff lowers the cost of keeping useful content accurate over time.</p>
-
-  <h2>A Practical Pre-Publish Checklist</h2>
-  <p>Before copying the output into a public website, read the rendered preview once from top to bottom. Check that the title says what the page actually delivers, that there is one clear top-level heading, and that each major section answers a reader question. Open every link that matters. Confirm that code blocks did not accidentally expose a credential and that tables do not require horizontal scrolling without a fallback explanation.</p>
-  <p>Next, review the raw HTML. Look for empty headings, repeated paragraphs, accidental nested links, or copied placeholder text. If you are publishing a guide, verify factual statements against the cited source or the product being documented. If you are publishing a tool page, do not describe a feature that is not available in the interface. Finally, view the final destination on a phone-sized screen. A tidy Markdown file can still become an awkward layout if the surrounding site applies unsuitable styles.</p>
-  <p>This checklist is intentionally ordinary. Sustainable content quality comes from repeatable checks, honest descriptions, and useful examples—not from inserting buzzwords or chasing a temporary formatting trick. Once the final HTML is accurate and understandable, it is ready to become part of a helpful knowledge base, documentation set, or publishing workflow.</p>
-  <p>Keep a small revision note when you update a published guide. Record what changed, why it changed, and which source or product behavior was checked. That practice helps a future editor distinguish a meaningful correction from a formatting preference. It also makes it easier to retire outdated instructions rather than leaving conflicting advice on several pages.</p>
-
-  <h2>Related Tools on Toolyfi</h2>
-  <ul>
-    <li><a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a> — Format and validate JSON data instantly.</li>
-    <li><a href="https://toolyfi.com/html-preview-tool.html">HTML Live Preview</a> — Preview raw HTML code in real time.</li>
-    <li><a href="https://toolyfi.com/case-converter.html">Case Converter</a> — Switch text between upper, lower, and title case.</li>
-    <li><a href="https://toolyfi.com/word-counter.html">Word Counter</a> — Count words and characters in any text instantly.</li>
-  </ul>
-
-  <h2>Conclusion</h2>
-  <p>Converting Markdown to HTML doesn't need to mean juggling command-line tools or build pipelines just to check a small snippet. This free Markdown to HTML converter gives you a real rendered preview, full GitHub Flavored Markdown support for tables and task lists, drag-and-drop file upload, and instant download — all without signup, watermarks, or your content ever leaving your browser.</p>
-  <p><strong>Use the converter above — paste your Markdown, preview it live, and copy or download clean HTML in seconds.</strong></p>
-</div>
-
-<div class="cta-section">
-  <h2>Explore 40+ more free tools</h2>
-  <p>Image tools, calculators, converters — all free, no signup required.</p>
-  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
-</div>
-
-<div class="tools-footer">
-  <div class="tools-footer-inner">
-    <h3>More Free Tools on Toolyfi</h3>
-    <div class="tools-grid">
-      <a href="https://toolyfi.com/image-resizer.html" class="tool-link">✂️ Image Resizer</a>
-      <a href="https://toolyfi.com/image-compressor.html" class="tool-link">🗜️ Image Compressor</a>
-      <a href="https://toolyfi.com/base64-encoder.html" class="tool-link">🔐 Base64 Encoder</a>
-      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔑 Password Generator</a>
-      <a href="https://toolyfi.com/link-shortener.html" class="tool-link">🔗 Link Shortener</a>
-      <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
-      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
-      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
-      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
-      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
-      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
-      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
-      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
-      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
-      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Code Generator</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
-  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
-</footer>
-
-<div class="toast" id="toast"></div>
-
-<script>
-// ── MARKDOWN PARSER (CommonMark + GFM subset) ──────────────────────────
-function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-function safeUrl(value){
-  try { const url = new URL(value, window.location.href); return ['http:','https:','mailto:'].includes(url.protocol) ? url.href : ''; }
-  catch { return ''; }
-}
-function parseInline(text){
-  let output = escapeHtml(text);
-  output = output.replace(/`([^`]+)`/g, (m,c)=>'<code>'+c+'</code>');
-  output = output.replace(/!\[([^\]]*)\]\(([^\s)]+)(?:\s+&quot;[^)]*&quot;)?\)/g, (m,alt,url)=>{const safe=safeUrl(url);return safe?'<img src="'+safe+'" alt="'+alt+'">':m;});
-  output = output.replace(/\[([^\]]+)\]\(([^\s)]+)(?:\s+&quot;[^)]*&quot;)?\)/g, (m,label,url)=>{const safe=safeUrl(url);return safe?'<a href="'+safe+'" rel="noopener noreferrer">'+label+'</a>':label;});
-  output = output.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  output = output.replace(/__(.+?)__/g, '<strong>$1</strong>');
-  output = output.replace(/~~(.+?)~~/g, '<del>$1</del>');
-  output = output.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  output = output.replace(/(^|[^"'>])(https?:\/\/[^\s<]+)/g, (m,pre,url)=>'<span>'+pre+'</span><a href="'+url+'" rel="noopener noreferrer">'+url+'</a>');
-  return output;
-}
-
-function parseMarkdown(md){
-  const lines = md.replace(/\r\n/g,'\n').split('\n');
-  let html = '';
-  let i = 0;
-  let inCode = false, codeBuf = [], codeLang = '';
-  let inList = null;
-
-  function closeList(){ if(inList){ html += '</'+inList+'>'; inList=null; } }
-
-  while(i < lines.length){
-    let line = lines[i];
-
-    if(/^```/.test(line)){
-      if(!inCode){ inCode = true; codeLang = line.replace(/^```/,'').trim(); codeBuf = []; }
-      else { html += '<pre><code class="lang-'+escapeHtml(codeLang)+'">'+escapeHtml(codeBuf.join('\n'))+'</code></pre>'; inCode=false; }
-      i++; continue;
-    }
-    if(inCode){ codeBuf.push(line); i++; continue; }
-
-    if(/^\s*$/.test(line)){ closeList(); i++; continue; }
-
-    let h = line.match(/^(#{1,6})\s+(.*)$/);
-    if(h){ closeList(); const lvl=h[1].length; html += '<h'+lvl+'>'+parseInline(h[2])+'</h'+lvl+'>'; i++; continue; }
-
-    if(/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)){ closeList(); html += '<hr>'; i++; continue; }
-
-    if(/^\|.+\|\s*$/.test(line) && lines[i+1] && /^\|?[\s:|-]+\|?\s*$/.test(lines[i+1])){
-      closeList();
-      const headerCells = line.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
-      let tbl = '<table><thead><tr>' + headerCells.map(c=>'<th>'+parseInline(c)+'</th>').join('') + '</tr></thead><tbody>';
-      i += 2;
-      while(i < lines.length && /^\|.+\|\s*$/.test(lines[i])){
-        const cells = lines[i].trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
-        tbl += '<tr>' + cells.map(c=>'<td>'+parseInline(c)+'</td>').join('') + '</tr>';
-        i++;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Convert common Markdown into HTML in your browser. Review rendered output or raw markup, then copy or download it after checking the result."
+    />
+    <meta name="author" content="Toolyfi" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#0a1f2e" />
+    <title>Markdown to HTML Converter — Live Preview & HTML Output | Toolyfi</title>
+    <meta
+      property="og:title"
+      content="Markdown to HTML Converter — Live Preview & HTML Output | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Convert common Markdown in the browser, inspect rendered output or raw HTML, then copy or download the result."
+    />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-markdown-to-html-hero.webp"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/markdown-to-html-seo.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Markdown to HTML Converter | Toolyfi" />
+    <meta
+      name="twitter:description"
+      content="A browser-based Markdown to HTML converter with local preview and export controls."
+    />
+    <link rel="canonical" href="https://toolyfi.com/markdown-to-html-seo.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-      tbl += '</tbody></table>';
-      html += tbl;
-      continue;
-    }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-    let task = line.match(/^\s*[-*]\s+\[([ xX])\]\s+(.*)$/);
-    if(task){
-      if(inList!=='ul'){ closeList(); html+='<ul style="list-style:none;margin-left:0;padding-left:4px;">'; inList='ul'; }
-      const checked = task[1].toLowerCase()==='x';
-      html += '<li><input type="checkbox" disabled '+(checked?'checked':'')+'> '+parseInline(task[2])+'</li>';
-      i++; continue;
-    }
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"
+      crossorigin="anonymous"
+    ></script>
 
-    let ul = line.match(/^\s*[-*]\s+(.*)$/);
-    if(ul){ if(inList!=='ul'){ closeList(); html+='<ul>'; inList='ul'; } html+='<li>'+parseInline(ul[1])+'</li>'; i++; continue; }
+    <!-- Static Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Markdown to HTML Converter",
+        "description": "Browser-based Markdown to HTML converter with a rendered preview, raw output, local file input, copy, and download controls.",
+        "url": "https://toolyfi.com/markdown-to-html-seo.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "creator": { "@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://toolyfi.com" },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Markdown to HTML Converter",
+            "item": "https://toolyfi.com/markdown-to-html-seo.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does a Markdown to HTML converter do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It turns supported Markdown syntax into HTML markup that can be reviewed as rendered content or copied as raw HTML."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this Markdown to HTML converter free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The converter runs in your browser and does not require an account for its paste, preview, copy, and download workflow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which Markdown syntax does this converter support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It supports headings, emphasis, links, lists, code blocks, task lists, blockquotes, rules, tables, and strikethrough. Extensions can render differently across platforms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I upload a Markdown file instead of typing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Load a local .md, .markdown, or .txt file by browsing or dropping it onto the input zone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does my Markdown content get uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The conversion logic runs in the current browser page. Do not treat the tool as long-term storage; save work you need outside the page."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I copy or download converted HTML?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Copy HTML places the current raw output on the clipboard and Download .html creates a simple standalone file."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the tool show a rendered preview and raw HTML?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use the tabs to switch between the rendered preview and raw generated markup."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool guarantee GitHub or CMS output will match?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Markdown parsers and publishing platforms differ. Test the exported HTML in its final destination before publishing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the preview execute scripts from pasted Markdown?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The converter produces a limited HTML output from supported Markdown syntax and is not a script-execution environment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I check exported HTML before publishing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Review headings, links, image alternative text, table layout, code samples, and final platform requirements before publishing."
+            }
+          }
+        ]
+      }
+    </script>
 
-    let ol = line.match(/^\s*\d+\.\s+(.*)$/);
-    if(ol){ if(inList!=='ol'){ closeList(); html+='<ol>'; inList='ol'; } html+='<li>'+parseInline(ol[1])+'</li>'; i++; continue; }
+    <style>
+      :root {
+        --primary: #ff6e61;
+        --primary-dark: #b64138;
+        --primary-light: #ffede9;
+        --accent: #c659ff;
+        --dark: #0a1f2e;
+        --gray: #516572;
+        --light: #f7f2e9;
+        --border: #d8d0c3;
+        --white: #fff;
+        --shadow: 0 4px 24px rgba(14, 165, 233, 0.1);
+        --shadow-lg: 0 12px 48px rgba(14, 165, 233, 0.16);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: #fff;
+        color: var(--dark);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
 
-    let bq = line.match(/^\s*>\s?(.*)$/);
-    if(bq){ closeList(); html += '<blockquote>'+parseInline(bq[1])+'</blockquote>'; i++; continue; }
+      header {
+        background: var(--dark);
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 74px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        font-size: 1.08rem;
+        letter-spacing: 0.08em;
+        color: #fff;
+        text-decoration: none;
+      }
+      .logo img {
+        display: block;
+        width: 39px;
+        height: 39px;
+        object-fit: contain;
+      }
+      nav {
+        display: flex;
+        gap: 4px;
+      }
+      nav a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      nav a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
 
-    closeList();
-    html += '<p>'+parseInline(line)+'</p>';
-    i++;
-  }
-  closeList();
-  if(inCode){ html += '<pre><code>'+escapeHtml(codeBuf.join('\n'))+'</code></pre>'; }
-  return html;
-}
+      .ad-top {
+        background: var(--light);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 0;
+        text-align: center;
+      }
+      .ad-label {
+        font-size: 0.65rem;
+        color: #94a3b8;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
+      }
 
-const mdInput = document.getElementById('markdown');
-const outPreview = document.getElementById('outputPreview');
-const outRaw = document.getElementById('outputRaw');
-let lastHTML = '';
+      .hero {
+        background: linear-gradient(135deg, #0a1f2e 0%, #12374c 60%, #274f58 100%);
+        padding: 72px 24px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(to bottom, black, transparent);
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+        backdrop-filter: blur(10px);
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+      .hero h1 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--accent);
+      }
+      .hero-sub {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+      }
+      .trust-pills {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .trust-pill {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .trust-pill span {
+        color: var(--accent);
+      }
 
-function render(){
-  const val = mdInput.value;
-  if(!val.trim()){
-    outPreview.innerHTML = '<div class="output-placeholder"><div class="ph-icon">📝</div><p>Your rendered HTML preview appears here</p></div>';
-    outRaw.innerHTML = '<div class="output-placeholder"><div class="ph-icon">🔤</div><p>Raw HTML source appears here</p></div>';
-    lastHTML = '';
-    return;
-  }
-  lastHTML = parseMarkdown(val);
-  outPreview.innerHTML = lastHTML;
-  outRaw.textContent = lastHTML;
-}
-mdInput.addEventListener('input', render);
+      .tool-section {
+        max-width: 1100px;
+        margin: -48px auto 0;
+        padding: 0 20px 80px;
+        position: relative;
+        z-index: 10;
+      }
+      .tool-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+        overflow: hidden;
+      }
+      .tool-card-header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 24px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .tool-card-header h2 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .stat-chips {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .stat-chip {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .tool-body {
+        padding: 32px;
+      }
 
-function switchTab(tab){
-  document.getElementById('tabPreview').classList.toggle('active', tab==='preview');
-  document.getElementById('tabRaw').classList.toggle('active', tab==='raw');
-  outPreview.style.display = tab==='preview' ? 'block' : 'none';
-  outRaw.style.display = tab==='raw' ? 'block' : 'none';
-}
+      .upload-zone {
+        border: 2px dashed var(--border);
+        border-radius: 14px;
+        padding: 16px 20px;
+        text-align: center;
+        margin-bottom: 16px;
+        transition: all 0.2s;
+        cursor: pointer;
+        background: var(--light);
+      }
+      .upload-zone.drag {
+        border-color: var(--primary);
+        background: var(--primary-light);
+      }
+      .upload-zone p {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 600;
+      }
+      .upload-zone input {
+        display: none;
+      }
 
-function copyOutput(){
-  if(!lastHTML){ showMsg('Nothing to copy yet!', 'error'); return; }
-  navigator.clipboard.writeText(lastHTML).then(()=>showMsg('✓ HTML copied!', 'success')).catch(()=>showMsg('Copy failed.', 'error'));
-}
+      .editor-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 16px;
+      }
+      .editor-col label {
+        display: block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+      }
+      .editor-col textarea {
+        width: 100%;
+        min-height: 380px;
+        padding: 18px;
+        border: 2px solid var(--border);
+        border-radius: 14px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        resize: vertical;
+        color: var(--dark);
+        background: var(--light);
+        transition: all 0.2s;
+      }
+      .editor-col textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.08);
+      }
 
-function downloadHTML(){
-  if(!lastHTML){ showMsg('Nothing to download yet!', 'error'); return; }
-  const full = '<!DOCTYPE html>\n<html><head><meta charset="UTF-8"><title>Converted Document</title></head><body>\n'+lastHTML+'\n<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body></html>';
-  const blob = new Blob([full], {type:'text/html'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'converted.html';
-  a.click();
-  showMsg('✓ Downloaded!', 'success');
-}
+      .output-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .tab-btn {
+        background: var(--light);
+        border: 2px solid var(--border);
+        color: var(--gray);
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .tab-btn.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+      .output-box {
+        min-height: 380px;
+        max-height: 380px;
+        overflow: auto;
+        background: var(--light);
+        border: 2px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--dark);
+      }
+      .output-box.raw {
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .output-box h1,
+      .output-box h2,
+      .output-box h3 {
+        margin: 14px 0 8px;
+        font-weight: 800;
+      }
+      .output-box p {
+        margin-bottom: 10px;
+      }
+      .output-box ul,
+      .output-box ol {
+        margin: 0 0 10px 24px;
+      }
+      .output-box code {
+        background: #e0f2fe;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+      .output-box pre {
+        background: var(--dark);
+        color: #e0f2fe;
+        padding: 14px;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin-bottom: 10px;
+      }
+      .output-box pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+      }
+      .output-box table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+      .output-box th,
+      .output-box td {
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        text-align: left;
+      }
+      .output-box th {
+        background: #e0f2fe;
+      }
+      .output-box blockquote {
+        border-left: 4px solid var(--primary);
+        padding-left: 14px;
+        color: var(--gray);
+        margin-bottom: 10px;
+      }
+      .output-placeholder {
+        text-align: center;
+        color: #94a3b8;
+        padding: 60px 0;
+      }
+      .output-placeholder .ph-icon {
+        font-size: 3rem;
+        margin-bottom: 8px;
+      }
 
-function clearTool(){
-  mdInput.value = '';
-  render();
-}
+      .btn-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+      }
+      .btn-primary:active,
+      .btn-success:active,
+      .btn-sm:active {
+        transform: scale(0.97);
+      }
+      .btn-success {
+        background: #10b981;
+        color: #fff;
+        border: none;
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-success:hover {
+        background: #059669;
+      }
+      .btn-sm {
+        background: var(--light);
+        border: 2px solid var(--border);
+        color: var(--gray);
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-sm:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
 
-function showMsg(msg, type){
-  const el = document.getElementById('msg');
-  el.textContent = msg; el.className = 'msg show ' + type;
-  setTimeout(()=>el.classList.remove('show'), 3000);
-}
+      .msg {
+        padding: 11px 16px;
+        border-radius: 10px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: none;
+      }
+      .msg.show {
+        display: block;
+      }
+      .msg.success {
+        background: #ecfdf5;
+        color: #059669;
+        border-left: 4px solid #10b981;
+      }
+      .msg.error {
+        background: #fef2f2;
+        color: #dc2626;
+        border-left: 4px solid #dc2626;
+      }
 
-// ── FILE UPLOAD / DRAG & DROP ──────────────────────────
-const dropZone = document.getElementById('dropZone');
-const fileInput = document.getElementById('fileInput');
-function loadFile(file){
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => { mdInput.value = e.target.result; render(); showMsg('✓ File loaded!', 'success'); };
-  reader.readAsText(file);
-}
-fileInput.addEventListener('change', e => loadFile(e.target.files[0]));
-dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
-dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
-dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag'); loadFile(e.dataTransfer.files[0]); });
+      .ad-mid {
+        text-align: center;
+        padding: 20px;
+        background: var(--light);
+        border-top: 1px solid var(--border);
+        margin-top: 24px;
+        border-radius: 12px;
+      }
 
-function toggleFaq(el){
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen) item.classList.add('open');
-}
+      .stats-bar {
+        background: var(--dark);
+        padding: 40px 20px;
+      }
+      .stats-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+      .sbar-item .sval {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .sbar-item .slbl {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
 
-// ── SCROLL REVEAL ──────────────────────────
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-}, {threshold:0.15});
-document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay = (i%6)*0.06+'s'; io.observe(el); });
+      .section {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 80px 24px;
+      }
+      .section-tag {
+        display: inline-block;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .section-title em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--primary);
+      }
+      .section-sub {
+        color: var(--gray);
+        font-size: 1.05rem;
+        max-width: 600px;
+        line-height: 1.7;
+      }
 
-</script>
+      .more-section {
+        background: var(--light);
+        padding: 80px 24px;
+      }
+      .more-inner {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .more-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        margin-top: 48px;
+      }
+      .more-features {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .more-feat {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: #fff;
+        border-radius: 14px;
+        padding: 16px 18px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+      .more-feat:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow);
+      }
+      .more-feat-ico {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-light);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      .more-feat-text h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 2px;
+      }
+      .more-feat-text p {
+        font-size: 0.85rem;
+        color: var(--gray);
+      }
+      .more-visual {
+        background: linear-gradient(135deg, #0c2a4a, #0369a1);
+        border-radius: 20px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .more-vis-row {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .more-vis-label {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .more-vis-sub {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .more-vis-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 6px;
+        background: rgba(14, 165, 233, 0.2);
+        color: #7dd3fc;
+      }
 
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+      .feat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 48px;
+      }
+      .feat-card {
+        background: #fff;
+        border: 2px solid var(--border);
+        border-radius: 20px;
+        padding: 32px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .feat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        opacity: 0;
+        transition: 0.3s;
+      }
+      .feat-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+      }
+      .feat-card:hover::before {
+        opacity: 1;
+      }
+      .feat-icon {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .feat-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 10px;
+      }
+      .feat-card p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
 
-</body>
+      .who-section {
+        background: var(--dark);
+        padding: 80px 24px;
+      }
+      .who-inner {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .who-section .section-title {
+        color: #fff;
+      }
+      .who-section .section-sub {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 48px;
+      }
+      .who-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 28px;
+        transition: all 0.3s;
+      }
+      .who-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      .who-emoji {
+        font-size: 2.4rem;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .who-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .who-card p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+
+      .faq-section {
+        background: var(--light);
+        padding: 80px 24px;
+      }
+      .faq-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .faq-list {
+        margin-top: 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .faq-item {
+        background: #fff;
+        border: 2px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.2s;
+      }
+      .faq-item.open {
+        border-color: var(--primary);
+      }
+      .faq-q {
+        padding: 20px 24px;
+        font-weight: 700;
+        color: var(--dark);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 0.95rem;
+      }
+      .faq-q .arrow {
+        font-size: 1rem;
+        transition: transform 0.3s;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+      .faq-item.open .arrow {
+        transform: rotate(180deg);
+      }
+      .faq-a {
+        display: none;
+        padding: 0 24px 20px;
+        color: var(--gray);
+        line-height: 1.8;
+        font-size: 0.92rem;
+      }
+      .faq-item.open .faq-a {
+        display: block;
+      }
+
+      .article-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 80px 24px;
+      }
+      .article-section h2 {
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin: 48px 0 20px;
+        border-left: 4px solid var(--primary);
+        padding-left: 16px;
+        line-height: 1.3;
+      }
+      .article-section h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 32px 0 14px;
+      }
+      .article-section p {
+        color: #374151;
+        font-size: 1rem;
+        line-height: 1.9;
+        margin-bottom: 18px;
+      }
+      .article-section ul,
+      .article-section ol {
+        margin: 16px 0 20px 28px;
+      }
+      .article-section li {
+        color: #374151;
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .article-section strong {
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+      .article-section a {
+        color: var(--primary-dark);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .article-section a:hover {
+        text-decoration: underline;
+      }
+      .article-section code {
+        background: var(--primary-light);
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-family: monospace;
+        color: var(--primary-dark);
+      }
+      .article-highlight {
+        background: var(--primary-light);
+        border-left: 4px solid var(--primary);
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+        margin: 24px 0;
+      }
+      .article-highlight p {
+        margin-bottom: 0;
+        color: var(--primary-dark);
+        font-weight: 600;
+      }
+
+      .cta-section {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 80px 24px;
+        text-align: center;
+      }
+      .cta-section h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .cta-section p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        margin-bottom: 36px;
+      }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: var(--primary-dark);
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+      .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .tools-footer {
+        background: var(--light);
+        padding: 60px 24px;
+        border-top: 1px solid var(--border);
+      }
+      .tools-footer-inner {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .tools-footer h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 24px;
+      }
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+      .tool-link {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 14px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--gray);
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .tool-link:hover {
+        border-color: var(--primary);
+        color: var(--primary-dark);
+        background: var(--primary-light);
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--dark);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 100px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 999;
+        pointer-events: none;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      footer {
+        background: var(--dark);
+        padding: 32px 24px;
+        text-align: center;
+      }
+      footer p {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      footer a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      footer a:hover {
+        color: #fff;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .editor-grid {
+          grid-template-columns: 1fr;
+        }
+        .more-grid {
+          grid-template-columns: 1fr;
+        }
+        .more-visual {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        header {
+          padding: 0 16px;
+        }
+        .stats-inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .feat-grid {
+          grid-template-columns: 1fr;
+        }
+        .who-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .tools-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .hero {
+          padding: 56px 16px 72px;
+        }
+        .tool-body {
+          padding: 20px;
+        }
+        .who-grid {
+          grid-template-columns: 1fr;
+        }
+        .btn-row {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral, Fraunces display. Hero media is completely static. */
+      :root {
+        --primary: #ef6c54;
+        --primary-dark: #bd4937;
+        --primary-light: #fff0ea;
+        --accent: #ef6c54;
+        --dark: #172437;
+        --gray: #5e6d7c;
+        --light: #faf8f4;
+        --border: #e9e1d7;
+        --white: #fffdf9;
+        --shadow: 0 12px 28px rgba(23, 36, 55, 0.08);
+        --shadow-lg: 0 20px 44px rgba(23, 36, 55, 0.13);
+      }
+      body {
+        background: var(--light);
+        color: var(--dark);
+      }
+      header.site-header {
+        background: #fffdf9;
+        height: 66px;
+        padding: 0 32px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 6px 20px rgba(23, 36, 55, 0.05);
+      }
+      .logo {
+        font-family: Fraunces, serif;
+        color: var(--dark);
+        font-size: 1.5rem;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .logo img {
+        width: 34px;
+        height: 34px;
+      }
+      nav {
+        gap: 16px;
+      }
+      nav a {
+        color: var(--dark);
+        padding: 8px 0;
+        border-radius: 0;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      nav a:last-child {
+        background: var(--primary);
+        color: #fff;
+        padding: 9px 13px;
+        box-shadow: 3px 3px 0 var(--dark);
+      }
+      nav a:hover {
+        color: var(--primary);
+        background: transparent;
+      }
+      nav a:last-child:hover {
+        background: var(--primary-dark);
+        color: #fff;
+      }
+      .ad-top {
+        display: none;
+      }
+      .hero {
+        background: var(--light);
+        padding: 54px 24px 26px;
+        overflow: visible;
+      }
+      .hero::before {
+        display: none;
+      }
+      .hero-badge {
+        color: var(--primary);
+        background: #fffdf9;
+        border: 1px solid var(--border);
+        border-radius: 0;
+        padding: 7px 12px;
+        box-shadow: none;
+        margin-bottom: 17px;
+      }
+      .hero h1 {
+        font-family: Fraunces, serif;
+        font-weight: 800;
+        color: var(--dark);
+        font-size: clamp(2.55rem, 5vw, 4.35rem);
+        letter-spacing: -0.055em;
+        line-height: 1.02;
+        margin-bottom: 15px;
+      }
+      .hero h1 em {
+        font-family: Fraunces, serif;
+        color: var(--primary);
+      }
+      .hero-sub {
+        color: var(--gray);
+        font-size: 0.98rem;
+        max-width: 650px;
+        margin-bottom: 20px;
+      }
+      .trust-pills {
+        gap: 8px;
+      }
+      .trust-pill {
+        background: #fffdf9;
+        border: 1px solid var(--border);
+        color: var(--dark);
+        border-radius: 0;
+        padding: 6px 11px;
+        font-size: 0.72rem;
+      }
+      .trust-pill span {
+        color: var(--primary);
+      }
+      .toolyfi-visual {
+        position: relative;
+        width: min(1040px, calc(100% - 40px));
+        margin: 0 auto 40px;
+      }
+      .toolyfi-visual > img {
+        display: block;
+        width: 100%;
+        height: clamp(300px, 56.25vw, 585px);
+        object-fit: cover;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(23, 36, 55, 0.1);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-visual figcaption {
+        text-align: center;
+        font-size: 0.72rem;
+        line-height: 1.5;
+        color: var(--gray);
+        padding: 8px 12px;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 18px;
+        bottom: 39px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fffdf9;
+        color: var(--dark);
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        box-shadow: 0 10px 22px rgba(23, 36, 55, 0.18);
+      }
+      .toolyfi-hero-mark img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+      .tool-section {
+        margin: 0 auto;
+        padding: 0 20px 54px;
+      }
+      .tool-card {
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+      .tool-card-header {
+        background: #fffdf9;
+        color: var(--dark);
+        border-bottom: 1px solid var(--border);
+        padding: 22px 26px;
+      }
+      .tool-card-header h2 {
+        font-family: Fraunces, serif;
+        color: var(--dark);
+      }
+      .stat-chip {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        border-radius: 0;
+        font-size: 0.7rem;
+      }
+      .tool-body {
+        padding: 26px;
+      }
+      .upload-zone {
+        background: #fffaf6;
+        border-color: #f3cfc4;
+        border-radius: 10px;
+      }
+      .editor-grid {
+        gap: 18px;
+      }
+      .editor-col textarea,
+      .output-box {
+        border-color: var(--border);
+        background: #fffdf9;
+        border-radius: 10px;
+      }
+      .editor-col textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.12);
+      }
+      .output-box code,
+      .output-box th {
+        background: var(--primary-light);
+      }
+      .tab-btn {
+        border-radius: 0;
+        background: #fffdf9;
+        border-color: var(--border);
+      }
+      .tab-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+      .btn-primary,
+      .btn-success {
+        background: var(--primary);
+        border-radius: 6px;
+        box-shadow: 3px 3px 0 var(--dark);
+      }
+      .btn-primary:hover,
+      .btn-success:hover {
+        background: var(--primary-dark);
+        box-shadow: 4px 4px 0 var(--dark);
+      }
+      .btn-sm {
+        border-radius: 6px;
+        background: #fffdf9;
+      }
+      .btn-primary:active,
+      .btn-success:active,
+      .btn-sm:active {
+        transform: scale(0.97);
+      }
+      .ad-mid {
+        display: none;
+      }
+      .stats-bar {
+        background: var(--dark);
+        padding: 34px 20px;
+      }
+      .sbar-item .sval {
+        font-family: Fraunces, serif;
+        color: #fff;
+        font-size: 1.65rem;
+      }
+      .sbar-item .slbl {
+        color: rgba(255, 255, 255, 0.62);
+      }
+      .more-section,
+      .faq-section {
+        background: #f5f0e8;
+        padding: 58px 24px;
+      }
+      .section,
+      .article-section {
+        padding: 58px 24px;
+      }
+      .section-tag {
+        border-radius: 0;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+      }
+      .section-title,
+      .article-section h2 {
+        font-family: Fraunces, serif;
+        color: var(--dark);
+      }
+      .section-title em {
+        font-family: Fraunces, serif;
+        color: var(--primary);
+      }
+      .more-feat,
+      .feat-card,
+      .faq-item {
+        background: #fffdf9;
+        border-color: var(--border);
+        border-radius: 12px;
+      }
+      .more-feat-ico {
+        background: var(--primary-light);
+        border-radius: 0;
+      }
+      .more-visual,
+      .who-section {
+        background: var(--dark);
+      }
+      .more-vis-badge {
+        color: #fff;
+        background: rgba(239, 108, 84, 0.35);
+      }
+      .feat-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-3px);
+      }
+      .feat-card::before {
+        background: var(--primary);
+      }
+      .who-card {
+        border-radius: 12px;
+      }
+      .faq-item.open {
+        border-color: var(--primary);
+      }
+      .faq-q .arrow {
+        color: var(--primary);
+      }
+      .article-section h2 {
+        border-color: var(--primary);
+      }
+      .article-section strong,
+      .article-section a,
+      .article-section code {
+        color: var(--primary-dark);
+      }
+      .article-section code,
+      .article-highlight {
+        background: var(--primary-light);
+      }
+      .article-highlight {
+        border-color: var(--primary);
+      }
+      .cta-section {
+        background: var(--primary);
+      }
+      .cta-btn {
+        border-radius: 0;
+        color: var(--dark);
+      }
+      .tools-footer {
+        background: #fffdf9;
+      }
+      .tools-footer h3 {
+        font-family: Fraunces, serif;
+      }
+      .tool-link {
+        background: #fffdf9;
+        border-radius: 8px;
+      }
+      .tool-link:hover {
+        border-color: var(--primary);
+        color: var(--primary-dark);
+        background: var(--primary-light);
+      }
+      footer {
+        background: var(--dark);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .tool-card,
+        .stats-bar,
+        .more-feat,
+        .feat-card,
+        .faq-item,
+        .article-section h2 {
+          animation: markdown-rise 0.42s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+        .more-feat:hover,
+        .faq-item:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow);
+        }
+        .faq-item {
+          transition:
+            transform 0.18s cubic-bezier(0.23, 1, 0.32, 1),
+            box-shadow 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+      }
+      @keyframes markdown-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        header.site-header {
+          height: 60px;
+          padding: 0 16px;
+        }
+        .logo {
+          font-size: 1.25rem;
+        }
+        .logo img {
+          width: 29px;
+          height: 29px;
+        }
+        nav a:first-child {
+          display: none;
+        }
+        .hero {
+          padding: 40px 14px 24px;
+        }
+        .hero h1 {
+          font-size: clamp(2.26rem, 11vw, 3.08rem);
+        }
+        .hero-sub {
+          font-size: 0.9rem;
+        }
+        .trust-pills {
+          max-width: 340px;
+          margin: auto;
+        }
+        .toolyfi-visual {
+          width: calc(100% - 28px);
+          margin-bottom: 28px;
+        }
+        .toolyfi-visual > img {
+          height: 75vw;
+          max-height: 330px;
+          border-radius: 14px;
+        }
+        .toolyfi-hero-mark {
+          right: 10px;
+          bottom: 36px;
+          padding: 6px 9px;
+        }
+        .toolyfi-hero-mark img {
+          width: 21px;
+          height: 21px;
+        }
+        .tool-section {
+          padding-inline: 14px;
+        }
+        .tool-body {
+          padding: 18px;
+        }
+        .tool-card-header {
+          padding: 18px;
+        }
+        .tool-card-header h2 {
+          font-size: 1.35rem;
+        }
+        .stat-chips {
+          gap: 6px;
+        }
+        .stat-chip {
+          font-size: 0.63rem;
+          padding: 5px 7px;
+        }
+        .editor-col textarea,
+        .output-box {
+          min-height: 310px;
+          max-height: 310px;
+        }
+        .btn-row button {
+          flex: 1 1 135px;
+          padding: 12px 10px;
+        }
+        .stats-inner {
+          gap: 14px;
+        }
+        .more-section,
+        .faq-section,
+        .section,
+        .article-section {
+          padding: 40px 16px;
+        }
+        .article-section h2 {
+          font-size: 1.65rem;
+          margin: 38px 0 16px;
+        }
+        .tools-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cta-section {
+          padding: 54px 16px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+
+    <div class="ad-top">
+      <div class="ad-label">Advertisement</div>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block; width: 728px; height: 90px"
+        data-ad-client="ca-pub-7111939247154689"
+        data-ad-slot="AUTO"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <section class="hero">
+      <div class="hero-badge">Browser-side Markdown workspace</div>
+      <h1>Write plainly.<br /><em>Inspect the markup.</em></h1>
+      <p class="hero-sub">
+        Turn supported Markdown into HTML in your browser, compare a rendered preview with raw
+        output, then copy or download after review.
+      </p>
+      <div class="trust-pills">
+        <div class="trust-pill"><span>•</span> Common Markdown</div>
+        <div class="trust-pill"><span>•</span> Rendered preview</div>
+        <div class="trust-pill"><span>•</span> Raw HTML</div>
+        <div class="trust-pill"><span>•</span> Copy / download</div>
+      </div>
+    </section>
+
+    <figure class="toolyfi-visual">
+      <img
+        src="images/toolyfi-markdown-to-html-hero.webp"
+        alt="Editorial writing desk with abstract document blocks and a coral pencil tab"
+        width="2560"
+        height="1440"
+        fetchpriority="high"
+      />
+      <span class="toolyfi-hero-mark"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+      >
+      <figcaption>
+        Toolyfi visual guide: keep Markdown structure clear, inspect the generated HTML, and test
+        final output in its publishing destination.
+      </figcaption>
+    </figure>
+
+    <div class="tool-section">
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <h2>📝 Markdown to HTML Converter</h2>
+          <div class="stat-chips">
+            <div class="stat-chip">⚡ Instant</div>
+            <div class="stat-chip">📊 Tables</div>
+            <div class="stat-chip">📥 Download .html</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="msg" id="msg"></div>
+
+          <div
+            class="upload-zone"
+            id="dropZone"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            <p>📁 Drag & drop a .md, .markdown or .txt file here, or click to browse</p>
+            <input type="file" id="fileInput" accept=".md,.markdown,.txt" />
+          </div>
+
+          <div class="editor-grid">
+            <div class="editor-col">
+              <label>Markdown Input</label>
+              <textarea
+                id="markdown"
+                placeholder="# Heading&#10;**Bold** and *italic*&#10;- List item&#10;[Link](https://example.com)"
+              ></textarea>
+            </div>
+            <div class="editor-col">
+              <label>Output</label>
+              <div class="output-tabs">
+                <button class="tab-btn active" id="tabPreview" onclick="switchTab('preview')">
+                  👁️ Rendered Preview
+                </button>
+                <button class="tab-btn" id="tabRaw" onclick="switchTab('raw')">🔤 Raw HTML</button>
+              </div>
+              <div class="output-box" id="outputPreview">
+                <div class="output-placeholder">
+                  <div class="ph-icon">📝</div>
+                  <p>Your rendered HTML preview appears here</p>
+                </div>
+              </div>
+              <div class="output-box raw" id="outputRaw" style="display: none">
+                <div class="output-placeholder">
+                  <div class="ph-icon">🔤</div>
+                  <p>Raw HTML source appears here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-primary" onclick="copyOutput()">📋 Copy HTML</button>
+            <button class="btn-success" onclick="downloadHTML()">📥 Download .html</button>
+            <button class="btn-sm" onclick="clearTool()">🗑️ Clear</button>
+          </div>
+
+          <div class="ad-mid">
+            <div class="ad-label">Advertisement</div>
+            <ins
+              class="adsbygoogle"
+              style="display: block"
+              data-ad-client="ca-pub-7111939247154689"
+              data-ad-slot="AUTO"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="sbar-item">
+          <div class="sval">Local</div>
+          <div class="slbl">Browser processing</div>
+        </div>
+        <div class="sbar-item">
+          <div class="sval">Common</div>
+          <div class="slbl">Common syntax support</div>
+        </div>
+        <div class="sbar-item">
+          <div class="sval">Copy</div>
+          <div class="slbl">Clean HTML output</div>
+        </div>
+        <div class="sbar-item">
+          <div class="sval">Export</div>
+          <div class="slbl">Download .html</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more-section">
+      <div class="more-inner">
+        <div class="section-tag reveal">Beyond Basic</div>
+        <h2 class="section-title reveal">More than just a <em>markdown converter</em></h2>
+        <p class="section-sub reveal">
+          Use a rendered preview alongside raw HTML, load a local source file when useful, and
+          review output before you copy or download it.
+        </p>
+        <div class="more-grid">
+          <div>
+            <div class="more-features">
+              <div class="more-feat reveal">
+                <div class="more-feat-ico">👁️</div>
+                <div class="more-feat-text">
+                  <h4>Rendered Live Preview</h4>
+                  <p>Review how this page renders supported content alongside the raw tags.</p>
+                </div>
+              </div>
+              <div class="more-feat reveal">
+                <div class="more-feat-ico">📊</div>
+                <div class="more-feat-text">
+                  <h4>Tables & Task Lists</h4>
+                  <p>
+                    Use supported pipe-table and checkbox-list patterns, then inspect the result.
+                  </p>
+                </div>
+              </div>
+              <div class="more-feat reveal">
+                <div class="more-feat-ico">📁</div>
+                <div class="more-feat-text">
+                  <h4>Drag & Drop File Upload</h4>
+                  <p>Drop a .md file directly — no need to copy-paste large documents.</p>
+                </div>
+              </div>
+              <div class="more-feat reveal">
+                <div class="more-feat-ico">📥</div>
+                <div class="more-feat-text">
+                  <h4>One-Click Download</h4>
+                  <p>Export a ready-to-use .html file instead of just copying text.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="more-visual">
+            <div class="more-vis-row">
+              <span class="more-vis-label">Tables</span
+              ><span class="more-vis-sub">Pipe syntax → HTML table</span
+              ><span class="more-vis-badge">Most popular</span>
+            </div>
+            <div class="more-vis-row">
+              <span class="more-vis-label">Task Lists</span
+              ><span class="more-vis-sub">- [x] → checkbox</span
+              ><span class="more-vis-badge">Supported</span>
+            </div>
+            <div class="more-vis-row">
+              <span class="more-vis-label">Code Fences</span
+              ><span class="more-vis-sub">Formatted blocks</span
+              ><span class="more-vis-badge">Supported</span>
+            </div>
+            <div class="more-vis-row">
+              <span class="more-vis-label">Autolinks</span
+              ><span class="more-vis-sub">Bare URLs → clickable</span
+              ><span class="more-vis-badge">One click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-tag reveal">Features</div>
+      <h2 class="section-title reveal">Everything you need in<br />one <em>free tool</em></h2>
+      <p class="section-sub reveal">
+        Built to handle real-world Markdown — README files, blog drafts, documentation, and notes —
+        with zero setup.
+      </p>
+      <div class="feat-grid">
+        <div class="feat-card reveal">
+          <span class="feat-icon">⚡</span>
+          <h3>Instant Conversion</h3>
+          <p>HTML updates as you type. No convert button, no delay, no page reload.</p>
+        </div>
+        <div class="feat-card reveal">
+          <span class="feat-icon">📊</span>
+          <h3>Common extensions</h3>
+          <p>
+            Tables, task lists, strikethrough, and bare-link handling are available in this parser.
+          </p>
+        </div>
+        <div class="feat-card reveal">
+          <span class="feat-icon">👁️</span>
+          <h3>Dual Output View</h3>
+          <p>Switch between a rendered visual preview and raw copyable HTML source.</p>
+        </div>
+        <div class="feat-card reveal">
+          <span class="feat-icon">📁</span>
+          <h3>File Upload Support</h3>
+          <p>Drag a .md file onto the page or click to browse from your device.</p>
+        </div>
+        <div class="feat-card reveal">
+          <span class="feat-icon">📥</span>
+          <h3>Export Your Way</h3>
+          <p>Copy HTML to clipboard or download a complete standalone .html file.</p>
+        </div>
+        <div class="feat-card reveal">
+          <span class="feat-icon">🔒</span>
+          <h3>In-page conversion</h3>
+          <p>
+            The conversion runs in the current browser page. Keep your own copy of work you need.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="who-section">
+      <div class="who-inner">
+        <div class="section-tag reveal" style="background: rgba(255, 255, 255, 0.1); color: #fff">
+          Who Uses This
+        </div>
+        <h2 class="section-title reveal">Who benefits from a<br /><em>Markdown converter?</em></h2>
+        <p class="section-sub reveal">
+          From developers publishing docs to writers preparing blog posts, converting Markdown to
+          HTML is a daily task for many roles.
+        </p>
+        <div class="who-grid">
+          <div class="who-card reveal">
+            <span class="who-emoji">👨‍💻</span>
+            <h3>Developers</h3>
+            <p>Convert README files, changelogs, and API docs into web-ready HTML.</p>
+          </div>
+          <div class="who-card reveal">
+            <span class="who-emoji">✍️</span>
+            <h3>Bloggers & Writers</h3>
+            <p>Draft posts in Markdown, then convert for CMS platforms that need HTML.</p>
+          </div>
+          <div class="who-card reveal">
+            <span class="who-emoji">📚</span>
+            <h3>Technical Writers</h3>
+            <p>Turn documentation written in Markdown into structured HTML pages.</p>
+          </div>
+          <div class="who-card reveal">
+            <span class="who-emoji">📧</span>
+            <h3>Email Marketers</h3>
+            <p>Format newsletter content quickly without hand-coding HTML tags.</p>
+          </div>
+          <div class="who-card reveal">
+            <span class="who-emoji">🎓</span>
+            <h3>Students & Researchers</h3>
+            <p>Convert notes and reports for submission on web-based platforms.</p>
+          </div>
+          <div class="who-card reveal">
+            <span class="who-emoji">🏢</span>
+            <h3>Knowledge Base Teams</h3>
+            <p>Publish internal wikis and support articles from Markdown source files.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-inner">
+        <div class="section-tag reveal">FAQ</div>
+        <h2 class="section-title reveal">Frequently asked <em>questions</em></h2>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What does a Markdown to HTML converter do? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              It turns supported Markdown syntax into HTML markup that can be reviewed as rendered
+              content or copied as raw HTML.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Is this Markdown to HTML converter free to use? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              The converter runs in your browser and does not require an account for its paste,
+              preview, copy, and download workflow.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Which Markdown syntax does this converter support? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              It supports common headings, emphasis, links, lists, code blocks, task lists,
+              blockquotes, horizontal rules, tables, and strikethrough. Extensions can render
+              differently across platforms.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Can I upload a Markdown file instead of typing? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              Yes. Load a local .md, .markdown, or .txt file by browsing or dropping it onto the
+              input zone.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Does my Markdown content get uploaded to a server? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              The conversion logic runs in the current browser page. Do not treat the tool as
+              long-term storage; save work you need outside the page.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Can I copy or download converted HTML? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              Yes. Copy HTML places the current raw output on the clipboard and Download .html
+              creates a simple standalone file.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Does the tool show a rendered preview and raw HTML? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              Yes. Use the tabs to switch between the rendered preview and raw generated markup.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Does this tool guarantee GitHub or CMS output will match? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              No. Markdown parsers and publishing platforms differ. Test the exported HTML in its
+              final destination before publishing.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Does the preview execute scripts from pasted Markdown? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              No. The converter produces a limited HTML output from supported Markdown syntax and is
+              not a script-execution environment.
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Should I check exported HTML before publishing? <span class="arrow">▼</span>
+            </div>
+            <div class="faq-a">
+              Yes. Review headings, links, image alternative text, table layout, code samples, and
+              final platform requirements before publishing.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        text-align: center;
+        padding: 24px;
+        background: #fff;
+        border-top: 1px solid var(--border);
+      "
+    >
+      <div class="ad-label">Advertisement</div>
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247154689"
+        data-ad-slot="AUTO"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <div class="article-section">
+      <h2>Markdown to HTML Converter — The Complete Guide</h2>
+      <p>
+        Converting Markdown to HTML is one of the most common tasks in modern web publishing, and
+        it's exactly what this free Markdown to HTML converter is built to handle. Whether you're a
+        developer preparing a README file, a blogger drafting a post, or a technical writer
+        formatting documentation, you eventually need HTML because that's the only language browsers
+        actually render. This guide walks through what Markdown is, how conversion works, which
+        syntax this tool supports, and how to get the cleanest possible HTML output every time.
+      </p>
+      <p>
+        This tool gives you a rendered preview alongside the raw source, local file loading, and a
+        one-click download. It supports a practical common-Markdown subset; check the generated
+        result before using it in another publisher or parser.
+      </p>
+
+      <h2>What Is Markdown and Why Convert It to HTML?</h2>
+      <p>
+        Markdown is a lightweight markup language created by John Gruber in 2004. It uses plain,
+        readable symbols — a <code>#</code> for a heading, <code>**</code> around bold text, a
+        <code>-</code> for a list item — instead of verbose angle-bracket tags. That readability is
+        exactly why platforms like GitHub, GitLab, Reddit, Discord, and Slack all adopted it as
+        their default formatting language for comments, README files, and documentation.
+      </p>
+      <p>
+        The problem is that browsers don't understand Markdown at all. A browser only renders HTML:
+        <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, and so on.
+        Static site generators like Jekyll and Hugo, content management systems like WordPress, and
+        even email clients all require HTML for final rendering. So while Markdown is the ideal
+        writing format, HTML is the ideal publishing format — and conversion is the bridge between
+        the two.
+      </p>
+
+      <h2>How to Use This Markdown to HTML Converter</h2>
+      <h3>Step 1: Add Your Markdown</h3>
+      <p>
+        Type or paste your Markdown directly into the input box on the left, or drag and drop a
+        <code>.md</code>, <code>.markdown</code>, or <code>.txt</code> file onto the upload zone
+        above it. Large files load instantly since everything happens client-side.
+      </p>
+      <h3>Step 2: Watch the Live Preview Update</h3>
+      <p>
+        As you type, the Rendered Preview tab shows how the current page renders supported headings,
+        tables, formatted code blocks, and links. A final destination can apply different styles or
+        parsing rules.
+      </p>
+      <h3>Step 3: Copy or Download the HTML</h3>
+      <p>
+        Switch to the Raw HTML tab to see the underlying markup, then use Copy HTML to place it on
+        your clipboard, or Download .html to save a complete, ready-to-use file.
+      </p>
+
+      <h2>Common Markdown Extensions in This Tool</h2>
+      <p>
+        Standard Markdown covers the basics — headings, bold, italic, links, and simple lists. This
+        converter also handles a practical subset of common extensions:
+      </p>
+      <ul>
+        <li>
+          <strong>Tables:</strong> Pipe-separated columns with a header row convert into a properly
+          structured HTML <code>&lt;table&gt;</code>.
+        </li>
+        <li>
+          <strong>Task Lists:</strong> <code>- [ ]</code> and <code>- [x]</code> render as real
+          checkbox elements, matching how GitHub displays them.
+        </li>
+        <li>
+          <strong>Strikethrough:</strong> Wrapping text in <code>~~tildes~~</code> produces properly
+          struck-through HTML.
+        </li>
+        <li>
+          <strong>Fenced Code Blocks:</strong> Triple backticks create a distinct, styled code block
+          separate from inline code.
+        </li>
+        <li>
+          <strong>Bare links:</strong> HTTP and HTTPS URLs are converted to clickable links by this
+          page’s parser.
+        </li>
+      </ul>
+
+      <div class="article-highlight">
+        <p>
+          💡 Pro tip: Always leave a blank line before and after a table or code block. Markdown
+          parsers rely on that spacing to correctly detect where a block element starts and ends.
+        </p>
+      </div>
+
+      <h2>Live Preview vs. Raw HTML: Why Both Matter</h2>
+      <p>
+        Many free converters only show you a text box full of HTML tags, which makes it hard to
+        verify formatting before you publish. This tool solves that by giving you two views of the
+        same conversion. The Rendered Preview tab lets you visually confirm that headings, tables,
+        and code blocks look correct — catching spacing issues or malformed syntax before they reach
+        production. The Raw HTML tab then gives you the exact markup to copy into a CMS, static site
+        generator, or custom project.
+      </p>
+
+      <h2>Best Practices for Writing Clean Markdown</h2>
+      <ul>
+        <li>
+          <strong>Use a logical heading hierarchy</strong> — don't skip from an H1 straight to an
+          H3; move through H2 first for cleaner document structure and better SEO.
+        </li>
+        <li>
+          <strong>Add a language tag to code fences</strong> like <code>```javascript</code> so the
+          code block is clearly labeled and easier to scan.
+        </li>
+        <li>
+          <strong>Keep table columns aligned</strong> with consistent pipe spacing to avoid parsing
+          errors in stricter renderers.
+        </li>
+        <li>
+          <strong>Use descriptive link text</strong> instead of "click here" — both for
+          accessibility and for how search engines evaluate anchor text.
+        </li>
+        <li>
+          <strong>Leave blank lines between block elements</strong> such as paragraphs, lists,
+          tables, and code fences so the parser detects boundaries correctly.
+        </li>
+      </ul>
+
+      <h2>Common Use Cases for Markdown to HTML Conversion</h2>
+      <p>
+        <strong>Documentation:</strong> GitHub README files, API references, and internal wikis are
+        almost always written in Markdown first, then need HTML for hosted documentation sites.
+        <strong>Blogging:</strong> Static site generators like Jekyll, Hugo, and Gatsby store posts
+        as Markdown and compile them to HTML during build.
+        <strong>Email Campaigns:</strong> Marketing teams often draft newsletter copy in Markdown
+        for simplicity, then convert to HTML for email service providers.
+        <strong>Knowledge Bases:</strong> Support teams write help articles in Markdown for version
+        control friendliness, converting to HTML for the final published page.
+      </p>
+
+      <h2>SEO Benefits of Clean, Semantic HTML</h2>
+      <p>
+        Markdown's rigid structure — one <code>#</code> per top-level heading, clear list markers,
+        explicit link syntax — tends to produce cleaner, more semantic HTML than manually typed
+        markup. Proper heading hierarchy helps search engines understand a page's structure and
+        topic relevance. Consistent anchor text on links carries more contextual weight than generic
+        phrases. Well-formed tables remain accessible to screen readers and crawlers alike. Writing
+        in Markdown and converting to HTML through a reliable tool is a simple way to keep both
+        readability and search visibility intact.
+      </p>
+
+      <h2>Security and Privacy</h2>
+      <p>
+        The conversion logic runs in the active browser page. Toolyfi does not provide a document
+        account, saved workspace, or retained Markdown library through this tool. Save important
+        work outside the page, and do not treat a preview as a long-term storage location.
+      </p>
+
+      <h2>Common Markdown, GFM-Style Syntax, and Parser Differences</h2>
+      <p>
+        Markdown is deliberately small, but the ecosystem around it is not. A README rendered by
+        GitHub, a note rendered by a documentation platform, and a post rendered by a CMS can all
+        make slightly different choices about the same source text. That is why a preview is a
+        useful publishing check rather than a promise that every destination will look identical.
+        This Toolyfi converter handles the practical syntax most people reach for: headings,
+        paragraphs, emphasis, links, lists, blockquotes, fenced code, task lists, tables, and
+        strikethrough.
+      </p>
+      <p>
+        For portability, keep source files simple. Avoid relying on custom plugins unless the
+        destination explicitly documents them. A table that looks right in a preview can still be
+        inconvenient on a narrow phone screen; a large image can make an exported file slow; and
+        HTML embedded inside Markdown can be filtered by a CMS. If a document will be used in more
+        than one place, test the exported HTML in the final platform as well as in the converter.
+      </p>
+
+      <h2>Build a Reliable Heading Structure Before You Convert</h2>
+      <p>
+        Clean HTML begins with a clear outline. Use a single top-level <code>#</code> heading for
+        the page topic, then use <code>##</code> headings for major sections and
+        <code>###</code> headings only for meaningful subsections. A heading should summarize the
+        content that follows it; it should not be used solely to make text appear larger. This
+        approach helps readers scan a document, helps assistive technology communicate the
+        structure, and makes the exported HTML easier to style later.
+      </p>
+      <p>
+        A simple test is to read only your headings in order. If they still tell the story of the
+        document, the outline is doing its job. If they repeat the same phrase, skip from level one
+        to level four, or describe unrelated ideas, revise the Markdown before exporting. Conversion
+        cannot repair a weak information architecture; it can only preserve it in HTML tags.
+      </p>
+
+      <h2>Use Lists and Tables for the Right Job</h2>
+      <p>
+        Lists are best for steps, requirements, options, or short grouped items. Use an ordered list
+        when the order changes the outcome, such as a deployment sequence or troubleshooting
+        process. Use an unordered list when the items are peers, such as supported file types. Task
+        lists are helpful for a personal checklist, but remember that the generated checkboxes in a
+        static HTML export are informational unless you add application logic separately.
+      </p>
+      <p>
+        Tables are useful when readers need to compare the same attributes across several rows. They
+        are not a replacement for a long paragraph or a complex layout. Keep column labels short,
+        avoid nesting lists inside cells, and do not use a table merely to force text into columns.
+        For a responsive site, test whether the table still makes sense on a small display.
+        Sometimes a sequence of descriptive headings and short paragraphs is more accessible than a
+        wide comparison table.
+      </p>
+
+      <h2>Write Links That Still Make Sense Out of Context</h2>
+      <p>
+        Markdown makes links easy to write, but good links require editorial judgment. The words
+        inside square brackets should tell a reader where the destination leads. “Read the HTML
+        preview guide” is more useful than “click here,” especially when a screen reader presents
+        links as a list. When linking to an external source, verify that the destination uses HTTPS
+        and that the content is relevant to the claim you are making.
+      </p>
+      <p>
+        For internal documentation, link related concepts rather than repeating an entire
+        explanation on every page. In Toolyfi, a Markdown user may naturally need the
+        <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview Tool</a> to test an
+        exported snippet, the
+        <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a> when documenting API
+        examples, or the <a href="https://toolyfi.com/word-counter.html">Word Counter</a> when
+        editing a concise reference. These pathways help people complete a task; they are not
+        decorative links.
+      </p>
+
+      <h2>Code Blocks Need Context, Not Just Formatting</h2>
+      <p>
+        Use inline code for short file names, commands, configuration keys, or a single value. Use
+        fenced blocks for multi-line examples. Put the language after the opening fence when you
+        know it, such as <code>```html</code> or <code>```javascript</code>, so another reader can
+        identify the example quickly. Before publishing, check that indentation did not change
+        meaning and that any token, password, account identifier, or private URL has been removed.
+      </p>
+      <p>
+        A helpful code example is complete enough to explain the idea but small enough to inspect.
+        If a snippet depends on a library, browser feature, or server setting, state that before the
+        code. If the output cannot be reproduced in a static browser-only tool, say so. This makes
+        the guide more useful than an unexplained block of syntax and avoids creating a promise that
+        the converter itself does not make.
+      </p>
+
+      <h2>From Preview to a Publishable HTML File</h2>
+      <p>
+        The preview is an editorial workspace. The raw HTML is the handoff format. Copy raw HTML
+        when you need to paste an article into a CMS, an email template, or an existing HTML page.
+        Download a complete file when you need a quick standalone document or a starting point for a
+        static page. The downloaded file contains the converted body markup inside a basic HTML
+        document; it does not include a full visual design system, analytics setup, custom CSS
+        framework, or content-security policy for a production website.
+      </p>
+      <p>
+        Before putting exported HTML on a public site, check the page title, heading hierarchy,
+        image alternative text, external links, and responsive layout. Add the site’s own stylesheet
+        rather than relying on a tool preview’s appearance. If you publish to a CMS that sanitizes
+        HTML, compare the final rendered page with your source because the platform may remove
+        attributes or change embedded elements.
+      </p>
+
+      <h2>Troubleshooting a Markdown Conversion</h2>
+      <p>
+        If a heading appears as normal text, make sure the hash symbol is followed by a space. If
+        bold text does not render, verify that the opening and closing markers match. If a table
+        becomes paragraphs, check that the header separator uses dashes and pipes on the next line.
+        If a code block never closes, add a matching set of three backticks on its own line. These
+        are small source-level corrections, but they often solve the output issue immediately.
+      </p>
+      <p>
+        When a link is not clickable, look for a missing closing parenthesis or a malformed URL.
+        When a list breaks unexpectedly, leave a blank line before it and keep indentation
+        consistent. If special characters look different after export, confirm that the final HTML
+        document declares UTF-8. The downloader produced by this tool uses a UTF-8 meta declaration
+        for that reason. For more complex documents, reduce the source to a small working example
+        and add sections back one at a time.
+      </p>
+
+      <h2>Use Markdown as a Writing Format, Not an SEO Shortcut</h2>
+      <p>
+        Markdown can encourage orderly writing, but it is not a shortcut to search visibility.
+        Search systems evaluate the helpfulness, accuracy, accessibility, and originality of the
+        final page rather than rewarding a particular authoring syntax. The useful habit is to write
+        a clear answer, use descriptive headings, include real examples, and keep the HTML semantic
+        after conversion. Do not add repeated keywords or headings simply because a query is
+        popular.
+      </p>
+      <p>
+        For a technical article, readers should be able to understand what the page does, what it
+        does not do, and how to verify their result. That same clarity helps search engines and
+        AI-powered answer systems quote a page accurately. The goal is not to force a rich result;
+        it is to make a document genuinely easy to read, navigate, and reuse.
+      </p>
+
+      <h2>Accessibility Checks Before You Publish</h2>
+      <p>
+        A conversion workflow is also a good time to check whether the source is understandable to
+        more than one kind of reader. Give every meaningful image useful alternative text in the
+        Markdown image syntax. An alternative description should explain the purpose of the image,
+        not repeat “image of” or guess at details. If an image is only decorative, an empty
+        alternative text value can be appropriate in the final HTML so assistive technology can skip
+        it.
+      </p>
+      <p>
+        Use headings in order, make link text descriptive, and do not rely on color alone to
+        communicate a warning or status. For a tutorial, write steps as a numbered list instead of a
+        paragraph that starts with “first,” “next,” and “finally.” For a comparison, label columns
+        clearly. These habits improve readability on small screens as well as in assistive
+        technology. Markdown does not automatically make content accessible; it gives you a compact
+        source format in which accessible choices are easy to preserve.
+      </p>
+      <p>
+        If the final page contains interactive widgets, forms, or embedded media, test those
+        elements in the publishing platform after you paste the HTML. The converter can generate the
+        content structure, but keyboard focus, captions, form labels, color contrast, and responsive
+        behavior are responsibilities of the final site. A short manual review at this stage catches
+        more real-world issues than adding extra syntax to a source file.
+      </p>
+
+      <h2>Create a Simple Documentation Handoff</h2>
+      <p>
+        Teams often use Markdown because it separates writing from publishing. To keep that
+        advantage, store the source file alongside any images, diagrams, and notes required to
+        update it. Use a meaningful file name, such as <code>api-error-handling-guide.md</code>,
+        rather than a generic final version name. At the top of a shared document, note the
+        audience, the owner, the date it was last checked, and any source links that support factual
+        statements. That information is more useful than decorating a document with unnecessary
+        badges.
+      </p>
+      <p>
+        When handing HTML to another person, include both the raw HTML and the original Markdown.
+        The recipient may need to edit wording, adapt class names to a site theme, or re-run the
+        content through a different renderer. A Markdown source is much easier to maintain than a
+        large block of hand-edited HTML. If an exported document will be sent by email, remember
+        that email clients frequently restrict CSS and HTML features; use a separate email template
+        rather than assuming a web export will render the same way.
+      </p>
+      <p>
+        For product documentation, keep code samples versioned and test examples after a release.
+        For a blog, retain the source draft so you can update a section without losing the original
+        headings and link choices. For internal notes, record decisions in plain language near the
+        relevant list or table. A clean handoff lowers the cost of keeping useful content accurate
+        over time.
+      </p>
+
+      <h2>A Practical Pre-Publish Checklist</h2>
+      <p>
+        Before copying the output into a public website, read the rendered preview once from top to
+        bottom. Check that the title says what the page actually delivers, that there is one clear
+        top-level heading, and that each major section answers a reader question. Open every link
+        that matters. Confirm that code blocks did not accidentally expose a credential and that
+        tables do not require horizontal scrolling without a fallback explanation.
+      </p>
+      <p>
+        Next, review the raw HTML. Look for empty headings, repeated paragraphs, accidental nested
+        links, or copied placeholder text. If you are publishing a guide, verify factual statements
+        against the cited source or the product being documented. If you are publishing a tool page,
+        do not describe a feature that is not available in the interface. Finally, view the final
+        destination on a phone-sized screen. A tidy Markdown file can still become an awkward layout
+        if the surrounding site applies unsuitable styles.
+      </p>
+      <p>
+        This checklist is intentionally ordinary. Sustainable content quality comes from repeatable
+        checks, honest descriptions, and useful examples—not from inserting buzzwords or chasing a
+        temporary formatting trick. Once the final HTML is accurate and understandable, it is ready
+        to become part of a helpful knowledge base, documentation set, or publishing workflow.
+      </p>
+      <p>
+        Keep a small revision note when you update a published guide. Record what changed, why it
+        changed, and which source or product behavior was checked. That practice helps a future
+        editor distinguish a meaningful correction from a formatting preference. It also makes it
+        easier to retire outdated instructions rather than leaving conflicting advice on several
+        pages.
+      </p>
+
+      <h2>Related Tools on Toolyfi</h2>
+      <ul>
+        <li>
+          <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a> — Format and validate
+          JSON data instantly.
+        </li>
+        <li>
+          <a href="https://toolyfi.com/html-preview-tool.html">HTML Live Preview</a> — Preview raw
+          HTML code in real time.
+        </li>
+        <li>
+          <a href="https://toolyfi.com/case-converter.html">Case Converter</a> — Switch text between
+          upper, lower, and title case.
+        </li>
+        <li>
+          <a href="https://toolyfi.com/word-counter.html">Word Counter</a> — Count words and
+          characters in any text instantly.
+        </li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        Converting Markdown to HTML doesn't need to mean juggling command-line tools or build
+        pipelines just to check a small snippet. This free Markdown to HTML converter gives you a
+        rendered preview, raw markup, supported tables and task lists, local file loading, and a
+        downloadable HTML file. Final output still needs a check in the destination where you intend
+        to publish it.
+      </p>
+      <p>
+        <strong
+          >Use the converter above — paste your Markdown, preview it live, and copy or download
+          clean HTML in seconds.</strong
+        >
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h2>Explore more free tools</h2>
+      <p>Image tools, calculators, converters — all free, no signup required.</p>
+      <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+    </div>
+
+    <div class="tools-footer">
+      <div class="tools-footer-inner">
+        <h3>More Free Tools on Toolyfi</h3>
+        <div class="tools-grid">
+          <a href="https://toolyfi.com/image-resizer.html" class="tool-link">✂️ Image Resizer</a>
+          <a href="https://toolyfi.com/image-compressor.html" class="tool-link"
+            >🗜️ Image Compressor</a
+          >
+          <a href="https://toolyfi.com/base64-encoder.html" class="tool-link">🔐 Base64 Encoder</a>
+          <a href="https://toolyfi.com/password-generator.html" class="tool-link"
+            >🔑 Password Generator</a
+          >
+          <a href="https://toolyfi.com/link-shortener.html" class="tool-link">🔗 Link Shortener</a>
+          <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
+          <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+          <a href="https://toolyfi.com/currency-converter.html" class="tool-link"
+            >💱 Currency Converter</a
+          >
+          <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
+          <a href="https://toolyfi.com/loan-calculator.html" class="tool-link"
+            >🏦 Loan Calculator</a
+          >
+          <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
+          <a href="https://toolyfi.com/invoice-generator.html" class="tool-link"
+            >🧾 Invoice Generator</a
+          >
+          <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+          <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+          <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link"
+            >📱 QR Code Generator</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — Free Online Tools</p>
+      <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      // ── MARKDOWN PARSER (CommonMark + GFM subset) ──────────────────────────
+      function escapeHtml(s) {
+        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+
+      function safeUrl(value) {
+        try {
+          const url = new URL(value, window.location.href);
+          return ["http:", "https:", "mailto:"].includes(url.protocol) ? url.href : "";
+        } catch {
+          return "";
+        }
+      }
+      function parseInline(text) {
+        let output = escapeHtml(text);
+        output = output.replace(/`([^`]+)`/g, (m, c) => "<code>" + c + "</code>");
+        output = output.replace(
+          /!\[([^\]]*)\]\(([^\s)]+)(?:\s+&quot;[^)]*&quot;)?\)/g,
+          (m, alt, url) => {
+            const safe = safeUrl(url);
+            return safe ? '<img src="' + safe + '" alt="' + alt + '">' : m;
+          },
+        );
+        output = output.replace(
+          /\[([^\]]+)\]\(([^\s)]+)(?:\s+&quot;[^)]*&quot;)?\)/g,
+          (m, label, url) => {
+            const safe = safeUrl(url);
+            return safe
+              ? '<a href="' + safe + '" rel="noopener noreferrer">' + label + "</a>"
+              : label;
+          },
+        );
+        output = output.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        output = output.replace(/__(.+?)__/g, "<strong>$1</strong>");
+        output = output.replace(/~~(.+?)~~/g, "<del>$1</del>");
+        output = output.replace(/\*(.+?)\*/g, "<em>$1</em>");
+        output = output.replace(
+          /(^|[^"'>])(https?:\/\/[^\s<]+)/g,
+          (m, pre, url) =>
+            "<span>" +
+            pre +
+            '</span><a href="' +
+            url +
+            '" rel="noopener noreferrer">' +
+            url +
+            "</a>",
+        );
+        return output;
+      }
+
+      function parseMarkdown(md) {
+        const lines = md.replace(/\r\n/g, "\n").split("\n");
+        let html = "";
+        let i = 0;
+        let inCode = false,
+          codeBuf = [],
+          codeLang = "";
+        let inList = null;
+
+        function closeList() {
+          if (inList) {
+            html += "</" + inList + ">";
+            inList = null;
+          }
+        }
+
+        while (i < lines.length) {
+          let line = lines[i];
+
+          if (/^```/.test(line)) {
+            if (!inCode) {
+              inCode = true;
+              codeLang = line.replace(/^```/, "").trim();
+              codeBuf = [];
+            } else {
+              html +=
+                '<pre><code class="lang-' +
+                escapeHtml(codeLang) +
+                '">' +
+                escapeHtml(codeBuf.join("\n")) +
+                "</code></pre>";
+              inCode = false;
+            }
+            i++;
+            continue;
+          }
+          if (inCode) {
+            codeBuf.push(line);
+            i++;
+            continue;
+          }
+
+          if (/^\s*$/.test(line)) {
+            closeList();
+            i++;
+            continue;
+          }
+
+          let h = line.match(/^(#{1,6})\s+(.*)$/);
+          if (h) {
+            closeList();
+            const lvl = h[1].length;
+            html += "<h" + lvl + ">" + parseInline(h[2]) + "</h" + lvl + ">";
+            i++;
+            continue;
+          }
+
+          if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+            closeList();
+            html += "<hr>";
+            i++;
+            continue;
+          }
+
+          if (
+            /^\|.+\|\s*$/.test(line) &&
+            lines[i + 1] &&
+            /^\|?[\s:|-]+\|?\s*$/.test(lines[i + 1])
+          ) {
+            closeList();
+            const headerCells = line
+              .trim()
+              .replace(/^\||\|$/g, "")
+              .split("|")
+              .map((c) => c.trim());
+            let tbl =
+              "<table><thead><tr>" +
+              headerCells.map((c) => "<th>" + parseInline(c) + "</th>").join("") +
+              "</tr></thead><tbody>";
+            i += 2;
+            while (i < lines.length && /^\|.+\|\s*$/.test(lines[i])) {
+              const cells = lines[i]
+                .trim()
+                .replace(/^\||\|$/g, "")
+                .split("|")
+                .map((c) => c.trim());
+              tbl +=
+                "<tr>" + cells.map((c) => "<td>" + parseInline(c) + "</td>").join("") + "</tr>";
+              i++;
+            }
+            tbl += "</tbody></table>";
+            html += tbl;
+            continue;
+          }
+
+          let task = line.match(/^\s*[-*]\s+\[([ xX])\]\s+(.*)$/);
+          if (task) {
+            if (inList !== "ul") {
+              closeList();
+              html += '<ul style="list-style:none;margin-left:0;padding-left:4px;">';
+              inList = "ul";
+            }
+            const checked = task[1].toLowerCase() === "x";
+            html +=
+              '<li><input type="checkbox" disabled ' +
+              (checked ? "checked" : "") +
+              "> " +
+              parseInline(task[2]) +
+              "</li>";
+            i++;
+            continue;
+          }
+
+          let ul = line.match(/^\s*[-*]\s+(.*)$/);
+          if (ul) {
+            if (inList !== "ul") {
+              closeList();
+              html += "<ul>";
+              inList = "ul";
+            }
+            html += "<li>" + parseInline(ul[1]) + "</li>";
+            i++;
+            continue;
+          }
+
+          let ol = line.match(/^\s*\d+\.\s+(.*)$/);
+          if (ol) {
+            if (inList !== "ol") {
+              closeList();
+              html += "<ol>";
+              inList = "ol";
+            }
+            html += "<li>" + parseInline(ol[1]) + "</li>";
+            i++;
+            continue;
+          }
+
+          let bq = line.match(/^\s*>\s?(.*)$/);
+          if (bq) {
+            closeList();
+            html += "<blockquote>" + parseInline(bq[1]) + "</blockquote>";
+            i++;
+            continue;
+          }
+
+          closeList();
+          html += "<p>" + parseInline(line) + "</p>";
+          i++;
+        }
+        closeList();
+        if (inCode) {
+          html += "<pre><code>" + escapeHtml(codeBuf.join("\n")) + "</code></pre>";
+        }
+        return html;
+      }
+
+      const mdInput = document.getElementById("markdown");
+      const outPreview = document.getElementById("outputPreview");
+      const outRaw = document.getElementById("outputRaw");
+      let lastHTML = "";
+
+      function render() {
+        const val = mdInput.value;
+        if (!val.trim()) {
+          outPreview.innerHTML =
+            '<div class="output-placeholder"><div class="ph-icon">📝</div><p>Your rendered HTML preview appears here</p></div>';
+          outRaw.innerHTML =
+            '<div class="output-placeholder"><div class="ph-icon">🔤</div><p>Raw HTML source appears here</p></div>';
+          lastHTML = "";
+          return;
+        }
+        lastHTML = parseMarkdown(val);
+        outPreview.innerHTML = lastHTML;
+        outRaw.textContent = lastHTML;
+      }
+      mdInput.addEventListener("input", render);
+
+      function switchTab(tab) {
+        document.getElementById("tabPreview").classList.toggle("active", tab === "preview");
+        document.getElementById("tabRaw").classList.toggle("active", tab === "raw");
+        outPreview.style.display = tab === "preview" ? "block" : "none";
+        outRaw.style.display = tab === "raw" ? "block" : "none";
+      }
+
+      function copyOutput() {
+        if (!lastHTML) {
+          showMsg("Nothing to copy yet!", "error");
+          return;
+        }
+        navigator.clipboard
+          .writeText(lastHTML)
+          .then(() => showMsg("✓ HTML copied!", "success"))
+          .catch(() => showMsg("Copy failed.", "error"));
+      }
+
+      function downloadHTML() {
+        if (!lastHTML) {
+          showMsg("Nothing to download yet!", "error");
+          return;
+        }
+        const full =
+          '<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Converted Document</title></head><body>\n' +
+          lastHTML +
+          "\n</body></html>";
+        const blob = new Blob([full], { type: "text/html" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "converted.html";
+        a.click();
+        showMsg("✓ Downloaded!", "success");
+      }
+
+      function clearTool() {
+        mdInput.value = "";
+        render();
+      }
+
+      function showMsg(msg, type) {
+        const el = document.getElementById("msg");
+        el.textContent = msg;
+        el.className = "msg show " + type;
+        setTimeout(() => el.classList.remove("show"), 3000);
+      }
+
+      // ── FILE UPLOAD / DRAG & DROP ──────────────────────────
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      function loadFile(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          mdInput.value = e.target.result;
+          render();
+          showMsg("✓ File loaded!", "success");
+        };
+        reader.readAsText(file);
+      }
+      fileInput.addEventListener("change", (e) => loadFile(e.target.files[0]));
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("drag");
+      });
+      dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag"));
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("drag");
+        loadFile(e.dataTransfer.files[0]);
+      });
+
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        const isOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
+      }
+
+      // ── SCROLL REVEAL ──────────────────────────
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll(".reveal").forEach((el, i) => {
+        el.style.transitionDelay = (i % 6) * 0.06 + "s";
+        io.observe(el);
+      });
+    </script>
+  </body>
 </html>
