@@ -1,653 +1,2683 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSV to JSON Converter — Free Online Tool | Toolyfi</title>
-<meta name="description" content="Convert CSV text to JSON, XML, YAML, or SQL output for inspection, with quoted-field handling and copy/download controls.">
-<meta name="keywords" content="csv to json, csv to json converter, convert csv online, csv to xml, csv to yaml, csv to sql, free csv converter, csv parser online">
-<link rel="canonical" href="https://toolyfi.com/csv-to-json.html">
-<meta property="og:title" content="CSV to JSON Converter — Free Online Tool | Toolyfi">
-<meta property="og:description" content="Convert CSV to JSON, XML, YAML, and SQL instantly. Free, browser-based, no signup required.">
-<meta property="og:url" content="https://toolyfi.com/csv-to-json.html">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CSV to JSON Converter | Toolyfi">
-<meta name="twitter:description" content="Convert CSV text to JSON, XML, YAML, or SQL output for review in your browser.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV to JSON Converter — Free Online Tool | Toolyfi</title>
+    <meta
+      name="description"
+      content="Convert CSV text to JSON, XML, YAML, or SQL output for inspection, with quoted-field handling and copy/download controls."
+    />
+    <meta
+      name="keywords"
+      content="csv to json, csv to json converter, convert csv online, csv to xml, csv to yaml, csv to sql, free csv converter, csv parser online"
+    />
+    <link rel="canonical" href="https://toolyfi.com/csv-to-json.html" />
+    <meta property="og:title" content="CSV to JSON Converter — Free Online Tool | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Convert CSV to JSON, XML, YAML, and SQL instantly. Free, browser-based, no signup required."
+    />
+    <meta property="og:url" content="https://toolyfi.com/csv-to-json.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSV to JSON Converter | Toolyfi" />
+    <meta
+      name="twitter:description"
+      content="Convert CSV text to JSON, XML, YAML, or SQL output for review in your browser."
+    />
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"
+      crossorigin="anonymous"
+    ></script>
 
-<!-- Tidio -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+    <!-- Tidio -->
+    <script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
 
-<!-- JSON-LD Schemas -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- JSON-LD Schemas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-:root{
-  --bg:#080b14;
-  --bg2:#0d1220;
-  --bg3:#111827;
-  --card:#141b2d;
-  --card2:#1a2236;
-  --border:#1e2d47;
-  --border2:#243450;
-  --text:#e8edf5;
-  --muted:#7a8ba8;
-  --dim:#4a5a72;
-  --cyan:#00e5ff;
-  --cyan2:#00b8d4;
-  --green:#00e676;
-  --green2:#00c853;
-  --amber:#ffb300;
-  --amber2:#ff8f00;
-  --red:#ff5252;
-  --purple:#b388ff;
-  --glow-cyan:rgba(0,229,255,0.12);
-  --font-head:'Oxanium',sans-serif;
-  --font-body:'Space Grotesk',sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.35;}
+    <style>
+      :root {
+        --bg: #080b14;
+        --bg2: #0d1220;
+        --bg3: #111827;
+        --card: #141b2d;
+        --card2: #1a2236;
+        --border: #1e2d47;
+        --border2: #243450;
+        --text: #e8edf5;
+        --muted: #7a8ba8;
+        --dim: #4a5a72;
+        --cyan: #00e5ff;
+        --cyan2: #00b8d4;
+        --green: #00e676;
+        --green2: #00c853;
+        --amber: #ffb300;
+        --amber2: #ff8f00;
+        --red: #ff5252;
+        --purple: #b388ff;
+        --glow-cyan: rgba(0, 229, 255, 0.12);
+        --font-head: "Oxanium", sans-serif;
+        --font-body: "Space Grotesk", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(rgba(23, 36, 55, 0.04) 1px, transparent 1px);
+        background-size: 10px 10px;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.35;
+      }
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(8,11,20,0.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.4rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:2px;}
-.nav-logo-dot{color:var(--amber);}
-.nav-links{display:flex;gap:6px;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s;}
-.nav-links a:hover{color:var(--text);background:var(--card2);}
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 11, 20, 0.93);
+        backdrop-filter: blur(24px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .nav-logo-dot {
+        color: var(--amber);
+      }
+      .nav-links {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--card2);
+      }
 
-/* BREADCRUMB */
-.breadcrumb{padding:10px 24px;font-size:0.8rem;color:var(--dim);border-bottom:1px solid var(--border);background:var(--bg2);}
-.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
-.breadcrumb a:hover{color:var(--cyan);}
-.breadcrumb span{margin:0 7px;color:var(--dim);}
+      /* BREADCRUMB */
+      .breadcrumb {
+        padding: 10px 24px;
+        font-size: 0.8rem;
+        color: var(--dim);
+        border-bottom: 1px solid var(--border);
+        background: var(--bg2);
+      }
+      .breadcrumb a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .breadcrumb a:hover {
+        color: var(--cyan);
+      }
+      .breadcrumb span {
+        margin: 0 7px;
+        color: var(--dim);
+      }
 
-/* HERO */
-.hero{position:relative;padding:80px 20px 64px;text-align:center;overflow:hidden;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:0.2;}
-.hero-glow1{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(0,229,255,0.09) 0%,transparent 70%);pointer-events:none;}
-.hero-glow2{position:absolute;bottom:-60px;right:10%;width:300px;height:300px;background:radial-gradient(ellipse,rgba(0,230,118,0.06) 0%,transparent 70%);pointer-events:none;}
-.hero-badge{position:relative;display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.22);color:var(--cyan);padding:7px 18px;border-radius:100px;font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
-.badge-pulse{width:7px;height:7px;background:var(--green);border-radius:50%;animation:bpulse 1.8s infinite;}
-@keyframes bpulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.75);}}
-.hero h1{position:relative;font-family:var(--font-head);font-size:clamp(2.2rem,5.5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:18px;}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{position:relative;color:var(--muted);font-size:1.05rem;max-width:540px;margin:0 auto 28px;font-weight:400;}
-.hero-formats{position:relative;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
-.fmt-pill{background:var(--card);border:1px solid var(--border2);color:var(--muted);font-size:0.78rem;font-weight:600;padding:6px 14px;border-radius:8px;font-family:var(--font-mono);}
-.fmt-pill.active{background:rgba(0,229,255,0.08);border-color:rgba(0,229,255,0.3);color:var(--cyan);}
-.hero-tags{position:relative;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
-.hero-tag{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--dim);font-size:0.75rem;font-weight:500;padding:5px 12px;border-radius:6px;}
+      /* HERO */
+      .hero {
+        position: relative;
+        padding: 80px 20px 64px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 56px 56px;
+        opacity: 0.2;
+      }
+      .hero-glow1 {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 350px;
+        background: radial-gradient(ellipse, rgba(0, 229, 255, 0.09) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-glow2 {
+        position: absolute;
+        bottom: -60px;
+        right: 10%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(ellipse, rgba(0, 230, 118, 0.06) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-badge {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 229, 255, 0.07);
+        border: 1px solid rgba(0, 229, 255, 0.22);
+        color: var(--cyan);
+        padding: 7px 18px;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .badge-pulse {
+        width: 7px;
+        height: 7px;
+        background: var(--green);
+        border-radius: 50%;
+        animation: bpulse 1.8s infinite;
+      }
+      @keyframes bpulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.75);
+        }
+      }
+      .hero h1 {
+        position: relative;
+        font-family: var(--font-head);
+        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -1px;
+        margin-bottom: 18px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        background: linear-gradient(135deg, var(--cyan), var(--green));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        position: relative;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 540px;
+        margin: 0 auto 28px;
+        font-weight: 400;
+      }
+      .hero-formats {
+        position: relative;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .fmt-pill {
+        background: var(--card);
+        border: 1px solid var(--border2);
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-family: var(--font-mono);
+      }
+      .fmt-pill.active {
+        background: rgba(0, 229, 255, 0.08);
+        border-color: rgba(0, 229, 255, 0.3);
+        color: var(--cyan);
+      }
+      .hero-tags {
+        position: relative;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .hero-tag {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        color: var(--dim);
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 6px;
+      }
 
-/* WRAP */
-.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
-.wide-wrap{max-width:1100px;margin:0 auto;padding:0 20px;}
+      /* WRAP */
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .wide-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-/* TOOL CARD */
-.tool-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,229,255,0.03),0 24px 64px rgba(0,0,0,0.45);margin-bottom:32px;}
-.tool-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.tool-title{font-family:var(--font-head);font-size:0.95rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
-.tool-chips{display:flex;gap:6px;flex-wrap:wrap;}
-.chip{background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:6px;font-family:var(--font-mono);}
-.chip.green{background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.2);color:var(--green);}
+      /* TOOL CARD */
+      .tool-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px rgba(0, 229, 255, 0.03),
+          0 24px 64px rgba(0, 0, 0, 0.45);
+        margin-bottom: 32px;
+      }
+      .tool-header {
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .tool-title {
+        font-family: var(--font-head);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tool-chips {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+      }
+      .chip.green {
+        background: rgba(0, 230, 118, 0.08);
+        border-color: rgba(0, 230, 118, 0.2);
+        color: var(--green);
+      }
 
-/* FORMAT BAR */
-.fmt-bar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.fmt-label{font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-right:4px;}
-.fmt-btn{padding:7px 18px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:var(--font-mono);font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;}
-.fmt-btn.active{background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.35);color:var(--cyan);}
-.fmt-btn:hover:not(.active){border-color:var(--border2);color:var(--text);}
+      /* FORMAT BAR */
+      .fmt-bar {
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .fmt-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-right: 4px;
+      }
+      .fmt-btn {
+        padding: 7px 18px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .fmt-btn.active {
+        background: rgba(0, 229, 255, 0.1);
+        border-color: rgba(0, 229, 255, 0.35);
+        color: var(--cyan);
+      }
+      .fmt-btn:hover:not(.active) {
+        border-color: var(--border2);
+        color: var(--text);
+      }
 
-/* EDITOR */
-.editor-wrap{padding:20px 24px;}
-@media(max-width:600px){.editor-wrap{padding:16px;}}
-.action-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:10px;border:none;font-family:var(--font-body);font-size:0.875rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.btn-primary{background:var(--cyan);color:#080b14;}
-.btn-primary:hover{background:#33ecff;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,229,255,0.3);}
-.btn-green{background:var(--green);color:#080b14;}
-.btn-green:hover{background:#33f082;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,230,118,0.3);}
-.btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--muted);}
-.btn-ghost:hover{border-color:var(--cyan2);color:var(--cyan);background:rgba(0,229,255,0.05);}
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-@media(max-width:680px){.editor-grid{grid-template-columns:1fr;}}
-.editor-pane{}
-.editor-label{font-family:var(--font-head);font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
-.editor-label::before{content:'';width:14px;height:1px;background:var(--border2);}
-textarea.code-area{width:100%;min-height:280px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:0.875rem;padding:16px;resize:vertical;outline:none;transition:border-color .2s,box-shadow .2s;line-height:1.7;-webkit-appearance:none;}
-textarea.code-area:focus{border-color:var(--cyan2);box-shadow:0 0 0 3px rgba(0,229,255,0.07);}
-textarea.code-area::placeholder{color:var(--dim);}
-textarea.code-area[readonly]{background:rgba(0,229,255,0.02);border-color:rgba(0,229,255,0.1);}
-.status-bar{padding:10px 16px;background:var(--bg2);border-top:1px solid var(--border);font-size:0.75rem;font-family:var(--font-mono);display:flex;align-items:center;gap:8px;}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--dim);}
-.status-dot.ok{background:var(--green);}
-.status-dot.err{background:var(--red);}
-.msg-toast{display:none;padding:11px 18px;border-radius:10px;margin-bottom:14px;font-size:0.875rem;font-weight:600;align-items:center;gap:8px;}
-.msg-toast.show{display:flex;}
-.msg-toast.ok{background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.25);color:var(--green);}
-.msg-toast.err{background:rgba(255,82,82,0.1);border:1px solid rgba(255,82,82,0.25);color:var(--red);}
+      /* EDITOR */
+      .editor-wrap {
+        padding: 20px 24px;
+      }
+      @media (max-width: 600px) {
+        .editor-wrap {
+          padding: 16px;
+        }
+      }
+      .action-bar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--cyan);
+        color: #080b14;
+      }
+      .btn-primary:hover {
+        background: #33ecff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+      }
+      .btn-green {
+        background: var(--green);
+        color: #080b14;
+      }
+      .btn-green:hover {
+        background: #33f082;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 230, 118, 0.3);
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border2);
+        color: var(--muted);
+      }
+      .btn-ghost:hover {
+        border-color: var(--cyan2);
+        color: var(--cyan);
+        background: rgba(0, 229, 255, 0.05);
+      }
+      .editor-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 680px) {
+        .editor-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .editor-pane {
+      }
+      .editor-label {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .editor-label::before {
+        content: "";
+        width: 14px;
+        height: 1px;
+        background: var(--border2);
+      }
+      textarea.code-area {
+        width: 100%;
+        min-height: 280px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        padding: 16px;
+        resize: vertical;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        line-height: 1.7;
+        -webkit-appearance: none;
+      }
+      textarea.code-area:focus {
+        border-color: var(--cyan2);
+        box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.07);
+      }
+      textarea.code-area::placeholder {
+        color: var(--dim);
+      }
+      textarea.code-area[readonly] {
+        background: rgba(0, 229, 255, 0.02);
+        border-color: rgba(0, 229, 255, 0.1);
+      }
+      .status-bar {
+        padding: 10px 16px;
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        font-size: 0.75rem;
+        font-family: var(--font-mono);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--dim);
+      }
+      .status-dot.ok {
+        background: var(--green);
+      }
+      .status-dot.err {
+        background: var(--red);
+      }
+      .msg-toast {
+        display: none;
+        padding: 11px 18px;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        align-items: center;
+        gap: 8px;
+      }
+      .msg-toast.show {
+        display: flex;
+      }
+      .msg-toast.ok {
+        background: rgba(0, 230, 118, 0.1);
+        border: 1px solid rgba(0, 230, 118, 0.25);
+        color: var(--green);
+      }
+      .msg-toast.err {
+        background: rgba(255, 82, 82, 0.1);
+        border: 1px solid rgba(255, 82, 82, 0.25);
+        color: var(--red);
+      }
 
-/* SECTION */
-.section{padding:60px 0;}
-.sec-head{margin-bottom:36px;}
-.sec-label{font-family:var(--font-head);font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
-.sec-title{font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;color:var(--text);letter-spacing:-0.5px;line-height:1.2;}
-.sec-title em{font-style:normal;color:var(--amber);}
-.sec-sub{color:var(--muted);font-size:0.95rem;margin-top:10px;max-width:580px;}
+      /* SECTION */
+      .section {
+        padding: 60px 0;
+      }
+      .sec-head {
+        margin-bottom: 36px;
+      }
+      .sec-label {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 10px;
+      }
+      .sec-title {
+        font-family: var(--font-head);
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+      .sec-title em {
+        font-style: normal;
+        color: var(--amber);
+      }
+      .sec-sub {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 10px;
+        max-width: 580px;
+      }
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
-.feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .25s,transform .25s;position:relative;overflow:hidden;}
-.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s;}
-.feat-card:hover{border-color:var(--border2);transform:translateY(-3px);}
-.feat-card:hover::before{opacity:1;}
-.feat-icon{width:44px;height:44px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:16px;}
-.feat-card h3{font-family:var(--font-head);font-weight:700;font-size:0.95rem;color:var(--text);margin-bottom:7px;}
-.feat-card p{color:var(--muted);font-size:0.83rem;line-height:1.65;}
-.feat-code{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-top:14px;font-family:var(--font-mono);font-size:0.75rem;color:var(--cyan);}
+      /* FEATURES */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+      }
+      .feat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+      .feat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .feat-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-3px);
+      }
+      .feat-card:hover::before {
+        opacity: 1;
+      }
+      .feat-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+      }
+      .feat-card h3 {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 7px;
+      }
+      .feat-card p {
+        color: var(--muted);
+        font-size: 0.83rem;
+        line-height: 1.65;
+      }
+      .feat-code {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-top: 14px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--cyan);
+      }
 
-/* FORMAT CARDS */
-.fmt-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
-.fmt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color .2s;}
-.fmt-card:hover{border-color:var(--border2);}
-.fmt-card-badge{display:inline-block;font-family:var(--font-mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:12px;}
-.fmt-card-badge.json{background:rgba(0,229,255,0.1);color:var(--cyan);border:1px solid rgba(0,229,255,0.2);}
-.fmt-card-badge.xml{background:rgba(255,179,0,0.1);color:var(--amber);border:1px solid rgba(255,179,0,0.2);}
-.fmt-card-badge.yaml{background:rgba(179,136,255,0.1);color:var(--purple);border:1px solid rgba(179,136,255,0.2);}
-.fmt-card-badge.sql{background:rgba(0,230,118,0.1);color:var(--green);border:1px solid rgba(0,230,118,0.2);}
-.fmt-card h3{font-family:var(--font-head);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:7px;}
-.fmt-card p{color:var(--muted);font-size:0.83rem;line-height:1.6;}
+      /* FORMAT CARDS */
+      .fmt-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+      .fmt-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px;
+        transition: border-color 0.2s;
+      }
+      .fmt-card:hover {
+        border-color: var(--border2);
+      }
+      .fmt-card-badge {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+      .fmt-card-badge.json {
+        background: rgba(0, 229, 255, 0.1);
+        color: var(--cyan);
+        border: 1px solid rgba(0, 229, 255, 0.2);
+      }
+      .fmt-card-badge.xml {
+        background: rgba(255, 179, 0, 0.1);
+        color: var(--amber);
+        border: 1px solid rgba(255, 179, 0, 0.2);
+      }
+      .fmt-card-badge.yaml {
+        background: rgba(179, 136, 255, 0.1);
+        color: var(--purple);
+        border: 1px solid rgba(179, 136, 255, 0.2);
+      }
+      .fmt-card-badge.sql {
+        background: rgba(0, 230, 118, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(0, 230, 118, 0.2);
+      }
+      .fmt-card h3 {
+        font-family: var(--font-head);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 7px;
+      }
+      .fmt-card p {
+        color: var(--muted);
+        font-size: 0.83rem;
+        line-height: 1.6;
+      }
 
-/* WHO BENEFITS */
-.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.who-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 16px;transition:border-color .2s,transform .2s;}
-.who-card:hover{border-color:var(--border2);transform:translateY(-2px);}
-.who-icon{font-size:1.6rem;margin-bottom:10px;}
-.who-card h4{font-family:var(--font-head);font-size:0.87rem;font-weight:700;color:var(--text);margin-bottom:6px;}
-.who-card p{color:var(--muted);font-size:0.79rem;line-height:1.55;}
+      /* WHO BENEFITS */
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+      }
+      .who-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px 16px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .who-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-2px);
+      }
+      .who-icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+      }
+      .who-card h4 {
+        font-family: var(--font-head);
+        font-size: 0.87rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .who-card p {
+        color: var(--muted);
+        font-size: 0.79rem;
+        line-height: 1.55;
+      }
 
-/* ARTICLE */
-.article{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:52px 48px;margin-bottom:40px;}
-@media(max-width:640px){.article{padding:28px 18px;}}
-.article h2{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--text);margin:36px 0 14px;padding-left:16px;border-left:3px solid var(--cyan);}
-.article h2:first-child{margin-top:0;}
-.article h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--amber);margin:26px 0 10px;}
-.article p{color:#b0bccf;font-size:0.95rem;margin-bottom:16px;line-height:1.85;}
-.article ul,.article ol{color:#b0bccf;margin-left:22px;margin-bottom:16px;}
-.article li{font-size:0.94rem;margin-bottom:8px;line-height:1.75;}
-.article strong{color:var(--text);}
-.article a{color:var(--cyan);text-decoration:none;}
-.article a:hover{text-decoration:underline;}
-.article code{font-family:var(--font-mono);background:var(--bg2);border:1px solid var(--border2);padding:2px 7px;border-radius:5px;font-size:0.83rem;color:var(--cyan);}
-.article pre{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:18px;margin:18px 0;font-family:var(--font-mono);font-size:0.83rem;overflow-x:auto;color:var(--cyan);line-height:1.7;}
-.info-box{background:rgba(0,229,255,0.05);border:1px solid rgba(0,229,255,0.18);border-radius:10px;padding:16px 20px;margin:20px 0;}
-.info-box p{margin:0;font-size:0.88rem;color:var(--text);}
-.article-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem;}
-.article-table th{background:var(--bg2);color:var(--cyan);padding:12px 16px;text-align:left;font-family:var(--font-head);font-weight:700;border-bottom:2px solid var(--border2);}
-.article-table td{padding:11px 16px;border-bottom:1px solid var(--border);color:var(--muted);}
-.article-table tr:hover td{background:rgba(255,255,255,0.01);}
+      /* ARTICLE */
+      .article {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 52px 48px;
+        margin-bottom: 40px;
+      }
+      @media (max-width: 640px) {
+        .article {
+          padding: 28px 18px;
+        }
+      }
+      .article h2 {
+        font-family: var(--font-head);
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--text);
+        margin: 36px 0 14px;
+        padding-left: 16px;
+        border-left: 3px solid var(--cyan);
+      }
+      .article h2:first-child {
+        margin-top: 0;
+      }
+      .article h3 {
+        font-family: var(--font-head);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--amber);
+        margin: 26px 0 10px;
+      }
+      .article p {
+        color: #b0bccf;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+        line-height: 1.85;
+      }
+      .article ul,
+      .article ol {
+        color: #b0bccf;
+        margin-left: 22px;
+        margin-bottom: 16px;
+      }
+      .article li {
+        font-size: 0.94rem;
+        margin-bottom: 8px;
+        line-height: 1.75;
+      }
+      .article strong {
+        color: var(--text);
+      }
+      .article a {
+        color: var(--cyan);
+        text-decoration: none;
+      }
+      .article a:hover {
+        text-decoration: underline;
+      }
+      .article code {
+        font-family: var(--font-mono);
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-size: 0.83rem;
+        color: var(--cyan);
+      }
+      .article pre {
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 10px;
+        padding: 18px;
+        margin: 18px 0;
+        font-family: var(--font-mono);
+        font-size: 0.83rem;
+        overflow-x: auto;
+        color: var(--cyan);
+        line-height: 1.7;
+      }
+      .info-box {
+        background: rgba(0, 229, 255, 0.05);
+        border: 1px solid rgba(0, 229, 255, 0.18);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 20px 0;
+      }
+      .info-box p {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--text);
+      }
+      .article-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.88rem;
+      }
+      .article-table th {
+        background: var(--bg2);
+        color: var(--cyan);
+        padding: 12px 16px;
+        text-align: left;
+        font-family: var(--font-head);
+        font-weight: 700;
+        border-bottom: 2px solid var(--border2);
+      }
+      .article-table td {
+        padding: 11px 16px;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .article-table tr:hover td {
+        background: rgba(255, 255, 255, 0.01);
+      }
 
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;gap:10px;}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.faq-q{padding:17px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-head);font-weight:600;font-size:0.92rem;user-select:none;transition:background .2s;gap:12px;}
-.faq-q:hover{background:var(--card2);}
-.faq-arr{color:var(--dim);transition:transform .3s;font-size:0.75rem;flex-shrink:0;}
-.faq-item.open .faq-arr{transform:rotate(180deg);}
-.faq-a{display:none;padding:0 20px 16px;color:var(--muted);font-size:0.875rem;line-height:1.75;}
-.faq-item.open .faq-a{display:block;}
+      /* FAQ */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .faq-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .faq-q {
+        padding: 17px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.92rem;
+        user-select: none;
+        transition: background 0.2s;
+        gap: 12px;
+      }
+      .faq-q:hover {
+        background: var(--card2);
+      }
+      .faq-arr {
+        color: var(--dim);
+        transition: transform 0.3s;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+      }
+      .faq-item.open .faq-arr {
+        transform: rotate(180deg);
+      }
+      .faq-a {
+        display: none;
+        padding: 0 20px 16px;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+      .faq-item.open .faq-a {
+        display: block;
+      }
 
-/* RELATED */
-.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.rel-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s;display:flex;align-items:center;gap:10px;}
-.rel-card:hover{border-color:var(--amber2);transform:translateY(-2px);}
-.rel-card span:first-child{font-size:1.2rem;}
-.rel-card span:last-child{font-size:0.82rem;font-weight:600;color:var(--muted);}
-.rel-card:hover span:last-child{color:var(--text);}
+      /* RELATED */
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+      }
+      .rel-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        text-decoration: none;
+        color: var(--text);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .rel-card:hover {
+        border-color: var(--amber2);
+        transform: translateY(-2px);
+      }
+      .rel-card span:first-child {
+        font-size: 1.2rem;
+      }
+      .rel-card span:last-child {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .rel-card:hover span:last-child {
+        color: var(--text);
+      }
 
-/* CTA */
-.cta{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);border-radius:20px;padding:52px 40px;text-align:center;margin-bottom:60px;position:relative;overflow:hidden;}
-.cta::before{content:'';position:absolute;top:-80px;left:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(0,229,255,0.07),transparent 70%);}
-.cta::after{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,230,118,0.06),transparent 70%);}
-.cta h2{font-family:var(--font-head);font-size:1.7rem;font-weight:800;color:var(--text);margin-bottom:10px;}
-.cta p{color:var(--muted);margin-bottom:28px;font-size:0.95rem;}
-.cta a{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#080b14;padding:14px 32px;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all .2s;}
-.cta a:hover{background:#33f082;transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,230,118,0.3);}
+      /* CTA */
+      .cta {
+        background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 52px 40px;
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        left: -80px;
+        width: 240px;
+        height: 240px;
+        background: radial-gradient(circle, rgba(0, 229, 255, 0.07), transparent 70%);
+      }
+      .cta::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(0, 230, 118, 0.06), transparent 70%);
+      }
+      .cta h2 {
+        font-family: var(--font-head);
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: var(--text);
+        margin-bottom: 10px;
+      }
+      .cta p {
+        color: var(--muted);
+        margin-bottom: 28px;
+        font-size: 0.95rem;
+      }
+      .cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green);
+        color: #080b14;
+        padding: 14px 32px;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .cta a:hover {
+        background: #33f082;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 230, 118, 0.3);
+      }
 
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20px 24px;}
-.footer-inner{max-width:1100px;margin:0 auto;}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:32px;}
-.footer-col h4{font-family:var(--font-head);font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;}
-.footer-col a{display:block;color:var(--muted);font-size:0.85rem;text-decoration:none;margin-bottom:8px;transition:color .2s;}
-.footer-col a:hover{color:var(--cyan);}
-.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-.footer-copy{color:var(--dim);font-size:0.8rem;}
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 44px 20px 24px;
+      }
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 28px;
+        margin-bottom: 32px;
+      }
+      .footer-col h4 {
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 14px;
+      }
+      .footer-col a {
+        display: block;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: var(--cyan);
+      }
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .footer-copy {
+        color: var(--dim);
+        font-size: 0.8rem;
+      }
 
-/* TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--green);color:#080b14;padding:10px 24px;border-radius:100px;font-weight:700;font-size:0.875rem;z-index:999;opacity:0;pointer-events:none;transition:all .3s;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+      /* TOAST */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: var(--green);
+        color: #080b14;
+        padding: 10px 24px;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
 
-@media(max-width:600px){
-  .nav-links{display:none;}
-  .hero h1{font-size:2rem;}
-  .action-bar{gap:6px;}
-  .btn{padding:9px 14px;font-size:0.82rem;}
-  .cta{padding:36px 20px;}
-  .article{padding:24px 16px;}
-}
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi CSV to JSON Converter","url":"https://toolyfi.com/csv-to-json.html","description":"A browser-based converter for reviewing CSV text as JSON, XML, YAML, or SQL output.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Developer Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"CSV to JSON Converter","item":"https://toolyfi.com/csv-to-json.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does CSV to JSON conversion work?","acceptedAnswer":{"@type":"Answer","text":"The header row becomes field names and each data row becomes one JSON object in an array. Review the output before using it in another system."}},{"@type":"Question","name":"Does the parser support quoted fields?","acceptedAnswer":{"@type":"Answer","text":"The page supports standard double-quoted fields and doubled quotes. Inspect unusual exports before relying on the output."}},{"@type":"Question","name":"What output formats are available?","acceptedAnswer":{"@type":"Answer","text":"The page offers JSON, XML, YAML, and SQL text output for review."}},{"@type":"Question","name":"Why do header names matter?","acceptedAnswer":{"@type":"Answer","text":"Header labels become keys or field names in the output. Use clear, unique headers and verify destination naming requirements."}},{"@type":"Question","name":"Are CSV values automatically typed?","acceptedAnswer":{"@type":"Answer","text":"CSV values are treated as text by the converter. Add type validation in the destination workflow when numeric or boolean semantics matter."}},{"@type":"Question","name":"Why can a CSV conversion fail?","acceptedAnswer":{"@type":"Answer","text":"Missing headers, inconsistent columns, unmatched quotes, and unexpected delimiters are common causes. Review the source and status message."}},{"@type":"Question","name":"Can I download the output?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once converted, the displayed output can be copied or downloaded as text for the selected format."}},{"@type":"Question","name":"Should I use a general web page for confidential data?","acceptedAnswer":{"@type":"Answer","text":"Avoid entering passwords, private keys, personal records, or confidential data into general web tools. Use an approved protected workflow instead."}}]}</script><style>/* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral; transparent data transformation without fabricated social proof. */:root{--bg:#FAF8F4;--bg2:#F7F2EB;--bg3:#EEE6DB;--card:#FFFDF9;--card2:#F9F5EF;--border:#E7DED4;--border2:#D9C8BB;--text:#172437;--muted:#5E6B7A;--dim:#87919D;--cyan:#EF6C54;--cyan2:#C9523F;--green:#1F846C;--green2:#156A56;--amber:#AD7125;--amber2:#8D5A1A;--red:#B53D44;--purple:#835B98;--font-head:"Fraunces",Georgia,serif;--font-body:"Plus Jakarta Sans",Arial,sans-serif;--font-mono:Consolas,monospace}body{background:var(--bg);color:var(--text)}nav{background:#172437;border:0}.nav-logo img{width:112px;height:40px;object-fit:contain}.nav-logo-dot{display:none}.breadcrumb{background:#F9F5EF}.hero{padding:66px 20px 50px}.hero-grid{opacity:.3}.hero-badge{background:#FFF1EC;border-color:#F3C2B6;color:#B94B3A}.badge-pulse{background:#EF6C54;animation:none}.hero h1 em{background:none;-webkit-text-fill-color:inherit;color:#C9523F}.hero-sub{color:#596777}.fmt-pill,.hero-tag{background:#FFFDF9;border-color:#E7DED4;color:#5E6B7A}.fmt-pill.active{background:#FFF1EC;border-color:#F3C2B6;color:#B94B3A}.tool-card,.feat-card,.fmt-card,.who-card,.article,.faq-item,.rel-card{background:#FFFDF9;border-color:#E7DED4;box-shadow:none}.tool-title,.sec-title,.article h2{color:#172437}.chip{background:#F9F5EF;border-color:#E7DED4;color:#5E6B7A}.chip.green{background:#EEF8F4;border-color:#C9E9DE;color:#156A56}.fmt-btn{border-color:#D9C8BB;color:#5E6B7A}.fmt-btn.active{background:#FFF1EC;border-color:#EF6C54;color:#B94B3A}.btn-primary{background:#EF6C54;color:#FFF}.btn-green{background:#1F846C;color:#FFF}.btn-ghost{background:#FFFDF9;border-color:#D9C8BB;color:#52606E}textarea.code-area{background:#FBFAF7;color:#172437;border-color:#D9C8BB}textarea.code-area[readonly]{background:#F9F5EF;border-color:#E7DED4}.status-bar{background:#F9F5EF;border-color:#E7DED4}.sec-label{color:#B94B3A}.sec-title em{color:#C9523F}.feat-card:hover,.fmt-card:hover,.who-card:hover,.rel-card:hover{border-color:#EF6C54}.feat-icon{background:#FFF1EC;border-color:#F3C2B6}.feat-card h3,.fmt-card h3,.who-card h4{color:#172437}.feat-card p,.fmt-card p,.who-card p,.article p,.article li{color:#536170}.feat-code{background:#F9F5EF;border-color:#E7DED4;color:#B94B3A}.article h2{border-color:#EF6C54}.article code,.article pre{background:#F9F5EF;border-color:#E7DED4;color:#B94B3A}.info-box{background:#FFF6F2;border-color:#F3C2B6}.article-table th{background:#172437;color:#FFF}.article-table td{border-color:#E7DED4;color:#536170}.faq-q:hover{background:#F9F5EF}.faq-a{color:#536170}.cta,footer{background:#172437;border-color:#172437}.cta h2{color:#FFF}.cta p,footer a,.footer-copy{color:#DDE4EB!important}.cta a{background:#EF6C54;color:#FFF}.toast{background:#1F846C;color:#FFF}</style><style>/* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */.toolyfi-visual{max-width:1040px;margin:0 auto 42px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #E7DED4;border-radius:18px;background:#F7F2EB;box-shadow:0 18px 40px rgba(23,36,55,.09)}.toolyfi-visual figcaption{margin-top:9px;color:#607080;font-size:.78rem;line-height:1.45;text-align:center}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}.toolyfi-visual figcaption{font-size:.72rem}}</style><link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="https://toolyfi.com" class="nav-logo"><img src="logo.png" alt="Toolyfi"></a>
-  <div class="nav-links">
-    <a href="https://toolyfi.com/#tools">Tools</a>
-  </div>
-</nav>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="https://toolyfi.com">Home</a><span>›</span>
-  <a href="https://toolyfi.com/#tools">Developer Tools</a><span>›</span>
-  <span style="color:var(--cyan);">CSV to JSON Converter</span>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow1"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-badge"><span class="badge-pulse"></span> Free Developer Tool</div>
-  <h1>CSV to <em>JSON</em><br>Converter</h1>
-  <p class="hero-sub">Convert delimited text to JSON, XML, YAML, or SQL output for review in your browser. Check the source delimiter and header row before conversion.</p>
-  <div class="hero-formats">
-    <span class="fmt-pill active">JSON</span>
-    <span class="fmt-pill">XML</span>
-    <span class="fmt-pill">YAML</span>
-    <span class="fmt-pill">SQL</span>
-  </div>
-  <div class="hero-tags"><span class="hero-tag">Quoted-field parser</span><span class="hero-tag">4 reviewable formats</span><span class="hero-tag">Copy or download</span><span class="hero-tag">Header-based records</span></div>
-</section><figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-csv-json-hero.webp" width="1200" height="800" alt="A source data table transforming through a coral arrow into structured abstract data objects." decoding="async"><figcaption>Toolyfi visual guide: a unique illustration of this tool’s core task.</figcaption></figure>
-
-<!-- TOOL -->
-<div class="wrap">
-  <div class="tool-card">
-    <div class="tool-header">
-      <div class="tool-title">⚡ CSV Converter</div>
-      <div class="tool-chips">
-        <span class="chip green">● Live</span>
-        <span class="chip">Browser-based</span>
-        <span class="chip">No Upload</span>
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .action-bar {
+          gap: 6px;
+        }
+        .btn {
+          padding: 9px 14px;
+          font-size: 0.82rem;
+        }
+        .cta {
+          padding: 36px 20px;
+        }
+        .article {
+          padding: 24px 16px;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Toolyfi CSV to JSON Converter",
+            "url": "https://toolyfi.com/csv-to-json.html",
+            "description": "A browser-based converter for reviewing CSV text as JSON, XML, YAML, or SQL output.",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toolyfi.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Developer Tools",
+                "item": "https://toolyfi.com/#tools"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "CSV to JSON Converter",
+                "item": "https://toolyfi.com/csv-to-json.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How does CSV to JSON conversion work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The header row becomes field names and each data row becomes one JSON object in an array. Review the output before using it in another system."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does the parser support quoted fields?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The page supports standard double-quoted fields and doubled quotes. Inspect unusual exports before relying on the output."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What output formats are available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The page offers JSON, XML, YAML, and SQL text output for review."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do header names matter?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Header labels become keys or field names in the output. Use clear, unique headers and verify destination naming requirements."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are CSV values automatically typed?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CSV values are treated as text by the converter. Add type validation in the destination workflow when numeric or boolean semantics matter."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why can a CSV conversion fail?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Missing headers, inconsistent columns, unmatched quotes, and unexpected delimiters are common causes. Review the source and status message."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I download the output?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Once converted, the displayed output can be copied or downloaded as text for the selected format."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I use a general web page for confidential data?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Avoid entering passwords, private keys, personal records, or confidential data into general web tools. Use an approved protected workflow instead."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral; transparent data transformation without fabricated social proof. */
+      :root {
+        --bg: #faf8f4;
+        --bg2: #f7f2eb;
+        --bg3: #eee6db;
+        --card: #fffdf9;
+        --card2: #f9f5ef;
+        --border: #e7ded4;
+        --border2: #d9c8bb;
+        --text: #172437;
+        --muted: #5e6b7a;
+        --dim: #87919d;
+        --cyan: #ef6c54;
+        --cyan2: #c9523f;
+        --green: #1f846c;
+        --green2: #156a56;
+        --amber: #ad7125;
+        --amber2: #8d5a1a;
+        --red: #b53d44;
+        --purple: #835b98;
+        --font-head: "Fraunces", Georgia, serif;
+        --font-body: "Plus Jakarta Sans", Arial, sans-serif;
+        --font-mono: Consolas, monospace;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+      }
+      nav {
+        background: #172437;
+        border: 0;
+      }
+      .nav-logo img {
+        width: 112px;
+        height: 40px;
+        object-fit: contain;
+      }
+      .nav-logo-dot {
+        display: none;
+      }
+      .breadcrumb {
+        background: #f9f5ef;
+      }
+      .hero {
+        padding: 66px 20px 50px;
+      }
+      .hero-grid {
+        opacity: 0.3;
+      }
+      .hero-badge {
+        background: #fff1ec;
+        border-color: #f3c2b6;
+        color: #b94b3a;
+      }
+      .badge-pulse {
+        background: #ef6c54;
+        animation: none;
+      }
+      .hero h1 em {
+        background: none;
+        -webkit-text-fill-color: inherit;
+        color: #c9523f;
+      }
+      .hero-sub {
+        color: #596777;
+      }
+      .fmt-pill,
+      .hero-tag {
+        background: #fffdf9;
+        border-color: #e7ded4;
+        color: #5e6b7a;
+      }
+      .fmt-pill.active {
+        background: #fff1ec;
+        border-color: #f3c2b6;
+        color: #b94b3a;
+      }
+      .tool-card,
+      .feat-card,
+      .fmt-card,
+      .who-card,
+      .article,
+      .faq-item,
+      .rel-card {
+        background: #fffdf9;
+        border-color: #e7ded4;
+        box-shadow: none;
+      }
+      .tool-title,
+      .sec-title,
+      .article h2 {
+        color: #172437;
+      }
+      .chip {
+        background: #f9f5ef;
+        border-color: #e7ded4;
+        color: #5e6b7a;
+      }
+      .chip.green {
+        background: #eef8f4;
+        border-color: #c9e9de;
+        color: #156a56;
+      }
+      .fmt-btn {
+        border-color: #d9c8bb;
+        color: #5e6b7a;
+      }
+      .fmt-btn.active {
+        background: #fff1ec;
+        border-color: #ef6c54;
+        color: #b94b3a;
+      }
+      .btn-primary {
+        background: #ef6c54;
+        color: #fff;
+      }
+      .btn-green {
+        background: #1f846c;
+        color: #fff;
+      }
+      .btn-ghost {
+        background: #fffdf9;
+        border-color: #d9c8bb;
+        color: #52606e;
+      }
+      textarea.code-area {
+        background: #fbfaf7;
+        color: #172437;
+        border-color: #d9c8bb;
+      }
+      textarea.code-area[readonly] {
+        background: #f9f5ef;
+        border-color: #e7ded4;
+      }
+      .status-bar {
+        background: #f9f5ef;
+        border-color: #e7ded4;
+      }
+      .sec-label {
+        color: #b94b3a;
+      }
+      .sec-title em {
+        color: #c9523f;
+      }
+      .feat-card:hover,
+      .fmt-card:hover,
+      .who-card:hover,
+      .rel-card:hover {
+        border-color: #ef6c54;
+      }
+      .feat-icon {
+        background: #fff1ec;
+        border-color: #f3c2b6;
+      }
+      .feat-card h3,
+      .fmt-card h3,
+      .who-card h4 {
+        color: #172437;
+      }
+      .feat-card p,
+      .fmt-card p,
+      .who-card p,
+      .article p,
+      .article li {
+        color: #536170;
+      }
+      .feat-code {
+        background: #f9f5ef;
+        border-color: #e7ded4;
+        color: #b94b3a;
+      }
+      .article h2 {
+        border-color: #ef6c54;
+      }
+      .article code,
+      .article pre {
+        background: #f9f5ef;
+        border-color: #e7ded4;
+        color: #b94b3a;
+      }
+      .info-box {
+        background: #fff6f2;
+        border-color: #f3c2b6;
+      }
+      .article-table th {
+        background: #172437;
+        color: #fff;
+      }
+      .article-table td {
+        border-color: #e7ded4;
+        color: #536170;
+      }
+      .faq-q:hover {
+        background: #f9f5ef;
+      }
+      .faq-a {
+        color: #536170;
+      }
+      .cta,
+      footer {
+        background: #172437;
+        border-color: #172437;
+      }
+      .cta h2 {
+        color: #fff;
+      }
+      .cta p,
+      footer a,
+      .footer-copy {
+        color: #dde4eb !important;
+      }
+      .cta a {
+        background: #ef6c54;
+        color: #fff;
+      }
+      .toast {
+        background: #1f846c;
+        color: #fff;
+      }
+    </style>
+    <style>
+      /* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */
+      .toolyfi-visual {
+        max-width: 1040px;
+        margin: 0 auto 42px;
+        padding: 0 20px;
+      }
+      .toolyfi-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        border: 1px solid #e7ded4;
+        border-radius: 18px;
+        background: #f7f2eb;
+        box-shadow: 0 18px 40px rgba(23, 36, 55, 0.09);
+      }
+      .toolyfi-visual figcaption {
+        margin-top: 9px;
+        color: #607080;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .toolyfi-visual {
+          padding: 0 16px;
+          margin-bottom: 28px;
+        }
+        .toolyfi-visual img {
+          border-radius: 13px;
+        }
+        .toolyfi-visual figcaption {
+          font-size: 0.72rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+    <style>
+      /* Toolyfi CSV to JSON: Editorial Utility Atlas. Static hero visual; movement only on UI elements. */
+      .csv-hero {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 56px 28px 30px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(380px, 0.9fr);
+        align-items: center;
+        gap: 48px;
+      }
+      .csv-hero .hero-copy {
+        min-width: 0;
+      }
+      .csv-hero .hero-badge {
+        margin-bottom: 20px;
+      }
+      .csv-hero h1 {
+        max-width: 620px;
+        margin-bottom: 18px;
+      }
+      .csv-hero .hero-sub {
+        max-width: 590px;
+        margin: 0 0 24px;
+      }
+      .csv-hero .hero-formats,
+      .csv-hero .hero-tags {
+        justify-content: flex-start;
+      }
+      .csv-hero-visual {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border: 1px solid #e7ded4;
+        background: #f7f2eb;
+        box-shadow:
+          16px 16px 0 #ef6c54,
+          0 18px 38px rgba(23, 36, 55, 0.1);
+      }
+      .csv-hero-visual > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .csv-brand-overlay {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        max-width: calc(100% - 30px);
+        padding: 8px 12px;
+        background: #fffdf9;
+        color: #172437;
+        font-family: Fraunces, Georgia, serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        box-shadow: 0 8px 18px rgba(23, 36, 55, 0.14);
+      }
+      .csv-brand-overlay img {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+      }
+      .ui-reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.42s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.42s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .ui-reveal.ready {
+        opacity: 1;
+        transform: none;
+      }
+      .ui-reveal:nth-child(2) {
+        transition-delay: 0.065s;
+      }
+      .ui-reveal:nth-child(3) {
+        transition-delay: 0.13s;
+      }
+      .ui-reveal:nth-child(4) {
+        transition-delay: 0.195s;
+      }
+      .tool-card {
+        transition:
+          transform 0.24s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.24s ease;
+      }
+      .tool-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 34px rgba(23, 36, 55, 0.08);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      @media (max-width: 850px) {
+        .csv-hero {
+          grid-template-columns: 1fr;
+          gap: 28px;
+          padding-top: 38px;
+        }
+        .csv-hero-visual {
+          max-width: 620px;
+          width: 100%;
+        }
+      }
+      @media (max-width: 540px) {
+        .csv-hero {
+          padding: 34px 16px 25px;
+          gap: 23px;
+        }
+        .csv-hero h1 {
+          font-size: clamp(2.55rem, 14vw, 3.35rem);
+        }
+        .csv-hero-visual {
+          aspect-ratio: 4 / 3;
+          box-shadow: 9px 9px 0 #ef6c54;
+        }
+        .csv-brand-overlay {
+          right: 11px;
+          bottom: 11px;
+          padding: 6px 9px;
+          font-size: 0.82rem;
+        }
+        .csv-brand-overlay img {
+          width: 22px;
+          height: 22px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ui-reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="https://toolyfi.com" class="nav-logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" /><span>Toolyfi</span></a
+      >
+      <div class="nav-links">
+        <a href="https://toolyfi.com/#tools">Tools</a>
       </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="https://toolyfi.com">Home</a><span>›</span>
+      <a href="https://toolyfi.com/#tools">Developer Tools</a><span>›</span>
+      <span style="color: var(--cyan)">CSV to JSON Converter</span>
     </div>
 
-    <div class="fmt-bar">
-      <span class="fmt-label">Output:</span>
-      <button class="fmt-btn active" onclick="setFmt('json',this)">JSON</button>
-      <button class="fmt-btn" onclick="setFmt('xml',this)">XML</button>
-      <button class="fmt-btn" onclick="setFmt('yaml',this)">YAML</button>
-      <button class="fmt-btn" onclick="setFmt('sql',this)">SQL</button>
-    </div>
-
-    <div class="editor-wrap">
-      <div id="msgToast" class="msg-toast"></div>
-      <div class="action-bar">
-        <button class="btn btn-primary" onclick="convertNow()">🔄 Convert Now</button>
-        <button class="btn btn-green" onclick="loadSample()">📌 Load Sample</button>
-        <button class="btn btn-ghost" onclick="copyOut()">📋 Copy Output</button>
-        <button class="btn btn-ghost" onclick="downloadOut()">⬇ Download</button>
-        <button class="btn btn-ghost" onclick="clearAll()">🗑 Clear</button>
-      </div>
-      <div class="editor-grid">
-        <div class="editor-pane">
-          <div class="editor-label">CSV Input</div>
-          <textarea class="code-area" id="csvIn" placeholder="Paste CSV here...&#10;&#10;Name,Email,Age&#10;John,john@example.com,30&#10;Jane,jane@example.com,28" rows="14"></textarea>
+    <!-- HERO -->
+    <section class="csv-hero">
+      <div class="hero-copy">
+        <div class="hero-badge ui-reveal">
+          <span class="badge-pulse"></span> Browser-local data conversion
         </div>
-        <div class="editor-pane">
-          <div class="editor-label" id="outLabel">JSON Output</div>
-          <textarea class="code-area" id="csvOut" placeholder="Output will appear here after conversion..." readonly rows="14"></textarea>
+        <h1 class="ui-reveal">Make table data <em>structured.</em></h1>
+        <p class="hero-sub ui-reveal">
+          Convert a CSV sample into reviewable JSON, then copy or download the result. Delimiters,
+          quoted fields, headers, and output assumptions stay visible.
+        </p>
+        <div class="hero-formats ui-reveal">
+          <span class="fmt-pill active">JSON</span><span class="fmt-pill">XML</span
+          ><span class="fmt-pill">YAML</span><span class="fmt-pill">SQL</span>
+        </div>
+        <div class="hero-tags ui-reveal">
+          <span class="hero-tag">Quoted-field aware</span
+          ><span class="hero-tag">Local browser math</span
+          ><span class="hero-tag">Copy-ready output</span>
         </div>
       </div>
-      <div class="status-bar">
-        <span class="status-dot" id="statusDot"></span>
-        <span id="statusText" style="color:var(--dim);">Ready — paste CSV and click Convert</span>
-      </div>
-    </div>
-  </div>
-</div>
+      <figure class="csv-hero-visual" aria-label="CSV data transforming to structured JSON">
+        <img
+          src="images/toolyfi-csv-to-json-hero.webp"
+          width="2560"
+          height="1440"
+          alt="Abstract data sheets transforming into JSON-style braces and structured blocks."
+          fetchpriority="high"
+          decoding="async"
+        />
+        <span class="csv-brand-overlay"
+          ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+        >
+      </figure>
+    </section>
 
-<!-- FEATURES -->
-<div class="wide-wrap">
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-label">Why Toolyfi</div>
-      <div class="sec-title">More than just a <em>converter</em></div>
-      <div class="sec-sub">Built for developers and data professionals who need speed, accuracy, and privacy.</div>
-    </div>
-    <div class="features-grid">
-      <div class="feat-card">
-        <div class="feat-icon">⚡</div>
-        <h3>Instant Conversion</h3>
-        <p>Browser-based processing — no server round trips. Convert thousands of rows in milliseconds.</p>
-        <div class="feat-code">{"status": "converted", "rows": 5000}</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🔀</div>
-        <h3>4 Output Formats</h3>
-        <p>One click switches between JSON, XML, YAML, and SQL. Same input, any format you need.</p>
-        <div class="feat-code">JSON | XML | YAML | SQL ✓</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🧠</div>
-        <h3>Smart CSV Parser</h3>
-        <p>Handles quoted fields with commas, escaped quotes, special characters, and empty values correctly.</p>
-        <div class="feat-code">"Doe, John",+92-300 ✓</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🔒</div>
-        <h3>Zero Data Exposure</h3>
-        <p>Your CSV data never leaves your browser. No server, no logs, no tracking. Safe for sensitive data.</p>
-        <div class="feat-code">🛡️ 0 bytes transmitted</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">📁</div>
-        <h3>Large File Ready</h3>
-        <p>Use a small representative sample first, then review performance and memory behaviour on your own device for larger source files.</p>
-        <div class="feat-code">Reviewable browser-side output</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">📱</div>
-        <h3>Works Everywhere</h3>
-        <p>Fully responsive — phones, tablets, desktops. Any browser, any device, any OS.</p>
-        <div class="feat-code">Chrome | Firefox | Safari ✓</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FORMAT GUIDE -->
-<div class="wide-wrap">
-  <div class="section" style="padding-top:0;">
-    <div class="sec-head">
-      <div class="sec-label">Format Guide</div>
-      <div class="sec-title">Which format should <em>you pick?</em></div>
-      <div class="sec-sub">Quick guide based on your use case.</div>
-    </div>
-    <div class="fmt-cards">
-      <div class="fmt-card">
-        <span class="fmt-card-badge json">JSON</span>
-        <h3>APIs & Web Apps</h3>
-        <p>Best for REST APIs, React/Vue/Angular apps, MongoDB, Firebase, and any modern JavaScript project.</p>
-      </div>
-      <div class="fmt-card">
-        <span class="fmt-card-badge xml">XML</span>
-        <h3>Legacy & Enterprise</h3>
-        <p>Best for SOAP web services, Microsoft Office integrations, and enterprise systems requiring XML schema.</p>
-      </div>
-      <div class="fmt-card">
-        <span class="fmt-card-badge yaml">YAML</span>
-        <h3>DevOps & Config</h3>
-        <p>Best for Kubernetes, Docker Compose, GitHub Actions, Ansible, and CI/CD pipeline configuration files.</p>
-      </div>
-      <div class="fmt-card">
-        <span class="fmt-card-badge sql">SQL</span>
-        <h3>Databases</h3>
-        <p>Best for importing data into MySQL, PostgreSQL, SQLite. Get ready-to-run INSERT statements instantly.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WHO BENEFITS -->
-<div class="wide-wrap">
-  <div class="section" style="padding-top:0;">
-    <div class="sec-head">
-      <div class="sec-label">Use Cases</div>
-      <div class="sec-title">Who uses this <em>tool?</em></div>
-    </div>
-    <div class="who-grid">
-      <div class="who-card"><div class="who-icon">👨‍💻</div><h4>Web Developers</h4><p>Convert CSV exports to JSON for APIs, React apps, and Node.js projects instantly.</p></div>
-      <div class="who-card"><div class="who-icon">📊</div><h4>Data Analysts</h4><p>Transform spreadsheet data into structured formats for Python, R, or BI tools.</p></div>
-      <div class="who-card"><div class="who-icon">🗄️</div><h4>Database Admins</h4><p>Generate SQL INSERT statements from CSV to quickly populate databases.</p></div>
-      <div class="who-card"><div class="who-icon">⚙️</div><h4>DevOps Engineers</h4><p>Convert configuration CSVs to YAML for Kubernetes, Ansible, and CI/CD pipelines.</p></div>
-      <div class="who-card"><div class="who-icon">🏢</div><h4>Business Teams</h4><p>Export CRM data as CSV and convert to JSON for integrations with other platforms.</p></div>
-      <div class="who-card"><div class="who-icon">📱</div><h4>App Developers</h4><p>Prepare data files in JSON or YAML for mobile apps and configuration files.</p></div>
-      <div class="who-card"><div class="who-icon">🎓</div><h4>Students & Learners</h4><p>Learn data formats by seeing live conversions — great for CS and data science courses.</p></div>
-      <div class="who-card"><div class="who-icon">🔬</div><h4>Researchers</h4><p>Convert research datasets from CSV to JSON for analysis pipelines and data processing.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ARTICLE -->
-<div class="wrap">
-  <article class="article"><h2>CSV to JSON Converter: Complete Practical Guide</h2><p>CSV and JSON are plain-text formats used for different jobs. CSV describes a table of rows and columns. JSON describes arrays, objects, strings, numbers, booleans, and nested structures. This page turns a CSV-style table into reviewable output. The first row is used as field names; each following row becomes one record. A clear conversion is useful for a development task, but it is not the same as validating a destination schema or importing data into production.</p><p>Start with the source, not the output. Identify the delimiter, confirm that the first row contains headers, check that headers are clear and unique, and inspect a small sample before using a large export. A fast conversion can create valid syntax while still preserving a source mistake. Treat the tool as a transformation and review step rather than a replacement for data-quality controls.</p><h2>CSV Is Delimited Text, Not One Universal Dialect</h2><p>CSV usually means comma-separated values, but the same row-and-column pattern may use a semicolon, tab, or pipe. Spreadsheet settings and regional conventions can change the separator. A file that appears to have one column after conversion may simply use a different delimiter than the parser expects. Inspect the original text and use an appropriate conversion workflow rather than assuming every spreadsheet export uses a comma.</p><p>The converter expects a header row so it can create meaningful keys. A source such as <code>name,email,active</code> gives each output object readable fields. If the source has no header, add a deliberate one before conversion. It is better to name an unknown column clearly than to invent a meaning after the data is already moving between systems.</p><h2>Quoted Fields, Empty Values, and Line Breaks</h2><p>Real CSV often contains commas inside a field. The standard way to keep a comma inside one value is to wrap the field in double quotes. A quote inside a quoted field is written as a doubled quote. The browser parser supports those common rules, and it keeps empty fields so the relationship between a header and a missing value remains visible. Review the output when a source comes from a specialised product or contains unusually formatted records.</p><p>Whitespace also needs a conscious decision. A space can be meaningful in an address, description, label, or identifier. Silent cleanup may make a result look neat while changing the source. Clean values deliberately for the destination rules instead of relying on a generic conversion step to decide what a space means.</p><h2>How the JSON Mapping Works</h2><p>Consider a small input with headers <code>name,email</code>. Each later row becomes an object such as <code>{"name":"Ravi","email":"ravi@example.com"}</code>. The complete result is an array. This is convenient for reviewing a set of records in a web application or passing a sample into a JSON-aware tool. It does not infer a business model, relationship, primary key, date format, or validation rule.</p><p>CSV values are text by default. The characters <code>00127</code> could be a number, a postal code, a customer code, or an identifier. Turning it automatically into 127 can remove important leading zeroes. Convert types later only when you know what the destination requires. Dates, currency, phone numbers, boolean flags, and null values should be mapped according to a stated contract rather than guessed from appearance.</p><h2>JSON for APIs and Application Data</h2><p>JSON is common in modern web development because its objects and arrays map naturally to many programming languages. Before sending converted data to an API, check required field names, types, allowed values, pagination, authentication, and error handling. A syntactically valid JSON array can still fail because a required field is absent or an identifier belongs to another environment. Test with a non-sensitive sample before a larger import.</p><p>Open the result in <a href="json-formatter.html">JSON Formatter</a> when you want a more focused inspection of nesting and syntax. Use <a href="base64-encoder.html">Base64 Encoder</a> only when a documented integration explicitly needs encoding. Encoding is not encryption, and neither tool is a substitute for the permissions and validation required by the final system.</p><h2>XML, YAML, and SQL Are Different Workflows</h2><p>XML needs valid element names, so headers with spaces or punctuation can require a destination-specific mapping. YAML is readable for many configuration uses but has indentation and quoting rules that deserve review. SQL output can be useful as a starting draft, but it is plain text—not a guarantee that a table definition, schema, transaction, or permission model is appropriate. Review table names, column types, escaping, constraints, and import policies before executing any statement.</p><p>Every format has a context. JSON may be appropriate for a data exchange; XML may be required by a legacy interface; YAML can be used for configuration; SQL targets a relational database. Choose the format because the receiving system expects it, not because the converter can produce it with one click.</p><h2>Common Problems to Check Before Conversion</h2><p>A missing header row leaves the output without names. An unmatched quote can cause the rest of a line or file to be interpreted as one field. Inconsistent columns can create missing or extra values. An unexpected delimiter can put each line into one field. Character encoding can display replacement characters when a file is not saved as expected. Preserve the original, use a small sample, and inspect the status message before escalating the workflow.</p><p>Duplicate headers also deserve attention. Two columns named <code>status</code> cannot become two distinct object properties without a naming rule. Rename the source headers before conversion or create a clear mapping in the destination. Meaningful headers reduce ambiguity for every later step, including debugging, auditing, and handoff to another developer.</p><h2>Delimiter Selection and Regional Exports</h2><p>A separator is not merely a cosmetic setting. If a spreadsheet uses commas as decimal marks, it may export columns with semicolons instead of commas. Tab-separated reports are also common because tabs are less likely to appear in ordinary prose. Before conversion, open a small source sample and identify the actual character between fields. Do not infer it from the file extension alone. A source named “report.csv” can still use a semicolon or tab depending on the producing system.</p><p>When a conversion yields one long key per row, stop and check the delimiter. When it yields too many fields, inspect whether an unquoted delimiter appears inside a value. A small controlled test—one header row and two data rows—often finds the issue faster than trying to repair a large converted document after the fact.</p><h2>Header Design, Duplicates, and Key Naming</h2><p>Headers are part of a data contract. They should be unique, readable, and stable. A JSON object cannot meaningfully distinguish two columns that share the same name without an explicit mapping. Headers with spaces or punctuation can be valid JSON keys, but a receiving API or database may prefer a naming convention such as <code>snake_case</code> or <code>camelCase</code>. Decide this at the source or document the mapping rather than relying on a generic converter to guess a business name.</p><p>Blank headers are also risky. A record with a value but no field name cannot be interpreted safely by another person or program. Give every column a deliberate label, including temporary or optional columns, and remove exports fields that do not belong in the destination. Clear input creates clear output.</p><h2>Data Types, Nulls, and Identifiers</h2><p>CSV stores characters, so a converter has limited knowledge of meaning. The sequence <code>12</code> might be a quantity, a month, an integer identifier, or a text label. The sequence <code>false</code> might represent a boolean or a literal status word. An empty cell might mean an empty string, missing data, an unknown value, or a null. These decisions belong to the destination schema. Preserve raw text unless you have a documented rule for type conversion.</p><p>Identifiers deserve special attention. Postal codes, account numbers, product codes, and phone numbers can begin with zeroes or contain symbols. Turning them into numeric values can alter them. Large numeric identifiers may also lose precision in software environments that use floating-point numbers. Keep identifier fields as strings unless the destination explicitly documents another representation.</p><h2>Escaping, Injection, and Output Safety</h2><p>Each output format has escaping rules. JSON escapes quotes and control characters. XML escapes reserved markup characters. YAML can require quoting for values that resemble booleans, dates, or special syntax. SQL uses its own quoting and database-specific behaviour. The page can generate a representation, but it cannot decide whether the generated text is safe to execute in a particular system. Treat SQL output as a reviewable draft and use parameterised or approved import methods for real database work.</p><p>Do not paste output into an interpreter, shell, database console, or production endpoint without understanding what it contains. A CSV source can include text that becomes executable or dangerous in another context if a workflow is careless. Validate in a safe environment, restrict privileges, and follow the destination platform’s import guidance.</p><h2>Testing with a Representative Sample</h2><p>A representative sample includes the edge cases that matter: a quoted comma, an empty field, a non-English character, a leading-zero identifier, an apostrophe, a long value, and a row near the expected column count. Converting this small set gives you a concrete way to examine behaviour before processing a full export. Compare the original cells to the output objects line by line.</p><p>If a sample fails, repair the source rule or mapping first. Do not simply search-and-replace the generated output until it appears to work. Reproducible input steps are safer than manual edits because they can be repeated by another person and applied consistently to a later export.</p><h2>From Conversion to Import</h2><p>Successful conversion is the beginning of an import process, not the end. A destination can require authentication, unique keys, foreign-key references, data retention rules, date formatting, pagination, batching, and error handling. A good workflow has a rollback plan and a way to identify which records were accepted or rejected. Use a staging environment when it is available.</p><p>For a one-off developer test, save the generated output with a clear name and retain the source version. For recurring work, write down the delimiter, header mapping, type rules, and destination validation. This turns a convenient browser conversion into a documented process that is easier to audit and maintain.</p><h2>Choosing the Right Tool for the Next Step</h2><p>Use this page when the immediate job is to translate a simple delimited table into text you can inspect. Use a dedicated ETL, database import, spreadsheet, or code pipeline when transformation rules, large-scale processing, error reporting, access control, or scheduled operation are required. The right boundary protects data quality: a focused utility should not claim to replace a complete integration system.</p><p>After conversion, format JSON for review, validate it against the destination, and test a safe sample. If the work involves a public API, read that API’s current documentation rather than assuming a generic array structure is accepted. If the work involves regulated, personal, or confidential data, use the approved environment. These steps are more valuable than any unsupported promise of universal compatibility.</p><h2>Final Conversion Checklist</h2><p>Confirm the source delimiter. Confirm the first row is a header. Check all header names. Review quoted fields and empty cells. Preserve identifiers as text unless a documented type rule applies. Inspect a small generated result. Validate the final format in its real destination. Retain the source and mapping. These checks make a CSV-to-JSON result understandable, repeatable, and easier to troubleshoot.</p><p>Toolyfi’s converter offers a direct browser-side transformation and output controls. It supports a useful part of the workflow: turning visible table text into visible structured text. Use it with an appropriate destination validation process, not as a substitute for it.</p><h2>Quality Control After Conversion</h2><p>Read the output as data, not only as text. Compare the number of output records with the number of intended source rows. Look at the first, middle, and last record. Check a row with an empty cell, one with a quoted comma, and one with a non-English character. Confirm that headers became the expected keys and that no value shifted into a neighbouring field. This targeted review catches most delimiter and quote mistakes without requiring a full manual comparison.</p><p>If a destination provides an error report, use it to improve the source mapping instead of patching only a generated file. A repeatable correction in the source is easier to explain and less likely to fail on the next export. Keep a brief note of the delimiter, field mapping, date convention, and any values intentionally treated as strings. Even small data tasks benefit from this kind of traceability.</p><h2>Small Inputs, Clear Decisions</h2><p>A compact converter is especially valuable when it makes decisions visible. The source text is on one side, the transformed output is on the other, and the user can copy or download only after a review. That layout encourages a deliberate workflow: inspect before moving data onward. It is more reliable than an interface that hides assumptions about headers, values, and formats behind a single promise of automatic success.</p><p>Use the result as a transparent draft for the next system. The final authority is always the actual destination, its current documentation, and the data rules that apply to your work.</p><h2>Document the Result You Use</h2><p>When a converted file becomes part of a handoff, include its source date, the original filename, the chosen output format, and the destination where it was tested. These small notes let another person reproduce the result without trying to infer the transformation from a final JSON file alone. If a source changes later, repeat the same sample check rather than assuming an export remains identical.</p><p>Careful documentation does not slow routine work; it prevents avoidable confusion when a data value is questioned later. The converter supplies a visible intermediate result, while a short record explains why that result was appropriate for the next step.</p><h2>Browser Boundaries and Sensitive Data</h2><p>The conversion logic runs in the browser page, but that does not make all content suitable for a general web tool. Avoid passwords, private keys, personal records, confidential customer exports, regulated information, and unpublished material. Device configuration, browser extensions, clipboard history, screen sharing, and organisational policy are separate concerns. Use the approved workflow when data sensitivity or compliance requirements apply.</p><p>For routine public samples and non-sensitive drafts, a browser converter is useful because source and output remain easy to compare. For important data, retain the source, document the mapping, test the destination, and use the organisation’s permitted import or migration process.</p><h2>A Repeatable Review Checklist</h2><p>Save the original and work on a copy. Confirm the delimiter and header row. Convert a small sample. Inspect keys, values, quotes, empty fields, and special characters. Verify that identifiers have not lost leading zeroes. Validate the result in the actual destination. Test a safe import before a large batch. This routine prevents a small formatting assumption from becoming a much larger data problem.</p><p>Toolyfi provides an inspectable conversion, output format options, copy control, and download control. The receiving system’s schema, field semantics, permissions, security, and production rules are still your responsibility. Honest boundaries make a developer tool more dependable than unverified claims about unlimited scale or automatic correctness.</p><h2>Related Toolyfi Tools</h2><p>Use <a href="json-formatter.html">JSON Formatter</a> to inspect JSON output, <a href="html-preview-tool.html">HTML Preview Tool</a> for front-end snippets, <a href="word-counter.html">Word Counter</a> for text metrics, and <a href="text-trimmer.html">Text Trimmer</a> for copied-text cleanup. Each utility handles a distinct step and should be paired with validation appropriate to the destination.</p></article>
-
-  <!-- FAQ -->
-  <div class="sec-head" style="margin-bottom:20px;">
-    <div class="sec-label">FAQ</div>
-    <div class="sec-title">Frequently Asked <em>Questions</em></div>
-  </div>
-  <div class="faq-list" style="margin-bottom:48px;"><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does CSV to JSON conversion work?<span class="faq-arr">▼</span></div><div class="faq-a">The header row becomes field names and each data row becomes one JSON object in an array. Review the output before using it in another system.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does the parser support quoted fields?<span class="faq-arr">▼</span></div><div class="faq-a">It supports standard double-quoted fields and doubled double quotes. Inspect unusual exports carefully.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What output formats are available?<span class="faq-arr">▼</span></div><div class="faq-a">JSON, XML, YAML, and SQL text output are available for review.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why do headers matter?<span class="faq-arr">▼</span></div><div class="faq-a">They become keys or field names in output. Use unique, meaningful labels and confirm the destination’s requirements.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are values automatically typed?<span class="faq-arr">▼</span></div><div class="faq-a">Values remain text in this converter. Apply destination-aware type validation later.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why can a conversion fail?<span class="faq-arr">▼</span></div><div class="faq-a">Common causes include a missing header, wrong delimiter, inconsistent columns, or unmatched quotes.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I download output?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. Convert first, then use the Download control for selected output text.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I paste confidential data?<span class="faq-arr">▼</span></div><div class="faq-a">Avoid general web tools for confidential or sensitive material. Use an approved protected workflow instead.</div></div></div></div>
-
-<!-- RELATED TOOLS -->
-<div class="wide-wrap">
-  <div class="section" style="padding-top:0;">
-    <div class="sec-head">
-      <div class="sec-label">Explore</div>
-      <div class="sec-title">More <em>free tools</em></div>
-    </div>
-    <div class="related-grid">
-      <a href="json-formatter.html" class="rel-card"><span>🖥️</span><span>JSON Formatter</span></a>
-      <a href="base64-encoder.html" class="rel-card"><span>🔐</span><span>Base64 Encoder</span></a>
-      <a href="password-generator.html" class="rel-card"><span>🔑</span><span>Password Generator</span></a>
-      <a href="morse-code-converter.html" class="rel-card"><span>📡</span><span>Morse Code</span></a>
-      <a href="word-counter.html" class="rel-card"><span>📝</span><span>Word Counter</span></a>
-      <a href="qr-code-generator.html" class="rel-card"><span>📱</span><span>QR Generator</span></a>
-      <a href="case-converter.html" class="rel-card"><span>🔤</span><span>Case Converter</span></a>
-      <a href="html-preview-tool.html" class="rel-card"><span>💻</span><span>HTML Preview</span></a>
-      <a href="currency-converter.html" class="rel-card"><span>💱</span><span>Currency Converter</span></a>
-      <a href="loan-calculator.html" class="rel-card"><span>🏦</span><span>Loan Calculator</span></a>
-      <a href="bmi-calculator.html" class="rel-card"><span>⚖️</span><span>BMI Calculator</span></a>
-      <a href="age-calculator.html" class="rel-card"><span>🎂</span><span>Age Calculator</span></a>
-      <a href="number-to-words.html" class="rel-card"><span>🔢</span><span>Number to Words</span></a>
-      <a href="text-trimmer.html" class="rel-card"><span>✂️</span><span>Text Trimmer</span></a>
-      <a href="https://toolyfi.com/flip-fancy-text-generator.html" class="rel-card"><span>🔃</span><span>Flip Text</span></a>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-  <div class="cta">
-    <h2>Explore All Free Tools on Toolyfi</h2>
-    <p>40+ calculators, converters, and developer tools — all free, all instant, no sign-up required.</p>
-    <a href="https://toolyfi.com/#tools">Browse All Tools →</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Toolyfi</h4>
-        <a href="https://toolyfi.com">Home</a>
-        <a href="https://toolyfi.com/#tools">All Tools</a>
+    <!-- TOOL -->
+    <div class="wrap">
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-title">⚡ CSV Converter</div>
+          <div class="tool-chips">
+            <span class="chip green">● Live</span>
+            <span class="chip">Browser-based</span>
+            <span class="chip">No Upload</span>
           </div>
-      <div class="footer-col">
-        <h4>Dev Tools</h4>
-        <a href="https://toolyfi.com/csv-to-json.html">CSV to JSON</a>
-        <a href="json-formatter.html">JSON Formatter</a>
-        <a href="base64-encoder.html">Base64 Encoder</a>
-        <a href="html-preview-tool.html">HTML Preview</a>
-      </div>
-      <div class="footer-col">
-        <h4>Text Tools</h4>
-        <a href="word-counter.html">Word Counter</a>
-        <a href="case-converter.html">Case Converter</a>
-        <a href="morse-code-converter.html">Morse Code</a>
-        <a href="text-trimmer.html">Text Trimmer</a>
-      </div>
-      <div class="footer-col">
-        <h4>Calculators</h4>
-        <a href="loan-calculator.html">Loan Calculator</a>
-        <a href="bmi-calculator.html">BMI Calculator</a>
-        <a href="age-calculator.html">Age Calculator</a>
-        <a href="currency-converter.html">Currency Converter</a>
+        </div>
+
+        <div class="fmt-bar">
+          <span class="fmt-label">Output:</span>
+          <button class="fmt-btn active" onclick="setFmt('json',this)">JSON</button>
+          <button class="fmt-btn" onclick="setFmt('xml',this)">XML</button>
+          <button class="fmt-btn" onclick="setFmt('yaml',this)">YAML</button>
+          <button class="fmt-btn" onclick="setFmt('sql',this)">SQL</button>
+        </div>
+
+        <div class="editor-wrap">
+          <div id="msgToast" class="msg-toast"></div>
+          <div class="action-bar">
+            <button class="btn btn-primary" onclick="convertNow()">🔄 Convert Now</button>
+            <button class="btn btn-green" onclick="loadSample()">📌 Load Sample</button>
+            <button class="btn btn-ghost" onclick="copyOut()">📋 Copy Output</button>
+            <button class="btn btn-ghost" onclick="downloadOut()">⬇ Download</button>
+            <button class="btn btn-ghost" onclick="clearAll()">🗑 Clear</button>
+          </div>
+          <div class="editor-grid">
+            <div class="editor-pane">
+              <div class="editor-label">CSV Input</div>
+              <textarea
+                class="code-area"
+                id="csvIn"
+                placeholder="Paste CSV here...&#10;&#10;Name,Email,Age&#10;John,john@example.com,30&#10;Jane,jane@example.com,28"
+                rows="14"
+              ></textarea>
+            </div>
+            <div class="editor-pane">
+              <div class="editor-label" id="outLabel">JSON Output</div>
+              <textarea
+                class="code-area"
+                id="csvOut"
+                placeholder="Output will appear here after conversion..."
+                readonly
+                rows="14"
+              ></textarea>
+            </div>
+          </div>
+          <div class="status-bar">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText" style="color: var(--dim)"
+              >Ready — paste CSV and click Convert</span
+            >
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Toolyfi. All rights reserved.</span>
-      <span class="footer-copy">Free tools for everyone — no sign-up required.</span>
+
+    <!-- FEATURES -->
+    <div class="wide-wrap">
+      <div class="section">
+        <div class="sec-head">
+          <div class="sec-label">Why Toolyfi</div>
+          <div class="sec-title">More than just a <em>converter</em></div>
+          <div class="sec-sub">
+            Built for developers and data professionals who need speed, accuracy, and privacy.
+          </div>
+        </div>
+        <div class="features-grid">
+          <div class="feat-card">
+            <div class="feat-icon">⚡</div>
+            <h3>Instant Conversion</h3>
+            <p>
+              Browser-based processing — no server round trips. Convert thousands of rows in
+              milliseconds.
+            </p>
+            <div class="feat-code">{"status": "converted", "rows": 5000}</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🔀</div>
+            <h3>4 Output Formats</h3>
+            <p>
+              One click switches between JSON, XML, YAML, and SQL. Same input, any format you need.
+            </p>
+            <div class="feat-code">JSON | XML | YAML | SQL ✓</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🧠</div>
+            <h3>Smart CSV Parser</h3>
+            <p>
+              Handles quoted fields with commas, escaped quotes, special characters, and empty
+              values correctly.
+            </p>
+            <div class="feat-code">"Doe, John",+92-300 ✓</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🔒</div>
+            <h3>Zero Data Exposure</h3>
+            <p>
+              Your CSV data never leaves your browser. No server, no logs, no tracking. Safe for
+              sensitive data.
+            </p>
+            <div class="feat-code">🛡️ 0 bytes transmitted</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">📁</div>
+            <h3>Large File Ready</h3>
+            <p>
+              Use a small representative sample first, then review performance and memory behaviour
+              on your own device for larger source files.
+            </p>
+            <div class="feat-code">Reviewable browser-side output</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">📱</div>
+            <h3>Works Everywhere</h3>
+            <p>Fully responsive — phones, tablets, desktops. Any browser, any device, any OS.</p>
+            <div class="feat-code">Chrome | Firefox | Safari ✓</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
 
-<div class="toast" id="toast">✅ Copied!</div>
+    <!-- FORMAT GUIDE -->
+    <div class="wide-wrap">
+      <div class="section" style="padding-top: 0">
+        <div class="sec-head">
+          <div class="sec-label">Format Guide</div>
+          <div class="sec-title">Which format should <em>you pick?</em></div>
+          <div class="sec-sub">Quick guide based on your use case.</div>
+        </div>
+        <div class="fmt-cards">
+          <div class="fmt-card">
+            <span class="fmt-card-badge json">JSON</span>
+            <h3>APIs & Web Apps</h3>
+            <p>
+              Best for REST APIs, React/Vue/Angular apps, MongoDB, Firebase, and any modern
+              JavaScript project.
+            </p>
+          </div>
+          <div class="fmt-card">
+            <span class="fmt-card-badge xml">XML</span>
+            <h3>Legacy & Enterprise</h3>
+            <p>
+              Best for SOAP web services, Microsoft Office integrations, and enterprise systems
+              requiring XML schema.
+            </p>
+          </div>
+          <div class="fmt-card">
+            <span class="fmt-card-badge yaml">YAML</span>
+            <h3>DevOps & Config</h3>
+            <p>
+              Best for Kubernetes, Docker Compose, GitHub Actions, Ansible, and CI/CD pipeline
+              configuration files.
+            </p>
+          </div>
+          <div class="fmt-card">
+            <span class="fmt-card-badge sql">SQL</span>
+            <h3>Databases</h3>
+            <p>
+              Best for importing data into MySQL, PostgreSQL, SQLite. Get ready-to-run INSERT
+              statements instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<script>
-// FORMAT
-let fmt='json';
-const fmtLabels={json:'JSON Output',xml:'XML Output',yaml:'YAML Output',sql:'SQL Output'};
-function setFmt(f,btn){
-  fmt=f;
-  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('outLabel').textContent=fmtLabels[f];
-}
+    <!-- WHO BENEFITS -->
+    <div class="wide-wrap">
+      <div class="section" style="padding-top: 0">
+        <div class="sec-head">
+          <div class="sec-label">Use Cases</div>
+          <div class="sec-title">Who uses this <em>tool?</em></div>
+        </div>
+        <div class="who-grid">
+          <div class="who-card">
+            <div class="who-icon">👨‍💻</div>
+            <h4>Web Developers</h4>
+            <p>Convert CSV exports to JSON for APIs, React apps, and Node.js projects instantly.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">📊</div>
+            <h4>Data Analysts</h4>
+            <p>Transform spreadsheet data into structured formats for Python, R, or BI tools.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🗄️</div>
+            <h4>Database Admins</h4>
+            <p>Generate SQL INSERT statements from CSV to quickly populate databases.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">⚙️</div>
+            <h4>DevOps Engineers</h4>
+            <p>Convert configuration CSVs to YAML for Kubernetes, Ansible, and CI/CD pipelines.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🏢</div>
+            <h4>Business Teams</h4>
+            <p>Export CRM data as CSV and convert to JSON for integrations with other platforms.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">📱</div>
+            <h4>App Developers</h4>
+            <p>Prepare data files in JSON or YAML for mobile apps and configuration files.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🎓</div>
+            <h4>Students & Learners</h4>
+            <p>
+              Learn data formats by seeing live conversions — great for CS and data science courses.
+            </p>
+          </div>
+          <div class="who-card">
+            <div class="who-icon">🔬</div>
+            <h4>Researchers</h4>
+            <p>
+              Convert research datasets from CSV to JSON for analysis pipelines and data processing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-// CSV PARSER
-function parseCSV(str){
-  const rows=[];let cur=[];let field='';let inQ=false;
-  for(let i=0;i<str.length;i++){
-    const c=str[i],n=str[i+1];
-    if(c==='"'){if(inQ&&n==='"'){field+='"';i++;}else inQ=!inQ;}
-    else if(c===','&&!inQ){cur.push(field.trim());field='';}
-    else if((c==='\n'||c==='\r')&&!inQ){
-      cur.push(field.trim());field='';
-      if(cur.some(v=>v))rows.push(cur);
-      cur=[];
-      if(c==='\r'&&n==='\n')i++;
-    }else field+=c;
-  }
-  if(field.trim()||cur.length)cur.push(field.trim());
-  if(cur.some(v=>v))rows.push(cur);
-  return rows;
-}
+    <!-- ARTICLE -->
+    <div class="wrap">
+      <article class="article">
+        <h2>CSV to JSON Converter: Complete Practical Guide</h2>
+        <p>
+          CSV and JSON are plain-text formats used for different jobs. CSV describes a table of rows
+          and columns. JSON describes arrays, objects, strings, numbers, booleans, and nested
+          structures. This page turns a CSV-style table into reviewable output. The first row is
+          used as field names; each following row becomes one record. A clear conversion is useful
+          for a development task, but it is not the same as validating a destination schema or
+          importing data into production.
+        </p>
+        <p>
+          Start with the source, not the output. Identify the delimiter, confirm that the first row
+          contains headers, check that headers are clear and unique, and inspect a small sample
+          before using a large export. A fast conversion can create valid syntax while still
+          preserving a source mistake. Treat the tool as a transformation and review step rather
+          than a replacement for data-quality controls.
+        </p>
+        <h2>CSV Is Delimited Text, Not One Universal Dialect</h2>
+        <p>
+          CSV usually means comma-separated values, but the same row-and-column pattern may use a
+          semicolon, tab, or pipe. Spreadsheet settings and regional conventions can change the
+          separator. A file that appears to have one column after conversion may simply use a
+          different delimiter than the parser expects. Inspect the original text and use an
+          appropriate conversion workflow rather than assuming every spreadsheet export uses a
+          comma.
+        </p>
+        <p>
+          The converter expects a header row so it can create meaningful keys. A source such as
+          <code>name,email,active</code> gives each output object readable fields. If the source has
+          no header, add a deliberate one before conversion. It is better to name an unknown column
+          clearly than to invent a meaning after the data is already moving between systems.
+        </p>
+        <h2>Quoted Fields, Empty Values, and Line Breaks</h2>
+        <p>
+          Real CSV often contains commas inside a field. The standard way to keep a comma inside one
+          value is to wrap the field in double quotes. A quote inside a quoted field is written as a
+          doubled quote. The browser parser supports those common rules, and it keeps empty fields
+          so the relationship between a header and a missing value remains visible. Review the
+          output when a source comes from a specialised product or contains unusually formatted
+          records.
+        </p>
+        <p>
+          Whitespace also needs a conscious decision. A space can be meaningful in an address,
+          description, label, or identifier. Silent cleanup may make a result look neat while
+          changing the source. Clean values deliberately for the destination rules instead of
+          relying on a generic conversion step to decide what a space means.
+        </p>
+        <h2>How the JSON Mapping Works</h2>
+        <p>
+          Consider a small input with headers <code>name,email</code>. Each later row becomes an
+          object such as <code>{"name":"Ravi","email":"ravi@example.com"}</code>. The complete
+          result is an array. This is convenient for reviewing a set of records in a web application
+          or passing a sample into a JSON-aware tool. It does not infer a business model,
+          relationship, primary key, date format, or validation rule.
+        </p>
+        <p>
+          CSV values are text by default. The characters <code>00127</code> could be a number, a
+          postal code, a customer code, or an identifier. Turning it automatically into 127 can
+          remove important leading zeroes. Convert types later only when you know what the
+          destination requires. Dates, currency, phone numbers, boolean flags, and null values
+          should be mapped according to a stated contract rather than guessed from appearance.
+        </p>
+        <h2>JSON for APIs and Application Data</h2>
+        <p>
+          JSON is common in modern web development because its objects and arrays map naturally to
+          many programming languages. Before sending converted data to an API, check required field
+          names, types, allowed values, pagination, authentication, and error handling. A
+          syntactically valid JSON array can still fail because a required field is absent or an
+          identifier belongs to another environment. Test with a non-sensitive sample before a
+          larger import.
+        </p>
+        <p>
+          Open the result in <a href="json-formatter.html">JSON Formatter</a> when you want a more
+          focused inspection of nesting and syntax. Use
+          <a href="base64-encoder.html">Base64 Encoder</a> only when a documented integration
+          explicitly needs encoding. Encoding is not encryption, and neither tool is a substitute
+          for the permissions and validation required by the final system.
+        </p>
+        <h2>XML, YAML, and SQL Are Different Workflows</h2>
+        <p>
+          XML needs valid element names, so headers with spaces or punctuation can require a
+          destination-specific mapping. YAML is readable for many configuration uses but has
+          indentation and quoting rules that deserve review. SQL output can be useful as a starting
+          draft, but it is plain text—not a guarantee that a table definition, schema, transaction,
+          or permission model is appropriate. Review table names, column types, escaping,
+          constraints, and import policies before executing any statement.
+        </p>
+        <p>
+          Every format has a context. JSON may be appropriate for a data exchange; XML may be
+          required by a legacy interface; YAML can be used for configuration; SQL targets a
+          relational database. Choose the format because the receiving system expects it, not
+          because the converter can produce it with one click.
+        </p>
+        <h2>Common Problems to Check Before Conversion</h2>
+        <p>
+          A missing header row leaves the output without names. An unmatched quote can cause the
+          rest of a line or file to be interpreted as one field. Inconsistent columns can create
+          missing or extra values. An unexpected delimiter can put each line into one field.
+          Character encoding can display replacement characters when a file is not saved as
+          expected. Preserve the original, use a small sample, and inspect the status message before
+          escalating the workflow.
+        </p>
+        <p>
+          Duplicate headers also deserve attention. Two columns named <code>status</code> cannot
+          become two distinct object properties without a naming rule. Rename the source headers
+          before conversion or create a clear mapping in the destination. Meaningful headers reduce
+          ambiguity for every later step, including debugging, auditing, and handoff to another
+          developer.
+        </p>
+        <h2>Delimiter Selection and Regional Exports</h2>
+        <p>
+          A separator is not merely a cosmetic setting. If a spreadsheet uses commas as decimal
+          marks, it may export columns with semicolons instead of commas. Tab-separated reports are
+          also common because tabs are less likely to appear in ordinary prose. Before conversion,
+          open a small source sample and identify the actual character between fields. Do not infer
+          it from the file extension alone. A source named “report.csv” can still use a semicolon or
+          tab depending on the producing system.
+        </p>
+        <p>
+          When a conversion yields one long key per row, stop and check the delimiter. When it
+          yields too many fields, inspect whether an unquoted delimiter appears inside a value. A
+          small controlled test—one header row and two data rows—often finds the issue faster than
+          trying to repair a large converted document after the fact.
+        </p>
+        <h2>Header Design, Duplicates, and Key Naming</h2>
+        <p>
+          Headers are part of a data contract. They should be unique, readable, and stable. A JSON
+          object cannot meaningfully distinguish two columns that share the same name without an
+          explicit mapping. Headers with spaces or punctuation can be valid JSON keys, but a
+          receiving API or database may prefer a naming convention such as
+          <code>snake_case</code> or <code>camelCase</code>. Decide this at the source or document
+          the mapping rather than relying on a generic converter to guess a business name.
+        </p>
+        <p>
+          Blank headers are also risky. A record with a value but no field name cannot be
+          interpreted safely by another person or program. Give every column a deliberate label,
+          including temporary or optional columns, and remove exports fields that do not belong in
+          the destination. Clear input creates clear output.
+        </p>
+        <h2>Data Types, Nulls, and Identifiers</h2>
+        <p>
+          CSV stores characters, so a converter has limited knowledge of meaning. The sequence
+          <code>12</code> might be a quantity, a month, an integer identifier, or a text label. The
+          sequence <code>false</code> might represent a boolean or a literal status word. An empty
+          cell might mean an empty string, missing data, an unknown value, or a null. These
+          decisions belong to the destination schema. Preserve raw text unless you have a documented
+          rule for type conversion.
+        </p>
+        <p>
+          Identifiers deserve special attention. Postal codes, account numbers, product codes, and
+          phone numbers can begin with zeroes or contain symbols. Turning them into numeric values
+          can alter them. Large numeric identifiers may also lose precision in software environments
+          that use floating-point numbers. Keep identifier fields as strings unless the destination
+          explicitly documents another representation.
+        </p>
+        <h2>Escaping, Injection, and Output Safety</h2>
+        <p>
+          Each output format has escaping rules. JSON escapes quotes and control characters. XML
+          escapes reserved markup characters. YAML can require quoting for values that resemble
+          booleans, dates, or special syntax. SQL uses its own quoting and database-specific
+          behaviour. The page can generate a representation, but it cannot decide whether the
+          generated text is safe to execute in a particular system. Treat SQL output as a reviewable
+          draft and use parameterised or approved import methods for real database work.
+        </p>
+        <p>
+          Do not paste output into an interpreter, shell, database console, or production endpoint
+          without understanding what it contains. A CSV source can include text that becomes
+          executable or dangerous in another context if a workflow is careless. Validate in a safe
+          environment, restrict privileges, and follow the destination platform’s import guidance.
+        </p>
+        <h2>Testing with a Representative Sample</h2>
+        <p>
+          A representative sample includes the edge cases that matter: a quoted comma, an empty
+          field, a non-English character, a leading-zero identifier, an apostrophe, a long value,
+          and a row near the expected column count. Converting this small set gives you a concrete
+          way to examine behaviour before processing a full export. Compare the original cells to
+          the output objects line by line.
+        </p>
+        <p>
+          If a sample fails, repair the source rule or mapping first. Do not simply
+          search-and-replace the generated output until it appears to work. Reproducible input steps
+          are safer than manual edits because they can be repeated by another person and applied
+          consistently to a later export.
+        </p>
+        <h2>From Conversion to Import</h2>
+        <p>
+          Successful conversion is the beginning of an import process, not the end. A destination
+          can require authentication, unique keys, foreign-key references, data retention rules,
+          date formatting, pagination, batching, and error handling. A good workflow has a rollback
+          plan and a way to identify which records were accepted or rejected. Use a staging
+          environment when it is available.
+        </p>
+        <p>
+          For a one-off developer test, save the generated output with a clear name and retain the
+          source version. For recurring work, write down the delimiter, header mapping, type rules,
+          and destination validation. This turns a convenient browser conversion into a documented
+          process that is easier to audit and maintain.
+        </p>
+        <h2>Choosing the Right Tool for the Next Step</h2>
+        <p>
+          Use this page when the immediate job is to translate a simple delimited table into text
+          you can inspect. Use a dedicated ETL, database import, spreadsheet, or code pipeline when
+          transformation rules, large-scale processing, error reporting, access control, or
+          scheduled operation are required. The right boundary protects data quality: a focused
+          utility should not claim to replace a complete integration system.
+        </p>
+        <p>
+          After conversion, format JSON for review, validate it against the destination, and test a
+          safe sample. If the work involves a public API, read that API’s current documentation
+          rather than assuming a generic array structure is accepted. If the work involves
+          regulated, personal, or confidential data, use the approved environment. These steps are
+          more valuable than any unsupported promise of universal compatibility.
+        </p>
+        <h2>Final Conversion Checklist</h2>
+        <p>
+          Confirm the source delimiter. Confirm the first row is a header. Check all header names.
+          Review quoted fields and empty cells. Preserve identifiers as text unless a documented
+          type rule applies. Inspect a small generated result. Validate the final format in its real
+          destination. Retain the source and mapping. These checks make a CSV-to-JSON result
+          understandable, repeatable, and easier to troubleshoot.
+        </p>
+        <p>
+          Toolyfi’s converter offers a direct browser-side transformation and output controls. It
+          supports a useful part of the workflow: turning visible table text into visible structured
+          text. Use it with an appropriate destination validation process, not as a substitute for
+          it.
+        </p>
+        <h2>Quality Control After Conversion</h2>
+        <p>
+          Read the output as data, not only as text. Compare the number of output records with the
+          number of intended source rows. Look at the first, middle, and last record. Check a row
+          with an empty cell, one with a quoted comma, and one with a non-English character. Confirm
+          that headers became the expected keys and that no value shifted into a neighbouring field.
+          This targeted review catches most delimiter and quote mistakes without requiring a full
+          manual comparison.
+        </p>
+        <p>
+          If a destination provides an error report, use it to improve the source mapping instead of
+          patching only a generated file. A repeatable correction in the source is easier to explain
+          and less likely to fail on the next export. Keep a brief note of the delimiter, field
+          mapping, date convention, and any values intentionally treated as strings. Even small data
+          tasks benefit from this kind of traceability.
+        </p>
+        <h2>Small Inputs, Clear Decisions</h2>
+        <p>
+          A compact converter is especially valuable when it makes decisions visible. The source
+          text is on one side, the transformed output is on the other, and the user can copy or
+          download only after a review. That layout encourages a deliberate workflow: inspect before
+          moving data onward. It is more reliable than an interface that hides assumptions about
+          headers, values, and formats behind a single promise of automatic success.
+        </p>
+        <p>
+          Use the result as a transparent draft for the next system. The final authority is always
+          the actual destination, its current documentation, and the data rules that apply to your
+          work.
+        </p>
+        <h2>Document the Result You Use</h2>
+        <p>
+          When a converted file becomes part of a handoff, include its source date, the original
+          filename, the chosen output format, and the destination where it was tested. These small
+          notes let another person reproduce the result without trying to infer the transformation
+          from a final JSON file alone. If a source changes later, repeat the same sample check
+          rather than assuming an export remains identical.
+        </p>
+        <p>
+          Careful documentation does not slow routine work; it prevents avoidable confusion when a
+          data value is questioned later. The converter supplies a visible intermediate result,
+          while a short record explains why that result was appropriate for the next step.
+        </p>
+        <h2>Browser Boundaries and Sensitive Data</h2>
+        <p>
+          The conversion logic runs in the browser page, but that does not make all content suitable
+          for a general web tool. Avoid passwords, private keys, personal records, confidential
+          customer exports, regulated information, and unpublished material. Device configuration,
+          browser extensions, clipboard history, screen sharing, and organisational policy are
+          separate concerns. Use the approved workflow when data sensitivity or compliance
+          requirements apply.
+        </p>
+        <p>
+          For routine public samples and non-sensitive drafts, a browser converter is useful because
+          source and output remain easy to compare. For important data, retain the source, document
+          the mapping, test the destination, and use the organisation’s permitted import or
+          migration process.
+        </p>
+        <h2>A Repeatable Review Checklist</h2>
+        <p>
+          Save the original and work on a copy. Confirm the delimiter and header row. Convert a
+          small sample. Inspect keys, values, quotes, empty fields, and special characters. Verify
+          that identifiers have not lost leading zeroes. Validate the result in the actual
+          destination. Test a safe import before a large batch. This routine prevents a small
+          formatting assumption from becoming a much larger data problem.
+        </p>
+        <p>
+          Toolyfi provides an inspectable conversion, output format options, copy control, and
+          download control. The receiving system’s schema, field semantics, permissions, security,
+          and production rules are still your responsibility. Honest boundaries make a developer
+          tool more dependable than unverified claims about unlimited scale or automatic
+          correctness.
+        </p>
+        <h2>Keep Delimiter Choices Reproducible</h2>
+        <p>
+          A CSV conversion is easier to repeat when the source rule is written down. Record whether
+          the export used commas, tabs, semicolons, or another separator, whether a header row was
+          present, and whether fields were quoted. That short note becomes useful when another
+          person repeats the same transformation next month or when a spreadsheet application
+          changes a regional export setting. The file extension alone does not preserve every
+          decision that produced the rows you are reading.
+        </p>
+        <p>
+          An output can be valid JSON and still be unsuitable for its destination. A receiving
+          application may expect a root object, a different key name, a nested address structure, or
+          particular date and status values. Use the converter to expose the table as reviewable
+          objects, then compare the result with the actual documented contract. This separation
+          keeps a small format tool honest: it handles transparent conversion, while the destination
+          owns its own validation rules.
+        </p>
+        <h2>Review Rows Before a Large Import</h2>
+        <p>
+          When a source contains hundreds or thousands of records, begin with a small representative
+          sample. Include a normal row, an empty field, a quoted comma, an identifier with a leading
+          zero, and a value containing non-English characters. Compare those source cells with the
+          produced JSON objects. If the sample does not map cleanly, fix the delimiter, header, or
+          source export before creating a larger output. Repeating a reliable source step is safer
+          than repairing a final file by hand.
+        </p>
+        <p>
+          The same approach helps with duplicate names. Object keys must be distinguishable, so two
+          columns that both say <code>status</code> need a deliberate rename before an application
+          can treat them as separate fields. Clear headers make code, handoffs, and debugging
+          simpler. They also prevent a quiet overwrite from looking like a successful conversion. A
+          useful browser tool should make that responsibility visible rather than hiding it behind
+          an unsupported promise of automatic correctness.
+        </p>
+        <h2>Keep the Source Beside the Result</h2>
+        <p>
+          A converted JSON file is most useful when its origin remains clear. Keep the original CSV,
+          note the export date, and give the generated file a name that identifies the purpose of
+          the transformation. If someone later asks why a value appears in a JSON object, the answer
+          should be traceable to a visible source cell and a documented conversion choice. This is
+          helpful for a quick development sample and essential for any workflow that will be
+          repeated by a team.
+        </p>
+        <p>
+          Copying output into a formatter is also a simple final check. Confirm that the number of
+          objects matches the intended rows, inspect the first and last record, and verify that text
+          such as dates, codes, and phone-like identifiers still has the expected representation.
+          Toolyfi can make the intermediate format easier to inspect; it cannot know the business
+          meaning of an individual column. Keeping that boundary clear protects both the data and
+          the people using it.
+        </p>
+        <h2>Related Toolyfi Tools</h2>
+        <p>
+          Use <a href="json-formatter.html">JSON Formatter</a> to inspect JSON output,
+          <a href="html-preview-tool.html">HTML Preview Tool</a> for front-end snippets,
+          <a href="word-counter.html">Word Counter</a> for text metrics, and
+          <a href="text-trimmer.html">Text Trimmer</a> for copied-text cleanup. Each utility handles
+          a distinct step and should be paired with validation appropriate to the destination.
+        </p>
+      </article>
 
-function toJSON(rows){
-  const h=rows[0];
-  const arr=rows.slice(1).map(r=>{const o={};h.forEach((k,i)=>o[k]=r[i]||'');return o;});
-  return JSON.stringify(arr,null,2);
-}
-function escXML(s){return(s||'').replace(/[<>&'"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[c]));}
-function toXML(rows){
-  const h=rows[0];
-  let x='<?xml version="1.0" encoding="UTF-8"?>\n<root>\n';
-  rows.slice(1).forEach(r=>{
-    x+='  <record>\n';
-    h.forEach((k,i)=>x+=`    <${k}>${escXML(r[i]||'')}</${k}>\n`);
-    x+='  </record>\n';
-  });
-  return x+'</root>';
-}
-function toYAML(rows){
-  const h=rows[0];let y='';
-  rows.slice(1).forEach(r=>{y+='-\n';h.forEach((k,i)=>{y+=`  ${JSON.stringify(k)}: ${JSON.stringify(r[i]||'')}\n`;});});
-  return y;
-}
-function toSQL(rows){
-  const h=rows[0];
-  let s=`CREATE TABLE data (\n${h.map(k=>`  \`${k}\` VARCHAR(255)`).join(',\n')}\n);\n\n`;
-  rows.slice(1).forEach(r=>s+=`INSERT INTO data (${h.map(k=>`\`${k}\``).join(', ')}) VALUES (${r.map(v=>`'${(v||'').replace(/'/g,"''")}'`).join(', ')});\n`);
-  return s;
-}
+      <!-- FAQ -->
+      <div class="sec-head" style="margin-bottom: 20px">
+        <div class="sec-label">FAQ</div>
+        <div class="sec-title">Frequently Asked <em>Questions</em></div>
+      </div>
+      <div class="faq-list" style="margin-bottom: 48px">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How does CSV to JSON conversion work?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            The header row becomes field names and each data row becomes one JSON object in an
+            array. Review the output before using it in another system.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does the parser support quoted fields?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            It supports standard double-quoted fields and doubled double quotes. Inspect unusual
+            exports carefully.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What output formats are available?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">JSON, XML, YAML, and SQL text output are available for review.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Why do headers matter?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            They become keys or field names in output. Use unique, meaningful labels and confirm the
+            destination’s requirements.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Are values automatically typed?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Values remain text in this converter. Apply destination-aware type validation later.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Why can a conversion fail?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Common causes include a missing header, wrong delimiter, inconsistent columns, or
+            unmatched quotes.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I download output?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Yes. Convert first, then use the Download control for selected output text.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Should I paste confidential data?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Avoid general web tools for confidential or sensitive material. Use an approved
+            protected workflow instead.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Why did all data appear in one JSON field?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            The source may use a delimiter other than a comma, such as a tab or semicolon. Check a
+            small source sample and use a parser setting that matches the character between fields.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I use the output directly in a production import?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Treat the result as a reviewable conversion. Confirm required keys, data types,
+            validation rules, permissions, and a safe test import in the receiving system first.
+          </div>
+        </div>
+      </div>
+    </div>
 
-function setStatus(ok,msg){
-  const dot=document.getElementById('statusDot');
-  dot.className='status-dot'+(ok===true?' ok':ok===false?' err':'');
-  document.getElementById('statusText').textContent=msg;
-}
+    <!-- RELATED TOOLS -->
+    <div class="wide-wrap">
+      <div class="section" style="padding-top: 0">
+        <div class="sec-head">
+          <div class="sec-label">Explore</div>
+          <div class="sec-title">More <em>free tools</em></div>
+        </div>
+        <div class="related-grid">
+          <a href="json-formatter.html" class="rel-card"
+            ><span>🖥️</span><span>JSON Formatter</span></a
+          >
+          <a href="base64-encoder.html" class="rel-card"
+            ><span>🔐</span><span>Base64 Encoder</span></a
+          >
+          <a href="password-generator.html" class="rel-card"
+            ><span>🔑</span><span>Password Generator</span></a
+          >
+          <a href="morse-code-converter.html" class="rel-card"
+            ><span>📡</span><span>Morse Code</span></a
+          >
+          <a href="word-counter.html" class="rel-card"><span>📝</span><span>Word Counter</span></a>
+          <a href="qr-code-generator.html" class="rel-card"
+            ><span>📱</span><span>QR Generator</span></a
+          >
+          <a href="case-converter.html" class="rel-card"
+            ><span>🔤</span><span>Case Converter</span></a
+          >
+          <a href="html-preview-tool.html" class="rel-card"
+            ><span>💻</span><span>HTML Preview</span></a
+          >
+          <a href="currency-converter.html" class="rel-card"
+            ><span>💱</span><span>Currency Converter</span></a
+          >
+          <a href="loan-calculator.html" class="rel-card"
+            ><span>🏦</span><span>Loan Calculator</span></a
+          >
+          <a href="bmi-calculator.html" class="rel-card"
+            ><span>⚖️</span><span>BMI Calculator</span></a
+          >
+          <a href="age-calculator.html" class="rel-card"
+            ><span>🎂</span><span>Age Calculator</span></a
+          >
+          <a href="number-to-words.html" class="rel-card"
+            ><span>🔢</span><span>Number to Words</span></a
+          >
+          <a href="text-trimmer.html" class="rel-card"><span>✂️</span><span>Text Trimmer</span></a>
+          <a href="https://toolyfi.com/flip-fancy-text-generator.html" class="rel-card"
+            ><span>🔃</span><span>Flip Text</span></a
+          >
+        </div>
+      </div>
+    </div>
 
-function convertNow(){
-  const csv=document.getElementById('csvIn').value.trim();
-  if(!csv){showMsg('Please enter CSV data first.','err');return;}
-  try{
-    const rows=parseCSV(csv);
-    if(rows.length<2){showMsg('CSV must have a header row and at least one data row.','err');return;}
-    const fns={json:toJSON,xml:toXML,yaml:toYAML,sql:toSQL};
-    const out=fns[fmt](rows);
-    document.getElementById('csvOut').value=out;
-    const rowCount=rows.length-1;
-    setStatus(true,`✓ Converted ${rowCount} row${rowCount!==1?'s':''} to ${fmt.toUpperCase()} successfully`);
-    showMsg(`✓ Converted ${rowCount} rows to ${fmt.toUpperCase()}!`,'ok');
-  }catch(e){
-    setStatus(false,'✗ Error: '+e.message);
-    showMsg('✗ Error: '+e.message,'err');
-  }
-}
+    <!-- CTA -->
+    <div class="cta">
+      <h2>Explore All Free Tools on Toolyfi</h2>
+      <p>
+        40+ calculators, converters, and developer tools — all free, all instant, no sign-up
+        required.
+      </p>
+      <a href="https://toolyfi.com/#tools">Browse All Tools →</a>
+    </div>
 
-function loadSample(){
-  document.getElementById('csvIn').value=`Name,Email,Department,Salary,Country\nJohn Doe,john@example.com,Engineering,85000,USA\nJane Smith,jane@example.com,Marketing,75000,UK\nBob Johnson,bob@example.com,Sales,70000,Canada\nAisha Khan,aisha@example.com,Design,68000,Pakistan`;
-  setStatus(null,'Sample CSV loaded — click Convert Now');
-  showMsg('📌 Sample CSV loaded!','ok');
-}
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Toolyfi</h4>
+            <a href="https://toolyfi.com">Home</a>
+            <a href="https://toolyfi.com/#tools">All Tools</a>
+          </div>
+          <div class="footer-col">
+            <h4>Dev Tools</h4>
+            <a href="https://toolyfi.com/csv-to-json.html">CSV to JSON</a>
+            <a href="json-formatter.html">JSON Formatter</a>
+            <a href="base64-encoder.html">Base64 Encoder</a>
+            <a href="html-preview-tool.html">HTML Preview</a>
+          </div>
+          <div class="footer-col">
+            <h4>Text Tools</h4>
+            <a href="word-counter.html">Word Counter</a>
+            <a href="case-converter.html">Case Converter</a>
+            <a href="morse-code-converter.html">Morse Code</a>
+            <a href="text-trimmer.html">Text Trimmer</a>
+          </div>
+          <div class="footer-col">
+            <h4>Calculators</h4>
+            <a href="loan-calculator.html">Loan Calculator</a>
+            <a href="bmi-calculator.html">BMI Calculator</a>
+            <a href="age-calculator.html">Age Calculator</a>
+            <a href="currency-converter.html">Currency Converter</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2026 Toolyfi. All rights reserved.</span>
+          <span class="footer-copy">Free tools for everyone — no sign-up required.</span>
+        </div>
+      </div>
+    </footer>
 
-function copyOut(){
-  const v=document.getElementById('csvOut').value;
-  if(!v){showMsg('Nothing to copy — convert first!','err');return;}
-  navigator.clipboard.writeText(v).then(()=>{
-    const t=document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2000);
-  });
-}
+    <div class="toast" id="toast">✅ Copied!</div>
 
-function downloadOut(){
-  const v=document.getElementById('csvOut').value;
-  if(!v){showMsg('Nothing to download — convert first!','err');return;}
-  const ext={json:'json',xml:'xml',yaml:'yaml',sql:'sql'}[fmt];
-  const a=document.createElement('a');
-  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(v);
-  a.download=`converted.${ext}`;a.click();
-}
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".ui-reveal").forEach((element) => {
+          requestAnimationFrame(() => element.classList.add("ready"));
+        });
+      });
 
-function clearAll(){
-  document.getElementById('csvIn').value='';
-  document.getElementById('csvOut').value='';
-  setStatus(null,'Ready — paste CSV and click Convert');
-  document.getElementById('msgToast').classList.remove('show');
-}
+      // FORMAT
+      let fmt = "json";
+      const fmtLabels = {
+        json: "JSON Output",
+        xml: "XML Output",
+        yaml: "YAML Output",
+        sql: "SQL Output",
+      };
+      function setFmt(f, btn) {
+        fmt = f;
+        document.querySelectorAll(".fmt-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("outLabel").textContent = fmtLabels[f];
+      }
 
-function showMsg(txt,type){
-  const el=document.getElementById('msgToast');
-  el.textContent=txt;el.className='msg-toast show '+type;
-  setTimeout(()=>el.classList.remove('show'),3000);
-}
+      // CSV PARSER
+      function parseCSV(str) {
+        const rows = [];
+        let cur = [];
+        let field = "";
+        let inQ = false;
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i],
+            n = str[i + 1];
+          if (c === '"') {
+            if (inQ && n === '"') {
+              field += '"';
+              i++;
+            } else inQ = !inQ;
+          } else if (c === "," && !inQ) {
+            cur.push(field.trim());
+            field = "";
+          } else if ((c === "\n" || c === "\r") && !inQ) {
+            cur.push(field.trim());
+            field = "";
+            if (cur.some((v) => v)) rows.push(cur);
+            cur = [];
+            if (c === "\r" && n === "\n") i++;
+          } else field += c;
+        }
+        if (field.trim() || cur.length) cur.push(field.trim());
+        if (cur.some((v) => v)) rows.push(cur);
+        return rows;
+      }
 
-// FAQ
-function toggleFaq(el){
-  const item=el.parentElement;
-  document.querySelectorAll('.faq-item.open').forEach(i=>{if(i!==item)i.classList.remove('open');});
-  item.classList.toggle('open');
-}
+      function toJSON(rows) {
+        const h = rows[0];
+        const arr = rows.slice(1).map((r) => {
+          const o = {};
+          h.forEach((k, i) => (o[k] = r[i] || ""));
+          return o;
+        });
+        return JSON.stringify(arr, null, 2);
+      }
+      function escXML(s) {
+        return (s || "").replace(
+          /[<>&'"]/g,
+          (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" })[c],
+        );
+      }
+      function toXML(rows) {
+        const h = rows[0];
+        let x = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n';
+        rows.slice(1).forEach((r) => {
+          x += "  <record>\n";
+          h.forEach((k, i) => (x += `    <${k}>${escXML(r[i] || "")}</${k}>\n`));
+          x += "  </record>\n";
+        });
+        return x + "</root>";
+      }
+      function toYAML(rows) {
+        const h = rows[0];
+        let y = "";
+        rows.slice(1).forEach((r) => {
+          y += "-\n";
+          h.forEach((k, i) => {
+            y += `  ${JSON.stringify(k)}: ${JSON.stringify(r[i] || "")}\n`;
+          });
+        });
+        return y;
+      }
+      function toSQL(rows) {
+        const h = rows[0];
+        let s = `CREATE TABLE data (\n${h.map((k) => `  \`${k}\` VARCHAR(255)`).join(",\n")}\n);\n\n`;
+        rows
+          .slice(1)
+          .forEach(
+            (r) =>
+              (s += `INSERT INTO data (${h.map((k) => `\`${k}\``).join(", ")}) VALUES (${r.map((v) => `'${(v || "").replace(/'/g, "''")}'`).join(", ")});\n`),
+          );
+        return s;
+      }
 
-setStatus(null,'Ready — paste CSV and click Convert Now');
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      function setStatus(ok, msg) {
+        const dot = document.getElementById("statusDot");
+        dot.className = "status-dot" + (ok === true ? " ok" : ok === false ? " err" : "");
+        document.getElementById("statusText").textContent = msg;
+      }
+
+      function convertNow() {
+        const csv = document.getElementById("csvIn").value.trim();
+        if (!csv) {
+          showMsg("Please enter CSV data first.", "err");
+          return;
+        }
+        try {
+          const rows = parseCSV(csv);
+          if (rows.length < 2) {
+            showMsg("CSV must have a header row and at least one data row.", "err");
+            return;
+          }
+          const fns = { json: toJSON, xml: toXML, yaml: toYAML, sql: toSQL };
+          const out = fns[fmt](rows);
+          document.getElementById("csvOut").value = out;
+          const rowCount = rows.length - 1;
+          setStatus(
+            true,
+            `✓ Converted ${rowCount} row${rowCount !== 1 ? "s" : ""} to ${fmt.toUpperCase()} successfully`,
+          );
+          showMsg(`✓ Converted ${rowCount} rows to ${fmt.toUpperCase()}!`, "ok");
+        } catch (e) {
+          setStatus(false, "✗ Error: " + e.message);
+          showMsg("✗ Error: " + e.message, "err");
+        }
+      }
+
+      function loadSample() {
+        document.getElementById("csvIn").value =
+          "Name,Email,Department,Salary,Country\n" +
+          "John Doe,john@example.com,Engineering,85000,USA\n" +
+          "Jane Smith,jane@example.com,Marketing,75000,UK\n" +
+          "Bob Johnson,bob@example.com,Sales,70000,Canada\n" +
+          "Aisha Khan,aisha@example.com,Design,68000,Pakistan";
+        setStatus(null, "Sample CSV loaded — click Convert Now");
+        showMsg("📌 Sample CSV loaded!", "ok");
+      }
+
+      function copyOut() {
+        const v = document.getElementById("csvOut").value;
+        if (!v) {
+          showMsg("Nothing to copy — convert first!", "err");
+          return;
+        }
+        navigator.clipboard.writeText(v).then(() => {
+          const t = document.getElementById("toast");
+          t.classList.add("show");
+          setTimeout(() => t.classList.remove("show"), 2000);
+        });
+      }
+
+      function downloadOut() {
+        const v = document.getElementById("csvOut").value;
+        if (!v) {
+          showMsg("Nothing to download — convert first!", "err");
+          return;
+        }
+        const ext = { json: "json", xml: "xml", yaml: "yaml", sql: "sql" }[fmt];
+        const a = document.createElement("a");
+        a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(v);
+        a.download = `converted.${ext}`;
+        a.click();
+      }
+
+      function clearAll() {
+        document.getElementById("csvIn").value = "";
+        document.getElementById("csvOut").value = "";
+        setStatus(null, "Ready — paste CSV and click Convert");
+        document.getElementById("msgToast").classList.remove("show");
+      }
+
+      function showMsg(txt, type) {
+        const el = document.getElementById("msgToast");
+        el.textContent = txt;
+        el.className = "msg-toast show " + type;
+        setTimeout(() => el.classList.remove("show"), 3000);
+      }
+
+      // FAQ
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        document.querySelectorAll(".faq-item.open").forEach((i) => {
+          if (i !== item) i.classList.remove("open");
+        });
+        item.classList.toggle("open");
+      }
+
+      setStatus(null, "Ready — paste CSV and click Convert Now");
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
