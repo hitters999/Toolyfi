@@ -1,647 +1,1829 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Prompt Generator – 500+ ChatGPT, Claude & Gemini Prompts | Free | Toolyfi</title>
-<meta name="description" content="Free AI prompt generator with 500+ professional prompts for ChatGPT, Claude, and Gemini. Writing, coding, SEO, marketing prompts. Copy in one click. No signup.">
-<meta name="keywords" content="AI prompt generator, ChatGPT prompts, Claude prompts, Gemini prompts, prompt templates, AI writing prompts, prompt engineering">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://toolyfi.com/prompt-generator.html">
-<meta property="og:title" content="AI Prompt Generator – 500+ Free Prompts | Toolyfi">
-<meta property="og:description" content="500+ professional AI prompts for ChatGPT, Claude, Gemini. Copy in one click. Free forever.">
-<meta property="og:type" content="website">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Prompt Generator","description":"Free AI prompt generator with 500+ templates for ChatGPT, Claude, and Gemini.","url":"https://toolyfi.com/prompt-generator.html","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Web"}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --purple:#6c47ff;--purple-light:#ede9ff;--purple-dark:#4a2fe0;
-  --green:#22c55e;--red:#ef4444;--orange:#f59e0b;
-  --text:#1a1a2e;--text-light:#64748b;--border:#e2e8f0;
-  --bg:#f8f7ff;--white:#fff;--card-shadow:0 4px 24px rgba(108,71,255,0.08);
-}
-*{margin:0;padding:0;box-sizing:border-box;text-decoration:none !important;}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:1rem;}ont-size:1rem;}
-h1,h2,h3,h4{font-family:'Sora',sans-serif;font-weight:800;color:#1a1a2e;}ont-weight:800 !important;color:#1a1a2e !important;visibility:visible !important;}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Prompt Generator: Build Clear Copy-Ready Prompts | Toolyfi</title>
+    <meta
+      name="description"
+      content="Build structured, copy-ready AI prompts locally in your browser. Add a task, role, audience, context, constraints, tone, and output format with Toolyfi's free prompt generator."
+    />
+    <meta
+      name="keywords"
+      content="AI prompt generator, prompt builder, ChatGPT prompt template, Claude prompt template, Gemini prompt template, prompt engineering"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/prompt-generator.html" />
+    <meta
+      property="og:title"
+      content="AI Prompt Generator: Build Clear Copy-Ready Prompts | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Use a transparent browser-local builder to structure a task, role, context, constraints, and output format."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/prompt-generator.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-prompt-generator-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+    <link rel="stylesheet" href="toolyfi-core.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi AI Prompt Generator",
+        "url": "https://toolyfi.com/prompt-generator.html",
+        "description": "A browser-local structured prompt builder that creates copy-ready plain-text prompts from user-provided inputs.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Prompt Generator",
+            "item": "https://toolyfi.com/prompt-generator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does Toolyfi's AI Prompt Generator do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It arranges the fields you enter into a structured plain-text prompt. It does not call an AI model or judge the model output."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool send my prompt to an AI service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Building, copying, and downloading the prompt happen in your browser. Pasting a prompt into another provider is a separate action governed by that provider's policies."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will a generated prompt work with every AI model?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The output is ordinary text that you can adapt. Instruction support, context limits, tools, and output quality vary by model, account, provider, and model version."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I put in the task field?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "State the deliverable and action clearly, such as creating an outline, debugging a function, comparing supplied options, or rewriting provided copy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are role and tone required?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. They are optional framing details. Use them only when they improve the task, and define the desired deliverable and constraints first."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I include examples?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Include a short relevant example when the expected style, structure, or transformation is difficult to describe with instructions alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I request JSON or a table?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select an output format and add any exact field, table-column, or validation requirements in the constraints field."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I put sensitive information into a prompt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Avoid entering sensitive information unless you have reviewed the destination provider's applicable data controls and your own authorization requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why did the model not follow every instruction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Models can interpret requests differently and have limits. Shorten competing instructions, provide missing context, clarify the output format, and test a revised version."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I download the prompt I build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. After you build a prompt, use Download .txt to save the current plain-text prompt to your device."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory, ink navy, coral; prompts are structured locally and hero art is always static. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #ffffff;
+        --ink: #172437;
+        --muted: #647083;
+        --coral: #ef6c54;
+        --coral-soft: #fff0eb;
+        --line: #e6e0d8;
+        --navy-soft: #eaf0f4;
+        --shadow: 0 18px 48px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
 
-/* HERO */
-.hero{background:linear-gradient(135deg,#0a0a1a 0%,#1a0a3a 50%,#2d1060 100%);color:white;padding:60px 20px 40px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-30%;left:-10%;width:120%;height:160%;background:radial-gradient(circle at 60% 40%,rgba(108,71,255,0.4) 0%,transparent 60%);pointer-events:none;}
-.hero-badge{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:18px;letter-spacing:0.5px;position:relative;}
-.hero h1{font-size:clamp(1.8em,4vw,2.9em);font-weight:800;margin-bottom:12px;line-height:1.2;position:relative;}
-.hero p{font-size:1.05rem;opacity:0.85;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto;position:relative;}}
-.hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;position:relative;}
-.hstat{text-align:center;}
-.hstat-num{font-size:1.8em;font-weight:800;font-family:'Sora',sans-serif;}
-.hstat-lbl{font-size:0.85rem;opacity:0.75;margin-top:2px;}}
-.hero-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
-.badge{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:600;border:1px solid rgba(255,255,255,0.2);}
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+      .site-header {
+        align-items: center;
+        background: rgba(250, 248, 244, 0.96);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        padding: 15px clamp(18px, 4vw, 58px);
+        position: relative;
+        z-index: 10;
+      }
+      .logo {
+        align-items: center;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 1.48rem;
+        font-weight: 800;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo img {
+        height: 34px;
+        object-fit: contain;
+        width: 34px;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .site-header nav a:hover {
+        color: var(--coral);
+      }
+      .page-shell {
+        margin: 0 auto;
+        max-width: 1240px;
+        padding: 0 24px;
+      }
+      .breadcrumb {
+        color: var(--muted);
+        font-size: 0.79rem;
+        padding: 18px 0 0;
+      }
+      .breadcrumb a {
+        color: var(--ink);
+      }
+      .hero {
+        padding: clamp(40px, 7vw, 88px) 0 44px;
+      }
+      .eyebrow {
+        align-items: center;
+        color: var(--coral);
+        display: flex;
+        font-size: 0.72rem;
+        font-weight: 800;
+        gap: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        background: var(--coral);
+        content: "";
+        height: 2px;
+        width: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        line-height: 1.07;
+      }
+      h1 {
+        font-size: clamp(3rem, 7.1vw, 6.25rem);
+        letter-spacing: -0.065em;
+        margin: 16px 0 20px;
+        max-width: 11ch;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .hero-copy {
+        color: #4f5b6a;
+        font-size: clamp(1rem, 1.7vw, 1.18rem);
+        max-width: 64ch;
+      }
+      .truth-note {
+        align-items: flex-start;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        display: flex;
+        font-size: 0.82rem;
+        font-weight: 700;
+        gap: 10px;
+        margin-top: 25px;
+        max-width: 640px;
+        padding: 13px 16px;
+      }
+      .truth-note b {
+        color: var(--coral);
+        white-space: nowrap;
+      }
+      .toolyfi-visual {
+        aspect-ratio: 16 / 9;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        margin: 36px 0 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .toolyfi-visual > img {
+        animation: none !important;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        transform: none !important;
+        transition: none !important;
+        width: 100%;
+      }
+      .toolyfi-hero-mark {
+        align-items: center;
+        background: rgba(250, 248, 244, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 999px;
+        bottom: 18px;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 0.92rem;
+        font-weight: 800;
+        gap: 7px;
+        padding: 8px 12px;
+        position: absolute;
+        right: 18px;
+      }
+      .toolyfi-hero-mark img {
+        height: 24px;
+        width: 24px;
+      }
+      .builder {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        margin: 52px auto 0;
+        position: relative;
+      }
+      .builder::before {
+        background: var(--coral);
+        content: "";
+        height: 5px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .builder-head {
+        align-items: end;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        padding: 34px;
+      }
+      .builder-head h2 {
+        font-size: clamp(1.7rem, 3vw, 2.55rem);
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+      .builder-head p {
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin: 6px 0 0;
+        max-width: 54ch;
+      }
+      .local-tag {
+        background: var(--navy-soft);
+        color: var(--ink);
+        font-size: 0.73rem;
+        font-weight: 800;
+        padding: 7px 10px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .builder-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      }
+      .controls {
+        border-right: 1px solid var(--line);
+        padding: 32px;
+      }
+      .recipe-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .recipe {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 0.76rem;
+        font-weight: 800;
+        padding: 8px 10px;
+        transition:
+          background 180ms var(--ease),
+          color 180ms var(--ease),
+          transform 160ms var(--ease);
+      }
+      .recipe:hover,
+      .recipe.active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+      }
+      .recipe:active,
+      .primary:active,
+      .secondary:active {
+        transform: scale(0.97);
+      }
+      .field-grid {
+        display: grid;
+        gap: 17px;
+        grid-template-columns: 1fr 1fr;
+      }
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      label {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.035em;
+      }
+      label span {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        background: #fffdf9;
+        border: 1px solid #d9d1c7;
+        border-radius: 0;
+        color: var(--ink);
+        min-width: 0;
+        outline-offset: 2px;
+        padding: 11px 12px;
+      }
+      textarea {
+        min-height: 96px;
+        resize: vertical;
+      }
+      textarea:focus,
+      input:focus,
+      select:focus {
+        border-color: var(--coral);
+        outline: 2px solid rgba(239, 108, 84, 0.16);
+      }
+      .helper {
+        color: var(--muted);
+        font-size: 0.72rem;
+        margin: 0;
+      }
+      .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 25px;
+      }
+      .primary,
+      .secondary {
+        border: 0;
+        font-size: 0.84rem;
+        font-weight: 800;
+        padding: 12px 15px;
+        transition:
+          transform 160ms var(--ease),
+          background 180ms var(--ease);
+      }
+      .primary {
+        background: var(--coral);
+        color: #fff;
+      }
+      .primary:hover {
+        background: #d85742;
+      }
+      .secondary {
+        background: var(--navy-soft);
+        color: var(--ink);
+      }
+      .secondary:hover {
+        background: #dbe7ee;
+      }
+      .output {
+        background: #172437;
+        color: #eff5f8;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 32px;
+      }
+      .output-top {
+        align-items: start;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+      }
+      .output h3 {
+        color: #fff;
+        font-size: 1.45rem;
+        margin: 0;
+      }
+      .output p {
+        color: #b9c5cf;
+        font-size: 0.78rem;
+        margin: 4px 0 0;
+      }
+      .status {
+        color: #f6b6a8;
+        font-size: 0.74rem;
+        font-weight: 800;
+        margin: 18px 0 9px;
+        min-height: 1.2em;
+      }
+      #promptOutput {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        color: #eef5f7;
+        flex: 1;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.79rem;
+        line-height: 1.7;
+        margin: 0;
+        min-height: 410px;
+        overflow: auto;
+        padding: 18px;
+        white-space: pre-wrap;
+      }
+      .output .action-row {
+        margin-top: 14px;
+      }
+      .output .secondary {
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+      }
+      .output .secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .section {
+        padding: clamp(62px, 9vw, 108px) 0;
+      }
+      .section-heading {
+        display: grid;
+        gap: 17px;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        margin-bottom: 36px;
+      }
+      .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3.6rem);
+        letter-spacing: -0.055em;
+        margin: 0;
+      }
+      .section-heading p {
+        color: var(--muted);
+        margin: 0;
+        max-width: 62ch;
+      }
+      .principles {
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .principle {
+        border-right: 1px solid var(--line);
+        padding: 23px 22px 24px 0;
+      }
+      .principle:not(:first-child) {
+        padding-left: 22px;
+      }
+      .principle:last-child {
+        border-right: 0;
+      }
+      .number {
+        color: var(--coral);
+        font-family: Fraunces, serif;
+        font-size: 1.65rem;
+        font-weight: 800;
+      }
+      .principle h3 {
+        font-size: 1.13rem;
+        margin: 10px 0 8px;
+      }
+      .principle p {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin: 0;
+      }
+      .recipe-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .recipe-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        min-height: 208px;
+        padding: 23px;
+        transition:
+          border-color 180ms var(--ease),
+          transform 180ms var(--ease);
+      }
+      .recipe-card:hover {
+        border-color: var(--coral);
+        transform: translateY(-4px);
+      }
+      .recipe-card small {
+        color: var(--coral);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .recipe-card h3 {
+        font-size: 1.42rem;
+        letter-spacing: -0.03em;
+        margin: 10px 0;
+      }
+      .recipe-card p {
+        color: var(--muted);
+        font-size: 0.84rem;
+        margin: 0 0 18px;
+      }
+      .recipe-card button {
+        background: transparent;
+        border: 0;
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 800;
+        margin-top: auto;
+        padding: 0;
+        text-align: left;
+      }
+      .recipe-card button:hover {
+        color: var(--coral);
+      }
+      .article {
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+      }
+      .article-inner {
+        margin: 0 auto;
+        max-width: 840px;
+        padding: clamp(60px, 9vw, 105px) 24px;
+      }
+      .article-meta {
+        color: var(--muted);
+        font-size: 0.77rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .article h2 {
+        font-size: clamp(2rem, 4.5vw, 3.8rem);
+        letter-spacing: -0.055em;
+        margin: 14px 0 28px;
+      }
+      .article h3 {
+        font-size: clamp(1.38rem, 2.8vw, 2.05rem);
+        letter-spacing: -0.04em;
+        margin: 42px 0 12px;
+      }
+      .article p,
+      .article li {
+        color: #344152;
+        font-size: 1rem;
+      }
+      .article p {
+        margin: 0 0 19px;
+      }
+      .article ul,
+      .article ol {
+        padding-left: 22px;
+      }
+      .article li {
+        margin: 0 0 9px;
+      }
+      .article blockquote {
+        background: var(--coral-soft);
+        border-left: 4px solid var(--coral);
+        color: var(--ink);
+        font-family: Fraunces, serif;
+        font-size: 1.2rem;
+        margin: 30px 0;
+        padding: 22px;
+      }
+      .article table {
+        border-collapse: collapse;
+        font-size: 0.88rem;
+        margin: 25px 0;
+        width: 100%;
+      }
+      .article th,
+      .article td {
+        border: 1px solid var(--line);
+        padding: 13px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .article th {
+        background: var(--ivory);
+        font-family: Fraunces, serif;
+      }
+      .faq {
+        padding: clamp(62px, 9vw, 105px) 0;
+      }
+      .faq-grid {
+        border-top: 1px solid var(--line);
+      }
+      details {
+        border-bottom: 1px solid var(--line);
+        padding: 19px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-family: Fraunces, serif;
+        font-size: clamp(1.12rem, 2vw, 1.45rem);
+        font-weight: 700;
+        list-style: none;
+        padding-right: 32px;
+        position: relative;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::after {
+        color: var(--coral);
+        content: "+";
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.55rem;
+        font-weight: 400;
+        position: absolute;
+        right: 2px;
+        top: -5px;
+      }
+      details[open] summary::after {
+        content: "−";
+      }
+      details p {
+        color: var(--muted);
+        margin: 13px 35px 0 0;
+        max-width: 75ch;
+      }
+      .related {
+        background: var(--ink);
+        color: #fff;
+        padding: 52px 0;
+      }
+      .related h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        letter-spacing: -0.05em;
+        margin: 0 0 22px;
+      }
+      .related-grid {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .related a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+        border-top: 1px solid rgba(255, 255, 255, 0.17);
+        color: #fff;
+        font-size: 0.88rem;
+        font-weight: 800;
+        padding: 17px 13px;
+        text-decoration: none;
+      }
+      .related a:hover {
+        background: var(--coral);
+      }
+      footer {
+        background: #101a29;
+        color: #cbd5df;
+        padding: 26px 0;
+      }
+      .footer-inner {
+        align-items: center;
+        display: flex;
+        font-size: 0.77rem;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .footer-inner a {
+        color: #fff;
+        margin-left: 15px;
+        text-decoration: none;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .builder,
+        .recipe-card,
+        .principle,
+        .article,
+        .faq {
+          animation: reveal 560ms var(--ease) both;
+        }
+        .recipe-card:nth-child(2) {
+          animation-delay: 65ms;
+        }
+        .recipe-card:nth-child(3) {
+          animation-delay: 120ms;
+        }
+        .recipe-card:nth-child(4) {
+          animation-delay: 175ms;
+        }
+        .recipe-card:nth-child(5) {
+          animation-delay: 230ms;
+        }
+        .recipe-card:nth-child(6) {
+          animation-delay: 285ms;
+        }
+        @keyframes reveal {
+          from {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      }
+      @media (max-width: 850px) {
+        .builder-body,
+        .section-heading {
+          grid-template-columns: 1fr;
+        }
+        .controls {
+          border-bottom: 1px solid var(--line);
+          border-right: 0;
+        }
+        .principles,
+        .recipe-grid,
+        .related-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .principle:nth-child(2) {
+          border-right: 0;
+        }
+        .principle:nth-child(3) {
+          border-top: 1px solid var(--line);
+          padding-left: 0;
+        }
+        .principle:nth-child(4) {
+          border-right: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+      @media (max-width: 560px) {
+        .page-shell {
+          padding: 0 16px;
+        }
+        .site-header {
+          padding: 13px 16px;
+        }
+        .site-header nav a:first-child {
+          display: none;
+        }
+        .builder-head,
+        .controls,
+        .output {
+          padding: 23px 20px;
+        }
+        .builder-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .field-grid {
+          grid-template-columns: 1fr;
+        }
+        .field.full {
+          grid-column: auto;
+        }
+        .toolyfi-visual {
+          aspect-ratio: 4 / 3;
+          border-radius: 16px;
+        }
+        .toolyfi-hero-mark {
+          bottom: 12px;
+          right: 12px;
+        }
+        .principles,
+        .recipe-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .principle,
+        .principle:not(:first-child) {
+          border-right: 0;
+          border-top: 1px solid var(--line);
+          padding: 20px 0;
+        }
+        .principle:first-child {
+          border-top: 0;
+        }
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .footer-inner a {
+          margin-left: 0;
+          margin-right: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home">
+        <img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#directory">All tools</a>
+      </nav>
+    </header>
 
-/* TOOL WRAPPER */
-.tool-wrapper{max-width:1200px;margin:-20px auto 0;padding:0 20px 50px;position:relative;z-index:2;}
-.tool-card{background:white;border-radius:20px;box-shadow:0 20px 60px rgba(108,71,255,0.18);overflow:hidden;}
-
-/* TOOL INNER */
-.tool-inner{display:grid;grid-template-columns:260px 1fr;min-height:600px;}
-
-/* SIDEBAR */
-.tool-sidebar{padding:24px 18px;background:#fafbff;border-right:1px solid var(--border);overflow-y:auto;}
-.sidebar-title{font-weight:800;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:16px;}
-.cat-group{margin-bottom:18px;}
-..cat-group-label{font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--purple);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--purple-light);}
-.cat-btn{display:block;width:100%;text-align:left;padding:8px 12px;border:none;background:transparent;color:var(--text-light);font-size:1rem;font-weight:600;cursor:pointer;border-radius:8px;transition:all 0.2s;margin-bottom:3px;font-family:'DM Sans',sans-serif;}}
-.cat-btn:hover{background:var(--purple-light);color:var(--purple);}
-.cat-btn.active{background:var(--purple);color:white;}
-
-/* MAIN AREA */
-.tool-main{padding:24px;display:flex;flex-direction:column;gap:16px;}
-.search-wrap{position:relative;}
-.search-input{width:100%;padding:12px 18px 12px 44px;border:2px solid var(--border);border-radius:12px;font-size:1rem;font-family:'DM Sans',sans-serif;background:#fafbff;transition:border-color 0.2s;}
-.search-input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(108,71,255,0.1);}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1em;pointer-events:none;}
-.results-count{font-size:0.85rem;color:var(--text-light);font-weight:600;}
-.prompts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
-.prompt-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;transition:all 0.2s;cursor:pointer;}
-.prompt-card:hover{border-color:var(--purple);box-shadow:0 4px 20px rgba(108,71,255,0.12);transform:translateY(-2px);}
-.prompt-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:6px;font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}}
-.prompt-card h4{font-size:1rem;font-weight:800;margin-bottom:6px;line-height:1.3;}.prompt-card p{font-size:1rem;color:var(--text-light);line-height:1.5;margin-bottom:12px;}.prompt-actions{display:flex;gap:8px;}
-.btn-copy{flex:1;padding:8px 12px;background:var(--purple);color:white;border:none;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
-.btn-copy:hover{background:var(--purple-dark);}
-.btn-expand{padding:8px 12px;background:white;color:var(--purple);border:2px solid var(--purple);border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
-.btn-expand:hover{background:var(--purple-light);}
-.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-light);font-size:1rem;}
-
-/* MODAL */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:20px;}
-.modal.open{display:flex;}
-.modal-box{background:white;border-radius:20px;padding:32px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto;position:relative;}
-.modal-title{font-size:1.2em;font-weight:800;margin-bottom:6px;}
-.modal-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:6px;font-size:0.85rem;font-weight:700;margin-bottom:16px;.modal-prompt{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:1rem;line-height:1.8;color:var(--text);white-space:pre-wrap;margin-bottom:20px;font-family:'DM Sans',sans-serif;}
-.modal-btns{display:flex;gap:10px;}
-.modal-copy{flex:1;padding:12px;background:var(--purple);color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;font-family:'DM Sans',sans-serif;}
-.modal-copy:hover{background:var(--purple-dark);}
-.modal-close-btn{padding:12px 20px;background:#f1f5f9;color:var(--text);border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;font-family:'DM Sans',sans-serif;}
-.modal-close-x{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4em;cursor:pointer;color:var(--text-light);}
-
-/* TOAST */
-.toast{position:fixed;bottom:28px;right:28px;background:var(--green);color:white;padding:12px 22px;border-radius:10px;display:none;z-index:9999;font-weight:700;font-size:0.9rem;box-shadow:0 8px 24px rgba(34,197,94,0.4);}
-.toast.show{display:block;animation:slideIn .3s ease;}
-@keyframes slideIn{from{transform:translateX(80px);opacity:0;}to{transform:translateX(0);opacity:1;}}
-
-/* STARS */
-.stars-section{max-width:1200px;margin:0 auto 50px;padding:0 20px;}
-.stars-card{background:white;border-radius:16px;padding:28px 30px;box-shadow:var(--card-shadow);text-align:center;border:1px solid var(--border);}
-.stars-card h3{font-size:1.1em;margin-bottom:6px;}
-.stars-card p{color:var(--text-light);font-size:1rem;margin-bottom:16px;}.star-row{display:flex;gap:8px;justify-content:center;margin-bottom:10px;}
-.star-btn{font-size:2em;cursor:pointer;transition:transform .15s;background:none;border:none;}
-.star-btn:hover{transform:scale(1.2);}
-.stars-summary{font-size:0.88rem;color:var(--text-light);}
-
-/* SECTIONS */
-.section{max-width:1200px;margin:0 auto;padding:60px 20px;}
-.section-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:5px 14px;border-radius:20px;font-size:0.85rem;font-weight:700;margin-bottom:14px;letter-spacing:0.5px;}
-.section-title{font-size:clamp(1.5em,3vw,2.2em);font-weight:800;margin-bottom:14px;line-height:1.3;}
-.section-sub{color:var(--text-light);font-size:1.05rem;max-width:600px;line-height:1.7;}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:40px;}
-.feature-card{background:white;border-radius:16px;padding:28px;box-shadow:var(--card-shadow);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
-.feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(108,71,255,0.14);}
-.feature-icon{font-size:2.2em;margin-bottom:14px;}
-.feature-card h3{font-size:1.05em;font-weight:800;margin-bottom:8px;.feature-card p{color:var(--text-light);font-size:1rem;line-height:1.6;}
-.feature-tag{display:inline-block;background:var(--purple-light);color:var(--purple);padding:3px 10px;border-radius:8px;font-size:0.85rem;font-weight:700;margin-top:12px;}
-
-.bg-light{background:white;}
-.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:40px;}
-.who-card{background:var(--bg);border-radius:16px;padding:24px 20px;text-align:center;border:1px solid var(--border);transition:all .2s;}
-.who-card:hover{background:var(--purple-light);border-color:var(--purple);transform:translateY(-2px);}
-.who-avatar{font-size:2.8em;margin-bottom:12px;}
-.who-card h4{font-size:1rem;font-weight:800;margin-bottom:6px;.who-card p{font-size:1rem;color:var(--text-light);line-height:1.5;}
-
-.faq-list{margin-top:36px;display:flex;flex-direction:column;gap:12px;}
-.faq-item{background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
-.faq-q{padding:18px 22px;font-weight:800;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none;}
-.faq-q:hover{background:var(--bg);}
-.faq-a{padding:0 22px;max-height:0;overflow:hidden;transition:all 0.3s ease;font-size:1rem;color:var(--text-light);line-height:1.7;}
-.faq-item.active .faq-a{padding:0 22px 22px;max-height:500px;}
-.faq-icon{font-size:0.8em;transition:transform 0.3s;}
-.faq-item.active .faq-icon{transform:rotate(180deg);}
-
-/* ARTICLE */
-.article-wrap{background:white;border-top:1px solid var(--border);}
-.article-section{max-width:900px;margin:0 auto;padding:80px 20px;}
-.article-meta{display:flex;gap:15px;margin-bottom:20px;flex-wrap:wrap;}
-.meta-tag{font-size:0.85rem;color:var(--text-light);font-weight:600;background:var(--bg);padding:4px 12px;border-radius:6px;}
-.article-title{font-size:clamp(1.8em,4vw,2.6em);font-weight:800;margin-bottom:24px;line-height:1.2;}
-.article-section p{font-size:1.1rem;line-height:1.8;color:var(--text);margin-bottom:24px;}
-.article-section h2{font-size:1.8em;font-weight:800;margin:48px 0 20px;line-height:1.3;}
-.article-section h3{font-size:1.4em;font-weight:800;margin:32px 0 16px;}
-.article-box{background:var(--purple-light);border-left:4px solid var(--purple);padding:24px;border-radius:0 12px 12px 0;margin:32px 0;}
-.article-box p{margin-bottom:0;font-weight:500;color:var(--purple-dark);}
-.article-table{width:100%;border-collapse:collapse;margin:32px 0;font-size:1rem;}
-.article-table th{background:var(--bg);text-align:left;padding:14px;border:1px solid var(--border);font-weight:800;}
-.article-table td{padding:14px;border:1px solid var(--border);line-height:1.5;}
-.article-section ul, .article-section ol{margin-bottom:24px;padding-left:20px;}
-.article-section li{font-size:1.1rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
-
-/* FOOTER */
-footer{background:#0a0a1a;color:white;padding:80px 20px 40px;border-top:1px solid rgba(255,255,255,0.1);}
-.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:60px;}
-.footer-brand h2{font-size:1.5em;font-weight:800;margin-bottom:16px;color:white !important;}
-.footer-brand p{font-size:1rem;opacity:0.7;line-height:1.6;}
-.footer-links h4{font-size:1rem;font-weight:800;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;color:white !important;}
-.footer-links ul{list-style:none;}
-.footer-links li{margin-bottom:12px;}
-.footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:1rem;transition:color 0.2s;}
-.footer-links a:hover{color:var(--purple-light);}
-.footer-bottom{max-width:1200px;margin:0 auto;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-.copy-text{font-size:0.9rem;opacity:0.6;}
-.social-links{display:flex;gap:16px;}
-.social-links a{color:white;font-size:1.2em;opacity:0.7;transition:opacity 0.2s;}
-.social-links a:hover{opacity:1;}
-
-@media (max-width:768px){
-  .tool-inner{grid-template-columns:1fr;}
-  .tool-sidebar{border-right:none;border-bottom:1px solid var(--border);max-height:300px;}
-  .hero{padding:40px 20px;}
-  .section{padding:40px 20px;}
-}
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
-</head>
-<body>
-
-<div class="hero">
-  <div class="hero-badge">✨ 500+ Professional Prompts</div>
-  <h1>AI Prompt Generator</h1>
-  <p>Stop getting mediocre AI results. Use our library of 500+ professionally engineered prompts for ChatGPT, Claude, and Gemini.</p>
-  
-  <div class="hero-stats">
-    <div class="hstat"><div class="hstat-num">500+</div><div class="hstat-lbl">Prompts</div></div>
-    <div class="hstat"><div class="hstat-num">100%</div><div class="hstat-lbl">Free</div></div>
-    <div class="hstat"><div class="hstat-num">No</div><div class="hstat-lbl">Signup</div></div>
-  </div>
-
-  <div class="hero-badges">
-    <span class="badge">ChatGPT</span>
-    <span class="badge">Claude</span>
-    <span class="badge">Gemini</span>
-    <span class="badge">Midjourney</span>
-  </div>
-</div>
-
-<div class="tool-wrapper">
-  <div class="tool-card">
-    <div class="tool-inner">
-      <aside class="tool-sidebar">
-        <div class="sidebar-title">Categories</div>
-        
-        <div class="cat-group">
-          <div class="cat-group-label">Content & Writing</div>
-          <button class="cat-btn active" onclick="filterCat('blog')">Blog & Articles</button>
-          <button class="cat-btn" onclick="filterCat('essay')">Essays & Academic</button>
-          <button class="cat-btn" onclick="filterCat('email')">Email & Outreach</button>
-          <button class="cat-btn" onclick="filterCat('creative')">Creative Writing</button>
+    <main>
+      <div class="page-shell">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="index.html#directory">All tools</a> / AI Prompt
+          Generator
         </div>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="eyebrow">Prompt structure utility</div>
+          <h1 id="page-title">Build the <em>brief</em> before you ask.</h1>
+          <p class="hero-copy">
+            Turn the details you already know into a clear, copy-ready prompt. Define the task,
+            context, constraints, and desired output in a small browser-local workspace.
+          </p>
+          <div class="truth-note">
+            <b>Transparent workflow:</b
+            ><span
+              >This page arranges your inputs into plain text. It does not generate an AI response
+              or send your draft to a model.</span
+            >
+          </div>
+          <figure class="toolyfi-visual">
+            <img
+              src="images/toolyfi-prompt-generator-hero.webp"
+              alt="Prompt planning cards, notebook, pen, and laptop arranged on an ivory desk"
+              fetchpriority="high"
+            />
+            <span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
 
-        <div class="cat-group">
-          <div class="cat-group-label">Business & Marketing</div>
-          <button class="cat-btn" onclick="filterCat('seo')">SEO & Keywords</button>
-          <button class="cat-btn" onclick="filterCat('social')">Social Media</button>
-          <button class="cat-btn" onclick="filterCat('ads')">Ads & Copywriting</button>
-          <button class="cat-btn" onclick="filterCat('business')">Business Strategy</button>
-        </div>
+        <section class="builder" aria-labelledby="builder-title">
+          <div class="builder-head">
+            <div>
+              <h2 id="builder-title">Prompt builder</h2>
+              <p>
+                Start with a concrete deliverable. Add only the framing details that make the answer
+                more usable.
+              </p>
+            </div>
+            <span class="local-tag">Runs in your browser</span>
+          </div>
+          <div class="builder-body">
+            <form class="controls" id="promptForm">
+              <div class="recipe-row" aria-label="Prompt recipes">
+                <button class="recipe active" type="button" data-recipe="blank">Blank brief</button>
+                <button class="recipe" type="button" data-recipe="seo">SEO outline</button>
+                <button class="recipe" type="button" data-recipe="rewrite">Rewrite</button>
+                <button class="recipe" type="button" data-recipe="debug">Debug code</button>
+                <button class="recipe" type="button" data-recipe="research">Research plan</button>
+                <button class="recipe" type="button" data-recipe="study">Study guide</button>
+              </div>
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="task">Task <span>required</span></label
+                  ><textarea
+                    id="task"
+                    required
+                    placeholder="Example: Create a practical content brief about email onboarding for small SaaS teams."
+                  ></textarea>
+                  <p class="helper">Name an action and a deliverable, not just a broad topic.</p>
+                </div>
+                <div class="field">
+                  <label for="role">Role <span>optional</span></label
+                  ><input id="role" placeholder="Example: senior content strategist" />
+                </div>
+                <div class="field">
+                  <label for="audience">Audience <span>optional</span></label
+                  ><input id="audience" placeholder="Example: founders with small teams" />
+                </div>
+                <div class="field full">
+                  <label for="context">Context or source material <span>optional</span></label
+                  ><textarea
+                    id="context"
+                    placeholder="Add relevant product facts, notes, prior decisions, supplied text, or a brief. Avoid sensitive material unless appropriate for your destination provider."
+                  ></textarea>
+                </div>
+                <div class="field full">
+                  <label for="constraints"
+                    >Constraints and quality checks <span>optional</span></label
+                  ><textarea
+                    id="constraints"
+                    placeholder="Example: No invented statistics. Ask up to three questions if essential information is missing. Use concrete examples."
+                  ></textarea>
+                </div>
+                <div class="field">
+                  <label for="tone">Tone</label
+                  ><select id="tone">
+                    <option value="">No tone selected</option>
+                    <option>Clear and practical</option>
+                    <option>Professional and concise</option>
+                    <option>Friendly and approachable</option>
+                    <option>Technical but accessible</option>
+                    <option>Direct and analytical</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="format">Output format</label
+                  ><select id="format">
+                    <option value="">Let the model choose</option>
+                    <option>Structured sections with bullets</option>
+                    <option>Step-by-step checklist</option>
+                    <option>Comparison table</option>
+                    <option>Markdown outline</option>
+                    <option>Valid JSON only</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="example">Example or pattern to follow <span>optional</span></label
+                  ><textarea
+                    id="example"
+                    placeholder="Show a short example only when it clarifies the expected structure or transformation."
+                  ></textarea>
+                </div>
+              </div>
+              <div class="action-row">
+                <button class="primary" type="submit">Build my prompt</button
+                ><button class="secondary" type="button" id="clearForm">Clear fields</button>
+              </div>
+            </form>
+            <aside class="output" aria-live="polite">
+              <div class="output-top">
+                <div>
+                  <h3>Copy-ready prompt</h3>
+                  <p>Review it before sending it to any AI provider.</p>
+                </div>
+              </div>
+              <div class="status" id="status">Add a task, then build your prompt.</div>
+              <pre id="promptOutput">Your structured prompt will appear here.</pre>
+              <div class="action-row">
+                <button class="primary" type="button" id="copyPrompt">Copy prompt</button
+                ><button class="secondary" type="button" id="downloadPrompt">Download .txt</button>
+              </div>
+            </aside>
+          </div>
+        </section>
 
-        <div class="cat-group">
-          <div class="cat-group-label">Tech & Dev</div>
-          <button class="cat-btn" onclick="filterCat('code')">Coding & Debugging</button>
-          <button class="cat-btn" onclick="filterCat('web')">Web Development</button>
-          <button class="cat-btn" onclick="filterCat('data')">Data Analysis</button>
-        </div>
+        <section class="section" aria-labelledby="structure-title">
+          <div class="section-heading">
+            <h2 id="structure-title">Five useful parts. Not five mandatory parts.</h2>
+            <p>
+              Good prompts are not automatically long prompts. Add only the detail that helps the
+              model understand the work, the guardrails, and the shape of the answer you need.
+            </p>
+          </div>
+          <div class="principles">
+            <article class="principle">
+              <div class="number">01</div>
+              <h3>Directive</h3>
+              <p>
+                Describe the specific action and deliverable. “Compare” or “rewrite” is more
+                actionable than “help.”
+              </p>
+            </article>
+            <article class="principle">
+              <div class="number">02</div>
+              <h3>Context</h3>
+              <p>
+                Supply the facts, source text, decisions, or project background that changes the
+                answer.
+              </p>
+            </article>
+            <article class="principle">
+              <div class="number">03</div>
+              <h3>Constraints</h3>
+              <p>
+                State limits, exclusions, evidence standards, and what the answer must not assume.
+              </p>
+            </article>
+            <article class="principle">
+              <div class="number">04</div>
+              <h3>Format</h3>
+              <p>
+                Name the table, checklist, JSON, outline, or section structure that makes the result
+                usable.
+              </p>
+            </article>
+          </div>
+        </section>
 
-        <div class="cat-group">
-          <div class="cat-group-label">Productivity</div>
-          <button class="cat-btn" onclick="filterCat('study')">Learning & Study</button>
-          <button class="cat-btn" onclick="filterCat('career')">Career & Resume</button>
-          <button class="cat-btn" onclick="filterCat('misc')">General Utility</button>
-        </div>
-      </aside>
-
-      <main class="tool-main">
-        <div class="search-wrap">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" id="searchInput" placeholder="Search 500+ prompts (e.g. 'python', 'blog', 'seo')..." oninput="handleSearch()">
-        </div>
-
-        <div class="results-count" id="resultsCount">Showing all prompts</div>
-
-        <div class="prompts-grid" id="promptsGrid">
-          <!-- Prompts injected here -->
-        </div>
-      </main>
-    </div>
-  </div>
-</div>
-
-<div class="stars-section">
-  <div class="stars-card">
-    <h3>Rate this Prompt Generator</h3>
-    <p>Help others find the best AI prompts by leaving a rating.</p>
-    <div class="star-row">
-      <button class="star-btn" onclick="rate(1)">⭐</button>
-      <button class="star-btn" onclick="rate(2)">⭐</button>
-      <button class="star-btn" onclick="rate(3)">⭐</button>
-      <button class="star-btn" onclick="rate(4)">⭐</button>
-      <button class="star-btn" onclick="rate(5)">⭐</button>
-    </div>
-    <div class="stars-summary">Average Rating: 4.9/5 (based on 12,482 votes)</div>
-  </div>
-</div>
-
-<section class="section bg-light">
-  <div class="section-tag">Features</div>
-  <h2 class="section-title">Why use our AI Prompt Generator?</h2>
-  <p class="section-sub">We've done the hard work of testing and refining these prompts so you don't have to.</p>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🚀</div>
-      <h3>Instant Results</h3>
-      <p>No more staring at a blank cursor. Copy a professional prompt and get high-quality AI output in seconds.</p>
-      <div class="feature-tag">Fast</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <h3>Expertly Engineered</h3>
-      <p>Every prompt follows the Task-Context-Format-Constraint framework for maximum reliability.</p>
-      <div class="feature-tag">Reliable</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔄</div>
-      <h3>Multi-Platform</h3>
-      <p>Optimized to work perfectly across ChatGPT (GPT-4), Claude 3, Gemini, and Llama 3.</p>
-      <div class="feature-tag">Universal</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💎</div>
-      <h3>100% Free</h3>
-      <p>No subscriptions, no credits, no signups. Just high-quality prompts whenever you need them.</p>
-      <div class="feature-tag">Free Forever</div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-tag">Audience</div>
-  <h2 class="section-title">Who is this for?</h2>
-  <p class="section-sub">Whether you're a student, developer, or marketer, we have prompts for you.</p>
-
-  <div class="who-grid">
-    <div class="who-card">
-      <div class="who-avatar">✍️</div>
-      <h4>Writers</h4>
-      <p>Bloggers, copywriters, and authors.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-avatar">💻</div>
-      <h4>Developers</h4>
-      <p>Coders, engineers, and tech leads.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-avatar">📈</div>
-      <h4>Marketers</h4>
-      <p>SEO pros, social media managers.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-avatar">🎓</div>
-      <h4>Students</h4>
-      <p>Learners, researchers, and teachers.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-avatar">💼</div>
-      <h4>Business</h4>
-      <p>Founders, managers, and HR.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section bg-light">
-  <div class="section-tag">FAQ</div>
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What is prompt engineering? <span class="faq-icon">▼</span></div>
-      <div class="faq-a">Prompt engineering is the process of refining the input (the prompt) to an AI model to get the most accurate, high-quality, and relevant output possible. It involves using specific structures, context, and constraints.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Do these prompts work with free ChatGPT? <span class="faq-icon">▼</span></div>
-      <div class="faq-a">Yes! While models like GPT-4 and Claude 3 Opus follow complex instructions better, these prompts are designed to significantly improve results even on free models like GPT-3.5 or Claude Haiku.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How often is the library updated? <span class="faq-icon">▼</span></div>
-      <div class="faq-a">We update our prompt library weekly with new templates based on the latest AI model updates and emerging use cases in coding, marketing, and content creation.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Can I use these prompts for commercial work? <span class="faq-icon">▼</span></div>
-      <div class="faq-a">Absolutely. All prompts in our library are free to use for personal, educational, or commercial purposes. No attribution is required, though it is always appreciated!</div>
-    </div>
-  </div>
-</section>
-
-<div class="article-wrap">
-<article class="article-section">
-  <div class="article-meta">
-    <span class="meta-tag">📅 Updated March 2026</span>
-    <span class="meta-tag">⏱️ 11 min read</span>
-    <span class="meta-tag">🤖 AI Guide</span>
-  </div>
-  <h2 class="article-title">AI Prompt Generator — The Complete 2026 Guide to Better AI Outputs</h2>
-
-  <p>Artificial intelligence has transformed how we write, code, research, and create. But there is one often-overlooked skill that separates people who get mediocre AI output from those who get extraordinary results: prompt engineering. The quality of your AI output is almost entirely determined by the quality of your prompt.</p>
-
-  <p>This guide covers what prompts are, why they matter so much, how to write better prompts, and how to use Toolyfi's free AI Prompt Generator to instantly access 500+ professional templates for ChatGPT, Claude, and Gemini.</p>
-
-  <div class="article-box"><p>✅ <strong>Quick start:</strong> Search or browse by category above to find a prompt. Click Copy. Paste into ChatGPT, Claude, or Gemini. Replace [BRACKETED] text with your specifics. Get dramatically better AI output immediately.</p></div>
-
-  <h2>What is an AI Prompt?</h2>
-  <p>An AI prompt is the instruction or question you give to an AI chatbot. It tells the model what task to perform, what format to use, what tone to take, and what constraints to follow. A weak prompt produces weak output. A strong, specific prompt produces professional, structured, usable output.</p>
-  <p>Think of it like giving instructions to an extremely capable but very literal assistant. If you say "write me something about marketing," you'll get a generic response. If you say "write a 1500-word LinkedIn article about email marketing for SaaS startups targeting mid-market B2B companies, with a hook, 5 actionable strategies, and a conclusion with CTA," you'll get exactly what you need.</p>
-
-  <h2>Why Prompt Quality Matters So Much</h2>
-  <p>Most people use AI at 10% of its capability because they don't know how to prompt it properly. The same AI model — the same GPT-4 or Claude 3 — will produce dramatically different results depending on how it's prompted.</p>
-
-  <h3>Weak Prompt vs Strong Prompt</h3>
-  <table class="article-table">
-    <tr><th>Weak Prompt</th><th>Strong Prompt</th><th>Result Difference</th></tr>
-    <tr><td>"Write a blog post"</td><td>"Write a 2000-word SEO blog post about [TOPIC] with H2/H3 headings, meta description, and actionable conclusion"</td><td>Generic vs. publication-ready</td></tr>
-    <tr><td>"Help me with my code"</td><td>"Debug this Python function and explain each error with PEP 8 fixes and unit test examples"</td><td>Vague vs. specific fix</td></tr>
-    <tr><td>"Write me an email"</td><td>"Write a cold sales email for [PRODUCT] with subject line, personalization, problem/solution, and CTA under 200 words"</td><td>Generic vs. conversion-optimized</td></tr>
-  </table>
-
-  <h2>The Anatomy of a Great AI Prompt</h2>
-  <p>Professional prompts share a consistent structure that produces reliable, high-quality output. Every prompt in Toolyfi's library follows this framework:</p>
-
-  <h3>1. Task Definition</h3>
-  <p>Start with a clear, specific action verb: "Write," "Create," "Generate," "Analyze," "Debug," "Summarize." Avoid vague words like "help me with" or "tell me about." The first three words of your prompt significantly influence the entire response.</p>
-
-  <h3>2. Context and Audience</h3>
-  <p>Tell the AI who the content is for. "Write a blog post for SaaS founders" produces very different content than "write a blog post for high school students." The more specific your audience definition, the more targeted the output.</p>
-
-  <h3>3. Format Requirements</h3>
-  <p>Specify the structure: word count, number of sections, use of headers (H2/H3), bullet points vs. prose, table vs. list, markdown vs. plain text. Without format requirements, AI will choose its own structure — which often doesn't match your needs.</p>
-
-  <h3>4. Tone and Style</h3>
-  <p>Specify the tone: "professional and authoritative," "conversational and friendly," "technical but accessible," "urgent and persuasive." AI models are excellent at matching tone when explicitly instructed.</p>
-
-  <h3>5. Constraints and Requirements</h3>
-  <p>Add specific requirements: "include 3 statistics," "add a real-world example," "include a FAQ section," "avoid technical jargon," "include code examples with comments." Constraints force the AI to produce exactly what you need rather than what it finds easiest.</p>
-
-  <h2>Prompts for ChatGPT vs Claude vs Gemini — What's Different?</h2>
-  <p>All three major AI platforms respond well to structured prompts, but there are subtle differences worth knowing:</p>
-
-  <h3>ChatGPT (GPT-4/4o)</h3>
-  <p>Excellent at following specific format instructions. Responds well to numbered instructions and explicit output format requirements. Best for: structured content, coding tasks, data analysis, and long-form writing with clear outlines.</p>
-
-  <h3>Claude (Anthropic)</h3>
-  <p>Particularly strong at nuanced writing, following complex instructions, and producing well-reasoned responses. Excels at following multi-step instructions precisely. Best for: essays, analysis, research summaries, and tasks requiring careful reasoning.</p>
-
-  <h3>Gemini (Google)</h3>
-  <p>Strong at research synthesis and accessing current information (in Gemini Advanced). Good at multi-modal tasks. Best for: research prompts, fact-based content, and tasks requiring current information.</p>
-
-  <div class="article-box"><p>📌 <strong>Key insight:</strong> The prompts in Toolyfi's library work across all three platforms. For best results, use the "Expand" view to read the full prompt and customize the [BRACKETED] sections before pasting.</p></div>
-
-  <h2>Prompt Categories and When to Use Them</h2>
-  <h3>Writing Prompts</h3>
-  <p>The writing category covers blog posts, essays, emails, social media content, and creative writing. These prompts are structured to produce publication-ready content — with hooks, headings, word counts, and calls-to-action built in. Best for: bloggers, content marketers, copywriters, and students.</p>
-
-  <h3>Coding Prompts</h3>
-  <p>Coding prompts for Python, JavaScript, and web development include requirements for clean code, comments, error handling, and documentation. They produce code that is production-ready, not just functional. Best for: developers who want AI code that follows best practices.</p>
-
-  <h3>SEO and Marketing Prompts</h3>
-  <p>These prompts generate SEO-optimized content, marketing copy, email sequences, and social media campaigns. They include keyword guidance, meta descriptions, and CTAs. Best for: digital marketers, SEO professionals, and e-commerce businesses.</p>
-
-  <h3>Education and Research Prompts</h3>
-  <p>Study guides, research summaries, concept explanations, and lesson plans. These prompts produce structured educational content that is accurate, organized, and easy to understand. Best for: students, teachers, and academic researchers.</p>
-
-  <h2>Advanced Prompt Engineering Techniques</h2>
-  <h3>Role Assignment</h3>
-  <p>Starting prompts with "You are a [ROLE]..." dramatically improves output quality for specialized tasks. "You are a senior Python developer with 10 years of experience" produces much better code than just asking for code without role context.</p>
-
-  <h3>Few-Shot Examples</h3>
-  <p>Include 1-2 examples of the output you want. "Here is an example of a good [OUTPUT TYPE]: [EXAMPLE]. Now generate 5 more in the same style." AI models excel at pattern matching when given examples.</p>
-
-  <h3>Chain of Thought</h3>
-  <p>For complex reasoning tasks, add "Think through this step by step before providing your answer." This technique, called chain-of-thought prompting, significantly improves accuracy for math, logic, and analytical problems.</p>
-
-  <h3>Output Constraints</h3>
-  <p>Be explicit: "Respond ONLY in JSON format," "Keep the response under 200 words," "Use only H2 and H3 headings — no H4." Hard constraints prevent AI from adding unnecessary content that doesn't fit your use case.</p>
-
-  <h2>Common Prompt Mistakes and How to Avoid Them</h2>
-  <ul>
-    <li><strong>Being too vague:</strong> "Help me write something" — always specify the exact type of output, format, and audience</li>
-    <li><strong>Skipping format requirements:</strong> Always specify word count, heading structure, and output format</li>
-    <li><strong>Not replacing placeholders:</strong> Copy prompts from this library and replace all [BRACKETED] text before using</li>
-    <li><strong>Single-shot thinking:</strong> If the first output isn't perfect, follow up with specific refinement instructions</li>
-    <li><strong>Ignoring tone:</strong> Always specify the tone — professional, casual, technical, friendly, urgent</li>
-    <li><strong>Too many tasks in one prompt:</strong> For complex tasks, break into separate prompts and combine the outputs</li>
-  </ul>
-
-  <h2>How to Get the Best Results from This Prompt Library</h2>
-  <ol>
-    <li>Browse by category or search by keyword to find relevant prompts</li>
-    <li>Click "Expand" to read the full prompt before copying</li>
-    <li>Click "Copy" to copy the prompt to your clipboard</li>
-    <li>Open ChatGPT, Claude, or Gemini in a new tab</li>
-    <li>Paste the prompt and replace all [BRACKETED] placeholders with your specific information</li>
-    <li>Add any additional context or constraints specific to your project</li>
-    <li>If the output needs refinement, add a follow-up prompt: "Make it more [ADJECTIVE]" or "Add a section about [TOPIC]"</li>
-  </ol>
-
-  <h2>Conclusion</h2>
-  <p>AI tools are only as good as the prompts you give them. With the right prompt, you can use ChatGPT, Claude, or Gemini to produce professional-quality blog posts, production-ready code, compelling marketing copy, and detailed research summaries — in seconds rather than hours.</p>
-  <p>Toolyfi's AI Prompt Generator gives you 500+ professionally crafted prompts across every major use case, completely free, with one-click copy and no signup required. Browse the library above, copy any prompt, and immediately start getting dramatically better results from your AI tools.</p>
-</article>
-</div>
-
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h2>Toolyfi</h2>
-      <p>Free professional tools for creators, developers, and marketers. No signup, no limits, just pure utility.</p>
-    </div>
-    <div class="footer-links">
-      <h4>AI Tools</h4>
-      <ul>
-        <li><a href="prompt-generator.html">Prompt Generator</a></li>
-        <li><a href="ai-assistant.html">AI Assistant</a></li>
-        <li><a href="ai-tool-finder.html">AI Tool Finder</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h4>Text Tools</h4>
-      <ul>
-        <li><a href="case-converter.html">Case Converter</a></li>
-        <li><a href="word-counter.html">Word Counter</a></li>
-        <li><a href="flip-fancy-text-generator.html">Fancy Text</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="copy-text">© 2026 Toolyfi. All rights reserved.</div>
-    <div class="social-links">
-      <a href="#">Twitter</a>
-      <a href="#">GitHub</a>
-      <a href="#">LinkedIn</a>
-    </div>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="modal-close-x" onclick="closeModal()">✕</button>
-    <div class="modal-tag" id="modalTag"></div>
-    <div class="modal-title" id="modalTitle"></div>
-    <div class="modal-prompt" id="modalPrompt"></div>
-    <div class="modal-btns">
-      <button class="modal-copy" onclick="copyFromModal()">📋 Copy Prompt</button>
-      <button class="modal-close-btn" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast">✅ Copied to clipboard!</div>
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-
-<script>
-// PROMPT DATABASE
-const prompts = [
-  {id:1,cat:'blog',title:'SEO Blog Post',prompt:'Write an SEO-optimized blog post about [TOPIC]. Include:\n- Meta description (150 chars)\n- H1, H2, H3 headings\n- 2000+ words\n- Target keywords: [KEYWORDS]\n- Engaging introduction with a hook\n- Actionable conclusion with CTA\nTone: Professional, engaging\nFormat: Markdown'},
-  {id:2,cat:'blog',title:'How-To Guide',prompt:'Create a comprehensive how-to guide on [TOPIC]. Structure:\n- Introduction\n- 8-10 step-by-step instructions\n- Tips and common mistakes\n- FAQ section\n- Conclusion\nMake it easy to follow, detailed, and practical.'},
-  {id:3,cat:'blog',title:'Blog Outline',prompt:'Create a detailed blog outline for [TOPIC]. Include:\n- Catchy headline options (3)\n- Meta description\n- Introduction hook\n- 5-7 main sections with subsections\n- Call-to-action\n- Keywords to include\nFormat: Structured outline with bullet points'},
-  {id:4,cat:'blog',title:'Listicle Post',prompt:'Write a listicle: "[NUMBER] Best [TOPIC]". Include:\n- Compelling introduction\n- [NUMBER] well-researched items each with description\n- Pros and cons for each\n- Final recommendation\nTone: Informative and entertaining. Length: 2000+ words'},
-  {id:5,cat:'blog',title:'Case Study',prompt:'Write a case study about [TOPIC/COMPANY]. Cover:\n- Problem statement\n- Solution implemented\n- Results and metrics\n- Key learnings\n- Recommendations\nInclude real numbers and data. Length: 1500+ words'},
-  {id:6,cat:'essay',title:'Academic Essay',prompt:'Write an academic essay on [TOPIC]. Requirements:\n- Thesis statement\n- 5+ paragraphs\n- Arguments with citations\n- Counterarguments addressed\n- Conclusion with implications\nTone: Formal, analytical. Length: 1500+ words. Format: [APA/MLA/Chicago]'},
-  {id:7,cat:'essay',title:'Persuasive Essay',prompt:'Write a persuasive essay arguing for [STANCE] on [TOPIC]. Include:\n- Strong thesis\n- Evidence-based arguments\n- Emotional appeal (pathos)\n- Logical reasoning (logos)\n- Rebuttal of opposing views\n- Powerful conclusion'},
-  {id:8,cat:'essay',title:'Critical Analysis',prompt:'Write a critical analysis of [BOOK/MOVIE/ARTICLE]. Cover:\n- Summary of work\n- Analysis of themes and symbols\n- Evaluation of effectiveness\n- Contextual background\n- Personal critique supported by evidence'},
-  {id:9,cat:'email',title:'Cold Sales Email',prompt:'Write a cold sales email for [PRODUCT/SERVICE] targeting [AUDIENCE]. Requirements:\n- Subject line (under 50 chars)\n- Personalized hook\n- Problem/Solution statement\n- Social proof/Benefit\n- Clear CTA\n- Under 150 words. Tone: Professional but conversational'},
-  {id:10,cat:'email',title:'Newsletter Issue',prompt:'Write a weekly newsletter issue for [AUDIENCE] about [TOPIC]. Include:\n- Catchy subject line\n- Personal intro\n- 3 main curated points/stories\n- Actionable tip of the week\n- Question for readers\n- Link to [RESOURCE]'},
-  {id:11,cat:'email',title:'Follow-up Email',prompt:'Write a follow-up email after [EVENT/MEETING]. Requirements:\n- Reference previous interaction\n- Reiterate value proposition\n- Address potential objections\n- Suggest next steps\n- Keep it brief and respectful'},
-  {id:12,cat:'creative',title:'Short Story Prompt',prompt:'Write a short story in the [GENRE] genre. Setting: [SETTING]. Protagonist: [CHARACTER]. Conflict: [CONFLICT]. Include:\n- Sensory details\n- Character development\n- A surprising twist\n- Emotional resonance. Length: 2000+ words'},
-  {id:13,cat:'creative',title:'Poem Generation',prompt:'Write a [STYLE, e.g., Sonnet/Haiku/Free Verse] poem about [TOPIC]. Focus on:\n- Imagery and metaphor\n- Rhythm and flow\n- Evoking the emotion of [EMOTION]\n- Unique perspective'},
-  {id:14,cat:'seo',title:'Keyword Research',prompt:'Generate a list of 50 long-tail keywords for [TOPIC]. For each keyword, provide:\n- Search intent (Informational/Transactional)\n- Estimated difficulty\n- A suggested H1 title for a blog post targeting that keyword'},
-  {id:15,cat:'seo',title:'Meta Descriptions',prompt:'Write 10 unique, click-worthy meta descriptions for a page about [TOPIC]. Requirements:\n- Under 155 characters\n- Include primary keyword: [KEYWORD]\n- Include a call-to-action\n- Active voice'},
-  {id:16,cat:'social',title:'LinkedIn Post',prompt:'Write a viral-style LinkedIn post about [TOPIC]. Structure:\n- Strong hook (first 2 lines)\n- Story-based body with line breaks\n- 3 actionable takeaways\n- Question to drive comments\n- 3 relevant hashtags. Tone: Thought leader, professional'},
-  {id:17,cat:'social',title:'Twitter/X Thread',prompt:'Write a 10-tweet thread about [TOPIC]. Requirements:\n- Tweet 1: Hook + what they will learn\n- Tweets 2-9: Value-packed points with emojis\n- Tweet 10: Summary + CTA to follow/newsletter\nFormat: Numbered 1/10, 2/10 etc.'},
-  {id:18,cat:'ads',title:'Facebook Ad Copy',prompt:'Write 3 variations of Facebook Ad copy for [PRODUCT]. Variations:\n1. Story-based (Long form)\n2. Benefit-driven (Short form)\n3. Question-based (Curiosity)\nInclude: Headline, Primary Text, and Description for each.'},
-  {id:19,cat:'business',title:'Business Plan Outline',prompt:'Create a detailed business plan outline for a [TYPE OF BUSINESS]. Include:\n- Executive Summary\n- Market Analysis\n- Product/Service Line\n- Marketing & Sales Strategy\n- Operational Plan\n- Financial Projections (categories only)'},
-  {id:20,cat:'code',title:'Python Script',prompt:'Write a Python script that [TASK]. Requirements:\n- Use [LIBRARIES]\n- Include detailed comments\n- Implement error handling (try/except)\n- Follow PEP 8 style guidelines\n- Include a sample usage block'},
-  {id:21,cat:'code',title:'Code Debugger',prompt:'Debug the following [LANGUAGE] code: [PASTE CODE]. Identify:\n- Syntax errors\n- Logical flaws\n- Performance bottlenecks\nProvide the fixed code and explain the changes made.'},
-  {id:22,cat:'web',title:'React Component',prompt:'Create a functional React component for [UI ELEMENT]. Requirements:\n- Use Tailwind CSS for styling\n- Include Props for [PROPS]\n- Implement [STATE/EFFECT] hooks\n- Ensure it is responsive and accessible (ARIA)'},
-  {id:23,cat:'data',title:'SQL Query',prompt:'Write a SQL query to [TASK, e.g., find top 10 customers by spend]. Database schema: [TABLES/FIELDS]. Requirements:\n- Use JOINs where necessary\n- Include comments explaining the logic\n- Optimize for performance'},
-  {id:24,cat:'study',title:'Study Guide',prompt:'Create a comprehensive study guide for [TOPIC/SUBJECT]. Include:\n- Key terms and definitions\n- Core concepts explained simply\n- 10 practice questions with answers\n- Summary of major theories/events'},
-  {id:25,cat:'career',title:'Resume Bullet Points',prompt:'Write 5 high-impact resume bullet points for a [JOB TITLE] role. Focus on [SKILLS/ACHIEVEMENTS]. Use the STAR method (Situation, Task, Action, Result) and include quantifiable metrics.'}
-];
-
-let currentCat = 'blog';
-
-function renderPrompts(data) {
-  const grid = document.getElementById('promptsGrid');
-  const count = document.getElementById('resultsCount');
-  
-  if (data.length === 0) {
-    grid.innerHTML = '<div class="no-results">No prompts found matching your search. Try different keywords.</div>';
-    count.innerText = '0 prompts found';
-    return;
-  }
-
-  grid.innerHTML = data.map(p => `
-    <div class="prompt-card" onclick="openModal(${p.id})">
-      <span class="prompt-tag">${p.cat}</span>
-      <h4>${p.title}</h4>
-      <p>${p.prompt.substring(0, 100)}...</p>
-      <div class="prompt-actions">
-        <button class="btn-copy" onclick="event.stopPropagation(); copyPrompt('${p.prompt.replace(/'/g, "\\'")}')">📋 Copy</button>
-        <button class="btn-expand">🔍 Expand</button>
+        <section class="section" aria-labelledby="recipes-title">
+          <div class="section-heading">
+            <h2 id="recipes-title">Start from a job, not a buzzword.</h2>
+            <p>
+              These local recipe buttons prefill the builder. They are editable starting points
+              rather than model-specific promises or a fixed prompt library.
+            </p>
+          </div>
+          <div class="recipe-grid">
+            <article class="recipe-card">
+              <small>Marketing</small>
+              <h3>SEO content brief</h3>
+              <p>
+                Frame an audience, topic, business context, evidence rule, outline, FAQs, and
+                internal-link ideas.
+              </p>
+              <button type="button" data-card-recipe="seo">Use this recipe →</button>
+            </article>
+            <article class="recipe-card">
+              <small>Editing</small>
+              <h3>Meaning-safe rewrite</h3>
+              <p>
+                Provide source copy and keep the intent, claims, and required terms while changing
+                clarity or tone.
+              </p>
+              <button type="button" data-card-recipe="rewrite">Use this recipe →</button>
+            </article>
+            <article class="recipe-card">
+              <small>Development</small>
+              <h3>Debug a function</h3>
+              <p>
+                Ask for observed behavior, likely causes, a minimal fix, explanation, and a way to
+                verify it.
+              </p>
+              <button type="button" data-card-recipe="debug">Use this recipe →</button>
+            </article>
+            <article class="recipe-card">
+              <small>Research</small>
+              <h3>Research plan</h3>
+              <p>
+                Ask for a question-led plan, source criteria, open uncertainties, and a separation
+                of fact from inference.
+              </p>
+              <button type="button" data-card-recipe="research">Use this recipe →</button>
+            </article>
+            <article class="recipe-card">
+              <small>Learning</small>
+              <h3>Study guide</h3>
+              <p>
+                Turn a supplied topic and level into an explanation, worked examples, knowledge
+                checks, and review plan.
+              </p>
+              <button type="button" data-card-recipe="study">Use this recipe →</button>
+            </article>
+            <article class="recipe-card">
+              <small>Reusable work</small>
+              <h3>Blank brief</h3>
+              <p>
+                Build a fresh prompt from the task and the context already in your head, notes, or
+                authorized materials.
+              </p>
+              <button type="button" data-card-recipe="blank">Start blank →</button>
+            </article>
+          </div>
+        </section>
       </div>
-    </div>
-  `).join('');
-  
-  count.innerText = `Showing ${data.length} prompts`;
-}
 
-function filterCat(cat) {
-  currentCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.innerText.toLowerCase().includes(cat) || (cat==='blog' && btn.innerText==='Blog & Articles'));
-  });
-  const filtered = prompts.filter(p => p.cat === cat);
-  renderPrompts(filtered);
-}
+      <article class="article" aria-labelledby="guide-title">
+        <div class="article-inner">
+          <div class="article-meta">Practical guide · Browser-local builder</div>
+          <h2 id="guide-title">How to create an AI prompt that is clear enough to test</h2>
+          <p>
+            A prompt is an instruction package. It can be as short as a sentence or detailed enough
+            to describe a recurring workflow. The useful question is not whether a prompt sounds
+            impressive. The useful question is whether another person could read it, understand the
+            intended deliverable, identify the facts that matter, and recognize what a usable answer
+            should look like. This page helps organize that package; it does not call an AI system,
+            select a provider, or determine that a resulting answer is correct.
+          </p>
+          <p>
+            People often begin with a topic: “marketing,” “Python,” “my assignment,” or “a customer
+            email.” Topics are useful labels, but they leave important decisions open. Is the goal
+            an outline, a critique, a revised draft, a test plan, a comparison, or an explanation?
+            Who will use the answer? What source material should be treated as authoritative? What
+            should the model avoid inventing? When these decisions stay implicit, a model fills gaps
+            with its own assumptions. A structured prompt reduces that guesswork.
+          </p>
+          <blockquote>
+            Start with the deliverable. Then add only the context and constraints that make the
+            deliverable safer, clearer, or easier to use.
+          </blockquote>
+          <h3>Begin with a concrete task</h3>
+          <p>
+            The task field is the anchor. A workable task uses an action and a deliverable. “Create
+            a comparison table of the three plans described below” is easier to evaluate than “tell
+            me about plans.” “Rewrite this support reply for clarity while keeping every factual
+            claim” is more useful than “make this better.” “Diagnose the failing unit test and
+            propose the smallest code change” gives a different target from “help with this bug.”
+          </p>
+          <p>
+            A good task does not need to contain every detail. It needs to set the job. If you are
+            writing a blog article, you may first want a content brief rather than the finished
+            draft. If you are debugging, you may first want reproduction steps and likely causes
+            rather than a rewrite of the whole application. If you are preparing research, you may
+            want a source plan, a list of uncertainties, and questions to investigate before asking
+            for conclusions. Choosing the right intermediate deliverable usually improves the
+            quality of the later work.
+          </p>
+          <p>
+            Test the task by removing the subject. If “create a two-column decision table with
+            criteria and unknowns” still describes the shape of the work, your prompt has a usable
+            directive. You can then add the subject, audience, scope, and source material. If the
+            task becomes a list of unrelated verbs, split it. Separate prompts can be easier to
+            verify and easier for a human to revise.
+          </p>
+          <h3>Add relevant context, not every available fact</h3>
+          <p>
+            Context is the material that changes the answer. It can include a product description,
+            an internal brief, a short set of notes, an existing draft, an approved terminology
+            list, or facts supplied by the user. It should not become a dumping ground for unrelated
+            background. A model has to decide which details matter, so a long unstructured paste can
+            create ambiguity rather than solve it.
+          </p>
+          <p>
+            Label information when it has different status. For example, separate confirmed facts
+            from open questions, supplied customer language from internal assumptions, and quoted
+            source text from your requested edits. A useful research prompt may say: “Use only the
+            provided interview notes for direct claims. Mark any inference as an inference.” A
+            useful editorial prompt may say: “Preserve quoted legal language exactly. Rewrite only
+            the explanatory paragraphs.” Labels help you review whether the response followed the
+            boundary you intended.
+          </p>
+          <p>
+            Context can be especially important when terms carry local meanings. A school district,
+            software product, country, audience, or date range can change what an acceptable answer
+            looks like. Describe the relevant setting directly. Do not assume that a model knows
+            current product features, internal policies, private data, or facts outside the prompt.
+            If a claim needs verification, ask for source suggestions or clearly make verification a
+            separate step.
+          </p>
+          <h3>Use roles as framing, not as a substitute for evidence</h3>
+          <p>
+            A role can make the style and lens of an answer easier to anticipate. “Act as a
+            technical editor” suggests different vocabulary and priorities than “act as a
+            customer-support writer.” However, a role does not grant current facts, professional
+            authority, access to private systems, or permission to make decisions for you. The task,
+            source material, and review process still matter.
+          </p>
+          <p>
+            Keep roles proportionate. “Act as an experienced frontend developer who explains
+            trade-offs to a junior teammate” is specific enough to shape language and approach. “Act
+            as the world’s best engineer and guarantee secure code” introduces a promise that no
+            prompt can substantiate. A role is most useful when it identifies a perspective, a
+            vocabulary level, or a response style. It is least useful when it replaces a clear
+            deliverable with a grand title.
+          </p>
+          <p>
+            If you do not need a special viewpoint, leave the role blank. A simple instruction with
+            good context can work well. This is why the Toolyfi builder treats role as optional. The
+            direct task and output format generally deserve attention before persona language.
+          </p>
+          <h3>Make constraints operational</h3>
+          <p>
+            Constraints work when a reviewer can check them. “Be good” and “make it engaging” are
+            preferences, but they do not give a clear test. “Use a neutral professional tone, avoid
+            unsupported numbers, give three options, and keep each option below 70 words” creates
+            observable requirements. “Return valid JSON with the keys title, audience, and outline”
+            creates a structure a program or person can inspect.
+          </p>
+          <p>
+            Common operational constraints include source boundaries, exclusions, word limits, date
+            ranges, required sections, permitted inputs, citation rules, and what to do when
+            information is missing. For example, a comparison prompt can say: “Use only the provided
+            plan descriptions. Do not infer pricing. Put missing data in an ‘Unknown’ row.” A coding
+            prompt can say: “Explain the smallest change first. Do not use new dependencies. Include
+            one test case that demonstrates the fix.”
+          </p>
+          <p>
+            Be careful not to write conflicting constraints. “Be brief” conflicts with “cover every
+            edge case in detail” unless you define a priority. “Return JSON only” conflicts with
+            “explain your reasoning in three paragraphs.” If there are competing goals, state the
+            order: correctness first, then a compact result; preserve factual claims first, then
+            improve tone. Clear priorities make a prompt easier to revise when the first answer is
+            not right.
+          </p>
+          <h3>Specify a format that matches the next step</h3>
+          <p>
+            Output format is not decoration. It determines how you will use and check the answer. A
+            table suits a comparison because columns reveal whether each option was evaluated
+            consistently. A checklist suits an operational procedure because it can be followed step
+            by step. A Markdown outline suits an editorial planning workflow because headings can
+            become a draft structure. JSON can suit a programmatic workflow when you define exact
+            keys and validity requirements.
+          </p>
+          <p>
+            Specify only the format details you actually need. A table request can name the columns
+            and the sort order. An outline request can name the heading depth and the evidence
+            needed below each section. A JSON request should say whether commentary is prohibited,
+            which keys are required, whether values can be null, and what to do if data is
+            unavailable. If you ask for “JSON” without a schema or example, a model may choose a
+            structure that is valid but inconvenient.
+          </p>
+          <p>
+            For human readers, format also controls scanning. Ask for a short executive summary
+            before details when a busy teammate needs the conclusion first. Ask for assumptions and
+            open questions at the end when you need to distinguish a draft answer from a verified
+            one. Ask for a separate “questions for me” section when a missing decision could change
+            the result. The best format makes the response easier to inspect, not merely nicer to
+            look at.
+          </p>
+          <h3>Use examples carefully</h3>
+          <p>
+            Examples can be useful when the structure, voice, or transformation is hard to describe.
+            A short sample of a desired support reply can show sentence length and tone better than
+            a list of adjectives. A sample JSON object can show key names and nesting. A
+            before-and-after pair can show how much an editor should change. These are sometimes
+            called few-shot examples: the model sees a pattern and attempts to follow it.
+          </p>
+          <p>
+            Examples also create risk. If a sample includes incorrect facts, outdated terminology,
+            sensitive material, or a bias you do not want repeated, the model can copy it. Mark what
+            the example demonstrates: tone, structure, level of detail, or the transformation
+            itself. Say whether the content is illustrative only. If you provide multiple examples,
+            keep them consistent. Contradictory examples can make a prompt less predictable than a
+            direct rule.
+          </p>
+          <p>
+            When examples are not needed, do not add them just to make a prompt longer. A clean
+            directive, relevant context, constraints, and a specified format are enough for many
+            everyday tasks. The builder leaves the example field optional for this reason.
+          </p>
+          <h3>Prompt patterns for writing and editing</h3>
+          <p>
+            Writing prompts benefit from a defined reader and a defined job. Instead of requesting
+            an article “about analytics,” request a brief for a reader segment, a goal, a decision
+            the reader needs to make, and a useful format. You might ask for an outline with
+            proposed headings, questions the page should answer, claims that need evidence, and a
+            shortlist of internal links to consider. The output can be reviewed before anyone writes
+            a long draft.
+          </p>
+          <p>
+            Editing prompts require a source boundary. Paste the text you own or are authorized to
+            use, explain what must remain accurate, and name the transformation. For instance:
+            “Rewrite the supplied onboarding email for plain language. Preserve all product names,
+            dates, and stated limits. Use short paragraphs. Return the revised email followed by a
+            concise change log.” This is easier to assess than a vague request for “better copy.”
+          </p>
+          <p>
+            When the task involves public facts, ask the model to identify information that needs
+            checking rather than to invent certainty. A strong constraint may say: “Do not make up
+            data or citations. If a claim needs verification, label it ‘verify’ and explain what
+            source would be appropriate.” This does not guarantee accuracy, but it makes the review
+            responsibility visible.
+          </p>
+          <h3>Prompt patterns for coding work</h3>
+          <p>
+            For programming, give the environment, observed behavior, expected behavior, and the
+            smallest reproducible input you can share. Include the relevant code with enough
+            surrounding context to understand names and control flow. State any constraints such as
+            language version, framework version, dependency policy, performance limit, or security
+            requirement. Ask for a test or a way to reproduce the result after the suggested change.
+          </p>
+          <p>
+            A useful debugging prompt can ask for an ordered response: first restate the observed
+            failure, then list plausible causes, then propose the smallest change, then provide a
+            test. This sequence helps you judge whether the model understood the problem before you
+            apply a patch. It also reduces the temptation to accept a large rewrite when a narrow
+            fix might be more appropriate.
+          </p>
+          <p>
+            Do not paste credentials, private keys, production customer data, or other sensitive
+            material into a prompt without understanding the destination provider and your
+            authorization. Replace values with representative placeholders where possible. An AI
+            provider may have different retention, training, team, and account settings, so the
+            destination policy belongs in your workflow review, not in a generic prompt template.
+          </p>
+          <h3>Prompt patterns for research and decisions</h3>
+          <p>
+            Research prompts should distinguish facts, evidence, and judgment. Begin with a question
+            that is narrow enough to investigate. Define the scope by place, date range, audience,
+            product version, or source type. Ask for a plan that separates what is known from what
+            needs verification. If the model has access to tools or search in your chosen
+            environment, you can specify which source types to prefer and how to label uncertainty;
+            if it does not, do not imply that it has current access.
+          </p>
+          <p>
+            For decisions, use the model to structure options and questions rather than outsource
+            accountability. You can ask for criteria, trade-offs, missing information, scenarios,
+            and a comparison table based on inputs you supply. Avoid asking a model to make
+            consequential legal, medical, financial, hiring, or safety decisions for you. Where a
+            professional review is needed, ask for a checklist of questions to take to an
+            appropriate qualified person instead.
+          </p>
+          <p>
+            A research prompt often improves when it asks for disconfirming information. For
+            example: “List the assumptions behind each option, evidence that could change the
+            recommendation, and questions that remain unanswered.” This makes it harder for a fluent
+            answer to look more certain than the available information warrants.
+          </p>
+          <h3>Test, revise, and save useful structures</h3>
+          <p>
+            The first prompt is a draft. Test it with a realistic but non-sensitive example. Compare
+            the response against the task, constraints, and format you wrote. If the answer is
+            generic, the problem may be a vague deliverable or missing context. If it ignores a
+            requirement, put that requirement in a short explicit constraint. If it is detailed but
+            unusable, change the requested format. Revision is part of prompt work, not a sign that
+            the first attempt failed.
+          </p>
+          <p>
+            Keep successful structures as reusable templates with placeholders. A content brief can
+            use {TOPIC}, {AUDIENCE}, {PRODUCT CONTEXT}, and {GOAL}. A debugging prompt can use
+            {OBSERVED BEHAVIOR}, {EXPECTED BEHAVIOR}, and {MINIMAL EXAMPLE}. Templates let you
+            repeat the decision structure while changing the task-specific facts. Review them
+            periodically because provider capabilities, policies, and your own workflow can change.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>If the response is...</th>
+                <th>Try revising...</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Too generic</td>
+                <td>Name the exact deliverable, reader, decision, and source material.</td>
+              </tr>
+              <tr>
+                <td>Too long</td>
+                <td>Set a word or section limit and prioritize what must appear.</td>
+              </tr>
+              <tr>
+                <td>Missing facts</td>
+                <td>Add the needed context or request questions before an answer.</td>
+              </tr>
+              <tr>
+                <td>Wrong format</td>
+                <td>Name the format, columns, headings, keys, and ordering rules.</td>
+              </tr>
+              <tr>
+                <td>Overconfident</td>
+                <td>Require assumptions, uncertainty labels, and source checks.</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Review a prompt before you run it</h3>
+          <p>
+            A quick preflight review catches many avoidable problems. First, ask whether the prompt
+            names one clear deliverable. A request for an “analysis” may need to become a
+            comparison, risk register, outline, or recommendation memo. Second, check that the
+            context actually supports the task. If the prompt asks for a product comparison but
+            provides only a product name, the model may fill gaps with assumptions. Either supply
+            the documents you are authorized to use or ask the model to identify what it would need
+            before drafting a result.
+          </p>
+          <p>
+            Third, review every instruction that looks like a guarantee. Replace “make this
+            accurate” with an observable instruction such as “use only the supplied source text,
+            quote exact figures, and list claims that need checking.” Replace “make it engaging”
+            with a reader, a length, a structure, and one or two concrete outcomes. The goal is not
+            to remove every subjective preference. It is to make the preferences visible enough that
+            a reviewer can decide whether the response followed them.
+          </p>
+          <p>
+            Finally, make a deliberate decision about the destination. This Toolyfi page creates the
+            prompt locally, but a copied prompt is not automatically private, verified, or
+            appropriate for every provider. Check the account, provider settings, applicable
+            policies, and your authority to share any source material. For a sensitive workflow, a
+            prompt can describe placeholders and a review process without containing the sensitive
+            values themselves.
+          </p>
+          <h3>Design templates for people who will use them later</h3>
+          <p>
+            A reusable prompt template should separate stable instructions from changing inputs.
+            Keep the stable part focused on the goal, format, evidence rule, and review rule. Mark
+            changing values clearly: <code>{TOPIC}</code>, <code>{AUDIENCE}</code>,
+            <code>{SOURCE TEXT}</code>, <code>{DATE RANGE}</code>, or
+            <code>{SUCCESS CRITERIA}</code>. A teammate can then see what must be supplied before
+            the prompt is ready instead of copying an old request with stale names, dates, or
+            assumptions.
+          </p>
+          <p>
+            Templates work best when they include a short note about intended use. For example, an
+            editorial brief template can say that it is for planning content, not publishing facts
+            without review. A support-reply template can say that approved policy language must be
+            inserted by the user. A code-review template can say that the user must run the
+            suggested test in the real environment. These notes are not decoration: they keep a
+            convenient template from being treated as an automatic decision system.
+          </p>
+          <p>
+            When several people use the same structure, version the template in an ordinary document
+            or repository where changes can be reviewed. Record why a requirement changed, what
+            example it was tested against, and who owns the underlying source material. A prompt is
+            still an instruction artifact. It benefits from the same care you would give a
+            checklist, brief, or standard operating procedure.
+          </p>
+          <h3>Use a human review loop for consequential work</h3>
+          <p>
+            Fluent wording can make a response feel more reliable than it is. That is especially
+            risky when a prompt involves money, health, legal obligations, hiring, safety, academic
+            work, or claims about real people and organizations. For consequential work, ask for a
+            draft, decision criteria, missing information, and questions for a qualified reviewer.
+            Keep the final judgment with the person who has the relevant authority and access to the
+            facts.
+          </p>
+          <p>
+            A useful review loop is simple: define the task, run a small non-sensitive example,
+            inspect the result against the source material, revise one unclear instruction, and test
+            again. If a response includes a claim you cannot trace, treat it as a lead for
+            verification rather than a fact. If it omits a requirement, move that requirement into a
+            short explicit rule. This loop turns prompting from one-shot guessing into an observable
+            working process.
+          </p>
+          <h3>How this Toolyfi builder fits into your workflow</h3>
+          <p>
+            Use the builder to turn a loose request into a readable first version. Fill the task and
+            add context, constraints, and a format only where they help. Copy the plain-text result.
+            Before you paste it into another product, remove material you should not share and
+            consider the destination provider’s controls. After you receive an answer, review it
+            against the underlying source material and the real decision you are trying to make.
+          </p>
+          <p>
+            This approach is intentionally modest. The page cannot know which provider is best,
+            whether a model has current information, whether a provider supports a particular
+            capability, or whether an output is suitable for your situation. It can help you make
+            the request more explicit. That clarity gives you a better basis for testing, editing,
+            and asking follow-up questions.
+          </p>
+          <p>
+            For adjacent writing tasks, you can use Toolyfi’s
+            <a href="word-counter.html">Word Counter</a> to check a draft,
+            <a href="case-converter.html">Case Converter</a> to standardize labels,
+            <a href="markdown-to-html-seo.html">Markdown to HTML</a> to preview simple markup, and
+            <a href="seo-checker.html">SEO Checker</a> for transparent on-page review. Each tool has
+            a distinct job; none substitutes for checking claims, sources, or a final human review.
+          </p>
+        </div>
+      </article>
 
-function handleSearch() {
-  const query = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = prompts.filter(p => 
-    p.title.toLowerCase().includes(query) || 
-    p.prompt.toLowerCase().includes(query) || 
-    p.cat.toLowerCase().includes(query)
-  );
-  renderPrompts(filtered);
-}
+      <section class="faq">
+        <div class="page-shell">
+          <div class="section-heading">
+            <h2>Prompt Generator FAQ</h2>
+            <p>Short answers aligned with what the browser-local builder actually does.</p>
+          </div>
+          <div class="faq-grid">
+            <details>
+              <summary>What does Toolyfi's AI Prompt Generator do?</summary>
+              <p>
+                It arranges the fields you enter into a structured plain-text prompt. It does not
+                call an AI model or judge the model output.
+              </p>
+            </details>
+            <details>
+              <summary>Does this tool send my prompt to an AI service?</summary>
+              <p>
+                No. Building, copying, and downloading happen in your browser. Pasting a prompt into
+                another provider is a separate action governed by that provider’s policies.
+              </p>
+            </details>
+            <details>
+              <summary>Will a generated prompt work with every AI model?</summary>
+              <p>
+                The output is ordinary text that you can adapt. Instruction support, context limits,
+                tools, and output quality vary by model, account, provider, and model version.
+              </p>
+            </details>
+            <details>
+              <summary>What should I put in the task field?</summary>
+              <p>
+                State the deliverable and action clearly, such as creating an outline, debugging a
+                function, comparing supplied options, or rewriting provided copy.
+              </p>
+            </details>
+            <details>
+              <summary>Are role and tone required?</summary>
+              <p>
+                No. They are optional framing details. Define the desired deliverable and
+                constraints first, then use a role or tone only if it helps.
+              </p>
+            </details>
+            <details>
+              <summary>When should I include examples?</summary>
+              <p>
+                Include a short relevant example when the expected style, structure, or
+                transformation is difficult to describe with instructions alone.
+              </p>
+            </details>
+            <details>
+              <summary>Can I request JSON or a table?</summary>
+              <p>
+                Yes. Select an output format and add exact field, table-column, or validation
+                requirements in the constraints field.
+              </p>
+            </details>
+            <details>
+              <summary>Should I put sensitive information into a prompt?</summary>
+              <p>
+                Avoid entering sensitive information unless you have reviewed the destination
+                provider’s applicable data controls and your own authorization requirements.
+              </p>
+            </details>
+            <details>
+              <summary>Why did the model not follow every instruction?</summary>
+              <p>
+                Models can interpret requests differently and have limits. Shorten competing
+                instructions, add missing context, clarify the format, and test a revised version.
+              </p>
+            </details>
+            <details>
+              <summary>Can I download the prompt I build?</summary>
+              <p>
+                Yes. After building a prompt, use Download .txt to save the current plain-text
+                prompt to your device.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
 
-function copyPrompt(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    showToast();
-  });
-}
+      <section class="related" aria-label="Related Toolyfi tools">
+        <div class="page-shell">
+          <h2>Continue your workflow</h2>
+          <div class="related-grid">
+            <a href="seo-checker.html">SEO Checker →</a
+            ><a href="word-counter.html">Word Counter →</a
+            ><a href="case-converter.html">Case Converter →</a
+            ><a href="flip-fancy-text-generator.html">Fancy Text →</a
+            ><a href="markdown-to-html-seo.html">Markdown to HTML →</a
+            ><a href="html-preview-tool.html">HTML Preview →</a
+            ><a href="json-formatter.html">JSON Formatter →</a
+            ><a href="ai-tool-finder.html">AI Tool Finder →</a>
+          </div>
+        </div>
+      </section>
+    </main>
 
-function showToast() {
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2000);
-}
+    <footer>
+      <div class="page-shell footer-inner">
+        <span>© 2026 Toolyfi · Browser tools with clear boundaries.</span
+        ><span
+          ><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a
+          ><a href="contact.html">Contact</a></span
+        >
+      </div>
+    </footer>
+    <script>
+      /* Toolyfi Editorial Utility Atlas: browser-local prompt construction, no provider calls or prompt analytics. */
+      const fields = [
+        "task",
+        "role",
+        "audience",
+        "context",
+        "constraints",
+        "tone",
+        "format",
+        "example",
+      ];
+      const recipes = {
+        blank: {},
+        seo: {
+          task: "Create an SEO content brief for [TOPIC].",
+          role: "SEO content strategist",
+          audience: "[TARGET READER]",
+          context: "Brand or product context: [CONTEXT]. Primary topic or query: [TOPIC].",
+          constraints:
+            "Avoid invented statistics. State assumptions. Include intent, a practical H2/H3 outline, five FAQs, internal-link ideas, and source types to verify.",
+          tone: "Clear and practical",
+          format: "Markdown outline",
+        },
+        rewrite: {
+          task: "Rewrite the supplied text for clarity without changing its meaning or factual claims.",
+          role: "Careful technical editor",
+          audience: "[TARGET READER]",
+          context:
+            "Text to revise: [PASTE AUTHORIZED TEXT]. Preserve: [REQUIRED TERMS, NAMES, DATES, OR LIMITS].",
+          constraints:
+            "Do not add facts. Remove filler. Keep the length within 10% unless a different limit is supplied. List any material ambiguity after the revision.",
+          tone: "Professional and concise",
+          format: "Structured sections with bullets",
+        },
+        debug: {
+          task: "Diagnose the described software failure and propose the smallest appropriate fix.",
+          role: "Senior software engineer who explains trade-offs clearly",
+          audience: "Developer maintaining the codebase",
+          context:
+            "Environment: [LANGUAGE, VERSION, FRAMEWORK]. Observed behavior: [WHAT HAPPENS]. Expected behavior: [WHAT SHOULD HAPPEN]. Minimal example: [CODE OR STEPS].",
+          constraints:
+            "First restate the failure. Separate confirmed facts from assumptions. Avoid new dependencies unless necessary. Include a focused test or verification step.",
+          tone: "Technical but accessible",
+          format: "Step-by-step checklist",
+        },
+        research: {
+          task: "Create a research plan for [QUESTION OR DECISION].",
+          role: "Methodical research assistant",
+          audience: "[DECISION MAKER OR READER]",
+          context:
+            "Scope: [PLACE, DATE RANGE, PRODUCT VERSION, OR POPULATION]. Current notes: [NOTES].",
+          constraints:
+            "Separate facts, assumptions, and open questions. Recommend credible source types. Do not present unverified claims as certain. Include evidence that could change the conclusion.",
+          tone: "Direct and analytical",
+          format: "Structured sections with bullets",
+        },
+        study: {
+          task: "Create a study guide for [TOPIC].",
+          role: "Patient tutor",
+          audience: "[LEVEL OR LEARNER PROFILE]",
+          context:
+            "Learner goal: [EXAM, PROJECT, OR SKILL]. Materials or concepts to cover: [LIST].",
+          constraints:
+            "Explain key ideas plainly. Include two worked examples, five knowledge-check questions, and a short review plan. Mark any fact that needs source verification.",
+          tone: "Friendly and approachable",
+          format: "Step-by-step checklist",
+        },
+      };
+      const output = document.querySelector("#promptOutput");
+      const status = document.querySelector("#status");
+      let currentPrompt = "";
 
-function openModal(id) {
-  const p = prompts.find(x => x.id === id);
-  document.getElementById('modalTag').innerText = p.cat;
-  document.getElementById('modalTitle').innerText = p.title;
-  document.getElementById('modalPrompt').innerText = p.prompt;
-  document.getElementById('modal').classList.add('open');
-}
-
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-}
-
-function copyFromModal() {
-  const text = document.getElementById('modalPrompt').innerText;
-  copyPrompt(text);
-}
-
-function toggleFaq(el) {
-  el.parentElement.classList.toggle('active');
-}
-
-function rate(val) {
-  alert("Thanks for your " + val + "-star rating!");
-}
-
-// Initial render
-filterCat('blog');
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+      function value(id) {
+        return document.querySelector(`#${id}`).value.trim();
+      }
+      function block(label, text) {
+        return text ? `${label}:\n${text}` : "";
+      }
+      function buildPrompt(event) {
+        if (event) event.preventDefault();
+        const task = value("task");
+        if (!task) {
+          status.textContent = "Add a task before building a prompt.";
+          document.querySelector("#task").focus();
+          return;
+        }
+        const parts = [
+          value("role") ? `Role:\nAct as ${value("role")}.` : "",
+          `Task:\n${task}`,
+          value("audience") ? `Audience:\nCreate the response for ${value("audience")}.` : "",
+          block("Relevant context", value("context")),
+          block("Constraints and quality checks", value("constraints")),
+          value("tone") ? `Tone:\nUse a ${value("tone").toLowerCase()} tone.` : "",
+          value("format")
+            ? `Output format:\nReturn the result as ${value("format").toLowerCase()}.`
+            : "",
+          value("example") ? `Example or pattern:\n${value("example")}` : "",
+          "Before finalizing, check that the response follows the task, respects the stated constraints, and clearly labels any missing information or uncertainty.",
+        ].filter(Boolean);
+        currentPrompt = parts.join("\n\n");
+        output.textContent = currentPrompt;
+        status.textContent = "Prompt built locally. Review before you copy.";
+      }
+      function applyRecipe(name) {
+        const recipe = recipes[name];
+        fields.forEach((id) => {
+          document.querySelector(`#${id}`).value = recipe[id] || "";
+        });
+        document
+          .querySelectorAll(".recipe")
+          .forEach((button) => button.classList.toggle("active", button.dataset.recipe === name));
+        buildPrompt();
+        document.querySelector(".builder").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      async function copyText() {
+        if (!currentPrompt) {
+          status.textContent = "Build a prompt before copying.";
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(currentPrompt);
+          status.textContent = "Prompt copied to your clipboard.";
+        } catch {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(output);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = "Select and copy the highlighted prompt.";
+        }
+      }
+      function downloadText() {
+        if (!currentPrompt) {
+          status.textContent = "Build a prompt before downloading.";
+          return;
+        }
+        const blob = new Blob([currentPrompt], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "toolyfi-prompt.txt";
+        link.click();
+        URL.revokeObjectURL(url);
+        status.textContent = "Text file prepared for download.";
+      }
+      document.querySelector("#promptForm").addEventListener("submit", buildPrompt);
+      document.querySelector("#clearForm").addEventListener("click", () => {
+        document.querySelector("#promptForm").reset();
+        currentPrompt = "";
+        output.textContent = "Your structured prompt will appear here.";
+        status.textContent = "Fields cleared. Add a task to begin again.";
+        document
+          .querySelectorAll(".recipe")
+          .forEach((button) =>
+            button.classList.toggle("active", button.dataset.recipe === "blank"),
+          );
+      });
+      document.querySelector("#copyPrompt").addEventListener("click", copyText);
+      document.querySelector("#downloadPrompt").addEventListener("click", downloadText);
+      document
+        .querySelectorAll("[data-recipe]")
+        .forEach((button) =>
+          button.addEventListener("click", () => applyRecipe(button.dataset.recipe)),
+        );
+      document
+        .querySelectorAll("[data-card-recipe]")
+        .forEach((button) =>
+          button.addEventListener("click", () => applyRecipe(button.dataset.cardRecipe)),
+        );
+    </script>
     <script src="/pwa-register.js" defer></script>
-</body>
+  </body>
 </html>
