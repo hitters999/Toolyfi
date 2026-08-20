@@ -1,927 +1,1857 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sleep Calculator — Free Bedtime and Wake Up Time Tool | Toolyfi</title>
-<meta name="description" content="Free sleep calculator: find your perfect bedtime or wake-up time based on 90-minute sleep cycles. Alarm, nap calculator, sleep debt tracker and more. No signup!">
-<meta name="keywords" content="sleep calculator, bedtime calculator, wake up time calculator, sleep cycle calculator, when should I sleep, sleep time calculator 2026">
-<meta name="author" content="Toolyfi">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#667eea">
-<link rel="canonical" href="https://toolyfi.com/sleep-calculator.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<meta property="og:title" content="Sleep Calculator — Free Bedtime and Wake Up Time Tool | Toolyfi">
-<meta property="og:description" content="Find your perfect bedtime or wake-up time based on 90-minute sleep cycles. Free, no signup!">
-<meta property="og:url" content="https://toolyfi.com/sleep-calculator.html">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type": "SoftwareApplication","name":"Sleep Calculator","url":"https://toolyfi.com/sleep-calculator.html","description":"Free sleep calculator to find your perfect bedtime or wake-up time based on 90-minute sleep cycles.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"2341","bestRating":"5"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"Sleep Calculator","item":"https://toolyfi.com/sleep-calculator.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the sleep calculator work?","acceptedAnswer":{"@type":"Answer","text":"Our sleep calculator uses 90-minute sleep cycles plus a 14-minute sleep onset time. Formula: Bedtime = Wake-up Time minus (N x 90 min) minus 14 min. This ensures you wake between cycles, not during deep sleep."}},{"@type":"Question","name":"How many sleep cycles do adults need?","acceptedAnswer":{"@type":"Answer","text":"Adults need 5 to 6 complete sleep cycles (7.5 to 9 hours). Teens need 6 to 7. Children need 6 to 8. Seniors do well with 4 to 5 cycles."}},{"@type":"Question","name":"What is a power nap?","acceptedAnswer":{"@type":"Answer","text":"A power nap is exactly 20 minutes, keeping you in light sleep so you wake refreshed. A full recovery nap is 90 minutes completing one whole cycle."}},{"@type":"Question","name":"What is sleep debt?","acceptedAnswer":{"@type":"Answer","text":"Sleep debt is the cumulative gap between the sleep you need and what you get. Our calculator shows your weekly deficit and recovery time needed."}},{"@type":"Question","name":"What is a chronotype?","acceptedAnswer":{"@type":"Answer","text":"Your chronotype is your biological preference for sleep timing. Morning larks wake early naturally. Night owls are most alert later. Knowing yours helps optimize your schedule."}}]}]}</script>
-<style>
-:root{--bg:#f5f6fa;--bg2:#fff;--bg3:#f0f2ff;--purple:#667eea;--purple2:#764ba2;--pl:rgba(102,126,234,0.1);--pl2:rgba(102,126,234,0.06);--text:#1a1a2e;--text2:#4a4a6a;--text3:#8888aa;--border:#e4e6f0;--moon:#f59e0b;--green:#10b981;--red:#ef4444;--sh:0 4px 24px rgba(102,126,234,0.12);--sh2:0 12px 48px rgba(102,126,234,0.18);--r:20px;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:14px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 20px rgba(102,126,234,0.3);}
-header nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;gap:15px;flex-wrap:wrap;}
-.logo{font-size:22px;font-weight:800;color:white;text-decoration:none;display:flex;align-items:center;gap:8px;}
-.hlinks{display:flex;gap:20px;flex-wrap:wrap;}
-.hlinks a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9em;font-weight:500;transition:opacity 0.2s;}
-.hlinks a:hover{color:white;}
-.hero{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:50px 20px 80px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,255,255,0.05) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,255,255,0.05) 0%,transparent 50%);}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:7px 18px;border-radius:30px;font-size:0.82em;font-weight:600;color:white;margin-bottom:18px;backdrop-filter:blur(10px);}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);color:white;line-height:1.2;margin-bottom:12px;}
-.hero h1 em{font-style:italic;opacity:0.88;}
-.hero-sub{font-size:1.05em;color:rgba(255,255,255,0.82);max-width:520px;margin:0 auto 24px;line-height:1.7;}
-.hero-stats{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;}
-.hstat strong{display:block;font-size:1.4em;font-weight:800;color:white;}
-.hstat span{font-size:0.78em;color:rgba(255,255,255,0.7);}
-.star-row{background:var(--bg2);padding:13px 20px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;border-bottom:1px solid var(--border);flex-wrap:wrap;font-size:0.86em;color:var(--text2);}
-.star-row .stars{color:#f59e0b;letter-spacing:2px;}
-.widget-wrap{max-width:860px;margin:-40px auto 0;padding:0 20px;position:relative;z-index:10;}
-.widget-card{background:var(--bg2);border-radius:var(--r);box-shadow:var(--sh2);border:1px solid var(--border);overflow:hidden;}
-.mode-tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bg3);border-bottom:1px solid var(--border);}
-.mode-tab{padding:16px 10px;border:none;background:transparent;color:var(--text3);font-family:'Inter',sans-serif;font-size:0.87em;font-weight:600;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:3px solid transparent;}
-.mode-tab.active{background:var(--bg2);color:var(--purple);border-bottom-color:var(--purple);}
-.mode-tab:hover:not(.active){color:var(--text2);background:rgba(102,126,234,0.04);}
-.wbody{padding:28px;}
-/* SCROLL WHEEL */
-.tpick{display:flex;align-items:center;justify-content:center;gap:0;margin:8px 0 22px;}
-.wcol{display:flex;flex-direction:column;align-items:center;}
-.wlbl{font-size:0.7em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
-.wheel{height:160px;overflow:hidden;position:relative;width:82px;cursor:ns-resize;user-select:none;}
-.wheel-items{display:flex;flex-direction:column;align-items:center;}
-.wi{height:44px;display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:700;color:var(--text3);transition:all 0.2s;width:82px;flex-shrink:0;}
-.wi.sel{font-size:2em;color:var(--text);font-weight:800;}
-.wi.near{font-size:1.7em;color:var(--text2);font-weight:700;}
-.wheel::before,.wheel::after{content:'';position:absolute;left:0;right:0;height:58px;z-index:2;pointer-events:none;}
-.wheel::before{top:0;background:linear-gradient(to bottom,white,rgba(255,255,255,0));}
-.wheel::after{bottom:0;background:linear-gradient(to top,white,rgba(255,255,255,0));}
-.wheel-hl{position:absolute;top:50%;left:4px;right:4px;height:50px;transform:translateY(-50%);background:var(--pl);border-radius:12px;border-top:2px solid rgba(102,126,234,0.2);border-bottom:2px solid rgba(102,126,234,0.2);pointer-events:none;z-index:1;}
-.wsep{font-size:2.2em;font-weight:800;color:var(--text);padding:0 4px;margin-top:28px;}
-.wampm{display:flex;flex-direction:column;gap:6px;margin-left:14px;margin-top:28px;}
-.abtn{padding:10px 14px;border-radius:10px;border:2px solid var(--border);background:transparent;color:var(--text3);font-family:'Inter',sans-serif;font-size:0.9em;font-weight:700;cursor:pointer;transition:all 0.2s;width:60px;text-align:center;}
-.abtn.active{background:var(--purple);border-color:var(--purple);color:white;}
-.age-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-.age-chip{padding:8px 16px;border-radius:30px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-family:'Inter',sans-serif;font-size:0.82em;font-weight:600;cursor:pointer;transition:all 0.25s;}
-.age-chip.active,.age-chip:hover{background:var(--pl);border-color:var(--purple);color:var(--purple);}
-.calc-btn{width:100%;padding:17px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border:none;border-radius:14px;font-family:'Inter',sans-serif;font-size:1.05em;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 25px rgba(102,126,234,0.35);display:flex;align-items:center;justify-content:center;gap:10px;}
-.calc-btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(102,126,234,0.45);}
-.results-section{margin-top:26px;display:none;}
-.results-section.show{display:block;animation:fadeUp 0.4s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.rlbl{font-size:0.8em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:14px;text-align:center;}
-.rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-@media(max-width:480px){.rgrid{grid-template-columns:1fr;}}
-.rcard{background:var(--bg3);border:2px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
-.rcard:hover{border-color:var(--purple);background:var(--pl);transform:translateY(-3px);box-shadow:var(--sh);}
-.rcard.best{border-color:var(--moon);background:rgba(245,158,11,0.06);}
-.rcard.best::before{content:'⭐ Recommended';position:absolute;top:8px;right:8px;font-size:0.68em;font-weight:700;color:var(--moon);background:rgba(245,158,11,0.12);padding:3px 8px;border-radius:20px;}
-.rcard.picked{border-color:var(--purple);outline:2px solid var(--purple);}
-.rtime{font-size:2em;font-weight:800;color:var(--text);margin-bottom:4px;}
-.rcyc{font-size:0.8em;color:var(--text3);font-weight:600;}
-.rhrs{font-size:0.88em;color:var(--purple);font-weight:700;margin-top:3px;}
-.alarm-row{display:flex;align-items:center;gap:10px;margin-top:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:10px 14px;font-size:0.84em;display:none;}
-.alarm-row.show{display:flex;}
-.ar-text{flex:1;color:var(--text2);font-weight:500;}
-.ar-btn{padding:7px 16px;background:var(--green);border:none;border-radius:8px;color:white;font-family:'Inter',sans-serif;font-size:0.82em;font-weight:700;cursor:pointer;white-space:nowrap;}
-.ar-btn:hover{opacity:0.88;}
-.pro-tip{margin-top:14px;padding:12px 16px;background:rgba(102,126,234,0.06);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;font-size:0.84em;color:var(--text2);line-height:1.6;}
-/* SUB TOOLS */
-.sub-sec{max-width:860px;margin:28px auto;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.sub-sec{grid-template-columns:1fr;}}
-@media(min-width:480px) and (max-width:768px){.sub-sec{grid-template-columns:repeat(2,1fr);}}
-.scard{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--sh);transition:all 0.25s;}
-.scard:hover{box-shadow:var(--sh2);transform:translateY(-2px);}
-.scard-ico{font-size:1.8em;margin-bottom:10px;}
-.scard h3{font-size:0.93em;font-weight:700;color:var(--text);margin-bottom:4px;}
-.scard p{font-size:0.79em;color:var(--text3);margin-bottom:12px;line-height:1.5;}
-.sinput{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:10px 13px;color:var(--text);font-family:'Inter',sans-serif;font-size:0.9em;outline:none;margin-bottom:8px;transition:border-color 0.2s;}
-.sinput:focus{border-color:var(--purple);}
-.sbtn{width:100%;padding:10px;background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:10px;color:white;font-family:'Inter',sans-serif;font-size:0.84em;font-weight:700;cursor:pointer;transition:all 0.25s;}
-.sbtn:hover{opacity:0.9;transform:translateY(-1px);}
-.sres{margin-top:10px;padding:11px;background:var(--bg3);border-radius:10px;font-size:0.82em;color:var(--purple);font-weight:600;text-align:center;display:none;line-height:1.6;}
-.sres.show{display:block;animation:fadeUp 0.3s ease;}
-/* SECTIONS */
-.sec{max-width:1100px;margin:60px auto;padding:0 20px;}
-.sbadge{display:inline-block;background:var(--pl);color:var(--purple);font-size:0.74em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:12px;}
-.stitle{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--text);margin-bottom:10px;line-height:1.3;}
-.ssub{font-size:0.94em;color:var(--text2);margin-bottom:34px;line-height:1.7;max-width:620px;}
-.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-@media(max-width:900px){.fgrid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.fgrid{grid-template-columns:1fr;}}
-.fcard{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:24px;transition:all 0.25s;box-shadow:0 2px 12px rgba(102,126,234,0.06);}
-.fcard:hover{border-color:var(--purple);box-shadow:var(--sh);transform:translateY(-4px);}
-.fico{width:48px;height:48px;border-radius:14px;background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:1.5em;margin-bottom:14px;}
-.fcard h3{font-size:0.93em;font-weight:700;color:var(--text);margin-bottom:7px;}
-.fcard p{font-size:0.82em;color:var(--text2);line-height:1.6;}
-.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-@media(max-width:640px){.stages{grid-template-columns:repeat(2,1fr);}}
-.stagec{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;transition:all 0.25s;}
-.stagec:hover{border-color:var(--purple);box-shadow:var(--sh);}
-.snum{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;font-size:0.82em;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
-.stagec h4{font-size:0.86em;font-weight:700;color:var(--text);margin-bottom:5px;}
-.stagec p{font-size:0.76em;color:var(--text2);line-height:1.5;}
-.sbar{height:6px;border-radius:4px;margin-top:10px;background:linear-gradient(90deg,var(--purple),#a5b4fc);}
-.atable-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border);box-shadow:var(--sh);}
-.atable{width:100%;border-collapse:collapse;font-size:0.88em;}
-.atable thead tr{background:linear-gradient(135deg,var(--purple),var(--purple2));}
-.atable th{padding:14px 18px;text-align:left;font-weight:700;color:white;font-size:0.8em;text-transform:uppercase;letter-spacing:0.5px;}
-.atable tbody tr{border-bottom:1px solid var(--border);background:var(--bg2);transition:background 0.2s;}
-.atable tbody tr:hover{background:var(--pl2);}
-.atable tbody tr:last-child{border-bottom:none;}
-.atable td{padding:14px 18px;color:var(--text);vertical-align:middle;}
-.atable td:nth-child(3){color:var(--purple);font-weight:700;}
-.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.who-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.who-grid{grid-template-columns:1fr;}}
-.wcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;transition:all 0.25s;box-shadow:0 2px 8px rgba(102,126,234,0.05);}
-.wcard:hover{border-color:var(--purple);box-shadow:var(--sh);transform:translateY(-3px);}
-.wico{font-size:2.2em;margin-bottom:10px;display:block;}
-.wcard h3{font-size:0.9em;font-weight:700;color:var(--text);margin-bottom:6px;}
-.wcard p{font-size:0.79em;color:var(--text2);line-height:1.5;}
-.faq-list{display:flex;flex-direction:column;gap:10px;}
-.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.2s;}
-.faq-item.open{border-color:var(--purple);}
-.faq-q{width:100%;text-align:left;padding:18px 20px;background:transparent;border:none;color:var(--text);font-family:'Inter',sans-serif;font-size:0.91em;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;}
-.farr{width:26px;height:26px;border-radius:50%;background:var(--pl);color:var(--purple);display:flex;align-items:center;justify-content:center;font-size:0.74em;flex-shrink:0;transition:transform 0.3s;}
-.faq-item.open .farr{transform:rotate(180deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;padding:0 20px;font-size:0.87em;color:var(--text2);line-height:1.75;}
-.faq-item.open .faq-a{max-height:300px;padding:0 20px 18px;}
-.eng-box{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--sh);}
-.eng-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.ebtn{display:flex;align-items:center;gap:6px;padding:9px 20px;border-radius:30px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-family:'Inter',sans-serif;font-size:0.87em;font-weight:600;cursor:pointer;transition:all 0.25s;}
-.ebtn:hover,.ebtn.liked{border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.08);}
-.ebtn.disliked{border-color:var(--red);color:var(--red);background:rgba(239,68,68,0.08);}
-.srrow{display:flex;gap:5px;align-items:center;margin-left:auto;}
-.rstar{font-size:1.4em;cursor:pointer;transition:transform 0.2s;color:#d1d5db;}
-.rstar:hover,.rstar.on{color:var(--moon);transform:scale(1.15);}
-.cinput{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;padding:13px 16px;color:var(--text);font-family:'Inter',sans-serif;font-size:0.9em;outline:none;resize:vertical;min-height:85px;margin-bottom:10px;transition:border-color 0.2s;}
-.cinput:focus{border-color:var(--purple);}
-.csub{padding:10px 24px;background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:10px;color:white;font-family:'Inter',sans-serif;font-size:0.87em;font-weight:700;cursor:pointer;transition:all 0.25s;}
-.csub:hover{opacity:0.9;transform:translateY(-1px);}
-.clist{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
-.citem{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 18px;}
-.cmeta{font-size:0.74em;color:var(--text3);margin-bottom:5px;font-weight:600;}
-.ctxt{font-size:0.87em;color:var(--text);line-height:1.6;}
-.cta-banner{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:60px 20px;text-align:center;margin:60px 0;}
-.cta-banner h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:white;margin-bottom:12px;}
-.cta-banner p{color:rgba(255,255,255,0.8);font-size:1em;margin-bottom:25px;}
-.cta-btn{display:inline-block;padding:14px 36px;background:white;color:var(--purple);border-radius:30px;font-weight:800;font-size:0.95em;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 25px rgba(0,0,0,0.15);}
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,0,0,0.2);}
-.rel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-@media(max-width:768px){.rel-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.rel-grid{grid-template-columns:1fr;}}
-.relc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;text-decoration:none;transition:all 0.25s;display:block;box-shadow:0 2px 8px rgba(102,126,234,0.05);}
-.relc:hover{border-color:var(--purple);box-shadow:var(--sh);transform:translateY(-3px);}
-.relc .ri{font-size:2em;margin-bottom:8px;display:block;}
-.relc h4{font-size:0.84em;font-weight:700;color:var(--text);margin-bottom:4px;}
-.relc p{font-size:0.75em;color:var(--text3);}
-footer{background:linear-gradient(135deg,#1a1a2e,#0d0d1a);color:#ccc;padding:50px 20px 30px;margin-top:60px;border-top:3px solid var(--purple);}
-.fi{max-width:1100px;margin:0 auto;}
-.fgridf{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:30px;}
-@media(max-width:768px){.fgridf{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:480px){.fgridf{grid-template-columns:repeat(2,1fr);}}
-.ftool{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:9px 6px;text-align:center;text-decoration:none;font-size:0.73em;color:#aaa;font-weight:500;transition:all 0.2s;}
-.ftool:hover{color:#c084fc;border-color:var(--purple);}
-.fbot{text-align:center;border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;font-size:0.82em;color:#777;}
-.fbot a{color:#667eea;text-decoration:none;font-weight:600;}
-/* MODALS */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
-.modal-overlay.show{display:flex;animation:fadeIn 0.3s ease;}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.mbox{background:white;border-radius:24px;padding:32px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideUp 0.3s ease;}
-@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.mbox h3{font-size:1.1em;font-weight:800;color:var(--text);margin-bottom:6px;}
-.mbox p{font-size:0.85em;color:var(--text2);margin-bottom:20px;line-height:1.6;}
-.mtime{font-size:2.4em;font-weight:800;color:var(--purple);text-align:center;margin:16px 0;background:var(--pl);border-radius:14px;padding:16px;}
-.macts{display:flex;gap:10px;}
-.mbtn{flex:1;padding:12px;border-radius:12px;border:none;font-family:'Inter',sans-serif;font-size:0.9em;font-weight:700;cursor:pointer;transition:all 0.2s;}
-.mbtn.p{background:linear-gradient(135deg,var(--purple),var(--purple2));color:white;}
-.mbtn.s{background:var(--bg3);color:var(--text2);border:1.5px solid var(--border);}
-.mbtn:hover{opacity:0.88;}
-.ring-overlay{display:none;position:fixed;inset:0;background:linear-gradient(135deg,rgba(102,126,234,0.97),rgba(118,75,162,0.97));z-index:99999;align-items:center;justify-content:center;flex-direction:column;text-align:center;}
-.ring-overlay.show{display:flex;animation:fadeIn 0.3s ease;}
-.rmoon{font-size:5em;animation:pulse 1s ease infinite;}
-@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
-.ring-overlay h2{font-size:1.8em;font-weight:800;color:white;margin:16px 0 8px;}
-.ring-overlay p{color:rgba(255,255,255,0.8);font-size:1em;margin-bottom:24px;}
-.stop-btn{padding:16px 40px;background:white;color:var(--purple);border:none;border-radius:30px;font-size:1em;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,0.2);transition:all 0.2s;}
-.stop-btn:hover{transform:translateY(-2px);}
-.nbar{display:none;position:fixed;bottom:20px;right:20px;background:var(--text);color:white;padding:14px 20px;border-radius:14px;font-size:0.87em;font-weight:600;box-shadow:0 8px 25px rgba(0,0,0,0.2);z-index:9000;max-width:300px;}
-.nbar.show{display:flex;align-items:center;gap:12px;animation:slideIn 0.4s ease;}
-@keyframes slideIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-/* ARTICLE */
-.art-wrap{max-width:820px;margin:0 auto 60px;padding:0 20px;}
-.art-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:var(--sh);}
-.art-box h2{font-family:'DM Serif Display',serif;font-size:1.45rem;color:var(--text);margin:28px 0 12px;line-height:1.35;}
-.art-box h2:first-child{margin-top:0;}
-.art-box h3{font-size:1.03rem;font-weight:700;color:var(--purple);margin:20px 0 9px;}
-.art-box p{font-size:0.9em;color:var(--text2);line-height:1.82;margin-bottom:13px;}
-.art-box strong{color:var(--text);}
-.art-box ul,.art-box ol{padding-left:20px;margin-bottom:13px;}
-.art-box li{font-size:0.9em;color:var(--text2);line-height:1.82;margin-bottom:4px;}
-@media(max-width:768px){.wbody{padding:18px;}.wheel{width:70px;}.wi{width:70px;}.art-box{padding:20px;}}
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
-
-<header>
-  <nav>
-    <a href="index.html" class="logo">🛠️ Toolyfi</a>
-    <div class="hlinks">
-      <a href="index.html#tools">Tools</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-badge">🌙 Science-Based Sleep Tool</div>
-  <h1>Wake Up <em>Refreshed</em><br>Every Morning</h1>
-  <p class="hero-sub">Calculate your perfect bedtime or wake-up time using 90-minute sleep cycles — with alarm reminders, nap calculator, sleep debt tracker and more.</p>
-  <div class="hero-stats">
-    <div class="hstat"><strong>372K+</strong><span>Monthly Searches</span></div>
-    <div class="hstat"><strong>90 min</strong><span>Cycle Science</span></div>
-    <div class="hstat"><strong>6 Tools</strong><span>In One Page</span></div>
-    <div class="hstat"><strong>Free</strong><span>No Signup</span></div>
-  </div>
-</section>
-
-<div class="star-row">
-  <span class="stars">★★★★★</span>
-  <strong>4.9/5</strong> — Rated by 2,341 users &nbsp;|&nbsp; 🔔 Alarm included &nbsp;|&nbsp; ✅ No login needed
-</div>
-
-<div class="widget-wrap">
-  <div class="widget-card">
-    <div class="mode-tabs">
-      <button class="mode-tab active" id="tab-bedtime" onclick="setMode('bedtime')">🛏️ Find Bedtime</button>
-      <button class="mode-tab" id="tab-wakeup" onclick="setMode('wakeup')">⏰ Find Wake-Up</button>
-      <button class="mode-tab" id="tab-now" onclick="setMode('now')">😴 Sleep Right Now</button>
-    </div>
-    <div class="wbody">
-      <div id="picker-section">
-        <p style="text-align:center;font-size:0.8em;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="picker-label">I want to wake up at:</p>
-        <div class="tpick">
-          <div class="wcol">
-            <div class="wlbl">Hour</div>
-            <div class="wheel" id="wh-hour"><div class="wheel-hl"></div><div class="wheel-items" id="wi-hour"></div></div>
-          </div>
-          <div class="wsep">:</div>
-          <div class="wcol">
-            <div class="wlbl">Min</div>
-            <div class="wheel" id="wh-min"><div class="wheel-hl"></div><div class="wheel-items" id="wi-min"></div></div>
-          </div>
-          <div class="wampm">
-            <button class="abtn active" id="btn-am" onclick="setAP('AM')">AM</button>
-            <button class="abtn" id="btn-pm" onclick="setAP('PM')">PM</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sleep Calculator: Plan Bedtime & Wake Time | Toolyfi</title>
+    <meta
+      name="description"
+      content="Plan a bedtime or wake time with an adjustable sleep-duration target and fall-asleep buffer. A browser-side sleep schedule planner with transparent limits."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://toolyfi.com/sleep-calculator.html" />
+    <meta property="og:title" content="Sleep Calculator: Plan Bedtime & Wake Time | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Plan bedtime or wake time using transparent sleep-duration targets in your browser."
+    />
+    <meta property="og:url" content="https://toolyfi.com/sleep-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-sleep-calculator-hero.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#172437" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Toolyfi Sleep Calculator",
+            "url": "https://toolyfi.com/sleep-calculator.html",
+            "description": "A browser-side sleep schedule planning calculator for bedtime and wake-time arithmetic with adjustable duration and fall-asleep buffer.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "Any",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toolyfi.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculators",
+                "item": "https://toolyfi.com/#directory"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Sleep Calculator",
+                "item": "https://toolyfi.com/sleep-calculator.html"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does this sleep calculator calculate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It performs schedule arithmetic: it works forward from a chosen in-bed time or backward from a chosen wake time using the duration and fall-asleep buffer you select."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this calculator measure sleep cycles?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. An optional 90-minute planning-block label is only an approximation. Browser time inputs cannot measure a person's sleep stages."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is this medical advice?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. This page is a general schedule-planning tool and does not diagnose or treat sleep conditions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is there a fall-asleep buffer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A buffer separates the time you get into bed from the estimated start of the selected sleep-duration window."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Toolyfi save my sleep times?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No account is required. The calculator runs in the browser for the current page session."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: ivory paper, ink navy, coral; UI motion only, hero source image static. */
+      :root {
+        --ink: #172437;
+        --ink-soft: #536172;
+        --paper: #faf8f4;
+        --paper-deep: #f1ede5;
+        --white: #fffefa;
+        --mist: #e9eef0;
+        --line: #d8d4cb;
+        --coral: #ef6c54;
+        --coral-deep: #b84c3d;
+        --mint: #cfe8df;
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .wrap {
+        width: min(100% - 56px, 1180px);
+        margin: 0 auto;
+      }
+      .breadcrumbs {
+        padding: 86px 0 0;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+      }
+      .breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.04fr 0.96fr;
+        gap: clamp(30px, 6vw, 88px);
+        align-items: center;
+        padding: 30px 0 62px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        gap: 9px;
+        align-items: center;
+        color: var(--coral-deep);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 28px;
+        height: 2px;
+        background: var(--coral);
+        content: "";
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        line-height: 0.98;
+      }
+      h1 {
+        max-width: 690px;
+        margin: 18px 0;
+        font-size: clamp(3.25rem, 6vw, 5.6rem);
+        letter-spacing: -0.07em;
+      }
+      h1 em,
+      h2 em {
+        color: var(--coral);
+        font-style: italic;
+      }
+      .hero-copy {
+        max-width: 590px;
+        color: var(--ink-soft);
+        font-size: 1.02rem;
+        line-height: 1.8;
+      }
+      .hero-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 26px;
+      }
+      .hero-facts span {
+        border: 1px solid var(--line);
+        background: rgba(255, 254, 250, 0.6);
+        padding: 7px 10px;
+        color: var(--ink-soft);
+        font-size: 0.73rem;
+        font-weight: 800;
+      }
+      .hero-copy-sequence.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-copy-sequence > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 520ms var(--ease-out),
+          transform 520ms var(--ease-out);
+      }
+      .hero-copy-sequence.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hero-copy-sequence > :nth-child(1) {
+        transition-delay: 30ms;
+      }
+      .hero-copy-sequence > :nth-child(2) {
+        transition-delay: 95ms;
+      }
+      .hero-copy-sequence > :nth-child(3) {
+        transition-delay: 160ms;
+      }
+      .hero-copy-sequence > :nth-child(4) {
+        transition-delay: 225ms;
+      }
+      .hero-visual {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: var(--paper-deep);
+        box-shadow: 18px 18px 0 var(--coral);
+      }
+      .hero-visual > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 70% center;
+      }
+      .hero-visual::after {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        width: 84px;
+        height: 84px;
+        border: 1px solid rgba(23, 36, 55, 0.24);
+        border-radius: 50%;
+        content: "";
+      }
+      .hero-brand-overlay {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        z-index: 2;
+        display: inline-flex;
+        width: fit-content;
+        max-width: calc(100% - 36px);
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(23, 36, 55, 0.14);
+        background: rgba(255, 254, 250, 0.93);
+        padding: 9px 12px 9px 9px;
+        box-shadow: 4px 4px 0 rgba(23, 36, 55, 0.16);
+        color: var(--ink);
+        font-family: Fraunces, serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+      }
+      .hero-brand-overlay img {
+        display: block;
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+      .scope-strip {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--white);
+      }
+      .scope-inner {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        padding: 18px 0;
+        align-items: start;
+      }
+      .scope-mark {
+        display: grid;
+        width: 31px;
+        height: 31px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--coral);
+        color: white;
+        font-weight: 800;
+      }
+      .scope-inner strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 0.85rem;
+      }
+      .scope-inner p {
+        margin: 0;
+        max-width: 930px;
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+      .tool-zone {
+        padding: 76px 0;
+        background: var(--ink);
+      }
+      .tool-heading {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 54px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+      .tool-heading .eyebrow {
+        color: #f7aa9a;
+      }
+      .tool-heading h2 {
+        margin: 14px 0 0;
+        color: var(--white);
+        font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+        letter-spacing: -0.06em;
+      }
+      .tool-heading p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.96rem;
+        line-height: 1.7;
+      }
+      .tool-heading.motion-sequence.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .tool-heading.motion-sequence > * {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 520ms var(--ease-out),
+          transform 520ms var(--ease-out);
+      }
+      .tool-heading.motion-sequence.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .tool-heading.motion-sequence > :first-child {
+        transition-delay: 40ms;
+      }
+      .tool-heading.motion-sequence > :last-child {
+        transition-delay: 110ms;
+      }
+      .calculator-shell {
+        display: grid;
+        grid-template-columns: minmax(310px, 0.95fr) minmax(360px, 1.05fr);
+        background: var(--white);
+        box-shadow: 12px 12px 0 var(--coral);
+      }
+      .workspace-entrance.reveal {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+        transition:
+          opacity 560ms var(--ease-out),
+          transform 560ms var(--ease-out);
+      }
+      .workspace-entrance.reveal.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .input-panel,
+      .result-panel {
+        padding: clamp(26px, 4vw, 48px);
+      }
+      .input-panel {
+        border-right: 1px solid var(--line);
+      }
+      .panel-kicker,
+      .result-label {
+        margin: 0 0 8px;
+        color: var(--ink-soft);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .input-panel h3,
+      .result-panel h3 {
+        margin: 0;
+        font-size: 2rem;
+        letter-spacing: -0.045em;
+      }
+      .mode-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        margin: 27px 0 22px;
+        padding: 5px;
+        background: var(--paper-deep);
+      }
+      .mode-tab,
+      .duration-chip,
+      .age-chip {
+        border: 0;
+        background: transparent;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        transition:
+          color 180ms var(--ease-out),
+          background 180ms var(--ease-out),
+          transform 160ms var(--ease-out),
+          box-shadow 180ms var(--ease-out);
+      }
+      .mode-tab {
+        padding: 11px 10px;
+      }
+      .mode-tab.active {
+        background: var(--white);
+        color: var(--ink);
+        box-shadow: 0 2px 8px rgba(23, 36, 55, 0.1);
+      }
+      .field-group {
+        margin-top: 18px;
+      }
+      .field-group label,
+      .group-label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--ink-soft);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .field-group input,
+      .field-group select {
+        width: 100%;
+        min-height: 50px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--paper);
+        padding: 11px 12px;
+        color: var(--ink);
+        font-weight: 700;
+        outline: none;
+        transition:
+          border-color 180ms var(--ease-out),
+          box-shadow 180ms var(--ease-out),
+          background 180ms var(--ease-out);
+      }
+      .field-group input:focus,
+      .field-group select:focus {
+        border-color: var(--coral);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.17);
+      }
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .age-chip,
+      .duration-chip {
+        border: 1px solid var(--line);
+        padding: 9px 10px;
+      }
+      .age-chip.active,
+      .duration-chip.active {
+        border-color: var(--coral);
+        background: #fff0eb;
+        color: var(--coral-deep);
+        box-shadow: 0 2px 0 rgba(184, 76, 61, 0.12);
+      }
+      .helper-note {
+        margin: 12px 0 0;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        line-height: 1.6;
+      }
+      .button-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .primary-button,
+      .secondary-button,
+      .copy-button {
+        border: 0;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition:
+          transform 160ms var(--ease-out),
+          background 180ms var(--ease-out),
+          box-shadow 180ms var(--ease-out),
+          color 180ms var(--ease-out);
+      }
+      .primary-button {
+        flex: 1;
+        background: var(--coral);
+        padding: 15px 18px;
+        color: var(--white);
+      }
+      .primary-button:hover {
+        background: var(--coral-deep);
+        box-shadow: 0 7px 0 rgba(110, 31, 20, 0.22);
+        transform: translateY(-2px);
+      }
+      .secondary-button {
+        background: var(--paper-deep);
+        padding: 15px;
+        color: var(--ink);
+      }
+      .secondary-button:hover,
+      .copy-button:hover {
+        background: var(--mist);
+      }
+      .mode-tab:active,
+      .age-chip:active,
+      .duration-chip:active,
+      .primary-button:active,
+      .secondary-button:active,
+      .copy-button:active {
+        transform: scale(0.97);
+      }
+      .result-panel {
+        position: relative;
+        min-height: 540px;
+        background: var(--mist);
+      }
+      .result-panel::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        background: var(--coral);
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+        content: "";
+      }
+      .result-time {
+        margin: 26px 0 8px;
+        color: var(--ink);
+        font-family: Fraunces, serif;
+        font-size: clamp(4rem, 7vw, 6.2rem);
+        font-weight: 700;
+        letter-spacing: -0.08em;
+        line-height: 0.84;
+      }
+      .result-title {
+        margin: 0 0 18px;
+        color: var(--coral-deep);
+        font-size: 0.96rem;
+        font-weight: 800;
+      }
+      .result-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        background: rgba(23, 36, 55, 0.16);
+      }
+      .result-item {
+        min-height: 85px;
+        background: rgba(255, 254, 250, 0.62);
+        padding: 14px;
+      }
+      .result-item span {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--ink-soft);
+        font-size: 0.61rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .result-item strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.98rem;
+        line-height: 1.35;
+      }
+      .result-note {
+        margin: 16px 0;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        line-height: 1.6;
+      }
+      .copy-button {
+        width: 100%;
+        border: 1px solid var(--ink);
+        background: transparent;
+        padding: 12px;
+        color: var(--ink);
+      }
+      .result-panel.updated .result-time,
+      .result-panel.updated .result-title,
+      .result-panel.updated .result-grid,
+      .result-panel.updated .result-note {
+        animation: result-pop 420ms var(--ease-out) both;
+      }
+      .result-panel.updated .result-title {
+        animation-delay: 55ms;
+      }
+      .result-panel.updated .result-grid {
+        animation-delay: 105ms;
+      }
+      .result-panel.updated .result-note {
+        animation-delay: 155ms;
+      }
+      @keyframes result-pop {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.975);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .how-section,
+      .faq-section {
+        padding: 86px 0;
+      }
+      .section-grid,
+      .faq-head {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: clamp(32px, 7vw, 104px);
+      }
+      .section-grid h2,
+      .guide-head h2,
+      .faq-head h2 {
+        margin: 15px 0 0;
+        font-size: clamp(2.5rem, 4.7vw, 4.5rem);
+        letter-spacing: -0.06em;
+      }
+      .section-grid > div > p,
+      .guide-head > p,
+      .faq-head > p {
+        color: var(--ink-soft);
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      .method-list {
+        border-top: 2px solid var(--ink);
+      }
+      .method-item {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 15px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .method-number {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--white);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .method-item h3 {
+        margin: 0 0 5px;
+        font-size: 1.16rem;
+        letter-spacing: -0.035em;
+      }
+      .method-item p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 0.84rem;
+        line-height: 1.65;
+      }
+      .section-grid.visible .method-item {
+        animation: item-rise 460ms var(--ease-out) both;
+      }
+      .section-grid.visible .method-item:nth-child(1) {
+        animation-delay: 70ms;
+      }
+      .section-grid.visible .method-item:nth-child(2) {
+        animation-delay: 130ms;
+      }
+      .section-grid.visible .method-item:nth-child(3) {
+        animation-delay: 190ms;
+      }
+      .section-grid.visible .method-item:nth-child(4) {
+        animation-delay: 250ms;
+      }
+      .guide {
+        padding: 90px 0;
+        background: var(--paper-deep);
+      }
+      .guide-head {
+        max-width: 760px;
+        margin-bottom: 48px;
+      }
+      .guide article {
+        columns: 2 310px;
+        column-gap: 58px;
+      }
+      .guide h3 {
+        break-after: avoid;
+        margin: 30px 0 12px;
+        font-size: 1.35rem;
+        letter-spacing: -0.04em;
+      }
+      .guide h3:first-child {
+        margin-top: 0;
+      }
+      .guide p,
+      .guide li {
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+        line-height: 1.82;
+      }
+      .guide p {
+        margin: 0 0 16px;
+      }
+      .guide ul {
+        margin: 0 0 17px;
+        padding-left: 20px;
+      }
+      .guide li {
+        margin-bottom: 6px;
+      }
+      .guide .formula,
+      .source-card {
+        break-inside: avoid;
+        margin: 20px 0;
+        border: 1px solid var(--line);
+        background: var(--white);
+        padding: 16px;
+        color: var(--ink);
+      }
+      .guide .formula {
+        font-family: Fraunces, serif;
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+      }
+      .guide a {
+        color: var(--coral-deep);
+        font-weight: 800;
+      }
+      .faq-head {
+        align-items: end;
+        margin-bottom: 34px;
+      }
+      .faq-head > p {
+        margin: 0;
+      }
+      .faq-list {
+        border-top: 1px solid var(--ink);
+      }
+      details {
+        border-bottom: 1px solid var(--line);
+      }
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 20px 0;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 800;
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::after {
+        color: var(--coral);
+        content: "+";
+        font-size: 1.5rem;
+        font-weight: 400;
+        transition: transform 180ms var(--ease-out);
+      }
+      details[open] summary::after {
+        transform: rotate(45deg);
+      }
+      details p {
+        max-width: 840px;
+        margin: 0 0 20px;
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+      details[open] p {
+        animation: faq-answer-in 260ms var(--ease-out) both;
+      }
+      .related-tools {
+        padding: 70px 0;
+        background: var(--ink);
+      }
+      .related-tools h2 {
+        margin: 0 0 24px;
+        color: var(--white);
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        letter-spacing: -0.055em;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related-grid a {
+        min-height: 116px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 16px;
+        color: var(--white);
+        text-decoration: none;
+        transition:
+          transform 180ms var(--ease-out),
+          background 180ms var(--ease-out);
+      }
+      .related-grid a:hover {
+        background: rgba(255, 255, 255, 0.09);
+        transform: translateY(-4px);
+      }
+      .related-grid span {
+        display: block;
+        margin-bottom: 21px;
+        color: #f7aa9a;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .related-grid strong {
+        display: block;
+        font-family: Fraunces, serif;
+        font-size: 1.25rem;
+        letter-spacing: -0.035em;
+        line-height: 1;
+      }
+      .related-tools .wrap.visible .related-grid a {
+        animation: card-rise 440ms var(--ease-out) both;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(1) {
+        animation-delay: 60ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(2) {
+        animation-delay: 120ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(3) {
+        animation-delay: 180ms;
+      }
+      .related-tools .wrap.visible .related-grid a:nth-child(4) {
+        animation-delay: 240ms;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 650ms var(--ease-out),
+          transform 650ms var(--ease-out);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @keyframes item-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes faq-answer-in {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes card-rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal,
+        .hero-copy-sequence > *,
+        .tool-heading.motion-sequence > * {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+      @media (max-width: 1100px) {
+        .hero,
+        .calculator-shell,
+        .section-grid,
+        .faq-head,
+        .tool-heading {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          gap: 26px;
+          padding: 24px 0 40px;
+        }
+        .hero-visual {
+          box-shadow: 12px 12px 0 var(--coral);
+        }
+        .input-panel {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .guide article {
+          columns: auto;
+        }
+        .related-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 540px) {
+        .wrap {
+          width: min(100% - 28px, 1180px);
+        }
+        .breadcrumbs {
+          padding-top: 72px;
+        }
+        h1 {
+          font-size: clamp(2.85rem, 16vw, 4.2rem);
+        }
+        .hero {
+          gap: 20px;
+          padding: 14px 0 30px;
+        }
+        .hero-visual {
+          aspect-ratio: 4 / 3;
+          box-shadow: 8px 8px 0 var(--coral);
+        }
+        .hero-visual > img {
+          object-position: 72% center;
+        }
+        .hero-visual::after {
+          right: 10px;
+          bottom: 10px;
+          width: 50px;
+          height: 50px;
+        }
+        .hero-brand-overlay {
+          right: 10px;
+          bottom: 10px;
+          gap: 6px;
+          padding: 6px 8px 6px 6px;
+          box-shadow: 2px 2px 0 rgba(23, 36, 55, 0.16);
+          font-size: 0.9rem;
+        }
+        .hero-brand-overlay img {
+          width: 26px;
+          height: 26px;
+        }
+        .button-row {
+          flex-direction: column;
+        }
+        .result-grid {
+          grid-template-columns: 1fr;
+        }
+        .tool-zone,
+        .how-section,
+        .guide,
+        .faq-section,
+        .related-tools {
+          padding: 58px 0;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+  </head>
+  <body>
+    <main>
+      <div class="wrap breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Sleep
+        Calculator
+      </div>
+      <section class="hero wrap">
+        <div class="hero-copy-sequence reveal">
+          <p class="eyebrow">Sleep schedule planning</p>
+          <h1>Plan the <em>clock.</em> Keep the limits clear.</h1>
+          <p class="hero-copy">
+            Work backward from a wake time or forward from an in-bed time. Choose a duration target
+            and fall-asleep buffer, then keep a transparent plan in your browser.
+          </p>
+          <div class="hero-facts" aria-label="Sleep calculator capabilities">
+            <span>Adult schedule planning</span><span>Duration + buffer</span
+            ><span>Browser-local math</span>
           </div>
         </div>
-      </div>
-      <div id="now-msg" style="display:none;text-align:center;padding:20px 0;">
-        <div style="font-size:3em;margin-bottom:10px;">😴</div>
-        <p style="font-size:0.95em;color:var(--text2);line-height:1.6;">Using <strong id="now-time" style="color:var(--purple);"></strong> as your sleep start — calculating best wake-up times.</p>
-      </div>
-      <div style="margin-bottom:18px;">
-        <p style="font-size:0.78em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:10px;">Age Group:</p>
-        <div class="age-row">
-          <button class="age-chip" onclick="setAge('child',this)">🧒 Child</button>
-          <button class="age-chip" onclick="setAge('teen',this)">🧑 Teen</button>
-          <button class="age-chip active" onclick="setAge('adult',this)">👤 Adult</button>
-          <button class="age-chip" onclick="setAge('senior',this)">👴 Senior</button>
+        <figure
+          class="hero-visual"
+          aria-label="Editorial bedroom visual with alarm clock and bedside planning objects"
+        >
+          <img
+            src="images/toolyfi-sleep-calculator-hero.webp"
+            alt="Calm bedroom with white linen, an alarm clock, a cup, a calendar, and a coral bedside vase"
+            width="1376"
+            height="768"
+            fetchpriority="high"
+          />
+          <div class="hero-brand-overlay" aria-label="Toolyfi">
+            <img src="images/toolyfi-header-emblem.png" alt="" width="256" height="256" /><span
+              >Toolyfi</span
+            >
+          </div>
+        </figure>
+      </section>
+      <section class="scope-strip">
+        <div class="scope-inner wrap">
+          <div class="scope-mark" aria-hidden="true">i</div>
+          <div>
+            <strong>A schedule guide, not sleep measurement</strong>
+            <p>
+              This calculator plans clock times from the choices you make. It does not measure sleep
+              stages, diagnose insomnia or sleep apnea, predict how rested you will feel, or replace
+              professional care.
+            </p>
+          </div>
         </div>
-      </div>
-      <button class="calc-btn" onclick="calculate()">🌙 Calculate My Sleep Times</button>
-      <div class="results-section" id="results">
-        <div class="rlbl" id="rlbl">Choose your ideal time:</div>
-        <div class="rgrid" id="rgrid"></div>
-        <div class="alarm-row" id="alarm-row">
-          <span class="ar-text">🔔 Set a reminder for your chosen time</span>
-          <button class="ar-btn" onclick="openAlarmModal()">Set Alarm</button>
+      </section>
+      <section class="tool-zone">
+        <div class="wrap">
+          <div class="tool-heading motion-sequence reveal">
+            <div>
+              <p class="eyebrow">Transparent planning</p>
+              <h2>Choose the time.<br />See the <em>arithmetic.</em></h2>
+            </div>
+            <p>
+              Many sleep calculators present a “perfect” time without showing their assumptions.
+              Toolyfi separates time in bed, an optional fall-asleep buffer, and your selected
+              duration target so you can inspect the plan before using it.
+            </p>
+          </div>
+          <div class="calculator-shell workspace-entrance reveal">
+            <section class="input-panel" aria-labelledby="planner-heading">
+              <p class="panel-kicker">Your schedule</p>
+              <h3 id="planner-heading">Start with one time.</h3>
+              <div class="mode-tabs" role="tablist" aria-label="Sleep planning direction">
+                <button
+                  class="mode-tab active"
+                  id="wake-mode"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  Wake time → in-bed time</button
+                ><button
+                  class="mode-tab"
+                  id="bed-mode"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  In-bed time → wake time
+                </button>
+              </div>
+              <div class="field-group">
+                <label for="target-time" id="target-label">I need to wake at</label
+                ><input id="target-time" type="time" value="07:00" />
+              </div>
+              <div class="field-group">
+                <span class="group-label">Adult planning range</span>
+                <div class="chip-row" role="group" aria-label="Adult age band">
+                  <button class="age-chip active" type="button" data-age="18-60">18–60</button
+                  ><button class="age-chip" type="button" data-age="61-64">61–64</button
+                  ><button class="age-chip" type="button" data-age="65-plus">65+</button>
+                </div>
+                <p class="helper-note" id="age-note">
+                  Public guidance for adults 18–60 says 7 or more hours. Pick a duration target that
+                  fits your schedule and needs.
+                </p>
+              </div>
+              <div class="field-group">
+                <span class="group-label">Sleep-duration target</span>
+                <div class="chip-row" role="group" aria-label="Sleep duration">
+                  <button class="duration-chip" type="button" data-minutes="420">7 h</button
+                  ><button class="duration-chip" type="button" data-minutes="450">7 h 30</button
+                  ><button class="duration-chip active" type="button" data-minutes="480">8 h</button
+                  ><button class="duration-chip" type="button" data-minutes="510">8 h 30</button
+                  ><button class="duration-chip" type="button" data-minutes="540">9 h</button>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="buffer">Fall-asleep buffer</label
+                ><select id="buffer">
+                  <option value="0">No buffer</option>
+                  <option value="15" selected>15 minutes</option>
+                  <option value="30">30 minutes</option>
+                  <option value="45">45 minutes</option>
+                </select>
+                <p class="helper-note">
+                  This is an optional planning allowance between getting into bed and the chosen
+                  sleep-duration window. It is not a measurement of your sleep onset.
+                </p>
+              </div>
+              <div class="button-row">
+                <button class="primary-button" id="calculate-button" type="button">
+                  Calculate plan</button
+                ><button class="secondary-button" id="reset-button" type="button">
+                  Reset example
+                </button>
+              </div>
+            </section>
+            <section class="result-panel" aria-live="polite" aria-labelledby="result-heading">
+              <p class="result-label">Your schedule plan</p>
+              <h3 id="result-heading">A visible assumption.</h3>
+              <div class="result-time" id="result-time">10:45 PM</div>
+              <p class="result-title" id="result-title">Aim to get into bed by this time</p>
+              <div class="result-grid">
+                <div class="result-item">
+                  <span id="target-name">Wake time</span><strong id="target-output">7:00 AM</strong>
+                </div>
+                <div class="result-item">
+                  <span>Planned duration</span><strong id="duration-output">8 hours</strong>
+                </div>
+                <div class="result-item">
+                  <span>Fall-asleep buffer</span><strong id="buffer-output">15 minutes</strong>
+                </div>
+                <div class="result-item">
+                  <span>Approx. 90-min blocks</span
+                  ><strong id="cycle-output">About 5.3 blocks</strong>
+                </div>
+              </div>
+              <p class="result-note" id="result-note">
+                The planning-block label is simple duration arithmetic, not a prediction of your
+                REM, deep sleep, or wakefulness. Sleep timing and stages vary from person to person
+                and from night to night.
+              </p>
+              <button class="copy-button" id="copy-button" type="button">
+                Copy transparent plan
+              </button>
+            </section>
+          </div>
         </div>
-        <div class="pro-tip" id="pro-tip"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SUB TOOLS -->
-<div class="sub-sec">
-  <div class="scard">
-    <div class="scard-ico">💤</div>
-    <h3>Nap Calculator</h3>
-    <p>Power nap (20 min) or full cycle (90 min) — never wake groggy again.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Nap start time:</label>
-    <input type="time" class="sinput" id="nap-t" value="14:00">
-    <button class="sbtn" onclick="calcNap()">Calculate Nap Times</button>
-    <div class="sres" id="nap-r"></div>
-  </div>
-  <div class="scard">
-    <div class="scard-ico">📊</div>
-    <h3>Sleep Debt Calculator</h3>
-    <p>See your weekly deficit and how many nights to fully recover.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Avg sleep per night (hrs):</label>
-    <input type="number" class="sinput" id="debt-v" placeholder="e.g. 6.5" min="1" max="12" step="0.5">
-    <button class="sbtn" onclick="calcDebt()">Check Sleep Debt</button>
-    <div class="sres" id="debt-r"></div>
-  </div>
-  <div class="scard">
-    <div class="scard-ico">🦉</div>
-    <h3>Chronotype Finder</h3>
-    <p>Are you a morning lark or night owl? Discover your biological sleep type.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Natural wake-up (no alarm):</label>
-    <input type="time" class="sinput" id="chrono-t" value="07:00">
-    <button class="sbtn" onclick="calcChrono()">Find My Chronotype</button>
-    <div class="sres" id="chrono-r"></div>
-  </div>
-  <div class="scard">
-    <div class="scard-ico">☕</div>
-    <h3>Caffeine Cutoff</h3>
-    <p>Last safe time to drink coffee based on your bedtime and caffeine half-life.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Your bedtime:</label>
-    <input type="time" class="sinput" id="caf-t" value="23:00">
-    <button class="sbtn" onclick="calcCaf()">Find Cutoff Time</button>
-    <div class="sres" id="caf-r"></div>
-  </div>
-  <div class="scard">
-    <div class="scard-ico">🔔</div>
-    <h3>Bedtime Reminder</h3>
-    <p>Set a browser notification + beep when it's time to start winding down.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Remind me at:</label>
-    <input type="time" class="sinput" id="rem-t" value="22:30">
-    <button class="sbtn" onclick="setReminder()">Set Reminder</button>
-    <div class="sres" id="rem-r"></div>
-  </div>
-  <div class="scard">
-    <div class="scard-ico">📈</div>
-    <h3>Sleep Quality Score</h3>
-    <p>Rate last night's sleep and get your score with improvement tips.</p>
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Hours slept:</label>
-    <input type="number" class="sinput" id="q-hrs" placeholder="e.g. 7" min="1" max="12" step="0.5">
-    <label style="font-size:0.76em;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px;">Times woken up:</label>
-    <input type="number" class="sinput" id="q-wakes" placeholder="e.g. 2" min="0" max="20">
-    <button class="sbtn" onclick="calcQ()">Get Sleep Score</button>
-    <div class="sres" id="q-r"></div>
-  </div>
-</div>
-
-<!-- MORE THAN JUST -->
-<section class="sec">
-  <div class="sbadge">⭐ Why Toolyfi Sleep Calculator</div>
-  <h2 class="stitle">More Than Just a Sleep Calculator</h2>
-  <p class="ssub">9 science-backed features in one tool — sleep timing, nap science, debt tracking, chronotype detection, caffeine cutoff, bedtime reminders, alarm beep tones and sleep quality scoring.</p>
-  <div class="fgrid">
-    <div class="fcard"><div class="fico">🔄</div><h3>90-Min Cycle Science</h3><p>Wake between cycles, not in deep sleep. Every result is based on peer-reviewed sleep research, not guesswork.</p></div>
-    <div class="fcard"><div class="fico">⏱️</div><h3>14-Min Onset Included</h3><p>We factor in the average 14 minutes to fall asleep — unlike basic calculators that ignore this, making results inaccurate.</p></div>
-    <div class="fcard"><div class="fico">🎡</div><h3>Scroll Wheel Time Picker</h3><p>Smooth, intuitive scroll wheel time input — just like a native phone app. Works with touch, mouse, and keyboard scroll.</p></div>
-    <div class="fcard"><div class="fico">👶</div><h3>Age-Based Personalization</h3><p>Children, teens, adults, seniors — each age group has different sleep cycle needs. Results update automatically.</p></div>
-    <div class="fcard"><div class="fico">🔔</div><h3>Alarm with Beep Tone</h3><p>Set a browser-based alarm for any chosen sleep or wake time. A real beep tone plays at the exact time — no app needed.</p></div>
-    <div class="fcard"><div class="fico">🦉</div><h3>Chronotype Detector</h3><p>Discover your biological sleep type — extreme lark, morning bird, intermediate, night owl, or extreme night owl.</p></div>
-    <div class="fcard"><div class="fico">☕</div><h3>Caffeine Cutoff Calculator</h3><p>Caffeine half-life is 5–7 hours. We calculate the latest safe time to drink coffee so it does not impact your sleep quality.</p></div>
-    <div class="fcard"><div class="fico">💤</div><h3>Smart Nap Calculator</h3><p>Exact wake times for 20-minute power naps and 90-minute recovery naps. Avoid the groggy 20–80 minute danger zone.</p></div>
-    <div class="fcard"><div class="fico">📈</div><h3>Sleep Quality Score</h3><p>Score last night's sleep out of 100 based on duration and nighttime wakeups, with actionable CBT-I based improvement tips.</p></div>
-  </div>
-</section>
-
-<!-- SLEEP STAGES -->
-<section class="sec">
-  <div class="sbadge">🧠 Sleep Science</div>
-  <h2 class="stitle">The 4 Stages of Every Sleep Cycle</h2>
-  <p class="ssub">Each 90-minute cycle moves through these stages. Our calculator times your wake-up to land after Stage 4 — never in Stage 3 deep sleep.</p>
-  <div class="stages">
-    <div class="stagec"><div class="snum">1</div><h4>N1 — Light Sleep</h4><p>Transition stage. Lasts 1–7 min. Easy to wake from. The ideal exit point — zero grogginess.</p><div class="sbar" style="width:20%;"></div></div>
-    <div class="stagec"><div class="snum">2</div><h4>N2 — Core Sleep</h4><p>Heart rate slows, body temp drops. Makes up 50% of total sleep. Memory consolidation begins.</p><div class="sbar" style="width:50%;"></div></div>
-    <div class="stagec"><div class="snum">3</div><h4>N3 — Deep Sleep</h4><p>Most restorative. Growth hormone released. Waking here causes severe grogginess (sleep inertia).</p><div class="sbar" style="width:25%;"></div></div>
-    <div class="stagec"><div class="snum">4</div><h4>REM — Dream Sleep</h4><p>Dreaming, emotional processing, creative thinking. Our calculator targets waking here or at N1 after REM.</p><div class="sbar" style="width:25%;"></div></div>
-  </div>
-</section>
-
-<!-- AGE TABLE -->
-<section class="sec">
-  <div class="sbadge">📋 Sleep Guidelines</div>
-  <h2 class="stitle">How Much Sleep Do You Need by Age?</h2>
-  <p class="ssub">Based on National Sleep Foundation guidelines. The calculator adjusts automatically when you select your age group.</p>
-  <div class="atable-wrap">
-    <table class="atable">
-      <thead><tr><th>Age Group</th><th>Recommended Sleep</th><th>Ideal Cycles</th><th>Key Reason</th></tr></thead>
-      <tbody>
-        <tr><td>🧒 Children (6–12)</td><td>9–12 hours</td><td>6–8 cycles</td><td>Brain development and growth hormone release</td></tr>
-        <tr><td>🧑 Teens (13–17)</td><td>8–10 hours</td><td>5–7 cycles</td><td>Circadian rhythm naturally shifts later (biology, not laziness)</td></tr>
-        <tr><td>👤 Adults (18–64)</td><td>7–9 hours</td><td>5–6 cycles</td><td>6 complete cycles = peak cognitive and physical performance</td></tr>
-        <tr><td>👴 Seniors (65+)</td><td>7–8 hours</td><td>4–5 cycles</td><td>Deep sleep decreases with age; consistency matters most</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- WHO BENEFITS -->
-<section class="sec">
-  <div class="sbadge">👥 Who It's For</div>
-  <h2 class="stitle">Who Benefits From the Sleep Calculator?</h2>
-  <p class="ssub">Anyone who wants to stop waking up exhausted and start waking up genuinely energized.</p>
-  <div class="who-grid">
-    <div class="wcard"><span class="wico">💼</span><h3>Working Professionals</h3><p>Maximize mental clarity for demanding workdays without sacrificing precious sleep time.</p></div>
-    <div class="wcard"><span class="wico">🎓</span><h3>Students</h3><p>Sleep is when the brain consolidates memory. Time it right around exams and intense study sessions.</p></div>
-    <div class="wcard"><span class="wico">👶</span><h3>Parents</h3><p>Calculate ideal sleep windows for your children using age-specific science-based guidelines.</p></div>
-    <div class="wcard"><span class="wico">🏋️</span><h3>Athletes</h3><p>Muscle repair and hormone release happen during deep sleep. Never cut a recovery cycle short again.</p></div>
-    <div class="wcard"><span class="wico">🌙</span><h3>Night Owls</h3><p>Can't sleep early? Enter your realistic bedtime and find the wake-up time that works for your biology.</p></div>
-    <div class="wcard"><span class="wico">✈️</span><h3>Shift Workers and Travelers</h3><p>Irregular hours and jet lag wreck sleep cycles. Recalibrate every time your schedule changes.</p></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="sec">
-  <div class="sbadge">❓ Common Questions</div>
-  <h2 class="stitle">Frequently Asked Questions</h2>
-  <p class="ssub">Everything about sleep cycles, our calculator, and science-based sleep improvement.</p>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does the sleep cycle calculator work?<div class="farr">▼</div></button><div class="faq-a">Our calculator uses the formula: Bedtime equals Wake-up Time minus (N x 90 min) minus 14 min. The 90 minutes is one complete sleep cycle. The 14 minutes is average sleep onset latency. We calculate 4 to 5 different times representing different cycle counts so you always wake between cycles, not during deep sleep.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why do I feel groggy even after 8 hours of sleep?<div class="farr">▼</div></button><div class="faq-a">Grogginess — called sleep inertia — happens when you wake up during Stage 3 deep sleep instead of between cycles. 8 hours does not automatically align with a cycle end. Our calculator fixes this by timing your bedtime so your wake-up lands at the end of a complete cycle. The difference is immediate and noticeable.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long should a nap be for maximum benefit?<div class="farr">▼</div></button><div class="faq-a">There are exactly two ideal nap lengths. A 20-minute power nap stays in light sleep (N1 and N2) so you wake refreshed and alert. A 90-minute recovery nap completes one full cycle including REM. Never nap between 20 and 80 minutes — you will wake during deep sleep feeling worse than before you napped.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is a chronotype and why does it matter?<div class="farr">▼</div></button><div class="faq-a">A chronotype is your genetically determined preference for sleep timing. Morning larks feel alert early and tired early. Night owls are naturally alert late and feel terrible when forced to wake early. Fighting your chronotype leads to chronic sleep debt. Knowing yours helps you align demanding tasks, creative work, and exercise with your biological peak hours.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does caffeine affect sleep quality?<div class="farr">▼</div></button><div class="faq-a">Caffeine has an average half-life of 5 to 7 hours. It works by blocking adenosine receptors — the same receptors responsible for building sleep pressure. An afternoon coffee is still substantially active in your system at midnight. Our caffeine cutoff calculator uses an 8-hour window to ensure caffeine is below a disruptive level by your bedtime.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is sleep debt and how long does recovery take?<div class="farr">▼</div></button><div class="faq-a">Sleep debt is the cumulative gap between the sleep you need and what you get. Research shows that six hours per night for ten days impairs cognition as severely as 24 hours of total sleep deprivation. Full recovery from one week of moderate sleep debt takes approximately 3 to 4 days of complete sleep at your full required hours — not just one long weekend sleep-in.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does the alarm beep tone work in the browser?<div class="farr">▼</div></button><div class="faq-a">Yes. Our alarm uses the Web Audio API to generate a real beep tone directly in your browser — no app download, no signup. Set an alarm for any sleep or wake time, keep this tab open, and the beep will play at the exact time. For browser notification reminders, you need to allow notifications when prompted.</div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is 6 hours of sleep actually enough for adults?<div class="farr">▼</div></button><div class="faq-a">For 97 to 99 percent of adults, no. Only those with the rare ADRB1 genetic mutation function optimally on 6 hours. For everyone else, chronic 6-hour sleep is associated with measurable cognitive impairment, immune dysfunction, metabolic disruption, and increased mortality risk — even when you feel you have adapted to it.</div></div>
-  </div>
-</section>
-
-<!-- ENGAGEMENT -->
-<section class="sec">
-  <div class="eng-box">
-    <p style="font-size:0.84em;font-weight:700;color:var(--text2);margin-bottom:14px;">Was this sleep calculator helpful?</p>
-    <div class="eng-bar">
-      <button class="ebtn" id="like-btn" onclick="engClick('like')">👍 Helpful <span id="like-c">1,203</span></button>
-      <button class="ebtn" id="dislike-btn" onclick="engClick('dislike')">👎 Not Really <span id="dislike-c">31</span></button>
-      <div class="srrow">
-        <span style="font-size:0.8em;color:var(--text3);font-weight:600;">Rate:</span>
-        <span class="rstar" onclick="rateStar(1)" id="s1">★</span>
-        <span class="rstar" onclick="rateStar(2)" id="s2">★</span>
-        <span class="rstar" onclick="rateStar(3)" id="s3">★</span>
-        <span class="rstar" onclick="rateStar(4)" id="s4">★</span>
-        <span class="rstar" onclick="rateStar(5)" id="s5">★</span>
-      </div>
-    </div>
-  </div>
-  <div style="margin-top:28px;">
-    <h3 style="font-size:1em;font-weight:700;color:var(--text);margin-bottom:14px;">💬 Comments</h3>
-    <textarea class="cinput" id="c-input" placeholder="Share your experience or a tip for better sleep..."></textarea>
-    <button class="csub" onclick="submitC()">Post Comment</button>
-    <div class="clist" id="c-list">
-      <div class="citem"><div class="cmeta">👤 Fatima S. · 3 days ago · ★★★★★</div><div class="ctxt">Used the 6-cycle bedtime and woke up before my alarm for the first time in months. Genuinely life-changing.</div></div>
-      <div class="citem"><div class="cmeta">👤 Hamza K. · 1 week ago · ★★★★★</div><div class="ctxt">The caffeine cutoff calculator is exactly what I needed. No more 4 PM coffees wrecking my sleep quality.</div></div>
-      <div class="citem"><div class="cmeta">👤 Zara M. · 2 weeks ago · ★★★★☆</div><div class="ctxt">Love the chronotype finder — found out I am a night owl and stopped fighting my biology. What a difference!</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-banner">
-  <h2>Explore 30+ Free Tools on Toolyfi</h2>
-  <p>Calculators, AI tools, converters and generators — all free, no signup required.</p>
-  <a href="index.html" class="cta-btn">🛠️ Browse All Tools →</a>
-</div>
-
-<section class="sec">
-  <div class="sbadge">🔗 Related Tools</div>
-  <h2 class="stitle" style="margin-bottom:25px;">You Might Also Like</h2>
-  <div class="rel-grid">
-    <a href="bmi-calculator.html" class="relc"><span class="ri">⚖️</span><h4>BMI Calculator</h4><p>Body mass index and health insights</p></a>
-    <a href="age-calculator.html" class="relc"><span class="ri">🎂</span><h4>Age Calculator</h4><p>Exact age in days, months and years</p></a>
-    <a href="loan-calculator.html" class="relc"><span class="ri">🏦</span><h4>Loan Calculator</h4><p>EMI, interest and repayment plan</p></a>
-    <a href="percentage-calculator.html" class="relc"><span class="ri">💯</span><h4>Percentage Calc</h4><p>Quick percentage calculations</p></a>
-  </div>
-</section>
-
-<div class="art-wrap">
-  <div class="art-box">
-    <h2>Sleep Calculator: The Complete Science Guide to Better Sleep in 2026</h2>
-    <p>You set your alarm for 7:00 AM. You sleep eight hours. You wake up dragging, hit snooze three times, and spend the first hour in a fog. The problem is not how long you sleep — it is <strong>when you wake up within your sleep cycle</strong>. This is exactly what a sleep calculator solves.</p>
-    <p>Our free sleep cycle calculator takes the guesswork out of bedtime. Based on peer-reviewed sleep science, it gives you optimal bedtimes and wake-up times so you always rise between cycles — refreshed and energized, not dragged out of deep sleep by an alarm.</p>
-    <h2>What Is a Sleep Cycle? The Science Behind the Tool</h2>
-    <p>A sleep cycle lasts approximately 90 minutes and consists of four stages. Your brain cycles through these 4 to 6 times every night. Understanding each stage is why timing matters more than duration alone.</p>
-    <h3>Stage 1 (N1) — Light Sleep</h3>
-    <p>The transition from wakefulness to sleep. Lasts only 1 to 7 minutes per cycle. Easy to wake from. <strong>This is the ideal stage to wake up in</strong> — or immediately after REM ends. Waking here means zero grogginess.</p>
-    <h3>Stage 2 (N2) — Core Sleep</h3>
-    <p>Accounts for roughly 50 percent of total sleep time. Heart rate slows, body temperature drops, memory consolidation begins. Waking from Stage 2 is manageable but not optimal.</p>
-    <h3>Stage 3 (N3) — Deep Sleep</h3>
-    <p>The most physically restorative stage. Growth hormone is released, muscles repair, the immune system strengthens. <strong>Waking from Stage 3 causes severe sleep inertia</strong> — that heavy, disoriented feeling lasting 30 to 60 minutes. This is what an alarm does when it drags you out mid-cycle.</p>
-    <h3>Stage 4 — REM Sleep</h3>
-    <p>Rapid Eye Movement sleep — dreaming, emotional processing, and long-term memory consolidation. Brain activity is nearly as high as when awake. Cutting sleep short drastically reduces REM, robbing you of mental restoration even when total hours seem adequate.</p>
-    <h2>How the Sleep Calculator Formula Works</h2>
-    <p>The formula: <strong>Bedtime = Wake-Up Time minus (N x 90 minutes) minus 14 minutes.</strong> The 90 minutes is one complete cycle. The 14 minutes is the average sleep onset latency — the time it takes to fall asleep. For example: wake at 7:00 AM, want 6 cycles — bedtime is 9:46 PM. You complete 6 full cycles and wake naturally at the end of your last REM period.</p>
-    <h2>Sleep by Age: How Much Do You Actually Need?</h2>
-    <p>The eight-hours-for-everyone rule is a simplification. Children (6 to 12) need 9 to 12 hours for brain development. Teens (13 to 17) need 8 to 10 hours — and their circadian rhythm naturally shifts later, making early school times biologically problematic. Adults (18 to 64) do best with 7 to 9 hours (5 to 6 full cycles). Seniors (65 plus) need 7 to 8 hours but experience more fragmented sleep with less deep Stage 3.</p>
-    <h2>Chronotype: Your Biological Sleep Type</h2>
-    <p>Your chronotype is genetically determined. About 25 percent of people are morning larks — they naturally wake early and feel best before noon. About 30 percent are night owls — most alert in the evening, performing poorly when forced to wake early. The remaining 45 percent fall in between. Knowing your chronotype helps you schedule demanding tasks at your biological peak and stops the daily battle against your own biology.</p>
-    <h2>Caffeine and Sleep: The Half-Life Problem</h2>
-    <p>Caffeine has an average half-life of 5 to 7 hours. A 200mg coffee at 3 PM still has 100mg active at 9 to 10 PM. Caffeine blocks adenosine receptors — the same receptors that build sleep pressure. Late caffeine reduces sleep pressure and makes it significantly harder to enter deep sleep, even when you feel asleep normally. Our caffeine cutoff calculator uses an 8-hour window to find your personal last safe time.</p>
-    <h2>Nap Science: Power Naps vs Recovery Naps</h2>
-    <p>There are exactly two validated nap lengths. A 20-minute power nap keeps you in N1 and N2 — light sleep you wake from feeling sharp. A 90-minute recovery nap completes one full cycle including REM. The danger zone is any nap between 20 and 80 minutes — you will wake during deep sleep feeling worse than before. Our nap calculator gives exact wake times for any nap start.</p>
-    <h2>Sleep Debt: The Cumulative Cost of Lost Sleep</h2>
-    <p>Sleep debt is a measurable physiological state. Research from the University of Pennsylvania shows that six hours of sleep per night for ten days produces cognitive impairment equivalent to 24 hours of total sleep deprivation — and subjects do not perceive their own impairment accurately. Signs of sleep debt include needing an alarm to wake, dependence on caffeine, falling asleep within minutes of lying down, and significantly more sleep on weekends. Full recovery from one week of moderate debt requires 3 to 4 consecutive nights of complete sleep — not one long weekend sleep-in.</p>
-    <h2>Tips to Maximize Sleep Quality</h2>
-    <ul>
-      <li><strong>Consistent schedule:</strong> Same bedtime and wake time every day including weekends. This anchors your circadian rhythm and reduces onset time significantly.</li>
-      <li><strong>Dark room:</strong> Even dim light suppresses melatonin. Blackout curtains produce measurable improvements in sleep quality and duration.</li>
-      <li><strong>Cool temperature:</strong> 65 to 68 degrees Fahrenheit (18 to 20 degrees Celsius) is optimal. Your body must lower core temperature to enter deep sleep.</li>
-      <li><strong>No screens 60 min before bed:</strong> Blue light from phones and laptops delays melatonin release by up to 2 hours in some individuals.</li>
-      <li><strong>Respect your caffeine cutoff:</strong> Use our calculator to find your precise personal cutoff time based on your bedtime.</li>
-      <li><strong>Avoid alcohol:</strong> Alcohol may help you fall asleep but significantly suppresses REM sleep and causes fragmented sleep in the second half of the night.</li>
-    </ul>
-    <h2>Frequently Asked Questions</h2>
-    <h3>Can I catch up on sleep on weekends?</h3>
-    <p>Partially — but social jet lag (shifting your schedule on weekends) disrupts your circadian rhythm and creates new problems. Consistent timing is more effective long-term than weekend recovery attempts. Use our sleep debt calculator to track your deficit and recover strategically over multiple nights.</p>
-    <h3>Does everyone have exactly 90-minute sleep cycles?</h3>
-    <p>The 90-minute figure is a population average. Individual cycles typically range from 80 to 120 minutes and vary night-to-night based on stress, alcohol, illness, and age. Our calculator uses 90 minutes as the baseline — accurate for the majority of adults most of the time.</p>
-    <h3>Is 6 hours of sleep enough?</h3>
-    <p>For 97 to 99 percent of adults, no. Only those with the rare ADRB1 gene mutation function optimally on 6 hours. For everyone else, chronic 6-hour sleep is associated with impaired cognition, immune dysfunction, metabolic disruption, and increased all-cause mortality — even when adaptation makes you feel used to it.</p>
-  </div>
-</div>
-
-<footer>
-  <div class="fi">
-    <p style="color:#666;font-size:0.77em;margin-bottom:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;">More Free Tools</p>
-    <div class="fgridf">
-      <a href="age-calculator.html" class="ftool">🎂 Age Calc</a>
-      <a href="bmi-calculator.html" class="ftool">⚖️ BMI Calc</a>
-      <a href="loan-calculator.html" class="ftool">🏦 Loan Calc</a>
-      <a href="percentage-calculator.html" class="ftool">💯 Percentage</a>
-      <a href="tip-calculator.html" class="ftool">🍽️ Tip Calc</a>
-      <a href="compound-interest-calculator.html" class="ftool">📊 Compound</a>
-      <a href="word-counter.html" class="ftool">📝 Word Counter</a>
-      <a href="ai-text-detector.html" class="ftool">🤖 AI Detector</a>
-      <a href="currency-converter.html" class="ftool">💱 Currency</a>
-      <a href="invoice-generator.html" class="ftool">📊 Invoice Gen</a>
-      <a href="resume-builder.html" class="ftool">📄 Resume</a>
-      <a href="qr-code-generator.html" class="ftool">📱 QR Code</a>
-    </div>
-    <div class="fbot">© 2026 <a href="index.html">Toolyfi</a> · Free Online Tools · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a></div>
-  </div>
-</footer>
-
-<!-- ALARM MODAL -->
-<div class="modal-overlay" id="alarm-modal">
-  <div class="mbox">
-    <h3>🔔 Set Alarm</h3>
-    <p>We will play a beep tone in this tab at your chosen time. Keep this tab open.</p>
-    <div class="mtime" id="mtime-display">--:-- --</div>
-    <div class="macts">
-      <button class="mbtn p" onclick="confirmAlarm()">✅ Set Alarm</button>
-      <button class="mbtn s" onclick="closeModal()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<!-- RINGING MODAL -->
-<div class="ring-overlay" id="ring-overlay">
-  <div class="rmoon" id="ring-icon">🌙</div>
-  <h2 id="ring-title">Wake Up!</h2>
-  <p id="ring-msg">Your sleep alarm is ringing.</p>
-  <button class="stop-btn" onclick="stopAlarm()">⏹ Stop Alarm</button>
-</div>
-
-<!-- NOTIFICATION BAR -->
-<div class="nbar" id="nbar">
-  <span id="nbar-ico">🔔</span>
-  <span id="nbar-txt">Alarm set!</span>
-</div>
-
-<script>
-// ========== WHEEL PICKER ==========
-const HOURS=[12,1,2,3,4,5,6,7,8,9,10,11];
-const MINS=['00','05','10','15','20','25','30','35','40','45','50','55'];
-let selH=7,selM=0,selAP='AM';
-let curMode='bedtime',curAge='adult';
-let alarmTO=null,remTO=null,ringIV=null,audioCtx=null;
-let chosenTime=null;
-
-function buildWheel(itemsId,items,initIdx){
-  const el=document.getElementById(itemsId);
-  const padded=['','', ...items,'',''];
-  el.innerHTML=padded.map((it,i)=>{
-    const real=i-2;
-    let cls='wi';
-    if(real===initIdx)cls+=' sel';
-    else if(Math.abs(real-initIdx)===1)cls+=' near';
-    return `<div class="${cls}">${it}</div>`;
-  }).join('');
-}
-
-function setupWheel(wheelId,itemsId,items,onChange){
-  const wheel=document.getElementById(wheelId);
-  const el=document.getElementById(itemsId);
-  const IH=44;
-  let curIdx=0,startY=0,startIdx=0,dragging=false;
-
-  function clamp(v){return Math.max(0,Math.min(items.length-1,v));}
-  function getNodes(){return el.querySelectorAll('.wi');}
-  function updateUI(idx){
-    const nodes=getNodes();
-    nodes.forEach((n,i)=>{
-      const real=i-2;
-      n.classList.remove('sel','near');
-      if(real===idx)n.classList.add('sel');
-      else if(Math.abs(real-idx)===1)n.classList.add('near');
-    });
-    el.style.transform=`translateY(${(-idx*IH)+58}px)`;
-  }
-  function snap(idx){
-    curIdx=idx;
-    el.style.transition='transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94)';
-    updateUI(curIdx);
-    onChange(items[curIdx]);
-  }
-  // Mouse
-  wheel.addEventListener('mousedown',e=>{startY=e.clientY;startIdx=curIdx;dragging=true;el.style.transition='none';e.preventDefault();});
-  document.addEventListener('mousemove',e=>{if(!dragging)return;const dy=startY-e.clientY;const delta=Math.round(dy/IH);const ni=clamp(startIdx+delta);if(ni!==curIdx){curIdx=ni;updateUI(curIdx);onChange(items[curIdx]);}});
-  document.addEventListener('mouseup',()=>{if(dragging){dragging=false;snap(curIdx);}});
-  // Touch
-  wheel.addEventListener('touchstart',e=>{startY=e.touches[0].clientY;startIdx=curIdx;el.style.transition='none';},{passive:true});
-  wheel.addEventListener('touchmove',e=>{const dy=startY-e.touches[0].clientY;const delta=Math.round(dy/IH);const ni=clamp(startIdx+delta);if(ni!==curIdx){curIdx=ni;updateUI(curIdx);onChange(items[curIdx]);}e.preventDefault();},{passive:false});
-  wheel.addEventListener('touchend',()=>snap(curIdx));
-  // Scroll
-  wheel.addEventListener('wheel',e=>{e.preventDefault();const d=e.deltaY>0?1:-1;snap(clamp(curIdx+d));},{passive:false});
-  // Init
-  updateUI(0);
-}
-
-function setAP(v){selAP=v;document.getElementById('btn-am').classList.toggle('active',v==='AM');document.getElementById('btn-pm').classList.toggle('active',v==='PM');}
-
-function initWheels(){
-  buildWheel('wi-hour',HOURS.map(h=>String(h).padStart(2,'0')),0);
-  buildWheel('wi-min',MINS,0);
-  setupWheel('wh-hour','wi-hour',HOURS,v=>{selH=parseInt(v);});
-  setupWheel('wh-min','wi-min',MINS,v=>{selM=parseInt(v);});
-}
-
-// ========== MODE ==========
-function setMode(m){
-  curMode=m;
-  ['bedtime','wakeup','now'].forEach(t=>document.getElementById('tab-'+t).classList.toggle('active',t===m));
-  document.getElementById('picker-section').style.display=m==='now'?'none':'block';
-  document.getElementById('now-msg').style.display=m==='now'?'block':'none';
-  if(m==='now'){const now=new Date();document.getElementById('now-time').textContent=fmt12(now.getHours(),now.getMinutes());}
-  const lbs={bedtime:'I want to wake up at:',wakeup:'I plan to go to bed at:',now:''};
-  document.getElementById('picker-label').textContent=lbs[m]||'';
-  document.getElementById('results').classList.remove('show');
-}
-function setAge(a,btn){curAge=a;document.querySelectorAll('.age-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
-
-// ========== CALCULATE ==========
-const ageCfg={
-  child:{min:6,max:8,rec:7,tip:'Children need 9–12 hrs. An early, consistent bedtime supports brain development and growth hormone release.'},
-  teen:{min:5,max:7,rec:6,tip:'Teens need 8–10 hrs. Their circadian rhythm naturally runs later — this is biology, not laziness.'},
-  adult:{min:4,max:6,rec:5,tip:'Adults do best with 5–6 complete cycles (7.5–9 hrs). The ⭐ Recommended time is your optimal target.'},
-  senior:{min:4,max:5,rec:4,tip:'Seniors need 7–8 hrs. Consistency and sleep environment quality matter more than total hours at this stage.'}
-};
-
-function getPTime(){let h=selH;if(selAP==='PM'&&h!==12)h+=12;if(selAP==='AM'&&h===12)h=0;return{h,m:selM};}
-function fmt12(h,m){const ap=h>=12?'PM':'AM';const h12=h%12||12;return `${h12}:${String(m).padStart(2,'0')} ${ap}`;}
-function addM(d,mins){return new Date(d.getTime()+mins*60000);}
-function subM(d,mins){return new Date(d.getTime()-mins*60000);}
-
-function calculate(){
-  const cfg=ageCfg[curAge];
-  const CY=90,ON=14;
-  let res=[];
-  const base=new Date();
-  if(curMode==='bedtime'){
-    const {h,m}=getPTime();base.setHours(h,m,0,0);
-    document.getElementById('rlbl').textContent='🛏️ Go to bed at one of these times:';
-    for(let c=cfg.max;c>=cfg.min;c--){const d=subM(base,c*CY+ON);res.push({time:fmt12(d.getHours(),d.getMinutes()),cy:c,hrs:(c*CY/60).toFixed(1),best:c===cfg.rec});}
-  } else if(curMode==='wakeup'){
-    const {h,m}=getPTime();base.setHours(h,m,0,0);
-    document.getElementById('rlbl').textContent='⏰ Wake up at one of these times:';
-    for(let c=cfg.min;c<=cfg.max;c++){const d=addM(base,c*CY+ON);res.push({time:fmt12(d.getHours(),d.getMinutes()),cy:c,hrs:(c*CY/60).toFixed(1),best:c===cfg.rec});}
-  } else {
-    document.getElementById('rlbl').textContent='😴 If you sleep now, wake up at:';
-    const now=new Date();
-    for(let c=cfg.min;c<=cfg.max;c++){const d=addM(now,c*CY+ON);res.push({time:fmt12(d.getHours(),d.getMinutes()),cy:c,hrs:(c*CY/60).toFixed(1),best:c===cfg.rec});}
-  }
-  document.getElementById('rgrid').innerHTML=res.map(r=>`<div class="rcard ${r.best?'best':''}" onclick="pickResult('${r.time}',this)"><div class="rtime">${r.time}</div><div class="rcyc">${r.cy} sleep cycles</div><div class="rhrs">${r.hrs} hours of sleep</div></div>`).join('');
-  document.getElementById('pro-tip').textContent='💡 '+cfg.tip;
-  document.getElementById('results').classList.add('show');
-  document.getElementById('alarm-row').classList.remove('show');
-  chosenTime=null;
-}
-
-function pickResult(time,el){
-  document.querySelectorAll('.rcard').forEach(c=>c.classList.remove('picked'));
-  el.classList.add('picked');
-  chosenTime=time;
-  document.getElementById('alarm-row').classList.add('show');
-}
-
-// ========== ALARM ==========
-function openAlarmModal(){
-  if(!chosenTime){showN('⚠️','Please tap a time card first.');return;}
-  document.getElementById('mtime-display').textContent=chosenTime;
-  document.getElementById('alarm-modal').classList.add('show');
-}
-function closeModal(){document.getElementById('alarm-modal').classList.remove('show');}
-
-function confirmAlarm(){
-  closeModal();
-  const [tp,ap]=chosenTime.split(' ');
-  let [h,m]=tp.split(':').map(Number);
-  if(ap==='PM'&&h!==12)h+=12;
-  if(ap==='AM'&&h===12)h=0;
-  const now=new Date();
-  const tgt=new Date();tgt.setHours(h,m,0,0);
-  if(tgt<=now)tgt.setDate(tgt.getDate()+1);
-  const diff=tgt-now;
-  const mins=Math.round(diff/60000);
-  if(alarmTO)clearTimeout(alarmTO);
-  alarmTO=setTimeout(()=>ringAlarm(chosenTime,false),diff);
-  showN('🔔',`Alarm set for ${chosenTime} (${mins} min from now). Keep tab open.`);
-}
-
-function ringAlarm(timeStr,isBed){
-  const o=document.getElementById('ring-overlay');
-  document.getElementById('ring-icon').textContent=isBed?'🌙':'⏰';
-  document.getElementById('ring-title').textContent=isBed?'Bedtime!':'Wake Up!';
-  document.getElementById('ring-msg').textContent=isBed?`It is ${timeStr} — time to sleep. Good night! 🌙`:`It is ${timeStr}! Your alarm is ringing. Rise and shine! ☀️`;
-  o.classList.add('show');
-  startBeep();
-}
-
-function stopAlarm(){
-  document.getElementById('ring-overlay').classList.remove('show');
-  if(ringIV){clearInterval(ringIV);ringIV=null;}
-  if(audioCtx){audioCtx.close();audioCtx=null;}
-}
-
-function startBeep(){
-  try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return;}
-  let cnt=0;
-  function beep(){
-    if(!audioCtx)return;
-    try{
-      const osc=audioCtx.createOscillator();
-      const gain=audioCtx.createGain();
-      osc.connect(gain);gain.connect(audioCtx.destination);
-      osc.frequency.setValueAtTime(880,audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.4,audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.4);
-      osc.start(audioCtx.currentTime);osc.stop(audioCtx.currentTime+0.4);
-      cnt++;if(cnt>80&&ringIV){clearInterval(ringIV);ringIV=null;}
-    }catch(e){}
-  }
-  beep();ringIV=setInterval(beep,800);
-}
-
-// ========== NAP ==========
-function calcNap(){
-  const v=document.getElementById('nap-t').value;
-  if(!v)return;
-  const [h,m]=v.split(':').map(Number);
-  const s=new Date();s.setHours(h,m,0,0);
-  const pw=addM(s,20),fw=addM(s,90);
-  const el=document.getElementById('nap-r');
-  el.innerHTML=`⚡ <strong>Power nap</strong> → Wake at <strong>${fmt12(pw.getHours(),pw.getMinutes())}</strong> (20 min)<br>🌙 <strong>Full cycle</strong> → Wake at <strong>${fmt12(fw.getHours(),fw.getMinutes())}</strong> (90 min)<br><span style="color:#ef4444;font-size:0.8em;margin-top:4px;display:block;">⚠️ Never wake between 20–80 min — deep sleep danger zone</span>`;
-  el.classList.add('show');
-}
-
-// ========== SLEEP DEBT ==========
-function calcDebt(){
-  const actual=parseFloat(document.getElementById('debt-v').value);
-  if(isNaN(actual)||actual<0||actual>12)return;
-  const needed={child:10.5,teen:9,adult:8,senior:7.5}[curAge];
-  const debt=needed-actual;
-  const el=document.getElementById('debt-r');
-  if(debt<=0){el.innerHTML=`✅ <strong>No sleep debt!</strong> ${actual}h is enough for your age group (needs ${needed}h). Keep it up!`;el.style.color='var(--green)';}
-  else{const wd=(debt*7).toFixed(1);const rec=Math.ceil(debt*7/2);el.innerHTML=`😴 <strong>${debt.toFixed(1)}h/night deficit</strong><br>Weekly total: <strong>${wd} hours</strong><br><span style="font-size:0.82em;display:block;margin-top:4px;">Recovery: ~${rec} extra nights of full sleep needed.</span>`;el.style.color='var(--purple)';}
-  el.classList.add('show');
-}
-
-// ========== CHRONOTYPE ==========
-function calcChrono(){
-  const v=document.getElementById('chrono-t').value;
-  if(!v)return;
-  const [h]=v.split(':').map(Number);
-  let type,icon,desc;
-  if(h<=5){type='Extreme Morning Lark';icon='🌅';desc='You are wired to rise very early. Peak performance is in early morning. Schedule demanding work before 10 AM.';}
-  else if(h<=7){type='Morning Lark';icon='🐦';desc='You naturally wake early and feel sharpest in the morning. Prioritize important work in the first half of your day.';}
-  else if(h<=9){type='Intermediate';icon='⚖️';desc='You fall in the middle of the spectrum. You can adapt reasonably well to both early and later schedules.';}
-  else if(h<=10){type='Night Owl';icon='🦉';desc='Your biological clock runs later. You are most alert in the evenings. Creative and analytical work peaks after midday.';}
-  else{type='Extreme Night Owl';icon='🌙';desc='Strongly late chronotype. You naturally function best late at night. Early morning schedules directly conflict with your biology.';}
-  const el=document.getElementById('chrono-r');
-  el.innerHTML=`${icon} <strong>${type}</strong><br><span style="font-size:0.82em;display:block;margin-top:5px;line-height:1.5;">${desc}</span>`;
-  el.classList.add('show');
-}
-
-// ========== CAFFEINE ==========
-function calcCaf(){
-  const v=document.getElementById('caf-t').value;
-  if(!v)return;
-  const [h,m]=v.split(':').map(Number);
-  const bed=new Date();bed.setHours(h,m,0,0);
-  const cut=subM(bed,8*60);
-  const el=document.getElementById('caf-r');
-  el.innerHTML=`☕ <strong>Last caffeine: ${fmt12(cut.getHours(),cut.getMinutes())}</strong><br><span style="font-size:0.82em;display:block;margin-top:4px;line-height:1.5;">Based on 7-hour half-life. After this time, avoid coffee, tea, soda and energy drinks.</span>`;
-  el.classList.add('show');
-}
-
-// ========== REMINDER ==========
-function setReminder(){
-  const v=document.getElementById('rem-t').value;
-  if(!v)return;
-  const [h,m]=v.split(':').map(Number);
-  const now=new Date();
-  const tgt=new Date();tgt.setHours(h,m,0,0);
-  if(tgt<=now)tgt.setDate(tgt.getDate()+1);
-  const diff=tgt-now;
-  const mins=Math.round(diff/60000);
-  const timeStr=fmt12(h,m);
-
-  function scheduleAudio(){
-    if(remTO)clearTimeout(remTO);
-    remTO=setTimeout(()=>ringAlarm(timeStr,true),diff);
-    const el=document.getElementById('rem-r');
-    el.innerHTML=`🔔 <strong>Audio reminder at ${timeStr}</strong> (${mins} min from now)<br><span style="font-size:0.8em;display:block;margin-top:4px;">Keep tab open — beep tone will play at that time.</span>`;
-    el.classList.add('show');
-  }
-
-  if('Notification' in window){
-    Notification.requestPermission().then(perm=>{
-      if(remTO)clearTimeout(remTO);
-      remTO=setTimeout(()=>{
-        if(perm==='granted'){new Notification('🌙 Toolyfi Sleep Reminder',{body:`It is ${timeStr} — time to wind down for bed!`,icon:'https://toolyfi.com/favicon.svg'});}
-        ringAlarm(timeStr,true);
-      },diff);
-      const el=document.getElementById('rem-r');
-      el.innerHTML=`🔔 <strong>Reminder set for ${timeStr}</strong> (${mins} min from now)<br><span style="font-size:0.8em;display:block;margin-top:4px;">${perm==='granted'?'Browser notification + beep will play. Keep tab open.':'Notifications denied — beep tone only. Keep tab open.'}</span>`;
-      el.classList.add('show');
-    });
-  } else {scheduleAudio();}
-}
-
-// ========== QUALITY ==========
-function calcQ(){
-  const hrs=parseFloat(document.getElementById('q-hrs').value);
-  const wakes=parseInt(document.getElementById('q-wakes').value)||0;
-  if(isNaN(hrs)||hrs<0||hrs>12)return;
-  const needed={child:10,teen:9,adult:8,senior:7.5}[curAge];
-  let score=100;
-  const gap=needed-hrs;
-  if(gap>=3)score-=45;else if(gap>=2)score-=30;else if(gap>=1)score-=15;else if(gap>0)score-=8;
-  score-=wakes*10;
-  score=Math.max(0,Math.min(100,score));
-  let grade,col,tip;
-  if(score>=85){grade='Excellent 🏆';col='var(--green)';tip='Your sleep was highly restorative. Maintain this schedule consistently for long-term health benefits.';}
-  else if(score>=70){grade='Good 👍';col='#3b82f6';tip='Decent sleep. Try reducing nighttime wakeups by keeping your room cooler and darker.';}
-  else if(score>=50){grade='Fair ⚠️';col='var(--moon)';tip='Below optimal. Try an earlier bedtime, cut screen time 60 min before sleep, and avoid alcohol.';}
-  else{grade='Poor 😴';col='var(--red)';tip='Significant issues. Focus on consistent bedtime, no caffeine after 2 PM, no alcohol, and build a sleep debt recovery plan.';}
-  const el=document.getElementById('q-r');
-  el.innerHTML=`<span style="font-size:1.5em;font-weight:800;color:${col};">${score}/100</span> — <strong>${grade}</strong><br><span style="font-size:0.82em;display:block;margin-top:5px;line-height:1.5;">${tip}</span>`;
-  el.classList.add('show');
-}
-
-// ========== FAQ ==========
-function toggleFaq(btn){
-  const item=btn.parentElement;
-  const open=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!open)item.classList.add('open');
-}
-
-// ========== ENGAGEMENT ==========
-function engClick(t){
-  const btn=document.getElementById(t+'-btn');
-  if(btn.classList.contains('liked')||btn.classList.contains('disliked'))return;
-  btn.classList.add(t==='like'?'liked':'disliked');
-  const c=document.getElementById(t==='like'?'like-c':'dislike-c');
-  const n=parseInt(c.textContent.replace(',',''))+1;
-  c.textContent=n>999?(n/1000).toFixed(1)+'K':n;
-}
-function rateStar(n){for(let i=1;i<=5;i++)document.getElementById('s'+i).classList.toggle('on',i<=n);}
-function submitC(){
-  const inp=document.getElementById('c-input');
-  const txt=inp.value.trim();if(!txt)return;
-  const list=document.getElementById('c-list');
-  const d=document.createElement('div');d.className='citem';
-  d.innerHTML=`<div class="cmeta">👤 You · Just now</div><div class="ctxt">${txt.replace(/</g,'&lt;')}</div>`;
-  list.prepend(d);inp.value='';
-}
-
-// ========== NOTIF BAR ==========
-function showN(ico,txt){
-  document.getElementById('nbar-ico').textContent=ico;
-  document.getElementById('nbar-txt').textContent=txt;
-  const b=document.getElementById('nbar');b.classList.add('show');
-  setTimeout(()=>b.classList.remove('show'),4500);
-}
-
-// ========== INIT ==========
-window.addEventListener('load',()=>{ initWheels(); });
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+      </section>
+      <section class="how-section wrap">
+        <div class="section-grid reveal">
+          <div>
+            <p class="eyebrow">How Toolyfi counts</p>
+            <h2>One schedule.<br />No <em>black box.</em></h2>
+            <p>
+              The output is deliberately simple. You choose a clock time, target duration, and
+              optional buffer; the calculator adds or subtracts minutes and shows every part of that
+              choice.
+            </p>
+          </div>
+          <div class="method-list">
+            <div class="method-item">
+              <span class="method-number">1</span>
+              <div>
+                <h3>Choose the direction</h3>
+                <p>
+                  Start from a fixed wake time when you need to work backward, or an in-bed time
+                  when you need to plan forward.
+                </p>
+              </div>
+            </div>
+            <div class="method-item">
+              <span class="method-number">2</span>
+              <div>
+                <h3>Set a duration target</h3>
+                <p>
+                  Select a practical duration target. The age note is context, not a diagnosis or
+                  personal prescription.
+                </p>
+              </div>
+            </div>
+            <div class="method-item">
+              <span class="method-number">3</span>
+              <div>
+                <h3>Add an optional buffer</h3>
+                <p>
+                  The buffer distinguishes lying down from the start of the selected sleep window.
+                  It can be zero if you do not want one.
+                </p>
+              </div>
+            </div>
+            <div class="method-item">
+              <span class="method-number">4</span>
+              <div>
+                <h3>Read the plan</h3>
+                <p>
+                  Use the calculated time as a planning prompt, then adjust based on your real
+                  routine and applicable professional guidance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="guide">
+        <div class="wrap">
+          <div class="guide-head reveal">
+            <p class="eyebrow">Sleep schedule guide</p>
+            <h2>Sleep timing without a <em>false promise.</em></h2>
+            <p>
+              This guide explains what a sleep calculator can calculate, what it cannot know, and
+              how to use a schedule plan responsibly.
+            </p>
+          </div>
+          <article class="reveal">
+            <h3>What a sleep calculator actually does</h3>
+            <p>
+              A sleep calculator is clock arithmetic with a human context. You provide a time you
+              need to wake or a time you expect to get into bed. The tool adds or subtracts a
+              selected duration and, if you choose one, a buffer for the period between getting into
+              bed and the start of the planned sleep window. The result is not a measurement of
+              sleep, a record of brain activity, or a prediction of exactly when you will fall
+              asleep. It is a visible plan that can help turn a vague intention such as “I should
+              sleep earlier” into a specific time on a clock.
+            </p>
+            <p>
+              That distinction matters because sleep is not controlled by clock math alone. A person
+              may be in bed without sleeping, may wake during the night, may have an unusual
+              schedule, or may be affected by illness, travel, caregiving, medication, work shifts,
+              light exposure, stress, or a sleep condition. A browser page cannot observe those
+              factors. Toolyfi therefore labels the output as a schedule plan and names every
+              assumption used to create it.
+            </p>
+            <h3>Start with wake time when an obligation is fixed</h3>
+            <p>
+              Many people have a wake time they cannot easily move: an early shift, school drop-off,
+              a commute, a prayer time, or a household responsibility. In that situation, working
+              backward is often more practical than selecting an idealized bedtime first. Choose the
+              wake time, select a duration target, and decide whether you want to reserve time to
+              settle before sleep. The result shows when to get into bed and when the selected sleep
+              window would begin.
+            </p>
+            <p>
+              For example, a 7:00 AM wake time, an eight-hour target, and a 15-minute buffer
+              produces an in-bed time of 10:45 PM and an estimated sleep-window start of 11:00 PM.
+              The calculator is not saying you will be asleep at 11:00 PM. It is making the planning
+              distinction explicit, which can be more useful than hiding a generic “bedtime” behind
+              a single number.
+            </p>
+            <h3>Plan forward when your in-bed time comes first</h3>
+            <p>
+              Sometimes the earlier part of the evening is the fixed point. You may already know
+              when your household becomes quiet, when a late shift ends, or when you intend to stop
+              screens and start a bedtime routine. Choose the in-bed-time mode, enter that time, and
+              use the same duration and buffer choices. Toolyfi then calculates the wake time that
+              matches the selected window.
+            </p>
+            <p>
+              A forward plan is especially helpful for comparing realistic alternatives. If an
+              eight-hour target ends too late for a morning obligation, the calculator does not
+              solve that conflict for you, but it makes the trade-off visible. You can consider a
+              different bedtime, a different duration target, or changes to the surrounding schedule
+              rather than being told that one time is universally perfect.
+            </p>
+            <h3>How much sleep is usually recommended for adults</h3>
+            <p>
+              Public sleep-duration guidance changes with age. The CDC lists seven or more hours for
+              adults aged 18 to 60, seven to nine hours for adults aged 61 to 64, and seven to eight
+              hours for adults aged 65 or older.[1] Those are population-level ranges, not a
+              personalized prescription. They also describe sleep duration, not a guarantee of sleep
+              quality, energy, mood, performance, or health outcomes for one specific person.
+            </p>
+            <p>
+              Toolyfi keeps the age choices limited to adults because the sleep needs of infants,
+              children, and teenagers involve additional developmental context, school schedules,
+              naps, caregiver routines, and health considerations. The American Academy of Sleep
+              Medicine publishes age-linked recommendations and offers a dedicated bedtime
+              calculator for children, teens, and adults.[2] A parent or caregiver should use
+              relevant pediatric guidance rather than applying a generic adult planning form to a
+              child.
+            </p>
+            <h3>Why a 90-minute number is only a planning estimate</h3>
+            <p>
+              Sleep calculators often make strong claims about waking at the exact end of a
+              90-minute cycle. That is more certainty than clock inputs can support. The NHLBI
+              explains that sleep cycles repeat every 80 to 100 minutes and that people usually have
+              four to six cycles per night.[3] Stages and cycle patterns change across the night and
+              differ between people. A time calculator cannot see whether you are in light sleep,
+              deep sleep, or REM sleep at a particular minute.
+            </p>
+            <p>
+              For that reason, this page shows “approximate 90-minute blocks” only as a transparent
+              division of the duration you selected. It does not treat those blocks as observed
+              cycles and does not recommend sacrificing total sleep to fit a neat cycle count.
+              Sufficient duration, a workable routine, and the way you actually function are more
+              useful starting points than trying to force an exact stage boundary from a web form.
+            </p>
+            <h3>Fall-asleep buffers make the assumption visible</h3>
+            <p>
+              People often use “bedtime” to mean two different things: the moment they get into bed
+              and the moment they expect sleep to begin. A buffer makes room for that distinction.
+              If you choose 15 minutes, the calculator subtracts those 15 minutes when it works
+              backward from a wake time and adds them when it works forward from an in-bed time. You
+              may choose zero, 15, 30, or 45 minutes; none of these options measures your personal
+              sleep onset.
+            </p>
+            <p>
+              The buffer is intentionally adjustable because it is a planning choice. If you
+              regularly take much longer to fall asleep, or if falling asleep is a persistent
+              problem, increasing a form setting should not be treated as a solution. The CDC
+              advises talking with a healthcare provider when sleep problems are regular or when
+              symptoms of a sleep disorder are present.[1] Toolyfi can describe a schedule but
+              cannot assess the cause of difficulty sleeping.
+            </p>
+            <h3>Consistency matters more than one perfect night</h3>
+            <p>
+              A sleep plan works best as a routine cue, not as a pass-or-fail score. The CDC
+              includes going to bed and getting up at the same time every day among habits that can
+              support sleep.[1] Consistency is still not always possible. Work, family needs,
+              travel, religious observance, illness, and unexpected events can all change a
+              schedule. The useful question is often whether the next practical plan is clearer than
+              the last one, not whether every night matches an ideal.
+            </p>
+            <p>
+              If you use this tool across a week, keep your inputs honest. Choose the wake time you
+              actually need, not one you wish you had. Set a duration target you can understand, and
+              use the copied plan as a note rather than a promise. A transparent plan makes it
+              easier to see where time is being allocated; it does not judge you for a disrupted
+              night.
+            </p>
+            <h3>Sleep duration is not the same as sleep quality</h3>
+            <p>
+              Time in bed and planned duration are not measures of sleep quality. The CDC describes
+              quality sleep as uninterrupted and refreshing, and lists trouble falling asleep,
+              repeated nighttime waking, and continued tiredness as signs of poor sleep quality.[1]
+              This calculator has no way to detect any of those experiences. It does not track
+              noise, room temperature, breathing, movement, medication effects, stress, or the time
+              you were actually asleep.
+            </p>
+            <p>
+              That limitation is why Toolyfi does not display a sleep score, a diagnosis, an alert
+              for a supposed “sleep debt,” or a claim that a selected result will leave you
+              refreshed. Those outputs may look helpful, but they imply a level of measurement that
+              a time picker does not have. The more honest use is simple: plan the clock, notice
+              your experience, and seek appropriate support if regular symptoms are affecting your
+              day.
+            </p>
+            <h3>When a schedule calculator is not enough</h3>
+            <p>
+              General planning tools have a limited role. They are not designed to evaluate snoring,
+              gasping, breathing pauses, sleepwalking, severe daytime sleepiness, persistent
+              insomnia, restless legs, mood changes, or safety concerns such as drowsy driving.
+              These can have many possible causes and deserve individualized assessment. The CDC
+              identifies insomnia, restless legs syndrome, narcolepsy, and sleep apnea among common
+              sleep disorders and recommends talking to a healthcare provider about ongoing sleep
+              problems.[1]
+            </p>
+            <p>
+              Use the calculator as a planning aid, not a reason to delay care. If you are concerned
+              about symptoms, are taking medicines that affect sleep, have a chronic condition, are
+              pregnant, work night shifts, or need advice for a child, a clinician or other
+              qualified professional can consider details that this page cannot collect. Toolyfi
+              does not store an account profile and does not attempt that kind of personalization.
+            </p>
+            <h3>Privacy, browser math, and copied plans</h3>
+            <p>
+              The inputs on this page are used by JavaScript in the browser to calculate clock times
+              for the current session. Toolyfi does not ask you to create an account or provide a
+              health profile to use the calculator. The copy button produces a plain-language
+              summary of the inputs and calculated plan so you can put it in a calendar, notes app,
+              or message. Before sharing it, remember that a sleep schedule can be personal
+              information in some contexts.
+            </p>
+            <p>
+              The copied summary intentionally repeats the selected duration, buffer, and
+              non-diagnostic limitation. This helps prevent a time from being separated from the
+              assumption that created it. If you later change the duration or buffer, calculate
+              again and copy a new plan. A calculator is most useful when its result remains
+              connected to the choices that generated it.
+            </p>
+            <h3>Practical examples without a false guarantee</h3>
+            <p>
+              Consider a person who needs to wake at 6:30 AM and chooses an eight-hour duration with
+              a 30-minute buffer. The calculator returns 10:00 PM as the in-bed time and 10:30 PM as
+              the estimated start of the selected sleep-duration window. Another person who gets
+              into bed at 11:15 PM with the same choices sees a 7:45 AM wake time. These are
+              arithmetic outputs, not a statement that either person will be asleep immediately or
+              have the same sleep quality.
+            </p>
+            <p>
+              The value is in the visibility. Both people can see that the buffer, not just the
+              eight hours, affects the in-bed or wake time. They can decide whether their chosen
+              plan fits a realistic evening or morning. If it does not, the calculator has still
+              done something useful: it has made the constraint explicit without pretending to solve
+              every part of sleep health.
+            </p>
+            <h3>Planning around work, school, and household routines</h3>
+            <p>
+              A schedule tool becomes more useful when it starts with a real constraint. A person
+              who needs to leave home at a particular time can use the wake-time mode to see when an
+              evening routine would need to begin. A person whose evenings are constrained by a
+              class, a family meal, caregiving, or a long commute can use the in-bed-time mode to
+              see what the morning side of the plan looks like. Neither calculation says that the
+              chosen schedule is easy or possible. It simply shows the clock arithmetic that would
+              be required by that choice.
+            </p>
+            <p>
+              This is especially valuable when a plan crosses midnight. A bedtime of 11:30 PM and a
+              wake time of 7:30 AM are part of the same overnight window even though they use
+              different calendar dates. Toolyfi handles the wraparound automatically, while the
+              result wording keeps the focus on the next planned clock time. There is no need to
+              turn a routine into a complicated date calculation unless you are recording a diary or
+              comparing actual sleep periods over several days.
+            </p>
+            <h3>Why “time in bed” and “sleep duration” should not be merged</h3>
+            <p>
+              A clean schedule makes room for the difference between being ready for bed and being
+              asleep. Brushing teeth, changing clothes, reading, speaking with family, preparing a
+              room, or simply settling down can all happen after an in-bed time and before sleep
+              begins. The calculator does not label any of those activities good or bad. Its buffer
+              field is there so a plan does not silently turn eight hours of intended sleep into
+              eight hours spent in bed with no space for the transition.
+            </p>
+            <p>
+              The correct buffer is not a number the page can discover. Some people prefer no buffer
+              because they are using the tool only for clock math. Others may find that a 15- or
+              30-minute planning allowance makes their evening more realistic. If a chosen buffer
+              repeatedly feels too short or too long, change the planning setting; do not interpret
+              the change as a diagnosis. A time form does not know why someone is awake, how often
+              they wake overnight, or whether their sleep is restorative.
+            </p>
+            <h3>Using the duration chips responsibly</h3>
+            <p>
+              The duration chips are shortcuts for common planning windows, not grades. They make it
+              faster to compare seven, seven-and-a-half, eight, eight-and-a-half, and nine-hour
+              schedules without manual subtraction. The adult age note gives public-health context
+              for the range, but the selected chip remains a user choice. It is reasonable for a
+              schedule planner to make the hours visible; it is not reasonable for the page to say
+              that one chip will make a particular visitor healthier, more productive, or refreshed
+              by morning.
+            </p>
+            <p>
+              When a target does not fit a real day, resist the temptation to treat the calculator
+              as a verdict. The result may reveal that an earlier in-bed time, a later wake time, or
+              a different evening commitment would be needed to create that window. That is a
+              planning conversation, not a failure. In many cases the most helpful output is the
+              honest recognition that the available clock time is limited. Toolyfi keeps the
+              arithmetic neutral so the visitor can consider practical next steps without false
+              reassurance or alarm.
+            </p>
+            <h3>Shift work, travel, and irregular schedules</h3>
+            <p>
+              Not every sleep period belongs to a typical nighttime schedule. Shift workers,
+              travelers, emergency responders, students with changing timetables, and caregivers may
+              need to plan sleep at unusual hours. The calculator can still add or subtract a
+              selected duration across midnight, which makes it useful for the narrow task of
+              comparing clock times. It cannot advise how a changing schedule affects an individual
+              circadian rhythm, medication routine, safety-critical job, or underlying condition.
+            </p>
+            <p>
+              For irregular schedules, it can help to use the copied summary as a temporary note:
+              record the chosen in-bed time, wake time, duration target, and buffer. Keep the note
+              attached to the fact that it is a plan rather than a record of sleep. If actual sleep
+              timing or daytime alertness is a concern, a clinician may suggest a sleep diary or
+              another assessment method. The CDC describes a sleep diary as including bed time,
+              nighttime waking, morning wake time, naps, exercise, alcohol or caffeine, and
+              medications.[1] Toolyfi deliberately does not simulate that clinical process.
+            </p>
+            <h3>Naps, alarms, and the limits of quick rules</h3>
+            <p>
+              Many web pages reduce napping to a single “power nap” number or tell users never to
+              wake in a particular minute range. Those statements can sound precise, but sleep and
+              alertness are more variable than a countdown timer. This page does not include a nap
+              prescription or an alarm feature. A browser tab cannot safely guarantee that a
+              notification will fire, that a device volume is available, or that a specific nap
+              length will have the same effect for everyone.
+            </p>
+            <p>
+              If you want to use the calculator for a short rest, you can select an in-bed time and
+              a custom-looking duration from the available planning windows only when it matches
+              your intended comparison. Do not treat that output as clinical advice. A regular need
+              to sleep at unexpected times, a safety concern while driving, or ongoing excessive
+              daytime sleepiness is outside the purpose of a schedule calculator. In those cases,
+              professional assessment is more appropriate than a more complicated web widget.
+            </p>
+            <h3>How to compare two realistic plans</h3>
+            <p>
+              A useful way to use this page is to compare two ordinary choices rather than seek an
+              ideal number. Start with the wake time required on a workday, choose an eight-hour
+              target and a modest buffer, and write down the in-bed time. Then repeat with a shorter
+              or longer target. The differences may be more informative than the first result. You
+              can see exactly how much earlier an evening would need to start and whether that
+              change is feasible without guessing in your head.
+            </p>
+            <p>
+              You can also compare an early morning obligation with a later one. Because the tool
+              exposes the duration and buffer, the result does not look like a mysterious magic
+              bedtime. It is simply the first time minus the selected minutes. This approach is
+              useful for planning a week, preparing for a temporary schedule change, or discussing
+              household routines. It does not establish a habit, prove that a plan will be followed,
+              or replace attention to how a person actually feels and functions.
+            </p>
+            <h3>What the cycle-block label means in plain language</h3>
+            <p>
+              The optional cycle-block label is included because people often encounter sleep tools
+              that describe 90-minute cycles. Toolyfi shows the division openly: eight hours is
+              about 5.3 blocks, seven-and-a-half hours is five blocks, and nine hours is six blocks.
+              The word “about” is essential. The output is not claiming that a visitor completed a
+              count of observed cycles, that every block has the same length, or that waking at one
+              calculated minute is always better than waking five minutes earlier or later.
+            </p>
+            <p>
+              The NHLBI notes that a cycle restarts every 80 to 100 minutes and that people usually
+              have four to six cycles per night.[3] That is useful educational context, but it is
+              not an instruction to shorten a planned night just to land on an even number. If a
+              duration target and a practical schedule do not divide neatly by 90, the calculator
+              continues to display the honest arithmetic rather than inventing a “best” result.
+            </p>
+            <h3>Keeping privacy and sharing in perspective</h3>
+            <p>
+              Bedtime and wake-time information can look harmless, yet it may reveal shift patterns,
+              household routines, travel plans, or personal circumstances when combined with other
+              details. Toolyfi does not require a sign-in to perform the calculation, and the
+              browser-side result is intended for the current page session. The copy action is
+              optional. Use it when a plain-language reminder will help, and avoid sharing a plan
+              more widely than necessary.
+            </p>
+            <p>
+              A copied plan repeats the scope limitation on purpose. That small detail makes the
+              summary more useful if it is read later or passed to someone else. A line that says
+              “wake at 7:00 AM” is incomplete without the duration and buffer assumptions that led
+              to it. Transparent summaries are less dramatic than a score or a promise, but they are
+              easier to revisit, correct, and use responsibly.
+            </p>
+            <div class="source-card">
+              <strong>Sources used on this page.</strong>
+              <p>
+                <a
+                  href="https://www.cdc.gov/sleep/about/index.html"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >CDC: About Sleep</a
+                >
+                provides public sleep-duration ranges, sleep-quality context, and guidance on
+                persistent sleep problems.
+                <a
+                  href="https://sleepeducation.org/healthy-sleep/bedtime-calculator/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >AASM Sleep Education: Bedtime Calculator</a
+                >
+                explains age-linked bedtime planning.
+                <a
+                  href="https://www.nhlbi.nih.gov/health/sleep/stages-of-sleep"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >NHLBI: Sleep Phases and Stages</a
+                >
+                describes the variability of sleep cycles.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="faq-section">
+        <div class="wrap">
+          <div class="faq-head reveal">
+            <div>
+              <p class="eyebrow">Sleep Calculator FAQs</p>
+              <h2>Clear answers before you <em>plan.</em></h2>
+            </div>
+            <p>
+              These answers describe the page’s clock math and limits. They are not a diagnosis or a
+              personalized sleep recommendation.
+            </p>
+          </div>
+          <div class="faq-list reveal">
+            <details>
+              <summary>What does this sleep calculator calculate?</summary>
+              <p>
+                It calculates an in-bed time or wake time from the direction, clock time, duration
+                target, and fall-asleep buffer you choose. It is schedule arithmetic, not a sleep
+                tracker.
+              </p>
+            </details>
+            <details>
+              <summary>Does the calculator know when I will fall asleep?</summary>
+              <p>
+                No. The buffer is a planning allowance selected by you. The calculator cannot
+                observe whether or when you fall asleep.
+              </p>
+            </details>
+            <details>
+              <summary>Why does Toolyfi show an approximate 90-minute block count?</summary>
+              <p>
+                It divides the selected duration by 90 minutes for planning context. It does not
+                claim to measure your real sleep cycles or identify an exact wake-up stage.
+              </p>
+            </details>
+            <details>
+              <summary>What adult sleep duration should I select?</summary>
+              <p>
+                CDC public guidance lists seven or more hours for adults 18–60, seven to nine hours
+                for 61–64, and seven to eight hours for 65+. These are general ranges, not an
+                individual diagnosis.
+              </p>
+            </details>
+            <details>
+              <summary>Can I use this for a child or teenager?</summary>
+              <p>
+                This interface is deliberately adult-focused. Children and teens have different
+                age-linked needs, including developmental and school-routine context. Use relevant
+                pediatric guidance instead.
+              </p>
+            </details>
+            <details>
+              <summary>Is this calculator medical advice?</summary>
+              <p>
+                No. It cannot diagnose insomnia, sleep apnea, narcolepsy, restless legs syndrome, or
+                any other condition. Seek qualified health guidance for persistent sleep concerns or
+                symptoms.
+              </p>
+            </details>
+            <details>
+              <summary>Why separate in-bed time from estimated sleep time?</summary>
+              <p>
+                The optional buffer makes the distinction visible. It allows the plan to show when
+                to get into bed as well as when the selected sleep-duration window would begin.
+              </p>
+            </details>
+            <details>
+              <summary>Does Toolyfi save my sleep schedule?</summary>
+              <p>
+                No account is needed to calculate. The page performs its time arithmetic in the
+                browser for the current session.
+              </p>
+            </details>
+            <details>
+              <summary>Can a sleep plan guarantee that I will wake refreshed?</summary>
+              <p>
+                No. Feeling rested can be affected by duration, interruptions, sleep quality,
+                health, environment, stress, and other factors that this calculator cannot measure.
+              </p>
+            </details>
+            <details>
+              <summary>What should I do if I regularly struggle with sleep?</summary>
+              <p>
+                A schedule tool cannot assess the cause. CDC guidance recommends speaking with a
+                healthcare provider about regular sleep problems or symptoms of common sleep
+                disorders.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="related-tools">
+        <div class="wrap reveal">
+          <h2>Continue with clear <em>everyday math.</em></h2>
+          <div class="related-grid">
+            <a href="age-calculator.html"><span>Time</span><strong>Age Calculator</strong></a
+            ><a href="bmi-calculator.html"><span>Screening math</span><strong>Adult BMI</strong></a
+            ><a href="percentage-calculator.html"
+              ><span>Rate math</span><strong>Percentage</strong></a
+            ><a href="unit-converter.html"><span>Units</span><strong>Unit Converter</strong></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const state = { mode: "wake", age: "18-60", duration: 480 };
+        const ageCopy = {
+          "18-60":
+            "Public guidance for adults 18–60 says 7 or more hours. Pick a duration target that fits your schedule and needs.",
+          "61-64":
+            "Public guidance for adults 61–64 lists a 7–9 hour range. The tool still uses the duration target you choose.",
+          "65-plus":
+            "Public guidance for adults 65+ lists a 7–8 hour range. The tool still uses the duration target you choose.",
+        };
+        const $ = (id) => document.getElementById(id);
+        const pad = (value) => String(value).padStart(2, "0");
+        const minuteFromTime = (value) => {
+          const [hour, minute] = value.split(":").map(Number);
+          return hour * 60 + minute;
+        };
+        const clock = (minutes) => {
+          const normalized = ((minutes % 1440) + 1440) % 1440;
+          const hour = Math.floor(normalized / 60);
+          const minute = normalized % 60;
+          const suffix = hour >= 12 ? "PM" : "AM";
+          const displayHour = hour % 12 || 12;
+          return `${displayHour}:${pad(minute)} ${suffix}`;
+        };
+        const durationText = (minutes) =>
+          `${Math.floor(minutes / 60)}${minutes % 60 ? ` h ${minutes % 60}` : " hours"}${minutes % 60 ? " min" : ""}`;
+        const calculate = () => {
+          const target = minuteFromTime($("target-time").value || "07:00");
+          const buffer = Number($("buffer").value);
+          const asleepWindow = state.mode === "wake" ? target - state.duration : target + buffer;
+          const mainTime =
+            state.mode === "wake" ? asleepWindow - buffer : asleepWindow + state.duration;
+          const title =
+            state.mode === "wake"
+              ? "Aim to get into bed by this time"
+              : "A matching wake-time plan";
+          const targetName = state.mode === "wake" ? "Wake time" : "In-bed time";
+          const targetOutput = clock(target);
+          const cycle = (state.duration / 90).toFixed(1);
+          $("result-time").textContent = clock(mainTime);
+          $("result-title").textContent = title;
+          $("target-name").textContent = targetName;
+          $("target-output").textContent = targetOutput;
+          $("duration-output").textContent = durationText(state.duration);
+          $("buffer-output").textContent = buffer ? `${buffer} minutes` : "No buffer";
+          $("cycle-output").textContent = `About ${cycle} blocks`;
+          const bufferDescription = buffer
+            ? `plus a ${buffer}-minute fall-asleep buffer`
+            : "with no fall-asleep buffer";
+          const durationDescription = durationText(state.duration).toLowerCase();
+          $("result-note").textContent =
+            `The plan uses ${durationDescription} ${bufferDescription}. ` +
+            "The approximate 90-minute block label is duration arithmetic, " +
+            "not a sleep-stage measurement.";
+          $("copy-button").dataset.summary = [
+            "Toolyfi Sleep Calculator plan",
+            `${state.mode === "wake" ? "Wake time" : "In-bed time"}: ${targetOutput}`,
+            `${state.mode === "wake" ? "In-bed time" : "Wake time"}: ${clock(mainTime)}`,
+            `Duration target: ${durationText(state.duration)}.`,
+            `Fall-asleep buffer: ${buffer ? `${buffer} minutes` : "none"}.`,
+            "Scope: schedule arithmetic only; not sleep-stage measurement, diagnosis, or medical advice.",
+          ].join("\n");
+          const panel = document.querySelector(".result-panel");
+          panel.classList.remove("updated");
+          requestAnimationFrame(() => panel.classList.add("updated"));
+        };
+        const setMode = (mode) => {
+          state.mode = mode;
+          $("wake-mode").classList.toggle("active", mode === "wake");
+          $("bed-mode").classList.toggle("active", mode === "bed");
+          $("wake-mode").setAttribute("aria-selected", String(mode === "wake"));
+          $("bed-mode").setAttribute("aria-selected", String(mode === "bed"));
+          $("target-label").textContent =
+            mode === "wake" ? "I need to wake at" : "I plan to get into bed at";
+          $("target-time").value = mode === "wake" ? "07:00" : "23:00";
+          calculate();
+        };
+        document.querySelectorAll(".age-chip").forEach((button) =>
+          button.addEventListener("click", () => {
+            state.age = button.dataset.age;
+            document
+              .querySelectorAll(".age-chip")
+              .forEach((item) => item.classList.toggle("active", item === button));
+            $("age-note").textContent = ageCopy[state.age];
+          }),
+        );
+        document.querySelectorAll(".duration-chip").forEach((button) =>
+          button.addEventListener("click", () => {
+            state.duration = Number(button.dataset.minutes);
+            document
+              .querySelectorAll(".duration-chip")
+              .forEach((item) => item.classList.toggle("active", item === button));
+            calculate();
+          }),
+        );
+        $("wake-mode").addEventListener("click", () => setMode("wake"));
+        $("bed-mode").addEventListener("click", () => setMode("bed"));
+        $("calculate-button").addEventListener("click", calculate);
+        $("target-time").addEventListener("input", calculate);
+        $("buffer").addEventListener("change", calculate);
+        $("reset-button").addEventListener("click", () => {
+          state.duration = 480;
+          document
+            .querySelectorAll(".duration-chip")
+            .forEach((item) => item.classList.toggle("active", item.dataset.minutes === "480"));
+          $("buffer").value = "15";
+          setMode("wake");
+        });
+        $("copy-button").addEventListener("click", async () => {
+          const button = $("copy-button");
+          try {
+            await navigator.clipboard.writeText(button.dataset.summary || "");
+            button.textContent = "Plan copied";
+          } catch {
+            button.textContent = "Copy unavailable — select text";
+          }
+          setTimeout(() => {
+            button.textContent = "Copy transparent plan";
+          }, 1800);
+        });
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach(
+              (entry) => entry.isIntersecting && entry.target.classList.add("visible"),
+            ),
+          { threshold: 0.13 },
+        );
+        document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+        calculate();
+      })();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
