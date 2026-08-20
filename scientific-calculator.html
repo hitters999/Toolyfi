@@ -699,9 +699,31 @@
       }
     </style>
     <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
-      <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
-</head>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+    <style>
+      /* APK fidelity: preserve the supplied Scientific Calculator workspace inside a responsive local frame. */
+      .apk-tool-host {
+        padding: 0;
+        background: #080b18;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+      .apk-calculator-frame {
+        display: block;
+        width: 100%;
+        min-height: 860px;
+        height: 860px;
+        border: 0;
+      }
+      @media (max-width: 700px) {
+        .apk-calculator-frame {
+          min-height: 780px;
+          height: 780px;
+        }
+      }
+    </style>
+  </head>
   <body>
     <header class="top">
       <a class="brand" href="index.html"
@@ -740,66 +762,13 @@
         every calculation.
       </figcaption>
     </figure>
-    <main class="tool">
-      <div class="work">
-        <section class="calc">
-          <div class="calc-top">
-            <span>TOOLYFI SCIENTIFIC</span><button class="mode" id="mode">DEG</button>
-          </div>
-          <div class="screen">
-            <input
-              class="expr"
-              id="expr"
-              aria-label="Expression"
-              value=""
-              placeholder="Example: sin(30)+sqrt(9)"
-            />
-            <div class="value" id="value">0</div>
-          </div>
-          <div class="keys" id="keys">
-            <button class="key fn" data-v="sin(">sin</button
-            ><button class="key fn" data-v="cos(">cos</button
-            ><button class="key fn" data-v="tan(">tan</button
-            ><button class="key fn" data-v="log(">log</button
-            ><button class="key fn" data-v="ln(">ln</button
-            ><button class="key fn" data-v="sqrt(">√</button
-            ><button class="key fn" data-v="abs(">abs</button
-            ><button class="key fn" data-v="pi">π</button
-            ><button class="key fn" data-v="e">e</button
-            ><button class="key coral" id="clear">AC</button
-            ><button class="key" data-v="7">7</button><button class="key" data-v="8">8</button
-            ><button class="key" data-v="9">9</button><button class="key fn" data-v="/">÷</button
-            ><button class="key fn" data-v="^">xʸ</button><button class="key" data-v="4">4</button
-            ><button class="key" data-v="5">5</button><button class="key" data-v="6">6</button
-            ><button class="key fn" data-v="*">×</button><button class="key fn" data-v="!">!</button
-            ><button class="key" data-v="1">1</button><button class="key" data-v="2">2</button
-            ><button class="key" data-v="3">3</button><button class="key fn" data-v="-">−</button
-            ><button class="key fn" data-v="(">(</button><button class="key" data-v="0">0</button
-            ><button class="key" data-v=".">.</button><button class="key fn" data-v="e">EE</button
-            ><button class="key fn" data-v="+">+</button><button class="key fn" data-v=")">)</button
-            ><button class="key coral" id="equals" style="grid-column: span 5">= Calculate</button>
-          </div>
-        </section>
-        <aside class="side">
-          <h2>Use with context</h2>
-          <p>
-            Supported expressions are evaluated in this browser. This page does not validate your
-            formula, units, source data, or whether a web calculator is permitted in an exam.
-          </p>
-          <button data-example="(2+3)^2">(2+3)^2</button
-          ><button data-example="sin(30)">sin(30) in current mode</button
-          ><button data-example="sqrt(9)+log(100)">sqrt(9)+log(100)</button
-          ><button data-example="5!/(3!*2!)">5!/(3!*2!)</button>
-          <div class="history">
-            <strong>Current-page history</strong>
-            <div class="history-list" id="history">
-              <div class="history-item">
-                <span>Nothing calculated yet</span>Use an example or enter an expression.
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
+    <main class="tool apk-tool-host">
+      <iframe
+        class="apk-calculator-frame"
+        src="scientific-calculator-apk.html"
+        title="Scientific Calculator APK workspace"
+        loading="eager"
+      ></iframe>
     </main>
     <section class="notice">
       <div class="notice-in">
@@ -1490,6 +1459,6 @@
       });
     </script>
     <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-      <script src="/pwa-register.js" defer></script>
-</body>
+    <script src="/pwa-register.js" defer></script>
+  </body>
 </html>

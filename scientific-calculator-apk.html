@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Scientific Calculator workspace</title>
+    <style>
+      :root {
+        --bg: #080b18;
+        --panel: #11172a;
+        --panel-2: #171f38;
+        --key: #1a2340;
+        --key-hi: #243052;
+        --text: #f6f7ff;
+        --muted: #8790ad;
+        --accent: #8b5cf6;
+        --accent-2: #6d3de8;
+        --cyan: #42d6e8;
+        --pink: #f05b9e;
+        --green: #78e6b0;
+        --danger: #ef6b86;
+        --shadow: rgba(0, 0, 0, 0.42);
+        --radius: 16px;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bg);
+        font-family:
+          Inter,
+          Roboto,
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--text);
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+      }
+      .app {
+        height: 100%;
+        min-height: 520px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 14px max(14px, env(safe-area-inset-bottom));
+        background: radial-gradient(circle at 80% -10%, #253463 0, #11162a 35%, #080b18 78%);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 11px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(145deg, #9b73ff, #5b28d2);
+        box-shadow:
+          inset 1px 1px 2px #c7b4ff,
+          4px 5px 10px #0007;
+        font-weight: 800;
+        font-size: 20px;
+      }
+      .brand h1 {
+        font-size: 17px;
+        letter-spacing: 0.2px;
+        margin: 0;
+      }
+      .brand p {
+        font-size: 10px;
+        color: var(--muted);
+        margin: 2px 0 0;
+      }
+      .top-actions {
+        display: flex;
+        gap: 7px;
+      }
+      .pill {
+        padding: 8px 10px;
+        border-radius: 11px;
+        background: #18223d;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .pill.active {
+        background: #2e245e;
+        color: #dcd0ff;
+        border: 1px solid #7250d9;
+      }
+      .icon-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: #18223d;
+        color: #bfc7df;
+        font-size: 18px;
+        box-shadow: 0 4px 0 #080b14;
+      }
+      .icon-btn:active,
+      .key:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #060810;
+      }
+      .display {
+        position: relative;
+        padding: 15px 16px 13px;
+        border: 1px solid #303b5b;
+        border-radius: 20px;
+        background: linear-gradient(145deg, #17223c, #0d1427);
+        box-shadow:
+          inset 1px 1px 0 #ffffff12,
+          10px 14px 25px var(--shadow);
+        min-height: 126px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+      }
+      .display:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(120deg, #ffffff09, transparent 30%, transparent 70%, #a78bfa0a);
+      }
+      .display-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 7px;
+      }
+      .status {
+        color: var(--green);
+      }
+      .expression {
+        min-height: 23px;
+        text-align: right;
+        color: #aeb7d1;
+        font-size: 15px;
+        word-break: break-all;
+        line-height: 1.4;
+      }
+      .result {
+        min-height: 40px;
+        text-align: right;
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        word-break: break-all;
+        line-height: 1.2;
+      }
+      .result.error {
+        color: var(--danger);
+        font-size: 22px;
+      }
+      .memory-line {
+        height: 16px;
+        text-align: right;
+        color: #8590b3;
+        font-size: 10px;
+      }
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #6f7b9e;
+        text-transform: uppercase;
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        font-weight: 800;
+        margin: 1px 2px;
+      }
+      .section-label:after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: #273351;
+      }
+      .keypad {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+        min-height: 0;
+        flex: 1;
+      }
+      .key {
+        min-height: 38px;
+        border-radius: 14px;
+        background: linear-gradient(145deg, var(--key-hi), var(--key));
+        box-shadow:
+          0 5px 0 #090d1b,
+          0 9px 16px #0003,
+          inset 1px 1px 0 #ffffff12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 17px;
+        font-weight: 750;
+        transition:
+          transform 0.08s,
+          box-shadow 0.08s,
+          filter 0.08s;
+      }
+      .key:active {
+        filter: brightness(1.25);
+      }
+      .key .sub {
+        font-size: 9px;
+        color: #8e9abb;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .key.sci {
+        font-size: 13px;
+      }
+      .key.operator {
+        color: #e0d6ff;
+        background: linear-gradient(145deg, #393065, #242047);
+      }
+      .key.accent {
+        background: linear-gradient(145deg, #9b6cff, #632bd5);
+        box-shadow:
+          0 5px 0 #351682,
+          0 9px 16px #0004,
+          inset 1px 1px 0 #ffffff2a;
+      }
+      .key.danger {
+        color: #ffd8e1;
+        background: linear-gradient(145deg, #7f3158, #57233f);
+      }
+      .key.equal {
+        background: linear-gradient(145deg, #31bcd1, #197d9c);
+        box-shadow:
+          0 5px 0 #0b4e64,
+          0 9px 16px #0004,
+          inset 1px 1px 0 #ffffff2a;
+      }
+      .key.zero {
+        grid-column: span 2;
+      }
+      .key.tall {
+        font-size: 20px;
+      }
+      .history {
+        position: fixed;
+        inset: 0;
+        background: #050711b8;
+        backdrop-filter: blur(8px);
+        display: none;
+        align-items: flex-end;
+        z-index: 10;
+      }
+      .history.open {
+        display: flex;
+      }
+      .sheet {
+        width: 100%;
+        max-height: 72%;
+        border-radius: 24px 24px 0 0;
+        background: #121a30;
+        border: 1px solid #303d60;
+        padding: 16px;
+        box-shadow: 0 -20px 45px #0008;
+      }
+      .sheet-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .sheet h2 {
+        font-size: 17px;
+        margin: 0;
+      }
+      .history-list {
+        overflow: auto;
+        max-height: 45vh;
+      }
+      .history-item {
+        padding: 11px 4px;
+        border-bottom: 1px solid #25304b;
+        text-align: right;
+      }
+      .history-item .h-expr {
+        color: #8995b5;
+        font-size: 12px;
+      }
+      .history-item .h-result {
+        color: #fff;
+        font-size: 19px;
+        font-weight: 750;
+        margin-top: 2px;
+      }
+      .empty {
+        color: var(--muted);
+        text-align: center;
+        padding: 30px;
+      }
+      @media (max-height: 700px) {
+        .app {
+          padding-top: 8px;
+          gap: 6px;
+        }
+        .display {
+          min-height: 95px;
+          padding: 10px 13px;
+        }
+        .result {
+          font-size: 27px;
+        }
+        .key {
+          border-radius: 11px;
+          min-height: 31px;
+        }
+        .keypad {
+          gap: 5px;
+        }
+        .row {
+          gap: 5px;
+        }
+        .topbar {
+          min-height: 35px;
+        }
+      }
+    </style>
+    <style>
+      html,
+      body {
+        min-height: 100%;
+        overflow: auto;
+      }
+      .app {
+        min-height: 780px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">∑</div>
+          <div>
+            <h1>Scientific Calculator</h1>
+            <p>Precision tools for everyday math</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="pill active" id="angleBtn" onclick="toggleAngle()">DEG</button
+          ><button class="icon-btn" aria-label="History" onclick="openHistory()">↺</button>
+        </div>
+      </header>
+      <section class="display" aria-label="Calculator display">
+        <div class="display-meta">
+          <span id="modeLabel">SCIENTIFIC · DEG</span><span class="status" id="status">READY</span>
+        </div>
+        <div class="expression" id="inp">0</div>
+        <div class="result" id="res">0</div>
+        <div class="memory-line" id="memoryLine"></div>
+      </section>
+      <div class="section-label">Scientific functions</div>
+      <section class="keypad">
+        <div class="row">
+          <button class="key sci" onclick="insertFn('sin')">sin</button
+          ><button class="key sci" onclick="insertFn('cos')">cos</button
+          ><button class="key sci" onclick="insertFn('tan')">tan</button
+          ><button class="key sci" onclick="insertFn('log')">log</button
+          ><button class="key sci" onclick="insertFn('ln')">ln</button>
+        </div>
+        <div class="row">
+          <button class="key sci" onclick="insertFn('asin')">sin⁻¹</button
+          ><button class="key sci" onclick="insertFn('acos')">cos⁻¹</button
+          ><button class="key sci" onclick="insertFn('atan')">tan⁻¹</button
+          ><button class="key sci" onclick="insertFn('sqrt')">√</button
+          ><button class="key sci" onclick="append('^2')">x²</button>
+        </div>
+        <div class="row">
+          <button class="key sci" onclick="append('^')">xʸ</button
+          ><button class="key sci" onclick="insertFn('pow10')">10ˣ</button
+          ><button class="key sci" onclick="insertFn('abs')">abs</button
+          ><button class="key sci" onclick="insertFn('fact')">n!</button
+          ><button class="key sci" onclick="toggleHyp()">
+            <span class="sub" id="hypLabel">OFF</span>HYP
+          </button>
+        </div>
+        <div class="row">
+          <button class="key sci" onclick="append('(')">(</button
+          ><button class="key sci" onclick="append(')')">)</button
+          ><button class="key sci" onclick="append('π')">π</button
+          ><button class="key sci" onclick="append('e')">e</button
+          ><button class="key sci" onclick="append('×10^')">×10ˣ</button>
+        </div>
+        <div class="row">
+          <button class="key sci" onclick="memory('MC')">MC</button
+          ><button class="key sci" onclick="memory('MR')">MR</button
+          ><button class="key sci" onclick="memory('M+')">M+</button
+          ><button class="key sci" onclick="memory('M-')">M−</button
+          ><button class="key sci" onclick="useAns()">Ans</button>
+        </div>
+        <div class="row">
+          <button class="key" onclick="append('7')">7</button
+          ><button class="key" onclick="append('8')">8</button
+          ><button class="key" onclick="append('9')">9</button
+          ><button class="key danger" onclick="del()">DEL</button
+          ><button class="key danger" onclick="clearAll()">AC</button>
+        </div>
+        <div class="row">
+          <button class="key" onclick="append('4')">4</button
+          ><button class="key" onclick="append('5')">5</button
+          ><button class="key" onclick="append('6')">6</button
+          ><button class="key operator" onclick="append('×')">×</button
+          ><button class="key operator" onclick="append('÷')">÷</button>
+        </div>
+        <div class="row">
+          <button class="key" onclick="append('1')">1</button
+          ><button class="key" onclick="append('2')">2</button
+          ><button class="key" onclick="append('3')">3</button
+          ><button class="key operator" onclick="append('+')">+</button
+          ><button class="key operator" onclick="append('−')">−</button>
+        </div>
+        <div class="row">
+          <button class="key zero" onclick="append('0')">0</button
+          ><button class="key" onclick="append('.')">.</button
+          ><button class="key operator" onclick="toggleSign()">+/−</button
+          ><button class="key equal tall" onclick="calculate()">=</button>
+        </div>
+      </section>
+    </main>
+    <div class="history" id="history" onclick="closeHistory(event)">
+      <div class="sheet">
+        <div class="sheet-head">
+          <h2>Calculation history</h2>
+          <button class="pill" onclick="clearHistory()">Clear</button>
+        </div>
+        <div class="history-list" id="historyList"></div>
+      </div>
+    </div>
+    <script>
+      let expr = "",
+        lastAns = "0",
+        memoryValue = 0,
+        angle = "DEG",
+        hyp = false,
+        history = [];
+      const $ = (id) => document.getElementById(id);
+      function vibrate() {
+        try {
+          if (navigator.vibrate) navigator.vibrate(8);
+        } catch (e) {}
+      }
+      function render() {
+        $("inp").textContent = expr || "0";
+        $("modeLabel").textContent = "SCIENTIFIC · " + angle;
+        $("angleBtn").textContent = angle;
+        $("angleBtn").classList.toggle("active", true);
+        $("hypLabel").textContent = hyp ? "ON" : "OFF";
+        $("memoryLine").textContent = memoryValue !== 0 ? "M: " + format(memoryValue) : "";
+      }
+      function append(v) {
+        vibrate();
+        if ($("res").textContent !== "0" && expr === lastAns && /^[0-9.(πe]$/.test(v)) expr = "";
+        expr += v;
+        $("res").classList.remove("error");
+        render();
+      }
+      function insertFn(name) {
+        vibrate();
+        if (hyp && ["sin", "cos", "tan"].includes(name)) {
+          name += "h";
+          hyp = false;
+        }
+        expr += name + "(";
+        render();
+      }
+      function del() {
+        vibrate();
+        expr = expr.slice(0, -1);
+        render();
+      }
+      function clearAll() {
+        vibrate();
+        expr = "";
+        $("res").textContent = "0";
+        $("res").classList.remove("error");
+        $("status").textContent = "READY";
+        render();
+      }
+      function useAns() {
+        append(lastAns);
+      }
+      function toggleAngle() {
+        angle = angle === "DEG" ? "RAD" : "DEG";
+        render();
+      }
+      function toggleHyp() {
+        hyp = !hyp;
+        if (hyp) {
+        }
+        render();
+      }
+      function toggleSign() {
+        if (!expr) expr = "−";
+        else if (/[-+×÷^]$/.test(expr)) expr += "−";
+        else expr = "−(" + expr + ")";
+        render();
+      }
+      function toRad(x) {
+        return angle === "DEG" ? (x * Math.PI) / 180 : x;
+      }
+      function fromRad(x) {
+        return angle === "DEG" ? (x * 180) / Math.PI : x;
+      }
+      function sin(x) {
+        return Math.sin(toRad(x));
+      }
+      function cos(x) {
+        return Math.cos(toRad(x));
+      }
+      function tan(x) {
+        return Math.tan(toRad(x));
+      }
+      function asin(x) {
+        return fromRad(Math.asin(x));
+      }
+      function acos(x) {
+        return fromRad(Math.acos(x));
+      }
+      function atan(x) {
+        return fromRad(Math.atan(x));
+      }
+      function sinh(x) {
+        return Math.sinh(toRad(x));
+      }
+      function cosh(x) {
+        return Math.cosh(toRad(x));
+      }
+      function tanh(x) {
+        return Math.tanh(toRad(x));
+      }
+      function log(x) {
+        return Math.log10(x);
+      }
+      function ln(x) {
+        return Math.log(x);
+      }
+      function sqrt(x) {
+        return Math.sqrt(x);
+      }
+      function pow10(x) {
+        return Math.pow(10, x);
+      }
+      function abs(x) {
+        return Math.abs(x);
+      }
+      function fact(n) {
+        if (n < 0 || n > 170) return NaN;
+        let r = 1;
+        for (let i = 2; i <= Math.floor(n); i++) r *= i;
+        return r;
+      }
+      function format(n) {
+        if (typeof n !== "number" || !Number.isFinite(n)) return String(n);
+        if (Math.abs(n) < 1e-12) n = 0;
+        return Number(n.toPrecision(11)).toString();
+      }
+      function prepare(s) {
+        return s
+          .replace(/×10\^/g, "*10**")
+          .replace(/×/g, "*")
+          .replace(/÷/g, "/")
+          .replace(/−/g, "-")
+          .replace(/π/g, "Math.PI")
+          .replace(/\be\b/g, "Math.E")
+          .replace(/\^/g, "**")
+          .replace(/%/g, "/100");
+      }
+      function calculate() {
+        vibrate();
+        if (!expr) return;
+        try {
+          let source = prepare(expr);
+          if (!/^[0-9+\-*/().,\sA-Za-z*]+$/.test(source)) throw Error("Invalid");
+          let value = eval(source);
+          value = typeof value === "number" ? value : NaN;
+          if (!Number.isFinite(value)) throw Error("Math");
+          let result = format(value);
+          history.unshift({ expr: expr, result: result });
+          history = history.slice(0, 30);
+          lastAns = result;
+          $("res").textContent = result;
+          $("res").classList.remove("error");
+          $("status").textContent = "CALCULATED";
+          expr = result;
+          render();
+        } catch (e) {
+          $("res").textContent = "Invalid expression";
+          $("res").classList.add("error");
+          $("status").textContent = "CHECK INPUT";
+        }
+      }
+      function memory(type) {
+        try {
+          let value = expr ? eval(prepare(expr)) : Number(lastAns);
+          if (type === "MC") memoryValue = 0;
+          else if (type === "MR") append(String(memoryValue));
+          else if (type === "M+") memoryValue += Number(value) || 0;
+          else if (type === "M-") memoryValue -= Number(value) || 0;
+          render();
+        } catch (e) {}
+      }
+      function openHistory() {
+        renderHistory();
+        $("history").classList.add("open");
+      }
+      function closeHistory(e) {
+        if (e.target.id === "history") $("history").classList.remove("open");
+      }
+      function clearHistory() {
+        history = [];
+        renderHistory();
+      }
+      function renderHistory() {
+        let box = $("historyList");
+        box.innerHTML = history.length
+          ? history
+              .map(
+                (h) =>
+                  `<div class="history-item" onclick="expr='${h.result}';$('history').classList.remove('open');render()"><div class="h-expr">${h.expr}</div><div class="h-result">= ${h.result}</div></div>`,
+              )
+              .join("")
+          : '<div class="empty">No calculations yet</div>';
+      }
+      render();
+    </script>
+  </body>
+</html>
