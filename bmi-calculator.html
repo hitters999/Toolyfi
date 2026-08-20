@@ -305,7 +305,8 @@
 
       .hero-visual {
         position: relative;
-        min-height: 405px;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
         background: var(--paper-deep);
         box-shadow: 18px 18px 0 var(--coral);
         isolation: isolate;
@@ -322,12 +323,12 @@
         content: "";
       }
 
-      .hero-visual img {
+      .hero-visual > img {
         display: block;
         width: 100%;
-        min-height: 405px;
+        height: 100%;
         object-fit: cover;
-        transition: transform 800ms var(--ease-out);
+        object-position: 72% center;
       }
 
       .hero-brand-overlay {
@@ -336,6 +337,8 @@
         bottom: 18px;
         z-index: 2;
         display: inline-flex;
+        width: fit-content;
+        max-width: calc(100% - 36px);
         align-items: center;
         gap: 9px;
         border: 1px solid rgba(23, 36, 55, 0.14);
@@ -358,10 +361,6 @@
         transition: none;
       }
 
-      .hero-visual:hover img {
-        transform: scale(1.025);
-      }
-
       .hero-visual.missing-image {
         display: grid;
         place-items: center;
@@ -375,7 +374,7 @@
           linear-gradient(155deg, var(--mist) 0 44%, var(--paper-deep) 44% 100%);
       }
 
-      .hero-visual.missing-image img {
+      .hero-visual.missing-image > img {
         display: none;
       }
 
@@ -1154,22 +1153,6 @@
         transform: translateY(0);
       }
 
-      @media (prefers-reduced-motion: no-preference) {
-        .hero-visual:not(.missing-image) img {
-          animation: visual-drift 8s var(--ease-in-out) infinite alternate;
-        }
-      }
-
-      @keyframes visual-drift {
-        from {
-          transform: scale(1.01) translate3d(0, 0, 0);
-        }
-
-        to {
-          transform: scale(1.04) translate3d(-8px, 5px, 0);
-        }
-      }
-
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -1186,7 +1169,7 @@
         }
       }
 
-      @media (max-width: 850px) {
+      @media (max-width: 1100px) {
         .hero,
         .calculator-shell,
         .section-grid,
@@ -1196,15 +1179,21 @@
         }
 
         .hero {
-          padding-bottom: 44px;
+          min-height: 0;
+          gap: 26px;
+          padding: 24px 0 40px;
         }
 
         .hero-visual {
-          min-height: 320px;
+          min-height: 0;
+          aspect-ratio: 16 / 9;
+          box-shadow: 12px 12px 0 var(--coral);
         }
 
-        .hero-visual img {
-          min-height: 320px;
+        .hero-visual > img {
+          height: 100%;
+          min-height: 0;
+          object-position: 72% center;
         }
 
         .tool-heading {
@@ -1232,6 +1221,41 @@
 
         h1 {
           font-size: clamp(2.85rem, 16vw, 4.2rem);
+        }
+
+        .hero {
+          gap: 20px;
+          padding: 14px 0 30px;
+        }
+
+        .hero-visual {
+          aspect-ratio: 4 / 3;
+          box-shadow: 8px 8px 0 var(--coral);
+        }
+
+        .hero-visual > img {
+          object-position: 76% center;
+        }
+
+        .hero-visual::after {
+          right: 10px;
+          bottom: 10px;
+          width: 50px;
+          height: 50px;
+        }
+
+        .hero-brand-overlay {
+          right: 10px;
+          bottom: 10px;
+          gap: 6px;
+          padding: 6px 8px 6px 6px;
+          box-shadow: 2px 2px 0 rgba(23, 36, 55, 0.16);
+          font-size: 0.9rem;
+        }
+
+        .hero-brand-overlay img {
+          width: 26px;
+          height: 26px;
         }
 
         .field-grid,
