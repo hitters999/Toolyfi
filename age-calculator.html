@@ -1,715 +1,1955 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Age Calculator online — calculate your exact age in years, months, days, hours and minutes instantly. Find your next birthday countdown. No signup, 100% free.">
-<meta name="keywords" content="age calculator, calculate age, how old am I, birthday calculator, age in days, exact age, age finder, date of birth calculator">
-<meta name="author" content="Toolyfi">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#2563eb">
-<title>Free Age Calculator — Calculate Exact Age in Years, Months & Days | Toolyfi</title>
-<meta property="og:title" content="Free Age Calculator — Calculate Your Exact Age | Toolyfi">
-<meta property="og:description" content="Calculate your exact age in years, months, days, hours. Find birthday countdown instantly. 100% free, no signup.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolyfi.com/age-calculator.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Age Calculator | Toolyfi">
-<meta name="twitter:description" content="Calculate exact age in seconds. Fast, accurate, free.">
-<link rel="canonical" href="https://toolyfi.com/age-calculator.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Toolyfi Age Calculator",
-  "description": "Free online age calculator — calculate exact age in years, months, days, hours and minutes instantly. No signup required.",
-  "url": "https://toolyfi.com/age-calculator.html",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "Any",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "12450"
-  },
-  "creator": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"}
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type": "Question", "name": "How do I calculate my exact age?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your date of birth in the age calculator above. It will instantly show your exact age in years, months, days, hours, and even minutes."}},
-    {"@type": "Question", "name": "Is this age calculator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Toolyfi Age Calculator is 100% free. No signup, no subscription, no hidden charges."}},
-    {"@type": "Question", "name": "How many days old am I?", "acceptedAnswer": {"@type": "Answer", "text": "Our calculator shows your total age in days along with years, months, and hours. Just enter your date of birth and click Calculate."}},
-    {"@type": "Question", "name": "When is my next birthday?", "acceptedAnswer": {"@type": "Answer", "text": "The calculator automatically shows how many days are left until your next birthday."}}
-  ]
-}
-</script>
-<style>
-:root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-light: #dbeafe;
-  --accent: #f59e0b;
-  --dark: #0f172a;
-  --gray: #64748b;
-  --light: #f8fafc;
-  --border: #e2e8f0;
-  --white: #ffffff;
-  --success: #10b981;
-  --radius: 16px;
-  --shadow: 0 4px 24px rgba(37,99,235,0.10);
-  --shadow-lg: 0 12px 48px rgba(37,99,235,0.16);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;line-height:1.6}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Calculate exact calendar age or a date difference in years, months, and days. See next-birthday timing, birth weekday, and transparent leap-day handling with Toolyfi."
+    />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+    <meta name="theme-color" content="#172437" />
+    <link rel="canonical" href="https://toolyfi.com/age-calculator.html" />
+    <meta
+      property="og:title"
+      content="Age Calculator: Years, Months, Days & Next Birthday | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Calculate calendar age or a date difference with visible date conventions, next birthday timing, and browser-local arithmetic."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/age-calculator.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-age-calculator-hero.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Age Calculator: Years, Months, Days & Next Birthday | Toolyfi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
 
-/* HEADER */
-header{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
-.logo{font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo span{color:var(--accent)}
-nav{display:flex;gap:4px}
-nav a{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.88rem;font-weight:600;transition:all .2s}
-nav a:hover{color:#fff;background:rgba(255,255,255,0.08)}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Age Calculator",
+        "url": "https://toolyfi.com/age-calculator.html",
+        "description": "A browser-based calculator for calendar age and date differences, with birthday timing and stated leap-day handling.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "creator": { "@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://toolyfi.com/#directory"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Age Calculator",
+            "item": "https://toolyfi.com/age-calculator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this age calculator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Toolyfi subtracts the earlier calendar date from the later date to show completed years, remaining calendar months, and remaining days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the calculator account for leap years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Calendar-day totals and date borrowing use actual Gregorian calendar month lengths, including February 29 in leap years."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate age on a past or future date?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Enter the date you want to calculate age on, provided it is not earlier than the entered birth date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are February 29 birthdays handled?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The user can choose whether a February 29 birthday is observed on February 28 or March 1 in a common year for the next-birthday display."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does total days mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Total days is the number of complete calendar-day intervals from the earlier date up to the later date, with the start date counted as day zero."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Toolyfi store dates of birth?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculation is performed in the browser and this page does not create a birth-date share link or require an account."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this page confirm legal age eligibility?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Legal and administrative age rules can depend on jurisdiction, the relevant time, and a specific program or document. Check the applicable official rule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can month and day differences be confusing at month end?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Calendar months have different lengths. Toolyfi uses a stated borrowing convention based on the actual prior month when the later day is smaller than the earlier day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between calendar age and an age difference?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Calendar age uses a birth date and an age-on date. Date difference measures the elapsed calendar interval between any earlier and later dates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this calculator medical, legal, or official advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is a general calendar arithmetic tool. Use an official authority or qualified professional where a specific rule or decision matters."
+            }
+          }
+        ]
+      }
+    </script>
 
-/* HERO */
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 70% 50%, rgba(37,99,235,0.3) 0%, transparent 60%);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;border-radius:100px;font-size:.8rem;font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px)}
-.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
-.hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent)}
-.hero-sub{color:rgba(255,255,255,0.75);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7}
-.trust-pills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.trust-pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:600;backdrop-filter:blur(8px)}
-.trust-pill span{color:var(--accent)}
+    <style>
+      /* Toolyfi Editorial Utility Atlas — time, paper, ink, coral, and useful motion. */
+      :root {
+        --paper: #faf8f4;
+        --paper-deep: #f0ece3;
+        --ink: #172437;
+        --ink-soft: #40546a;
+        --coral: #ef6c54;
+        --coral-deep: #c9503d;
+        --sage: #a9bda9;
+        --mist: #e1ebe3;
+        --sky: #cbd7dc;
+        --line: #d8d4ca;
+        --white: #fffefa;
+        --shadow: 0 22px 58px rgba(23, 36, 55, 0.13);
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      }
 
-/* TOOL SECTION */
-.tool-section{max-width:860px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:10}
-.tool-card{background:#fff;border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.18);overflow:hidden}
-.tool-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.tool-card-header h2{color:#fff;font-size:1.25rem;font-weight:700}
-.stat-chips{display:flex;gap:10px;flex-wrap:wrap}
-.stat-chip{background:rgba(255,255,255,0.15);color:#fff;padding:6px 14px;border-radius:8px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:6px}
-.stat-chip .val{font-size:1.1rem;font-weight:800}
-.tool-body{padding:32px}
-.input-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
-.inp-group label{display:block;font-weight:700;font-size:.85rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
-.inp-group input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;color:var(--dark);transition:all .2s;background:#f8fafc}
-.inp-group input:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,0.08)}
-.btn-row{display:flex;gap:12px;margin-bottom:28px}
-.btn-calc{flex:1;background:var(--primary);color:#fff;border:none;padding:15px 28px;border-radius:12px;font-size:1rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-calc:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,0.35)}
-.btn-clear{background:#f1f5f9;color:var(--gray);border:none;padding:15px 20px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.btn-clear:hover{background:#e2e8f0;color:var(--dark)}
-.results{display:none;animation:fadeUp .35s ease-out}
-.results.show{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.res-box{background:var(--light);border:2px solid var(--border);border-radius:14px;padding:20px 12px;text-align:center;transition:all .2s}
-.res-box:hover{border-color:var(--primary);box-shadow:var(--shadow)}
-.res-box .num{font-size:2.2rem;font-weight:800;color:var(--primary);line-height:1;margin-bottom:6px}
-.res-box .lbl{font-size:.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.info-item{background:var(--light);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px}
-.info-item .ico{font-size:1.4rem}
-.info-item .info-label{font-size:.78rem;color:var(--gray);font-weight:600;margin-bottom:2px}
-.info-item .info-val{font-size:.95rem;font-weight:700;color:var(--dark)}
-.msg{padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:600;margin-bottom:16px;display:none}
-.msg.show{display:block}
-.msg.error{background:#fef2f2;color:#dc2626;border-left:4px solid #dc2626}
-.copy-btn{width:100%;margin-top:20px;background:var(--light);border:2px solid var(--border);color:var(--primary);padding:12px;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:all .2s}
-.copy-btn:hover{background:var(--primary-light);border-color:var(--primary)}
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.6;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+      .page-shell {
+        overflow: clip;
+      }
+      .wrap {
+        width: min(1180px, calc(100% - 40px));
+        margin-inline: auto;
+      }
 
-/* STATS BAR */
-.stats-bar{background:var(--dark);padding:40px 20px}
-.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.sbar-item .sval{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:6px}
-.sbar-item .slbl{color:rgba(255,255,255,0.6);font-size:.85rem;font-weight:600}
+      .breadcrumbs {
+        padding: 22px 0 4px;
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+      }
+      .breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .breadcrumbs a:hover {
+        color: var(--coral-deep);
+        text-decoration: underline;
+      }
 
-/* SECTIONS */
-.section{max-width:980px;margin:0 auto;padding:80px 24px}
-.section-tag{display:inline-block;background:var(--primary-light);color:var(--primary);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
-.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--dark);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
-.section-title em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--primary)}
-.section-sub{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.86fr);
+        gap: clamp(30px, 6vw, 92px);
+        align-items: center;
+        min-height: 510px;
+        padding: 32px 0 58px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--coral-deep);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 28px;
+        height: 2px;
+        background: var(--coral);
+        content: "";
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        line-height: 0.98;
+      }
+      h1 {
+        max-width: 650px;
+        margin: 18px 0;
+        font-size: clamp(3rem, 6vw, 5.45rem);
+        font-weight: 700;
+        letter-spacing: -0.065em;
+      }
+      h1 em,
+      h2 em {
+        color: var(--coral);
+        font-style: italic;
+      }
+      .hero-copy {
+        max-width: 590px;
+        color: var(--ink-soft);
+        font-size: 1.04rem;
+        line-height: 1.8;
+      }
+      .hero-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 26px;
+      }
+      .hero-facts span {
+        border: 1px solid var(--line);
+        background: rgba(255, 254, 250, 0.58);
+        padding: 7px 10px;
+        color: var(--ink-soft);
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
 
-/* MORE THAN JUST */
-.more-section{background:var(--light);padding:80px 24px}
-.more-inner{max-width:980px;margin:0 auto}
-.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
-.more-text h3{font-size:1.5rem;font-weight:800;color:var(--dark);margin-bottom:12px}
-.more-text p{color:var(--gray);line-height:1.8;margin-bottom:24px}
-.more-features{display:flex;flex-direction:column;gap:12px}
-.more-feat{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;border:1px solid var(--border);transition:all .2s}
-.more-feat:hover{border-color:var(--primary);box-shadow:var(--shadow)}
-.more-feat-ico{width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.more-feat-text h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
-.more-feat-text p{font-size:.85rem;color:var(--gray)}
-.more-visual{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:14px}
-.mini-result{background:#fff;border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.mini-result .lbl{font-size:.85rem;color:var(--gray);font-weight:600}
-.mini-result .val{font-size:1.4rem;font-weight:800;color:var(--primary)}
+      .hero-visual {
+        position: relative;
+        min-height: 405px;
+        background: var(--paper-deep);
+        box-shadow: 18px 18px 0 var(--coral);
+        isolation: isolate;
+        overflow: hidden;
+      }
+      .hero-visual::after {
+        position: absolute;
+        inset: auto 18px 18px auto;
+        z-index: 1;
+        width: 84px;
+        height: 84px;
+        border: 1px solid rgba(23, 36, 55, 0.24);
+        border-radius: 50%;
+        content: "";
+      }
+      .hero-visual > img {
+        display: block;
+        width: 100%;
+        min-height: 405px;
+        object-fit: cover;
+        transition: transform 800ms var(--ease-out);
+      }
+      .hero-visual:hover > img {
+        transform: scale(1.025);
+      }
+      .hero-brand-overlay {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(23, 36, 55, 0.14);
+        background: rgba(255, 254, 250, 0.92);
+        padding: 9px 12px 9px 9px;
+        box-shadow: 4px 4px 0 rgba(23, 36, 55, 0.16);
+        color: var(--ink);
+        font-family: "Fraunces", serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+      }
+      .hero-brand-overlay img {
+        display: block;
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
 
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.feat-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
-.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:.3s}
-.feat-card:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.feat-card:hover::before{opacity:1}
-.feat-icon{font-size:2.2rem;margin-bottom:16px;display:block}
-.feat-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
-.feat-card p{color:var(--gray);font-size:.9rem;line-height:1.7}
+      .scope-strip {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--white);
+      }
+      .scope-inner {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: start;
+        padding: 19px 0;
+      }
+      .scope-mark {
+        display: grid;
+        width: 31px;
+        height: 31px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--coral);
+        color: white;
+        font-weight: 800;
+      }
+      .scope-inner strong {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 0.86rem;
+      }
+      .scope-inner p {
+        max-width: 960px;
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 0.83rem;
+      }
 
-/* WHO BENEFITS */
-.who-section{background:var(--dark);padding:80px 24px}
-.who-inner{max-width:980px;margin:0 auto}
-.who-section .section-title{color:#fff}
-.who-section .section-sub{color:rgba(255,255,255,0.6)}
-.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px;transition:all .3s}
-.who-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.25);transform:translateY(-2px)}
-.who-emoji{font-size:2.4rem;margin-bottom:14px;display:block}
-.who-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
-.who-card p{color:rgba(255,255,255,0.55);font-size:.88rem;line-height:1.7}
+      .tool-zone {
+        padding: 76px 0;
+        background: var(--ink);
+      }
+      .tool-heading {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 55px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+      .tool-heading .eyebrow {
+        color: #f7aa9a;
+      }
+      .tool-heading h2 {
+        margin: 15px 0 0;
+        color: var(--white);
+        font-size: clamp(2.3rem, 4.2vw, 4rem);
+        letter-spacing: -0.05em;
+      }
+      .tool-heading p {
+        max-width: 600px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.98rem;
+      }
+      .calculator-shell {
+        display: grid;
+        grid-template-columns: minmax(310px, 0.92fr) minmax(360px, 1.08fr);
+        background: var(--white);
+        box-shadow: 12px 12px 0 var(--coral);
+      }
+      .input-panel {
+        padding: clamp(25px, 4vw, 48px);
+        border-right: 1px solid var(--line);
+      }
+      .panel-kicker,
+      .result-label {
+        margin: 0 0 7px;
+        color: var(--ink-soft);
+        font-size: 0.69rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .input-panel h3,
+      .result-panel h3 {
+        margin: 0;
+        font-size: 2rem;
+        letter-spacing: -0.045em;
+      }
 
-/* FAQ */
-.faq-section{background:var(--light);padding:80px 24px}
-.faq-inner{max-width:760px;margin:0 auto}
-.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px}
-.faq-item{background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s}
-.faq-item.open{border-color:var(--primary)}
-.faq-q{padding:20px 24px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.98rem}
-.faq-q .arrow{font-size:1.1rem;transition:transform .3s;color:var(--primary);flex-shrink:0}
-.faq-item.open .arrow{transform:rotate(180deg)}
-.faq-a{display:none;padding:0 24px 20px;color:var(--gray);line-height:1.8;font-size:.93rem}
-.faq-item.open .faq-a{display:block}
+      .mode-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        margin: 27px 0 22px;
+        padding: 5px;
+        background: var(--paper-deep);
+      }
+      .mode-tab {
+        border: 0;
+        background: transparent;
+        padding: 10px;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        transition:
+          color 180ms var(--ease-out),
+          background 180ms var(--ease-out),
+          transform 160ms var(--ease-out);
+      }
+      .mode-tab.active {
+        background: var(--white);
+        color: var(--ink);
+        box-shadow: 0 2px 8px rgba(23, 36, 55, 0.1);
+      }
+      .mode-tab:active,
+      .primary-button:active,
+      .secondary-button:active,
+      .copy-button:active {
+        transform: scale(0.97);
+      }
+      .field-group {
+        margin-bottom: 15px;
+      }
+      .field-group label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--ink-soft);
+        font-size: 0.69rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .field-group input,
+      .field-group select {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--paper);
+        padding: 11px 12px;
+        color: var(--ink);
+        font-weight: 700;
+        outline: none;
+        transition:
+          border-color 180ms var(--ease-out),
+          box-shadow 180ms var(--ease-out),
+          background 180ms var(--ease-out);
+      }
+      .field-group input:focus,
+      .field-group select:focus {
+        border-color: var(--coral);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.17);
+      }
+      .field-group input[aria-invalid="true"] {
+        border-color: var(--coral-deep);
+        background: #fff2ef;
+      }
+      .form-note {
+        margin: -2px 0 20px;
+        color: var(--ink-soft);
+        font-size: 0.75rem;
+        line-height: 1.55;
+      }
+      .leap-row {
+        display: none;
+        margin-top: 2px;
+      }
+      .leap-row.visible {
+        display: block;
+      }
+      .button-row {
+        display: flex;
+        gap: 10px;
+      }
+      .primary-button,
+      .secondary-button,
+      .copy-button {
+        border: 0;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition:
+          transform 160ms var(--ease-out),
+          background 180ms var(--ease-out),
+          color 180ms var(--ease-out),
+          box-shadow 180ms var(--ease-out);
+      }
+      .primary-button {
+        flex: 1;
+        background: var(--coral);
+        padding: 15px 18px;
+        color: var(--white);
+      }
+      .primary-button:hover {
+        background: var(--coral-deep);
+        box-shadow: 0 7px 0 rgba(110, 31, 20, 0.22);
+        transform: translateY(-2px);
+      }
+      .secondary-button {
+        background: var(--paper-deep);
+        padding: 15px;
+        color: var(--ink);
+      }
+      .secondary-button:hover,
+      .copy-button:hover {
+        background: var(--mist);
+      }
+      .form-error {
+        min-height: 21px;
+        margin: 12px 0 0;
+        color: var(--coral-deep);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
 
-/* ARTICLE */
-.article-section{max-width:860px;margin:0 auto;padding:80px 24px}
-.article-section h2{font-size:1.9rem;font-weight:800;color:var(--dark);margin:48px 0 20px;border-left:4px solid var(--primary);padding-left:16px;line-height:1.3}
-.article-section h3{font-size:1.3rem;font-weight:700;color:var(--dark);margin:32px 0 14px}
-.article-section p{color:#374151;font-size:1rem;line-height:1.9;margin-bottom:18px}
-.article-section ul,.article-section ol{margin:16px 0 20px 28px}
-.article-section li{color:#374151;font-size:1rem;line-height:1.8;margin-bottom:10px}
-.article-section strong{color:var(--primary);font-weight:700}
-.article-section a{color:var(--primary);font-weight:600;text-decoration:none}
-.article-section a:hover{text-decoration:underline}
-.article-highlight{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
-.article-highlight p{margin-bottom:0;color:var(--primary-dark);font-weight:600}
+      .result-panel {
+        position: relative;
+        min-height: 530px;
+        padding: clamp(25px, 4vw, 48px);
+        background: var(--mist);
+      }
+      .result-panel::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        background: var(--coral);
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+        content: "";
+      }
+      .age-result {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin: 25px 0 5px;
+      }
+      .age-number {
+        color: var(--ink);
+        font-family: "Fraunces", serif;
+        font-size: clamp(4.3rem, 8vw, 6.6rem);
+        font-weight: 700;
+        letter-spacing: -0.08em;
+        line-height: 0.82;
+      }
+      .age-unit {
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .age-subline {
+        min-height: 27px;
+        margin: 13px 0 22px;
+        color: var(--coral-deep);
+        font-size: 0.96rem;
+        font-weight: 800;
+      }
+      .trio {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        background: rgba(23, 36, 55, 0.16);
+      }
+      .trio-item {
+        min-height: 94px;
+        background: rgba(255, 254, 250, 0.6);
+        padding: 14px;
+      }
+      .trio-item span,
+      .detail-item span {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--ink-soft);
+        font-size: 0.61rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .trio-item strong,
+      .detail-item strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1rem;
+        line-height: 1.3;
+      }
+      .detail-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        margin-top: 15px;
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        background: rgba(23, 36, 55, 0.16);
+      }
+      .detail-item {
+        min-height: 77px;
+        background: rgba(255, 254, 250, 0.6);
+        padding: 13px;
+      }
+      .result-note {
+        margin: 15px 0;
+        color: var(--ink-soft);
+        font-size: 0.74rem;
+        line-height: 1.55;
+      }
+      .copy-button {
+        width: 100%;
+        border: 1px solid var(--ink);
+        background: transparent;
+        padding: 12px;
+        color: var(--ink);
+      }
+      .result-panel.updated .age-result,
+      .result-panel.updated .age-subline,
+      .result-panel.updated .trio,
+      .result-panel.updated .detail-list {
+        animation: result-pop 420ms var(--ease-out) both;
+      }
+      .result-panel.updated .age-subline {
+        animation-delay: 55ms;
+      }
+      .result-panel.updated .trio {
+        animation-delay: 100ms;
+      }
+      .result-panel.updated .detail-list {
+        animation-delay: 150ms;
+      }
+      @keyframes result-pop {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.975);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
 
-/* CTA */
-.cta-section{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:80px 24px;text-align:center}
-.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#fff;margin-bottom:16px}
-.cta-section p{color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:36px}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary);padding:16px 36px;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+      .how-section {
+        padding: 86px 0;
+      }
+      .section-grid {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: clamp(32px, 7vw, 105px);
+      }
+      .section-grid h2,
+      .guide-head h2,
+      .faq-head h2 {
+        margin: 16px 0 0;
+        font-size: clamp(2.5rem, 4.7vw, 4.5rem);
+        letter-spacing: -0.06em;
+      }
+      .section-grid > div > p,
+      .guide-head > p,
+      .faq-head > p {
+        color: var(--ink-soft);
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      .convention-card {
+        margin-top: 28px;
+        border-left: 4px solid var(--coral);
+        background: var(--paper-deep);
+        padding: 21px 23px;
+      }
+      .convention-card strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .convention-card p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 0.85rem;
+      }
+      .method-list {
+        border-top: 2px solid var(--ink);
+      }
+      .method-item {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 15px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .method-number {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--white);
+        font-size: 0.73rem;
+        font-weight: 800;
+      }
+      .method-item h3 {
+        margin: 0 0 5px;
+        font-size: 1.16rem;
+        letter-spacing: -0.035em;
+      }
+      .method-item p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 0.84rem;
+      }
 
-/* TOOLS GRID */
-.tools-footer{background:var(--light);padding:60px 24px;border-top:1px solid var(--border)}
-.tools-footer-inner{max-width:980px;margin:0 auto}
-.tools-footer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px}
-.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.tool-link{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;text-decoration:none;color:var(--gray);font-size:.8rem;font-weight:600;transition:all .2s;display:flex;align-items:center;gap:8px}
-.tool-link:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+      .guide {
+        padding: 90px 0;
+        background: var(--paper-deep);
+      }
+      .guide-head {
+        max-width: 730px;
+        margin-bottom: 52px;
+      }
+      .guide article {
+        columns: 2 310px;
+        column-gap: 58px;
+      }
+      .guide h3 {
+        break-after: avoid;
+        margin: 34px 0 13px;
+        color: var(--ink);
+        font-size: 1.36rem;
+        letter-spacing: -0.035em;
+      }
+      .guide h3:first-child {
+        margin-top: 0;
+      }
+      .guide p,
+      .guide li {
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+        line-height: 1.82;
+      }
+      .guide p {
+        margin: 0 0 16px;
+      }
+      .guide ul {
+        margin: 0 0 17px;
+        padding-left: 19px;
+      }
+      .guide li {
+        margin-bottom: 6px;
+      }
+      .guide .formula {
+        break-inside: avoid;
+        margin: 20px 0;
+        border: 1px solid var(--line);
+        background: var(--white);
+        padding: 16px;
+        color: var(--ink);
+        font-family: "Fraunces", serif;
+        font-size: 1.2rem;
+        letter-spacing: -0.03em;
+      }
+      .guide .sources {
+        break-inside: avoid;
+        margin-top: 24px;
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+      }
+      .guide a {
+        color: var(--coral-deep);
+        font-weight: 800;
+      }
 
-/* SITE FOOTER */
-footer{background:var(--dark);padding:32px 24px;text-align:center}
-footer p{color:rgba(255,255,255,0.45);font-size:.85rem;margin-bottom:6px}
-footer a{color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600}
-footer a:hover{color:#fff}
+      .faq-section {
+        padding: 86px 0;
+        background: var(--white);
+      }
+      .faq-head {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 45px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+      .faq-head > p {
+        margin: 0;
+      }
+      .faq-list {
+        border-top: 1px solid var(--ink);
+      }
+      details {
+        border-bottom: 1px solid var(--line);
+        padding: 0;
+      }
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 20px 0;
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 0.96rem;
+        font-weight: 800;
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::after {
+        color: var(--coral);
+        content: "+";
+        font-size: 1.5rem;
+        font-weight: 400;
+        transition: transform 180ms var(--ease-out);
+      }
+      details[open] summary::after {
+        transform: rotate(45deg);
+      }
+      details p {
+        max-width: 830px;
+        margin: 0 0 20px;
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  header{padding:0 16px}
-  nav a{padding:8px 10px;font-size:.82rem}
-  .input-row{grid-template-columns:1fr}
-  .results-grid{grid-template-columns:repeat(2,1fr)}
-  .info-grid{grid-template-columns:1fr}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .more-grid{grid-template-columns:1fr}
-  .more-visual{display:none}
-  .feat-grid{grid-template-columns:1fr}
-  .who-grid{grid-template-columns:1fr 1fr}
-  .tools-grid{grid-template-columns:repeat(2,1fr)}
-  .tool-card-header{flex-direction:column;align-items:flex-start}
-}
-@media(max-width:480px){
-  .hero{padding:56px 16px 72px}
-  .tool-body{padding:20px}
-  .results-grid{grid-template-columns:repeat(2,1fr)}
-  .who-grid{grid-template-columns:1fr}
-  .tools-grid{grid-template-columns:repeat(2,1fr)}
-}
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
-<body>
+      .related-tools {
+        padding: 70px 0;
+        background: var(--ink);
+      }
+      .related-tools h2 {
+        margin: 0 0 24px;
+        color: var(--white);
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        letter-spacing: -0.055em;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .related-grid a {
+        min-height: 116px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 16px;
+        color: var(--white);
+        text-decoration: none;
+        transition:
+          transform 180ms var(--ease-out),
+          background 180ms var(--ease-out);
+      }
+      .related-grid a:hover {
+        background: rgba(255, 255, 255, 0.09);
+        transform: translateY(-4px);
+      }
+      .related-grid span {
+        display: block;
+        margin-bottom: 21px;
+        color: #f7aa9a;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .related-grid strong {
+        display: block;
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+        letter-spacing: -0.035em;
+        line-height: 1;
+      }
 
-<header>
-  <a href="https://toolyfi.com" class="logo">🛠️ Toolyfi<span>.</span></a>
-  <nav>
-    <a href="https://toolyfi.com">Home</a>
-
-    <a href="https://toolyfi.com">Tools</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">🎂 Age Calculator — Instant & Free</div>
-  <h1>Calculate Your <em>Exact Age</em><br>in Seconds</h1>
-  <p class="hero-sub">Find out precisely how old you are — in years, months, days, hours and minutes. Plus your next birthday countdown.</p>
-  <div class="trust-pills">
-    <div class="trust-pill"><span>✓</span> 100% Free</div>
-    <div class="trust-pill"><span>✓</span> Instant Results</div>
-    <div class="trust-pill"><span>✓</span> No Signup</div>
-    <div class="trust-pill"><span>✓</span> Works Offline</div>
-  </div>
-</section>
-
-<!-- TOOL -->
-<div class="tool-section">
-  <div class="tool-card">
-    <div class="tool-card-header">
-      <h2>🎂 Age Calculator</h2>
-      <div class="stat-chips">
-        <div class="stat-chip">⚡ Instant</div>
-        <div class="stat-chip">🔒 Private</div>
-        <div class="stat-chip">📅 Accurate</div>
-      </div>
-    </div>
-    <div class="tool-body">
-      <div class="msg" id="msg"></div>
-      <div class="input-row">
-        <div class="inp-group">
-          <label for="birthDate">📅 Date of Birth</label>
-          <input type="date" id="birthDate" max="">
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 650ms var(--ease-out),
+          transform 650ms var(--ease-out);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .hero-visual > img {
+          animation: visual-drift 8s var(--ease-in-out) infinite alternate;
+        }
+      }
+      @keyframes visual-drift {
+        from {
+          transform: scale(1.01) translate3d(0, 0, 0);
+        }
+        to {
+          transform: scale(1.04) translate3d(-8px, 5px, 0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (max-width: 850px) {
+        .hero,
+        .calculator-shell,
+        .section-grid,
+        .faq-head,
+        .tool-heading {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding-bottom: 44px;
+        }
+        .hero-visual,
+        .hero-visual > img {
+          min-height: 320px;
+        }
+        .tool-heading {
+          gap: 18px;
+        }
+        .input-panel {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .guide article {
+          columns: auto;
+        }
+        .related-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 540px) {
+        .wrap {
+          width: min(100% - 28px, 1180px);
+        }
+        h1 {
+          font-size: clamp(2.85rem, 16vw, 4.2rem);
+        }
+        .button-row {
+          flex-direction: column;
+        }
+        .trio,
+        .detail-list {
+          grid-template-columns: 1fr;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .scope-inner {
+          gap: 12px;
+        }
+        .tool-zone,
+        .how-section,
+        .guide,
+        .faq-section,
+        .related-tools {
+          padding: 58px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main>
+        <div class="wrap breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a> / <a href="index.html#directory">Calculators</a> / Age
+          Calculator
         </div>
-        <div class="inp-group">
-          <label for="toDate">📆 Calculate Age On</label>
-          <input type="date" id="toDate">
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn-calc" onclick="calculateAge()">🧮 Calculate My Age</button>
-        <button class="btn-clear" onclick="clearAll()">🗑️ Clear</button>
-      </div>
-      <div class="results" id="results">
-        <div class="results-grid">
-          <div class="res-box"><div class="num" id="rYears">0</div><div class="lbl">Years</div></div>
-          <div class="res-box"><div class="num" id="rMonths">0</div><div class="lbl">Months</div></div>
-          <div class="res-box"><div class="num" id="rDays">0</div><div class="lbl">Days</div></div>
-          <div class="res-box"><div class="num" id="rHours">0</div><div class="lbl">Hours</div></div>
-        </div>
-        <div class="info-grid">
-          <div class="info-item"><div class="ico">📅</div><div><div class="info-label">Born On (Day)</div><div class="info-val" id="birthDay">—</div></div></div>
-          <div class="info-item"><div class="ico">🎉</div><div><div class="info-label">Next Birthday In</div><div class="info-val" id="nextBday">—</div></div></div>
-          <div class="info-item"><div class="ico">📊</div><div><div class="info-label">Total Days Lived</div><div class="info-val" id="totalDays">—</div></div></div>
-          <div class="info-item"><div class="ico">⏰</div><div><div class="info-label">Total Hours Lived</div><div class="info-val" id="totalHours">—</div></div></div>
-        </div>
-        <button class="copy-btn" onclick="copyResult()">📋 Copy Result</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="sbar-item"><div class="sval">1M+</div><div class="slbl">Ages Calculated</div></div>
-    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free Forever</div></div>
-    <div class="sbar-item"><div class="sval">0</div><div class="slbl">Signups Required</div></div>
-    <div class="sbar-item"><div class="sval">⚡</div><div class="slbl">Instant Results</div></div>
-  </div>
-</div>
-
-<!-- MORE THAN JUST -->
-<div class="more-section">
-  <div class="more-inner">
-    <div class="section-tag">Beyond Basic</div>
-    <h2 class="section-title">More than just an <em>age calculator</em></h2>
-    <p class="section-sub">Our age calculator doesn't just tell you your age — it gives you complete insights about your life in numbers.</p>
-    <div class="more-grid">
-      <div>
-        <div class="more-features">
-          <div class="more-feat">
-            <div class="more-feat-ico">📅</div>
-            <div class="more-feat-text"><h4>Exact Age on Any Date</h4><p>Calculate age between any two dates — past, present, or future.</p></div>
+        <section class="hero wrap">
+          <div class="reveal">
+            <p class="eyebrow">Calendar arithmetic, explained</p>
+            <h1>Time passes. Your <em>date math</em> should stay clear.</h1>
+            <p class="hero-copy">
+              Calculate exact calendar age or any date difference in years, months, and days.
+              Inspect the convention, see a next-birthday countdown, and keep every personal date in
+              your browser.
+            </p>
+            <div class="hero-facts" aria-label="Age calculator features">
+              <span>Age + date difference</span><span>Leap-day choice</span
+              ><span>Browser-local math</span>
+            </div>
           </div>
-          <div class="more-feat">
-            <div class="more-feat-ico">🎉</div>
-            <div class="more-feat-text"><h4>Birthday Countdown</h4><p>See exactly how many days until your next birthday celebration.</p></div>
+          <figure
+            class="hero-visual reveal"
+            aria-label="Editorial illustration of a blank calendar, clock, and milestone timeline"
+          >
+            <img
+              src="images/toolyfi-age-calculator-hero.webp"
+              alt="Editorial paper collage showing a blank calendar, clock, birthday symbol, and milestone timeline"
+              width="1672"
+              height="941"
+              fetchpriority="high"
+            />
+            <div class="hero-brand-overlay" aria-label="Toolyfi">
+              <img src="images/toolyfi-header-emblem.png" alt="" width="256" height="256" />
+              <span>Toolyfi</span>
+            </div>
+          </figure>
+        </section>
+
+        <section class="scope-strip">
+          <div class="scope-inner wrap">
+            <div class="scope-mark" aria-hidden="true">i</div>
+            <div>
+              <strong>Clear calendar scope before calculating</strong>
+              <p>
+                This page uses Gregorian calendar arithmetic: completed years, then remaining
+                months, then remaining days. It is not an official legal, immigration, benefit,
+                school-admission, medical, or age-eligibility determination.
+              </p>
+            </div>
           </div>
-          <div class="more-feat">
-            <div class="more-feat-ico">📊</div>
-            <div class="more-feat-text"><h4>Total Life in Days & Hours</h4><p>See the grand total of days and hours you've been alive.</p></div>
+        </section>
+
+        <section class="tool-zone">
+          <div class="wrap">
+            <div class="tool-heading reveal">
+              <div>
+                <p class="eyebrow">Transparent dates</p>
+                <h2>Pick two dates.<br />Read the <em>interval.</em></h2>
+              </div>
+              <p>
+                Most age pages return a number without stating the rule. Toolyfi makes the calendar
+                convention, date order, leap-year handling, and February 29 birthday choice visible
+                before and after calculation.
+              </p>
+            </div>
+
+            <div class="calculator-shell reveal">
+              <section class="input-panel" aria-labelledby="input-heading">
+                <p class="panel-kicker">Your dates</p>
+                <h3 id="input-heading">Choose a calculation.</h3>
+                <div class="mode-tabs" role="tablist" aria-label="Age calculator mode">
+                  <button
+                    class="mode-tab active"
+                    id="age-mode"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    Age from birth date
+                  </button>
+                  <button
+                    class="mode-tab"
+                    id="difference-mode"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    Date difference
+                  </button>
+                </div>
+
+                <div class="field-group">
+                  <label for="start-date" id="start-label">Date of birth</label>
+                  <input id="start-date" type="date" />
+                </div>
+                <div class="field-group">
+                  <label for="end-date" id="end-label">Calculate age on</label>
+                  <input id="end-date" type="date" />
+                </div>
+                <p class="form-note" id="form-note">
+                  Use a date of birth and any later “age on” date. Today is set as the example end
+                  date.
+                </p>
+                <div class="field-group leap-row" id="leap-row">
+                  <label for="leap-choice">February 29 birthday in a common year</label>
+                  <select id="leap-choice">
+                    <option value="feb28">Observe on February 28</option>
+                    <option value="mar1">Observe on March 1</option>
+                  </select>
+                </div>
+                <div class="button-row">
+                  <button class="primary-button" id="calculate-button" type="button">
+                    Calculate dates
+                  </button>
+                  <button class="secondary-button" id="reset-button" type="button">
+                    Reset example
+                  </button>
+                </div>
+                <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+              </section>
+
+              <section class="result-panel" aria-labelledby="result-heading" aria-live="polite">
+                <p class="result-label" id="result-label">Calendar age</p>
+                <h3 id="result-heading">Your stated interval</h3>
+                <div class="age-result">
+                  <span class="age-number" id="years-result">26</span
+                  ><span class="age-unit" id="age-unit">completed years</span>
+                </div>
+                <p class="age-subline" id="age-subline">
+                  7 months · 19 days after the last birthday
+                </p>
+                <div class="trio">
+                  <div class="trio-item"><span>Years</span><strong id="years-card">26</strong></div>
+                  <div class="trio-item">
+                    <span>Months</span><strong id="months-card">7</strong>
+                  </div>
+                  <div class="trio-item"><span>Days</span><strong id="days-card">19</strong></div>
+                </div>
+                <div class="detail-list">
+                  <div class="detail-item">
+                    <span id="detail-one-label">Born weekday</span
+                    ><strong id="detail-one">Saturday</strong>
+                  </div>
+                  <div class="detail-item">
+                    <span id="detail-two-label">Next birthday</span
+                    ><strong id="detail-two">in 133 days</strong>
+                  </div>
+                  <div class="detail-item">
+                    <span>Total calendar days</span><strong id="total-days">9,728</strong>
+                  </div>
+                  <div class="detail-item">
+                    <span>Complete weeks</span><strong id="total-weeks">1,389 w + 5 d</strong>
+                  </div>
+                </div>
+                <p class="result-note" id="result-note">
+                  Convention: the start date is day zero. Month/day borrowing uses the actual number
+                  of days in the prior calendar month.
+                </p>
+                <button class="copy-button" id="copy-button" type="button">
+                  Copy transparent summary
+                </button>
+              </section>
+            </div>
           </div>
-          <div class="more-feat">
-            <div class="more-feat-ico">🌍</div>
-            <div class="more-feat-text"><h4>Day of Birth</h4><p>Discover which day of the week you were born on.</p></div>
+        </section>
+
+        <section class="how-section wrap">
+          <div class="section-grid reveal">
+            <div>
+              <p class="eyebrow">How Toolyfi counts</p>
+              <h2>One <em>visible convention.</em></h2>
+            </div>
+            <div>
+              <p>
+                Calendar months are not all the same length. Toolyfi gives the earliest date first
+                and borrows the actual length of the prior month only when the later day number is
+                smaller. This produces a completed-years, remaining-months, remaining-days record
+                rather than a loose year subtraction.
+              </p>
+              <div class="method-list">
+                <div class="method-item">
+                  <div class="method-number">1</div>
+                  <div>
+                    <h3>Validate the order</h3>
+                    <p>
+                      The start date must be on or before the end date; impossible or
+                      future-in-relation-to-end inputs are stopped.
+                    </p>
+                  </div>
+                </div>
+                <div class="method-item">
+                  <div class="method-number">2</div>
+                  <div>
+                    <h3>Borrow a real calendar month</h3>
+                    <p>
+                      When end-day is smaller than start-day, days are borrowed from the actual
+                      preceding month, including February.
+                    </p>
+                  </div>
+                </div>
+                <div class="method-item">
+                  <div class="method-number">3</div>
+                  <div>
+                    <h3>Show the record</h3>
+                    <p>
+                      Results display calendar years/months/days plus total days, full weeks,
+                      birthday timing, and the exact dates used.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <aside class="convention-card">
+                <strong>February 29 birthdays are explicitly configurable</strong>
+                <p>
+                  For next-birthday display in a common year, select February 28 or March 1.
+                  Different organizations may follow different rules, so Toolyfi does not label
+                  either choice universal.
+                </p>
+              </aside>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="more-visual">
-        <div class="mini-result"><span class="lbl">Your Age</span><span class="val">25 years</span></div>
-        <div class="mini-result"><span class="lbl">Total Days Lived</span><span class="val">9,131</span></div>
-        <div class="mini-result"><span class="lbl">Next Birthday</span><span class="val">42 days</span></div>
-        <div class="mini-result"><span class="lbl">Born On</span><span class="val">Monday</span></div>
-      </div>
+        </section>
+
+        <section class="guide">
+          <div class="wrap">
+            <div class="guide-head reveal">
+              <p class="eyebrow">Age and date difference guide</p>
+              <h2>Calendar arithmetic without a <em>black box</em></h2>
+              <p>
+                This guide explains what the Toolyfi Age Calculator counts, how its date convention
+                works, and where a calendar result should not be mistaken for an official
+                determination.
+              </p>
+            </div>
+            <article class="reveal">
+              <h3>What an age calculator actually calculates</h3>
+              <p>
+                An age calculator is a date-difference tool with a familiar use case: a date of
+                birth is compared with an “age on” date. The result can be expressed as completed
+                years plus remaining months and days. That sounds like a simple subtraction, but
+                calendar dates are not a fixed-base number system. Months have 28, 29, 30, or 31
+                days, leap years add a day to February, and a birthday may not yet have occurred in
+                the target year. Reliable date arithmetic needs a stated convention instead of a
+                year number minus another year number.
+              </p>
+              <p>
+                Toolyfi provides two related modes. Age from birth date is designed for someone
+                asking “How old is this person on this date?” Date difference measures the elapsed
+                calendar interval between any earlier and later dates, whether or not they are
+                birthdays. The same transparent arithmetic powers both modes. The first mode adds a
+                birth weekday and a next-birthday record because those are useful when a date of
+                birth is involved; the second mode stays focused on the interval itself.
+              </p>
+
+              <h3>The calendar convention used on this page</h3>
+              <p>
+                Toolyfi reports completed calendar years, then remaining calendar months, then
+                remaining calendar days. The earlier date is treated as day zero. For example, from
+                15 March to 18 March there are three complete calendar-day intervals: the 16th is
+                day one, the 17th is day two, and the 18th is day three. This is a common
+                date-difference convention, but it is useful to name it because some forms,
+                programs, and official systems may specify inclusive counting or a different legal
+                rule.
+              </p>
+              <p class="formula">
+                Calendar interval = completed years + remaining calendar months + remaining days
+              </p>
+              <p>
+                When the later day number is less than the earlier day number, the calculator
+                borrows one calendar month. The borrowed number of days is the actual length of the
+                month immediately before the end date. If a month count then becomes negative, it
+                borrows one year and adds twelve months. This produces a meaningful calendar-style
+                result while keeping the mechanics inspectable. It is not the same as dividing a
+                total day count by an assumed 30-day month or an assumed 365-day year.
+              </p>
+
+              <h3>Why ordinary year subtraction is often wrong</h3>
+              <p>
+                Suppose a birth date is 20 November 2000 and the selected date is 10 March 2026.
+                Subtracting year labels gives 26, but the November birthday has not happened by
+                March 2026. Completed age is therefore 25, with additional months and days after the
+                last birthday. Year subtraction is useful as a quick mental estimate, but it does
+                not know whether the anniversary has occurred. The tool compares month and day as
+                well as year.
+              </p>
+              <p>
+                The reverse issue happens near the end of a month. A date interval from 28 February
+                to 31 March can be expressed using more than one reasonable human convention because
+                February has fewer days. Toolyfi follows the borrowed-month approach described
+                above, which treats 28 February to 28 March as one calendar month and then counts
+                the remaining days. The result is reproducible because the convention is written
+                down; it should not be assumed to match every spreadsheet, local authority,
+                contract, or cultural age system.
+              </p>
+
+              <h3>How leap years affect a date calculation</h3>
+              <p>
+                The Gregorian calendar includes 29 February in a leap year. In a standard rule, a
+                year divisible by four is a leap year, except century years must also be divisible
+                by 400. This is why 2000 was a leap year while 1900 was not. Toolyfi uses the
+                browser calendar to validate real dates and calculates total calendar days by using
+                calendar-day boundaries rather than a local-clock difference. That avoids
+                daylight-saving changes turning a date-only result into a 23-hour or 25-hour day
+                problem.
+              </p>
+              <p>
+                Leap years matter in two places. First, they affect the total number of calendar
+                days between two dates. Second, a person born on 29 February has a birthday-date
+                question during a common year. Some people and organizations observe it on 28
+                February; others use 1 March. Toolyfi does not silently choose a universal answer.
+                In Age from birth date mode, a February 29 input reveals a selector for the
+                next-birthday display. The core date interval remains the same calculation; the
+                choice affects only which common-year anniversary date is shown as the next
+                birthday.
+              </p>
+
+              <h3>Age from birth date versus date difference</h3>
+              <p>
+                Age from birth date has a social meaning: it describes completed anniversaries since
+                a birth date. Its result card highlights completed years, remaining months and days,
+                the weekday of the birth date, and time until the next selected birthday. Date
+                difference is more general. It can compare the start of a project with its closing
+                date, a historic event with a later event, or any two valid dates. In that mode the
+                page does not infer a birthday, age milestone, relationship, legal status, or
+                personal identity.
+              </p>
+              <p>
+                This distinction prevents common misuse. A duration might have the same numerical
+                form as an age, but it is not automatically a person’s age and it does not establish
+                eligibility. In particular, Toolyfi will not tell someone whether they meet a
+                school, immigration, employment, voting, insurance, pension, contract, or benefit
+                rule. Such rules can depend on a jurisdiction, a cutoff time, a definition of
+                “attained age,” and official documentation. Use the relevant authoritative source
+                when the consequence matters.
+              </p>
+
+              <h3>Reading total days and complete weeks</h3>
+              <p>
+                The total calendar-days figure is an interval count from the earlier date up to the
+                later date. It includes leap days that fall within that range under the stated
+                day-zero convention. Toolyfi also shows full weeks plus leftover days because that
+                is easier to check than a large decimal. For instance, 730 total days are 104
+                complete weeks and two days, not “approximately two years” in a way that hides the
+                actual dates.
+              </p>
+              <p>
+                Calendar days are not timestamp hours. A date input does not contain a time of
+                birth, a time zone, or a daylight-saving setting. Multiplying a calendar-day count
+                by 24 can be a useful rough unit conversion, but it would not be a precise lifespan
+                duration across every local clock change. Toolyfi intentionally avoids presenting
+                total hours, minutes, or seconds as exact facts when the required time-of-day
+                information was never collected. Clearer output is better than false precision.
+              </p>
+
+              <h3>Next birthday: what the countdown means</h3>
+              <p>
+                The next-birthday record is calculated from the selected “age on” date, not
+                necessarily the real current date. If the selected date is the birthday itself, the
+                page says “Today” and shows zero days until that birthday. If the birthday has
+                passed in that selected year, the calculator moves to the following year; otherwise
+                it uses the birthday date in the selected year. This makes the feature useful for
+                historic or future planning as well as for today’s view.
+              </p>
+              <p>
+                A countdown is only calendar arithmetic. It is not a reminder service, a personal
+                event record, or a promise that an anniversary has a specific legal effect. The date
+                may be useful for a card, a family plan, or a personal milestone, but Toolyfi does
+                not store it, turn it into a public link, or attach a profile to it. The copy
+                summary gives a user a record they can inspect before deciding whether to keep or
+                share it.
+              </p>
+
+              <h3>Birth weekday and date-only precision</h3>
+              <p>
+                The birth weekday is determined from the date entered in the browser. It can be a
+                pleasant historical or family detail, but it is still a date-only calculation. It
+                does not infer a place of birth, cultural calendar, horoscope, personality, or
+                medical information. If a historical source uses a calendar other than the modern
+                Gregorian date, convert that source carefully before treating the weekday as
+                confirmed.
+              </p>
+              <p>
+                Date-only inputs also deliberately protect against unnecessary precision. A person
+                born close to midnight can have a different chronological duration depending on time
+                zone and the requested official purpose. This page does not ask for a time of birth,
+                so it does not produce a timestamp-level age. For a general calendar age question,
+                the date is normally the relevant information. For a specialized official rule,
+                check the rule and the authoritative process instead of stretching a general web
+                calculator beyond its stated scope.
+              </p>
+
+              <h3>Worked age example</h3>
+              <p>
+                Take an example date of birth, 1 January 2000, and an age-on date of 20 August 2026.
+                The completed anniversary count is 26 years because 1 January 2026 has already
+                happened. From 1 January to 1 August there are seven completed calendar months, and
+                from 1 August to 20 August there are 19 remaining days. The output is therefore 26
+                years, 7 months, and 19 days under the page convention. The total-day output adds
+                every real calendar day crossed since the start date, including applicable leap
+                days.
+              </p>
+              <p>
+                Change the end date to 20 December 1999 and the calculation should not proceed
+                because the end date is earlier than the birth date. A precise-looking negative age
+                is not useful on this page. Toolyfi instead shows a clear validation message and
+                leaves the previous result unchanged only until a valid calculation is made. This
+                distinction between bad input and a numerical answer protects the integrity of the
+                result.
+              </p>
+
+              <h3>Worked date-difference example</h3>
+              <p>
+                In Date difference mode, consider 15 November 2006 as the earlier date and 10 March
+                2026 as the later date. The day value 10 is smaller than 15, so the calculator
+                borrows the actual days from February 2026, which has 28 days. The day calculation
+                becomes 10 plus 28 minus 15, or 23 days. The month value then needs a borrowed year:
+                March becomes 14 months after borrowing, and 14 minus November’s month value 11
+                gives 3 months. The remaining year calculation is 2025 minus 2006, or 19 completed
+                years.
+              </p>
+              <p>
+                The resulting 19 years, 3 months, and 23 days is a calendar interval, not an
+                automatically legal age conclusion. Its main value is that another person can
+                reproduce it from the same dates and convention. If another system reports a
+                different month/day expression at month end, compare the date-inclusion rule and
+                borrowing convention before assuming one system is broken. Calendar language carries
+                conventions.
+              </p>
+
+              <h3>Privacy: use a birth date carefully</h3>
+              <p>
+                A date of birth can be personal information, especially when combined with a name,
+                location, account details, or identity document. Toolyfi performs the arithmetic in
+                the browser and does not make a share URL containing the date. That reduces
+                unnecessary exposure on this page, but it does not make dates safe to publish in
+                screenshots, public chats, forms you do not trust, or shared devices. A copied
+                result can still reveal the dates used if it includes the transparent calculation
+                record.
+              </p>
+              <p>
+                Use the copy button only when a written record is useful. Its output names the
+                dates, interval, and convention so it can be checked later; it does not hide a birth
+                date behind a generic label. If privacy matters, close the page or clear the fields
+                after use and decide deliberately who needs to receive the calculation. General
+                usability and sensible data minimization can coexist without claiming an absolute
+                security guarantee that a simple date tool cannot prove.
+              </p>
+
+              <h3>When to use a spreadsheet instead</h3>
+              <p>
+                Use Toolyfi when you need one transparent date calculation, a next-birthday record,
+                or a fast comparison of two dates. A spreadsheet can be appropriate for a legitimate
+                internal register where dates are already collected under the right authority,
+                protected properly, and calculated with a documented formula. It is not
+                automatically more accurate: spreadsheet functions have their own date-system
+                choices, and copying a date into the wrong locale format can quietly change it. The
+                best choice is the one that keeps the input, formula, and intended use clear.
+              </p>
+              <p>
+                Do not use a simple spreadsheet or a general calculator to make a regulated decision
+                without reviewing the governing rule. If a form asks for age “as of” a particular
+                cutoff, use that exact cutoff date. If a policy says days are inclusive or names a
+                local time zone, follow the policy rather than assuming this page’s day-zero
+                convention. Clear arithmetic is helpful, but it does not override an official
+                definition.
+              </p>
+
+              <h3>Common age-calculator mistakes</h3>
+              <ul>
+                <li>
+                  Entering dates in a remembered day/month order instead of using the date picker’s
+                  actual year-month-day value.
+                </li>
+                <li>
+                  Using today when the real question requires age on a historic or future cutoff
+                  date.
+                </li>
+                <li>Subtracting years without checking whether the anniversary has happened.</li>
+                <li>
+                  Assuming a February 29 birthday convention without checking the relevant
+                  organization’s rule.
+                </li>
+                <li>
+                  Treating a calendar result as legal, medical, financial, or eligibility advice.
+                </li>
+                <li>
+                  Sharing a date-of-birth result publicly without considering the personal data it
+                  includes.
+                </li>
+              </ul>
+              <p>
+                Each mistake is avoidable by slowing down at the input stage. Select the correct
+                mode, verify the two dates, read the result note, and retain the exact calculation
+                record if another person must check it. A good tool makes these steps visible rather
+                than rushing a visitor toward a number that looks exact but lacks context.
+              </p>
+
+              <h3>Date format, locale, and calendar assumptions</h3>
+              <p>
+                Dates are often written in different orders. A written 04/05/2026 can mean 4 May in
+                one context and 5 April in another. Toolyfi uses browser date inputs rather than
+                asking a visitor to type an ambiguous slash-separated date. Behind the control, the
+                date is handled as a year-month-day calendar value. The result summary writes the
+                date out with a month name so a reader can check it without guessing whether a
+                number is a month or a day. This is a small design decision with a large effect on
+                reproducibility.
+              </p>
+              <p>
+                The calculator is built around the modern Gregorian calendar used by the browser’s
+                date controls. It does not convert historical Julian-calendar records, lunar
+                calendars, religious calendars, regional calendar reforms, or dates with an
+                uncertain year. If a family record, archive, or historic document uses another
+                system, convert or verify the source date before using a Gregorian web tool.
+                Calendar conversion is a separate research task; adding it silently would make an
+                apparently simple result less honest.
+              </p>
+
+              <h3>How Toolyfi validates dates before it counts</h3>
+              <p>
+                A date calculator should reject a wrong sequence before it produces an attractive
+                result card. Toolyfi checks that each date is a real calendar date and that the
+                earlier date is not after the later date. A date input normally prevents impossible
+                entries such as 31 February, but the page still validates the parsed value rather
+                than assuming a browser control can never fail. If the input is missing or invalid,
+                the affected field receives an accessible error state and the page explains what
+                needs correction.
+              </p>
+              <p>
+                In age mode, a future birth date relative to the selected age-on date is the same
+                date-order problem. The tool does not invent a negative age or return a time-travel
+                joke. In date-difference mode, this rule is even more direct: put the earlier date
+                first and the later date second. The result then represents a non-negative interval.
+                If you want to compare two dates but are unsure which is earlier, check the written
+                dates first; swapping them changes the interpretation even when the absolute number
+                of days is similar.
+              </p>
+
+              <h3>Why a copyable calculation record is more useful than a share link</h3>
+              <p>
+                Some date tools put a full date of birth into a URL so a visitor can share the
+                result. That may be quick, but links can be stored in browser history, copied into
+                messages, or logged by services outside the calculator. Toolyfi takes the opposite
+                approach. It supplies a copyable summary after calculation but does not write the
+                dates into a public-style share URL. The summary includes the start and end dates,
+                calendar interval, day count, the convention, and the stated limitation so a user
+                can choose whether it should leave their device.
+              </p>
+              <p>
+                A record also supports checking. If an administrator, researcher, family member, or
+                colleague sees an interval such as 19 years, 3 months, and 23 days, they can see the
+                dates used rather than treating the number as unexplained. That does not turn
+                Toolyfi into an official verification system. It simply means the arithmetic is
+                transparent enough to reproduce. The difference between a transparent record and a
+                private claim is particularly important when date entries could affect a sensitive
+                process.
+              </p>
+
+              <h3>Using age math near a policy cutoff</h3>
+              <p>
+                An age calculator can help a person understand the interval between a date of birth
+                and a stated cutoff, but it should not say “eligible” or “ineligible.” Policies may
+                use phrases such as “on or before,” “by the beginning of the day,” “attained age,”
+                or “under 18.” They may define time zones, inclusive days, local holidays,
+                documentation requirements, or exceptions. These are interpretation questions
+                governed by the relevant organization, not by a generic browser calculation. The
+                safest practice is to set the exact cutoff date in the tool, retain the transparent
+                record, and read the authority’s own wording.
+              </p>
+              <p>
+                This limitation applies to school, work, travel, healthcare, insurance, retirement,
+                voting, licenses, contracts, benefits, and any similar use case. Toolyfi can
+                describe calendar arithmetic without making a consequential decision about a person.
+                If a deadline is close or a result could affect rights, payments, services, or
+                access, seek clarification from the responsible authority. A one-day difference can
+                matter in policy even when it feels small in an everyday birthday countdown.
+              </p>
+
+              <h3>Keeping a date calculation reproducible over time</h3>
+              <p>
+                To repeat a result later, preserve the two dates, the mode, and the counting
+                convention—not just the final number. A calendar result changes when the selected
+                end date changes, which is expected in age mode. “Age today” tomorrow is a different
+                calculation. If a record is being used in a report or form, write “calculated on” or
+                “age on” beside the result. This reduces the risk that an accurate past result is
+                later read as a claim about the present.
+              </p>
+              <p>
+                Toolyfi’s default example is intentionally a neutral date of birth and today’s date.
+                It demonstrates the user interface without implying that an age record belongs to a
+                real user. When you replace the example, calculate again rather than assuming a
+                changed field automatically changes the result. The button makes the state
+                transition explicit, while input validation and the result animation provide
+                feedback that the displayed record came from the current date pair.
+              </p>
+
+              <h3>References and calculation scope</h3>
+              <div class="sources">
+                <p>
+                  General age-calculation conventions and end-of-month discussion:
+                  <a
+                    href="https://www.calculator.net/age-calculator.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Calculator.net Age Calculator</a
+                  >.
+                </p>
+                <p>
+                  Calendar-day and manual borrowing examples:
+                  <a
+                    href="https://www.calculatorsoup.com/calculators/time/age-calculator.php"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >CalculatorSoup Age Calculator</a
+                  >.
+                </p>
+                <p>
+                  Toolyfi independently implements the stated browser-side calendar model. It is not
+                  affiliated with these sources and is not an official age determination service.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="faq-section">
+          <div class="wrap">
+            <div class="faq-head reveal">
+              <div>
+                <p class="eyebrow">Questions, answered</p>
+                <h2>Age calculator <em>FAQs</em></h2>
+              </div>
+              <p>
+                These answers describe the browser calendar convention used by Toolyfi. They do not
+                replace an official jurisdictional, program, or document rule.
+              </p>
+            </div>
+            <div class="faq-list reveal">
+              <details>
+                <summary>How does this age calculator work?</summary>
+                <p>
+                  Toolyfi subtracts the earlier date from the later date to show completed calendar
+                  years, remaining months, and remaining days. It validates the date order first.
+                </p>
+              </details>
+              <details>
+                <summary>Does Toolyfi account for leap years?</summary>
+                <p>
+                  Yes. Date validation, total calendar days, and month borrowing use actual
+                  Gregorian calendar month lengths, including February 29 in leap years.
+                </p>
+              </details>
+              <details>
+                <summary>Can I calculate age on a past or future date?</summary>
+                <p>
+                  Yes. Set the “age on” date to the relevant date, as long as it is not earlier than
+                  the birth date.
+                </p>
+              </details>
+              <details>
+                <summary>How are February 29 birthdays handled?</summary>
+                <p>
+                  For the next-birthday display in common years, choose February 28 or March 1.
+                  Different organizations may use different conventions, so Toolyfi makes the choice
+                  visible.
+                </p>
+              </details>
+              <details>
+                <summary>What does total calendar days mean?</summary>
+                <p>
+                  It is the number of complete date-to-date intervals from the earlier date up to
+                  the later date, where the earlier start date is day zero.
+                </p>
+              </details>
+              <details>
+                <summary>Can I calculate a date difference that is not an age?</summary>
+                <p>
+                  Yes. Use Date difference mode for any earlier and later date. The result does not
+                  imply that the dates refer to a person or an age requirement.
+                </p>
+              </details>
+              <details>
+                <summary>Does Toolyfi store my birth date?</summary>
+                <p>
+                  The arithmetic runs in the browser, the page does not require an account, and it
+                  does not create a birth-date share link. Still treat copied or shared results as
+                  personal information.
+                </p>
+              </details>
+              <details>
+                <summary>Can this confirm legal or official age eligibility?</summary>
+                <p>
+                  No. Legal and administrative definitions can differ by jurisdiction, cutoff date,
+                  time, and program. Check the applicable official rule.
+                </p>
+              </details>
+              <details>
+                <summary>Why can month-end results differ across tools?</summary>
+                <p>
+                  Months have unequal lengths. Tools can follow different end-of-month or inclusion
+                  conventions. Toolyfi states its actual-prior-month borrowing approach in the
+                  result and guide.
+                </p>
+              </details>
+              <details>
+                <summary>Is the result medical or professional advice?</summary>
+                <p>
+                  No. This page performs general date arithmetic only. It does not provide medical,
+                  legal, immigration, financial, employment, school, or benefit advice.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section class="related-tools">
+          <div class="wrap reveal">
+            <h2>Continue with clear <em>everyday math.</em></h2>
+            <div class="related-grid">
+              <a href="bmi-calculator.html"
+                ><span>Screening math</span><strong>Adult BMI Calculator</strong></a
+              >
+              <a href="percentage-calculator.html"
+                ><span>Rate math</span><strong>Percentage Calculator</strong></a
+              >
+              <a href="unit-converter.html"><span>Units</span><strong>Unit Converter</strong></a>
+              <a href="scientific-calculator.html"
+                ><span>Formula</span><strong>Scientific Calculator</strong></a
+              >
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-  </div>
-</div>
 
-<!-- FEATURES -->
-<section class="section">
-  <div class="section-tag">Features</div>
-  <h2 class="section-title">Everything you need in<br>one <em>free tool</em></h2>
-  <p class="section-sub">Built for accuracy, speed and privacy — no data ever leaves your device.</p>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <span class="feat-icon">⚡</span>
-      <h3>Instant Calculation</h3>
-      <p>Results appear in milliseconds. No loading, no delays, no server calls. Pure client-side speed.</p>
-    </div>
-    <div class="feat-card">
-      <span class="feat-icon">🎯</span>
-      <h3>Pinpoint Accuracy</h3>
-      <p>Accounts for leap years, varying month lengths, and time zones to give you the most accurate age.</p>
-    </div>
-    <div class="feat-card">
-      <span class="feat-icon">🔒</span>
-      <h3>100% Private</h3>
-      <p>Your date of birth is never sent to any server. All calculation happens locally in your browser.</p>
-    </div>
-    <div class="feat-card">
-      <span class="feat-icon">📱</span>
-      <h3>Works on All Devices</h3>
-      <p>Perfectly responsive on mobile, tablet, and desktop. Same experience everywhere you go.</p>
-    </div>
-    <div class="feat-card">
-      <span class="feat-icon">📋</span>
-      <h3>Copy Result Instantly</h3>
-      <p>One click to copy your age calculation. Paste it anywhere you need — forms, documents, chats.</p>
-    </div>
-    <div class="feat-card">
-      <span class="feat-icon">🗓️</span>
-      <h3>Custom Date Range</h3>
-      <p>Calculate age between any two dates. Useful for historical research, legal documents, and more.</p>
-    </div>
-  </div>
-</section>
+    <script src="/toolyfi-brand.js" data-toolyfi-brand="1"></script>
+    <script>
+      (() => {
+        const state = { mode: "age" };
+        const el = (id) => document.getElementById(id);
+        const dateFormatter = new Intl.DateTimeFormat("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        const weekdayFormatter = new Intl.DateTimeFormat("en-US", { weekday: "long" });
+        const dayMs = 24 * 60 * 60 * 1000;
 
-<!-- WHO BENEFITS -->
-<div class="who-section">
-  <div class="who-inner">
-    <div class="section-tag" style="background:rgba(255,255,255,0.1);color:#fff">Who Uses This</div>
-    <h2 class="section-title">Who benefits from our<br><em>age calculator?</em></h2>
-    <p class="section-sub">From students to professionals — everyone needs to calculate age at some point.</p>
-    <div class="who-grid">
-      <div class="who-card">
-        <span class="who-emoji">👨‍💼</span>
-        <h3>HR Professionals</h3>
-        <p>Quickly verify employee age for retirement planning, benefits eligibility, and compliance checks.</p>
-      </div>
-      <div class="who-card">
-        <span class="who-emoji">👨‍🎓</span>
-        <h3>Students</h3>
-        <p>Calculate age for biology assignments, history projects, or verifying eligibility for events and exams.</p>
-      </div>
-      <div class="who-card">
-        <span class="who-emoji">👩‍⚕️</span>
-        <h3>Medical Professionals</h3>
-        <p>Accurate patient age is critical in healthcare. Calculate precise age for pediatric and geriatric records.</p>
-      </div>
-      <div class="who-card">
-        <span class="who-emoji">⚖️</span>
-        <h3>Legal Professionals</h3>
-        <p>Verify age for legal documents, contracts, and court filings that require exact date-based calculations.</p>
-      </div>
-      <div class="who-card">
-        <span class="who-emoji">👨‍👩‍👧</span>
-        <h3>Parents</h3>
-        <p>Track your child's exact age for school admissions, milestone tracking, and birthday planning.</p>
-      </div>
-      <div class="who-card">
-        <span class="who-emoji">🎂</span>
-        <h3>Everyone!</h3>
-        <p>Curious about exactly how old you are in days? Just want to know when your next birthday falls? We've got you.</p>
-      </div>
-    </div>
-  </div>
-</div>
+        const pad = (value) => String(value).padStart(2, "0");
+        const dateString = (date) =>
+          `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+        const localDate = (value) => {
+          if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+          const [year, month, day] = value.split("-").map(Number);
+          const date = new Date(year, month - 1, day, 12);
+          return date.getFullYear() === year &&
+            date.getMonth() === month - 1 &&
+            date.getDate() === day
+            ? date
+            : null;
+        };
+        const utcDay = (date) => Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+        const daysInMonth = (year, monthIndex) => new Date(year, monthIndex + 1, 0).getDate();
+        const isLeapYear = (year) => year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+        const plural = (value, label) => `${value} ${label}${value === 1 ? "" : "s"}`;
 
-<!-- FAQ -->
-<div class="faq-section">
-  <div class="faq-inner">
-    <div class="section-tag">FAQ</div>
-    <h2 class="section-title">Frequently asked <em>questions</em></h2>
-    <p class="section-sub">Everything you need to know about calculating age online.</p>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I calculate my exact age? <span class="arrow">▼</span></div>
-        <div class="faq-a">Simply enter your date of birth in the calculator above and click "Calculate My Age." The tool instantly shows your exact age in years, months, days, and hours — along with your birthday countdown and total days lived.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is this age calculator free? <span class="arrow">▼</span></div>
-        <div class="faq-a">Yes — 100% free, forever. No signup, no subscription, no hidden fees. Just open the page and start calculating.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How many days old am I? <span class="arrow">▼</span></div>
-        <div class="faq-a">Our calculator shows your total age in days under "Total Days Lived." For example, a 25-year-old person is approximately 9,131 days old. The exact number depends on leap years in your lifetime.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I calculate age between two specific dates? <span class="arrow">▼</span></div>
-        <div class="faq-a">Yes! Use the "Calculate Age On" field to set a custom target date. This is useful for calculating someone's age on a past or future date — like a retirement date or historical event.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Does the calculator account for leap years? <span class="arrow">▼</span></div>
-        <div class="faq-a">Absolutely. Our algorithm accounts for every leap year between your birth date and the target date, ensuring your day-count is always accurate.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is my date of birth stored anywhere? <span class="arrow">▼</span></div>
-        <div class="faq-a">No. All calculations happen entirely in your browser. Your birth date is never sent to any server, never stored, and never shared. Your privacy is fully protected.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is the most common reason to calculate age? <span class="arrow">▼</span></div>
-        <div class="faq-a">Common uses include school admissions, legal document verification, medical records, visa applications, job applications, retirement planning, and just satisfying curiosity about how many days you've been alive!</div>
-      </div>
-    </div>
-  </div>
-</div>
+        const calendarDiff = (start, end) => {
+          let years = end.getFullYear() - start.getFullYear();
+          let months = end.getMonth() - start.getMonth();
+          let days = end.getDate() - start.getDate();
+          if (days < 0) {
+            months -= 1;
+            days += daysInMonth(end.getFullYear(), end.getMonth() - 1);
+          }
+          if (months < 0) {
+            years -= 1;
+            months += 12;
+          }
+          return { years, months, days };
+        };
 
-<!-- ARTICLE -->
-<div class="article-section">
-  <h2>Free Age Calculator — Calculate Your Exact Age Online</h2>
-  <p>Whether you need to fill out a government form, calculate eligibility for a program, or simply satisfy your curiosity about how many days you have been alive, an <strong>age calculator</strong> is one of the most practical tools you can use online. Toolyfi's free age calculator gives you your exact age in years, months, days, hours, and even minutes — all instantly, privately, and without any signup.</p>
-  <p>Unlike basic calculators that only tell you the number of years, our tool breaks down your age into every meaningful unit. You also get your total days lived, total hours, which day of the week you were born, and how many days remain until your next birthday. It is a complete age analysis in one click.</p>
+        const birthdayForYear = (birth, year, choice) => {
+          if (birth.getMonth() === 1 && birth.getDate() === 29 && !isLeapYear(year)) {
+            return choice === "mar1" ? new Date(year, 2, 1, 12) : new Date(year, 1, 28, 12);
+          }
+          return new Date(year, birth.getMonth(), birth.getDate(), 12);
+        };
 
-  <h2>How to Calculate Your Age — Step by Step</h2>
-  <p>Calculating your age sounds simple, but getting it exactly right — accounting for leap years, varying month lengths, and partial months — requires careful logic. Here is how our age calculator works:</p>
-  <ol>
-    <li><strong>Enter your date of birth</strong> — Select your birth date using the date picker above.</li>
-    <li><strong>Set the target date</strong> — By default this is today, but you can change it to any date in the past or future.</li>
-    <li><strong>Click Calculate</strong> — The tool instantly computes your age in years, months, days, and hours.</li>
-    <li><strong>View your results</strong> — See your total days lived, birthday countdown, and the day you were born.</li>
-    <li><strong>Copy or share</strong> — Use the copy button to paste your result anywhere you need.</li>
-  </ol>
-  <div class="article-highlight"><p>💡 Tip: Use the "Calculate Age On" field to find someone's age on any specific date — useful for retirement calculations, legal verification, or historical research.</p></div>
+        const clearFieldErrors = () =>
+          [el("start-date"), el("end-date")].forEach((field) =>
+            field.setAttribute("aria-invalid", "false"),
+          );
+        const setError = (message, invalidIds = []) => {
+          el("form-error").textContent = message;
+          clearFieldErrors();
+          invalidIds.forEach((id) => el(id).setAttribute("aria-invalid", "true"));
+        };
 
-  <h2>Why Age Calculation Is Harder Than It Looks</h2>
-  <p>At first glance, calculating age seems as simple as subtracting birth year from current year. But that approach gives you the wrong answer most of the time. There are several factors that make accurate age calculation more complex:</p>
-  <ul>
-    <li><strong>Months have different lengths</strong> — February has 28 or 29 days, while other months have 30 or 31. A naive subtraction ignores this entirely.</li>
-    <li><strong>Leap years</strong> — Every four years (with some exceptions), there is an extra day in February. Over a lifetime, this adds up significantly. A person who is 30 years old has lived through roughly 7-8 leap years.</li>
-    <li><strong>Birthday hasn't occurred yet this year</strong> — If today is March 15 and your birthday is June 20, you are technically still one year younger than the simple subtraction suggests.</li>
-    <li><strong>Timezone differences</strong> — For very precise calculations, the timezone of birth and current timezone can create a one-day difference near midnight.</li>
-  </ul>
-  <p>Toolyfi's age calculator handles all of these edge cases automatically. You get the right answer every time, without needing to think about the math. If you're interested in other health-related metrics, check out our <a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a> to see if your weight is in a healthy range for your age.</p>
+        const showMode = (mode) => {
+          state.mode = mode;
+          const age = mode === "age";
+          el("age-mode").classList.toggle("active", age);
+          el("age-mode").setAttribute("aria-selected", String(age));
+          el("difference-mode").classList.toggle("active", !age);
+          el("difference-mode").setAttribute("aria-selected", String(!age));
+          el("start-label").textContent = age ? "Date of birth" : "Earlier date";
+          el("end-label").textContent = age ? "Calculate age on" : "Later date";
+          el("form-note").textContent = age
+            ? "Use a date of birth and any later “age on” date. Today is set as the example end date."
+            : "Enter any earlier and later dates. The later date must be on or after the earlier date.";
+          el("result-label").textContent = age ? "Calendar age" : "Date difference";
+          el("leap-row").classList.toggle("visible", age && isLeapInput());
+          calculate();
+        };
 
-  <h2>How Old Am I in Days?</h2>
-  <p>One of the most interesting numbers our tool shows is your total age in days. Most people are surprised to see just how large this number is. Here is a quick reference:</p>
-  <ul>
-    <li><strong>10 years old:</strong> approximately 3,652 days</li>
-    <li><strong>18 years old:</strong> approximately 6,574 days</li>
-    <li><strong>25 years old:</strong> approximately 9,131 days</li>
-    <li><strong>30 years old:</strong> approximately 10,957 days</li>
-    <li><strong>40 years old:</strong> approximately 14,610 days</li>
-    <li><strong>50 years old:</strong> approximately 18,262 days</li>
-    <li><strong>60 years old:</strong> approximately 21,915 days</li>
-  </ul>
-  <p>These numbers vary slightly based on how many leap years fall within each person's lifetime. Our calculator accounts for all of them precisely.</p>
+        const isLeapInput = () => {
+          const start = localDate(el("start-date").value);
+          return start?.getMonth() === 1 && start?.getDate() === 29;
+        };
 
-  <h2>Age Calculation for Legal and Official Purposes</h2>
-  <p>Age calculation is often required for legal, administrative, and official purposes. Here are some common scenarios where getting the exact age matters:</p>
-  <h3>Passport and Visa Applications</h3>
-  <p>Many visa categories have strict age limits. For example, youth exchange programs may require applicants to be under 30 years old at the time of application or travel. An off-by-one-day error can lead to rejection. Our calculator ensures you know your exact age to the day.</p>
-  <h3>School Admissions</h3>
-  <p>Most schools have age cutoff dates — typically requiring children to reach a certain age before a specific date to enroll in a grade. Parents often need to verify this precisely. Our tool lets you check age on any specific date, not just today.</p>
-  <h3>Medical Records</h3>
-  <p>In healthcare, especially pediatrics and geriatrics, exact age matters for dosage calculations, developmental milestones, and eligibility for age-specific screenings. A calculator that accounts for months and days — not just years — is essential.</p>
-  <h3>Retirement and Pension Planning</h3>
-  <p>Many pension plans and retirement benefits activate at specific ages — 60, 65, or 67 depending on the country and plan. Knowing exactly when you will reach that age helps in planning ahead. You can enter a future date in our tool to find out exactly when you will become eligible.</p>
-  <h3>Legal Majority and Voting Age</h3>
-  <p>Turning 18 is a legal milestone in most countries — granting the right to vote, sign contracts, and be treated as an adult in legal proceedings. Our calculator can confirm exactly when that date arrives.</p>
+        const calculate = () => {
+          el("leap-row").classList.toggle("visible", state.mode === "age" && isLeapInput());
+          const start = localDate(el("start-date").value);
+          const end = localDate(el("end-date").value);
+          if (!start) return setError("Enter a valid earlier date.", ["start-date"]);
+          if (!end) return setError("Enter a valid later date.", ["end-date"]);
+          if (utcDay(end) < utcDay(start))
+            return setError("The later date must be on or after the earlier date.", ["end-date"]);
+          setError("");
+          clearFieldErrors();
 
-  <h2>Birthday Countdown — How Many Days Until My Birthday?</h2>
-  <p>Beyond calculating past age, our tool also shows your birthday countdown — the number of days remaining until your next birthday. This is calculated by finding the next occurrence of your birth month and day after today's date.</p>
-  <p>If your birthday falls on today's date, the countdown will show 0 — happy birthday! If your birthday has already passed this year, it counts forward to next year's date automatically.</p>
-  <p>This feature is popular for birthday planning, sending reminders, and just the fun of knowing exactly how far away your next celebration is. For those planning financial milestones alongside their birthdays, our <a href="https://toolyfi.com/compound-interest-calculator.html">Compound Interest Calculator</a> can help you see how your savings will grow by your next big milestone.</p>
+          const diff = calendarDiff(start, end);
+          const totalDays = Math.round((utcDay(end) - utcDay(start)) / dayMs);
+          const fullWeeks = Math.floor(totalDays / 7);
+          const remainderDays = totalDays % 7;
+          const resultPanel = document.querySelector(".result-panel");
+          const ageMode = state.mode === "age";
+          const intervalText = `${plural(diff.years, "year")}, ${plural(diff.months, "month")}, and ${plural(diff.days, "day")}`;
 
-  <h2>What Day of the Week Was I Born?</h2>
-  <p>This is a fun piece of trivia that surprisingly few people know about themselves. Our age calculator tells you which day of the week you were born on — Monday, Tuesday, Wednesday, and so on.</p>
-  <p>In some cultures, the day of birth carries significance. In others, it is just a fun fact to share. Either way, it is one of those things people find genuinely interesting to discover. There is even a classic poem — "Monday's child is fair of face..." — that assigns personality traits to each day of birth.</p>
+          el("years-result").textContent = diff.years;
+          el("years-card").textContent = diff.years;
+          el("months-card").textContent = diff.months;
+          el("days-card").textContent = diff.days;
+          el("age-unit").textContent = ageMode ? "completed years" : "calendar years";
+          el("age-subline").textContent = ageMode
+            ? `${plural(diff.months, "month")} · ${plural(diff.days, "day")} after the last birthday`
+            : `${plural(diff.months, "month")} · ${plural(diff.days, "day")} after the completed year count`;
+          el("total-days").textContent = new Intl.NumberFormat("en-US").format(totalDays);
+          el("total-weeks").textContent =
+            `${new Intl.NumberFormat("en-US").format(fullWeeks)} w + ${remainderDays} d`;
+          el("detail-one-label").textContent = ageMode ? "Born weekday" : "Earlier date";
+          el("detail-one").textContent = ageMode
+            ? weekdayFormatter.format(start)
+            : dateFormatter.format(start);
 
-  <h2>Age Calculation Around the World</h2>
-  <p>Different cultures calculate and express age differently. In most Western countries, a person's age is the number of completed birthdays — so on the day before your 25th birthday, you are still 24. This is called the Western age system.</p>
-  <p>In some East Asian countries, particularly in traditional Korean and Chinese contexts, a different system exists. In the traditional Korean system (called "Korean age"), everyone is considered one year old at birth, and everyone ages one year on January 1st — not on their actual birthday. This means a Korean-age person can be one or two years older than their Western-age equivalent.</p>
-  <p>Japan historically used a similar system before adopting the Western standard officially in the 1950s.</p>
-  <p>Our tool calculates age using the standard international (Western) system — the number of completed years since birth. This is the system used in most official and legal contexts worldwide.</p>
+          let nextBirthdayText = "Not applicable";
+          let birthdayDate = null;
+          if (ageMode) {
+            const choice = el("leap-choice").value;
+            birthdayDate = birthdayForYear(start, end.getFullYear(), choice);
+            if (utcDay(birthdayDate) < utcDay(end))
+              birthdayDate = birthdayForYear(start, end.getFullYear() + 1, choice);
+            const until = Math.round((utcDay(birthdayDate) - utcDay(end)) / dayMs);
+            nextBirthdayText =
+              until === 0
+                ? "Today"
+                : `${until} day${until === 1 ? "" : "s"} · ${dateFormatter.format(birthdayDate)}`;
+          }
+          el("detail-two-label").textContent = ageMode ? "Next birthday" : "Later date";
+          el("detail-two").textContent = ageMode ? nextBirthdayText : dateFormatter.format(end);
+          el("result-note").textContent =
+            ageMode && start.getMonth() === 1 && start.getDate() === 29
+              ? `February 29 convention for next birthday: ${el("leap-choice").selectedOptions[0].textContent}. Start date is day zero; date interval uses actual prior-month borrowing.`
+              : "Convention: the start date is day zero. Month/day borrowing uses the actual number of days in the prior calendar month.";
+          resultPanel.dataset.summary = [
+            `Toolyfi ${ageMode ? "Age Calculator" : "Date Difference Calculator"}`,
+            `${ageMode ? "Date of birth" : "Earlier date"}: ${dateFormatter.format(start)}`,
+            `${ageMode ? "Age on" : "Later date"}: ${dateFormatter.format(end)}`,
+            `Calendar interval: ${intervalText}.`,
+            `Total calendar days: ${totalDays}.`,
+            `Complete weeks: ${fullWeeks} weeks and ${remainderDays} days.`,
+            ageMode ? `Born weekday: ${weekdayFormatter.format(start)}.` : "",
+            ageMode ? `Next birthday: ${nextBirthdayText}.` : "",
+            "Convention: start date is day zero; month/day borrowing uses the actual prior month.",
+            "Scope: General calendar arithmetic only; not an official legal, medical, or eligibility determination.",
+          ]
+            .filter(Boolean)
+            .join("\n");
+          resultPanel.classList.remove("updated");
+          window.requestAnimationFrame(() => resultPanel.classList.add("updated"));
+        };
 
-  <h2>Using Age Calculators for Historical Research</h2>
-  <p>The "Calculate Age On" feature makes our tool valuable for historical research. Want to know how old a historical figure was when a major event happened? Enter their birth date and set the target to the event date. For example:</p>
-  <ul>
-    <li>How old was Albert Einstein when he published his theory of relativity in 1905? (He was 26.)</li>
-    <li>How old was Muhammad Ali when he won his first world heavyweight title in 1964? (He was 22.)</li>
-    <li>How old was Malala Yousafzai when she won the Nobel Peace Prize in 2014? (She was 17.)</li>
-  </ul>
-  <p>For students, educators, historians, and curious minds, this feature turns the age calculator into a research tool.</p>
+        const reset = () => {
+          const today = new Date();
+          state.mode = "age";
+          el("start-date").value = "2000-01-01";
+          el("end-date").value = dateString(today);
+          el("leap-choice").value = "feb28";
+          el("age-mode").classList.add("active");
+          el("age-mode").setAttribute("aria-selected", "true");
+          el("difference-mode").classList.remove("active");
+          el("difference-mode").setAttribute("aria-selected", "false");
+          el("start-label").textContent = "Date of birth";
+          el("end-label").textContent = "Calculate age on";
+          el("form-note").textContent =
+            "Use a date of birth and any later “age on” date. Today is set as the example end date.";
+          el("leap-row").classList.remove("visible");
+          calculate();
+          el("form-error").textContent = "Example dates restored.";
+        };
 
-  <h2>Tips for Getting the Most Out of Our Age Calculator</h2>
-  <ul>
-    <li><strong>Double-check your birth date input</strong> — A typo in the year is the most common cause of wrong results.</li>
-    <li><strong>Use the custom target date</strong> — If you need age on a specific future date (retirement, event, application deadline), set the target date instead of relying on today.</li>
-    <li><strong>Copy your result</strong> — Use the Copy button to save your result for forms, documents, or sharing.</li>
-    <li><strong>Bookmark this page</strong> — If you frequently need to calculate ages for work or research, bookmark Toolyfi's age calculator for quick access.</li>
-  </ul>
+        const copySummary = async () => {
+          const text = document.querySelector(".result-panel").dataset.summary;
+          const button = el("copy-button");
+          if (!text) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            button.textContent = "Summary copied";
+          } catch {
+            button.textContent = "Copy unavailable — select text";
+          }
+          window.setTimeout(() => (button.textContent = "Copy transparent summary"), 1800);
+        };
 
-  <h2>Privacy First — Your Data Never Leaves Your Browser</h2>
-  <p>We take privacy seriously. Your date of birth is sensitive personal information. Unlike many online tools that log user inputs or send them to servers for analytics, <strong>Toolyfi's age calculator performs all calculations entirely in your browser</strong>. No data is ever transmitted, stored, or shared.</p>
-  <p>This means you can use the tool confidently even on shared or public computers — nothing is retained after you close the tab.</p>
+        el("age-mode").addEventListener("click", () => showMode("age"));
+        el("difference-mode").addEventListener("click", () => showMode("difference"));
+        el("calculate-button").addEventListener("click", calculate);
+        el("reset-button").addEventListener("click", reset);
+        el("copy-button").addEventListener("click", copySummary);
+        el("start-date").addEventListener("input", () => {
+          el("leap-row").classList.toggle("visible", state.mode === "age" && isLeapInput());
+          el("form-error").textContent = "";
+        });
+        el("end-date").addEventListener("input", () => (el("form-error").textContent = ""));
+        el("leap-choice").addEventListener("change", calculate);
 
-  <h2>Related Age and Date Tools on Toolyfi</h2>
-  <p>If you found our age calculator useful, you might also need these related tools:</p>
-  <ul>
-    <li><a href="https://toolyfi.com/salary-to-hourly.html">Salary to Hourly Converter</a> — Convert annual salary to hourly, daily, weekly rates.</li>
-    <li><a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a> — Calculate Body Mass Index based on height and weight.</li>
-    <li><a href="https://toolyfi.com/tip-calculator.html">Tip Calculator</a> — Split bills and calculate tips instantly.</li>
-    <li><a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a> — Calculate EMI, interest, and total repayment for any loan.</li>
-    <li><a href="https://toolyfi.com/compound-interest-calculator.html">Compound Interest Calculator</a> — See how your savings grow over time.</li>
-  </ul>
-
-  <h2>Conclusion — The Smartest Free Age Calculator Online</h2>
-  <p>Toolyfi's free age calculator is built for accuracy, speed, and privacy. Whether you need a quick check of your age in years, a precise count of days lived, or a birthday countdown for your next celebration, this tool covers everything in one clean interface.</p>
-  <p>No ads cluttering the screen. No signup walls. No data collection. Just the fastest, most accurate age calculator available — completely free.</p>
-  <p><strong>Try it now</strong> — enter your date of birth above and discover exactly how old you are, down to the hour.</p>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <h2>Ready to explore more free tools?</h2>
-  <p>Toolyfi has 40+ free tools — calculators, converters, generators and more. No signup required.</p>
-  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
-</div>
-
-<!-- TOOLS GRID -->
-<div class="tools-footer">
-  <div class="tools-footer-inner">
-    <h3>More Free Tools on Toolyfi</h3>
-    <div class="tools-grid">
-      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
-      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
-      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
-      <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link">💼 Salary Converter</a>
-      <a href="https://toolyfi.com/compound-interest-calculator.html" class="tool-link">📈 Compound Interest</a>
-      <a href="https://toolyfi.com/percentage-calculator.html" class="tool-link">% Percentage Calc</a>
-      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
-      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
-      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
-      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
-      <a href="https://toolyfi.com/temperature-converter.html" class="tool-link">🌡️ Temp Converter</a>
-      <a href="https://toolyfi.com/json-formatter.html" class="tool-link">🖥️ JSON Formatter</a>
-      <a href="https://toolyfi.com/image-compressor.html" class="tool-link">🖼️ Image Compressor</a>
-      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
-      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
-  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
-</footer>
-
-<script>
-// Set defaults
-window.addEventListener('DOMContentLoaded', () => {
-  const today = new Date();
-  const fmt = d => d.toISOString().split('T')[0];
-  document.getElementById('toDate').value = fmt(today);
-  document.getElementById('toDate').max = fmt(new Date(today.getFullYear()+50,11,31));
-  document.getElementById('birthDate').max = fmt(today);
-});
-
-function calculateAge() {
-  const birthVal = document.getElementById('birthDate').value;
-  const toVal = document.getElementById('toDate').value;
-  if (!birthVal) { showMsg('Please enter your date of birth.', 'error'); return; }
-  const birth = new Date(birthVal);
-  const target = toVal ? new Date(toVal) : new Date();
-  if (birth > target) { showMsg('Birth date cannot be after the target date.', 'error'); return; }
-
-  let years = target.getFullYear() - birth.getFullYear();
-  let months = target.getMonth() - birth.getMonth();
-  let days = target.getDate() - birth.getDate();
-
-  if (days < 0) {
-    months--;
-    const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
-    days += prevMonth.getDate();
-  }
-  if (months < 0) { years--; months += 12; }
-
-  const diff = target - birth;
-  const totalDays = Math.floor(diff / 86400000);
-  const totalHours = Math.floor(diff / 3600000);
-  const hoursToday = Math.floor((diff % 86400000) / 3600000);
-
-  document.getElementById('rYears').textContent = years;
-  document.getElementById('rMonths').textContent = months;
-  document.getElementById('rDays').textContent = days;
-  document.getElementById('rHours').textContent = hoursToday;
-
-  const days7 = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  document.getElementById('birthDay').textContent = days7[birth.getDay()];
-
-  const now = new Date();
-  let nextBday = new Date(now.getFullYear(), birth.getMonth(), birth.getDate());
-  if (nextBday <= now) nextBday.setFullYear(now.getFullYear() + 1);
-  const daysLeft = Math.ceil((nextBday - now) / 86400000);
-  document.getElementById('nextBday').textContent = daysLeft === 0 ? '🎂 Today!' : `${daysLeft} days`;
-
-  document.getElementById('totalDays').textContent = totalDays.toLocaleString();
-  document.getElementById('totalHours').textContent = totalHours.toLocaleString();
-
-  document.getElementById('results').classList.add('show');
-}
-
-function clearAll() {
-  document.getElementById('birthDate').value = '';
-  const fmt = d => d.toISOString().split('T')[0];
-  document.getElementById('toDate').value = fmt(new Date());
-  document.getElementById('results').classList.remove('show');
-}
-
-function copyResult() {
-  const y = document.getElementById('rYears').textContent;
-  const m = document.getElementById('rMonths').textContent;
-  const d = document.getElementById('rDays').textContent;
-  const td = document.getElementById('totalDays').textContent;
-  const nb = document.getElementById('nextBday').textContent;
-  const text = `My Age: ${y} years, ${m} months, ${d} days\nTotal Days Lived: ${td}\nNext Birthday: ${nb}`;
-  navigator.clipboard.writeText(text).then(() => showMsg('✓ Result copied to clipboard!', 'success'));
-}
-
-function showMsg(msg, type) {
-  const el = document.getElementById('msg');
-  el.textContent = msg;
-  el.className = 'msg show ' + type;
-  setTimeout(() => el.classList.remove('show'), 3500);
-}
-
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach(
+              (entry) => entry.isIntersecting && entry.target.classList.add("visible"),
+            ),
+          { threshold: 0.13 },
+        );
+        document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+        reset();
+      })();
+    </script>
+  </body>
 </html>
