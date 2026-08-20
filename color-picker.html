@@ -133,6 +133,22 @@
               "@type": "Answer",
               "text": "Named tokens make a palette easier to review, reuse, and update than scattered raw values."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "What is OKLCH used for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "OKLCH describes lightness, chroma, and hue. It can help teams reason about related color scales, but should only be copied where the destination supports it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does transparency change a contrast result?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A translucent foreground blends with its background, so evaluate the final rendered combination rather than the unblended base color alone."
+            }
           }
         ]
       }
@@ -648,12 +664,120 @@
         }
       }
     </style>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: warm ivory header, ink-navy hierarchy, coral emphasis, static editorial visual, and responsive browser-side controls. */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        min-height: 68px;
+        height: auto;
+        padding: 10px max(20px, calc((100% - 1200px) / 2));
+        background: rgba(250, 248, 244, 0.96);
+        color: var(--ink);
+        border-bottom: 1px solid rgba(23, 36, 55, 0.15);
+        box-shadow: 0 8px 22px rgba(23, 36, 55, 0.08);
+        backdrop-filter: blur(14px);
+      }
+      .site-header .logo {
+        color: var(--ink);
+        font-family: Fraunces, Georgia, serif;
+        font-size: 1.48rem;
+        letter-spacing: -0.07em;
+        line-height: 1;
+      }
+      .site-header .logo img {
+        width: 40px;
+        height: 40px;
+      }
+      .site-header nav {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        justify-content: initial;
+        align-items: center;
+      }
+      .site-header nav a {
+        color: var(--ink);
+        font-size: 0.78rem;
+        transition: color 0.16s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .site-header nav a:hover,
+      .site-header nav a:focus-visible {
+        color: var(--coral);
+      }
+      .toolyfi-visual {
+        width: min(calc(100% - 32px), 1160px);
+        aspect-ratio: 16 / 9;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 14px;
+        background: var(--ink);
+        box-shadow: 0 18px 42px rgba(23, 36, 55, 0.2);
+      }
+      .toolyfi-visual > img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        object-fit: cover;
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-visual .brand-overlay {
+        right: 16px;
+        bottom: 16px;
+        border: 1px solid rgba(23, 36, 55, 0.16);
+        border-radius: 8px;
+      }
+      .panel,
+      .feature,
+      .card {
+        transition:
+          transform 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1),
+          border-color 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      @media (max-width: 650px) {
+        .site-header {
+          min-height: 62px;
+          padding: 8px 14px;
+        }
+        .site-header .logo {
+          font-size: 1.28rem;
+        }
+        .site-header .logo img {
+          width: 34px;
+          height: 34px;
+        }
+        .toolyfi-visual {
+          width: calc(100% - 24px);
+          aspect-ratio: 4 / 3;
+          margin-bottom: 24px;
+          border-radius: 10px;
+        }
+        .toolyfi-visual .brand-overlay {
+          right: 10px;
+          bottom: 10px;
+        }
+      }
+      @media (max-width: 480px) {
+        .site-header nav a:first-child {
+          display: none;
+        }
+      }
+    </style>
     <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
   </head>
   <body>
-    <header class="top">
-      <a class="brand" href="index.html"><img src="logo.png" alt="Toolyfi logo" />Toolyfi</a>
-      <nav><a href="index.html">Home</a><a href="index.html#tools">All tools</a></nav>
+    <header class="top site-header">
+      <a class="brand logo" href="index.html" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
     </header>
     <div class="crumb">
       <a href="index.html">Home</a> / <a href="index.html#tools">Tools</a> / Color Picker
@@ -670,20 +794,18 @@
         ><span class="pill">Browser-side workflow</span>
       </div>
     </section>
-    <figure class="visual">
+    <figure class="visual toolyfi-visual">
       <img
         src="images/toolyfi-color-picker-hero.webp"
         width="1200"
         height="800"
         alt="Coral pigment drop separating into ink-navy, teal, and coral swatches with an abstract contrast scale."
         decoding="async"
+        fetchpriority="high"
       />
       <span class="brand-overlay"
         ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
       >
-      <figcaption>
-        Toolyfi visual guide: choosing a color and checking its relationship with a background.
-      </figcaption>
     </figure>
     <main class="tool">
       <section class="panel">
@@ -702,6 +824,7 @@
               value="#EF6C54"
               maxlength="7"
               aria-label="HEX color value"
+              autocomplete="off"
             />
           </div>
           <div class="row">
@@ -732,7 +855,7 @@
               <label for="bg">Contrast background HEX</label
               ><input id="bg" value="#FAF8F4" maxlength="7" />
             </div>
-            <div class="result" id="contrastResult">
+            <div class="result" id="contrastResult" aria-live="polite">
               <div class="ratio">—</div>
               <div class="status">Enter valid foreground and background values</div>
               <div
@@ -1296,7 +1419,7 @@
         updateContrast();
       }
       $("#picker").addEventListener("input", (e) => setColor(e.target.value));
-      $("#hexInput").addEventListener("change", (e) => setColor(e.target.value));
+      $("#hexInput").addEventListener("input", (e) => setColor(e.target.value));
       $("#bg").addEventListener("input", updateContrast);
       document.querySelectorAll("[data-copy]").forEach(
         (b) =>
@@ -1324,6 +1447,5 @@
       };
       setColor("#EF6C54");
     </script>
-    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
   </body>
 </html>
