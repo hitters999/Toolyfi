@@ -8,10 +8,7 @@
       name="description"
       content="Use a browser-based scientific calculator for arithmetic, powers, roots, logs, trigonometry, angle modes, and local history."
     />
-    <link
-      rel="canonical"
-      href="https://toolyfi.com/scientific-calculator.html"
-    />
+    <link rel="canonical" href="https://toolyfi.com/scientific-calculator.html" />
     <meta property="og:title" content="Scientific Calculator | Toolyfi" />
     <meta
       property="og:description"
@@ -28,10 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -146,6 +140,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "No. It evaluates supported input but cannot verify that a formula, units, or assumptions are appropriate for a real-world task."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I type an expression from my keyboard?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can type a supported expression in the input field and press Enter to calculate it, or use the visible calculator buttons."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this scientific calculator draw graphs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This page evaluates supported numeric expressions only; it is not a graphing, symbolic algebra, or complex-number calculator."
             }
           }
         ]
@@ -266,17 +276,40 @@
         max-width: 1040px;
         margin: 0 auto 48px;
         padding: 0 20px;
+        position: relative;
       }
-      .visual img {
+      .visual > img {
         display: block;
         width: 100%;
         height: auto;
-        aspect-ratio: 3/2;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         border-radius: 18px;
         border: 1px solid var(--line);
         background: var(--soft);
         box-shadow: 0 18px 40px rgba(23, 36, 55, 0.09);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 36px;
+        bottom: 38px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: #fffdf9;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 10px 22px rgba(23, 36, 55, 0.18);
+      }
+      .toolyfi-hero-mark img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
       }
       .visual figcaption {
         text-align: center;
@@ -317,6 +350,12 @@
         padding: 4px 9px;
         font: 700 11px "Plus Jakarta Sans";
         cursor: pointer;
+        transition:
+          transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+          background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .mode:active {
+        transform: scale(0.96);
       }
       .screen {
         background: var(--screen);
@@ -356,6 +395,10 @@
         color: #fff;
         font: 800 14px "Plus Jakarta Sans";
         cursor: pointer;
+        transition:
+          transform 150ms cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 150ms cubic-bezier(0.23, 1, 0.32, 1),
+          background-color 150ms cubic-bezier(0.23, 1, 0.32, 1);
       }
       .key:active {
         transform: translateY(2px);
@@ -395,9 +438,13 @@
         color: var(--ink);
         cursor: pointer;
         font: 700 13px "Plus Jakarta Sans";
+        transition:
+          transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+          border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
       }
       .side button:hover {
         border-color: var(--coral);
+        transform: translateX(3px);
       }
       .history {
         margin-top: 24px;
@@ -469,6 +516,13 @@
         border: 1px solid var(--line);
         padding: 22px;
         border-radius: 16px;
+        transition:
+          transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(23, 36, 55, 0.08);
       }
       .card strong {
         display: block;
@@ -510,6 +564,10 @@
       .faq summary {
         cursor: pointer;
         font-weight: 800;
+        transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .faq details[open] summary {
+        color: var(--coral);
       }
       .faq p {
         color: var(--muted);
@@ -545,13 +603,60 @@
         text-align: center;
         font-size: 13px;
       }
+      @media (prefers-reduced-motion: no-preference) {
+        .hero > * {
+          animation: toolyfi-rise 520ms cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+        .hero > :nth-child(2) {
+          animation-delay: 70ms;
+        }
+        .hero > :nth-child(3) {
+          animation-delay: 130ms;
+        }
+        .hero > :nth-child(4) {
+          animation-delay: 190ms;
+        }
+        .calc,
+        .side,
+        .cards .card {
+          animation: toolyfi-rise 480ms cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+        .side {
+          animation-delay: 80ms;
+        }
+        .cards .card:nth-child(2) {
+          animation-delay: 70ms;
+        }
+        .cards .card:nth-child(3) {
+          animation-delay: 140ms;
+        }
+      }
+      @keyframes toolyfi-rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       @media (max-width: 760px) {
         .work,
         .cards {
           grid-template-columns: 1fr;
         }
         .top {
+          height: 60px;
           padding: 0 16px;
+        }
+        .brand {
+          gap: 8px;
+          font-size: 18px;
+        }
+        .brand img {
+          width: 30px;
+          height: 30px;
         }
         .top nav {
           gap: 12px;
@@ -561,9 +666,29 @@
         }
         .visual {
           padding: 0 16px;
+          margin-bottom: 32px;
         }
-        .visual img {
+        .visual > img {
+          aspect-ratio: 4 / 3;
           border-radius: 14px;
+        }
+        .toolyfi-hero-mark {
+          right: 26px;
+          bottom: 34px;
+          padding: 6px 9px;
+        }
+        .toolyfi-hero-mark img {
+          width: 21px;
+          height: 21px;
+        }
+        .hero {
+          padding: 44px 18px 34px;
+        }
+        .hero h1 {
+          font-size: clamp(2.4rem, 12vw, 3.2rem);
+        }
+        .hero p {
+          font-size: 0.92rem;
         }
       }
       @media (max-width: 390px) {
@@ -573,34 +698,28 @@
         }
       }
     </style>
-  <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-</head>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+  </head>
   <body>
     <header class="top">
       <a class="brand" href="index.html"
-        ><img src="logo.png" alt="Toolyfi logo" />Toolyfi</a
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
       >
-      <nav>
-        <a href="index.html">Home</a><a href="index.html#tools">All tools</a>
-      </nav>
+      <nav><a href="index.html">Home</a><a href="index.html#tools">All tools</a></nav>
     </header>
     <div class="crumb">
-      <a href="index.html">Home</a> / <a href="index.html#tools">Tools</a> /
-      Scientific Calculator
+      <a href="index.html">Home</a> / <a href="index.html#tools">Tools</a> / Scientific Calculator
     </div>
     <section class="hero">
       <div class="eyebrow">Math workspace</div>
       <h1>Write it clearly. <em>Calculate locally.</em></h1>
       <p>
-        Use supported arithmetic, roots, logs, powers, trigonometry, angle
-        modes, and a short local history—then check the formula and units
-        yourself.
+        Use supported arithmetic, roots, logs, powers, trigonometry, angle modes, and a short local
+        history—then check the formula and units yourself.
       </p>
       <div class="pills">
-        <span class="pill">DEG / RAD</span
-        ><span class="pill">Safe math parser</span
-        ><span class="pill">Local history</span
-        ><span class="pill">Generic browser calculator</span>
+        <span class="pill">DEG / RAD</span><span class="pill">Safe math parser</span
+        ><span class="pill">Local history</span><span class="pill">Generic browser calculator</span>
       </div>
     </section>
     <figure class="visual">
@@ -611,17 +730,19 @@
         alt="Editorial scientific calculator scene with analogue geometry tools, a green display plane, coral graph curves, and ink-navy mathematical marks without text."
         decoding="async"
       />
+      <span class="toolyfi-hero-mark"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+      >
       <figcaption>
-        Toolyfi visual guide: check the expression, angle unit, and real-world
-        assumptions around every calculation.
+        Toolyfi visual guide: check the expression, angle unit, and real-world assumptions around
+        every calculation.
       </figcaption>
     </figure>
     <main class="tool">
       <div class="work">
         <section class="calc">
           <div class="calc-top">
-            <span>TOOLYFI SCIENTIFIC</span
-            ><button class="mode" id="mode">DEG</button>
+            <span>TOOLYFI SCIENTIFIC</span><button class="mode" id="mode">DEG</button>
           </div>
           <div class="screen">
             <input
@@ -644,37 +765,24 @@
             ><button class="key fn" data-v="pi">π</button
             ><button class="key fn" data-v="e">e</button
             ><button class="key coral" id="clear">AC</button
-            ><button class="key" data-v="7">7</button
-            ><button class="key" data-v="8">8</button
-            ><button class="key" data-v="9">9</button
-            ><button class="key fn" data-v="/">÷</button
-            ><button class="key fn" data-v="^">xʸ</button
-            ><button class="key" data-v="4">4</button
-            ><button class="key" data-v="5">5</button
-            ><button class="key" data-v="6">6</button
-            ><button class="key fn" data-v="*">×</button
-            ><button class="key fn" data-v="!">!</button
-            ><button class="key" data-v="1">1</button
-            ><button class="key" data-v="2">2</button
-            ><button class="key" data-v="3">3</button
-            ><button class="key fn" data-v="-">−</button
-            ><button class="key fn" data-v="(">(</button
-            ><button class="key" data-v="0">0</button
-            ><button class="key" data-v=".">.</button
-            ><button class="key fn" data-v="e">EE</button
-            ><button class="key fn" data-v="+">+</button
-            ><button class="key fn" data-v=")">)</button
-            ><button class="key coral" id="equals" style="grid-column: span 5">
-              = Calculate
-            </button>
+            ><button class="key" data-v="7">7</button><button class="key" data-v="8">8</button
+            ><button class="key" data-v="9">9</button><button class="key fn" data-v="/">÷</button
+            ><button class="key fn" data-v="^">xʸ</button><button class="key" data-v="4">4</button
+            ><button class="key" data-v="5">5</button><button class="key" data-v="6">6</button
+            ><button class="key fn" data-v="*">×</button><button class="key fn" data-v="!">!</button
+            ><button class="key" data-v="1">1</button><button class="key" data-v="2">2</button
+            ><button class="key" data-v="3">3</button><button class="key fn" data-v="-">−</button
+            ><button class="key fn" data-v="(">(</button><button class="key" data-v="0">0</button
+            ><button class="key" data-v=".">.</button><button class="key fn" data-v="e">EE</button
+            ><button class="key fn" data-v="+">+</button><button class="key fn" data-v=")">)</button
+            ><button class="key coral" id="equals" style="grid-column: span 5">= Calculate</button>
           </div>
         </section>
         <aside class="side">
           <h2>Use with context</h2>
           <p>
-            Supported expressions are evaluated in this browser. This page does
-            not validate your formula, units, source data, or whether a web
-            calculator is permitted in an exam.
+            Supported expressions are evaluated in this browser. This page does not validate your
+            formula, units, source data, or whether a web calculator is permitted in an exam.
           </p>
           <button data-example="(2+3)^2">(2+3)^2</button
           ><button data-example="sin(30)">sin(30) in current mode</button
@@ -684,8 +792,7 @@
             <strong>Current-page history</strong>
             <div class="history-list" id="history">
               <div class="history-item">
-                <span>Nothing calculated yet</span>Use an example or enter an
-                expression.
+                <span>Nothing calculated yet</span>Use an example or enter an expression.
               </div>
             </div>
           </div>
@@ -694,363 +801,392 @@
     </main>
     <section class="notice">
       <div class="notice-in">
-        <strong>Important:</strong> A browser output is not an approval,
-        diagnosis, engineering verification, or exam-permission check. Confirm
-        the formula, units, rounding, and policy in the real destination
-        context.
+        <strong>Important:</strong> A browser output is not an approval, diagnosis, engineering
+        verification, or exam-permission check. Confirm the formula, units, rounding, and policy in
+        the real destination context.
       </div>
     </section>
     <section class="section">
       <div class="eyebrow">Calculation quality</div>
       <h2>Fast arithmetic still needs a clear method</h2>
       <p>
-        Use the display to review the expression and the angle mode. Then keep
-        an independent written record when the result will support a report,
-        design, study solution, or important decision.
+        Use the display to review the expression and the angle mode. Then keep an independent
+        written record when the result will support a report, design, study solution, or important
+        decision.
       </p>
       <div class="cards">
         <article class="card">
           <strong>Expressions</strong>
-          <p>
-            Parentheses make the intended order of operations explicit and
-            easier to check.
-          </p>
+          <p>Parentheses make the intended order of operations explicit and easier to check.</p>
         </article>
         <article class="card">
           <strong>Angle mode</strong>
           <p>
-            DEG and RAD produce different trigonometric results; check the
-            visible setting first.
+            DEG and RAD produce different trigonometric results; check the visible setting first.
           </p>
         </article>
         <article class="card">
           <strong>Rounding</strong>
           <p>
-            Use a display result as an intermediate value, then round
-            appropriately for the question or measurement.
+            Use a display result as an intermediate value, then round appropriately for the question
+            or measurement.
           </p>
         </article>
       </div>
     </section>
     <article class="guide">
-      <h2>
-        Scientific Calculator: A Practical Guide to Expressions, Angles, and
-        Checks
-      </h2>
+      <h2>Scientific Calculator: A Practical Guide to Expressions, Angles, and Checks</h2>
       <p>
-        A scientific calculator is most useful when its inputs, units, and order
-        of operations remain visible. It can evaluate arithmetic, powers, roots,
-        logarithms, trigonometric functions, and factorials quickly, but it
-        cannot determine whether a formula is appropriate for a real situation.
-        Start by writing the problem in ordinary mathematical notation,
-        identifying units, and deciding whether an answer should be an exact
-        symbolic value, an approximation, or a number rounded for reporting.
-        Then enter the expression deliberately and compare the result with a
-        rough estimate.
+        A scientific calculator is most useful when its inputs, units, and order of operations
+        remain visible. It can evaluate arithmetic, powers, roots, logarithms, trigonometric
+        functions, and factorials quickly, but it cannot determine whether a formula is appropriate
+        for a real situation. Start by writing the problem in ordinary mathematical notation,
+        identifying units, and deciding whether an answer should be an exact symbolic value, an
+        approximation, or a number rounded for reporting. Then enter the expression deliberately and
+        compare the result with a rough estimate.
       </p>
       <p>
-        This Toolyfi page evaluates supported expressions locally in the active
-        browser. It is a general calculation workspace, not a replacement for an
-        approved physical calculator in an exam, a lab instrument, a financial
-        model, engineering design software, or professional verification.
-        Policies vary by institution and context. If an assessment or workplace
-        requires a specific approved device or a documented calculation method,
-        follow that rule rather than assuming a web page is allowed.
+        This Toolyfi page evaluates supported expressions locally in the active browser. It is a
+        general calculation workspace, not a replacement for an approved physical calculator in an
+        exam, a lab instrument, a financial model, engineering design software, or professional
+        verification. Policies vary by institution and context. If an assessment or workplace
+        requires a specific approved device or a documented calculation method, follow that rule
+        rather than assuming a web page is allowed.
       </p>
       <h2>Order of Operations and Parentheses</h2>
       <p>
-        Expressions are evaluated according to the usual hierarchy: parentheses
-        first, then powers, then multiplication and division, then addition and
-        subtraction. Writing parentheses is the clearest way to preserve the
-        intended relationship. For example, <code>(2+3)^2</code> means square
-        the sum, while <code>2+3^2</code> means add two to the square of three.
-        A calculator will follow its parser; it cannot infer an intended
-        grouping that was never entered.
+        Expressions are evaluated according to the usual hierarchy: parentheses first, then powers,
+        then multiplication and division, then addition and subtraction. Writing parentheses is the
+        clearest way to preserve the intended relationship. For example, <code>(2+3)^2</code> means
+        square the sum, while <code>2+3^2</code> means add two to the square of three. A calculator
+        will follow its parser; it cannot infer an intended grouping that was never entered.
       </p>
       <p>
-        When transferring an equation from a worksheet, use the display to
-        review every parenthesis and operator before pressing equals. Long
-        expressions are a common source of missed brackets, misplaced decimals,
-        or a negative sign applied to the wrong term. Break a complex
-        calculation into named intermediate steps when the result will be
-        important to communicate or reproduce later.
+        When transferring an equation from a worksheet, use the display to review every parenthesis
+        and operator before pressing equals. Long expressions are a common source of missed
+        brackets, misplaced decimals, or a negative sign applied to the wrong term. Break a complex
+        calculation into named intermediate steps when the result will be important to communicate
+        or reproduce later.
       </p>
       <h2>Degrees and Radians in Trigonometry</h2>
       <p>
         Trigonometric functions depend on the angle unit. In degree mode,
-        <code>sin(30)</code> is approximately 0.5. In radian mode, the input
-        represents radians, so <code>sin(π/6)</code> is approximately 0.5. A
-        result that looks surprising is often an angle-mode issue rather than a
-        calculator defect. Check the visible DEG or RAD setting before entering
-        sine, cosine, tangent, or their inverse forms.
+        <code>sin(30)</code> is approximately 0.5. In radian mode, the input represents radians, so
+        <code>sin(π/6)</code> is approximately 0.5. A result that looks surprising is often an
+        angle-mode issue rather than a calculator defect. Check the visible DEG or RAD setting
+        before entering sine, cosine, tangent, or their inverse forms.
       </p>
       <p>
-        Inverse trigonometric functions return an angle in the currently
-        selected unit. For example, an inverse sine result shown in degree mode
-        is a degree measure; the same numeric relation in radian mode appears in
-        radians. Record the unit with any reported angle. In applied work, a
-        bare number without units can be ambiguous and lead to a correct
-        calculation being used incorrectly.
+        Inverse trigonometric functions return an angle in the currently selected unit. For example,
+        an inverse sine result shown in degree mode is a degree measure; the same numeric relation
+        in radian mode appears in radians. Record the unit with any reported angle. In applied work,
+        a bare number without units can be ambiguous and lead to a correct calculation being used
+        incorrectly.
       </p>
       <h2>Functions and Their Domains</h2>
       <p>
-        Some operations have natural domain restrictions. A real square root
-        requires a non-negative input. A logarithm requires a positive input.
-        Division by zero is undefined. Factorial is defined here for
-        non-negative integers up to a practical finite limit. Tangent becomes
-        undefined at particular angle values. The calculator displays an
-        explanatory error when an expression violates a supported domain rather
-        than inventing an answer.
+        Some operations have natural domain restrictions. A real square root requires a non-negative
+        input. A logarithm requires a positive input. Division by zero is undefined. Factorial is
+        defined here for non-negative integers up to a practical finite limit. Tangent becomes
+        undefined at particular angle values. The calculator displays an explanatory error when an
+        expression violates a supported domain rather than inventing an answer.
       </p>
       <p>
-        Those checks are not a complete mathematics tutor. They do not prove
-        that a unit conversion is correct, that a physical formula applies, or
-        that a result has appropriate significant figures. Use the calculator to
-        perform the arithmetic, then apply the reasoning and conventions of your
-        subject.
+        Those checks are not a complete mathematics tutor. They do not prove that a unit conversion
+        is correct, that a physical formula applies, or that a result has appropriate significant
+        figures. Use the calculator to perform the arithmetic, then apply the reasoning and
+        conventions of your subject.
       </p>
       <h2>Logs, Exponentials, and Scientific Notation</h2>
       <p>
-        The <code>log</code> function is base ten and <code>ln</code> is the
-        natural logarithm. The <code>exp</code> function calculates e raised to
-        an input. Use parentheses around a function argument when an expression
-        contains more than one operation, such as <code>log(1000)</code> or
-        <code>sqrt(9+16)</code>. Scientific notation can be entered with
-        <code>e</code>, for example <code>6.02e23</code>, when a quantity is too
-        large or small for a convenient ordinary decimal.
+        The <code>log</code> function is base ten and <code>ln</code> is the natural logarithm. The
+        <code>exp</code> function calculates e raised to an input. Use parentheses around a function
+        argument when an expression contains more than one operation, such as
+        <code>log(1000)</code> or <code>sqrt(9+16)</code>. Scientific notation can be entered with
+        <code>e</code>, for example <code>6.02e23</code>, when a quantity is too large or small for
+        a convenient ordinary decimal.
       </p>
       <p>
-        Scientific notation is a representation, not a claim of precision. A
-        displayed calculator result may contain more digits than the source
-        measurements justify. Round according to the instructions of the
-        assignment, measurement uncertainty, or reporting standard. Retaining
-        extra intermediate digits can reduce rounding drift, but the final
-        reported figure should remain meaningful.
+        Scientific notation is a representation, not a claim of precision. A displayed calculator
+        result may contain more digits than the source measurements justify. Round according to the
+        instructions of the assignment, measurement uncertainty, or reporting standard. Retaining
+        extra intermediate digits can reduce rounding drift, but the final reported figure should
+        remain meaningful.
       </p>
       <h2>Factorial and Combinatorial Context</h2>
       <p>
-        A factorial, written with an exclamation mark, multiplies all positive
-        integers from one through a non-negative integer. For example,
-        <code>5!</code> is 120. It grows quickly. The page limits factorial
-        input to a finite range because ordinary browser numbers cannot
-        represent arbitrarily large factorials accurately. For combinations and
-        permutations in a statistics or probability problem, first verify the
-        formula and the interpretation of order, replacement, and eligibility. A
-        fast factorial does not decide which counting model fits a question.
+        A factorial, written with an exclamation mark, multiplies all positive integers from one
+        through a non-negative integer. For example,
+        <code>5!</code> is 120. It grows quickly. The page limits factorial input to a finite range
+        because ordinary browser numbers cannot represent arbitrarily large factorials accurately.
+        For combinations and permutations in a statistics or probability problem, first verify the
+        formula and the interpretation of order, replacement, and eligibility. A fast factorial does
+        not decide which counting model fits a question.
       </p>
       <p>
-        When a calculation becomes very large, consider whether an exact
-        integer, a logarithmic estimate, or a specialised statistics tool is
-        required. Scientific calculators are excellent for many classroom and
-        practical expressions, but they have numeric limits that should be
+        When a calculation becomes very large, consider whether an exact integer, a logarithmic
+        estimate, or a specialised statistics tool is required. Scientific calculators are excellent
+        for many classroom and practical expressions, but they have numeric limits that should be
         acknowledged in advanced work.
       </p>
       <h2>History Is a Review Aid, Not a Lab Notebook</h2>
       <p>
-        This calculator keeps a short visible calculation history during the
-        active page visit so you can review or reuse a recent expression. It is
-        not permanent storage, a shared audit record, or a replacement for
-        documenting a method. If a result supports a report, design, homework
-        solution, experiment, or budget, write down the formula, values, units,
+        This calculator keeps a short visible calculation history during the active page visit so
+        you can review or reuse a recent expression. It is not permanent storage, a shared audit
+        record, or a replacement for documenting a method. If a result supports a report, design,
+        homework solution, experiment, or budget, write down the formula, values, units,
         assumptions, and rounding method in the appropriate document.
       </p>
       <p>
-        History can help identify a transcription error. Compare a surprising
-        result with the previous expression, check the angle mode, and estimate
-        the expected magnitude. If a calculation is repeated with different
-        inputs, label those inputs elsewhere. A row of numbers alone rarely
-        explains the underlying reasoning.
+        History can help identify a transcription error. Compare a surprising result with the
+        previous expression, check the angle mode, and estimate the expected magnitude. If a
+        calculation is repeated with different inputs, label those inputs elsewhere. A row of
+        numbers alone rarely explains the underlying reasoning.
       </p>
       <h2>Accuracy, Rounding, and Floating-Point Numbers</h2>
       <p>
-        Browser JavaScript uses floating-point numbers for ordinary calculator
-        arithmetic. This is suitable for many practical uses, but some decimal
-        values cannot be represented exactly in binary floating point. You may
-        occasionally see a tiny difference such as a long decimal tail where a
-        simple fraction was expected. The calculator rounds displayed values for
-        readability, while still using the computed result for the immediate
-        operation. For accounting, arbitrary-precision, symbolic algebra, or
-        legally binding calculations, use a method designed for the required
-        accuracy and audit trail.
+        Browser JavaScript uses floating-point numbers for ordinary calculator arithmetic. This is
+        suitable for many practical uses, but some decimal values cannot be represented exactly in
+        binary floating point. You may occasionally see a tiny difference such as a long decimal
+        tail where a simple fraction was expected. The calculator rounds displayed values for
+        readability, while still using the computed result for the immediate operation. For
+        accounting, arbitrary-precision, symbolic algebra, or legally binding calculations, use a
+        method designed for the required accuracy and audit trail.
       </p>
       <p>
-        Never round aggressively at every intermediate step unless an
-        instruction requires it. Keep enough precision through the calculation,
-        then round at the end based on measurement precision or reporting
-        convention. If a result is near a decision threshold, independently
+        Never round aggressively at every intermediate step unless an instruction requires it. Keep
+        enough precision through the calculation, then round at the end based on measurement
+        precision or reporting convention. If a result is near a decision threshold, independently
         verify the calculation with the source formula and an appropriate tool.
       </p>
       <h2>Keyboard Input and Safe Parsing</h2>
       <p>
-        You can type a supported expression or use the calculator buttons. The
-        parser accepts ordinary numbers, parentheses, common arithmetic
-        operators, <code>pi</code>, <code>e</code>, and the displayed scientific
-        functions. It does not execute arbitrary JavaScript, load external data,
-        solve equations, integrate functions, or provide symbolic manipulation.
-        Unsupported text returns an input error. That boundary is intentional: a
-        clear set of supported mathematical tokens is safer and more predictable
-        than interpreting every possible piece of code-like text.
+        You can type a supported expression or use the calculator buttons. The parser accepts
+        ordinary numbers, parentheses, common arithmetic operators, <code>pi</code>, <code>e</code>,
+        and the displayed scientific functions. It does not execute arbitrary JavaScript, load
+        external data, solve equations, integrate functions, or provide symbolic manipulation.
+        Unsupported text returns an input error. That boundary is intentional: a clear set of
+        supported mathematical tokens is safer and more predictable than interpreting every possible
+        piece of code-like text.
       </p>
       <p>
-        Use commas only where the tool explicitly supports a function syntax;
-        otherwise keep expressions simple and review the display. When copying a
-        formula from a document, replace typographic multiplication, minus, and
-        superscript characters with the supported forms if needed. The button
-        controls insert compatible tokens automatically.
+        Use commas only where the tool explicitly supports a function syntax; otherwise keep
+        expressions simple and review the display. When copying a formula from a document, replace
+        typographic multiplication, minus, and superscript characters with the supported forms if
+        needed. The button controls insert compatible tokens automatically.
       </p>
       <h2>Study and Professional Boundaries</h2>
       <p>
-        For study, a calculator can help check arithmetic after you have
-        attempted the reasoning yourself. It is not a shortcut around learning
-        definitions, unit analysis, graph interpretation, or proof. For
-        professional tasks, an output should be reviewed in the context of
-        assumptions, source data, standards, and independent checks. A
-        calculator result is one component of a decision, not the decision
-        itself.
+        For study, a calculator can help check arithmetic after you have attempted the reasoning
+        yourself. It is not a shortcut around learning definitions, unit analysis, graph
+        interpretation, or proof. For professional tasks, an output should be reviewed in the
+        context of assumptions, source data, standards, and independent checks. A calculator result
+        is one component of a decision, not the decision itself.
       </p>
       <p>
-        Do not rely on this page for emergency, medical, legal, safety-critical,
-        investment, or engineering approval decisions. Use qualified
-        professionals, validated tools, and the procedures required for the
-        domain. Toolyfi provides a local general-purpose arithmetic helper; it
-        does not certify the suitability of a formula or result for a specific
-        real-world outcome.
+        Do not rely on this page for emergency, medical, legal, safety-critical, investment, or
+        engineering approval decisions. Use qualified professionals, validated tools, and the
+        procedures required for the domain. Toolyfi provides a local general-purpose arithmetic
+        helper; it does not certify the suitability of a formula or result for a specific real-world
+        outcome.
       </p>
       <h2>Before You Use a Result</h2>
       <p>
-        Confirm the expression and parentheses. Confirm DEG or RAD for
-        trigonometry. Check the units and the expected order of magnitude.
-        Review domain restrictions and the displayed error message if one
-        appears. Keep a written record when a result matters beyond a quick
-        calculation. These simple habits turn calculator speed into a more
-        reliable workflow.
+        Confirm the expression and parentheses. Confirm DEG or RAD for trigonometry. Check the units
+        and the expected order of magnitude. Review domain restrictions and the displayed error
+        message if one appears. Keep a written record when a result matters beyond a quick
+        calculation. These simple habits turn calculator speed into a more reliable workflow.
       </p>
       <h2>Estimate Before You Calculate</h2>
       <p>
-        A quick estimate is one of the best error checks. Before evaluating a
-        long expression, decide whether the result should be positive or
-        negative, close to zero or large, measured in tens or thousands, and
-        limited by a known physical or mathematical bound. If the calculator
-        returns a value far outside that expectation, pause before copying it.
-        Check parentheses, exponent placement, unit conversion, the angle mode,
-        and any number typed from a source table.
+        A quick estimate is one of the best error checks. Before evaluating a long expression,
+        decide whether the result should be positive or negative, close to zero or large, measured
+        in tens or thousands, and limited by a known physical or mathematical bound. If the
+        calculator returns a value far outside that expectation, pause before copying it. Check
+        parentheses, exponent placement, unit conversion, the angle mode, and any number typed from
+        a source table.
       </p>
       <p>
-        Estimation does not replace calculation. It provides a second way to
-        notice an implausible output. In a classroom, writing both the
-        approximate expectation and the calculator expression can also make a
-        solution easier for another person to follow. In technical work, an
-        independent rough calculation can flag a data-entry problem before it
-        moves into a report or design.
+        Estimation does not replace calculation. It provides a second way to notice an implausible
+        output. In a classroom, writing both the approximate expectation and the calculator
+        expression can also make a solution easier for another person to follow. In technical work,
+        an independent rough calculation can flag a data-entry problem before it moves into a report
+        or design.
       </p>
       <h2>Units and Dimensional Reasoning</h2>
       <p>
-        A calculator does not attach units to a value. If you divide a distance
-        by a time, you must decide whether the result should be metres per
-        second, kilometres per hour, or another rate. If you use trigonometry in
-        a geometry question, confirm whether an angle is in degrees or radians
-        and whether a length is consistent across the equation. Place units
-        beside intermediate values in your notes, especially when a formula
-        combines conversion factors.
+        A calculator does not attach units to a value. If you divide a distance by a time, you must
+        decide whether the result should be metres per second, kilometres per hour, or another rate.
+        If you use trigonometry in a geometry question, confirm whether an angle is in degrees or
+        radians and whether a length is consistent across the equation. Place units beside
+        intermediate values in your notes, especially when a formula combines conversion factors.
       </p>
       <p>
-        Dimensional reasoning can reveal an expression mistake even when the
-        numeric answer looks reasonable. Adding a length to a temperature,
-        applying a percent as a whole number rather than a decimal, or mixing
-        centimetres with metres can create an output that the calculator has no
-        way to reject. The parser can check mathematical syntax; the human user
-        must check meaning.
+        Dimensional reasoning can reveal an expression mistake even when the numeric answer looks
+        reasonable. Adding a length to a temperature, applying a percent as a whole number rather
+        than a decimal, or mixing centimetres with metres can create an output that the calculator
+        has no way to reject. The parser can check mathematical syntax; the human user must check
+        meaning.
       </p>
       <h2>Functions, Parentheses, and Negative Inputs</h2>
       <p>
-        Wrap function arguments in parentheses when they contain a calculation.
-        Write <code>sqrt(4+5)</code> rather than assuming a root key will know
-        where your intended argument ends. Write <code>sin(30+15)</code> in
-        degree mode when the sum is the intended angle. A negative input is also
-        clearer when grouped: <code>(-3)^2</code> differs from
-        <code>-3^2</code> in standard order-of-operations notation. Parentheses
-        are inexpensive clarity.
+        Wrap function arguments in parentheses when they contain a calculation. Write
+        <code>sqrt(4+5)</code> rather than assuming a root key will know where your intended
+        argument ends. Write <code>sin(30+15)</code> in degree mode when the sum is the intended
+        angle. A negative input is also clearer when grouped: <code>(-3)^2</code> differs from
+        <code>-3^2</code> in standard order-of-operations notation. Parentheses are inexpensive
+        clarity.
       </p>
       <p>
-        When evaluating a power with a non-integer exponent, be mindful that a
-        negative base may not have a real-number result. The calculator is
-        intentionally a real-number workspace for supported functions. For
-        complex-number arithmetic, matrices, symbolic operations, graphing,
-        statistical inference, or numerical methods, use a specialised tool and
-        verify its settings.
+        When evaluating a power with a non-integer exponent, be mindful that a negative base may not
+        have a real-number result. The calculator is intentionally a real-number workspace for
+        supported functions. For complex-number arithmetic, matrices, symbolic operations, graphing,
+        statistical inference, or numerical methods, use a specialised tool and verify its settings.
       </p>
       <h2>Factorials, Overflow, and Large Results</h2>
       <p>
-        Factorial grows more quickly than many people expect. The calculator
-        limits factorial input to a practical range because browser
-        floating-point numbers eventually lose useful precision and then
-        overflow. That is not a sign that mathematics stops at the limit; it is
-        a boundary of this ordinary browser representation. For advanced
-        combinatorics, use arbitrary-precision or symbolic software when an
-        exact enormous integer is needed.
+        Factorial grows more quickly than many people expect. The calculator limits factorial input
+        to a practical range because browser floating-point numbers eventually lose useful precision
+        and then overflow. That is not a sign that mathematics stops at the limit; it is a boundary
+        of this ordinary browser representation. For advanced combinatorics, use arbitrary-precision
+        or symbolic software when an exact enormous integer is needed.
       </p>
       <p>
-        Large exponentials and small differences between large values can also
-        amplify rounding issues. If the result is critical, compare a second
-        method, preserve sufficient intermediate precision, and document the
-        software or process used. A generic calculator display should not be the
-        only evidence for a high-consequence numerical claim.
+        Large exponentials and small differences between large values can also amplify rounding
+        issues. If the result is critical, compare a second method, preserve sufficient intermediate
+        precision, and document the software or process used. A generic calculator display should
+        not be the only evidence for a high-consequence numerical claim.
       </p>
       <h2>Function Domains in Plain Language</h2>
       <p>
-        The real square root function accepts zero and positive inputs. The real
-        logarithm functions accept positive inputs. A factorial accepts whole
-        numbers beginning at zero. Division needs a non-zero divisor. Inverse
-        sine and inverse cosine need inputs between minus one and one for real
-        results. These rules are not arbitrary error messages; they describe
-        where the familiar real-number version of each function is defined.
+        The real square root function accepts zero and positive inputs. The real logarithm functions
+        accept positive inputs. A factorial accepts whole numbers beginning at zero. Division needs
+        a non-zero divisor. Inverse sine and inverse cosine need inputs between minus one and one
+        for real results. These rules are not arbitrary error messages; they describe where the
+        familiar real-number version of each function is defined.
       </p>
       <p>
-        If an expression fails, simplify it into smaller steps. Check a
-        denominator, evaluate the inside of a root, or inspect a function
-        argument. Do not change a formula merely to remove an error message
-        unless you understand why the original expression was invalid. A correct
+        If an expression fails, simplify it into smaller steps. Check a denominator, evaluate the
+        inside of a root, or inspect a function argument. Do not change a formula merely to remove
+        an error message unless you understand why the original expression was invalid. A correct
         error can be more useful than a plausible but meaningless number.
       </p>
       <h2>Calculator History and Reproducibility</h2>
       <p>
-        The short in-page history makes it easier to revisit a recent expression
-        while you work. For a reproducible calculation, however, record the
-        source values, their units, the formula, the angle mode, any
-        conversions, the final result, and the rounding decision. If another
-        person needs to check the work, they should be able to reproduce the
-        result without relying on a transient browser history.
+        The short in-page history makes it easier to revisit a recent expression while you work. For
+        a reproducible calculation, however, record the source values, their units, the formula, the
+        angle mode, any conversions, the final result, and the rounding decision. If another person
+        needs to check the work, they should be able to reproduce the result without relying on a
+        transient browser history.
       </p>
       <p>
-        For code, research, finance, laboratory, or engineering workflows, use
-        the approved documentation and version-control practices of that
-        setting. A calculator is convenient for an intermediate check, but it
-        does not provide data provenance, peer review, or change tracking.
+        For code, research, finance, laboratory, or engineering workflows, use the approved
+        documentation and version-control practices of that setting. A calculator is convenient for
+        an intermediate check, but it does not provide data provenance, peer review, or change
+        tracking.
       </p>
       <h2>When a Specialist Tool Is Better</h2>
       <p>
-        Choose a spreadsheet for structured tables and repeatable cell formulas.
-        Choose a statistics package for distributions, regression, confidence
-        intervals, and sampling analysis. Choose a graphing or computer algebra
-        system for plots, symbolic solving, matrices, and calculus. Choose
-        domain-specific software when standards, calibration, or auditability
-        matter. The right tool is not the one with the most buttons; it is the
-        one that makes the required assumptions and outputs reviewable.
+        Choose a spreadsheet for structured tables and repeatable cell formulas. Choose a statistics
+        package for distributions, regression, confidence intervals, and sampling analysis. Choose a
+        graphing or computer algebra system for plots, symbolic solving, matrices, and calculus.
+        Choose domain-specific software when standards, calibration, or auditability matter. The
+        right tool is not the one with the most buttons; it is the one that makes the required
+        assumptions and outputs reviewable.
       </p>
       <p>
-        Toolyfi’s Scientific Calculator stays focused on local supported
-        arithmetic. Its simple boundary makes it useful for quick expressions
-        while reducing the temptation to treat a general web page as a certified
-        solution for every quantitative task.
+        Toolyfi’s Scientific Calculator stays focused on local supported arithmetic. Its simple
+        boundary makes it useful for quick expressions while reducing the temptation to treat a
+        general web page as a certified solution for every quantitative task.
       </p>
       <h2>Final Calculation Checklist</h2>
       <p>
-        Read the expression once before calculating. Check parentheses, signs,
-        units, and the DEG or RAD setting. Consider an order-of-magnitude
-        estimate. Use the result in the correct unit and round only at the
-        reporting stage. If the consequence is important, verify it
-        independently with the appropriate process. These habits make a
-        calculator a reliable assistant rather than a black box.
+        Read the expression once before calculating. Check parentheses, signs, units, and the DEG or
+        RAD setting. Consider an order-of-magnitude estimate. Use the result in the correct unit and
+        round only at the reporting stage. If the consequence is important, verify it independently
+        with the appropriate process. These habits make a calculator a reliable assistant rather
+        than a black box.
+      </p>
+      <h2>Read a Long Expression in Small Logical Parts</h2>
+      <p>
+        A calculator evaluates symbols; it cannot tell whether they express the calculation you
+        meant to do. When an expression contains several operations, break it into parts before
+        pressing Calculate. For example, in <code>(12+8)/5^2</code>, the parentheses define the
+        first part, the exponent belongs to the denominator, and the final division happens after
+        those values are known. Writing the grouping explicitly makes an expression easier to
+        compare with a textbook, spreadsheet, formula sheet, or colleague’s working.
+      </p>
+      <p>
+        Parentheses are particularly important around a negative quantity. The expressions
+        <code>-3^2</code> and <code>(-3)^2</code> are not equivalent under ordinary operator rules:
+        the first applies the negative sign after the square, while the second squares the complete
+        negative value. If the distinction matters, do not rely on visual intuition. Add parentheses
+        and calculate the smaller pieces separately if necessary. The extra keystrokes are usually
+        quicker than tracing an unexpected result later.
+      </p>
+      <h2>Use Angle Mode as Part of the Formula</h2>
+      <p>
+        Trigonometric functions need an angle unit. In DEG mode, <code>sin(30)</code> evaluates a
+        thirty-degree angle; in RAD mode, the same characters represent thirty radians. Neither mode
+        is universally correct. Geometry questions, navigation exercises, and many introductory
+        problems commonly state angles in degrees. Calculus, many programming libraries, and
+        formulas involving the unit circle commonly use radians. Read the unit in the question and
+        confirm the visible mode button before evaluating sine, cosine, tangent, or their inverse
+        functions.
+      </p>
+      <p>
+        The inverse trigonometric buttons also return an angle in the selected mode. If a
+        calculation expects an angle in degrees but the display is set to RAD, a numerically
+        plausible value may still have the wrong meaning. A useful quick check is a familiar
+        reference: in degree mode,
+        <code>sin(30)</code> should be close to 0.5; in radian mode, <code>sin(pi/6)</code> should
+        be close to 0.5. These simple checks help catch an accidental mode change without treating a
+        result as proof that every step of the formula is right.
+      </p>
+      <h2>Know the Real-Number Boundaries of a Function</h2>
+      <p>
+        This Toolyfi calculator evaluates the supported functions in the real-number system. That
+        means some inputs intentionally produce a Math error. A square root needs a non-negative
+        real input. The base-ten logarithm <code>log</code> and natural logarithm
+        <code>ln</code> need a positive input. Factorial needs a non-negative whole number and is
+        limited to values through 170, because larger factorials exceed the finite numeric range
+        used by the page. Division by zero is also rejected rather than converted into a misleading
+        normal result.
+      </p>
+      <p>
+        A domain error is often useful information about the model, not a reason to keep pressing
+        buttons until a number appears. Check whether the input has a missing sign, an intended unit
+        conversion, a value outside the problem’s stated range, or a formula that assumes a
+        different condition. This page does not solve symbolic equations, calculate complex-number
+        results, or draw graphs. If your task requires those operations, move to a specialist
+        mathematical tool and preserve the original formula so it can be reviewed consistently.
+      </p>
+      <h2>Use History to Review, Not to Store Work</h2>
+      <p>
+        Each successful calculation appears in a short current-page history. It can help you reuse a
+        previous expression, compare a changed input, or notice a mistaken operator. The history is
+        deliberately temporary: it is not a lab notebook, financial ledger, or permanent calculation
+        record. When work must be retained, copy the expression, stated inputs, units, rounding
+        rule, and final interpretation into the approved document for the task.
+      </p>
+      <p>
+        Keep enough significant figures during intermediate steps, then round once at the reporting
+        stage according to the problem’s requirements. Browser arithmetic uses floating-point
+        numbers, which can display very small tails for values that look simple in decimal notation.
+        This is a normal representation issue, not necessarily evidence that the calculation logic
+        failed. Use a sensible precision for the measurement or question, and independently check a
+        result when a small difference could change a design, safety, price, grade, or scientific
+        conclusion.
+      </p>
+      <h2>A Practical Local-Calculator Workflow</h2>
+      <p>
+        Start by writing the formula with units outside the calculator. Substitute values only after
+        checking that every unit is compatible. Enter supported functions with parentheses, choose
+        the correct angle mode, and calculate. Estimate the expected sign and broad size of the
+        answer. Then compare the display with that estimate. If the outcome is surprising, rebuild
+        the expression from smaller components rather than guessing which key produced the issue.
+        This process turns a fast browser calculator into a transparent aid rather than an
+        unexamined source of numbers.
       </p>
     </article>
     <section class="faq">
@@ -1059,57 +1195,70 @@
       <details>
         <summary>Does this calculator use degrees or radians?</summary>
         <p>
-          Choose DEG or RAD mode with the visible button. Confirm it before
-          trigonometric input.
+          Choose DEG or RAD mode with the visible button. Confirm it before trigonometric input.
         </p>
       </details>
       <details>
         <summary>Which functions are supported?</summary>
         <p>
-          Supported arithmetic includes powers, roots, factorial, logarithms,
-          exponentials, common trigonometry, parentheses, pi, and e.
+          Supported arithmetic includes powers, roots, factorial, logarithms, exponentials, common
+          trigonometry, parentheses, pi, and e.
         </p>
       </details>
       <details>
         <summary>Does this page represent a calculator manufacturer?</summary>
         <p>
-          No. This is a generic Toolyfi browser calculator and is not affiliated
-          with a calculator manufacturer.
+          No. This is a generic Toolyfi browser calculator and is not affiliated with a calculator
+          manufacturer.
         </p>
       </details>
       <details>
         <summary>Can I use it in an exam?</summary>
         <p>
-          Follow the exam or institution policy. A web calculator should never
-          be assumed to be permitted.
+          Follow the exam or institution policy. A web calculator should never be assumed to be
+          permitted.
         </p>
       </details>
       <details>
         <summary>Why did I receive a math error?</summary>
         <p>
-          Check for unsupported text, missing parentheses, division by zero, or
-          a function outside its supported real-number domain.
+          Check for unsupported text, missing parentheses, division by zero, or a function outside
+          its supported real-number domain.
         </p>
       </details>
       <details>
         <summary>Does it store permanent history?</summary>
         <p>
-          History is only a short review aid for the active page visit, not a
-          permanent storage service.
+          History is only a short review aid for the active page visit, not a permanent storage
+          service.
         </p>
       </details>
       <details>
         <summary>Why are there tiny decimal tails?</summary>
         <p>
-          Browsers use floating-point arithmetic, so some decimals cannot be
-          represented exactly. Check and round appropriately.
+          Browsers use floating-point arithmetic, so some decimals cannot be represented exactly.
+          Check and round appropriately.
         </p>
       </details>
       <details>
         <summary>Does it validate my formula?</summary>
         <p>
-          No. It evaluates supported input but cannot confirm whether a formula,
-          unit, or assumption is correct for your task.
+          No. It evaluates supported input but cannot confirm whether a formula, unit, or assumption
+          is correct for your task.
+        </p>
+      </details>
+      <details>
+        <summary>Can I type an expression from my keyboard?</summary>
+        <p>
+          Yes. Type a supported expression into the display and press Enter to calculate it, or use
+          the visible calculator buttons.
+        </p>
+      </details>
+      <details>
+        <summary>Does this scientific calculator draw graphs?</summary>
+        <p>
+          No. Toolyfi evaluates supported numeric expressions only; it is not a graphing, symbolic
+          algebra, or complex-number calculator.
         </p>
       </details>
     </section>
@@ -1130,8 +1279,8 @@
       </div>
     </section>
     <footer>
-      © Toolyfi — practical browser tools. Verify important calculations
-      independently in their real context.
+      © Toolyfi — practical browser tools. Verify important calculations independently in their
+      real context.
     </footer>
     <script>
       const $ = function (s) {
@@ -1148,8 +1297,7 @@
         while (i < s.length) {
           re.lastIndex = i;
           m = re.exec(s);
-          if (!m)
-            throw new Error("Unsupported input near " + s.slice(i, i + 10));
+          if (!m) throw new Error("Unsupported input near " + s.slice(i, i + 10));
           out.push(m[1]);
           i = re.lastIndex;
         }
@@ -1207,9 +1355,7 @@
           while (peek() === "!") {
             take();
             if (!Number.isInteger(v) || v < 0 || v > 170)
-              throw new Error(
-                "Factorial requires a non-negative integer up to 170",
-              );
+              throw new Error("Factorial requires a non-negative integer up to 170");
             let f = 1;
             for (let i = 2; i <= v; i++) f *= i;
             v = f;
@@ -1231,8 +1377,7 @@
             const a = expr();
             if (take() !== ")") throw new Error("Missing closing parenthesis");
             if (x === "sqrt") {
-              if (a < 0)
-                throw new Error("Square root needs a non-negative real input");
+              if (a < 0) throw new Error("Square root needs a non-negative real input");
               return Math.sqrt(a);
             }
             if (x === "log") {
@@ -1240,31 +1385,19 @@
               return Math.log10(a);
             }
             if (x === "ln") {
-              if (a <= 0)
-                throw new Error("Natural logarithm needs a positive input");
+              if (a <= 0) throw new Error("Natural logarithm needs a positive input");
               return Math.log(a);
             }
             if (x === "exp") return Math.exp(a);
             if (x === "abs") return Math.abs(a);
             if (x === "sin" || x === "cos" || x === "tan") {
               const r = angle === "DEG" ? (a * Math.PI) / 180 : a;
-              return x === "sin"
-                ? Math.sin(r)
-                : x === "cos"
-                  ? Math.cos(r)
-                  : Math.tan(r);
+              return x === "sin" ? Math.sin(r) : x === "cos" ? Math.cos(r) : Math.tan(r);
             }
             if (x === "asin" || x === "acos" || x === "atan") {
-              let r =
-                x === "asin"
-                  ? Math.asin(a)
-                  : x === "acos"
-                    ? Math.acos(a)
-                    : Math.atan(a);
+              let r = x === "asin" ? Math.asin(a) : x === "acos" ? Math.acos(a) : Math.atan(a);
               if (!Number.isFinite(r))
-                throw new Error(
-                  "Inverse trig input is outside its real domain",
-                );
+                throw new Error("Inverse trig input is outside its real domain");
               return angle === "DEG" ? (r * 180) / Math.PI : r;
             }
           }
@@ -1273,8 +1406,7 @@
         }
         const v = expr();
         if (state.i !== t.length) throw new Error("Unexpected token " + peek());
-        if (!Number.isFinite(v))
-          throw new Error("Result is not a finite number");
+        if (!Number.isFinite(v)) throw new Error("Result is not a finite number");
         return v;
       }
       function show(v) {
@@ -1316,14 +1448,12 @@
             );
           })
           .join("");
-        document
-          .querySelectorAll(".history-item[data-s]")
-          .forEach(function (x) {
-            x.onclick = function () {
-              $("#expr").value = x.dataset.s;
-              solve();
-            };
-          });
+        document.querySelectorAll(".history-item[data-s]").forEach(function (x) {
+          x.onclick = function () {
+            $("#expr").value = x.dataset.s;
+            solve();
+          };
+        });
       }
       $("#keys").addEventListener("click", function (e) {
         const b = e.target.closest("[data-v]");
@@ -1331,8 +1461,7 @@
         const input = $("#expr"),
           start = input.selectionStart,
           end = input.selectionEnd;
-        input.value =
-          input.value.slice(0, start) + b.dataset.v + input.value.slice(end);
+        input.value = input.value.slice(0, start) + b.dataset.v + input.value.slice(end);
         input.focus();
         input.selectionStart = input.selectionEnd = start + b.dataset.v.length;
       });
@@ -1358,6 +1487,6 @@
         }
       });
     </script>
-  <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
-</body>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+  </body>
 </html>
