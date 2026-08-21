@@ -704,29 +704,33 @@
     <style>
       /* APK fidelity: preserve the supplied Scientific Calculator workspace inside a responsive local frame. */
       .apk-tool-host {
-        width: min(100%, 1040px);
+        width: min(100%, 760px);
         margin-inline: auto;
-        padding: 0;
-        background: #080b18;
-        border: 1px solid #202b4a;
-        border-radius: 24px;
+        padding: 8px;
+        background: linear-gradient(145deg, #1e2c4b, #080b18 38%);
+        border: 1px solid rgba(42, 61, 101, 0.92);
+        border-radius: 28px;
         overflow: hidden;
-        box-shadow: 0 18px 45px rgba(23, 36, 55, 0.16);
+        box-shadow: 0 22px 48px rgba(23, 36, 55, 0.22);
       }
       .apk-calculator-frame {
         display: block;
         width: 100%;
-        min-height: 900px;
-        height: 900px;
+        min-height: 740px;
+        height: 740px;
         border: 0;
+        border-radius: 20px;
       }
       @media (max-width: 700px) {
         .apk-tool-host {
-          border-radius: 20px;
+          width: calc(100% - 20px);
+          border-radius: 22px;
+          padding: 6px;
         }
         .apk-calculator-frame {
-          min-height: 820px;
-          height: 820px;
+          min-height: 690px;
+          height: 690px;
+          border-radius: 17px;
         }
       }
     </style>

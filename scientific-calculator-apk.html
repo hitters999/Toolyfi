@@ -374,7 +374,7 @@
       }
       .app {
         width: min(100%, 860px);
-        min-height: 780px;
+        min-height: 700px;
         height: auto;
       }
       html:fullscreen,
@@ -407,8 +407,15 @@
         </div>
         <div class="top-actions">
           <button class="pill active" id="angleBtn" onclick="toggleAngle()">DEG</button
-          ><button class="pill fullscreen-btn" id="fullscreenBtn" onclick="toggleFullscreen()">
-            ⛶ Full screen</button
+          ><button
+            class="pill fullscreen-btn"
+            id="fullscreenBtn"
+            type="button"
+            aria-label="Open calculator in full screen"
+            title="Full screen"
+            onclick="toggleFullscreen()"
+          >
+            ⛶</button
           ><button class="icon-btn" aria-label="History" onclick="openHistory()">↺</button>
         </div>
       </header>
@@ -557,10 +564,14 @@
       function updateFullscreenLabel() {
         const button = $("fullscreenBtn");
         if (button) {
-          button.textContent =
-            document.fullscreenElement || document.body.classList.contains("fallback-fullscreen")
-              ? "✕ Exit full screen"
-              : "⛶ Full screen";
+          const focused =
+            document.fullscreenElement || document.body.classList.contains("fallback-fullscreen");
+          button.textContent = focused ? "✕" : "⛶";
+          button.setAttribute(
+            "aria-label",
+            focused ? "Exit full screen" : "Open calculator in full screen",
+          );
+          button.title = focused ? "Exit full screen" : "Full screen";
         }
       }
       async function toggleFullscreen() {
