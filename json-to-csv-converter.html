@@ -1,0 +1,1412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON to CSV Converter: Local Table Export | Toolyfi</title>
+    <meta
+      name="description"
+      content="Convert JSON arrays and objects to CSV locally in your browser. Validate JSON, preview rows, flatten nested objects intentionally, copy output, or download a CSV file."
+    />
+    <meta
+      name="keywords"
+      content="JSON to CSV converter, convert JSON to CSV, JSON array to CSV, local CSV exporter, flatten JSON, CSV table preview"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/json-to-csv-converter.html" />
+    <meta property="og:title" content="JSON to CSV Converter: Local Table Export | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Parse JSON in your browser, preview a table, choose an export delimiter, then copy or download CSV."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/json-to-csv-converter.html" />
+    <meta property="og:image" content="https://toolyfi.com/images/toolyfi-json-to-csv-hero.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi JSON to CSV Converter",
+        "url": "https://toolyfi.com/json-to-csv-converter.html",
+        "description": "A browser-local JSON to CSV conversion tool with parsing feedback, table preview, nested-object flattening, copy, and download controls.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "JSON to CSV Converter",
+            "item": "https://toolyfi.com/json-to-csv-converter.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does this JSON to CSV converter upload my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. JSON parsing, table shaping, CSV creation, copying, and file download are performed in the current browser. The tool does not submit or store the entered text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What JSON input shapes are accepted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The converter accepts a JSON array, a single JSON object, or scalar JSON. Arrays of objects provide the most useful table-shaped CSV output."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are CSV columns chosen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool collects keys found across the converted rows in first-seen order. Missing values remain empty cells in the relevant row."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does flatten nested objects mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Flattening converts nested object properties into dotted column names such as customer.name. Arrays remain JSON text in one cell so the row structure stays explicit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are commas and quotes escaped in CSV output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A value containing the selected delimiter, a quote, or a line break is wrapped in double quotes, and embedded double quotes are doubled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a tab or semicolon delimiter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select comma, semicolon, or tab before conversion. Match the delimiter to the program that will import the file."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is my JSON parse error shown?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "JSON requires double-quoted keys and strings, no trailing commas, and valid nesting. The tool shows the browser parse error so you can correct the source text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will arrays inside JSON become multiple rows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This focused converter keeps nested arrays as JSON text in a cell. Exploding arrays into rows changes meaning and should be an explicit data-model decision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can CSV preserve JSON data types?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CSV is text-based and has no universal type system. Dates, numbers, booleans, and nulls are written as textual cell values for the destination application to interpret."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I trust a CSV preview as data validation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A preview checks the exported table shape, not source authority or business correctness. Validate records, permissions, and field meaning in the appropriate system."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --muted: #617080;
+        --coral: #ef6c54;
+        --soft: #fff0ea;
+        --line: #e8e1d7;
+        --blue: #e9f1f7;
+        --green: #e7f3ec;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px clamp(18px, 4vw, 58px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(250, 248, 244, 0.96);
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font:
+          800 1.48rem Fraunces,
+          serif;
+        text-decoration: none;
+      }
+      .logo img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        width: min(1180px, 100%);
+        margin: auto;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        padding: 22px 0 8px;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+      .crumbs a {
+        font-weight: 800;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(350px, 1.1fr);
+        gap: 34px;
+        padding: 45px 0 58px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.73rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        line-height: 1.08;
+      }
+      h1 {
+        margin: 13px 0 19px;
+        max-width: 650px;
+        font-size: clamp(2.7rem, 6vw, 5.2rem);
+        letter-spacing: -0.055em;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .hero p {
+        max-width: 610px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 22px;
+      }
+      .hero-pills span {
+        padding: 7px 10px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .toolyfi-visual {
+        position: relative;
+        margin: 0;
+      }
+      .toolyfi-visual > img {
+        width: 100%;
+        height: clamp(250px, 37vw, 455px);
+        object-fit: cover;
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--paper);
+        padding: 8px 11px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(23, 36, 55, 0.15);
+      }
+      .toolyfi-hero-mark img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .tool-wrap {
+        padding: 0 0 56px;
+      }
+      .tool-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+      .tool-card-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 21px 25px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .tool-card-head h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+      .tool-card-head p {
+        margin: 5px 0 0;
+        color: #c6d1de;
+        font-size: 0.81rem;
+      }
+      .local-note {
+        align-self: center;
+        color: #ffd4cb;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .control-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: end;
+        padding: 17px 22px;
+        background: #fcfaf7;
+        border-bottom: 1px solid var(--line);
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+      label {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      select {
+        min-height: 37px;
+        padding: 7px 9px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+      }
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 37px;
+        color: var(--ink);
+        font-size: 0.79rem;
+        font-weight: 800;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .check input {
+        accent-color: var(--coral);
+      }
+      .work-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.94fr);
+      }
+      .pane {
+        padding: 24px;
+      }
+      .pane + .pane {
+        border-left: 1px solid var(--line);
+        background: #fcfaf7;
+      }
+      textarea {
+        display: block;
+        width: 100%;
+        min-height: 300px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        resize: vertical;
+        outline: 0;
+        font:
+          0.85rem/1.62 ui-monospace,
+          SFMono-Regular,
+          Consolas,
+          monospace;
+      }
+      textarea:focus {
+        border-color: var(--coral);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.13);
+      }
+      .pane-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .pane-head h3 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+      .status {
+        padding: 6px 9px;
+        background: var(--green);
+        color: #17663c;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .status.error {
+        color: #a43c2c;
+        background: var(--soft);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 13px;
+      }
+      .button {
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .button.primary {
+        border-color: var(--coral);
+        background: var(--coral);
+        color: #fff;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+      }
+      .csv-output {
+        min-height: 190px;
+      }
+      .preview-wrap {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        overflow: auto;
+        background: #fff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.76rem;
+      }
+      th,
+      td {
+        min-width: 100px;
+        max-width: 260px;
+        padding: 9px 10px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: var(--blue);
+        font-weight: 800;
+      }
+      .preview-note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin: 0 0 55px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .metric {
+        padding: 17px;
+        background: var(--paper);
+      }
+      .metric strong {
+        display: block;
+        color: var(--coral);
+        font:
+          800 1.5rem Fraunces,
+          serif;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 48px;
+        padding-bottom: 68px;
+      }
+      article {
+        max-width: 760px;
+      }
+      article h2 {
+        margin: 40px 0 15px;
+        font-size: clamp(1.55rem, 3vw, 2.25rem);
+      }
+      article h3 {
+        margin: 28px 0 10px;
+        font-size: 1.27rem;
+      }
+      article p,
+      article li {
+        color: #465669;
+        font-size: 0.96rem;
+      }
+      article li {
+        margin: 7px 0;
+      }
+      .callout {
+        margin: 24px 0;
+        padding: 18px 20px;
+        border-left: 4px solid var(--coral);
+        background: var(--soft);
+        color: #7b382d;
+      }
+      .aside {
+        align-self: start;
+        position: sticky;
+        top: 18px;
+        padding: 21px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .aside h2 {
+        margin: 0 0 12px;
+        font-size: 1.23rem;
+      }
+      .aside a {
+        display: block;
+        padding: 9px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: #dbe7f0;
+        text-decoration: none;
+        font-size: 0.82rem;
+      }
+      .faq {
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+      details {
+        padding: 18px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .related {
+        padding: 50px 0;
+        background: var(--ink);
+        color: #fff;
+      }
+      .related h2 {
+        margin-top: 0;
+        font-size: 2rem;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .related a {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      footer {
+        padding: 28px clamp(18px, 4vw, 58px);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.79rem;
+      }
+      @media (max-width: 820px) {
+        .hero,
+        .work-grid,
+        .content {
+          grid-template-columns: 1fr;
+        }
+        .pane + .pane {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+        .aside {
+          position: static;
+        }
+        .faq-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .site-header nav {
+          gap: 12px;
+        }
+        .site-header nav a:first-child {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .button,
+        .related a {
+          transition:
+            transform 180ms var(--ease),
+            box-shadow 180ms var(--ease);
+        }
+        .related a:hover {
+          transform: translateY(-3px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs">
+          <a href="index.html">Home</a> / Developer tools / JSON to CSV Converter
+        </div>
+        <section class="hero">
+          <div>
+            <div class="eyebrow">Browser-native data utility</div>
+            <h1>From <em>JSON</em><br />to a clean table.</h1>
+            <p>
+              Validate JSON, choose how nested values are represented, inspect the first rows, and
+              export practical CSV — without sending the source text to a server.
+            </p>
+            <div class="hero-pills">
+              <span>Local parsing</span><span>Table preview</span><span>CSV escape rules</span
+              ><span>Copy or download</span>
+            </div>
+          </div>
+          <figure class="toolyfi-visual">
+            <img
+              src="images/toolyfi-json-to-csv-hero.webp"
+              alt="Abstract Toolyfi data workspace showing JSON converting into a CSV table"
+              fetchpriority="high"
+            /><span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool-wrap" aria-labelledby="tool-heading">
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <div>
+                <h2 id="tool-heading">JSON to CSV workspace</h2>
+                <p>Paste valid JSON. The preview and CSV are calculated in this browser.</p>
+              </div>
+              <span class="local-note">Runs locally in this browser</span>
+            </div>
+            <div class="control-bar">
+              <div class="field">
+                <label for="delimiter">Delimiter</label
+                ><select id="delimiter">
+                  <option value=",">Comma (,)</option>
+                  <option value=";">Semicolon (;)</option>
+                  <option value="\t">Tab</option>
+                </select>
+              </div>
+              <label class="check"
+                ><input id="headers" type="checkbox" checked /> Include header row</label
+              ><label class="check"
+                ><input id="flatten" type="checkbox" checked /> Flatten nested objects</label
+              >
+            </div>
+            <div class="work-grid">
+              <section class="pane">
+                <div class="pane-head">
+                  <h3>JSON input</h3>
+                  <span class="status" id="status" aria-live="polite">Ready</span>
+                </div>
+                <textarea id="jsonInput" spellcheck="false" aria-label="JSON input">
+[
+  {
+    "id": 101,
+    "name": "Amina",
+    "role": "Designer",
+    "active": true,
+    "contact": { "city": "Lahore", "country": "Pakistan" }
+  },
+  {
+    "id": 102,
+    "name": "Hassan",
+    "role": "Developer",
+    "active": false,
+    "contact": { "city": "Karachi", "country": "Pakistan" }
+  }
+]</textarea
+                >
+                <div class="actions">
+                  <button class="button primary" id="convert" type="button">
+                    Convert JSON to CSV</button
+                  ><button class="button" id="sample" type="button">Load sample</button
+                  ><button class="button" id="clear" type="button">Clear</button>
+                </div>
+              </section>
+              <section class="pane">
+                <div class="pane-head">
+                  <h3>CSV output</h3>
+                  <span class="status" id="shape">0 rows · 0 columns</span>
+                </div>
+                <textarea
+                  id="csvOutput"
+                  class="csv-output"
+                  readonly
+                  aria-label="CSV output"
+                ></textarea>
+                <div class="actions">
+                  <button class="button primary" id="copy" type="button">Copy CSV</button
+                  ><button class="button" id="download" type="button">Download .csv</button>
+                </div>
+                <div class="preview-wrap">
+                  <table id="preview">
+                    <thead></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <p class="preview-note" id="previewNote">
+                  The first 12 converted rows appear here after a valid conversion.
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section class="metric-row" aria-label="Conversion summary">
+          <div class="metric"><strong id="rowCount">0</strong><span>converted rows</span></div>
+          <div class="metric"><strong id="columnCount">0</strong><span>CSV columns</span></div>
+          <div class="metric">
+            <strong id="characterCount">0</strong><span>CSV characters</span>
+          </div>
+        </section>
+        <section class="content">
+          <article>
+            <div class="eyebrow">JSON to CSV guide</div>
+            <h2 id="purpose">What a JSON to CSV conversion actually changes</h2>
+            <p>
+              JSON and CSV solve different data problems. JSON can represent nested objects, arrays,
+              booleans, numbers, strings, and null values with an explicit structure. CSV is a flat
+              sequence of text rows and columns. A conversion therefore is not a neutral file
+              rename; it is a shaping decision. This Toolyfi converter makes that decision visible.
+              It parses source JSON in the current browser, forms table rows, gathers columns, shows
+              a preview, and builds a CSV text result that can be copied or downloaded. The preview
+              gives you a chance to check the resulting table before it enters a spreadsheet,
+              report, or import workflow.
+            </p>
+            <p>
+              The simplest source is an array of similar objects. An array containing employee-like
+              records can become one CSV row per object, with keys becoming columns. Real JSON often
+              varies: one record may have an optional field, an object may be nested, or a value may
+              be an array. A good converter should not hide those differences. This page collects
+              keys across rows in first-seen order and leaves a cell empty when that key does not
+              exist in a particular row. When flattening is selected, nested plain-object properties
+              become dotted columns such as <code>contact.city</code>. Nested arrays remain a JSON
+              representation inside one cell so they are not silently exploded into a different
+              number of records.
+            </p>
+            <h2 id="input">Start with valid, intentional JSON</h2>
+            <p>
+              JSON is strict. Object keys and string values use double quotes, not single quotes. A
+              comma may separate entries but cannot trail after the final entry. Brackets and braces
+              must balance. Comments are not part of standard JSON. If the source was copied from a
+              JavaScript object, a log, or an API response, it may look close to JSON while still
+              being invalid. The converter reports the browser’s parse error rather than attempting
+              to guess a repair. That boundary protects data meaning: automatic repairs can hide
+              whether a quote or comma came from the original source.
+            </p>
+            <p>
+              Before converting, ask which part of the source should become the table. An API
+              response may contain metadata at the top and an array of records deeper inside.
+              Pasting the entire response as one object creates one row unless you intentionally
+              select the record array first. A CSV cannot preserve every nested relationship as a
+              set of adjacent cells without a policy. Extract the relevant array or decide that the
+              metadata belongs in the export. Clear selection at this stage avoids a familiar
+              spreadsheet problem: a technically valid file with columns that do not represent the
+              question the reader is trying to answer.
+            </p>
+            <div class="callout">
+              <strong>Local-only boundary:</strong> JSON parsing, flattening, CSV generation,
+              copying, and browser download happen in the active tab. The tool does not submit,
+              fetch, retain, or store the JSON you paste. Still follow your organization’s own rules
+              for handling confidential data.
+            </div>
+            <h2 id="rows">How rows and columns are formed</h2>
+            <p>
+              CSV needs a consistent row shape. If the input is a JSON array, each item becomes a
+              candidate row. An object item is copied into a row. A scalar item, such as a number or
+              string, becomes a row with a single <code>value</code> column rather than being
+              discarded. A single top-level object becomes one row. This predictable rule means that
+              the converter’s result can be inspected without guessing which values disappeared. The
+              metric strip reports the number of converted rows and unique columns, while the
+              preview renders up to twelve rows to keep large source data readable.
+            </p>
+            <p>
+              Keys are not guaranteed to appear in every object. Suppose the first record has
+              <code>id</code> and <code>name</code>, while the second adds <code>department</code>.
+              The output header includes all three keys. The first row receives an empty department
+              cell, and the second receives its department value. That is usually more transparent
+              than dropping a later field to preserve the first record’s shape. It also signals a
+              data-quality question: is the optional field expected, or did the upstream source
+              change? CSV export should preserve information; it should not disguise schema drift.
+            </p>
+            <h2 id="flattening">Flatten nested objects with a stated rule</h2>
+            <p>
+              A nested JSON object can be helpful for the application that produced it but awkward
+              in a spreadsheet. When the “Flatten nested objects” control is enabled, a structure
+              such as <code>{"customer":{"name":"Amina","city":"Lahore"}}</code> becomes columns
+              named <code>customer.name</code> and <code>customer.city</code>. The dot is a
+              column-name convention, not a JSON path guarantee. It makes the source relationship
+              visible while allowing the values to sit in one conventional row. If you turn
+              flattening off, the nested object is written as JSON text inside its parent field,
+              which is better when preserving the original nested value matters more than creating
+              extra spreadsheet columns.
+            </p>
+            <p>
+              Arrays require greater care. A customer can have several tags, a report can have
+              multiple line items, and an event may have several attendees. Turning an array into
+              several CSV rows changes row cardinality and can duplicate parent data. This focused
+              converter keeps arrays as serialized JSON text inside a single cell. That policy is
+              deliberate: it prevents a hidden multiplication of records. If your analysis requires
+              one row per nested item, define a separate transformation with explicit parent
+              identifiers and test the expected result. Conversion is easier to trust when it names
+              the flattening boundary instead of pretending all JSON shapes map naturally to a grid.
+            </p>
+            <h2 id="csv">Understand CSV escaping before export</h2>
+            <p>
+              CSV looks simple because commas and line breaks are visible, yet cells can contain
+              commas, quotation marks, or their own line breaks. The output here follows the common
+              quoting rule: a value containing the selected delimiter, a double quote, or a line
+              break is enclosed in double quotes, and every embedded double quote is doubled. For
+              example, the text <code>North, "A"</code> becomes a single quoted CSV cell rather than
+              two incorrect columns. The same rule is applied when semicolon or tab is selected as
+              the delimiter. The receiving application still determines how it interprets the file,
+              so preview the import in the destination program when accuracy matters.
+            </p>
+            <p>
+              Delimiter choice is a compatibility decision. Comma is widely recognized, while
+              semicolon is common in regional spreadsheet settings where commas are used in decimal
+              values. Tab-separated output can be convenient for pasting into a spreadsheet or tool
+              that expects TSV. This page lets you choose one of those forms before conversion. Do
+              not change a delimiter only because the file looks more readable in a text editor;
+              choose the setting required by the next system. A clean CSV is a contract between the
+              exporter and importer, not merely a string of punctuation.
+            </p>
+            <h2 id="types">Know what CSV can and cannot preserve</h2>
+            <p>
+              JSON distinguishes a number from a string, a boolean from the word “true,” and null
+              from an absent key. CSV has no universal type grammar. It stores text cells and relies
+              on the importing software or subsequent process to infer types. That can lead to
+              leading zeroes being removed, long identifiers displayed in scientific notation, dates
+              reinterpreted by locale, or strings starting with special characters being treated as
+              formulas by a spreadsheet. The preview proves the CSV text shape; it does not
+              guarantee how a separate application will display or coerce the cells.
+            </p>
+            <p>
+              For identifiers, codes, phone-like values, and account references, decide whether the
+              downstream spreadsheet needs an explicit text import setting. For dates, use an
+              unambiguous source representation such as an ISO-like date only if it matches the real
+              business format. For null values, this converter writes an empty cell, which is a
+              readable CSV convention but not a perfect round-trip representation. If you require
+              lossless structure, keep the original JSON as the authoritative file and treat CSV as
+              a derived view designed for tabular review or import.
+            </p>
+            <h2 id="preview">Use the preview as a schema check</h2>
+            <p>
+              Before copying or downloading, scan the preview deliberately. Read the header row
+              aloud in terms of the intended question: are these the columns someone needs to
+              compare? Look for dotted nested keys, unexpected empty cells, array-shaped text, and
+              columns that appear only after a later record. Then inspect representative rows near
+              the beginning and end of the source. A table preview is more useful than a raw CSV
+              block because it makes row boundaries and columns visible even when cell values
+              contain punctuation.
+            </p>
+            <p>
+              The preview should not be mistaken for authoritative validation. It cannot tell
+              whether a city name is current, whether a user is permitted to export a record, or
+              whether a value is correct in the source system. It checks the local conversion rule.
+              For a formal workflow, compare row counts to the source, retain the source JSON,
+              document the selected delimiter and flattening choice, and review the imported result
+              in the target system. These small checks catch data-shaping mistakes before the CSV is
+              used in a report, upload, or business decision.
+            </p>
+            <h2 id="errors">Fix parsing and shape errors methodically</h2>
+            <p>
+              When a parse error appears, fix the first structural problem reported and try again.
+              An unterminated string often means a quote is missing or an unescaped quote appears
+              inside a value. An unexpected token can signal a single-quoted key, a trailing comma,
+              or text copied before or after the JSON document. Format the source with Toolyfi’s
+              <a href="json-formatter.html">JSON Formatter</a> if you need a clear indentation view.
+              Avoid editing a large document blindly. Narrow the issue, correct it, and confirm the
+              result parses before deciding how it should become CSV.
+            </p>
+            <p>
+              A parseable source can still have a table-shape problem. If every value appears in one
+              wide cell, a nested object may need flattening. If one field contains a long bracketed
+              array, decide whether a single JSON-text cell is acceptable. If many columns are
+              empty, the records may represent different entities and deserve separate exports. The
+              right answer depends on the data model, not on the converter. A transparent local tool
+              should expose these choices, while the person who understands the source decides what
+              the columns are meant to represent.
+            </p>
+            <h2 id="workflow">A practical local conversion workflow</h2>
+            <p>
+              Use a repeatable sequence when the CSV will be shared. First, retain the original JSON
+              as an unchanged reference. Second, paste or prepare only the relevant record set.
+              Third, convert with the default comma delimiter and flattening setting, then inspect
+              headers, row count, and several examples. Fourth, adjust delimiter or flattening only
+              when there is a clear destination requirement. Fifth, copy or download the output and
+              import it into the target program using that program’s documented text-import options.
+              This sequence prevents a convenient export from becoming an undocumented source of
+              changes.
+            </p>
+            <p>
+              Browser-local conversion is especially practical for small and medium datasets,
+              developer debugging, documentation examples, and one-off spreadsheet preparation. Very
+              large inputs can use substantial memory in a browser, so a desktop or scripted
+              workflow may be more suitable for high-volume production work. Never treat a
+              “downloaded successfully” message as proof that a data pipeline is correct. Confirm
+              counts, verify columns, retain the source, and use access controls where the data is
+              sensitive. The goal is a useful table with a documented relationship to its JSON
+              origin.
+            </p>
+            <h2 id="relationships">Choose related tools by the actual task</h2>
+            <p>
+              JSON conversion is often one step in a wider information workflow. If the source text
+              needs validity or readable indentation first, use the
+              <a href="json-formatter.html">JSON Formatter</a>. If a field contains encoded URL
+              components, inspect it with the
+              <a href="url-encoder-decoder.html">URL Encoder &amp; Decoder</a> rather than changing
+              the characters during CSV preparation. If a value is Base64 text, use the
+              <a href="base64-encoder.html">Base64 Encoder</a> to decode or encode it deliberately.
+              Each utility has a narrower responsibility, which makes the result easier to
+              understand and review.
+            </p>
+            <p>
+              That separation is also an accuracy habit. Do not use CSV export to “clean” a broken
+              JSON document or to infer a hidden schema. Convert only after the input is valid and
+              the desired row model is understood. A spreadsheet-friendly table is valuable, but it
+              is not a replacement for original records, domain validation, or permission checks. By
+              keeping the transformation local, visible, and reversible through the retained source,
+              you reduce the chance that a convenient copy-and-paste action becomes an unexplained
+              data change.
+            </p>
+            <h2 id="imports">Prepare the destination import, not only the export</h2>
+            <p>
+              A CSV file is only one side of a transfer. Before sending it to a spreadsheet,
+              database import, or reporting service, read the destination's field requirements. Does
+              it expect a particular delimiter, header spelling, line ending, character encoding, or
+              date format? Does it treat an empty cell as a missing value, a null, or an instruction
+              to overwrite an existing field? These questions cannot be solved by a converter alone.
+              They belong to the contract of the importing system, and answering them before export
+              is faster than correcting a partially imported dataset later.
+            </p>
+            <p>
+              A useful habit is to import a small representative sample into a non-production area
+              first. Confirm that the header names map as intended, accents display correctly,
+              leading zeroes survive, and multi-line cells remain one cell. Then compare the
+              imported row count to the local preview. If a recipient needs a different delimiter or
+              explicit text columns, make that choice in the export and record it with the source.
+              An export is reliable only when both the CSV text and the receiver's interpretation
+              are known.
+            </p>
+            <h2 id="headers">Treat header names as a data interface</h2>
+            <p>
+              Column headers are not cosmetic labels. They are the names by which a human or import
+              mapping identifies fields. The first-seen key order in this converter is predictable,
+              but the upstream JSON may use technical field names, mix naming styles, or contain
+              optional keys that appear late. Read the generated header row before downloading. A
+              dotted name such as <code>contact.city</code> tells a reviewer that the value
+              originated inside a nested object; a vague name such as <code>value</code> may signal
+              that the source was scalar rather than record-shaped.
+            </p>
+            <p>
+              If a target system needs renamed headers, perform that mapping deliberately in a
+              documented transformation rather than manually editing a downloaded file without a
+              record. Manual edits can be appropriate for a one-off report, but they break a
+              repeatable workflow when the next export arrives. Keep the original JSON keys,
+              conversion settings, and any renamed column map together. That gives a later reviewer
+              a way to understand how a human-friendly column relates to the source field.
+            </p>
+            <h2 id="missing-values">Distinguish missing, empty, and null values</h2>
+            <p>
+              JSON can express several different states that look similar in a spreadsheet. A key
+              may be absent, a key may be present with <code>null</code>, or a key may hold an empty
+              string. CSV has less room for that distinction, so this converter represents null and
+              missing values as an empty output cell. That is practical for a broad table preview,
+              but it is not a lossless statement of the original data. Preserve the JSON whenever a
+              receiving process needs to distinguish those cases.
+            </p>
+            <p>
+              Before an import, ask how the destination treats an empty cell. Some systems ignore
+              it, some clear a value, and some reject it for a required field. A blank cell might
+              mean “not provided” to one team and “unknown” to another. If that difference matters,
+              create an explicit data rule before exporting, such as a separate status column or a
+              carefully chosen literal marker permitted by the target system. Do not let a file
+              format's limitation silently decide business meaning.
+            </p>
+            <h2 id="spreadsheet-safety">Be careful with spreadsheet interpretation</h2>
+            <p>
+              Spreadsheet applications can automatically coerce cell content. A string beginning
+              with an equals sign, plus sign, minus sign, or at sign may be interpreted as a formula
+              in some workflows. Long numeric identifiers may be shown in scientific notation, and
+              leading zeroes can disappear. This converter exports the textual values it receives;
+              it does not claim to neutralize every destination application's formula or type
+              behavior. Review the import settings and data-handling rules used by the recipient.
+            </p>
+            <p>
+              For an operational export, use a controlled import path rather than opening an
+              unfamiliar CSV with defaults and immediately saving it again. Set sensitive identifier
+              columns to text where appropriate. Confirm that columns containing dates, codes, or
+              account-like values display exactly as expected. If a file comes from another party,
+              treat it as data rather than executable content and follow your organization's
+              security procedures. CSV is simple text, but the application that opens it can attach
+              additional behavior to that text.
+            </p>
+            <h2 id="provenance">Keep source provenance with the export</h2>
+            <p>
+              A CSV becomes difficult to audit when nobody can say where it came from, when it was
+              produced, which source records were selected, or which transformation settings were
+              used. Store the original JSON separately from the CSV, give each file a meaningful
+              name, and record a brief note about the relevant array, delimiter, header choice, and
+              flattening choice. This is useful even for internal analysis because it lets another
+              person reproduce the table rather than treating it as an unexplained snapshot.
+            </p>
+            <p>
+              Provenance does not require a complicated platform for a small workflow. A dated
+              folder, a README note, or a documented script can be enough. The important part is
+              that the export remains traceable to source data and a known conversion rule. When
+              data changes, repeat the same process rather than altering an old CSV in place. This
+              protects the distinction between a refreshed report and a manually modified artifact.
+            </p>
+            <h2 id="large-data">Choose the right workflow for large data</h2>
+            <p>
+              Browser-local tools are convenient because they keep an ordinary conversion close to
+              the person doing it. However, a very large JSON document can use substantial browser
+              memory while it is parsed, flattened, rendered as a preview, and turned into one CSV
+              string. If the page becomes slow, do not assume the data is damaged. Consider a
+              dedicated local script, database query, or streaming transformation that is designed
+              for the size and repeatability of the job. The correct tool depends on the volume,
+              sensitivity, and recurrence of the export.
+            </p>
+            <p>
+              For large recurring exports, define limits and automated checks. Count source records,
+              count output rows, verify a required column set, log errors, and retain a checksum or
+              version identifier for the source. These checks move the work from an ad-hoc manual
+              conversion toward a dependable pipeline. This page is intentionally focused on clear,
+              browser-native inspection and export. It is not presented as an enterprise bulk-data
+              engine, and transparent limits are part of an honest tool boundary.
+            </p>
+            <h2 id="roundtrip">Think about reversibility before sharing</h2>
+            <p>
+              Converting JSON to CSV often loses hierarchy, type distinctions, and some differences
+              between missing and null values. That is why the original JSON should remain the
+              system of record. You can create a new JSON structure from a CSV later, but it may not
+              recreate the exact nested structure that existed before. A row with a dotted header is
+              a useful convention, not an intrinsic JSON object. An array written inside one CSV
+              cell is text that must be parsed again, not a relational table by itself.
+            </p>
+            <p>
+              Reversibility is a planning question. If another team needs to modify data and return
+              it, agree on which columns are editable, which keys identify records, how blanks are
+              handled, and whether nested arrays are in scope. Do not rely on an implicit round-trip
+              through a spreadsheet. Use a defined import process, validate the returned data, and
+              keep source versions. Clear boundaries make a simple CSV handoff safer for everyone
+              involved.
+            </p>
+            <h2 id="quality-check">Finish with a small quality checklist</h2>
+            <p>
+              Before you share an export, verify five things. First, the source JSON parses without
+              repair. Second, the selected record set is the intended one. Third, the headers and
+              row count in the preview are plausible. Fourth, nested-object and array handling match
+              the purpose of the file. Fifth, the delimiter and import behavior suit the
+              destination. These checks take less time than investigating a misaligned spreadsheet
+              after it has been distributed. They also make a conversion decision explainable to a
+              teammate.
+            </p>
+            <p>
+              The best outcome is not merely a CSV that opens. It is a table that represents source
+              data honestly, carries enough context for the next user, and can be recreated when new
+              source records arrive. Use local conversion for clarity, retain the original for
+              fidelity, and treat each flattening or delimiter setting as a visible data-model
+              choice. That approach turns a quick utility into a more reliable step in your work.
+            </p>
+          </article>
+          <aside class="aside">
+            <h2>On this page</h2>
+            <a href="#purpose">What conversion changes</a><a href="#input">Valid JSON input</a
+            ><a href="#rows">Rows and columns</a><a href="#flattening">Nested objects</a
+            ><a href="#csv">CSV escaping</a><a href="#types">Type limits</a
+            ><a href="#preview">Preview checks</a><a href="#errors">Fix errors</a
+            ><a href="#workflow">Conversion workflow</a>
+          </aside>
+        </section>
+        <section class="faq" id="faq">
+          <div class="eyebrow">Practical questions</div>
+          <h2>JSON to CSV Converter FAQ</h2>
+          <div class="faq-grid">
+            <details>
+              <summary>Does this converter upload my data?</summary>
+              <p>
+                No. Parsing, shaping, export, copying, and download operate in the current browser
+                tab without a submission step.
+              </p>
+            </details>
+            <details>
+              <summary>What JSON input shapes are accepted?</summary>
+              <p>
+                JSON arrays, objects, and scalar JSON are accepted. An array of objects is the most
+                natural input for table output.
+              </p>
+            </details>
+            <details>
+              <summary>How are CSV columns chosen?</summary>
+              <p>
+                Keys found across the converted rows become columns in their first-seen order.
+                Missing row values remain empty cells.
+              </p>
+            </details>
+            <details>
+              <summary>What does flatten nested objects mean?</summary>
+              <p>
+                It turns nested object properties into dotted headers such as customer.name. Arrays
+                stay as JSON text in one cell.
+              </p>
+            </details>
+            <details>
+              <summary>Are commas and quotes escaped?</summary>
+              <p>
+                Yes. Cells containing a delimiter, quote, or line break are quoted and embedded
+                quotes are doubled.
+              </p>
+            </details>
+            <details>
+              <summary>Can I use tab or semicolon output?</summary>
+              <p>
+                Yes. Select comma, semicolon, or tab before converting so the output aligns with the
+                importing application.
+              </p>
+            </details>
+            <details>
+              <summary>Why do I see a JSON parse error?</summary>
+              <p>
+                JSON needs double quotes, valid nesting, and no trailing commas. The browser error
+                points to a syntax issue to fix.
+              </p>
+            </details>
+            <details>
+              <summary>Will nested arrays become multiple rows?</summary>
+              <p>
+                No. This tool keeps an array as JSON text in one cell because exploding it changes
+                the source record model.
+              </p>
+            </details>
+            <details>
+              <summary>Can CSV preserve JSON types exactly?</summary>
+              <p>
+                No. CSV is text-oriented; importing software may infer types. Keep original JSON
+                when lossless structure matters.
+              </p>
+            </details>
+            <details>
+              <summary>Does the preview validate my data?</summary>
+              <p>
+                It validates the local table shape, not source authority or business correctness.
+                Check source and destination separately.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+      <section class="related">
+        <div class="shell">
+          <h2>Continue the data workflow</h2>
+          <div class="related-grid">
+            <a href="json-formatter.html"
+              >JSON Formatter<br /><small>Format and inspect JSON first</small></a
+            ><a href="csv-to-json.html"
+              >CSV to JSON Converter<br /><small>Move back to structured JSON</small></a
+            ><a href="regex-tester.html"
+              >Regex Tester<br /><small>Inspect recurring text patterns</small></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © 2026 Toolyfi · Browser-native tools for practical work ·
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </footer>
+    <script>
+      const input = document.getElementById("jsonInput");
+      const output = document.getElementById("csvOutput");
+      const status = document.getElementById("status");
+      const preview = document.getElementById("preview");
+      const previewNote = document.getElementById("previewNote");
+      const sample = JSON.stringify(
+        [
+          {
+            id: 101,
+            name: "Amina",
+            role: "Designer",
+            active: true,
+            contact: { city: "Lahore", country: "Pakistan" },
+          },
+          {
+            id: 102,
+            name: "Hassan",
+            role: "Developer",
+            active: false,
+            contact: { city: "Karachi", country: "Pakistan" },
+          },
+        ],
+        null,
+        2,
+      );
+      const escapeHtml = (value) =>
+        String(value).replace(
+          /[&<>'"]/g,
+          (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char],
+        );
+      const isPlainObject = (value) => value && typeof value === "object" && !Array.isArray(value);
+      function setStatus(message, error = false) {
+        status.textContent = message;
+        status.classList.toggle("error", error);
+      }
+      function displayValue(value) {
+        if (value === null || value === undefined) return "";
+        if (typeof value === "object") return JSON.stringify(value);
+        return String(value);
+      }
+      function flattenObject(value, prefix = "", result = {}) {
+        Object.entries(value).forEach(([key, child]) => {
+          const path = prefix ? `${prefix}.${key}` : key;
+          if (isPlainObject(child)) flattenObject(child, path, result);
+          else result[path] = displayValue(child);
+        });
+        return result;
+      }
+      function csvCell(value, delimiter) {
+        const text = displayValue(value);
+        return text.includes(delimiter) || /["\r\n]/.test(text)
+          ? `"${text.replace(/"/g, '""')}"`
+          : text;
+      }
+      function asRows(data) {
+        const values = Array.isArray(data) ? data : [data];
+        return values.map((value) =>
+          isPlainObject(value) ? value : { value: displayValue(value) },
+        );
+      }
+      function convert() {
+        let parsed;
+        try {
+          parsed = JSON.parse(input.value);
+        } catch (error) {
+          output.value = "";
+          preview.querySelector("thead").innerHTML = "";
+          preview.querySelector("tbody").innerHTML = "";
+          previewNote.textContent = "Correct the JSON syntax to create a table preview.";
+          ["rowCount", "columnCount", "characterCount"].forEach(
+            (id) => (document.getElementById(id).textContent = "0"),
+          );
+          document.getElementById("shape").textContent = "0 rows · 0 columns";
+          setStatus(error.message, true);
+          return;
+        }
+        const rows = asRows(parsed).map((row) =>
+          document.getElementById("flatten").checked
+            ? flattenObject(row)
+            : Object.fromEntries(
+                Object.entries(row).map(([key, value]) => [key, displayValue(value)]),
+              ),
+        );
+        const headers = [...new Set(rows.flatMap((row) => Object.keys(row)))];
+        const delimiter = document.getElementById("delimiter").value;
+        const headerLine = document.getElementById("headers").checked
+          ? [headers.map((key) => csvCell(key, delimiter)).join(delimiter)]
+          : [];
+        const dataLines = rows.map((row) =>
+          headers.map((key) => csvCell(row[key] ?? "", delimiter)).join(delimiter),
+        );
+        const csv = [...headerLine, ...dataLines].join("\r\n");
+        output.value = csv;
+        preview.querySelector("thead").innerHTML =
+          `<tr>${headers.map((key) => `<th>${escapeHtml(key)}</th>`).join("")}</tr>`;
+        preview.querySelector("tbody").innerHTML = rows
+          .slice(0, 12)
+          .map(
+            (row) =>
+              `<tr>${headers.map((key) => `<td>${escapeHtml(row[key] ?? "")}</td>`).join("")}</tr>`,
+          )
+          .join("");
+        previewNote.textContent =
+          rows.length > 12
+            ? `Previewing the first 12 of ${rows.length} converted rows.`
+            : `Previewing all ${rows.length} converted rows.`;
+        document.getElementById("rowCount").textContent = rows.length;
+        document.getElementById("columnCount").textContent = headers.length;
+        document.getElementById("characterCount").textContent = csv.length;
+        document.getElementById("shape").textContent =
+          `${rows.length} rows · ${headers.length} columns`;
+        setStatus(`Converted ${rows.length} row${rows.length === 1 ? "" : "s"}`);
+      }
+      document.getElementById("convert").addEventListener("click", convert);
+      input.addEventListener("input", () => {
+        setStatus("Input changed");
+      });
+      document.getElementById("delimiter").addEventListener("change", convert);
+      document.getElementById("headers").addEventListener("change", convert);
+      document.getElementById("flatten").addEventListener("change", convert);
+      document.getElementById("sample").addEventListener("click", () => {
+        input.value = sample;
+        convert();
+      });
+      document.getElementById("clear").addEventListener("click", () => {
+        input.value = "";
+        output.value = "";
+        preview.querySelector("thead").innerHTML = "";
+        preview.querySelector("tbody").innerHTML = "";
+        previewNote.textContent =
+          "The first 12 converted rows appear here after a valid conversion.";
+        ["rowCount", "columnCount", "characterCount"].forEach(
+          (id) => (document.getElementById(id).textContent = "0"),
+        );
+        document.getElementById("shape").textContent = "0 rows · 0 columns";
+        setStatus("Cleared");
+        input.focus();
+      });
+      document.getElementById("copy").addEventListener("click", async () => {
+        if (!output.value) return setStatus("Convert JSON first", true);
+        try {
+          await navigator.clipboard.writeText(output.value);
+          setStatus("CSV copied");
+        } catch {
+          output.select();
+          document.execCommand("copy");
+          setStatus("CSV copied");
+        }
+      });
+      document.getElementById("download").addEventListener("click", () => {
+        if (!output.value) return setStatus("Convert JSON first", true);
+        const blob = new Blob([output.value], { type: "text/csv;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "toolyfi-json-export.csv";
+        link.click();
+        URL.revokeObjectURL(link.href);
+        setStatus("CSV download prepared");
+      });
+      convert();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+    <script src="/pwa-register.js" defer></script>
+  </body>
+</html>
