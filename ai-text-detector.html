@@ -1,805 +1,1846 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free AI Text Detector — instantly check if content was written by ChatGPT, Claude, Gemini or a human. Get confidence score, burstiness & vocabulary analysis. No signup required.">
-<meta name="keywords" content="AI text detector, ChatGPT detector, AI content checker, AI writing detector, is this AI written, detect AI text free, Claude detector, Gemini detector, AI generated content checker 2026">
-<meta name="author" content="Toolyfi">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="#7C3AED">
-<title>Free AI Text Detector — Detect ChatGPT, Claude & Gemini Writing | Toolyfi</title>
-<meta property="og:title" content="Free AI Text Detector — Is This AI Written? | Toolyfi">
-<meta property="og:description" content="Paste any text and instantly find out if it was written by AI or a human. Free, no signup. Works for ChatGPT, Claude, Gemini & more.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolyfi.com/ai-text-detector.html">
-<meta property="og:site_name" content="Toolyfi">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free AI Text Detector | Toolyfi">
-<meta name="twitter:description" content="Detect AI-written content instantly. Free, no signup required.">
-<link rel="canonical" href="https://toolyfi.com/ai-text-detector.html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free AI Text Detector — instantly check if content was written by ChatGPT, Claude, Gemini or a human. Get confidence score, burstiness & vocabulary analysis. No signup required."
+    />
+    <meta
+      name="keywords"
+      content="AI text detector, ChatGPT detector, AI content checker, AI writing detector, is this AI written, detect AI text free, Claude detector, Gemini detector, AI generated content checker 2026"
+    />
+    <meta name="author" content="Toolyfi" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#7C3AED" />
+    <title>Free AI Text Detector — Detect ChatGPT, Claude & Gemini Writing | Toolyfi</title>
+    <meta property="og:title" content="Free AI Text Detector — Is This AI Written? | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Paste any text and instantly find out if it was written by AI or a human. Free, no signup. Works for ChatGPT, Claude, Gemini & more."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/ai-text-detector.html" />
+    <meta property="og:site_name" content="Toolyfi" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI Text Detector | Toolyfi" />
+    <meta
+      name="twitter:description"
+      content="Detect AI-written content instantly. Free, no signup required."
+    />
+    <link rel="canonical" href="https://toolyfi.com/ai-text-detector.html" />
 
-<!-- Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-<!-- Tidio -->
-<script async src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js"></script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689"
+      crossorigin="anonymous"
+    ></script>
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247354689" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getDatabase, ref, get, set, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyExample",
-    authDomain: "toolyfi-208b8.firebaseapp.com",
-    databaseURL: "https://toolyfi-208b8-default-rtdb.firebaseio.com",
-    projectId: "toolyfi-208b8",
-    storageBucket: "toolyfi-208b8.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef"
-  };
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const toolRef = ref(db, 'tools/ai-text-detector');
-  window.firebaseLoaded = true;
-  window.db = db;
-  window.toolRef = toolRef;
-  window.firebaseModules = { ref, get, set, update, increment, getDatabase };
-  get(toolRef).then(snap => {
-    const data = snap.val() || {};
-    document.getElementById('fbLikes').textContent = data.likes || 0;
-    document.getElementById('fbDislikes').textContent = data.dislikes || 0;
-    updateStars(data.avgRating || 0, data.ratingCount || 0);
-    renderComments(data.comments || {});
-  });
-</script>
+    <!-- Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Text Detector",
+        "description": "Free online tool to detect AI-generated text from ChatGPT, Claude, and Gemini with confidence scores.",
+        "url": "https://toolyfi.com/ai-text-detector.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "creator": { "@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is the AI Text Detector free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely free with no signup or login required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which AI tools can it detect?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It detects text from ChatGPT, Claude, Gemini, Copilot and other major AI writing tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate is the AI detector?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It provides a confidence score with HIGH, MEDIUM or LOW accuracy rating based on linguistic pattern analysis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my text stored or shared?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Your text is analyzed instantly and never stored or shared with anyone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many words do I need for accurate results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We recommend at least 50 words for accurate detection. Shorter texts may produce less reliable results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a burstiness score?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Burstiness measures the variation in sentence complexity. Humans tend to vary sentence length naturally, while AI often produces uniform sentences."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AI-written text be edited to fool the detector?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Heavily edited AI text may score lower on AI probability, but distinct linguistic patterns often remain detectable even after editing."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://toolyfi.com/#tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI Text Detector",
+            "item": "https://toolyfi.com/ai-text-detector.html"
+          }
+        ]
+      }
+    </script>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #7c3aed;
+        --primary-light: #8b5cf6;
+        --primary-dark: #6d28d9;
+        --bg: #f5f3ff;
+        --bg2: #ede9fe;
+        --dark: #1e1b4b;
+        --dark2: #160f3a;
+        --text: #1e1b4b;
+        --muted: #64607a;
+        --border: #ddd6fe;
+        --card: #ffffff;
+        --human: #10b981;
+        --ai-color: #ef4444;
+        --mixed: #f59e0b;
+        --radius: 16px;
+      }
 
-<!-- Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "AI Text Detector",
-  "description": "Free online tool to detect AI-generated text from ChatGPT, Claude, and Gemini with confidence scores.",
-  "url": "https://toolyfi.com/ai-text-detector.html",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.7", "ratingCount": "1800", "bestRating": "5"},
-  "creator": {"@type": "Organization", "name": "Toolyfi", "url": "https://toolyfi.com"}
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Is the AI Text Detector free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup or login required."}},
-    {"@type":"Question","name":"Which AI tools can it detect?","acceptedAnswer":{"@type":"Answer","text":"It detects text from ChatGPT, Claude, Gemini, Copilot and other major AI writing tools."}},
-    {"@type":"Question","name":"How accurate is the AI detector?","acceptedAnswer":{"@type":"Answer","text":"It provides a confidence score with HIGH, MEDIUM or LOW accuracy rating based on linguistic pattern analysis."}},
-    {"@type":"Question","name":"Is my text stored or shared?","acceptedAnswer":{"@type":"Answer","text":"No. Your text is analyzed instantly and never stored or shared with anyone."}},
-    {"@type":"Question","name":"How many words do I need for accurate results?","acceptedAnswer":{"@type":"Answer","text":"We recommend at least 50 words for accurate detection. Shorter texts may produce less reliable results."}},
-    {"@type":"Question","name":"What is a burstiness score?","acceptedAnswer":{"@type":"Answer","text":"Burstiness measures the variation in sentence complexity. Humans tend to vary sentence length naturally, while AI often produces uniform sentences."}},
-    {"@type":"Question","name":"Can AI-written text be edited to fool the detector?","acceptedAnswer":{"@type":"Answer","text":"Heavily edited AI text may score lower on AI probability, but distinct linguistic patterns often remain detectable even after editing."}}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com"},
-    {"@type":"ListItem","position":2,"name":"Tools","item":"https://toolyfi.com/#tools"},
-    {"@type":"ListItem","position":3,"name":"AI Text Detector","item":"https://toolyfi.com/ai-text-detector.html"}
-  ]
-}
-</script>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.7;
+      }
 
-<style>
-:root {
-  --primary: #7C3AED;
-  --primary-light: #8B5CF6;
-  --primary-dark: #6D28D9;
-  --bg: #f5f3ff;
-  --bg2: #ede9fe;
-  --dark: #1e1b4b;
-  --dark2: #160f3a;
-  --text: #1e1b4b;
-  --muted: #64607a;
-  --border: #ddd6fe;
-  --card: #ffffff;
-  --human: #10b981;
-  --ai-color: #ef4444;
-  --mixed: #f59e0b;
-  --radius: 16px;
-}
+      /* HEADER */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: linear-gradient(135deg, #6d28d9, #7c3aed);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 32px;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo span {
+        color: #ddd6fe;
+      }
+      nav {
+        display: flex;
+        gap: 4px;
+      }
+      nav a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      nav a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+      }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7}
+      /* BREADCRUMB */
+      .breadcrumb {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 12px 24px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .breadcrumb a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--primary);
+      }
+      .breadcrumb span {
+        color: var(--primary);
+      }
 
-/* HEADER */
-header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#6D28D9,#7C3AED);border-bottom:1px solid rgba(255,255,255,0.1);padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo span{color:#DDD6FE}
-nav{display:flex;gap:4px}
-nav a{color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.95rem;font-weight:600;transition:all .2s}
-nav a:hover{color:#fff;background:rgba(255,255,255,0.15)}
+      /* HERO */
+      .hero {
+        padding: 48px 24px 32px;
+        text-align: center;
+        background: linear-gradient(160deg, #ede9fe 0%, #f5f3ff 60%, #faf5ff 100%);
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(124, 58, 237, 0.1);
+        border: 1px solid var(--border);
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: clamp(1.9rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: var(--dark);
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--primary);
+      }
+      .hero-sub {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 560px;
+        margin: 0 auto 28px;
+        line-height: 1.7;
+      }
+      .trust-pills {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .trust-pill {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        color: var(--text);
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+      }
+      .trust-pill b {
+        color: var(--primary);
+      }
 
-/* BREADCRUMB */
-.breadcrumb{max-width:980px;margin:0 auto;padding:12px 24px;display:flex;gap:8px;align-items:center;font-size:.9rem;color:var(--muted)}
-.breadcrumb a{color:var(--muted);text-decoration:none}
-.breadcrumb a:hover{color:var(--primary)}
-.breadcrumb span{color:var(--primary)}
+      /* AD UNIT */
+      .ad-unit {
+        max-width: 980px;
+        margin: 0 auto 0;
+        padding: 0 24px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .ad-unit ins {
+        display: block !important;
+        min-height: 0 !important;
+      }
 
-/* HERO */
-.hero{padding:48px 24px 32px;text-align:center;background:linear-gradient(160deg,#ede9fe 0%,#f5f3ff 60%,#faf5ff 100%)}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.1);border:1px solid var(--border);color:var(--primary);padding:8px 20px;border-radius:100px;font-size:.85rem;font-weight:700;margin-bottom:24px;letter-spacing:0.04em;text-transform:uppercase}
-.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.9rem,5vw,3.2rem);font-weight:800;color:var(--dark);line-height:1.25;margin-bottom:16px;letter-spacing:-0.01em}
-.hero h1 em{font-style:normal;color:var(--primary)}
-.hero-sub{color:var(--muted);font-size:1.05rem;max-width:560px;margin:0 auto 28px;line-height:1.7}
-.trust-pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.trust-pill{background:#fff;border:1.5px solid var(--border);color:var(--text);padding:6px 16px;border-radius:100px;font-size:.9rem;font-weight:600;box-shadow:0 2px 8px rgba(124,58,237,0.08)}
-.trust-pill b{color:var(--primary)}
+      /* TOOL SECTION */
+      .tool-section {
+        max-width: 860px;
+        margin: 24px auto 0;
+        padding: 0 20px 60px;
+      }
 
-/* AD UNIT */
-.ad-unit{max-width:980px;margin:0 auto 0;padding:0 24px;text-align:center;overflow:hidden}
-.ad-unit ins{display:block!important;min-height:0!important}
+      .tool-card {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(124, 58, 237, 0.1);
+      }
 
-/* TOOL SECTION */
-.tool-section{max-width:860px;margin:24px auto 0;padding:0 20px 60px}
+      .tool-card-header {
+        background: linear-gradient(135deg, #6d28d9, #7c3aed, #8b5cf6);
+        padding: 24px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .tool-card-header h2 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .stat-chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .stat-chip {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+        padding: 5px 14px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
 
-.tool-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 8px 40px rgba(124,58,237,0.1)}
+      .tool-body {
+        padding: 28px 32px;
+      }
 
-.tool-card-header{background:linear-gradient(135deg,#6D28D9,#7C3AED,#8B5CF6);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.tool-card-header h2{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:10px}
-.stat-chips{display:flex;gap:8px;flex-wrap:wrap}
-.stat-chip{background:rgba(255,255,255,0.18);color:#fff;padding:5px 14px;border-radius:8px;font-size:.85rem;font-weight:700}
+      .input-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .word-count {
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0;
+      }
 
-.tool-body{padding:28px 32px}
+      textarea.text-input {
+        width: 100%;
+        min-height: 160px;
+        padding: 16px;
+        background: #f8f7ff;
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        resize: vertical;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      textarea.text-input:focus {
+        border-color: var(--primary);
+        background: #fff;
+      }
+      textarea.text-input::placeholder {
+        color: #a8a4c0;
+      }
 
-.input-label{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:700;color:var(--primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-.word-count{color:var(--muted);font-size:.9rem;font-weight:600;text-transform:none;letter-spacing:0}
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .detect-btn {
+        flex: 1;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 12px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .detect-btn:hover:not(:disabled) {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+      }
+      .detect-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .clear-btn {
+        background: #f0ebff;
+        color: var(--primary);
+        border: 1.5px solid var(--border);
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .clear-btn:hover {
+        background: #e4d9ff;
+      }
 
-textarea.text-input{width:100%;min-height:160px;padding:16px;background:#f8f7ff;border:2px solid var(--border);border-radius:12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.7;resize:vertical;outline:none;transition:border-color .2s}
-textarea.text-input:focus{border-color:var(--primary);background:#fff}
-textarea.text-input::placeholder{color:#a8a4c0}
+      .error-msg {
+        background: rgba(239, 68, 68, 0.08);
+        border: 1px solid rgba(239, 68, 68, 0.25);
+        border-radius: 10px;
+        padding: 12px 16px;
+        color: #dc2626;
+        font-size: 1rem;
+        margin-top: 14px;
+        display: none;
+      }
+      .error-msg.visible {
+        display: block;
+      }
 
-.btn-row{display:flex;gap:12px;margin-top:16px}
-.detect-btn{flex:1;background:var(--primary);color:#fff;border:none;padding:14px 28px;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.detect-btn:hover:not(:disabled){background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,0.35)}
-.detect-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.clear-btn{background:#f0ebff;color:var(--primary);border:1.5px solid var(--border);padding:14px 20px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s}
-.clear-btn:hover{background:#e4d9ff}
+      /* LOADING */
+      .loading-state {
+        text-align: center;
+        padding: 48px 24px;
+        display: none;
+        background: #f8f7ff;
+        border-radius: 16px;
+        margin-top: 20px;
+      }
+      .loading-state.visible {
+        display: block;
+      }
+      .scanner {
+        width: 56px;
+        height: 56px;
+        border: 3px solid var(--border);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 20px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-text {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .loading-steps {
+        font-size: 0.95rem;
+        color: var(--primary);
+      }
 
-.error-msg{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px 16px;color:#dc2626;font-size:1rem;margin-top:14px;display:none}
-.error-msg.visible{display:block}
+      /* RESULT */
+      .result-card {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-top: 20px;
+        display: none;
+        animation: fadeUp 0.35s ease;
+      }
+      .result-card.visible {
+        display: block;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-/* LOADING */
-.loading-state{text-align:center;padding:48px 24px;display:none;background:#f8f7ff;border-radius:16px;margin-top:20px}
-.loading-state.visible{display:block}
-.scanner{width:56px;height:56px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
-.loading-steps{font-size:.95rem;color:var(--primary)}
+      .verdict-banner {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 24px 28px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .verdict-banner.human {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+        border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+      }
+      .verdict-banner.ai {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+        border-bottom: 2px solid rgba(239, 68, 68, 0.2);
+      }
+      .verdict-banner.mixed {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+        border-bottom: 2px solid rgba(245, 158, 11, 0.2);
+      }
+      .verdict-icon {
+        font-size: 2.4rem;
+        line-height: 1;
+      }
+      .verdict-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+      .verdict-text {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--dark);
+      }
 
-/* RESULT */
-.result-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-top:20px;display:none;animation:fadeUp .35s ease}
-.result-card.visible{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+      .score-section {
+        padding: 24px 28px;
+        border-bottom: 1px solid var(--border);
+      }
+      .score-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .score-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .score-value {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+      .score-bar-bg {
+        background: #f0ebff;
+        border-radius: 100px;
+        height: 10px;
+        margin-bottom: 16px;
+        overflow: hidden;
+      }
+      .score-bar-fill {
+        height: 100%;
+        border-radius: 100px;
+        width: 0;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bar-human {
+        background: linear-gradient(90deg, #10b981, #34d399);
+      }
+      .bar-ai {
+        background: linear-gradient(90deg, #ef4444, #f87171);
+      }
 
-.verdict-banner{display:flex;align-items:center;gap:20px;padding:24px 28px;font-family:'Plus Jakarta Sans',sans-serif}
-.verdict-banner.human{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(16,185,129,0.05));border-bottom:2px solid rgba(16,185,129,0.2)}
-.verdict-banner.ai{background:linear-gradient(135deg,rgba(239,68,68,0.1),rgba(239,68,68,0.05));border-bottom:2px solid rgba(239,68,68,0.2)}
-.verdict-banner.mixed{background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(245,158,11,0.05));border-bottom:2px solid rgba(245,158,11,0.2)}
-.verdict-icon{font-size:2.4rem;line-height:1}
-.verdict-label{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.verdict-text{font-size:1.4rem;font-weight:800;color:var(--dark)}
+      .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        padding: 24px 28px;
+        border-bottom: 1px solid var(--border);
+      }
+      .analysis-item {
+        background: #f8f7ff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 12px;
+        text-align: center;
+      }
+      .analysis-item .val {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 4px;
+      }
+      .analysis-item .lbl {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
 
-.score-section{padding:24px 28px;border-bottom:1px solid var(--border)}
-.score-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.score-label{font-size:.85rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.score-value{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800}
-.score-bar-bg{background:#f0ebff;border-radius:100px;height:10px;margin-bottom:16px;overflow:hidden}
-.score-bar-fill{height:100%;border-radius:100px;width:0;transition:width .8s cubic-bezier(.4,0,.2,1)}
-.bar-human{background:linear-gradient(90deg,#10b981,#34d399)}
-.bar-ai{background:linear-gradient(90deg,#ef4444,#f87171)}
+      .summary-box {
+        padding: 24px 28px;
+        background: #f8f7ff;
+      }
+      .summary-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .summary-text {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
 
-.analysis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 28px;border-bottom:1px solid var(--border)}
-.analysis-item{background:#f8f7ff;border:1px solid var(--border);border-radius:12px;padding:16px 12px;text-align:center}
-.analysis-item .val{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:var(--primary);margin-bottom:4px}
-.analysis-item .lbl{font-size:.82rem;color:var(--muted);font-weight:600}
+      /* STATS BAR */
+      .stats-bar {
+        background: linear-gradient(135deg, #6d28d9, #7c3aed);
+        padding: 48px 20px;
+        margin-top: 60px;
+      }
+      .stats-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+      .sbar-item .sval {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.3;
+        margin-bottom: 8px;
+      }
+      .sbar-item .slbl {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
 
-.summary-box{padding:24px 28px;background:#f8f7ff}
-.summary-title{font-size:.82rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.summary-text{font-size:1rem;color:var(--muted);line-height:1.75}
+      /* SECTIONS */
+      .section {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 72px 24px;
+      }
+      .section-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+        font-weight: 800;
+        color: var(--dark);
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
+      .section-sub {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 600px;
+        line-height: 1.75;
+      }
 
-/* STATS BAR */
-.stats-bar{background:linear-gradient(135deg,#6D28D9,#7C3AED);padding:48px 20px;margin-top:60px}
-.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.sbar-item .sval{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.2rem;font-weight:800;color:#fff;line-height:1.3;margin-bottom:8px}
-.sbar-item .slbl{color:rgba(255,255,255,0.75);font-size:.9rem;font-weight:600}
+      /* FEATURES */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 48px;
+      }
+      .feat-card {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 20px;
+        padding: 28px 24px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .feat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .feat-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(124, 58, 237, 0.12);
+      }
+      .feat-card:hover::before {
+        opacity: 1;
+      }
+      .feat-icon {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      .feat-card h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 10px;
+      }
+      .feat-card p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
 
-/* SECTIONS */
-.section{max-width:980px;margin:0 auto;padding:72px 24px}
-.section-label{font-size:.85rem;font-weight:700;color:var(--primary);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
-.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;color:var(--dark);line-height:1.25;margin-bottom:16px}
-.section-sub{color:var(--muted);font-size:1.05rem;max-width:600px;line-height:1.75}
+      /* WHO BENEFITS */
+      .benefits-section {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 72px 24px;
+      }
+      .benefits-inner {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 48px;
+      }
+      .ben-card {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        transition: all 0.3s;
+      }
+      .ben-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.1);
+      }
+      .ben-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+      .ben-card h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+      .ben-card p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.65;
+      }
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.feat-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden}
-.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));opacity:0;transition:opacity .3s}
-.feat-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 32px rgba(124,58,237,0.12)}
-.feat-card:hover::before{opacity:1}
-.feat-icon{font-size:2rem;margin-bottom:16px}
-.feat-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:10px}
-.feat-card p{color:var(--muted);font-size:1rem;line-height:1.7}
+      /* FAQ */
+      .faq-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 72px 24px;
+      }
+      .faq-list {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .faq-item {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: all 0.2s;
+      }
+      .faq-item.open {
+        border-color: var(--primary);
+        box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08);
+      }
+      .faq-q {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--dark);
+      }
+      .faq-q svg {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        stroke: var(--primary);
+        transition: transform 0.3s;
+      }
+      .faq-item.open .faq-q svg {
+        transform: rotate(180deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.3s;
+      }
+      .faq-item.open .faq-a {
+        max-height: 200px;
+        padding: 0 24px 20px;
+      }
+      .faq-a p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
 
-/* WHO BENEFITS */
-.benefits-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 24px}
-.benefits-inner{max-width:980px;margin:0 auto}
-.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.ben-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
-.ben-card:hover{border-color:var(--primary);box-shadow:0 8px 24px rgba(124,58,237,0.1)}
-.ben-icon{font-size:2rem;flex-shrink:0}
-.ben-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:6px}
-.ben-card p{color:var(--muted);font-size:1rem;line-height:1.65}
+      /* SEO ARTICLE */
+      .article-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 72px 24px;
+      }
+      .article-body h2 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin: 40px 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid var(--border);
+      }
+      .article-body h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 28px 0 12px;
+      }
+      .article-body p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      .article-body ul {
+        margin: 12px 0 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .article-body ul li {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      .article-body ul li::marker {
+        color: var(--primary);
+      }
+      .article-body strong {
+        color: var(--dark);
+        font-weight: 700;
+      }
 
-/* FAQ */
-.faq-section{max-width:860px;margin:0 auto;padding:72px 24px}
-.faq-list{margin-top:40px;display:flex;flex-direction:column;gap:12px}
-.faq-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;overflow:hidden;transition:all .2s}
-.faq-item.open{border-color:var(--primary);box-shadow:0 4px 16px rgba(124,58,237,0.08)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:var(--dark)}
-.faq-q svg{flex-shrink:0;width:20px;height:20px;stroke:var(--primary);transition:transform .3s}
-.faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
-.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
-.faq-a p{color:var(--muted);font-size:1rem;line-height:1.7}
+      /* CTA */
+      .cta-section {
+        text-align: center;
+        padding: 72px 24px;
+        background: linear-gradient(135deg, #6d28d9, #7c3aed);
+      }
+      .cta-section h2 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .cta-section p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1.05rem;
+        max-width: 500px;
+        margin: 0 auto 32px;
+      }
+      .cta-btn {
+        display: inline-block;
+        background: #fff;
+        color: var(--primary);
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+      }
 
-/* SEO ARTICLE */
-.article-section{max-width:860px;margin:0 auto;padding:72px 24px}
-.article-body h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.4rem;font-weight:800;color:var(--dark);margin:40px 0 16px;padding-bottom:10px;border-bottom:1.5px solid var(--border)}
-.article-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;color:var(--primary);margin:28px 0 12px}
-.article-body p{color:var(--muted);font-size:1.05rem;line-height:1.8;margin-bottom:16px}
-.article-body ul{margin:12px 0 20px 20px;display:flex;flex-direction:column;gap:8px}
-.article-body ul li{color:var(--muted);font-size:1rem;line-height:1.7}
-.article-body ul li::marker{color:var(--primary)}
-.article-body strong{color:var(--dark);font-weight:700}
+      /* TOOLS FOOTER */
+      .tools-footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 56px 24px;
+      }
+      .tools-footer-inner {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .tools-footer h3 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 24px;
+        text-align: center;
+      }
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+      .tool-link {
+        background: #fff;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 14px;
+        text-align: center;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .tool-link:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: #f0ebff;
+      }
 
-/* FIREBASE */
-.engagement-section{max-width:860px;margin:0 auto;padding:40px 24px}
-.engage-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:32px;box-shadow:0 4px 20px rgba(124,58,237,0.06)}
-.engage-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px;text-align:center}
-.engage-row{display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
-.eng-btn{display:flex;align-items:center;gap:8px;padding:10px 24px;border-radius:12px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;border:1.5px solid var(--border);background:#f8f7ff;color:var(--text)}
-.eng-btn:hover{border-color:var(--primary);background:#f0ebff}
-.eng-btn.active-like{background:rgba(16,185,129,0.08);border-color:#10b981;color:#059669}
-.eng-btn.active-dislike{background:rgba(239,68,68,0.08);border-color:#ef4444;color:#dc2626}
-.star-row{text-align:center;margin-bottom:28px}
-.star-label{color:var(--muted);font-size:.95rem;margin-bottom:12px}
-.stars{display:flex;justify-content:center;gap:6px}
-.star{font-size:1.8rem;cursor:pointer;color:#ddd6fe;transition:all .2s;line-height:1.2}
-.star.lit{color:#f59e0b}
-.star-count{color:var(--muted);font-size:.9rem;margin-top:8px}
-.comment-area{margin-top:4px}
-.comment-input-row{display:flex;gap:10px;margin-bottom:16px}
-.comment-input{flex:1;padding:12px 16px;background:#f8f7ff;border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;transition:border-color .2s}
-.comment-input:focus{border-color:var(--primary);background:#fff}
-.comment-input::placeholder{color:#a8a4c0}
-.comment-submit{padding:12px 20px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s}
-.comment-submit:hover{background:var(--primary-dark);transform:translateY(-1px)}
-.comments-list{display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto}
-.comment-item{background:#f8f7ff;border:1px solid var(--border);border-radius:10px;padding:12px 16px}
-.comment-meta{font-size:.82rem;color:var(--primary);font-weight:700;margin-bottom:4px}
-.comment-text{font-size:.95rem;color:var(--muted);line-height:1.6}
+      /* FOOTER */
+      footer {
+        background: var(--dark2);
+        padding: 24px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      footer a {
+        color: #a78bfa;
+        text-decoration: none;
+      }
 
-/* CTA */
-.cta-section{text-align:center;padding:72px 24px;background:linear-gradient(135deg,#6D28D9,#7C3AED)}
-.cta-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:800;color:#fff;margin-bottom:16px}
-.cta-section p{color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:500px;margin:0 auto 32px}
-.cta-btn{display:inline-block;background:#fff;color:var(--primary);padding:16px 36px;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;text-decoration:none;transition:all .2s}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2)}
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        header {
+          padding: 0 16px;
+        }
+        .features-grid,
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .tools-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .tool-body {
+          padding: 20px;
+        }
+        .analysis-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .btn-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="https://toolyfi.com" class="logo">🛠️ Tool<span>yfi</span></a>
+      <nav>
+        <a href="https://toolyfi.com">Home</a>
+        <a href="https://toolyfi.com/#tools">Tools</a>
+      </nav>
+    </header>
 
-/* TOOLS FOOTER */
-.tools-footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 24px}
-.tools-footer-inner{max-width:980px;margin:0 auto}
-.tools-footer h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:24px;text-align:center}
-.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.tool-link{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;text-align:center;color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600;transition:all .2s}
-.tool-link:hover{border-color:var(--primary);color:var(--primary);background:#f0ebff}
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="https://toolyfi.com">Home</a> › <a href="https://toolyfi.com/#tools">Tools</a> ›
+      <span>AI Text Detector</span>
+    </div>
 
-/* FOOTER */
-footer{background:var(--dark2);padding:24px;text-align:center;font-size:.9rem;color:rgba(255,255,255,0.6)}
-footer a{color:#a78bfa;text-decoration:none}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  header{padding:0 16px}
-  .features-grid,.benefits-grid{grid-template-columns:1fr}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .tools-grid{grid-template-columns:repeat(2,1fr)}
-  .tool-body{padding:20px}
-  .analysis-grid{grid-template-columns:repeat(2,1fr)}
-  .btn-row{flex-direction:column}
-}
-</style>
-<link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
-</head>
-<body>
-
-<!-- HEADER -->
-<header>
-  <a href="https://toolyfi.com" class="logo">🛠️ Tool<span>yfi</span></a>
-  <nav>
-    <a href="https://toolyfi.com">Home</a>
-    <a href="https://toolyfi.com/#tools">Tools</a>
-  
-  </nav>
-</header>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="https://toolyfi.com">Home</a> › <a href="https://toolyfi.com/#tools">Tools</a> › <span>AI Text Detector</span>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">🔬 AI Forensics Tool</div>
-  <h1>Detect <em>AI-Written</em> Text<br>Instantly & Free</h1>
-  <p class="hero-sub">Paste any text to find out if it was written by ChatGPT, Claude, Gemini, or a human. Get a full confidence score and linguistic analysis — no signup required.</p>
-  <div class="trust-pills">
-    <div class="trust-pill"><b>100%</b> Free</div>
-    <div class="trust-pill"><b>No</b> Signup</div>
-    <div class="trust-pill"><b>Instant</b> Results</div>
-    <div class="trust-pill"><b>Private</b> & Secure</div>
-  </div>
-</section>
-
-<!-- AD UNIT 1 -->
-<div class="ad-unit">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- TOOL -->
-<div class="tool-section">
-  <div class="tool-card">
-    <div class="tool-card-header">
-      <h2>🔬 AI Text Detector</h2>
-      <div class="stat-chips">
-        <div class="stat-chip">⚡ Instant</div>
-        <div class="stat-chip">🆓 Free</div>
-        <div class="stat-chip">🔒 Private</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">🔬 AI Forensics Tool</div>
+      <h1>Detect <em>AI-Written</em> Text<br />Instantly & Free</h1>
+      <p class="hero-sub">
+        Paste any text to find out if it was written by ChatGPT, Claude, Gemini, or a human. Get a
+        full confidence score and linguistic analysis — no signup required.
+      </p>
+      <div class="trust-pills">
+        <div class="trust-pill"><b>100%</b> Free</div>
+        <div class="trust-pill"><b>No</b> Signup</div>
+        <div class="trust-pill"><b>Instant</b> Results</div>
+        <div class="trust-pill"><b>Private</b> & Secure</div>
       </div>
-    </div>
-    <div class="tool-body">
-      <div class="input-label">
-        <span>// Paste Text to Analyze</span>
-        <span class="word-count" id="wordCount">0 words</span>
-      </div>
-      <textarea class="text-input" id="inputText" oninput="updateWordCount()" placeholder="Paste your text here... (minimum 50 words recommended for accurate results)"></textarea>
-      <div class="btn-row">
-        <button class="detect-btn" id="detectBtn" onclick="detectAI()">🔬 Analyze Text</button>
-        <button class="clear-btn" onclick="clearAll()">Clear</button>
-      </div>
-      <div class="error-msg" id="errorMsg"></div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Loading -->
-  <div class="loading-state" id="loadingState">
-    <div class="scanner"></div>
-    <div class="loading-text">Scanning Text Patterns...</div>
-    <div class="loading-steps" id="loadingSteps">Initializing forensic analysis</div>
-  </div>
+    <!-- AD UNIT 1 -->
+    <div class="ad-unit">
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247354689"
+        data-ad-slot="auto"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
 
-  <!-- Result -->
-  <div class="result-card" id="resultCard">
-    <div class="verdict-banner" id="verdictBanner">
-      <div class="verdict-icon" id="verdictIcon"></div>
-      <div>
-        <div class="verdict-label">Analysis Result</div>
-        <div class="verdict-text" id="verdictText"></div>
-      </div>
-    </div>
-    <div class="score-section">
-      <div class="score-row">
-        <span class="score-label">Human Probability</span>
-        <span class="score-value" id="humanScore" style="color:var(--human)">-</span>
-      </div>
-      <div class="score-bar-bg"><div class="score-bar-fill bar-human" id="humanBar"></div></div>
-      <div class="score-row">
-        <span class="score-label">AI Probability</span>
-        <span class="score-value" id="aiScore" style="color:var(--ai-color)">-</span>
-      </div>
-      <div class="score-bar-bg"><div class="score-bar-fill bar-ai" id="aiBar"></div></div>
-    </div>
-    <div class="analysis-grid" id="analysisGrid"></div>
-    <div class="summary-box">
-      <div class="summary-title">// Detailed Analysis</div>
-      <div class="summary-text" id="summaryText"></div>
-    </div>
-  </div>
-</div>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="sbar-item"><div class="sval">2M+</div><div class="slbl">Texts Analyzed</div></div>
-    <div class="sbar-item"><div class="sval">5+</div><div class="slbl">AI Models Detected</div></div>
-    <div class="sbar-item"><div class="sval">3s</div><div class="slbl">Avg Analysis Time</div></div>
-    <div class="sbar-item"><div class="sval">100%</div><div class="slbl">Free, No Signup</div></div>
-  </div>
-</div>
-
-<!-- AD UNIT 2 -->
-<div class="ad-unit" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- FEATURES -->
-<section class="section">
-  <div class="section-label">Why Choose Toolyfi</div>
-  <h2 class="section-title">More Than Just an<br>AI Text Detector</h2>
-  <p class="section-sub">Our tool goes beyond a simple percentage — it gives you a full linguistic forensic report to understand exactly why text was flagged as AI or human.</p>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon">⚡</div>
-      <h3>Instant Analysis</h3>
-      <p>Get AI detection results in seconds. Paste your text, click analyze, and receive a full forensic report immediately.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🤖</div>
-      <h3>Detects Major AI Tools</h3>
-      <p>Identifies linguistic patterns from ChatGPT, Claude, Gemini, Copilot, and other leading AI writing assistants.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📊</div>
-      <h3>Full Confidence Score</h3>
-      <p>Get a percentage score for both human and AI probability, plus burstiness, vocabulary diversity, and sentence analysis.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🔒</div>
-      <h3>100% Private</h3>
-      <p>Your text is never stored or logged. Analysis runs instantly and all data is discarded immediately after results are shown.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">🎯</div>
-      <h3>Powered by Claude AI</h3>
-      <p>Our detector uses advanced Claude AI to analyze 8 distinct linguistic markers for the most accurate detection possible.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon">📝</div>
-      <h3>Detailed Summary</h3>
-      <p>Every analysis includes a written explanation of the patterns found — not just a number, but real forensic insight.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHO BENEFITS -->
-<div class="benefits-section">
-  <div class="benefits-inner">
-    <div class="section-label">Use Cases</div>
-    <h2 class="section-title">Who Uses This Tool?</h2>
-    <p class="section-sub">From teachers to publishers, our AI text detector serves anyone who needs to verify content authenticity.</p>
-    <div class="benefits-grid">
-      <div class="ben-card">
-        <div class="ben-icon">🎓</div>
-        <div>
-          <h3>Teachers & Professors</h3>
-          <p>Verify student assignments and essays to ensure academic integrity and detect AI-assisted submissions.</p>
+    <!-- TOOL -->
+    <div class="tool-section">
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <h2>🔬 AI Text Detector</h2>
+          <div class="stat-chips">
+            <div class="stat-chip">⚡ Instant</div>
+            <div class="stat-chip">🆓 Free</div>
+            <div class="stat-chip">🔒 Private</div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="input-label">
+            <span>// Paste Text to Analyze</span>
+            <span class="word-count" id="wordCount">0 words</span>
+          </div>
+          <textarea
+            class="text-input"
+            id="inputText"
+            oninput="updateWordCount()"
+            placeholder="Paste your text here... (minimum 50 words recommended for accurate results)"
+          ></textarea>
+          <div class="btn-row">
+            <button class="detect-btn" id="detectBtn" onclick="detectAI()">🔬 Analyze Text</button>
+            <button class="clear-btn" onclick="clearAll()">Clear</button>
+          </div>
+          <div class="error-msg" id="errorMsg"></div>
         </div>
       </div>
-      <div class="ben-card">
-        <div class="ben-icon">📰</div>
-        <div>
-          <h3>Editors & Publishers</h3>
-          <p>Check submitted articles, blog posts, and content before publishing to ensure human-written authenticity.</p>
+
+      <!-- Loading -->
+      <div class="loading-state" id="loadingState">
+        <div class="scanner"></div>
+        <div class="loading-text">Scanning Text Patterns...</div>
+        <div class="loading-steps" id="loadingSteps">Initializing forensic analysis</div>
+      </div>
+
+      <!-- Result -->
+      <div class="result-card" id="resultCard">
+        <div class="verdict-banner" id="verdictBanner">
+          <div class="verdict-icon" id="verdictIcon"></div>
+          <div>
+            <div class="verdict-label">Analysis Result</div>
+            <div class="verdict-text" id="verdictText"></div>
+          </div>
+        </div>
+        <div class="score-section">
+          <div class="score-row">
+            <span class="score-label">Human Probability</span>
+            <span class="score-value" id="humanScore" style="color: var(--human)">-</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill bar-human" id="humanBar"></div></div>
+          <div class="score-row">
+            <span class="score-label">AI Probability</span>
+            <span class="score-value" id="aiScore" style="color: var(--ai-color)">-</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill bar-ai" id="aiBar"></div></div>
+        </div>
+        <div class="analysis-grid" id="analysisGrid"></div>
+        <div class="summary-box">
+          <div class="summary-title">// Detailed Analysis</div>
+          <div class="summary-text" id="summaryText"></div>
         </div>
       </div>
-      <div class="ben-card">
-        <div class="ben-icon">💼</div>
-        <div>
-          <h3>HR & Recruiters</h3>
-          <p>Verify cover letters, job application essays, and written assessments to identify AI-generated submissions.</p>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="sbar-item">
+          <div class="sval">8</div>
+          <div class="slbl">Linguistic Signals</div>
         </div>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon">✍️</div>
-        <div>
-          <h3>Content Marketers</h3>
-          <p>Verify freelancer submissions and outsourced content to ensure you're getting authentic, human-written work.</p>
+        <div class="sbar-item">
+          <div class="sval">5+</div>
+          <div class="slbl">AI Models Detected</div>
         </div>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon">🔍</div>
-        <div>
-          <h3>Researchers</h3>
-          <p>Study AI writing patterns, validate datasets, and analyze the linguistic differences between human and AI content.</p>
+        <div class="sbar-item">
+          <div class="sval">3s</div>
+          <div class="slbl">Avg Analysis Time</div>
         </div>
-      </div>
-      <div class="ben-card">
-        <div class="ben-icon">🧑‍💻</div>
-        <div>
-          <h3>Writers & Bloggers</h3>
-          <p>Check your own AI-assisted drafts to understand how detectable they are before publishing or submitting.</p>
+        <div class="sbar-item">
+          <div class="sval">100%</div>
+          <div class="slbl">Free, No Signup</div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- FAQ -->
-<div class="faq-section">
-  <div class="section-label">Got Questions?</div>
-  <h2 class="section-title">Frequently Asked Questions</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Is the AI Text Detector completely free?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    <!-- AD UNIT 2 -->
+    <div class="ad-unit" style="margin-top: 40px">
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247354689"
+        data-ad-slot="auto"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="section-label">Why Choose Toolyfi</div>
+      <h2 class="section-title">More Than Just an<br />AI Text Detector</h2>
+      <p class="section-sub">
+        Our tool goes beyond a simple percentage — it gives you a full linguistic forensic report to
+        understand exactly why text was flagged as AI or human.
+      </p>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Instant Analysis</h3>
+          <p>
+            Get AI detection results in seconds. Paste your text, click analyze, and receive a full
+            forensic report immediately.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🤖</div>
+          <h3>Detects Major AI Tools</h3>
+          <p>
+            Identifies linguistic patterns from ChatGPT, Claude, Gemini, Copilot, and other leading
+            AI writing assistants.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📊</div>
+          <h3>Full Confidence Score</h3>
+          <p>
+            Get a percentage score for both human and AI probability, plus burstiness, vocabulary
+            diversity, and sentence analysis.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔒</div>
+          <h3>100% Private</h3>
+          <p>
+            Your text is never stored or logged. Analysis runs instantly and all data is discarded
+            immediately after results are shown.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🎯</div>
+          <h3>Powered by Claude AI</h3>
+          <p>
+            Our detector uses advanced Claude AI to analyze 8 distinct linguistic markers for the
+            most accurate detection possible.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📝</div>
+          <h3>Detailed Summary</h3>
+          <p>
+            Every analysis includes a written explanation of the patterns found — not just a number,
+            but real forensic insight.
+          </p>
+        </div>
       </div>
-      <div class="faq-a"><p>Yes, Toolyfi AI Text Detector is 100% free. No account, no subscription, no hidden charges — ever. Paste your text and get instant results without any signup.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Which AI writing tools can it detect?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </section>
+
+    <!-- WHO BENEFITS -->
+    <div class="benefits-section">
+      <div class="benefits-inner">
+        <div class="section-label">Use Cases</div>
+        <h2 class="section-title">Who Uses This Tool?</h2>
+        <p class="section-sub">
+          From teachers to publishers, our AI text detector serves anyone who needs to verify
+          content authenticity.
+        </p>
+        <div class="benefits-grid">
+          <div class="ben-card">
+            <div class="ben-icon">🎓</div>
+            <div>
+              <h3>Teachers & Professors</h3>
+              <p>
+                Verify student assignments and essays to ensure academic integrity and detect
+                AI-assisted submissions.
+              </p>
+            </div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-icon">📰</div>
+            <div>
+              <h3>Editors & Publishers</h3>
+              <p>
+                Check submitted articles, blog posts, and content before publishing to ensure
+                human-written authenticity.
+              </p>
+            </div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-icon">💼</div>
+            <div>
+              <h3>HR & Recruiters</h3>
+              <p>
+                Verify cover letters, job application essays, and written assessments to identify
+                AI-generated submissions.
+              </p>
+            </div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-icon">✍️</div>
+            <div>
+              <h3>Content Marketers</h3>
+              <p>
+                Verify freelancer submissions and outsourced content to ensure you're getting
+                authentic, human-written work.
+              </p>
+            </div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-icon">🔍</div>
+            <div>
+              <h3>Researchers</h3>
+              <p>
+                Study AI writing patterns, validate datasets, and analyze the linguistic differences
+                between human and AI content.
+              </p>
+            </div>
+          </div>
+          <div class="ben-card">
+            <div class="ben-icon">🧑‍💻</div>
+            <div>
+              <h3>Writers & Bloggers</h3>
+              <p>
+                Check your own AI-assisted drafts to understand how detectable they are before
+                publishing or submitting.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="faq-a"><p>Our detector identifies patterns from ChatGPT (GPT-3.5 and GPT-4), Claude, Google Gemini, Microsoft Copilot, and other major AI writing assistants. The detection works on the underlying linguistic patterns, not just specific tool signatures.</p></div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How accurate is the AI detector?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="section-label">Got Questions?</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is the AI Text Detector completely free?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              Yes, Toolyfi AI Text Detector is 100% free. No account, no subscription, no hidden
+              charges — ever. Paste your text and get instant results without any signup.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Which AI writing tools can it detect?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              Our detector identifies patterns from ChatGPT (GPT-3.5 and GPT-4), Claude, Google
+              Gemini, Microsoft Copilot, and other major AI writing assistants. The detection works
+              on the underlying linguistic patterns, not just specific tool signatures.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How accurate is the AI detector?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              Accuracy depends on text length and how much it has been edited. For unedited AI text
+              of 100+ words, accuracy is very high. Shorter texts or heavily human-edited AI text
+              may show lower confidence scores. Always check the confidence rating (HIGH/MEDIUM/LOW)
+              in results.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is my text stored or shared?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              No. Your text is sent for analysis and immediately discarded after results are
+              generated. We do not store, log, or share any text you paste into the detector. Your
+              privacy is fully protected.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How many words do I need for accurate results?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              We recommend at least 50 words for meaningful results, and 100+ words for high
+              accuracy. Very short texts (under 20 words) cannot be reliably analyzed for AI
+              patterns — there simply isn't enough linguistic data to work with.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is a burstiness score?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              Burstiness measures variation in sentence complexity and length. Humans naturally vary
+              their sentences dramatically — some short, some long, some complex. AI tends to
+              produce more uniform sentences. A low burstiness score suggests AI-like uniformity.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can edited AI text fool the detector?
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+          <div class="faq-a">
+            <p>
+              Heavily edited AI text may score lower on AI probability. However, core linguistic
+              patterns — vocabulary choice, sentence rhythm, transitional phrases — often remain
+              detectable even after significant editing. The confidence rating will reflect
+              uncertainty in ambiguous cases.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="faq-a"><p>Accuracy depends on text length and how much it has been edited. For unedited AI text of 100+ words, accuracy is very high. Shorter texts or heavily human-edited AI text may show lower confidence scores. Always check the confidence rating (HIGH/MEDIUM/LOW) in results.</p></div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Is my text stored or shared?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+
+    <!-- AD UNIT 3 -->
+    <div class="ad-unit">
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client="ca-pub-7111939247354689"
+        data-ad-slot="auto"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- SEO ARTICLE -->
+    <div class="article-section">
+      <div class="section-label">Complete Guide</div>
+      <h2 class="section-title">Free AI Text Detector — The Complete 2026 Guide</h2>
+      <div class="article-body">
+        <p>
+          As AI writing tools like ChatGPT, Claude, and Gemini become more sophisticated and widely
+          used, the need to reliably detect AI-generated content has never been greater. Whether
+          you're a teacher checking student assignments, an editor verifying freelance submissions,
+          or an HR manager reviewing job applications, understanding how to identify AI-written text
+          is an essential skill in 2026.
+        </p>
+
+        <h2>What Is an AI Text Detector?</h2>
+        <p>
+          An AI text detector is a tool that analyzes written content and determines the probability
+          that it was generated by an artificial intelligence system rather than written by a human.
+          These tools work by analyzing linguistic patterns, sentence structure, vocabulary choices,
+          and other textual features that distinguish AI-generated content from human writing.
+        </p>
+        <p>
+          Toolyfi's AI Text Detector uses advanced Claude AI analysis to examine eight distinct
+          linguistic markers simultaneously, producing a confidence score that tells you how likely
+          the text is to be AI-generated, mixed, or fully human-written.
+        </p>
+
+        <h2>How Does AI Text Detection Work?</h2>
+        <p>
+          AI text detection is a complex field that combines natural language processing,
+          statistical analysis, and machine learning. Here's how our detector analyzes text:
+        </p>
+
+        <h3>1. Sentence Structure Uniformity</h3>
+        <p>
+          AI writing tools tend to produce sentences with consistent grammatical structures. While
+          humans naturally vary their sentence patterns — sometimes using fragments, sometimes
+          writing long complex sentences — AI systems often default to predictable
+          Subject-Verb-Object patterns with little variation.
+        </p>
+
+        <h3>2. Vocabulary Diversity</h3>
+        <p>
+          Humans draw from a personal, sometimes idiosyncratic vocabulary shaped by their
+          experiences, education, and personality. AI systems, while capable of using diverse
+          vocabulary, tend toward statistically "safe" word choices — the most common and
+          contextually appropriate options rather than surprising or personal word choices.
+        </p>
+
+        <h3>3. Perplexity Analysis</h3>
+        <p>
+          Perplexity measures how "surprising" each word choice is given the context. AI text tends
+          to have low perplexity — each word is highly predictable given what came before. Human
+          writing often has higher perplexity because people make unexpected, creative, or imperfect
+          word choices.
+        </p>
+
+        <h3>4. Burstiness Measurement</h3>
+        <p>
+          Burstiness refers to the variation in sentence complexity and length throughout a piece of
+          writing. Human writers naturally "burst" between simple and complex sentences — a short
+          punchy statement followed by a detailed explanation. AI systems tend to maintain
+          consistent complexity levels throughout.
+        </p>
+
+        <h3>5. Transitional Phrases and Connectors</h3>
+        <p>
+          AI writing tools often rely heavily on specific transitional phrases like "Furthermore,"
+          "Moreover," "It is worth noting that," "In conclusion," and similar academic-style
+          connectors. While not definitive proof of AI authorship, overuse of these patterns is a
+          strong signal.
+        </p>
+
+        <h3>6. Tonal Consistency</h3>
+        <p>
+          Human writers naturally shift tone throughout a piece — more casual in some sections, more
+          formal in others. AI writing tends to maintain unnaturally consistent tone and register
+          throughout, without the natural variation humans bring to their writing.
+        </p>
+
+        <h2>Why AI Detection Matters in 2026</h2>
+        <p>
+          The proliferation of AI writing tools has created new challenges across multiple domains:
+        </p>
+        <ul>
+          <li>
+            <strong>Academic Integrity:</strong> Students submitting AI-written essays undermines
+            the educational process and devalues legitimate academic work
+          </li>
+          <li>
+            <strong>Content Authenticity:</strong> Publishers and media organizations need to verify
+            that content represents genuine human journalism and creativity
+          </li>
+          <li>
+            <strong>Hiring Processes:</strong> Job application essays and cover letters written by
+            AI don't reflect the actual capabilities of candidates
+          </li>
+          <li>
+            <strong>SEO and Content Marketing:</strong> Search engines increasingly value authentic,
+            human-written content over AI-generated text
+          </li>
+          <li>
+            <strong>Trust and Transparency:</strong> Readers deserve to know whether the content
+            they consume was created by a human or generated by an algorithm
+          </li>
+        </ul>
+
+        <h2>Understanding Your Detection Results</h2>
+        <p>
+          Our AI Text Detector returns several metrics to help you interpret results accurately:
+        </p>
+
+        <h3>Human Probability vs AI Probability</h3>
+        <p>
+          These two percentage scores show the likelihood that the text was written by a human or
+          generated by AI. Note that these don't always add up to exactly 100% — mixed content
+          (human text with AI assistance) may show intermediate scores for both.
+        </p>
+
+        <h3>Confidence Level</h3>
+        <p>
+          HIGH confidence means the detector found strong, consistent patterns pointing to either AI
+          or human authorship. MEDIUM confidence suggests some uncertainty — possibly due to short
+          text length or heavy editing. LOW confidence means the text shows mixed signals and
+          results should be treated as indicative rather than definitive.
+        </p>
+
+        <h3>Vocabulary Diversity Score</h3>
+        <p>
+          This score measures the richness and variation of word choices in the text. Higher scores
+          indicate more diverse, potentially human vocabulary. Lower scores suggest the restricted,
+          predictable vocabulary often seen in AI writing.
+        </p>
+
+        <h3>Burstiness Score</h3>
+        <p>
+          Higher burstiness scores indicate more natural variation in sentence complexity — a human
+          writing pattern. Lower burstiness suggests the uniform sentence structure typical of
+          AI-generated content.
+        </p>
+
+        <h2>Limitations of AI Text Detection</h2>
+        <p>No AI detector is 100% accurate, and it's important to understand the limitations:</p>
+        <ul>
+          <li>
+            <strong>Short texts:</strong> Under 50 words, there isn't enough linguistic data for
+            reliable analysis
+          </li>
+          <li>
+            <strong>Edited AI text:</strong> Heavily human-edited AI content may not be reliably
+            detected
+          </li>
+          <li>
+            <strong>Non-native speakers:</strong> ESL writers may produce text that shares some
+            patterns with AI writing
+          </li>
+          <li>
+            <strong>Technical/formal writing:</strong> Academic papers and technical documents
+            naturally have lower burstiness and more uniform structure
+          </li>
+          <li>
+            <strong>Evolving AI models:</strong> As AI systems improve, detection methods must
+            continuously adapt
+          </li>
+        </ul>
+        <p>
+          Always use AI detection results as one data point among many, not as definitive proof of
+          AI authorship. A HIGH confidence score is strong evidence, but context and additional
+          verification should always be considered.
+        </p>
+
+        <h2>Tips for Getting the Best Results</h2>
+        <p>To maximize the accuracy of your AI text detection:</p>
+        <ul>
+          <li>Submit at least 100 words for the most reliable results</li>
+          <li>Analyze the complete text rather than excerpts when possible</li>
+          <li>
+            Check the confidence level — only HIGH confidence results should be acted upon
+            definitively
+          </li>
+          <li>
+            Consider the context — academic writing naturally has some AI-like characteristics
+          </li>
+          <li>
+            Use the detailed summary to understand which specific patterns triggered the AI score
+          </li>
+        </ul>
+
+        <h2>Conclusion — The Best Free AI Text Detector in 2026</h2>
+        <p>
+          Toolyfi's AI Text Detector provides one of the most thorough free analyses available —
+          combining confidence scores, linguistic metrics, and detailed written summaries to give
+          you a complete picture of text authenticity. Powered by Claude AI and completely free with
+          no signup required, it's the ideal tool for educators, editors, HR professionals, and
+          anyone who needs to verify content authenticity in 2026.
+        </p>
+        <p>
+          <strong>Try it now</strong> — paste any text above and get your instant AI detection
+          report in seconds.
+        </p>
       </div>
-      <div class="faq-a"><p>No. Your text is sent for analysis and immediately discarded after results are generated. We do not store, log, or share any text you paste into the detector. Your privacy is fully protected.</p></div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How many words do I need for accurate results?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Explore More Free Tools</h2>
+      <p>
+        Toolyfi has 40+ free tools — calculators, converters, generators and more. No signup
+        required.
+      </p>
+      <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
+    </div>
+
+    <!-- TOOLS FOOTER -->
+    <div class="tools-footer">
+      <div class="tools-footer-inner">
+        <h3>More Free Tools on Toolyfi</h3>
+        <div class="tools-grid">
+          <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
+          <a href="https://toolyfi.com/ai-image-generator.html" class="tool-link"
+            >🎨 AI Image Gen</a
+          >
+          <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
+          <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
+          <a href="https://toolyfi.com/loan-calculator.html" class="tool-link"
+            >🏦 Loan Calculator</a
+          >
+          <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link"
+            >💼 Salary Converter</a
+          >
+          <a href="https://toolyfi.com/compound-interest-calculator.html" class="tool-link"
+            >📈 Compound Interest</a
+          >
+          <a href="https://toolyfi.com/percentage-calculator.html" class="tool-link"
+            >% Percentage Calc</a
+          >
+          <a href="https://toolyfi.com/currency-converter.html" class="tool-link"
+            >💱 Currency Converter</a
+          >
+          <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
+          <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
+          <a href="https://toolyfi.com/password-generator.html" class="tool-link"
+            >🔐 Password Generator</a
+          >
+          <a href="https://toolyfi.com/temperature-converter.html" class="tool-link"
+            >🌡️ Temp Converter</a
+          >
+          <a href="https://toolyfi.com/invoice-generator.html" class="tool-link"
+            >🧾 Invoice Generator</a
+          >
+          <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
+        </div>
       </div>
-      <div class="faq-a"><p>We recommend at least 50 words for meaningful results, and 100+ words for high accuracy. Very short texts (under 20 words) cannot be reliably analyzed for AI patterns — there simply isn't enough linguistic data to work with.</p></div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What is a burstiness score?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="faq-a"><p>Burstiness measures variation in sentence complexity and length. Humans naturally vary their sentences dramatically — some short, some long, some complex. AI tends to produce more uniform sentences. A low burstiness score suggests AI-like uniformity.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Can edited AI text fool the detector?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="faq-a"><p>Heavily edited AI text may score lower on AI probability. However, core linguistic patterns — vocabulary choice, sentence rhythm, transitional phrases — often remain detectable even after significant editing. The confidence rating will reflect uncertainty in ambiguous cases.</p></div>
-    </div>
-  </div>
-</div>
 
-<!-- AD UNIT 3 -->
-<div class="ad-unit">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7111939247354689" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+    <footer>
+      <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
+      <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
+    </footer>
 
-<!-- SEO ARTICLE -->
-<div class="article-section">
-  <div class="section-label">Complete Guide</div>
-  <h2 class="section-title">Free AI Text Detector — The Complete 2026 Guide</h2>
-  <div class="article-body">
+    <script>
+      // ==================== TOOL LOGIC ====================
+      function updateWordCount() {
+        const text = document.getElementById("inputText").value.trim();
+        const words = text ? text.split(/\s+/).length : 0;
+        document.getElementById("wordCount").textContent = words + " words";
+      }
 
-    <p>As AI writing tools like ChatGPT, Claude, and Gemini become more sophisticated and widely used, the need to reliably detect AI-generated content has never been greater. Whether you're a teacher checking student assignments, an editor verifying freelance submissions, or an HR manager reviewing job applications, understanding how to identify AI-written text is an essential skill in 2026.</p>
+      function clearAll() {
+        document.getElementById("inputText").value = "";
+        document.getElementById("wordCount").textContent = "0 words";
+        document.getElementById("resultCard").classList.remove("visible");
+        document.getElementById("errorMsg").classList.remove("visible");
+      }
 
-    <h2>What Is an AI Text Detector?</h2>
-    <p>An AI text detector is a tool that analyzes written content and determines the probability that it was generated by an artificial intelligence system rather than written by a human. These tools work by analyzing linguistic patterns, sentence structure, vocabulary choices, and other textual features that distinguish AI-generated content from human writing.</p>
-    <p>Toolyfi's AI Text Detector uses advanced Claude AI analysis to examine eight distinct linguistic markers simultaneously, producing a confidence score that tells you how likely the text is to be AI-generated, mixed, or fully human-written.</p>
+      function showError(msg) {
+        const el = document.getElementById("errorMsg");
+        el.textContent = "⚠ " + msg;
+        el.classList.add("visible");
+      }
 
-    <h2>How Does AI Text Detection Work?</h2>
-    <p>AI text detection is a complex field that combines natural language processing, statistical analysis, and machine learning. Here's how our detector analyzes text:</p>
+      const loadingMessages = [
+        "Initializing forensic analysis...",
+        "Scanning sentence patterns...",
+        "Measuring vocabulary diversity...",
+        "Analyzing perplexity levels...",
+        "Checking burstiness patterns...",
+        "Comparing linguistic fingerprints...",
+        "Generating confidence score...",
+        "Finalizing report...",
+      ];
+      let loadingInterval;
 
-    <h3>1. Sentence Structure Uniformity</h3>
-    <p>AI writing tools tend to produce sentences with consistent grammatical structures. While humans naturally vary their sentence patterns — sometimes using fragments, sometimes writing long complex sentences — AI systems often default to predictable Subject-Verb-Object patterns with little variation.</p>
+      function startLoading() {
+        let i = 0;
+        const el = document.getElementById("loadingSteps");
+        el.textContent = loadingMessages[0];
+        loadingInterval = setInterval(() => {
+          i = (i + 1) % loadingMessages.length;
+          el.textContent = loadingMessages[i];
+        }, 700);
+      }
+      function stopLoading() {
+        clearInterval(loadingInterval);
+      }
 
-    <h3>2. Vocabulary Diversity</h3>
-    <p>Humans draw from a personal, sometimes idiosyncratic vocabulary shaped by their experiences, education, and personality. AI systems, while capable of using diverse vocabulary, tend toward statistically "safe" word choices — the most common and contextually appropriate options rather than surprising or personal word choices.</p>
+      async function detectAI() {
+        const text = document.getElementById("inputText").value.trim();
+        document.getElementById("errorMsg").classList.remove("visible");
+        if (!text) {
+          showError("Please paste some text to analyze.");
+          return;
+        }
+        if (text.split(/\s+/).length < 20) {
+          showError("Please enter at least 20 words for a meaningful analysis.");
+          return;
+        }
 
-    <h3>3. Perplexity Analysis</h3>
-    <p>Perplexity measures how "surprising" each word choice is given the context. AI text tends to have low perplexity — each word is highly predictable given what came before. Human writing often has higher perplexity because people make unexpected, creative, or imperfect word choices.</p>
+        const btn = document.getElementById("detectBtn");
+        btn.disabled = true;
+        btn.textContent = "⏳ Analyzing...";
+        document.getElementById("resultCard").classList.remove("visible");
+        document.getElementById("loadingState").classList.add("visible");
+        startLoading();
 
-    <h3>4. Burstiness Measurement</h3>
-    <p>Burstiness refers to the variation in sentence complexity and length throughout a piece of writing. Human writers naturally "burst" between simple and complex sentences — a short punchy statement followed by a detailed explanation. AI systems tend to maintain consistent complexity levels throughout.</p>
-
-    <h3>5. Transitional Phrases and Connectors</h3>
-    <p>AI writing tools often rely heavily on specific transitional phrases like "Furthermore," "Moreover," "It is worth noting that," "In conclusion," and similar academic-style connectors. While not definitive proof of AI authorship, overuse of these patterns is a strong signal.</p>
-
-    <h3>6. Tonal Consistency</h3>
-    <p>Human writers naturally shift tone throughout a piece — more casual in some sections, more formal in others. AI writing tends to maintain unnaturally consistent tone and register throughout, without the natural variation humans bring to their writing.</p>
-
-    <h2>Why AI Detection Matters in 2026</h2>
-    <p>The proliferation of AI writing tools has created new challenges across multiple domains:</p>
-    <ul>
-      <li><strong>Academic Integrity:</strong> Students submitting AI-written essays undermines the educational process and devalues legitimate academic work</li>
-      <li><strong>Content Authenticity:</strong> Publishers and media organizations need to verify that content represents genuine human journalism and creativity</li>
-      <li><strong>Hiring Processes:</strong> Job application essays and cover letters written by AI don't reflect the actual capabilities of candidates</li>
-      <li><strong>SEO and Content Marketing:</strong> Search engines increasingly value authentic, human-written content over AI-generated text</li>
-      <li><strong>Trust and Transparency:</strong> Readers deserve to know whether the content they consume was created by a human or generated by an algorithm</li>
-    </ul>
-
-    <h2>Understanding Your Detection Results</h2>
-    <p>Our AI Text Detector returns several metrics to help you interpret results accurately:</p>
-
-    <h3>Human Probability vs AI Probability</h3>
-    <p>These two percentage scores show the likelihood that the text was written by a human or generated by AI. Note that these don't always add up to exactly 100% — mixed content (human text with AI assistance) may show intermediate scores for both.</p>
-
-    <h3>Confidence Level</h3>
-    <p>HIGH confidence means the detector found strong, consistent patterns pointing to either AI or human authorship. MEDIUM confidence suggests some uncertainty — possibly due to short text length or heavy editing. LOW confidence means the text shows mixed signals and results should be treated as indicative rather than definitive.</p>
-
-    <h3>Vocabulary Diversity Score</h3>
-    <p>This score measures the richness and variation of word choices in the text. Higher scores indicate more diverse, potentially human vocabulary. Lower scores suggest the restricted, predictable vocabulary often seen in AI writing.</p>
-
-    <h3>Burstiness Score</h3>
-    <p>Higher burstiness scores indicate more natural variation in sentence complexity — a human writing pattern. Lower burstiness suggests the uniform sentence structure typical of AI-generated content.</p>
-
-    <h2>Limitations of AI Text Detection</h2>
-    <p>No AI detector is 100% accurate, and it's important to understand the limitations:</p>
-    <ul>
-      <li><strong>Short texts:</strong> Under 50 words, there isn't enough linguistic data for reliable analysis</li>
-      <li><strong>Edited AI text:</strong> Heavily human-edited AI content may not be reliably detected</li>
-      <li><strong>Non-native speakers:</strong> ESL writers may produce text that shares some patterns with AI writing</li>
-      <li><strong>Technical/formal writing:</strong> Academic papers and technical documents naturally have lower burstiness and more uniform structure</li>
-      <li><strong>Evolving AI models:</strong> As AI systems improve, detection methods must continuously adapt</li>
-    </ul>
-    <p>Always use AI detection results as one data point among many, not as definitive proof of AI authorship. A HIGH confidence score is strong evidence, but context and additional verification should always be considered.</p>
-
-    <h2>Tips for Getting the Best Results</h2>
-    <p>To maximize the accuracy of your AI text detection:</p>
-    <ul>
-      <li>Submit at least 100 words for the most reliable results</li>
-      <li>Analyze the complete text rather than excerpts when possible</li>
-      <li>Check the confidence level — only HIGH confidence results should be acted upon definitively</li>
-      <li>Consider the context — academic writing naturally has some AI-like characteristics</li>
-      <li>Use the detailed summary to understand which specific patterns triggered the AI score</li>
-    </ul>
-
-    <h2>Conclusion — The Best Free AI Text Detector in 2026</h2>
-    <p>Toolyfi's AI Text Detector provides one of the most thorough free analyses available — combining confidence scores, linguistic metrics, and detailed written summaries to give you a complete picture of text authenticity. Powered by Claude AI and completely free with no signup required, it's the ideal tool for educators, editors, HR professionals, and anyone who needs to verify content authenticity in 2026.</p>
-    <p><strong>Try it now</strong> — paste any text above and get your instant AI detection report in seconds.</p>
-  </div>
-</div>
-
-<!-- FIREBASE ENGAGEMENT -->
-<div class="engagement-section">
-  <div class="engage-card">
-    <div class="engage-title">Was this tool helpful?</div>
-    <div class="engage-row">
-      <button class="eng-btn" id="likeBtn" onclick="handleLike()">👍 Like <span id="fbLikes">0</span></button>
-      <button class="eng-btn" id="dislikeBtn" onclick="handleDislike()">👎 Dislike <span id="fbDislikes">0</span></button>
-    </div>
-    <div class="star-row">
-      <div class="star-label">Rate this tool</div>
-      <div class="stars" id="starContainer">
-        <span class="star" onclick="handleStar(1)">★</span>
-        <span class="star" onclick="handleStar(2)">★</span>
-        <span class="star" onclick="handleStar(3)">★</span>
-        <span class="star" onclick="handleStar(4)">★</span>
-        <span class="star" onclick="handleStar(5)">★</span>
-      </div>
-      <div class="star-count" id="starCount">Be the first to rate!</div>
-    </div>
-    <div class="comment-area">
-      <div class="comment-input-row">
-        <input class="comment-input" id="commentInput" placeholder="Leave a comment or feedback..." maxlength="300">
-        <button class="comment-submit" onclick="submitComment()">Post</button>
-      </div>
-      <div class="comments-list" id="commentsList"></div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <h2>Explore More Free Tools</h2>
-  <p>Toolyfi has 40+ free tools — calculators, converters, generators and more. No signup required.</p>
-  <a href="https://toolyfi.com" class="cta-btn">🛠️ Explore All Tools</a>
-</div>
-
-<!-- TOOLS FOOTER -->
-<div class="tools-footer">
-  <div class="tools-footer-inner">
-    <h3>More Free Tools on Toolyfi</h3>
-    <div class="tools-grid">
-      <a href="https://toolyfi.com/age-calculator.html" class="tool-link">🎂 Age Calculator</a>
-      <a href="https://toolyfi.com/ai-image-generator.html" class="tool-link">🎨 AI Image Gen</a>
-      <a href="https://toolyfi.com/bmi-calculator.html" class="tool-link">⚖️ BMI Calculator</a>
-      <a href="https://toolyfi.com/tip-calculator.html" class="tool-link">💰 Tip Calculator</a>
-      <a href="https://toolyfi.com/loan-calculator.html" class="tool-link">🏦 Loan Calculator</a>
-      <a href="https://toolyfi.com/salary-to-hourly.html" class="tool-link">💼 Salary Converter</a>
-      <a href="https://toolyfi.com/compound-interest-calculator.html" class="tool-link">📈 Compound Interest</a>
-      <a href="https://toolyfi.com/percentage-calculator.html" class="tool-link">% Percentage Calc</a>
-      <a href="https://toolyfi.com/currency-converter.html" class="tool-link">💱 Currency Converter</a>
-      <a href="https://toolyfi.com/word-counter.html" class="tool-link">📝 Word Counter</a>
-      <a href="https://toolyfi.com/qr-code-generator.html" class="tool-link">📱 QR Generator</a>
-      <a href="https://toolyfi.com/password-generator.html" class="tool-link">🔐 Password Generator</a>
-      <a href="https://toolyfi.com/temperature-converter.html" class="tool-link">🌡️ Temp Converter</a>
-      <a href="https://toolyfi.com/invoice-generator.html" class="tool-link">🧾 Invoice Generator</a>
-      <a href="https://toolyfi.com/resume-builder.html" class="tool-link">📄 Resume Builder</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>🛠️ By <a href="https://toolyfi.com">Toolyfi</a> — 40+ Free Online Tools</p>
-  <p>© 2026 Toolyfi. All rights reserved. Made with ❤️ for everyone.</p>
-</footer>
-
-<script>
-// ==================== TOOL LOGIC ====================
-function updateWordCount() {
-  const text = document.getElementById('inputText').value.trim();
-  const words = text ? text.split(/\s+/).length : 0;
-  document.getElementById('wordCount').textContent = words + ' words';
-}
-
-function clearAll() {
-  document.getElementById('inputText').value = '';
-  document.getElementById('wordCount').textContent = '0 words';
-  document.getElementById('resultCard').classList.remove('visible');
-  document.getElementById('errorMsg').classList.remove('visible');
-}
-
-function showError(msg) {
-  const el = document.getElementById('errorMsg');
-  el.textContent = '⚠ ' + msg;
-  el.classList.add('visible');
-}
-
-const loadingMessages = [
-  'Initializing forensic analysis...','Scanning sentence patterns...',
-  'Measuring vocabulary diversity...','Analyzing perplexity levels...',
-  'Checking burstiness patterns...','Comparing linguistic fingerprints...',
-  'Generating confidence score...','Finalizing report...'
-];
-let loadingInterval;
-
-function startLoading() {
-  let i = 0;
-  const el = document.getElementById('loadingSteps');
-  el.textContent = loadingMessages[0];
-  loadingInterval = setInterval(() => { i = (i+1) % loadingMessages.length; el.textContent = loadingMessages[i]; }, 700);
-}
-function stopLoading() { clearInterval(loadingInterval); }
-
-async function detectAI() {
-  const text = document.getElementById('inputText').value.trim();
-  document.getElementById('errorMsg').classList.remove('visible');
-  if (!text) { showError('Please paste some text to analyze.'); return; }
-  if (text.split(/\s+/).length < 20) { showError('Please enter at least 20 words for a meaningful analysis.'); return; }
-
-  const btn = document.getElementById('detectBtn');
-  btn.disabled = true; btn.textContent = '⏳ Analyzing...';
-  document.getElementById('resultCard').classList.remove('visible');
-  document.getElementById('loadingState').classList.add('visible');
-  startLoading();
-
-  const prompt = `You are an expert AI text detection system. Analyze the following text and determine if it was written by an AI (like ChatGPT, Claude, or Gemini) or by a human.
+        const prompt = `You are an expert AI text detection system. Analyze the following text and determine if it was written by an AI (like ChatGPT, Claude, or Gemini) or by a human.
 
 Analyze these specific linguistic markers:
 1. Sentence structure uniformity and variation
@@ -829,141 +1870,70 @@ Text to analyze:
 ${text.substring(0, 3000)}
 """`;
 
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-    const data = await response.json();
-    const raw = data.content[0].text.trim();
-    const clean = raw.replace(/```json|```/g, '').trim();
-    const result = JSON.parse(clean);
-    stopLoading();
-    document.getElementById('loadingState').classList.remove('visible');
-    showResult(result);
-  } catch(e) {
-    stopLoading();
-    document.getElementById('loadingState').classList.remove('visible');
-    showError('Analysis failed. Please try again.');
-  }
-  btn.disabled = false; btn.textContent = '🔬 Analyze Text';
-}
+        try {
+          const response = await fetch("https://api.anthropic.com/v1/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: "claude-sonnet-4-20250514",
+              max_tokens: 1000,
+              messages: [{ role: "user", content: prompt }],
+            }),
+          });
+          const data = await response.json();
+          const raw = data.content[0].text.trim();
+          const clean = raw.replace(/```json|```/g, "").trim();
+          const result = JSON.parse(clean);
+          stopLoading();
+          document.getElementById("loadingState").classList.remove("visible");
+          showResult(result);
+        } catch (e) {
+          stopLoading();
+          document.getElementById("loadingState").classList.remove("visible");
+          showError("Analysis failed. Please try again.");
+        }
+        btn.disabled = false;
+        btn.textContent = "🔬 Analyze Text";
+      }
 
-function showResult(r) {
-  const card = document.getElementById('resultCard');
-  const banner = document.getElementById('verdictBanner');
-  const verdictMap = {
-    'HUMAN': { icon: '✅', text: 'Human Written', cls: 'human' },
-    'AI':    { icon: '🤖', text: 'AI Generated',  cls: 'ai' },
-    'MIXED': { icon: '⚠️', text: 'Mixed Content', cls: 'mixed' }
-  };
-  const v = verdictMap[r.verdict] || verdictMap['MIXED'];
-  banner.className = 'verdict-banner ' + v.cls;
-  document.getElementById('verdictIcon').textContent = v.icon;
-  document.getElementById('verdictText').textContent = v.text;
-  document.getElementById('humanScore').textContent = r.humanScore + '%';
-  document.getElementById('aiScore').textContent = r.aiScore + '%';
-  setTimeout(() => {
-    document.getElementById('humanBar').style.width = r.humanScore + '%';
-    document.getElementById('aiBar').style.width = r.aiScore + '%';
-  }, 100);
-  document.getElementById('analysisGrid').innerHTML = `
+      function showResult(r) {
+        const card = document.getElementById("resultCard");
+        const banner = document.getElementById("verdictBanner");
+        const verdictMap = {
+          HUMAN: { icon: "✅", text: "Human Written", cls: "human" },
+          AI: { icon: "🤖", text: "AI Generated", cls: "ai" },
+          MIXED: { icon: "⚠️", text: "Mixed Content", cls: "mixed" },
+        };
+        const v = verdictMap[r.verdict] || verdictMap["MIXED"];
+        banner.className = "verdict-banner " + v.cls;
+        document.getElementById("verdictIcon").textContent = v.icon;
+        document.getElementById("verdictText").textContent = v.text;
+        document.getElementById("humanScore").textContent = r.humanScore + "%";
+        document.getElementById("aiScore").textContent = r.aiScore + "%";
+        setTimeout(() => {
+          document.getElementById("humanBar").style.width = r.humanScore + "%";
+          document.getElementById("aiBar").style.width = r.aiScore + "%";
+        }, 100);
+        document.getElementById("analysisGrid").innerHTML = `
     <div class="analysis-item"><div class="val">${r.confidence}</div><div class="lbl">Confidence</div></div>
-    <div class="analysis-item"><div class="val">${r.wordCount || '-'}</div><div class="lbl">Words Analyzed</div></div>
-    <div class="analysis-item"><div class="val">${r.vocabularyScore || '-'}</div><div class="lbl">Vocab Diversity</div></div>
-    <div class="analysis-item"><div class="val">${r.burstinessScore || '-'}</div><div class="lbl">Burstiness</div></div>
+    <div class="analysis-item"><div class="val">${r.wordCount || "-"}</div><div class="lbl">Words Analyzed</div></div>
+    <div class="analysis-item"><div class="val">${r.vocabularyScore || "-"}</div><div class="lbl">Vocab Diversity</div></div>
+    <div class="analysis-item"><div class="val">${r.burstinessScore || "-"}</div><div class="lbl">Burstiness</div></div>
   `;
-  document.getElementById('summaryText').textContent = r.summary;
-  card.classList.add('visible');
-  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+        document.getElementById("summaryText").textContent = r.summary;
+        card.classList.add("visible");
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
 
-// ==================== FAQ ====================
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// ==================== FIREBASE ====================
-const fingerprint = localStorage.getItem('tfp') || (() => { const fp = Math.random().toString(36).slice(2); localStorage.setItem('tfp', fp); return fp; })();
-
-function handleLike() {
-  if (!window.firebaseLoaded || localStorage.getItem('atd_vote')) return;
-  localStorage.setItem('atd_vote', 'like');
-  const { update, increment } = window.firebaseModules;
-  update(window.toolRef, { likes: increment(1) });
-  document.getElementById('fbLikes').textContent = parseInt(document.getElementById('fbLikes').textContent) + 1;
-  document.getElementById('likeBtn').classList.add('active-like');
-  document.getElementById('dislikeBtn').classList.remove('active-dislike');
-}
-
-function handleDislike() {
-  if (!window.firebaseLoaded || localStorage.getItem('atd_vote')) return;
-  localStorage.setItem('atd_vote', 'dislike');
-  const { update, increment } = window.firebaseModules;
-  update(window.toolRef, { dislikes: increment(1) });
-  document.getElementById('fbDislikes').textContent = parseInt(document.getElementById('fbDislikes').textContent) + 1;
-  document.getElementById('dislikeBtn').classList.add('active-dislike');
-  document.getElementById('likeBtn').classList.remove('active-like');
-}
-
-function updateStars(avg, count) {
-  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('lit', i < Math.round(avg)));
-  document.getElementById('starCount').textContent = count > 0 ? `${avg.toFixed(1)} / 5 (${count} ratings)` : 'Be the first to rate!';
-}
-
-function handleStar(val) {
-  if (!window.firebaseLoaded || localStorage.getItem('atd_rated')) return;
-  localStorage.setItem('atd_rated', '1');
-  const { get, update } = window.firebaseModules;
-  get(window.toolRef).then(snap => {
-    const data = snap.val() || {};
-    const count = (data.ratingCount || 0) + 1;
-    const avg = ((data.avgRating || 0) * (count - 1) + val) / count;
-    update(window.toolRef, { avgRating: avg, ratingCount: count });
-    updateStars(avg, count);
-  });
-  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('lit', i < val));
-}
-
-function submitComment() {
-  if (!window.firebaseLoaded) return;
-  const input = document.getElementById('commentInput');
-  const text = input.value.trim();
-  if (!text) return;
-  const { ref, set, getDatabase } = window.firebaseModules;
-  const commentRef = ref(window.db, `tools/ai-text-detector/comments/${Date.now()}_${fingerprint}`);
-  set(commentRef, { text, time: Date.now() });
-  input.value = '';
-  const div = document.createElement('div');
-  div.className = 'comment-item';
-  div.innerHTML = `<div class="comment-meta">Anonymous · Just now</div><div class="comment-text">${text}</div>`;
-  document.getElementById('commentsList').prepend(div);
-}
-
-function renderComments(comments) {
-  const list = document.getElementById('commentsList');
-  const items = Object.values(comments).sort((a,b) => b.time - a.time).slice(0, 10);
-  list.innerHTML = items.map(c => `
-    <div class="comment-item">
-      <div class="comment-meta">Anonymous · ${new Date(c.time).toLocaleDateString()}</div>
-      <div class="comment-text">${c.text}</div>
-    </div>
-  `).join('');
-}
-
-const prevVote = localStorage.getItem('atd_vote');
-if (prevVote === 'like') document.getElementById('likeBtn').classList.add('active-like');
-if (prevVote === 'dislike') document.getElementById('dislikeBtn').classList.add('active-dislike');
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+      // ==================== FAQ ====================
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        const isOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
+      }
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
     <script src="/pwa-register.js" defer></script>
-</body>
+  </body>
 </html>
