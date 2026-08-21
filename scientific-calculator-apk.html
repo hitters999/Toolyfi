@@ -209,33 +209,51 @@
         flex: 1;
         min-height: 0;
         display: grid;
-        grid-template-rows: repeat(5, minmax(28px, 0.66fr)) repeat(3, minmax(42px, 1fr)) minmax(
-            48px,
-            1.12fr
-          );
-        gap: 7px;
+        grid-template-columns: minmax(0, 1fr) minmax(104px, 0.42fr);
+        grid-template-areas:
+          "functions actions"
+          "numberpad actions";
+        gap: 11px;
+        align-content: start;
       }
-      .row {
+      .function-bank,
+      .number-pad,
+      .action-rail {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 7px;
-        min-height: 0;
+        min-width: 0;
+      }
+      .function-bank {
+        grid-area: functions;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .number-pad {
+        grid-area: numberpad;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 2px;
+      }
+      .action-rail {
+        grid-area: actions;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        gap: 8px;
       }
       .key {
-        min-height: 38px;
-        border-radius: 14px;
-        background: linear-gradient(145deg, var(--key-hi), var(--key));
+        min-height: 46px;
+        border-radius: 13px;
+        background: linear-gradient(145deg, #2d3955, #19243b);
         box-shadow:
-          0 5px 0 #090d1b,
-          0 9px 16px #0003,
-          inset 1px 1px 0 #ffffff12;
+          0 4px 0 #080e19,
+          0 8px 14px #0003,
+          inset 1px 1px 0 #ffffff1c;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         gap: 2px;
-        font-size: 17px;
-        font-weight: 750;
+        font-size: 18px;
+        font-weight: 800;
         transition:
           transform 0.08s,
           box-shadow 0.08s,
@@ -251,47 +269,43 @@
         line-height: 1;
       }
       .key.sci {
-        font-size: 13px;
-      }
-      .row:nth-child(-n + 5) .key {
-        min-height: 28px;
-        border-radius: 10px;
-        font-size: 12px;
+        min-height: 31px;
+        border-radius: 9px;
+        font-size: 11px;
         font-weight: 720;
         color: #cbd5ee;
-        background: linear-gradient(145deg, #1f2a47, #141d35);
+        background: linear-gradient(145deg, #242f4b, #151e34);
         box-shadow:
-          0 3px 0 #090d1b,
-          0 6px 11px #0002,
-          inset 1px 1px 0 #ffffff0e;
+          0 2px 0 #080e19,
+          0 4px 8px #0002,
+          inset 1px 1px 0 #ffffff10;
       }
-      .row:nth-child(-n + 5) .key .sub {
+      .function-bank .key .sub {
         font-size: 8px;
       }
-      .row:nth-child(n + 6) .key {
-        min-height: 42px;
-        border-radius: 12px;
-        font-size: 18px;
-        font-weight: 780;
-        background: linear-gradient(145deg, #2c3855, #1b263f);
-        box-shadow:
-          0 5px 0 #09101d,
-          0 9px 16px #0004,
-          inset 1px 1px 0 #ffffff18;
+      .number-pad .key {
+        min-height: 56px;
+        border-radius: 14px;
+        font-size: 19px;
+        background: linear-gradient(145deg, #36445f, #202c44);
       }
-      .row:nth-child(n + 6) .key.operator {
+      .action-rail .key {
+        min-height: 0;
+        font-size: 19px;
+      }
+      .action-rail .key.operator {
         color: #f0eaff;
-        background: linear-gradient(145deg, #4a3d7a, #2b2452);
+        background: linear-gradient(145deg, #514287, #30275c);
         box-shadow:
-          0 5px 0 #19133a,
-          0 9px 16px #0004,
+          0 4px 0 #1b143d,
+          0 8px 14px #0004,
           inset 1px 1px 0 #ffffff1c;
       }
-      .row:nth-child(n + 6) .key.danger {
+      .action-rail .key.danger {
         color: #fff1f5;
         background: linear-gradient(145deg, #b64072, #732746);
       }
-      .row:nth-child(n + 6) .key.equal {
+      .action-rail .key.equal {
         color: #efffff;
         background: linear-gradient(145deg, #2ed2df, #10879f);
         box-shadow:
@@ -394,23 +408,24 @@
         .result {
           font-size: 27px;
         }
-        .key {
-          border-radius: 11px;
-          min-height: 31px;
-        }
-        .row:nth-child(-n + 5) .key {
-          min-height: 26px;
-          font-size: 11px;
-        }
-        .row:nth-child(n + 6) .key {
-          min-height: 38px;
-          font-size: 17px;
-        }
         .keypad {
+          gap: 8px;
+          grid-template-columns: minmax(0, 1fr) minmax(94px, 0.42fr);
+        }
+        .function-bank {
           gap: 5px;
         }
-        .row {
-          gap: 5px;
+        .number-pad,
+        .action-rail {
+          gap: 6px;
+        }
+        .function-bank .key {
+          min-height: 28px;
+          font-size: 10px;
+        }
+        .number-pad .key {
+          min-height: 49px;
+          font-size: 18px;
         }
         .topbar {
           min-height: 35px;
@@ -485,21 +500,17 @@
       </section>
       <div class="section-label">Scientific functions</div>
       <section class="keypad">
-        <div class="row">
+        <div class="function-bank" aria-label="Scientific functions">
           <button class="key sci" onclick="insertFn('sin')">sin</button
           ><button class="key sci" onclick="insertFn('cos')">cos</button
           ><button class="key sci" onclick="insertFn('tan')">tan</button
           ><button class="key sci" onclick="insertFn('log')">log</button
           ><button class="key sci" onclick="insertFn('ln')">ln</button>
-        </div>
-        <div class="row">
           <button class="key sci" onclick="insertFn('asin')">sin⁻¹</button
           ><button class="key sci" onclick="insertFn('acos')">cos⁻¹</button
           ><button class="key sci" onclick="insertFn('atan')">tan⁻¹</button
           ><button class="key sci" onclick="insertFn('sqrt')">√</button
           ><button class="key sci" onclick="append('^2')">x²</button>
-        </div>
-        <div class="row">
           <button class="key sci" onclick="append('^')">xʸ</button
           ><button class="key sci" onclick="insertFn('pow10')">10ˣ</button
           ><button class="key sci" onclick="insertFn('abs')">abs</button
@@ -507,45 +518,37 @@
           ><button class="key sci" onclick="toggleHyp()">
             <span class="sub" id="hypLabel">OFF</span>HYP
           </button>
-        </div>
-        <div class="row">
           <button class="key sci" onclick="append('(')">(</button
           ><button class="key sci" onclick="append(')')">)</button
           ><button class="key sci" onclick="append('π')">π</button
           ><button class="key sci" onclick="append('e')">e</button
           ><button class="key sci" onclick="append('×10^')">×10ˣ</button>
-        </div>
-        <div class="row">
           <button class="key sci" onclick="memory('MC')">MC</button
           ><button class="key sci" onclick="memory('MR')">MR</button
           ><button class="key sci" onclick="memory('M+')">M+</button
           ><button class="key sci" onclick="memory('M-')">M−</button
           ><button class="key sci" onclick="useAns()">Ans</button>
         </div>
-        <div class="row">
+        <div class="number-pad" aria-label="Number keypad">
           <button class="key" onclick="append('7')">7</button
           ><button class="key" onclick="append('8')">8</button
-          ><button class="key" onclick="append('9')">9</button
-          ><button class="key danger" onclick="del()">DEL</button
-          ><button class="key danger" onclick="clearAll()">AC</button>
-        </div>
-        <div class="row">
+          ><button class="key" onclick="append('9')">9</button>
           <button class="key" onclick="append('4')">4</button
           ><button class="key" onclick="append('5')">5</button
-          ><button class="key" onclick="append('6')">6</button
-          ><button class="key operator" onclick="append('×')">×</button
-          ><button class="key operator" onclick="append('÷')">÷</button>
-        </div>
-        <div class="row">
+          ><button class="key" onclick="append('6')">6</button>
           <button class="key" onclick="append('1')">1</button
           ><button class="key" onclick="append('2')">2</button
-          ><button class="key" onclick="append('3')">3</button
-          ><button class="key operator" onclick="append('+')">+</button
-          ><button class="key operator" onclick="append('−')">−</button>
-        </div>
-        <div class="row">
+          ><button class="key" onclick="append('3')">3</button>
           <button class="key zero" onclick="append('0')">0</button
-          ><button class="key" onclick="append('.')">.</button
+          ><button class="key" onclick="append('.')">.</button>
+        </div>
+        <div class="action-rail" aria-label="Calculator actions">
+          <button class="key danger" onclick="del()">DEL</button
+          ><button class="key danger" onclick="clearAll()">AC</button
+          ><button class="key operator" onclick="append('×')">×</button
+          ><button class="key operator" onclick="append('÷')">÷</button
+          ><button class="key operator" onclick="append('+')">+</button
+          ><button class="key operator" onclick="append('−')">−</button
           ><button class="key operator" onclick="toggleSign()">+/−</button
           ><button class="key equal tall" onclick="calculate()">=</button>
         </div>
