@@ -548,6 +548,12 @@
           ><button class="key sci" onclick="memory('M+')">M+</button
           ><button class="key sci" onclick="memory('M-')">M−</button
           ><button class="key sci" onclick="useAns()">Ans</button>
+          <button class="key sci mode-key" onclick="toggleShift()">SHIFT</button
+          ><button class="key sci mode-key" onclick="cycleMode()">MODE</button
+          ><button class="key sci mode-key" onclick="cycleSetup()">SETUP</button
+          ><button class="key sci" onclick="append('%')">%</button
+          ><button class="key sci" onclick="insertFn('rand')">RAND</button
+          ><button class="key sci" onclick="insertFn('cot')">cot</button>
         </div>
         <div class="number-pad" aria-label="Number keypad">
           <button class="key" onclick="append('7')">7</button
@@ -589,6 +595,9 @@
         memoryValue = 0,
         angle = "DEG",
         hyp = false,
+        shifted = false,
+        calcMode = "COMP",
+        setupMode = "NORM",
         history = [];
       const $ = (id) => document.getElementById(id);
       function vibrate() {
@@ -598,7 +607,8 @@
       }
       function render() {
         $("inp").textContent = expr || "0";
-        $("modeLabel").textContent = "SCIENTIFIC · " + angle;
+        $("modeLabel").textContent =
+          calcMode + " · " + angle + (shifted ? " · SHIFT" : " · " + setupMode);
         $("angleBtn").textContent = angle;
         $("angleBtn").classList.toggle("active", true);
         $("hypLabel").textContent = hyp ? "ON" : "OFF";
@@ -613,11 +623,28 @@
       }
       function insertFn(name) {
         vibrate();
+        if (shifted) {
+          const secondary = { sin: "asin", cos: "acos", tan: "atan", cot: "cot" };
+          name = secondary[name] || name;
+          shifted = false;
+        }
         if (hyp && ["sin", "cos", "tan"].includes(name)) {
           name += "h";
           hyp = false;
         }
         expr += name + "(";
+        render();
+      }
+      function toggleShift() {
+        shifted = !shifted;
+        render();
+      }
+      function cycleMode() {
+        calcMode = calcMode === "COMP" ? "STAT" : calcMode === "STAT" ? "TABLE" : "COMP";
+        render();
+      }
+      function cycleSetup() {
+        setupMode = setupMode === "NORM" ? "FIX" : setupMode === "FIX" ? "SCI" : "NORM";
         render();
       }
       function del() {
@@ -698,6 +725,12 @@
       }
       function tan(x) {
         return Math.tan(toRad(x));
+      }
+      function cot(x) {
+        return 1 / Math.tan(toRad(x));
+      }
+      function rand() {
+        return Math.random();
       }
       function asin(x) {
         return fromRad(Math.asin(x));
