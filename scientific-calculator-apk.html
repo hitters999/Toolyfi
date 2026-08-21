@@ -240,13 +240,17 @@
         gap: 8px;
       }
       .key {
-        min-height: 46px;
-        border-radius: 13px;
-        background: linear-gradient(145deg, #2d3955, #19243b);
+        min-height: 58px;
+        border: 1px solid #ffffff1b;
+        border-radius: 15px;
+        background: linear-gradient(155deg, #526b98 0%, #2b3d66 45%, #182642 100%);
         box-shadow:
-          0 4px 0 #080e19,
-          0 8px 14px #0003,
-          inset 1px 1px 0 #ffffff1c;
+          0 7px 0 #080e19,
+          0 13px 20px #0006,
+          inset 2px 2px 0 #ffffff35,
+          inset -2px -3px 0 #07101f;
+        transform: translateY(0);
+        will-change: transform, box-shadow;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -259,8 +263,18 @@
           box-shadow 0.08s,
           filter 0.08s;
       }
+      .key:hover {
+        filter: brightness(1.12);
+        transform: translateY(-2px);
+      }
       .key:active {
-        filter: brightness(1.25);
+        filter: brightness(1.18);
+        transform: translateY(5px);
+        box-shadow:
+          0 2px 0 #080e19,
+          0 5px 8px #0005,
+          inset 2px 2px 0 #ffffff20,
+          inset -2px -2px 0 #07101f;
       }
       .key .sub {
         font-size: 9px;
@@ -269,12 +283,13 @@
         line-height: 1;
       }
       .key.sci {
-        min-height: 31px;
-        border-radius: 9px;
+        min-height: 36px;
+        border: 1px solid #6e82aa55;
+        border-radius: 10px;
         font-size: 11px;
         font-weight: 720;
-        color: #cbd5ee;
-        background: linear-gradient(145deg, #242f4b, #151e34);
+        color: #dbe6ff;
+        background: linear-gradient(155deg, #344a73, #1b2a4b 60%, #111c35);
         box-shadow:
           0 2px 0 #080e19,
           0 4px 8px #0002,
@@ -284,30 +299,35 @@
         font-size: 8px;
       }
       .number-pad .key {
-        min-height: 56px;
-        border-radius: 14px;
-        font-size: 19px;
-        background: linear-gradient(145deg, #36445f, #202c44);
+        min-height: 72px;
+        border-color: #8da6d044;
+        border-radius: 17px;
+        font-size: 21px;
+        color: #f4f7ff;
+        background: linear-gradient(155deg, #5b77aa 0%, #38527f 48%, #23385e 100%);
       }
       .action-rail .key {
         min-height: 0;
         font-size: 19px;
       }
       .action-rail .key.operator {
-        color: #f0eaff;
-        background: linear-gradient(145deg, #514287, #30275c);
+        color: #fff5ff;
+        border-color: #a990ed55;
+        background: linear-gradient(155deg, #8067c1 0%, #55418f 50%, #332663 100%);
         box-shadow:
           0 4px 0 #1b143d,
           0 8px 14px #0004,
           inset 1px 1px 0 #ffffff1c;
       }
       .action-rail .key.danger {
-        color: #fff1f5;
-        background: linear-gradient(145deg, #b64072, #732746);
+        color: #fff4f7;
+        border-color: #ffb0c455;
+        background: linear-gradient(155deg, #ed6d9b 0%, #b63f70 50%, #762548 100%);
       }
       .action-rail .key.equal {
-        color: #efffff;
-        background: linear-gradient(145deg, #2ed2df, #10879f);
+        color: #fffaf5;
+        border-color: #ffb4a055;
+        background: linear-gradient(155deg, #ff9a7e 0%, #ef6c54 52%, #a73f3e 100%);
         box-shadow:
           0 5px 0 #075667,
           0 9px 16px #0005,
@@ -445,8 +465,8 @@
       }
       .app {
         width: min(100%, 860px);
-        min-height: 700px;
-        height: auto;
+        min-height: 900px;
+        height: 100%;
       }
       html:fullscreen,
       html:fullscreen body {
