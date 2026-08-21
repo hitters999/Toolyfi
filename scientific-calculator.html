@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Scientific Calculator — Browser Math, DEG & RAD | Toolyfi</title>
+    <title>Toolyfi Scientific Calculator – Free Online Scientific Calculator</title>
     <meta
       name="description"
-      content="Use a browser-based scientific calculator for arithmetic, powers, roots, logs, trigonometry, angle modes, and local history."
+      content="Free online scientific calculator with trigonometry, logarithms, powers, fractions, scientific notation, DEG/RAD/GRAD modes and browser-local calculation history."
     />
     <link rel="canonical" href="https://toolyfi.com/scientific-calculator.html" />
     <meta property="og:title" content="Scientific Calculator | Toolyfi" />
@@ -83,7 +83,7 @@
             "name": "Does this calculator use degrees or radians?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "You can choose DEG or RAD mode. Confirm the displayed setting before a trigonometric calculation."
+              "text": "The calculator supports DEG, RAD, and GRAD. Use SHIFT plus MODE to cycle the angle unit, then confirm the LCD indicator before a trigonometric calculation."
             }
           },
           {
@@ -91,7 +91,7 @@
             "name": "Which functions are supported?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The browser calculator supports supported arithmetic, powers, roots, factorial, logarithms, exponentials, common trigonometric functions, parentheses, pi, and e."
+              "text": "Supports arithmetic, fractions, powers, roots, factorials, logs, exponentials, trig, inverse/hyperbolic functions, combinations, brackets, pi, e, memory, and sci notation."
             }
           },
           {
@@ -120,10 +120,10 @@
           },
           {
             "@type": "Question",
-            "name": "Does it store a permanent history?",
+            "name": "Does the calculator save calculation history?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "History is a short in-page review aid for the active visit, not a permanent record or storage service."
+              "text": "Recent calculations are saved locally in this browser with localStorage until you clear history or browser data. They are not sent to a Toolyfi server."
             }
           },
           {
@@ -147,7 +147,7 @@
             "name": "Can I type an expression from my keyboard?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. You can type a supported expression in the input field and press Enter to calculate it, or use the visible calculator buttons."
+              "text": "Yes. Number keys, arithmetic operators, parentheses, Enter, Backspace, Escape, and arrow keys call the same calculator handlers as the physical on-screen keys."
             }
           },
           {
@@ -704,33 +704,30 @@
     <style>
       /* APK fidelity: preserve the supplied Scientific Calculator workspace inside a responsive local frame. */
       .apk-tool-host {
-        width: min(100%, 760px);
+        width: min(100%, 530px);
         margin-inline: auto;
-        padding: 8px;
-        background: linear-gradient(145deg, #1e2c4b, #080b18 38%);
-        border: 1px solid rgba(42, 61, 101, 0.92);
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 22px 48px rgba(23, 36, 55, 0.22);
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
       }
       .apk-calculator-frame {
         display: block;
         width: 100%;
-        min-height: clamp(900px, 94dvh, 1120px);
-        height: clamp(900px, 94dvh, 1120px);
+        min-height: 922px;
+        height: 922px;
         border: 0;
-        border-radius: 20px;
+        border-radius: 0;
       }
       @media (max-width: 700px) {
         .apk-tool-host {
-          width: calc(100% - 20px);
-          border-radius: 22px;
-          padding: 6px;
+          width: min(calc(100% - 16px), 530px);
         }
         .apk-calculator-frame {
-          min-height: clamp(820px, 92dvh, 980px);
-          height: clamp(820px, 92dvh, 980px);
-          border-radius: 17px;
+          min-height: 900px;
+          height: 900px;
         }
       }
     </style>
@@ -753,7 +750,7 @@
         history—then check the formula and units yourself.
       </p>
       <div class="pills">
-        <span class="pill">DEG / RAD</span><span class="pill">Safe math parser</span
+        <span class="pill">DEG / RAD / GRAD</span><span class="pill">Safe math parser</span
         ><span class="pill">Local history</span><span class="pill">Generic browser calculator</span>
       </div>
     </section>
@@ -913,9 +910,10 @@
       </p>
       <h2>History Is a Review Aid, Not a Lab Notebook</h2>
       <p>
-        This calculator keeps a short visible calculation history during the active page visit so
-        you can review or reuse a recent expression. It is not permanent storage, a shared audit
-        record, or a replacement for documenting a method. If a result supports a report, design,
+        This calculator keeps a recent calculation history locally in the active browser so you can
+        review or reuse a recent expression. That browser-local history stays on the device until it
+        is cleared through the calculator or browser data is removed; it is not a shared audit
+        record or a replacement for documenting a method. If a result supports a report, design,
         homework solution, experiment, or budget, write down the formula, values, units,
         assumptions, and rounding method in the appropriate document.
       </p>
@@ -1177,7 +1175,8 @@
       <details>
         <summary>Does this calculator use degrees or radians?</summary>
         <p>
-          Choose DEG or RAD mode with the visible button. Confirm it before trigonometric input.
+          The LCD supports DEG, RAD, and GRAD. Press SHIFT and then MODE to cycle the angle unit,
+          then confirm the indicator before trigonometric input.
         </p>
       </details>
       <details>
@@ -1209,10 +1208,10 @@
         </p>
       </details>
       <details>
-        <summary>Does it store permanent history?</summary>
+        <summary>Does the calculator save calculation history?</summary>
         <p>
-          History is only a short review aid for the active page visit, not a permanent storage
-          service.
+          Recent calculations are stored locally in this browser until you clear the calculator
+          history or browser data. They are not sent to a Toolyfi server.
         </p>
       </details>
       <details>
@@ -1232,8 +1231,8 @@
       <details>
         <summary>Can I type an expression from my keyboard?</summary>
         <p>
-          Yes. Type a supported expression into the display and press Enter to calculate it, or use
-          the visible calculator buttons.
+          Yes. Number keys, arithmetic operators, parentheses, Enter, Backspace, Escape, and arrow
+          keys call the same calculator handlers as the visible physical keys.
         </p>
       </details>
       <details>
