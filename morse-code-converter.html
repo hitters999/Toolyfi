@@ -1,736 +1,2596 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morse Code Converter - Text to Morse & Morse to Text | Toolyfi</title>
-<meta name="description" content="Free online Morse Code Converter. Instantly translate text to Morse code and Morse code to text. Copy, download, and hear your Morse code with audio playback.">
-<meta name="keywords" content="morse code converter, text to morse code, morse code to text, morse code translator, morse code generator, decode morse code">
-<link rel="canonical" href="https://toolyfi.com/morse-code-converter.html">
-<meta property="og:title" content="Morse Code Converter - Text to Morse & Morse to Text | Toolyfi">
-<meta property="og:description" content="Free online Morse Code Converter. Instantly translate text to Morse code and decode Morse back to text. Audio playback included.">
-<meta property="og:url" content="https://toolyfi.com/morse-code-converter.html">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Morse Code Converter - Toolyfi">
-<meta name="twitter:description" content="Translate text to Morse code or decode Morse to text. Free, instant, with audio playback.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morse Code Converter - Text to Morse & Morse to Text | Toolyfi</title>
+    <meta
+      name="description"
+      content="Free online Morse Code Converter. Instantly translate text to Morse code and Morse code to text. Copy, download, and hear your Morse code with audio playback."
+    />
+    <meta
+      name="keywords"
+      content="morse code converter, text to morse code, morse code to text, morse code translator, morse code generator, decode morse code"
+    />
+    <link rel="canonical" href="https://toolyfi.com/morse-code-converter.html" />
+    <meta
+      property="og:title"
+      content="Morse Code Converter - Text to Morse & Morse to Text | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Free online Morse Code Converter. Instantly translate text to Morse code and decode Morse back to text. Audio playback included."
+    />
+    <meta property="og:url" content="https://toolyfi.com/morse-code-converter.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Morse Code Converter - Toolyfi" />
+    <meta
+      name="twitter:description"
+      content="Translate text to Morse code or decode Morse to text. Free, instant, with audio playback."
+    />
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y3ETYH2QF0');</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689" crossorigin="anonymous"></script>
+    <!-- AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7111939247154689"
+      crossorigin="anonymous"
+    ></script>
 
-<!-- Tidio -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
+    <!-- JSON-LD Schemas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- JSON-LD Schemas -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #080b14;
+        --bg2: #0d1220;
+        --bg3: #111827;
+        --card: #141b2d;
+        --card2: #1a2236;
+        --border: #1e2d47;
+        --border2: #243450;
+        --text: #e8edf5;
+        --muted: #7a8ba8;
+        --dim: #4a5a72;
+        --cyan: #00e5ff;
+        --cyan2: #00b8d4;
+        --amber: #ffb300;
+        --amber2: #ff8f00;
+        --green: #00e676;
+        --red: #ff5252;
+        --glow-cyan: rgba(0, 229, 255, 0.15);
+        --glow-amber: rgba(255, 179, 0, 0.12);
+        --font-head: "Oxanium", sans-serif;
+        --font-body: "Space Grotesk", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-<style>
-:root{
-  --bg:#080b14;
-  --bg2:#0d1220;
-  --bg3:#111827;
-  --card:#141b2d;
-  --card2:#1a2236;
-  --border:#1e2d47;
-  --border2:#243450;
-  --text:#e8edf5;
-  --muted:#7a8ba8;
-  --dim:#4a5a72;
-  --cyan:#00e5ff;
-  --cyan2:#00b8d4;
-  --amber:#ffb300;
-  --amber2:#ff8f00;
-  --green:#00e676;
-  --red:#ff5252;
-  --glow-cyan:rgba(0,229,255,0.15);
-  --glow-amber:rgba(255,179,0,0.12);
-  --font-head:'Oxanium',sans-serif;
-  --font-body:'Space Grotesk',sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;}
+      /* NOISE TEXTURE OVERLAY */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.4;
+      }
 
-/* NOISE TEXTURE OVERLAY */
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 11, 20, 0.92);
+        backdrop-filter: blur(24px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .nav-logo-dot {
+        color: var(--amber);
+        font-size: 1.6rem;
+        line-height: 1;
+      }
+      .nav-links {
+        display: flex;
+        gap: 8px;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--card2);
+      }
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(8,11,20,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.4rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:6px;}
-.nav-logo-dot{color:var(--amber);font-size:1.6rem;line-height:1;}
-.nav-links{display:flex;gap:8px;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;padding:6px 14px;border-radius:8px;transition:all .2s;}
-.nav-links a:hover{color:var(--text);background:var(--card2);}
+      /* HERO */
+      .hero {
+        position: relative;
+        padding: 80px 20px 64px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.25;
+      }
+      .hero-glow {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 300px;
+        background: radial-gradient(ellipse, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-badge {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 229, 255, 0.08);
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        color: var(--cyan);
+        padding: 7px 18px;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .badge-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--cyan);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+      }
+      .hero h1 {
+        position: relative;
+        font-family: var(--font-head);
+        font-size: clamp(2.4rem, 6vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+        color: var(--text);
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--cyan);
+        text-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
+      }
+      .hero-sub {
+        position: relative;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 520px;
+        margin: 0 auto 12px;
+        font-weight: 400;
+      }
+      .hero-tags {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+      .hero-tag {
+        background: var(--card);
+        border: 1px solid var(--border2);
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 6px;
+      }
 
-/* HERO */
-.hero{position:relative;padding:80px 20px 64px;text-align:center;overflow:hidden;}
-.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.25;}
-.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,229,255,0.1) 0%,transparent 70%);pointer-events:none;}
-.hero-badge{position:relative;display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);color:var(--cyan);padding:7px 18px;border-radius:100px;font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
-.badge-dot{width:7px;height:7px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
-.hero h1{position:relative;font-family:var(--font-head);font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:20px;color:var(--text);}
-.hero h1 em{font-style:normal;color:var(--cyan);text-shadow:0 0 40px rgba(0,229,255,0.4);}
-.hero-sub{position:relative;color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 12px;font-weight:400;}
-.hero-tags{position:relative;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px;}
-.hero-tag{background:var(--card);border:1px solid var(--border2);color:var(--muted);font-size:0.78rem;font-weight:500;padding:5px 12px;border-radius:6px;}
+      /* MAIN WRAP */
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .wide-wrap {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-/* MAIN WRAP */
-.wrap{max-width:860px;margin:0 auto;padding:0 20px;}
-.wide-wrap{max-width:1060px;margin:0 auto;padding:0 20px;}
+      /* TOOL CARD */
+      .tool-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px rgba(0, 229, 255, 0.04),
+          0 24px 64px rgba(0, 0, 0, 0.4);
+        margin-bottom: 40px;
+      }
+      .tool-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--border);
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        padding: 18px 20px;
+        font-family: var(--font-head);
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        border-bottom: 2px solid transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .tab-btn.active {
+        color: var(--cyan);
+        border-bottom-color: var(--cyan);
+        background: rgba(0, 229, 255, 0.04);
+      }
+      .tab-btn:hover:not(.active) {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .tab-panel {
+        display: none;
+        padding: 28px 28px 24px;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+      @media (max-width: 600px) {
+        .tab-panel {
+          padding: 20px 16px;
+        }
+      }
+      .field-label {
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .field-label::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--border2);
+      }
+      textarea.tool-input {
+        width: 100%;
+        min-height: 120px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        padding: 16px;
+        resize: vertical;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        line-height: 1.7;
+        -webkit-appearance: none;
+      }
+      textarea.tool-input:focus {
+        border-color: var(--cyan2);
+        box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+      }
+      textarea.tool-input::placeholder {
+        color: var(--dim);
+      }
+      .char-count {
+        font-size: 0.75rem;
+        color: var(--dim);
+        margin-top: 6px;
+        text-align: right;
+        font-family: var(--font-mono);
+      }
+      .output-wrap {
+        margin-top: 20px;
+      }
+      .output-box {
+        width: 100%;
+        min-height: 100px;
+        background: rgba(0, 229, 255, 0.03);
+        border: 1px solid rgba(0, 229, 255, 0.12);
+        border-radius: 12px;
+        padding: 16px;
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
+        color: var(--text);
+        word-break: break-all;
+        line-height: 1.9;
+        position: relative;
+      }
+      .dot {
+        color: var(--cyan);
+      }
+      .dash {
+        color: var(--amber);
+      }
+      .slash {
+        color: var(--dim);
+      }
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--cyan);
+        color: #080b14;
+      }
+      .btn-primary:hover {
+        background: #33ecff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+      }
+      .btn-amber {
+        background: var(--amber);
+        color: #080b14;
+      }
+      .btn-amber:hover {
+        background: #ffc933;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(255, 179, 0, 0.3);
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border2);
+        color: var(--muted);
+      }
+      .btn-ghost:hover {
+        border-color: var(--cyan2);
+        color: var(--cyan);
+        background: rgba(0, 229, 255, 0.06);
+      }
+      .tip {
+        font-size: 0.78rem;
+        color: var(--dim);
+        margin-top: 12px;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.02);
+        border-left: 2px solid var(--border2);
+        border-radius: 0 8px 8px 0;
+      }
+      .tip strong {
+        color: var(--amber);
+      }
 
-/* TOOL CARD */
-.tool-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,229,255,0.04),0 24px 64px rgba(0,0,0,0.4);margin-bottom:40px;}
-.tool-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-.tab-btn{background:transparent;border:none;padding:18px 20px;font-family:var(--font-head);font-size:0.9rem;font-weight:600;letter-spacing:0.5px;color:var(--muted);cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:8px;}
-.tab-btn.active{color:var(--cyan);border-bottom-color:var(--cyan);background:rgba(0,229,255,0.04);}
-.tab-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,0.02);}
-.tab-panel{display:none;padding:28px 28px 24px;}
-.tab-panel.active{display:block;}
-@media(max-width:600px){.tab-panel{padding:20px 16px;}}
-.field-label{font-family:var(--font-head);font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.field-label::before{content:'';width:16px;height:1px;background:var(--border2);}
-textarea.tool-input{width:100%;min-height:120px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:0.95rem;padding:16px;resize:vertical;outline:none;transition:border-color .2s,box-shadow .2s;line-height:1.7;-webkit-appearance:none;}
-textarea.tool-input:focus{border-color:var(--cyan2);box-shadow:0 0 0 3px rgba(0,229,255,0.08);}
-textarea.tool-input::placeholder{color:var(--dim);}
-.char-count{font-size:0.75rem;color:var(--dim);margin-top:6px;text-align:right;font-family:var(--font-mono);}
-.output-wrap{margin-top:20px;}
-.output-box{width:100%;min-height:100px;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.12);border-radius:12px;padding:16px;font-family:var(--font-mono);font-size:0.95rem;color:var(--text);word-break:break-all;line-height:1.9;position:relative;}
-.dot{color:var(--cyan);}
-.dash{color:var(--amber);}
-.slash{color:var(--dim);}
-.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:10px;border:none;font-family:var(--font-body);font-size:0.875rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.btn-primary{background:var(--cyan);color:#080b14;}
-.btn-primary:hover{background:#33ecff;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,229,255,0.3);}
-.btn-amber{background:var(--amber);color:#080b14;}
-.btn-amber:hover{background:#ffc933;transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,179,0,0.3);}
-.btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--muted);}
-.btn-ghost:hover{border-color:var(--cyan2);color:var(--cyan);background:rgba(0,229,255,0.06);}
-.tip{font-size:0.78rem;color:var(--dim);margin-top:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-left:2px solid var(--border2);border-radius:0 8px 8px 0;}
-.tip strong{color:var(--amber);}
+      /* REF CHART */
+      .ref-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+      .ref-header {
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        transition: background 0.2s;
+      }
+      .ref-header:hover {
+        background: var(--card2);
+      }
+      .ref-arrow {
+        color: var(--muted);
+        font-size: 0.8rem;
+        transition: transform 0.3s;
+      }
+      .ref-body {
+        display: none;
+        padding: 20px;
+        border-top: 1px solid var(--border);
+      }
+      .ref-body.open {
+        display: block;
+      }
+      .ref-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+        gap: 8px;
+      }
+      .ref-item {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 8px;
+        text-align: center;
+        transition: border-color 0.2s;
+      }
+      .ref-item:hover {
+        border-color: var(--cyan2);
+      }
+      .ref-char {
+        font-family: var(--font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--cyan);
+        display: block;
+      }
+      .ref-code {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 3px;
+        display: block;
+      }
 
-/* REF CHART */
-.ref-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:40px;}
-.ref-header{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-head);font-weight:600;font-size:0.9rem;letter-spacing:0.5px;transition:background .2s;}
-.ref-header:hover{background:var(--card2);}
-.ref-arrow{color:var(--muted);font-size:0.8rem;transition:transform .3s;}
-.ref-body{display:none;padding:20px;border-top:1px solid var(--border);}
-.ref-body.open{display:block;}
-.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px;}
-.ref-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 8px;text-align:center;transition:border-color .2s;}
-.ref-item:hover{border-color:var(--cyan2);}
-.ref-char{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--cyan);display:block;}
-.ref-code{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);margin-top:3px;display:block;}
+      /* SECTION TITLE */
+      .sec-head {
+        margin-bottom: 32px;
+      }
+      .sec-label {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 10px;
+      }
+      .sec-title {
+        font-family: var(--font-head);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+      .sec-title em {
+        font-style: normal;
+        color: var(--amber);
+      }
+      .sec-sub {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
 
-/* SECTION TITLE */
-.sec-head{margin-bottom:32px;}
-.sec-label{font-family:var(--font-head);font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
-.sec-title{font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--text);letter-spacing:-0.5px;line-height:1.2;}
-.sec-title em{font-style:normal;color:var(--amber);}
-.sec-sub{color:var(--muted);font-size:0.95rem;margin-top:8px;}
+      /* FEATURES */
+      .section {
+        padding-bottom: 60px;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .feat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .feat-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-3px);
+      }
+      .feat-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 14px;
+      }
+      .feat-card h3 {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .feat-card p {
+        color: var(--muted);
+        font-size: 0.83rem;
+        line-height: 1.6;
+      }
 
-/* FEATURES */
-.section{padding-bottom:60px;}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
-.feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color .25s,transform .25s;}
-.feat-card:hover{border-color:var(--border2);transform:translateY(-3px);}
-.feat-icon{width:42px;height:42px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:14px;}
-.feat-card h3{font-family:var(--font-head);font-weight:700;font-size:0.95rem;color:var(--text);margin-bottom:6px;}
-.feat-card p{color:var(--muted);font-size:0.83rem;line-height:1.6;}
+      /* WHO BENEFITS */
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+      }
+      .who-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px 16px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        transition: border-color 0.2s;
+      }
+      .who-card:hover {
+        border-color: var(--border2);
+      }
+      .who-icon {
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .who-card h4 {
+        font-family: var(--font-head);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .who-card p {
+        color: var(--muted);
+        font-size: 0.78rem;
+        line-height: 1.55;
+      }
 
-/* WHO BENEFITS */
-.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.who-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 16px;display:flex;align-items:flex-start;gap:12px;transition:border-color .2s;}
-.who-card:hover{border-color:var(--border2);}
-.who-icon{font-size:1.4rem;flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;}
-.who-card h4{font-family:var(--font-head);font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:4px;}
-.who-card p{color:var(--muted);font-size:0.78rem;line-height:1.55;}
+      /* ARTICLE */
+      .article {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 48px 44px;
+        margin-bottom: 40px;
+      }
+      @media (max-width: 640px) {
+        .article {
+          padding: 28px 20px;
+        }
+      }
+      .article h2 {
+        font-family: var(--font-head);
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--text);
+        margin: 36px 0 14px;
+        padding-left: 16px;
+        border-left: 3px solid var(--cyan);
+      }
+      .article h2:first-child {
+        margin-top: 0;
+      }
+      .article h3 {
+        font-family: var(--font-head);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--amber);
+        margin: 26px 0 10px;
+      }
+      .article p {
+        color: #b0bccf;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+        line-height: 1.85;
+      }
+      .article ul,
+      .article ol {
+        color: #b0bccf;
+        margin-left: 22px;
+        margin-bottom: 16px;
+      }
+      .article li {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        line-height: 1.75;
+      }
+      .article strong {
+        color: var(--text);
+      }
+      .article a {
+        color: var(--cyan);
+        text-decoration: none;
+      }
+      .article a:hover {
+        text-decoration: underline;
+      }
+      .article code {
+        font-family: var(--font-mono);
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        color: var(--cyan);
+      }
+      .info-box {
+        background: rgba(0, 229, 255, 0.05);
+        border: 1px solid rgba(0, 229, 255, 0.18);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 20px 0;
+      }
+      .info-box p {
+        margin: 0;
+        font-size: 0.88rem;
+      }
 
-/* ARTICLE */
-.article{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px 44px;margin-bottom:40px;}
-@media(max-width:640px){.article{padding:28px 20px;}}
-.article h2{font-family:var(--font-head);font-size:1.35rem;font-weight:800;color:var(--text);margin:36px 0 14px;padding-left:16px;border-left:3px solid var(--cyan);}
-.article h2:first-child{margin-top:0;}
-.article h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--amber);margin:26px 0 10px;}
-.article p{color:#b0bccf;font-size:0.95rem;margin-bottom:16px;line-height:1.85;}
-.article ul,.article ol{color:#b0bccf;margin-left:22px;margin-bottom:16px;}
-.article li{font-size:0.95rem;margin-bottom:8px;line-height:1.75;}
-.article strong{color:var(--text);}
-.article a{color:var(--cyan);text-decoration:none;}
-.article a:hover{text-decoration:underline;}
-.article code{font-family:var(--font-mono);background:var(--bg2);border:1px solid var(--border2);padding:2px 7px;border-radius:5px;font-size:0.85rem;color:var(--cyan);}
-.info-box{background:rgba(0,229,255,0.05);border:1px solid rgba(0,229,255,0.18);border-radius:10px;padding:16px 20px;margin:20px 0;}
-.info-box p{margin:0;font-size:0.88rem;}
+      /* FAQ */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .faq-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .faq-q {
+        padding: 17px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.92rem;
+        user-select: none;
+        transition: background 0.2s;
+      }
+      .faq-q:hover {
+        background: var(--card2);
+      }
+      .faq-arr {
+        color: var(--dim);
+        transition: transform 0.3s;
+        font-size: 0.75rem;
+      }
+      .faq-item.open .faq-arr {
+        transform: rotate(180deg);
+      }
+      .faq-a {
+        display: none;
+        padding: 0 20px 16px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.75;
+      }
+      .faq-item.open .faq-a {
+        display: block;
+      }
 
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;gap:10px;}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.faq-q{padding:17px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-head);font-weight:600;font-size:0.92rem;user-select:none;transition:background .2s;}
-.faq-q:hover{background:var(--card2);}
-.faq-arr{color:var(--dim);transition:transform .3s;font-size:0.75rem;}
-.faq-item.open .faq-arr{transform:rotate(180deg);}
-.faq-a{display:none;padding:0 20px 16px;color:var(--muted);font-size:0.88rem;line-height:1.75;}
-.faq-item.open .faq-a{display:block;}
+      /* RELATED */
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+      }
+      .rel-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        text-decoration: none;
+        color: var(--text);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .rel-card:hover {
+        border-color: var(--amber2);
+        transform: translateY(-2px);
+      }
+      .rel-card span:first-child {
+        font-size: 1.2rem;
+      }
+      .rel-card span:last-child {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .rel-card:hover span:last-child {
+        color: var(--text);
+      }
 
-/* RELATED */
-.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.rel-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s;display:flex;align-items:center;gap:10px;}
-.rel-card:hover{border-color:var(--amber2);transform:translateY(-2px);}
-.rel-card span:first-child{font-size:1.2rem;}
-.rel-card span:last-child{font-size:0.82rem;font-weight:600;color:var(--muted);}
-.rel-card:hover span:last-child{color:var(--text);}
+      /* RATING */
+      .rate-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 32px;
+        margin-bottom: 32px;
+      }
+      .rate-title {
+        font-family: var(--font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text);
+      }
+      .stars {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+      .star {
+        font-size: 2rem;
+        cursor: pointer;
+        filter: grayscale(1) brightness(0.5);
+        transition:
+          filter 0.15s,
+          transform 0.15s;
+      }
+      .star.active,
+      .star:hover {
+        filter: none;
+        transform: scale(1.15);
+      }
 
-/* RATING */
-.rate-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:32px;}
-.rate-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--text);}
-.stars{display:flex;gap:6px;margin-bottom:18px;}
-.star{font-size:2rem;cursor:pointer;filter:grayscale(1) brightness(0.5);transition:filter .15s,transform .15s;}
-.star.active,.star:hover{filter:none;transform:scale(1.15);}
+      .like-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .vote-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 10px 20px;
+        border-radius: 100px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+      }
+      .vote-btn.like:hover,
+      .vote-btn.like.active {
+        background: rgba(0, 230, 118, 0.1);
+        border-color: var(--green);
+        color: var(--green);
+      }
+      .vote-btn.dislike:hover,
+      .vote-btn.dislike.active {
+        background: rgba(255, 82, 82, 0.1);
+        border-color: var(--red);
+        color: var(--red);
+      }
+      .comment-name,
+      .comment-textarea {
+        width: 100%;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+        padding: 12px 16px;
+        outline: none;
+        margin-bottom: 10px;
+        transition: border-color 0.2s;
+      }
+      .comment-name:focus,
+      .comment-textarea:focus {
+        border-color: var(--cyan2);
+      }
+      .comment-textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+      .comment-submit {
+        background: var(--cyan);
+        color: #080b14;
+        border: none;
+        padding: 10px 26px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+      }
+      .comment-submit:hover {
+        background: #33ecff;
+        transform: translateY(-1px);
+      }
 
-.like-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
-.vote-btn{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:100px;cursor:pointer;font-size:0.875rem;font-weight:600;font-family:var(--font-body);transition:all .2s;}
-.vote-btn.like:hover,.vote-btn.like.active{background:rgba(0,230,118,0.1);border-color:var(--green);color:var(--green);}
-.vote-btn.dislike:hover,.vote-btn.dislike.active{background:rgba(255,82,82,0.1);border-color:var(--red);color:var(--red);}
-.comment-name,.comment-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:0.875rem;padding:12px 16px;outline:none;margin-bottom:10px;transition:border-color .2s;}
-.comment-name:focus,.comment-textarea:focus{border-color:var(--cyan2);}
-.comment-textarea{min-height:80px;resize:vertical;}
-.comment-submit{background:var(--cyan);color:#080b14;border:none;padding:10px 26px;border-radius:10px;font-weight:700;font-size:0.875rem;cursor:pointer;font-family:var(--font-body);transition:all .2s;}
-.comment-submit:hover{background:#33ecff;transform:translateY(-1px);}
+      .c-item {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+      }
+      .c-author {
+        font-weight: 700;
+        font-size: 0.82rem;
+        color: var(--cyan);
+        margin-bottom: 4px;
+      }
+      .c-text {
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
 
-.c-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
-.c-author{font-weight:700;font-size:0.82rem;color:var(--cyan);margin-bottom:4px;}
-.c-text{color:var(--muted);font-size:0.85rem;line-height:1.6;}
+      /* CTA */
+      .cta {
+        background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 52px 40px;
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(255, 179, 0, 0.08), transparent 70%);
+        pointer-events: none;
+      }
+      .cta h2 {
+        font-family: var(--font-head);
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--text);
+        margin-bottom: 10px;
+      }
+      .cta p {
+        color: var(--muted);
+        margin-bottom: 28px;
+        font-size: 0.95rem;
+      }
+      .cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--amber);
+        color: #080b14;
+        padding: 14px 32px;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .cta a:hover {
+        background: #ffc933;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(255, 179, 0, 0.3);
+      }
 
-/* CTA */
-.cta{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--border);border-radius:20px;padding:52px 40px;text-align:center;margin-bottom:60px;position:relative;overflow:hidden;}
-.cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,179,0,0.08),transparent 70%);pointer-events:none;}
-.cta h2{font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--text);margin-bottom:10px;}
-.cta p{color:var(--muted);margin-bottom:28px;font-size:0.95rem;}
-.cta a{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#080b14;padding:14px 32px;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all .2s;}
-.cta a:hover{background:#ffc933;transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,179,0,0.3);}
+      /* FOOTER */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 44px 20px 24px;
+      }
+      .footer-inner {
+        max-width: 1060px;
+        margin: 0 auto;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 28px;
+        margin-bottom: 32px;
+      }
+      .footer-col h4 {
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 14px;
+      }
+      .footer-col a {
+        display: block;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: var(--cyan);
+      }
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .footer-copy {
+        color: var(--dim);
+        font-size: 0.8rem;
+      }
 
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 20px 24px;}
-.footer-inner{max-width:1060px;margin:0 auto;}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:32px;}
-.footer-col h4{font-family:var(--font-head);font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:14px;}
-.footer-col a{display:block;color:var(--muted);font-size:0.85rem;text-decoration:none;margin-bottom:8px;transition:color .2s;}
-.footer-col a:hover{color:var(--cyan);}
-.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-.footer-copy{color:var(--dim);font-size:0.8rem;}
+      /* TOAST */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: var(--cyan);
+        color: #080b14;
+        padding: 10px 24px;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
 
-/* TOAST */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--cyan);color:#080b14;padding:10px 24px;border-radius:100px;font-weight:700;font-size:0.875rem;z-index:999;opacity:0;pointer-events:none;transition:all .3s;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        .features-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .btn-row {
+          gap: 8px;
+        }
+        .btn {
+          padding: 9px 14px;
+          font-size: 0.82rem;
+        }
+        .article {
+          padding: 24px 16px;
+        }
+        .cta {
+          padding: 36px 20px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi Morse Code Converter","url":"https://toolyfi.com/morse-code-converter.html","description":"A browser-based tool for converting supported English text to International Morse code and decoding dot-dash Morse notation to text.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"Morse Code Converter","item":"https://toolyfi.com/morse-code-converter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert text to Morse code?","acceptedAnswer":{"@type":"Answer","text":"Enter supported English letters, digits, or included punctuation in the Text to Morse panel. The page displays Morse tokens separated by spaces, with a slash between words."}},{"@type":"Question","name":"How do I decode Morse code to text?","acceptedAnswer":{"@type":"Answer","text":"Enter dots and dashes with one space between letters and a slash between words. The page decodes the supported tokens into text."}},{"@type":"Question","name":"Which Morse code notation does this tool use?","acceptedAnswer":{"@type":"Answer","text":"The page uses International Morse code notation, written with dots and dashes. It uses spaces for letter boundaries and a slash for word boundaries in the text representation."}},{"@type":"Question","name":"What happens to unsupported characters?","acceptedAnswer":{"@type":"Answer","text":"Unsupported text characters and unrecognized Morse tokens are shown as a hash marker so they can be reviewed rather than silently changed."}},{"@type":"Question","name":"Can I listen to the converted Morse code?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Text to Morse panel includes an optional browser audio playback control for the generated dot-and-dash pattern."}},{"@type":"Question","name":"Is SOS written as three letters in Morse?","acceptedAnswer":{"@type":"Answer","text":"SOS is commonly represented as three dots, three dashes, and three dots: ... --- .... In emergency communication, established procedures and local guidance take priority over any online tool."}},{"@type":"Question","name":"Does a slash separate Morse code words?","acceptedAnswer":{"@type":"Answer","text":"On this page, a slash separates words in typed Morse code, while a single space separates individual letter tokens."}},{"@type":"Question","name":"Should I verify a decoded message?","acceptedAnswer":{"@type":"Answer","text":"Yes. Compare important messages with the source and a reliable reference, especially where a single token, spacing boundary, or punctuation mark could change the meaning."}}]}
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas — warm ivory, ink navy, and coral; keep every interaction calm, direct, and reviewable. */
+      :root {
+        --bg: #faf8f4;
+        --bg2: #fffdf9;
+        --bg3: #f5f0ea;
+        --card: #fffdf9;
+        --card2: #f8f4ee;
+        --border: #e7ded4;
+        --border2: #d9cfc4;
+        --text: #172437;
+        --muted: #5b6775;
+        --dim: #788493;
+        --cyan: #ef6c54;
+        --cyan2: #c9523f;
+        --amber: #f4b660;
+        --amber2: #c99036;
+        --green: #2a8e63;
+        --red: #b94545;
+        --font-head: "Fraunces", Georgia, serif;
+        --font-body: "Plus Jakarta Sans", Arial, sans-serif;
+        --font-mono: "SFMono-Regular", Consolas, monospace;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+      }
+      body::before {
+        display: none;
+      }
+      nav {
+        background: #172437;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .nav-logo {
+        color: #fffdf9;
+      }
+      .nav-logo img {
+        width: 116px;
+        height: 40px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .nav-links a {
+        color: #e8ded4;
+      }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fffdf9;
+      }
+      .hero {
+        background: linear-gradient(118deg, #172437 0%, #1e3048 52%, #785150 100%);
+        padding-top: 72px;
+      }
+      .hero-grid-bg {
+        opacity: 0.13;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+      }
+      .hero-glow {
+        background: radial-gradient(ellipse, rgba(239, 108, 84, 0.27) 0%, transparent 69%);
+      }
+      .hero h1 {
+        color: #fffdf9;
+      }
+      .hero h1 em {
+        color: #f47b64;
+        text-shadow: none;
+      }
+      .hero-sub {
+        color: #f0e9e3;
+      }
+      .hero-badge {
+        color: #fffdf9;
+        background: rgba(255, 255, 255, 0.11);
+        border-color: rgba(255, 255, 255, 0.27);
+        letter-spacing: 0.7px;
+      }
+      .badge-dot {
+        background: #f47b64;
+      }
+      .hero-tag {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #fffdf9;
+      }
+      .tool-card,
+      .ref-card,
+      .feat-card,
+      .who-card,
+      .article,
+      .faq-item {
+        box-shadow: 0 14px 36px rgba(23, 36, 55, 0.08);
+        border-color: var(--border);
+      }
+      .tool-card {
+        border-radius: 18px;
+      }
+      .tab-btn {
+        font-family: var(--font-body);
+        color: var(--muted);
+      }
+      .tab-btn.active {
+        color: var(--cyan2);
+        border-color: var(--cyan);
+        background: #fff6f2;
+      }
+      .tab-btn:hover:not(.active) {
+        color: var(--text);
+        background: var(--card2);
+      }
+      textarea.tool-input {
+        background: #fffdf9;
+        color: var(--text);
+        border-color: var(--border2);
+      }
+      textarea.tool-input:focus {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.14);
+      }
+      .output-box {
+        background: #fff8f3;
+        border-color: #f3c2b6;
+        color: var(--text);
+      }
+      .btn-primary {
+        background: var(--cyan);
+        color: #fffdf9;
+      }
+      .btn-primary:hover {
+        background: var(--cyan2);
+        box-shadow: 0 6px 18px rgba(239, 108, 84, 0.23);
+      }
+      .btn-amber {
+        background: #f4b660;
+      }
+      .btn-amber:hover {
+        background: #d99835;
+      }
+      .btn-ghost {
+        border-color: var(--border2);
+        color: var(--text);
+        background: #fffdf9;
+      }
+      .btn-ghost:hover {
+        border-color: var(--cyan);
+        color: var(--cyan2);
+        background: #fff6f2;
+      }
+      .tip {
+        background: #f8f4ee;
+        border-color: #e0d3c6;
+        color: #5b6775;
+      }
+      .tip strong {
+        color: #172437;
+      }
+      .ref-header:hover,
+      .faq-q:hover {
+        background: #f8f4ee;
+      }
+      .ref-char,
+      .sec-label {
+        color: var(--cyan2);
+      }
+      .sec-title,
+      .feat-card h3,
+      .who-card h4,
+      .article strong {
+        color: var(--text);
+      }
+      .sec-title em {
+        color: var(--cyan2);
+      }
+      .feat-card:hover,
+      .who-card:hover {
+        border-color: #f3c2b6;
+      }
+      .article {
+        padding: 48px 44px;
+        background: #fffdf9;
+      }
+      .article h2 {
+        font-family: var(--font-head);
+        border-color: var(--cyan);
+        color: var(--text);
+      }
+      .article h3 {
+        font-family: var(--font-body);
+        color: var(--cyan2);
+      }
+      .article p,
+      .article ul,
+      .article ol,
+      .faq-a {
+        color: #4d5966;
+      }
+      .article a {
+        color: #b94b3a;
+      }
+      .article code {
+        background: #f8f4ee;
+        border-color: #e7ded4;
+        color: #b94b3a;
+      }
+      .info-box {
+        background: #fff6f2;
+        border-color: #f3c2b6;
+      }
+      .rel-card {
+        background: #fffdf9;
+        border-color: var(--border);
+      }
+      .rel-card:hover {
+        border-color: var(--cyan);
+      }
+      .rel-card span:last-child {
+        color: #4d5966;
+      }
+      .rel-card:hover span:last-child {
+        color: var(--text);
+      }
+      .cta {
+        background: #172437;
+        border-color: #172437;
+      }
+      .cta h2 {
+        color: #fffdf9;
+      }
+      .cta p {
+        color: #e8ded4;
+      }
+      .cta a {
+        background: var(--cyan);
+        color: #fffdf9;
+      }
+      .cta a:hover {
+        background: #f47b64;
+        box-shadow: none;
+      }
+      footer {
+        background: #172437;
+        border-color: #172437;
+      }
+      .footer-col h4 {
+        color: #f4b660;
+      }
+      .footer-col a,
+      .footer-copy {
+        color: #e8ded4;
+      }
+      .footer-col a:hover {
+        color: #f47b64;
+      }
+      .toast {
+        background: var(--cyan);
+        color: #fffdf9;
+      }
+      @media (max-width: 600px) {
+        .article {
+          padding: 28px 20px;
+        }
+        .nav-logo img {
+          width: 100px;
+        }
+      }
+    </style>
+    <style>
+      /* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */
+      .toolyfi-visual {
+        max-width: 1040px;
+        margin: 0 auto 42px;
+        padding: 0 20px;
+      }
+      .toolyfi-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        border: 1px solid #e7ded4;
+        border-radius: 18px;
+        background: #f7f2eb;
+        box-shadow: 0 18px 40px rgba(23, 36, 55, 0.09);
+      }
+      .toolyfi-visual figcaption {
+        margin-top: 9px;
+        color: #607080;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .toolyfi-visual {
+          padding: 0 16px;
+          margin-bottom: 28px;
+        }
+        .toolyfi-visual img {
+          border-radius: 13px;
+        }
+        .toolyfi-visual figcaption {
+          font-size: 0.72rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="index.html" class="nav-logo" aria-label="Toolyfi home"
+        ><img src="logo.png" alt="Toolyfi"
+      /></a>
+      <div class="nav-links">
+        <a href="https://toolyfi.com/#tools">Tools</a>
+      </div>
+    </nav>
 
-@media(max-width:600px){
-  .nav-links{display:none;}
-  .features-grid{grid-template-columns:1fr 1fr;}
-  .btn-row{gap:8px;}
-  .btn{padding:9px 14px;font-size:0.82rem;}
-  .article{padding:24px 16px;}
-  .cta{padding:36px 20px;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-}
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi Morse Code Converter","url":"https://toolyfi.com/morse-code-converter.html","description":"A browser-based tool for converting supported English text to International Morse code and decoding dot-dash Morse notation to text.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Text Tools","item":"https://toolyfi.com/#tools"},{"@type":"ListItem","position":3,"name":"Morse Code Converter","item":"https://toolyfi.com/morse-code-converter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert text to Morse code?","acceptedAnswer":{"@type":"Answer","text":"Enter supported English letters, digits, or included punctuation in the Text to Morse panel. The page displays Morse tokens separated by spaces, with a slash between words."}},{"@type":"Question","name":"How do I decode Morse code to text?","acceptedAnswer":{"@type":"Answer","text":"Enter dots and dashes with one space between letters and a slash between words. The page decodes the supported tokens into text."}},{"@type":"Question","name":"Which Morse code notation does this tool use?","acceptedAnswer":{"@type":"Answer","text":"The page uses International Morse code notation, written with dots and dashes. It uses spaces for letter boundaries and a slash for word boundaries in the text representation."}},{"@type":"Question","name":"What happens to unsupported characters?","acceptedAnswer":{"@type":"Answer","text":"Unsupported text characters and unrecognized Morse tokens are shown as a hash marker so they can be reviewed rather than silently changed."}},{"@type":"Question","name":"Can I listen to the converted Morse code?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Text to Morse panel includes an optional browser audio playback control for the generated dot-and-dash pattern."}},{"@type":"Question","name":"Is SOS written as three letters in Morse?","acceptedAnswer":{"@type":"Answer","text":"SOS is commonly represented as three dots, three dashes, and three dots: ... --- .... In emergency communication, established procedures and local guidance take priority over any online tool."}},{"@type":"Question","name":"Does a slash separate Morse code words?","acceptedAnswer":{"@type":"Answer","text":"On this page, a slash separates words in typed Morse code, while a single space separates individual letter tokens."}},{"@type":"Question","name":"Should I verify a decoded message?","acceptedAnswer":{"@type":"Answer","text":"Yes. Compare important messages with the source and a reliable reference, especially where a single token, spacing boundary, or punctuation mark could change the meaning."}}]}</script>
-<style>
-/* Toolyfi Editorial Utility Atlas — warm ivory, ink navy, and coral; keep every interaction calm, direct, and reviewable. */
-:root{--bg:#FAF8F4;--bg2:#FFFDF9;--bg3:#F5F0EA;--card:#FFFDF9;--card2:#F8F4EE;--border:#E7DED4;--border2:#D9CFC4;--text:#172437;--muted:#5B6775;--dim:#788493;--cyan:#EF6C54;--cyan2:#C9523F;--amber:#F4B660;--amber2:#C99036;--green:#2A8E63;--red:#B94545;--font-head:'Fraunces',Georgia,serif;--font-body:'Plus Jakarta Sans',Arial,sans-serif;--font-mono:'SFMono-Regular',Consolas,monospace;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body)}body::before{display:none}nav{background:#172437;border-color:rgba(255,255,255,.12)}.nav-logo{color:#FFFDF9}.nav-logo img{width:116px;height:40px;object-fit:contain;object-position:left center}.nav-links a{color:#E8DED4}.nav-links a:hover{background:rgba(255,255,255,.12);color:#FFFDF9}.hero{background:linear-gradient(118deg,#172437 0%,#1E3048 52%,#785150 100%);padding-top:72px}.hero-grid-bg{opacity:.13;background-image:linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px)}.hero-glow{background:radial-gradient(ellipse,rgba(239,108,84,.27) 0%,transparent 69%)}.hero h1{color:#FFFDF9}.hero h1 em{color:#F47B64;text-shadow:none}.hero-sub{color:#F0E9E3}.hero-badge{color:#FFFDF9;background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.27);letter-spacing:.7px}.badge-dot{background:#F47B64}.hero-tag{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#FFFDF9}.tool-card,.ref-card,.feat-card,.who-card,.article,.faq-item{box-shadow:0 14px 36px rgba(23,36,55,.08);border-color:var(--border)}.tool-card{border-radius:18px}.tab-btn{font-family:var(--font-body);color:var(--muted)}.tab-btn.active{color:var(--cyan2);border-color:var(--cyan);background:#FFF6F2}.tab-btn:hover:not(.active){color:var(--text);background:var(--card2)}textarea.tool-input{background:#FFFDF9;color:var(--text);border-color:var(--border2)}textarea.tool-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(239,108,84,.14)}.output-box{background:#FFF8F3;border-color:#F3C2B6;color:var(--text)}.btn-primary{background:var(--cyan);color:#FFFDF9}.btn-primary:hover{background:var(--cyan2);box-shadow:0 6px 18px rgba(239,108,84,.23)}.btn-amber{background:#F4B660}.btn-amber:hover{background:#D99835}.btn-ghost{border-color:var(--border2);color:var(--text);background:#FFFDF9}.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan2);background:#FFF6F2}.tip{background:#F8F4EE;border-color:#E0D3C6;color:#5B6775}.tip strong{color:#172437}.ref-header:hover,.faq-q:hover{background:#F8F4EE}.ref-char,.sec-label{color:var(--cyan2)}.sec-title,.feat-card h3,.who-card h4,.article strong{color:var(--text)}.sec-title em{color:var(--cyan2)}.feat-card:hover,.who-card:hover{border-color:#F3C2B6}.article{padding:48px 44px;background:#FFFDF9}.article h2{font-family:var(--font-head);border-color:var(--cyan);color:var(--text)}.article h3{font-family:var(--font-body);color:var(--cyan2)}.article p,.article ul,.article ol,.faq-a{color:#4D5966}.article a{color:#B94B3A}.article code{background:#F8F4EE;border-color:#E7DED4;color:#B94B3A}.info-box{background:#FFF6F2;border-color:#F3C2B6}.rel-card{background:#FFFDF9;border-color:var(--border)}.rel-card:hover{border-color:var(--cyan)}.rel-card span:last-child{color:#4D5966}.rel-card:hover span:last-child{color:var(--text)}.cta{background:#172437;border-color:#172437}.cta h2{color:#FFFDF9}.cta p{color:#E8DED4}.cta a{background:var(--cyan);color:#FFFDF9}.cta a:hover{background:#F47B64;box-shadow:none}footer{background:#172437;border-color:#172437}.footer-col h4{color:#F4B660}.footer-col a,.footer-copy{color:#E8DED4}.footer-col a:hover{color:#F47B64}.toast{background:var(--cyan);color:#FFFDF9}@media(max-width:600px){.article{padding:28px 20px}.nav-logo img{width:100px}}
-</style>
-<style>/* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */.toolyfi-visual{max-width:1040px;margin:0 auto 42px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #E7DED4;border-radius:18px;background:#F7F2EB;box-shadow:0 18px 40px rgba(23,36,55,.09)}.toolyfi-visual figcaption{margin-top:9px;color:#607080;font-size:.78rem;line-height:1.45;text-align:center}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}.toolyfi-visual figcaption{font-size:.72rem}}</style><link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo" aria-label="Toolyfi home"><img src="logo.png" alt="Toolyfi"></a>
-  <div class="nav-links">
-    <a href="https://toolyfi.com/#tools">Tools</a>
-
-  </div>
-</nav>
-
-<!-- BREADCRUMB -->
-<div style="padding:10px 24px;font-size:0.8rem;color:var(--dim);border-bottom:1px solid var(--border);background:var(--bg2);">
-  <a href="https://toolyfi.com" style="color:var(--muted);text-decoration:none;">Home</a>
-  <span style="margin:0 6px;">›</span>
-  <a href="https://toolyfi.com/#tools" style="color:var(--muted);text-decoration:none;">Tools</a>
-  <span style="margin:0 6px;">›</span>
-  <span style="color:var(--cyan);">Morse Code Converter</span>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-badge"><span class="badge-dot"></span> Free Online Tool</div>
-  <h1>Morse Code<br><em>Converter</em></h1>
-  <p class="hero-sub">Translate text to Morse code and decode Morse back to text — with live audio playback.</p>
-  <div class="hero-tags">
-    <span class="hero-tag">⚡ Real-time</span>
-    <span class="hero-tag">🔊 Audio Playback</span>
-    <span class="hero-tag">🔄 Bidirectional</span>
-    <span class="hero-tag">📋 One-Click Copy</span>
-    <span class="hero-tag">🔒 Browser-side conversion</span>
-  </div>
-</section><figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-morse-code-hero.webp" width="1200" height="800" alt="Coral Morse dots and dashes moving across an ink-navy relay grid toward abstract character blocks." decoding="async"><figcaption>Toolyfi visual guide: a unique illustration of this tool’s core task.</figcaption></figure>
-
-<!-- TOOL -->
-<div class="wrap">
-  <div class="tool-card">
-    <div class="tool-tabs">
-      <button class="tab-btn active" onclick="switchTab('t2m',this)">📝 Text → Morse</button>
-      <button class="tab-btn" onclick="switchTab('m2t',this)">📡 Morse → Text</button>
+    <!-- BREADCRUMB -->
+    <div
+      style="
+        padding: 10px 24px;
+        font-size: 0.8rem;
+        color: var(--dim);
+        border-bottom: 1px solid var(--border);
+        background: var(--bg2);
+      "
+    >
+      <a href="https://toolyfi.com" style="color: var(--muted); text-decoration: none">Home</a>
+      <span style="margin: 0 6px">›</span>
+      <a href="https://toolyfi.com/#tools" style="color: var(--muted); text-decoration: none"
+        >Tools</a
+      >
+      <span style="margin: 0 6px">›</span>
+      <span style="color: var(--cyan)">Morse Code Converter</span>
     </div>
 
-    <div class="tab-panel active" id="t2m">
-      <div class="field-label">Your Text</div>
-      <textarea class="tool-input" id="textInput" placeholder="Type or paste text here..." oninput="textToMorse()" rows="5"></textarea>
-      <div class="char-count" id="t2mCount">0 characters</div>
-      <div class="output-wrap">
-        <div class="field-label">Morse Code Output</div>
-        <div class="output-box" id="morseOutput" style="color:var(--dim);font-style:italic;">Your Morse code will appear here...</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-badge"><span class="badge-dot"></span> Free Online Tool</div>
+      <h1>Morse Code<br /><em>Converter</em></h1>
+      <p class="hero-sub">
+        Translate text to Morse code and decode Morse back to text — with live audio playback.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">⚡ Real-time</span>
+        <span class="hero-tag">🔊 Audio Playback</span>
+        <span class="hero-tag">🔄 Bidirectional</span>
+        <span class="hero-tag">📋 One-Click Copy</span>
+        <span class="hero-tag">🔒 Browser-side conversion</span>
       </div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="copyOutput('morseOutput')">📋 Copy Morse</button>
-        <button class="btn btn-amber" onclick="playMorse()" id="playBtn">🔊 Play Audio</button>
-        <button class="btn btn-ghost" onclick="downloadMorse()">⬇ Download</button>
-        <button class="btn btn-ghost" onclick="clearT2M()">🗑 Clear</button>
+    </section>
+    <figure class="toolyfi-visual" aria-label="Tool illustration">
+      <img
+        src="images/toolyfi-morse-code-hero.webp"
+        width="1200"
+        height="800"
+        alt="Coral Morse dots and dashes moving across an ink-navy relay grid toward abstract character blocks."
+        decoding="async"
+      />
+      <figcaption>Toolyfi visual guide: a unique illustration of this tool’s core task.</figcaption>
+    </figure>
+
+    <!-- TOOL -->
+    <div class="wrap">
+      <div class="tool-card">
+        <div class="tool-tabs">
+          <button class="tab-btn active" onclick="switchTab('t2m',this)">📝 Text → Morse</button>
+          <button class="tab-btn" onclick="switchTab('m2t',this)">📡 Morse → Text</button>
+        </div>
+
+        <div class="tab-panel active" id="t2m">
+          <div class="field-label">Your Text</div>
+          <textarea
+            class="tool-input"
+            id="textInput"
+            placeholder="Type or paste text here..."
+            oninput="textToMorse()"
+            rows="5"
+          ></textarea>
+          <div class="char-count" id="t2mCount">0 characters</div>
+          <div class="output-wrap">
+            <div class="field-label">Morse Code Output</div>
+            <div class="output-box" id="morseOutput" style="color: var(--dim); font-style: italic">
+              Your Morse code will appear here...
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="copyOutput('morseOutput')">
+              📋 Copy Morse
+            </button>
+            <button class="btn btn-amber" onclick="playMorse()" id="playBtn">🔊 Play Audio</button>
+            <button class="btn btn-ghost" onclick="downloadMorse()">⬇ Download</button>
+            <button class="btn btn-ghost" onclick="clearT2M()">🗑 Clear</button>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="m2t">
+          <div class="field-label">Morse Code Input</div>
+          <textarea
+            class="tool-input"
+            id="morseInput"
+            placeholder="Enter Morse code... dots (.) and dashes (-). Space between letters, / between words."
+            oninput="morseToText()"
+            rows="5"
+          ></textarea>
+          <div class="char-count" id="m2tCount">0 characters</div>
+          <div class="output-wrap">
+            <div class="field-label">Decoded Text</div>
+            <div class="output-box" id="textOutput" style="color: var(--dim); font-style: italic">
+              Decoded text will appear here...
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="copyOutput('textOutput')">📋 Copy Text</button>
+            <button class="btn btn-ghost" onclick="clearM2T()">🗑 Clear</button>
+          </div>
+          <div class="tip">
+            💡 <strong>Format:</strong> Separate letters with space · Separate words with
+            <strong>/</strong> · Example:
+            <code style="font-family: var(--font-mono); color: var(--cyan)"
+              >.... . .-.. .-.. --- / .-- --- .-. .-.. -..</code
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- REF CHART -->
+      <div class="ref-card">
+        <div class="ref-header" onclick="toggleRef()">
+          <span>📖 Morse Code Reference Chart — A to Z, 0 to 9</span>
+          <span class="ref-arrow" id="refArrow">▼</span>
+        </div>
+        <div class="ref-body" id="refBody">
+          <div class="ref-grid" id="refGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="wide-wrap section">
+      <div class="sec-head">
+        <div class="sec-label">Why Toolyfi</div>
+        <div class="sec-title">Built for <em>speed</em> and real-world use</div>
+        <div class="sec-sub">Every feature designed for actual utility — not just looks.</div>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Instant Conversion</h3>
+          <p>Results appear as you type. No button clicks, no delays — pure real-time.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔊</div>
+          <h3>Audio Playback</h3>
+          <p>Hear authentic Morse beeps with correct ITU timing ratios — dots and dashes.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔄</div>
+          <h3>Bidirectional</h3>
+          <p>Text to Morse AND Morse to text — both directions in one clean tool.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📋</div>
+          <h3>One-Click Copy</h3>
+          <p>Copy Morse code or decoded text to clipboard instantly.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">⬇</div>
+          <h3>Download Output</h3>
+          <p>Save your Morse code as a .txt file for offline use or sharing.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📱</div>
+          <h3>Mobile Optimized</h3>
+          <p>Fully responsive — works perfectly on any screen size or device.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔒</div>
+          <h3>100% Private</h3>
+          <p>All processing happens in your browser. Your text never leaves your device.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📖</div>
+          <h3>Reference Chart</h3>
+          <p>Built-in A–Z and 0–9 chart with every Morse code character.</p>
+        </div>
       </div>
     </div>
 
-    <div class="tab-panel" id="m2t">
-      <div class="field-label">Morse Code Input</div>
-      <textarea class="tool-input" id="morseInput" placeholder="Enter Morse code... dots (.) and dashes (-). Space between letters, / between words." oninput="morseToText()" rows="5"></textarea>
-      <div class="char-count" id="m2tCount">0 characters</div>
-      <div class="output-wrap">
-        <div class="field-label">Decoded Text</div>
-        <div class="output-box" id="textOutput" style="color:var(--dim);font-style:italic;">Decoded text will appear here...</div>
+    <!-- WHO BENEFITS -->
+    <div class="wide-wrap section">
+      <div class="sec-head">
+        <div class="sec-label">Use Cases</div>
+        <div class="sec-title">Who uses this <em>tool?</em></div>
       </div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="copyOutput('textOutput')">📋 Copy Text</button>
-        <button class="btn btn-ghost" onclick="clearM2T()">🗑 Clear</button>
-      </div>
-      <div class="tip">💡 <strong>Format:</strong> Separate letters with space · Separate words with <strong>/</strong> · Example: <code style="font-family:var(--font-mono);color:var(--cyan);">.... . .-.. .-.. --- / .-- --- .-. .-.. -..</code></div>
-    </div>
-  </div>
-
-  <!-- REF CHART -->
-  <div class="ref-card">
-    <div class="ref-header" onclick="toggleRef()">
-      <span>📖 Morse Code Reference Chart — A to Z, 0 to 9</span>
-      <span class="ref-arrow" id="refArrow">▼</span>
-    </div>
-    <div class="ref-body" id="refBody">
-      <div class="ref-grid" id="refGrid"></div>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURES -->
-<div class="wide-wrap section">
-  <div class="sec-head">
-    <div class="sec-label">Why Toolyfi</div>
-    <div class="sec-title">Built for <em>speed</em> and real-world use</div>
-    <div class="sec-sub">Every feature designed for actual utility — not just looks.</div>
-  </div>
-  <div class="features-grid">
-    <div class="feat-card"><div class="feat-icon">⚡</div><h3>Instant Conversion</h3><p>Results appear as you type. No button clicks, no delays — pure real-time.</p></div>
-    <div class="feat-card"><div class="feat-icon">🔊</div><h3>Audio Playback</h3><p>Hear authentic Morse beeps with correct ITU timing ratios — dots and dashes.</p></div>
-    <div class="feat-card"><div class="feat-icon">🔄</div><h3>Bidirectional</h3><p>Text to Morse AND Morse to text — both directions in one clean tool.</p></div>
-    <div class="feat-card"><div class="feat-icon">📋</div><h3>One-Click Copy</h3><p>Copy Morse code or decoded text to clipboard instantly.</p></div>
-    <div class="feat-card"><div class="feat-icon">⬇</div><h3>Download Output</h3><p>Save your Morse code as a .txt file for offline use or sharing.</p></div>
-    <div class="feat-card"><div class="feat-icon">📱</div><h3>Mobile Optimized</h3><p>Fully responsive — works perfectly on any screen size or device.</p></div>
-    <div class="feat-card"><div class="feat-icon">🔒</div><h3>100% Private</h3><p>All processing happens in your browser. Your text never leaves your device.</p></div>
-    <div class="feat-card"><div class="feat-icon">📖</div><h3>Reference Chart</h3><p>Built-in A–Z and 0–9 chart with every Morse code character.</p></div>
-  </div>
-</div>
-
-<!-- WHO BENEFITS -->
-<div class="wide-wrap section">
-  <div class="sec-head">
-    <div class="sec-label">Use Cases</div>
-    <div class="sec-title">Who uses this <em>tool?</em></div>
-  </div>
-  <div class="who-grid">
-    <div class="who-card"><div class="who-icon">📡</div><div><h4>Ham Radio Operators</h4><p>Practice and verify Morse code for CW amateur radio contacts.</p></div></div>
-    <div class="who-card"><div class="who-icon">✈️</div><div><h4>Aviation Enthusiasts</h4><p>Decode VOR station identifiers and aviation Morse signals.</p></div></div>
-    <div class="who-card"><div class="who-icon">🎮</div><div><h4>Gamers & Escape Rooms</h4><p>Solve Morse code puzzles in video games and escape room challenges.</p></div></div>
-    <div class="who-card"><div class="who-icon">📚</div><div><h4>Students & Teachers</h4><p>Learn and teach Morse code in communications or history classes.</p></div></div>
-    <div class="who-card"><div class="who-icon">🎬</div><div><h4>Content Creators</h4><p>Add Morse code elements to videos, animations, and creative projects.</p></div></div>
-    <div class="who-card"><div class="who-icon">🔐</div><div><h4>Puzzle Lovers</h4><p>Create hidden messages and encoded challenges for friends.</p></div></div>
-    <div class="who-card"><div class="who-icon">🚨</div><div><h4>Emergency Preparedness</h4><p>Learn SOS and emergency signals for survival situations.</p></div></div>
-    <div class="who-card"><div class="who-icon">🧒</div><div><h4>Scouts & Youth Groups</h4><p>Practice Morse for scouting merit badges and camp activities.</p></div></div>
-  </div>
-</div>
-
-<!-- ARTICLE -->
-<div class="wrap">
-  <article class="article">
-    <h2>The Complete Guide to Morse Code — History, How It Works & How to Use This Converter</h2>
-    <p>Morse code is one of the most iconic communication systems ever invented. Born in the age of telegraph wires and electrical signals, it transformed how humanity communicated across vast distances. This guide covers everything: rich history, how the encoding system works, practical applications in 2026, and how to get the most from our free <strong>Morse Code Converter</strong> tool.</p>
-
-    <h2>What Is Morse Code?</h2>
-    <p>Morse code is a character-encoding scheme that represents letters, numbers, and punctuation using sequences of two distinct signal durations — <strong>dots</strong> (short signals, written as <code>.</code>) and <strong>dashes</strong> (long signals, written as <code>-</code>). Originally designed for telegraph communication, Morse code allowed messages to travel electrically over long distances before the telephone or radio existed.</p>
-    <p>Each letter and number has a unique combination of dots and dashes. The letter <strong>A</strong> is <code>.-</code>, the letter <strong>S</strong> is <code>...</code>, and the letter <strong>O</strong> is <code>---</code>. This is why SOS — the universal distress signal — is <code>... --- ...</code>, a pattern easy to transmit and easy to recognize.</p>
-    <div class="info-box"><p>📡 <strong>Key Fact:</strong> SOS was chosen not because the letters mean anything, but because the pattern <code>... --- ...</code> is unmistakably clear and easy to tap out even under extreme stress.</p></div>
-
-    <h2>A Brief History of Morse Code</h2>
-    <p>Morse code was developed in the early 1830s by <strong>Samuel Morse</strong> and his partner <strong>Alfred Vail</strong>. The first official transmission occurred on <strong>May 24, 1844</strong> — the famous message "What hath God wrought" sent from Washington D.C. to Baltimore. It was a watershed moment: messages that took days by horse could now be sent in seconds.</p>
-    <p>Over the following decades, Morse code became the backbone of global communication. Telegraph lines crisscrossed continents. Shipping companies, militaries, and news agencies depended on skilled operators — <em>telegraphers</em> — who could send and receive dozens of words per minute. With the rise of radio in the 20th century, Morse transitioned to wireless and played a critical role in both World Wars.</p>
-
-    <h3>Still Alive in 2026</h3>
-    <ul>
-      <li><strong>Amateur (Ham) Radio:</strong> CW (continuous wave Morse) contacts can cut through interference impossible for voice transmissions.</li>
-      <li><strong>Aviation:</strong> VOR navigation stations broadcast their identifier in Morse code, which pilots use to confirm the correct station.</li>
-      <li><strong>Assistive Technology:</strong> People with motor disabilities use Morse as an alternative input — a single switch can tap out dots and dashes to communicate.</li>
-      <li><strong>Pop Culture:</strong> Escape rooms, video games, and ARGs (alternate reality games) regularly feature Morse code puzzles.</li>
-      <li><strong>Emergency Signaling:</strong> SOS via flashlight, mirror, or sound remains recognized by rescue teams worldwide.</li>
-    </ul>
-
-    <h2>How Morse Code Works — The Encoding System</h2>
-    <p>Morse code uses <strong>variable-length encoding</strong> — the most commonly used letters get the shortest codes. The letter <strong>E</strong> (most frequent in English) is just <code>.</code> — a single dot. The letter <strong>T</strong> is <code>-</code> — a single dash. This design minimized transmission time, crucial when telegraph time cost money.</p>
-
-    <h3>Timing Rules</h3>
-    <ul>
-      <li>A <strong>dot</strong> (dit) = basic time unit</li>
-      <li>A <strong>dash</strong> (dah) = 3× the dot length</li>
-      <li>Gap between elements within a character = 1 dot</li>
-      <li>Gap between characters = 3 dots</li>
-      <li>Gap between words = 7 dots</li>
-    </ul>
-    <p>Our audio playback respects these ITU timing ratios — what you hear is authentic Morse code, not random beeps.</p>
-
-    <h2>How to Use This Converter</h2>
-    <h3>Text to Morse Code</h3>
-    <ol>
-      <li>Select the <strong>Text → Morse</strong> tab (default).</li>
-      <li>Type or paste your text — output appears instantly.</li>
-      <li>Click <strong>Copy Morse</strong> to copy to clipboard.</li>
-      <li>Click <strong>Play Audio</strong> to hear the code as beeps.</li>
-      <li>Click <strong>Download</strong> to save as a .txt file.</li>
-    </ol>
-    <h3>Morse to Text (Decoding)</h3>
-    <ol>
-      <li>Select the <strong>Morse → Text</strong> tab.</li>
-      <li>Enter Morse code using <code>.</code> for dots and <code>-</code> for dashes.</li>
-      <li>Separate <strong>letters</strong> with a single space.</li>
-      <li>Separate <strong>words</strong> with <code>/</code> or double space.</li>
-      <li>Decoded text appears instantly below.</li>
-    </ol>
-
-    <h2>Tips for Learning Morse Code</h2>
-    <p><strong>Learn by sound, not by chart.</strong> Each letter has a characteristic rhythm. Use our audio playback to internalize these rhythms — this is how professional telegraphers learned.</p>
-    <p><strong>Start with the most common letters.</strong> E, T, A, O, I, N, S, H, R cover about 70% of typical English text. Master these first, then expand.</p>
-    <p><strong>Practice daily in short sessions.</strong> 10–15 minutes per day is more effective than one long weekly session. Use the converter to generate practice material from real text — news articles, book excerpts, anything you're already reading.</p>
-
-    <h2>International Morse Code: What This Page Converts</h2>
-<p>This converter uses a written representation of <strong>International Morse code</strong>. Each supported character becomes a sequence of dots and dashes, each letter token is separated by one space, and each word is separated by a slash. For example, the word <code>CAT</code> is <code>-.-. .- -</code>; the phrase <code>CAT NAP</code> becomes <code>-.-. .- - / -. .- .--.</code>. These separators matter. Dots and dashes identify the character, while the gaps tell a decoder where one character or word ends.</p>
-<p>The page is designed for plain-text conversion and study. It does not identify a radio station, validate a distress call, or replace trained communication procedures. If you are preparing material for aviation, amateur radio, emergency response, accessibility, or an exam, compare the final sequence with the applicable standard or instructor guidance. The useful value of a converter is speed plus reviewability—not an invitation to skip verification.</p>
-<h2>Text to Morse: A Reliable Workflow</h2>
-<p>Start in the <strong>Text → Morse</strong> tab. Paste a short phrase, name, puzzle clue, or practice sentence, then inspect the output before copying it. A space in ordinary text is represented by a slash in the result. If you see a hash marker, the input included a character outside the page’s supported table. Review that character instead of assuming it was converted. Accents, emoji, decorative Unicode, and language-specific letters may require a transliterated or manually checked alternative.</p>
-<p>When the output looks correct, copy it or download it as a text file. The audio control is helpful for learning the rhythm of a generated sequence, but it is best treated as a practice aid. Browser and device audio settings can affect what you hear, so written dots, dashes, and separators remain the clearest output for sharing or archiving.</p>
-<h2>Morse to Text: Enter the Boundaries Correctly</h2>
-<p>To decode typed Morse, write a dot as <code>.</code> and a dash as <code>-</code>. Put one space between character tokens and a slash between words. The sequence <code>.... . .-.. .-.. --- / .-- --- .-. .-.. -..</code> decodes to <strong>HELLO WORLD</strong>. Dashes may also be entered using the common hyphen character. The page highlights an unrecognized token with a hash marker so that a missing dot, extra dash, or spacing error is visible.</p>
-<p>Do not rely on automatic guessing when a message is important. Morse is a variable-length code, and the boundary rules make it readable. Removing the spaces from a typed string removes the information needed to distinguish many character sequences. If you received Morse from sound or light, transcribe it slowly with letter and word gaps before using a text decoder. Compare the returned words with the source context instead of treating the first output as final.</p>
-<h2>Why Dots, Dashes, and Timing Are Different Things</h2>
-<p>Written Morse notation is compact, but transmitted Morse also has timing. A dash lasts three dot units. The gap inside a character is one unit, the gap between characters is three units, and the gap between words is seven units. In a browser text box, spaces and slashes communicate those character and word boundaries more clearly than trying to represent every unit of silence. The optional playback uses the generated notation as a learning cue; the visible notation is still the source of truth for this page.</p>
-<p>Timing deserves special care in practical radio work. A clean written conversion does not prove that a signal is sent at the right speed, that a receiving station can copy it, or that local operating rules have been met. Use this page for text conversion, study, and puzzle preparation. Use appropriate training and official references for operational communication.</p>
-<h2>Common Characters and Useful Examples</h2>
-<p>The shortest standard letter codes are <code>E</code> as <code>.</code> and <code>T</code> as <code>-</code>. Familiar patterns include <code>S</code> as <code>...</code>, <code>O</code> as <code>---</code>, and <code>0</code> as <code>-----</code>. Numbers all use five elements. Punctuation needs extra attention because not every symbol has the same practical use in every setting, and typographic quotation marks from a document may not match a plain keyboard quote.</p>
-<table><thead><tr><th>Plain text</th><th>Morse notation</th><th>Where it helps</th></tr></thead><tbody><tr><td>SOS</td><td><code>... --- ...</code></td><td>Recognising the familiar pattern; follow emergency guidance in real situations.</td></tr><tr><td>OK</td><td><code>--- -.-</code></td><td>Short practice example.</td></tr><tr><td>2026</td><td><code>..--- ----- ..--- -....</code></td><td>Digit conversion check.</td></tr><tr><td>HI!</td><td><code>.... .. -.-.--</code></td><td>Letter plus punctuation check.</td></tr></tbody></table>
-<h2>Unsupported Characters Are a Review Signal</h2>
-<p>Many online converters silently remove unsupported input. Toolyfi instead uses a visible marker so you can decide what to do next. This is particularly useful when copied text contains an em dash, curly quotation mark, emoji, accented character, or invisible formatting character. You may choose to rewrite the phrase with standard English keyboard characters, use an appropriate equivalent, or omit a decorative mark when the message’s purpose permits it. The correct decision depends on the message—not on a generic conversion rule.</p>
-<p>The same principle applies to decoding. A hash in a decoded result often means that a token was malformed or uses a code not present in the page’s table. Check for a missing space, a slash used in the wrong place, or a dot/dash that was typed incorrectly. If the source is a recording, replay a small segment rather than guessing a whole word from context.</p>
-<h2>Morse Code for Learning and Puzzles</h2>
-<p>For learners, a converter helps connect a phrase with its notation. Begin with a short word and compare each output token to the expandable reference chart. Then use the audio control to hear the sequence after you have read it visually. This order prevents a common mistake: memorising a picture of dots and dashes without learning the rhythm or character boundary. Practice in short sets, and use a new phrase only after you can recognise the previous characters reliably.</p>
-<p>For puzzle writers, preserve the word separators and give solvers enough context to know whether the intended code is International Morse. A puzzle may use a flash, a tap, a sound, or written marks, but the solver still needs a way to detect character gaps. Generate the message here, test it by decoding the exact output in the second tab, and keep a plain-text answer key. This simple round-trip catches copying errors before the puzzle is shared.</p>
-<h2>Audio Playback and Browser Limitations</h2>
-<p>The audio button creates tones locally through the browser’s audio capabilities. Browsers generally require a direct button interaction before sound can begin, so audio does not auto-play when text changes. Device volume, mute settings, focus, and accessibility preferences can all affect playback. If the control is unavailable or silent, the written output remains usable: dots and dashes can be copied, shared, or practised without sound.</p>
-<p>Audio playback is not a recording-quality Morse trainer or a signal decoder. It does not listen to a microphone, clean radio interference, identify a sender, or grade sending speed. Those are separate tasks with separate limitations. Keeping this page focused on deterministic text conversion makes its result easier to understand and verify.</p>
-<h2>Accuracy Checks Before You Share</h2>
-<p>Check three things before using a converted line outside this page. First, compare the plain text with the intended wording; names, callsigns, dates, and numbers are easy to mistype. Second, inspect the letter and word separators in the Morse notation. Third, run the code back through the decoder and compare the resulting text. This round-trip is especially useful after you have manually edited a dot, dash, or punctuation mark.</p>
-<p>For high-stakes material, use a second independent reference as well. A converter can apply a defined lookup table consistently, but it cannot decide whether a message is appropriate, authorized, or safe to send. Emergency and safety communication should follow local emergency services, trained operators, and established procedures. Do not rely on an online tool as a substitute for that guidance.</p>
-<h2>Browser Processing and Privacy Boundaries</h2>
-<p>The conversion on this page runs in the open browser page rather than requiring a server-side message submission form. That makes the basic transformation quick and makes it easier to inspect what happens. It does not make all text suitable for a general web utility. Avoid entering passwords, private keys, confidential customer material, sensitive identity details, or unpublished operational information. Device security, browser extensions, screen sharing, and copied clipboard data are separate considerations.</p>
-<p>Use short non-sensitive examples for study. When an organization has an approved communications process, follow that process instead. A privacy-aware browser workflow is helpful, but it is not an assurance about every device, network, extension, or operating context.</p>
-<h2>Related Toolyfi Workflows</h2>
-<p>Morse conversion is often only one step in a text workflow. Use <a href="word-counter.html">Word Counter</a> to check a plain-text practice line before encoding it. Use <a href="special-characters-counter.html">Special Characters Counter</a> when unusual punctuation or emoji needs inspection. Use <a href="text-trimmer.html">Text Trimmer</a> to clean accidental spaces before conversion, and <a href="case-converter.html">Case Converter</a> when you need a consistent label or identifier style. For developer payloads rather than Morse notation, <a href="base64-encoder.html">Base64 Encoder</a> and <a href="json-formatter.html">JSON Formatter</a> solve different, more structured tasks.</p>
-<h2>Frequently Missed Details</h2>
-<p>A slash is a word separator on this page; it is not a dash, and it does not represent a character in the Morse alphabet. A single space separates adjacent letter tokens. The visible character table is a reference for supported entries, not a promise that every historical, regional, military, or prosign convention is included. International Morse has well-known conventions, but training systems and operating practices can add context that a text converter should not pretend to replace.</p>
-<p>Finally, remember that “decode” means translating a properly segmented notation into characters. It does not prove the source was authentic or that the intended language is English. Read the result in context, preserve the original source when it matters, and ask a qualified person when the message has legal, medical, safety, aviation, or operational consequences.</p>
-<h2>How to Read a Reference Chart Without Memorising Shapes</h2>
-<p>A Morse reference chart is useful when it helps you verify one character at a time. It becomes less useful when it turns every code into a picture to be copied without understanding. Pick a small group of characters, enter them in the text panel, and compare the output with the chart. Then type the same tokens into the decoder. This produces a simple closed loop: source text, visible notation, reference check, and decoded result. When the loop agrees, you know the separators as well as the dot-and-dash sequence are working.</p>
-<p>Frequency can guide early study, but frequency is not a rule for every message. English prose uses common letters often, while a callsign, identifier, code sample, or name may rely heavily on less frequent characters. Learn a manageable set, test it in real words, then expand. The chart is also helpful for checking digits and punctuation because those are easy to miscount. Five-element digit codes need deliberate review, particularly when a date, address, serial number, or coordinate appears in the original text.</p>
-<h2>Spacing Errors and Why They Change the Result</h2>
-<p>Most typed-Morse mistakes are not a wrong alphabet entry; they are a boundary error. A missing space can combine two intended character tokens into one invalid token. A slash in the wrong place can split a word incorrectly. Extra spaces can create empty fragments when a message is copied from a chat or formatted document. The page’s notation is intentionally simple: use one normal space between letters and one slash between words. Before decoding a long message, normalize it to that pattern so you can see what the decoder is being asked to interpret.</p>
-<p>Consider the difference between <code>. .-</code> and <code>..-</code>. The first has two letter tokens, E and A. The second is one token, U. Dots and dashes alone are not enough; boundaries carry part of the message. This is why a human transcription from sound should record pauses carefully. If you cannot confidently hear the gap, mark the uncertainty in a note and resolve it from context or another reference rather than forcing the decoder to guess.</p>
-<h2>Practice with Short, Reviewable Messages</h2>
-<p>Short messages are a better starting point than a large paragraph. Try a greeting, a date, a simple location label, or a two-word puzzle answer. Convert it, copy the Morse notation into the decoder, and compare the return result. After that, use playback and see whether you can identify a few characters by rhythm. The goal is not to rush through an alphabet chart. The goal is to connect sound, notation, and text while keeping errors easy to find.</p>
-<p>Teachers can use this page to make transparent examples: write a normal phrase, generate the notation, hide the plain text, and let learners decode it using the chart. Students can create their own practice lines and keep a separate answer key. For group activities, avoid placing personal contact details or sensitive messages in the example. A practice phrase does not need private content to make the learning task meaningful.</p>
-<h2>Text Encoding Is Not Encryption</h2>
-<p>Morse code changes the representation of a message; it does not protect the message from someone who knows the notation or can use a converter. A dot-and-dash string can be copied, searched, and decoded easily. It is appropriate for study, accessibility exercises, historical interest, radio practice, and puzzles where the encoding is part of the activity. It is not an appropriate mechanism for passwords, private records, confidential communication, or any situation that requires encryption.</p>
-<p>The same distinction applies to other developer or text utilities. <a href="base64-encoder.html">Base64 Encoder</a> is an encoding workflow, not encryption. A <a href="password-generator.html">Password Generator</a> can help create a strong secret, but the secret still needs a secure storage and sharing process. Naming the boundary clearly improves trust because users can choose the right kind of tool for the job instead of mistaking a readable transformation for security.</p>
-<h2>Use in Aviation, Radio, and Emergency Contexts</h2>
-<p>Morse appears in some technical and historical contexts, including amateur radio and navigation identifiers. An online converter can help a learner check a written example, but it does not establish a station’s identity, interpret a live signal, or confirm local operating rules. If you are studying a regulated field, use the materials supplied by the relevant authority, educator, or radio organization. The page’s value is a deterministic text transformation, not operational advice.</p>
-<p>Likewise, SOS is recognisable as a pattern, but an actual emergency requires contacting local emergency services when possible and following the safest available procedure. Do not delay an emergency response to format a message in a browser. Knowledge of a code can be useful as part of wider preparedness, but a web page cannot evaluate conditions, location, equipment, or the availability of help.</p>
-<h2>Copy, Download, and Keep a Source Record</h2>
-<p>Copy is useful when you need to move a checked result into a worksheet, presentation, puzzle document, or learning note. Download is useful when you want to keep a plain-text version beside its source. In either case, label the result with enough context that another person knows whether it is text-to-Morse or Morse-to-text output. A bare dot-and-dash string without its source, spacing convention, or language assumption is harder to review later.</p>
-<p>For a recurring workflow, retain the plain input and the generated output together. That makes it possible to check a later change without retyping a message from memory. It also makes corrections less destructive: edit the source, reconvert it, and compare the difference. This small habit is useful for class exercises, documentation, content production, and application test fixtures.</p>
-<h2>Toolyfi Method: Convert, Inspect, Confirm</h2>
-<p>The practical method for this page is simple. <strong>Convert</strong> a supported, non-sensitive input. <strong>Inspect</strong> every hash marker, token boundary, and punctuation result. <strong>Confirm</strong> the message by decoding the output back to text, then use a second reference when the message matters. This sequence does not promise that every input is suitable for Morse or that every context uses the same conventions. It gives you a visible, repeatable process for the narrow task the tool actually performs.</p>
-<p>That focus is more useful than a list of exaggerated features. You receive a local browser conversion, a printable notation, an optional audio cue, a reference table, and a way to check your work. When the input is clear and the output is reviewed in its final context, the converter can save time without hiding the assumptions that make a result meaningful.</p>
-<h2>Related Tools on Toolyfi</h2>
-    <p>Try our <a href="https://toolyfi.com/password-generator.html">Password Generator</a>, <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a>, <a href="https://toolyfi.com/word-counter.html">Word Counter</a>, and <a href="https://toolyfi.com/qr-code-generator.html">QR Code Generator</a> — all free, no signup required.</p>
-  </article>
-
-  <!-- FAQ -->
-  <div class="sec-head" style="padding-bottom:0;margin-bottom:20px;">
-    <div class="sec-label">FAQ</div>
-    <div class="sec-title">Frequently Asked <em>Questions</em></div>
-  </div>
-  <div class="faq-list" style="margin-bottom:48px;"><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I convert text to Morse code?<span class="faq-arr">▼</span></div><div class="faq-a">Enter supported text in the Text → Morse panel. The page displays dot-and-dash tokens with a space between letters and a slash between words.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I decode Morse code to text?<span class="faq-arr">▼</span></div><div class="faq-a">Enter dots and dashes with one space between letter tokens and a slash between words. Unrecognised tokens appear as a visible hash marker for review.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which Morse notation does this page use?<span class="faq-arr">▼</span></div><div class="faq-a">This page uses written International Morse notation: dots, dashes, spaces between letters, and slashes between words.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What happens to unsupported characters?<span class="faq-arr">▼</span></div><div class="faq-a">They are marked visibly rather than silently converted, so you can inspect the source or select an appropriate equivalent.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I listen to generated Morse code?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. Use the optional Play Audio button after converting text. Your browser and device settings control whether sound can play.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is SOS in Morse code?<span class="faq-arr">▼</span></div><div class="faq-a">The familiar notation is <code>... --- ...</code>. In a real emergency, contact local emergency services and follow established safety guidance.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does this replace a Morse training course?<span class="faq-arr">▼</span></div><div class="faq-a">No. It is a text conversion and reference utility. Operational training, radio rules, and signal practice require appropriate learning resources.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I verify an important decoded message?<span class="faq-arr">▼</span></div><div class="faq-a">Yes. Review the original tokens, boundaries, punctuation, and context. Use an independent reference when a message is important.</div></div></div>
-</div>
-
-<!-- RELATED TOOLS -->
-<div class="wide-wrap section">
-  <div class="sec-head">
-    <div class="sec-label">Explore</div>
-    <div class="sec-title">More <em>free tools</em></div>
-  </div>
-  <div class="related-grid">
-    <a href="https://toolyfi.com/password-generator.html" class="rel-card"><span>🔑</span><span>Password Generator</span></a>
-    <a href="https://toolyfi.com/base64-encoder.html" class="rel-card"><span>🔐</span><span>Base64 Encoder</span></a>
-    <a href="https://toolyfi.com/word-counter.html" class="rel-card"><span>📝</span><span>Word Counter</span></a>
-    <a href="https://toolyfi.com/qr-code-generator.html" class="rel-card"><span>📱</span><span>QR Code Generator</span></a>
-    <a href="https://toolyfi.com/case-converter.html" class="rel-card"><span>🔤</span><span>Case Converter</span></a>
-    <a href="https://toolyfi.com/number-to-words.html" class="rel-card"><span>🔢</span><span>Number to Words</span></a>
-    <a href="https://toolyfi.com/json-formatter.html" class="rel-card"><span>🖥️</span><span>JSON Formatter</span></a>
-    <a href="https://toolyfi.com/csv-to-json.html" class="rel-card"><span>📊</span><span>CSV to JSON</span></a>
-    <a href="https://toolyfi.com/text-trimmer.html" class="rel-card"><span>✂️</span><span>Text Trimmer</span></a>
-    <a href="https://toolyfi.com/flip-fancy-text-generator.html" class="rel-card"><span>🔃</span><span>Flip Text</span></a>
-    <a href="https://toolyfi.com/currency-converter.html" class="rel-card"><span>💱</span><span>Currency Converter</span></a>
-    <a href="https://toolyfi.com/loan-calculator.html" class="rel-card"><span>🏦</span><span>Loan Calculator</span></a>
-    <a href="https://toolyfi.com/age-calculator.html" class="rel-card"><span>🎂</span><span>Age Calculator</span></a>
-    <a href="https://toolyfi.com/bmi-calculator.html" class="rel-card"><span>⚖️</span><span>BMI Calculator</span></a>
-    <a href="https://toolyfi.com/html-preview-tool.html" class="rel-card"><span>💻</span><span>HTML Preview</span></a>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="wrap"><div class="cta"><h2>Explore related free tools</h2><p>Move from a clear input to a checkable result with focused browser-side utilities.</p><a href="index.html#tools">Browse All Tools →</a></div></div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Toolyfi</h4>
-        <a href="https://toolyfi.com">Home</a>
-          <a href="https://toolyfi.com/#tools">All Tools</a>
-      </div>
-      <div class="footer-col">
-        <h4>Text Tools</h4>
-        <a href="https://toolyfi.com/morse-code-converter.html">Morse Code Converter</a>
-        <a href="https://toolyfi.com/word-counter.html">Word Counter</a>
-        <a href="https://toolyfi.com/case-converter.html">Case Converter</a>
-        <a href="https://toolyfi.com/text-trimmer.html">Text Trimmer</a>
-      </div>
-      <div class="footer-col">
-        <h4>Dev Tools</h4>
-        <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview</a>
-        <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a>
-        <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a>
-        <a href="https://toolyfi.com/csv-to-json.html">CSV to JSON</a>
-      </div>
-      <div class="footer-col">
-        <h4>Calculators</h4>
-        <a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a>
-        <a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a>
-        <a href="https://toolyfi.com/age-calculator.html">Age Calculator</a>
-        <a href="https://toolyfi.com/currency-converter.html">Currency Converter</a>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-icon">📡</div>
+          <div>
+            <h4>Ham Radio Operators</h4>
+            <p>Practice and verify Morse code for CW amateur radio contacts.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">✈️</div>
+          <div>
+            <h4>Aviation Enthusiasts</h4>
+            <p>Decode VOR station identifiers and aviation Morse signals.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🎮</div>
+          <div>
+            <h4>Gamers & Escape Rooms</h4>
+            <p>Solve Morse code puzzles in video games and escape room challenges.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">📚</div>
+          <div>
+            <h4>Students & Teachers</h4>
+            <p>Learn and teach Morse code in communications or history classes.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🎬</div>
+          <div>
+            <h4>Content Creators</h4>
+            <p>Add Morse code elements to videos, animations, and creative projects.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🔐</div>
+          <div>
+            <h4>Puzzle Lovers</h4>
+            <p>Create hidden messages and encoded challenges for friends.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🚨</div>
+          <div>
+            <h4>Emergency Preparedness</h4>
+            <p>Learn SOS and emergency signals for survival situations.</p>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🧒</div>
+          <div>
+            <h4>Scouts & Youth Groups</h4>
+            <p>Practice Morse for scouting merit badges and camp activities.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Toolyfi. All rights reserved.</span>
-      <span class="footer-copy">Focused browser tools for everyday work.</span>
+
+    <!-- ARTICLE -->
+    <div class="wrap">
+      <article class="article">
+        <h2>
+          The Complete Guide to Morse Code — History, How It Works & How to Use This Converter
+        </h2>
+        <p>
+          Morse code is one of the most iconic communication systems ever invented. Born in the age
+          of telegraph wires and electrical signals, it transformed how humanity communicated across
+          vast distances. This guide covers everything: rich history, how the encoding system works,
+          practical applications in 2026, and how to get the most from our free
+          <strong>Morse Code Converter</strong> tool.
+        </p>
+
+        <h2>What Is Morse Code?</h2>
+        <p>
+          Morse code is a character-encoding scheme that represents letters, numbers, and
+          punctuation using sequences of two distinct signal durations —
+          <strong>dots</strong> (short signals, written as <code>.</code>) and
+          <strong>dashes</strong> (long signals, written as <code>-</code>). Originally designed for
+          telegraph communication, Morse code allowed messages to travel electrically over long
+          distances before the telephone or radio existed.
+        </p>
+        <p>
+          Each letter and number has a unique combination of dots and dashes. The letter
+          <strong>A</strong> is <code>.-</code>, the letter <strong>S</strong> is <code>...</code>,
+          and the letter <strong>O</strong> is <code>---</code>. This is why SOS — the universal
+          distress signal — is <code>... --- ...</code>, a pattern easy to transmit and easy to
+          recognize.
+        </p>
+        <div class="info-box">
+          <p>
+            📡 <strong>Key Fact:</strong> SOS was chosen not because the letters mean anything, but
+            because the pattern <code>... --- ...</code> is unmistakably clear and easy to tap out
+            even under extreme stress.
+          </p>
+        </div>
+
+        <h2>A Brief History of Morse Code</h2>
+        <p>
+          Morse code was developed in the early 1830s by <strong>Samuel Morse</strong> and his
+          partner <strong>Alfred Vail</strong>. The first official transmission occurred on
+          <strong>May 24, 1844</strong> — the famous message "What hath God wrought" sent from
+          Washington D.C. to Baltimore. It was a watershed moment: messages that took days by horse
+          could now be sent in seconds.
+        </p>
+        <p>
+          Over the following decades, Morse code became the backbone of global communication.
+          Telegraph lines crisscrossed continents. Shipping companies, militaries, and news agencies
+          depended on skilled operators — <em>telegraphers</em> — who could send and receive dozens
+          of words per minute. With the rise of radio in the 20th century, Morse transitioned to
+          wireless and played a critical role in both World Wars.
+        </p>
+
+        <h3>Still Alive in 2026</h3>
+        <ul>
+          <li>
+            <strong>Amateur (Ham) Radio:</strong> CW (continuous wave Morse) contacts can cut
+            through interference impossible for voice transmissions.
+          </li>
+          <li>
+            <strong>Aviation:</strong> VOR navigation stations broadcast their identifier in Morse
+            code, which pilots use to confirm the correct station.
+          </li>
+          <li>
+            <strong>Assistive Technology:</strong> People with motor disabilities use Morse as an
+            alternative input — a single switch can tap out dots and dashes to communicate.
+          </li>
+          <li>
+            <strong>Pop Culture:</strong> Escape rooms, video games, and ARGs (alternate reality
+            games) regularly feature Morse code puzzles.
+          </li>
+          <li>
+            <strong>Emergency Signaling:</strong> SOS via flashlight, mirror, or sound remains
+            recognized by rescue teams worldwide.
+          </li>
+        </ul>
+
+        <h2>How Morse Code Works — The Encoding System</h2>
+        <p>
+          Morse code uses <strong>variable-length encoding</strong> — the most commonly used letters
+          get the shortest codes. The letter <strong>E</strong> (most frequent in English) is just
+          <code>.</code> — a single dot. The letter <strong>T</strong> is <code>-</code> — a single
+          dash. This design minimized transmission time, crucial when telegraph time cost money.
+        </p>
+
+        <h3>Timing Rules</h3>
+        <ul>
+          <li>A <strong>dot</strong> (dit) = basic time unit</li>
+          <li>A <strong>dash</strong> (dah) = 3× the dot length</li>
+          <li>Gap between elements within a character = 1 dot</li>
+          <li>Gap between characters = 3 dots</li>
+          <li>Gap between words = 7 dots</li>
+        </ul>
+        <p>
+          Our audio playback respects these ITU timing ratios — what you hear is authentic Morse
+          code, not random beeps.
+        </p>
+
+        <h2>How to Use This Converter</h2>
+        <h3>Text to Morse Code</h3>
+        <ol>
+          <li>Select the <strong>Text → Morse</strong> tab (default).</li>
+          <li>Type or paste your text — output appears instantly.</li>
+          <li>Click <strong>Copy Morse</strong> to copy to clipboard.</li>
+          <li>Click <strong>Play Audio</strong> to hear the code as beeps.</li>
+          <li>Click <strong>Download</strong> to save as a .txt file.</li>
+        </ol>
+        <h3>Morse to Text (Decoding)</h3>
+        <ol>
+          <li>Select the <strong>Morse → Text</strong> tab.</li>
+          <li>Enter Morse code using <code>.</code> for dots and <code>-</code> for dashes.</li>
+          <li>Separate <strong>letters</strong> with a single space.</li>
+          <li>Separate <strong>words</strong> with <code>/</code> or double space.</li>
+          <li>Decoded text appears instantly below.</li>
+        </ol>
+
+        <h2>Tips for Learning Morse Code</h2>
+        <p>
+          <strong>Learn by sound, not by chart.</strong> Each letter has a characteristic rhythm.
+          Use our audio playback to internalize these rhythms — this is how professional
+          telegraphers learned.
+        </p>
+        <p>
+          <strong>Start with the most common letters.</strong> E, T, A, O, I, N, S, H, R cover about
+          70% of typical English text. Master these first, then expand.
+        </p>
+        <p>
+          <strong>Practice daily in short sessions.</strong> 10–15 minutes per day is more effective
+          than one long weekly session. Use the converter to generate practice material from real
+          text — news articles, book excerpts, anything you're already reading.
+        </p>
+
+        <h2>International Morse Code: What This Page Converts</h2>
+        <p>
+          This converter uses a written representation of <strong>International Morse code</strong>.
+          Each supported character becomes a sequence of dots and dashes, each letter token is
+          separated by one space, and each word is separated by a slash. For example, the word
+          <code>CAT</code> is <code>-.-. .- -</code>; the phrase <code>CAT NAP</code> becomes
+          <code>-.-. .- - / -. .- .--.</code>. These separators matter. Dots and dashes identify the
+          character, while the gaps tell a decoder where one character or word ends.
+        </p>
+        <p>
+          The page is designed for plain-text conversion and study. It does not identify a radio
+          station, validate a distress call, or replace trained communication procedures. If you are
+          preparing material for aviation, amateur radio, emergency response, accessibility, or an
+          exam, compare the final sequence with the applicable standard or instructor guidance. The
+          useful value of a converter is speed plus reviewability—not an invitation to skip
+          verification.
+        </p>
+        <h2>Text to Morse: A Reliable Workflow</h2>
+        <p>
+          Start in the <strong>Text → Morse</strong> tab. Paste a short phrase, name, puzzle clue,
+          or practice sentence, then inspect the output before copying it. A space in ordinary text
+          is represented by a slash in the result. If you see a hash marker, the input included a
+          character outside the page’s supported table. Review that character instead of assuming it
+          was converted. Accents, emoji, decorative Unicode, and language-specific letters may
+          require a transliterated or manually checked alternative.
+        </p>
+        <p>
+          When the output looks correct, copy it or download it as a text file. The audio control is
+          helpful for learning the rhythm of a generated sequence, but it is best treated as a
+          practice aid. Browser and device audio settings can affect what you hear, so written dots,
+          dashes, and separators remain the clearest output for sharing or archiving.
+        </p>
+        <h2>Morse to Text: Enter the Boundaries Correctly</h2>
+        <p>
+          To decode typed Morse, write a dot as <code>.</code> and a dash as <code>-</code>. Put one
+          space between character tokens and a slash between words. The sequence
+          <code>.... . .-.. .-.. --- / .-- --- .-. .-.. -..</code> decodes to
+          <strong>HELLO WORLD</strong>. Dashes may also be entered using the common hyphen
+          character. The page highlights an unrecognized token with a hash marker so that a missing
+          dot, extra dash, or spacing error is visible.
+        </p>
+        <p>
+          Do not rely on automatic guessing when a message is important. Morse is a variable-length
+          code, and the boundary rules make it readable. Removing the spaces from a typed string
+          removes the information needed to distinguish many character sequences. If you received
+          Morse from sound or light, transcribe it slowly with letter and word gaps before using a
+          text decoder. Compare the returned words with the source context instead of treating the
+          first output as final.
+        </p>
+        <h2>Why Dots, Dashes, and Timing Are Different Things</h2>
+        <p>
+          Written Morse notation is compact, but transmitted Morse also has timing. A dash lasts
+          three dot units. The gap inside a character is one unit, the gap between characters is
+          three units, and the gap between words is seven units. In a browser text box, spaces and
+          slashes communicate those character and word boundaries more clearly than trying to
+          represent every unit of silence. The optional playback uses the generated notation as a
+          learning cue; the visible notation is still the source of truth for this page.
+        </p>
+        <p>
+          Timing deserves special care in practical radio work. A clean written conversion does not
+          prove that a signal is sent at the right speed, that a receiving station can copy it, or
+          that local operating rules have been met. Use this page for text conversion, study, and
+          puzzle preparation. Use appropriate training and official references for operational
+          communication.
+        </p>
+        <h2>Common Characters and Useful Examples</h2>
+        <p>
+          The shortest standard letter codes are <code>E</code> as <code>.</code> and
+          <code>T</code> as <code>-</code>. Familiar patterns include <code>S</code> as
+          <code>...</code>, <code>O</code> as <code>---</code>, and <code>0</code> as
+          <code>-----</code>. Numbers all use five elements. Punctuation needs extra attention
+          because not every symbol has the same practical use in every setting, and typographic
+          quotation marks from a document may not match a plain keyboard quote.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Plain text</th>
+              <th>Morse notation</th>
+              <th>Where it helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SOS</td>
+              <td><code>... --- ...</code></td>
+              <td>
+                Recognising the familiar pattern; follow emergency guidance in real situations.
+              </td>
+            </tr>
+            <tr>
+              <td>OK</td>
+              <td><code>--- -.-</code></td>
+              <td>Short practice example.</td>
+            </tr>
+            <tr>
+              <td>2026</td>
+              <td><code>..--- ----- ..--- -....</code></td>
+              <td>Digit conversion check.</td>
+            </tr>
+            <tr>
+              <td>HI!</td>
+              <td><code>.... .. -.-.--</code></td>
+              <td>Letter plus punctuation check.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Unsupported Characters Are a Review Signal</h2>
+        <p>
+          Many online converters silently remove unsupported input. Toolyfi instead uses a visible
+          marker so you can decide what to do next. This is particularly useful when copied text
+          contains an em dash, curly quotation mark, emoji, accented character, or invisible
+          formatting character. You may choose to rewrite the phrase with standard English keyboard
+          characters, use an appropriate equivalent, or omit a decorative mark when the message’s
+          purpose permits it. The correct decision depends on the message—not on a generic
+          conversion rule.
+        </p>
+        <p>
+          The same principle applies to decoding. A hash in a decoded result often means that a
+          token was malformed or uses a code not present in the page’s table. Check for a missing
+          space, a slash used in the wrong place, or a dot/dash that was typed incorrectly. If the
+          source is a recording, replay a small segment rather than guessing a whole word from
+          context.
+        </p>
+        <h2>Morse Code for Learning and Puzzles</h2>
+        <p>
+          For learners, a converter helps connect a phrase with its notation. Begin with a short
+          word and compare each output token to the expandable reference chart. Then use the audio
+          control to hear the sequence after you have read it visually. This order prevents a common
+          mistake: memorising a picture of dots and dashes without learning the rhythm or character
+          boundary. Practice in short sets, and use a new phrase only after you can recognise the
+          previous characters reliably.
+        </p>
+        <p>
+          For puzzle writers, preserve the word separators and give solvers enough context to know
+          whether the intended code is International Morse. A puzzle may use a flash, a tap, a
+          sound, or written marks, but the solver still needs a way to detect character gaps.
+          Generate the message here, test it by decoding the exact output in the second tab, and
+          keep a plain-text answer key. This simple round-trip catches copying errors before the
+          puzzle is shared.
+        </p>
+        <h2>Audio Playback and Browser Limitations</h2>
+        <p>
+          The audio button creates tones locally through the browser’s audio capabilities. Browsers
+          generally require a direct button interaction before sound can begin, so audio does not
+          auto-play when text changes. Device volume, mute settings, focus, and accessibility
+          preferences can all affect playback. If the control is unavailable or silent, the written
+          output remains usable: dots and dashes can be copied, shared, or practised without sound.
+        </p>
+        <p>
+          Audio playback is not a recording-quality Morse trainer or a signal decoder. It does not
+          listen to a microphone, clean radio interference, identify a sender, or grade sending
+          speed. Those are separate tasks with separate limitations. Keeping this page focused on
+          deterministic text conversion makes its result easier to understand and verify.
+        </p>
+        <h2>Accuracy Checks Before You Share</h2>
+        <p>
+          Check three things before using a converted line outside this page. First, compare the
+          plain text with the intended wording; names, callsigns, dates, and numbers are easy to
+          mistype. Second, inspect the letter and word separators in the Morse notation. Third, run
+          the code back through the decoder and compare the resulting text. This round-trip is
+          especially useful after you have manually edited a dot, dash, or punctuation mark.
+        </p>
+        <p>
+          For high-stakes material, use a second independent reference as well. A converter can
+          apply a defined lookup table consistently, but it cannot decide whether a message is
+          appropriate, authorized, or safe to send. Emergency and safety communication should follow
+          local emergency services, trained operators, and established procedures. Do not rely on an
+          online tool as a substitute for that guidance.
+        </p>
+        <h2>Browser Processing and Privacy Boundaries</h2>
+        <p>
+          The conversion on this page runs in the open browser page rather than requiring a
+          server-side message submission form. That makes the basic transformation quick and makes
+          it easier to inspect what happens. It does not make all text suitable for a general web
+          utility. Avoid entering passwords, private keys, confidential customer material, sensitive
+          identity details, or unpublished operational information. Device security, browser
+          extensions, screen sharing, and copied clipboard data are separate considerations.
+        </p>
+        <p>
+          Use short non-sensitive examples for study. When an organization has an approved
+          communications process, follow that process instead. A privacy-aware browser workflow is
+          helpful, but it is not an assurance about every device, network, extension, or operating
+          context.
+        </p>
+        <h2>Related Toolyfi Workflows</h2>
+        <p>
+          Morse conversion is often only one step in a text workflow. Use
+          <a href="word-counter.html">Word Counter</a> to check a plain-text practice line before
+          encoding it. Use
+          <a href="special-characters-counter.html">Special Characters Counter</a> when unusual
+          punctuation or emoji needs inspection. Use <a href="text-trimmer.html">Text Trimmer</a> to
+          clean accidental spaces before conversion, and
+          <a href="case-converter.html">Case Converter</a> when you need a consistent label or
+          identifier style. For developer payloads rather than Morse notation,
+          <a href="base64-encoder.html">Base64 Encoder</a> and
+          <a href="json-formatter.html">JSON Formatter</a> solve different, more structured tasks.
+        </p>
+        <h2>Frequently Missed Details</h2>
+        <p>
+          A slash is a word separator on this page; it is not a dash, and it does not represent a
+          character in the Morse alphabet. A single space separates adjacent letter tokens. The
+          visible character table is a reference for supported entries, not a promise that every
+          historical, regional, military, or prosign convention is included. International Morse has
+          well-known conventions, but training systems and operating practices can add context that
+          a text converter should not pretend to replace.
+        </p>
+        <p>
+          Finally, remember that “decode” means translating a properly segmented notation into
+          characters. It does not prove the source was authentic or that the intended language is
+          English. Read the result in context, preserve the original source when it matters, and ask
+          a qualified person when the message has legal, medical, safety, aviation, or operational
+          consequences.
+        </p>
+        <h2>How to Read a Reference Chart Without Memorising Shapes</h2>
+        <p>
+          A Morse reference chart is useful when it helps you verify one character at a time. It
+          becomes less useful when it turns every code into a picture to be copied without
+          understanding. Pick a small group of characters, enter them in the text panel, and compare
+          the output with the chart. Then type the same tokens into the decoder. This produces a
+          simple closed loop: source text, visible notation, reference check, and decoded result.
+          When the loop agrees, you know the separators as well as the dot-and-dash sequence are
+          working.
+        </p>
+        <p>
+          Frequency can guide early study, but frequency is not a rule for every message. English
+          prose uses common letters often, while a callsign, identifier, code sample, or name may
+          rely heavily on less frequent characters. Learn a manageable set, test it in real words,
+          then expand. The chart is also helpful for checking digits and punctuation because those
+          are easy to miscount. Five-element digit codes need deliberate review, particularly when a
+          date, address, serial number, or coordinate appears in the original text.
+        </p>
+        <h2>Spacing Errors and Why They Change the Result</h2>
+        <p>
+          Most typed-Morse mistakes are not a wrong alphabet entry; they are a boundary error. A
+          missing space can combine two intended character tokens into one invalid token. A slash in
+          the wrong place can split a word incorrectly. Extra spaces can create empty fragments when
+          a message is copied from a chat or formatted document. The page’s notation is
+          intentionally simple: use one normal space between letters and one slash between words.
+          Before decoding a long message, normalize it to that pattern so you can see what the
+          decoder is being asked to interpret.
+        </p>
+        <p>
+          Consider the difference between <code>. .-</code> and <code>..-</code>. The first has two
+          letter tokens, E and A. The second is one token, U. Dots and dashes alone are not enough;
+          boundaries carry part of the message. This is why a human transcription from sound should
+          record pauses carefully. If you cannot confidently hear the gap, mark the uncertainty in a
+          note and resolve it from context or another reference rather than forcing the decoder to
+          guess.
+        </p>
+        <h2>Practice with Short, Reviewable Messages</h2>
+        <p>
+          Short messages are a better starting point than a large paragraph. Try a greeting, a date,
+          a simple location label, or a two-word puzzle answer. Convert it, copy the Morse notation
+          into the decoder, and compare the return result. After that, use playback and see whether
+          you can identify a few characters by rhythm. The goal is not to rush through an alphabet
+          chart. The goal is to connect sound, notation, and text while keeping errors easy to find.
+        </p>
+        <p>
+          Teachers can use this page to make transparent examples: write a normal phrase, generate
+          the notation, hide the plain text, and let learners decode it using the chart. Students
+          can create their own practice lines and keep a separate answer key. For group activities,
+          avoid placing personal contact details or sensitive messages in the example. A practice
+          phrase does not need private content to make the learning task meaningful.
+        </p>
+        <h2>Text Encoding Is Not Encryption</h2>
+        <p>
+          Morse code changes the representation of a message; it does not protect the message from
+          someone who knows the notation or can use a converter. A dot-and-dash string can be
+          copied, searched, and decoded easily. It is appropriate for study, accessibility
+          exercises, historical interest, radio practice, and puzzles where the encoding is part of
+          the activity. It is not an appropriate mechanism for passwords, private records,
+          confidential communication, or any situation that requires encryption.
+        </p>
+        <p>
+          The same distinction applies to other developer or text utilities.
+          <a href="base64-encoder.html">Base64 Encoder</a> is an encoding workflow, not encryption.
+          A <a href="password-generator.html">Password Generator</a> can help create a strong
+          secret, but the secret still needs a secure storage and sharing process. Naming the
+          boundary clearly improves trust because users can choose the right kind of tool for the
+          job instead of mistaking a readable transformation for security.
+        </p>
+        <h2>Use in Aviation, Radio, and Emergency Contexts</h2>
+        <p>
+          Morse appears in some technical and historical contexts, including amateur radio and
+          navigation identifiers. An online converter can help a learner check a written example,
+          but it does not establish a station’s identity, interpret a live signal, or confirm local
+          operating rules. If you are studying a regulated field, use the materials supplied by the
+          relevant authority, educator, or radio organization. The page’s value is a deterministic
+          text transformation, not operational advice.
+        </p>
+        <p>
+          Likewise, SOS is recognisable as a pattern, but an actual emergency requires contacting
+          local emergency services when possible and following the safest available procedure. Do
+          not delay an emergency response to format a message in a browser. Knowledge of a code can
+          be useful as part of wider preparedness, but a web page cannot evaluate conditions,
+          location, equipment, or the availability of help.
+        </p>
+        <h2>Copy, Download, and Keep a Source Record</h2>
+        <p>
+          Copy is useful when you need to move a checked result into a worksheet, presentation,
+          puzzle document, or learning note. Download is useful when you want to keep a plain-text
+          version beside its source. In either case, label the result with enough context that
+          another person knows whether it is text-to-Morse or Morse-to-text output. A bare
+          dot-and-dash string without its source, spacing convention, or language assumption is
+          harder to review later.
+        </p>
+        <p>
+          For a recurring workflow, retain the plain input and the generated output together. That
+          makes it possible to check a later change without retyping a message from memory. It also
+          makes corrections less destructive: edit the source, reconvert it, and compare the
+          difference. This small habit is useful for class exercises, documentation, content
+          production, and application test fixtures.
+        </p>
+        <h2>Toolyfi Method: Convert, Inspect, Confirm</h2>
+        <p>
+          The practical method for this page is simple. <strong>Convert</strong> a supported,
+          non-sensitive input. <strong>Inspect</strong> every hash marker, token boundary, and
+          punctuation result. <strong>Confirm</strong> the message by decoding the output back to
+          text, then use a second reference when the message matters. This sequence does not promise
+          that every input is suitable for Morse or that every context uses the same conventions. It
+          gives you a visible, repeatable process for the narrow task the tool actually performs.
+        </p>
+        <p>
+          That focus is more useful than a list of exaggerated features. You receive a local browser
+          conversion, a printable notation, an optional audio cue, a reference table, and a way to
+          check your work. When the input is clear and the output is reviewed in its final context,
+          the converter can save time without hiding the assumptions that make a result meaningful.
+        </p>
+        <h2>Related Tools on Toolyfi</h2>
+        <p>
+          Try our <a href="https://toolyfi.com/password-generator.html">Password Generator</a>,
+          <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a>,
+          <a href="https://toolyfi.com/word-counter.html">Word Counter</a>, and
+          <a href="https://toolyfi.com/qr-code-generator.html">QR Code Generator</a> — all free, no
+          signup required.
+        </p>
+      </article>
+
+      <!-- FAQ -->
+      <div class="sec-head" style="padding-bottom: 0; margin-bottom: 20px">
+        <div class="sec-label">FAQ</div>
+        <div class="sec-title">Frequently Asked <em>Questions</em></div>
+      </div>
+      <div class="faq-list" style="margin-bottom: 48px">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How do I convert text to Morse code?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Enter supported text in the Text → Morse panel. The page displays dot-and-dash tokens
+            with a space between letters and a slash between words.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How do I decode Morse code to text?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Enter dots and dashes with one space between letter tokens and a slash between words.
+            Unrecognised tokens appear as a visible hash marker for review.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Which Morse notation does this page use?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            This page uses written International Morse notation: dots, dashes, spaces between
+            letters, and slashes between words.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What happens to unsupported characters?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            They are marked visibly rather than silently converted, so you can inspect the source or
+            select an appropriate equivalent.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I listen to generated Morse code?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Yes. Use the optional Play Audio button after converting text. Your browser and device
+            settings control whether sound can play.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is SOS in Morse code?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            The familiar notation is <code>... --- ...</code>. In a real emergency, contact local
+            emergency services and follow established safety guidance.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does this replace a Morse training course?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            No. It is a text conversion and reference utility. Operational training, radio rules,
+            and signal practice require appropriate learning resources.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Should I verify an important decoded message?<span class="faq-arr">▼</span>
+          </div>
+          <div class="faq-a">
+            Yes. Review the original tokens, boundaries, punctuation, and context. Use an
+            independent reference when a message is important.
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
 
-<div class="toast" id="toast">✅ Copied to clipboard!</div>
+    <!-- RELATED TOOLS -->
+    <div class="wide-wrap section">
+      <div class="sec-head">
+        <div class="sec-label">Explore</div>
+        <div class="sec-title">More <em>free tools</em></div>
+      </div>
+      <div class="related-grid">
+        <a href="https://toolyfi.com/password-generator.html" class="rel-card"
+          ><span>🔑</span><span>Password Generator</span></a
+        >
+        <a href="https://toolyfi.com/base64-encoder.html" class="rel-card"
+          ><span>🔐</span><span>Base64 Encoder</span></a
+        >
+        <a href="https://toolyfi.com/word-counter.html" class="rel-card"
+          ><span>📝</span><span>Word Counter</span></a
+        >
+        <a href="https://toolyfi.com/qr-code-generator.html" class="rel-card"
+          ><span>📱</span><span>QR Code Generator</span></a
+        >
+        <a href="https://toolyfi.com/case-converter.html" class="rel-card"
+          ><span>🔤</span><span>Case Converter</span></a
+        >
+        <a href="https://toolyfi.com/number-to-words.html" class="rel-card"
+          ><span>🔢</span><span>Number to Words</span></a
+        >
+        <a href="https://toolyfi.com/json-formatter.html" class="rel-card"
+          ><span>🖥️</span><span>JSON Formatter</span></a
+        >
+        <a href="https://toolyfi.com/csv-to-json.html" class="rel-card"
+          ><span>📊</span><span>CSV to JSON</span></a
+        >
+        <a href="https://toolyfi.com/text-trimmer.html" class="rel-card"
+          ><span>✂️</span><span>Text Trimmer</span></a
+        >
+        <a href="https://toolyfi.com/flip-fancy-text-generator.html" class="rel-card"
+          ><span>🔃</span><span>Flip Text</span></a
+        >
+        <a href="https://toolyfi.com/currency-converter.html" class="rel-card"
+          ><span>💱</span><span>Currency Converter</span></a
+        >
+        <a href="https://toolyfi.com/loan-calculator.html" class="rel-card"
+          ><span>🏦</span><span>Loan Calculator</span></a
+        >
+        <a href="https://toolyfi.com/age-calculator.html" class="rel-card"
+          ><span>🎂</span><span>Age Calculator</span></a
+        >
+        <a href="https://toolyfi.com/bmi-calculator.html" class="rel-card"
+          ><span>⚖️</span><span>BMI Calculator</span></a
+        >
+        <a href="https://toolyfi.com/html-preview-tool.html" class="rel-card"
+          ><span>💻</span><span>HTML Preview</span></a
+        >
+      </div>
+    </div>
 
-<script>
-const MORSE={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..',
-'0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.',
-'.':'.-.-.-',',':'--..--','?':'..--..','!':'-.-.--',"'":'----.','/':'-..-.','(':'-.--.',')':'-.--.-','&':'.-...',':':'---...',';':'-.-.-.','=':'-...-','+':'.-.-.', '-':'-....-','_':'..--.-','"':'.-..-.','$':'...-..-','@':'.--.-.',' ':'/'};
-const REV={};Object.entries(MORSE).forEach(([k,v])=>{if(k!==' ')REV[v]=k;});
+    <!-- CTA -->
+    <div class="wrap">
+      <div class="cta">
+        <h2>Explore related free tools</h2>
+        <p>Move from a clear input to a checkable result with focused browser-side utilities.</p>
+        <a href="index.html#tools">Browse All Tools →</a>
+      </div>
+    </div>
 
-function textToMorse(){
-  const txt=document.getElementById('textInput').value.toUpperCase();
-  document.getElementById('t2mCount').textContent=txt.length+' characters';
-  if(!txt.trim()){document.getElementById('morseOutput').innerHTML='<span style="color:var(--dim);font-style:italic;">Your Morse code will appear here...</span>';return;}
-  const result=txt.split('').map(c=>MORSE[c]||'?').join(' ');
-  const html=result.split('').map(ch=>{
-    if(ch==='.')return `<span class="dot">.</span>`;
-    if(ch==='-')return `<span class="dash">-</span>`;
-    if(ch==='/')return `<span class="slash"> / </span>`;
-    return ch;
-  }).join('');
-  const el=document.getElementById('morseOutput');
-  el.innerHTML=html;
-  el.style.fontStyle='normal';
-  el.style.color='';
-}
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Toolyfi</h4>
+            <a href="https://toolyfi.com">Home</a>
+            <a href="https://toolyfi.com/#tools">All Tools</a>
+          </div>
+          <div class="footer-col">
+            <h4>Text Tools</h4>
+            <a href="https://toolyfi.com/morse-code-converter.html">Morse Code Converter</a>
+            <a href="https://toolyfi.com/word-counter.html">Word Counter</a>
+            <a href="https://toolyfi.com/case-converter.html">Case Converter</a>
+            <a href="https://toolyfi.com/text-trimmer.html">Text Trimmer</a>
+          </div>
+          <div class="footer-col">
+            <h4>Dev Tools</h4>
+            <a href="https://toolyfi.com/html-preview-tool.html">HTML Preview</a>
+            <a href="https://toolyfi.com/base64-encoder.html">Base64 Encoder</a>
+            <a href="https://toolyfi.com/json-formatter.html">JSON Formatter</a>
+            <a href="https://toolyfi.com/csv-to-json.html">CSV to JSON</a>
+          </div>
+          <div class="footer-col">
+            <h4>Calculators</h4>
+            <a href="https://toolyfi.com/loan-calculator.html">Loan Calculator</a>
+            <a href="https://toolyfi.com/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://toolyfi.com/age-calculator.html">Age Calculator</a>
+            <a href="https://toolyfi.com/currency-converter.html">Currency Converter</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="footer-copy">© 2026 Toolyfi. All rights reserved.</span>
+          <span class="footer-copy">Focused browser tools for everyday work.</span>
+        </div>
+      </div>
+    </footer>
 
-function morseToText(){
-  const morse=document.getElementById('morseInput').value.trim();
-  document.getElementById('m2tCount').textContent=morse.length+' characters';
-  if(!morse){document.getElementById('textOutput').innerHTML='<span style="color:var(--dim);font-style:italic;">Decoded text will appear here...</span>';return;}
-  const words=morse.split(/\s*\/\s*|\s{2,}/);
-  const result=words.map(w=>w.trim().split(/\s+/).map(c=>REV[c]||'?').join('')).join(' ');
-  const el=document.getElementById('textOutput');
-  el.textContent=result;
-  el.style.fontStyle='normal';
-  el.style.color='';
-}
+    <div class="toast" id="toast">✅ Copied to clipboard!</div>
 
-function copyOutput(id){
-  const text=document.getElementById(id).innerText||document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text).then(()=>{
-    const t=document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2000);
-  });
-}
+    <script>
+      const MORSE = {
+        A: ".-",
+        B: "-...",
+        C: "-.-.",
+        D: "-..",
+        E: ".",
+        F: "..-.",
+        G: "--.",
+        H: "....",
+        I: "..",
+        J: ".---",
+        K: "-.-",
+        L: ".-..",
+        M: "--",
+        N: "-.",
+        O: "---",
+        P: ".--.",
+        Q: "--.-",
+        R: ".-.",
+        S: "...",
+        T: "-",
+        U: "..-",
+        V: "...-",
+        W: ".--",
+        X: "-..-",
+        Y: "-.--",
+        Z: "--..",
+        0: "-----",
+        1: ".----",
+        2: "..---",
+        3: "...--",
+        4: "....-",
+        5: ".....",
+        6: "-....",
+        7: "--...",
+        8: "---..",
+        9: "----.",
+        ".": ".-.-.-",
+        ",": "--..--",
+        "?": "..--..",
+        "!": "-.-.--",
+        "'": "----.",
+        "/": "-..-.",
+        "(": "-.--.",
+        ")": "-.--.-",
+        "&": ".-...",
+        ":": "---...",
+        ";": "-.-.-.",
+        "=": "-...-",
+        "+": ".-.-.",
+        "-": "-....-",
+        _: "..--.-",
+        '"': ".-..-.",
+        $: "...-..-",
+        "@": ".--.-.",
+        " ": "/",
+      };
+      const REV = {};
+      Object.entries(MORSE).forEach(([k, v]) => {
+        if (k !== " ") REV[v] = k;
+      });
 
-function downloadMorse(){
-  const morse=document.getElementById('morseOutput').textContent;
-  if(!morse||morse.includes('appear here'))return;
-  const a=document.createElement('a');
-  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(morse);
-  a.download='morse-code.txt';a.click();
-}
+      function textToMorse() {
+        const txt = document.getElementById("textInput").value.toUpperCase();
+        document.getElementById("t2mCount").textContent = txt.length + " characters";
+        if (!txt.trim()) {
+          document.getElementById("morseOutput").innerHTML =
+            '<span style="color:var(--dim);font-style:italic;">Your Morse code will appear here...</span>';
+          return;
+        }
+        const result = txt
+          .split("")
+          .map((c) => MORSE[c] || "?")
+          .join(" ");
+        const html = result
+          .split("")
+          .map((ch) => {
+            if (ch === ".") return `<span class="dot">.</span>`;
+            if (ch === "-") return `<span class="dash">-</span>`;
+            if (ch === "/") return `<span class="slash"> / </span>`;
+            return ch;
+          })
+          .join("");
+        const el = document.getElementById("morseOutput");
+        el.innerHTML = html;
+        el.style.fontStyle = "normal";
+        el.style.color = "";
+      }
 
-function clearT2M(){document.getElementById('textInput').value='';document.getElementById('morseOutput').innerHTML='<span style="color:var(--dim);font-style:italic;">Your Morse code will appear here...</span>';document.getElementById('t2mCount').textContent='0 characters';}
-function clearM2T(){document.getElementById('morseInput').value='';document.getElementById('textOutput').innerHTML='<span style="color:var(--dim);font-style:italic;">Decoded text will appear here...</span>';document.getElementById('m2tCount').textContent='0 characters';}
+      function morseToText() {
+        const morse = document.getElementById("morseInput").value.trim();
+        document.getElementById("m2tCount").textContent = morse.length + " characters";
+        if (!morse) {
+          document.getElementById("textOutput").innerHTML =
+            '<span style="color:var(--dim);font-style:italic;">Decoded text will appear here...</span>';
+          return;
+        }
+        const words = morse.split(/\s*\/\s*|\s{2,}/);
+        const result = words
+          .map((w) =>
+            w
+              .trim()
+              .split(/\s+/)
+              .map((c) => REV[c] || "?")
+              .join(""),
+          )
+          .join(" ");
+        const el = document.getElementById("textOutput");
+        el.textContent = result;
+        el.style.fontStyle = "normal";
+        el.style.color = "";
+      }
 
-let audioCtx=null,isPlaying=false;
-function playMorse(){
-  if(isPlaying)return;
-  const txt=document.getElementById('morseOutput').textContent;
-  if(!txt||txt.includes('appear here'))return;
-  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
-  const unit=80;
-  let time=audioCtx.currentTime+0.1,total=0;
-  const btn=document.getElementById('playBtn');
-  btn.textContent='🔊 Playing...';isPlaying=true;
-  for(const ch of txt){
-    if(ch==='.'){tone(time,unit/1000);time+=(unit*2)/1000;total+=unit*2;}
-    else if(ch==='-'){tone(time,unit*3/1000);time+=(unit*4)/1000;total+=unit*4;}
-    else if(ch===' '){time+=unit*2/1000;total+=unit*2;}
-    else if(ch==='/'){time+=unit*4/1000;total+=unit*4;}
-  }
-  setTimeout(()=>{btn.textContent='🔊 Play Audio';isPlaying=false;},total+300);
-}
-function tone(start,dur){
-  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-  o.connect(g);g.connect(audioCtx.destination);
-  o.type='sine';o.frequency.value=680;
-  g.gain.setValueAtTime(0,start);
-  g.gain.linearRampToValueAtTime(0.45,start+0.005);
-  g.gain.setValueAtTime(0.45,start+dur-0.005);
-  g.gain.linearRampToValueAtTime(0,start+dur);
-  o.start(start);o.stop(start+dur);
-}
+      function copyOutput(id) {
+        const text =
+          document.getElementById(id).innerText || document.getElementById(id).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const t = document.getElementById("toast");
+          t.classList.add("show");
+          setTimeout(() => t.classList.remove("show"), 2000);
+        });
+      }
 
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
+      function downloadMorse() {
+        const morse = document.getElementById("morseOutput").textContent;
+        if (!morse || morse.includes("appear here")) return;
+        const a = document.createElement("a");
+        a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(morse);
+        a.download = "morse-code.txt";
+        a.click();
+      }
 
-function buildRef(){
-  const g=document.getElementById('refGrid');
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('').forEach(c=>{
-    const d=document.createElement('div');d.className='ref-item';
-    d.innerHTML=`<span class="ref-char">${c}</span><span class="ref-code">${MORSE[c]||''}</span>`;
-    g.appendChild(d);
-  });
-}
-function toggleRef(){
-  const b=document.getElementById('refBody'),a=document.getElementById('refArrow');
-  b.classList.toggle('open');a.textContent=b.classList.contains('open')?'▲':'▼';
-}
+      function clearT2M() {
+        document.getElementById("textInput").value = "";
+        document.getElementById("morseOutput").innerHTML =
+          '<span style="color:var(--dim);font-style:italic;">Your Morse code will appear here...</span>';
+        document.getElementById("t2mCount").textContent = "0 characters";
+      }
+      function clearM2T() {
+        document.getElementById("morseInput").value = "";
+        document.getElementById("textOutput").innerHTML =
+          '<span style="color:var(--dim);font-style:italic;">Decoded text will appear here...</span>';
+        document.getElementById("m2tCount").textContent = "0 characters";
+      }
 
-function toggleFaq(el){
-  const item=el.parentElement;
-  document.querySelectorAll('.faq-item.open').forEach(i=>{if(i!==item)i.classList.remove('open');});
-  item.classList.toggle('open');
-}
+      let audioCtx = null,
+        isPlaying = false;
+      function playMorse() {
+        if (isPlaying) return;
+        const txt = document.getElementById("morseOutput").textContent;
+        if (!txt || txt.includes("appear here")) return;
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const unit = 80;
+        let time = audioCtx.currentTime + 0.1,
+          total = 0;
+        const btn = document.getElementById("playBtn");
+        btn.textContent = "🔊 Playing...";
+        isPlaying = true;
+        for (const ch of txt) {
+          if (ch === ".") {
+            tone(time, unit / 1000);
+            time += (unit * 2) / 1000;
+            total += unit * 2;
+          } else if (ch === "-") {
+            tone(time, (unit * 3) / 1000);
+            time += (unit * 4) / 1000;
+            total += unit * 4;
+          } else if (ch === " ") {
+            time += (unit * 2) / 1000;
+            total += unit * 2;
+          } else if (ch === "/") {
+            time += (unit * 4) / 1000;
+            total += unit * 4;
+          }
+        }
+        setTimeout(() => {
+          btn.textContent = "🔊 Play Audio";
+          isPlaying = false;
+        }, total + 300);
+      }
+      function tone(start, dur) {
+        const o = audioCtx.createOscillator(),
+          g = audioCtx.createGain();
+        o.connect(g);
+        g.connect(audioCtx.destination);
+        o.type = "sine";
+        o.frequency.value = 680;
+        g.gain.setValueAtTime(0, start);
+        g.gain.linearRampToValueAtTime(0.45, start + 0.005);
+        g.gain.setValueAtTime(0.45, start + dur - 0.005);
+        g.gain.linearRampToValueAtTime(0, start + dur);
+        o.start(start);
+        o.stop(start + dur);
+      }
 
-function setRating(n){
-  document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('active',i<n));
-  const l=['','Terrible','Poor','Okay','Good','Excellent!'];
-  document.getElementById('ratingMsg').textContent=`You rated: ${l[n]} (${n}/5) — Thank you!`;
-  localStorage.setItem('morse_rating',n);
-}
-function vote(type){
-  let likes=+localStorage.getItem('morse_likes')||0;
-  let dislikes=+localStorage.getItem('morse_dislikes')||0;
-  const prev=localStorage.getItem('morse_vote');
-  if(prev===type)return;
-  if(type==='like'){likes++;if(prev==='dislike')dislikes=Math.max(0,dislikes-1);}
-  else{dislikes++;if(prev==='like')likes=Math.max(0,likes-1);}
-  localStorage.setItem('morse_likes',likes);
-  localStorage.setItem('morse_dislikes',dislikes);
-  localStorage.setItem('morse_vote',type);
-  document.getElementById('likeCount').textContent=likes;
-  document.getElementById('dislikeCount').textContent=dislikes;
-  document.getElementById('likeBtn').classList.toggle('active',type==='like');
-  document.getElementById('dislikeBtn').classList.toggle('active',type==='dislike');
-}
-function submitComment(){
-  const name=document.getElementById('commentName').value.trim()||'Anonymous';
-  const text=document.getElementById('commentInput').value.trim();
-  if(!text)return;
-  const c=JSON.parse(localStorage.getItem('morse_comments')||'[]');
-  c.unshift({name,text,date:new Date().toLocaleDateString()});
-  localStorage.setItem('morse_comments',JSON.stringify(c.slice(0,20)));
-  document.getElementById('commentInput').value='';
-  document.getElementById('commentName').value='';
-  renderComments();
-}
-function renderComments(){
-  const c=JSON.parse(localStorage.getItem('morse_comments')||'[]');
-  document.getElementById('commentsList').innerHTML=c.map(x=>`<div class="c-item"><div class="c-author">${x.name} · ${x.date}</div><div class="c-text">${x.text}</div></div>`).join('');
-}
-function loadState(){
-  document.getElementById('likeCount').textContent=localStorage.getItem('morse_likes')||0;
-  document.getElementById('dislikeCount').textContent=localStorage.getItem('morse_dislikes')||0;
-  const v=localStorage.getItem('morse_vote');
-  if(v==='like')document.getElementById('likeBtn').classList.add('active');
-  if(v==='dislike')document.getElementById('dislikeBtn').classList.add('active');
-  const r=localStorage.getItem('morse_rating');
-  if(r)setRating(+r);
-  renderComments();
-}
+      function switchTab(id, btn) {
+        document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        btn.classList.add("active");
+      }
 
-buildRef();loadState();
-</script>
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+      function buildRef() {
+        const g = document.getElementById("refGrid");
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("").forEach((c) => {
+          const d = document.createElement("div");
+          d.className = "ref-item";
+          d.innerHTML = `<span class="ref-char">${c}</span><span class="ref-code">${MORSE[c] || ""}</span>`;
+          g.appendChild(d);
+        });
+      }
+      function toggleRef() {
+        const b = document.getElementById("refBody"),
+          a = document.getElementById("refArrow");
+        b.classList.toggle("open");
+        a.textContent = b.classList.contains("open") ? "▲" : "▼";
+      }
+
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        document.querySelectorAll(".faq-item.open").forEach((i) => {
+          if (i !== item) i.classList.remove("open");
+        });
+        item.classList.toggle("open");
+      }
+
+      function setRating(n) {
+        document.querySelectorAll(".star").forEach((s, i) => s.classList.toggle("active", i < n));
+        const l = ["", "Terrible", "Poor", "Okay", "Good", "Excellent!"];
+        document.getElementById("ratingMsg").textContent =
+          `You rated: ${l[n]} (${n}/5) — Thank you!`;
+        localStorage.setItem("morse_rating", n);
+      }
+      function vote(type) {
+        let likes = +localStorage.getItem("morse_likes") || 0;
+        let dislikes = +localStorage.getItem("morse_dislikes") || 0;
+        const prev = localStorage.getItem("morse_vote");
+        if (prev === type) return;
+        if (type === "like") {
+          likes++;
+          if (prev === "dislike") dislikes = Math.max(0, dislikes - 1);
+        } else {
+          dislikes++;
+          if (prev === "like") likes = Math.max(0, likes - 1);
+        }
+        localStorage.setItem("morse_likes", likes);
+        localStorage.setItem("morse_dislikes", dislikes);
+        localStorage.setItem("morse_vote", type);
+        document.getElementById("likeCount").textContent = likes;
+        document.getElementById("dislikeCount").textContent = dislikes;
+        document.getElementById("likeBtn").classList.toggle("active", type === "like");
+        document.getElementById("dislikeBtn").classList.toggle("active", type === "dislike");
+      }
+      function submitComment() {
+        const name = document.getElementById("commentName").value.trim() || "Anonymous";
+        const text = document.getElementById("commentInput").value.trim();
+        if (!text) return;
+        const c = JSON.parse(localStorage.getItem("morse_comments") || "[]");
+        c.unshift({ name, text, date: new Date().toLocaleDateString() });
+        localStorage.setItem("morse_comments", JSON.stringify(c.slice(0, 20)));
+        document.getElementById("commentInput").value = "";
+        document.getElementById("commentName").value = "";
+        renderComments();
+      }
+      function renderComments() {
+        const c = JSON.parse(localStorage.getItem("morse_comments") || "[]");
+        document.getElementById("commentsList").innerHTML = c
+          .map(
+            (x) =>
+              `<div class="c-item"><div class="c-author">${x.name} · ${x.date}</div><div class="c-text">${x.text}</div></div>`,
+          )
+          .join("");
+      }
+      function loadState() {
+        document.getElementById("likeCount").textContent = localStorage.getItem("morse_likes") || 0;
+        document.getElementById("dislikeCount").textContent =
+          localStorage.getItem("morse_dislikes") || 0;
+        const v = localStorage.getItem("morse_vote");
+        if (v === "like") document.getElementById("likeBtn").classList.add("active");
+        if (v === "dislike") document.getElementById("dislikeBtn").classList.add("active");
+        const r = localStorage.getItem("morse_rating");
+        if (r) setRating(+r);
+        renderComments();
+      }
+
+      buildRef();
+      loadState();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
     <script src="/pwa-register.js" defer></script>
-</body>
+  </body>
 </html>

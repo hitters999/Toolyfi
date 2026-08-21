@@ -1,499 +1,1713 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y3ETYH2QF0');
-</script>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3ETYH2QF0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y3ETYH2QF0");
+    </script>
 
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Temperature Converter: °C to °F to K Instantly (2026 Free Tool) | Toolyfi</title>
-<meta name="description" content="Convert Celsius, Fahrenheit, and Kelvin from one entered value with visible formulas and browser-side results."/>
-<meta name="keywords" content="temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter, temperature conversion chart"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://toolyfi.com/temperature-converter.html"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter: °C to °F to K Instantly (2026 Free Tool) | Toolyfi</title>
+    <meta
+      name="description"
+      content="Convert Celsius, Fahrenheit, and Kelvin from one entered value with visible formulas and browser-side results."
+    />
+    <meta
+      name="keywords"
+      content="temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter, temperature conversion chart"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://toolyfi.com/temperature-converter.html" />
 
-<meta property="og:title" content="Temperature Converter – Celsius, Fahrenheit & Kelvin | Toolyfi"/>
-<meta property="og:description" content="Live thermo-dial temperature converter with reference charts for cooking, science, weather and health. Free & instant."/>
-<meta property="og:url" content="https://toolyfi.com/temperature-converter.html"/>
-<meta property="og:type" content="website"/>
+    <meta
+      property="og:title"
+      content="Temperature Converter – Celsius, Fahrenheit & Kelvin | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="Live thermo-dial temperature converter with reference charts for cooking, science, weather and health. Free & instant."
+    />
+    <meta property="og:url" content="https://toolyfi.com/temperature-converter.html" />
+    <meta property="og:type" content="website" />
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Free Temperature Converter – °C ⇄ °F ⇄ K"/>
-<meta name="twitter:description" content="Live thermo-dial converter. Instant, accurate, free."/>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Temperature Converter – °C ⇄ °F ⇄ K" />
+    <meta
+      name="twitter:description"
+      content="Live thermo-dial converter. Instant, accurate, free."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root{
-    --bg:#faf9fc; --surface:#fff; --border:#ede9fe;
-    --t1:#1a1330; --t2:#4b4066; --t3:#79728f;
-    --p1:#2d0066; --p2:#6b21a8; --p3:#a855f7; --pk:#e879f9; --gold:#f59e0b;
-    --cold:#38bdf8; --hot:#f43f5e;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    font-family:'Merriweather',Georgia,serif;
-    font-size:17px; line-height:1.75; color:var(--t2);
-    background:var(--bg);
-  }
-  h1,h2,h3,.font-display{font-family:'Montserrat',sans-serif;}
-  a{color:inherit;}
-  img{max-width:100%;}
+    <style>
+      :root {
+        --bg: #faf9fc;
+        --surface: #fff;
+        --border: #ede9fe;
+        --t1: #1a1330;
+        --t2: #4b4066;
+        --t3: #79728f;
+        --p1: #2d0066;
+        --p2: #6b21a8;
+        --p3: #a855f7;
+        --pk: #e879f9;
+        --gold: #f59e0b;
+        --cold: #38bdf8;
+        --hot: #f43f5e;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Merriweather", Georgia, serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--t2);
+        background: var(--bg);
+      }
+      h1,
+      h2,
+      h3,
+      .font-display {
+        font-family: "Montserrat", sans-serif;
+      }
+      a {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+      }
 
-  /* HEADER */
-  header.site{
-    position:sticky; top:0; z-index:50; height:66px;
-    background:rgba(22,0,54,.96); backdrop-filter:blur(20px);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 24px;
-  }
-  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;}
-  .logo-gem{
-    width:34px;height:34px;border-radius:10px;
-    background:linear-gradient(135deg,var(--p3),var(--pk));
-    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
-  }
-  .logo-text{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.15rem;}
-  .badge-free{
-    font-size:.65rem;font-weight:700;background:rgba(255,255,255,.12);
-    padding:3px 9px;border-radius:20px;margin-left:8px;letter-spacing:.5px;
-  }
-  .nav-links{list-style:none;display:flex;gap:22px;align-items:center;}
-  .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:600;font-family:'Montserrat',sans-serif;}
-  .cta-btn{
-    background:linear-gradient(135deg,var(--p3),var(--pk));
-    color:#fff!important; padding:9px 20px; border-radius:50px;
-    font-weight:700; font-size:.85rem;
-  }
+      /* HEADER */
+      header.site {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        height: 66px;
+        background: rgba(22, 0, 54, 0.96);
+        backdrop-filter: blur(20px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #fff;
+      }
+      .logo-gem {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--p3), var(--pk));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+      .logo-text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+      }
+      .badge-free {
+        font-size: 0.65rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 3px 9px;
+        border-radius: 20px;
+        margin-left: 8px;
+        letter-spacing: 0.5px;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+      }
+      .cta-btn {
+        background: linear-gradient(135deg, var(--p3), var(--pk));
+        color: #fff !important;
+        padding: 9px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
 
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-  /* HERO */
-  .hero{padding:50px 0 30px;text-align:center;}
-  .badge-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
-  .pill{font-size:.75rem;font-weight:700;padding:6px 14px;border-radius:20px;font-family:'Montserrat',sans-serif;}
-  .pill-purple{background:#f3e8ff;color:var(--p2);}
-  .pill-gold{background:#fef3c7;color:#92400e;}
-  h1{font-size:2.5rem;font-weight:900;color:var(--t1);line-height:1.15;margin-bottom:16px;}
-  h1 .hl{background:linear-gradient(135deg,var(--p2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .hero p.sub{max-width:600px;margin:0 auto 22px;color:var(--t3);font-size:1.05rem;}
-  .share-bar{display:flex;gap:10px;justify-content:center;margin-bottom:26px;flex-wrap:wrap;}
-  .share-btn{
-    border:1px solid var(--border);background:#fff;border-radius:8px;padding:7px 14px;
-    font-size:.8rem;font-weight:700;font-family:'Montserrat',sans-serif;color:var(--t2);
-    cursor:pointer;text-decoration:none;
-  }
-  .quick-answer{
-    max-width:640px;margin:0 auto 30px;text-align:left;background:#f8f5ff;
-    border-left:4px solid var(--p3);border-radius:10px;padding:16px 20px;font-size:.95rem;
-  }
-  .quick-answer b{font-family:'Montserrat',sans-serif;color:var(--p2);}
+      /* HERO */
+      .hero {
+        padding: 50px 0 30px;
+        text-align: center;
+      }
+      .badge-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .pill {
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .pill-purple {
+        background: #f3e8ff;
+        color: var(--p2);
+      }
+      .pill-gold {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--t1);
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      h1 .hl {
+        background: linear-gradient(135deg, var(--p2), var(--pk));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero p.sub {
+        max-width: 600px;
+        margin: 0 auto 22px;
+        color: var(--t3);
+        font-size: 1.05rem;
+      }
+      .share-bar {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 26px;
+        flex-wrap: wrap;
+      }
+      .share-btn {
+        border: 1px solid var(--border);
+        background: #fff;
+        border-radius: 8px;
+        padding: 7px 14px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        color: var(--t2);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .quick-answer {
+        max-width: 640px;
+        margin: 0 auto 30px;
+        text-align: left;
+        background: #f8f5ff;
+        border-left: 4px solid var(--p3);
+        border-radius: 10px;
+        padding: 16px 20px;
+        font-size: 0.95rem;
+      }
+      .quick-answer b {
+        font-family: "Montserrat", sans-serif;
+        color: var(--p2);
+      }
 
-  /* TOOL WIDGET */
-  .tool-box{
-    background:var(--surface);border-radius:22px;padding:34px;
-    box-shadow:0 15px 45px rgba(45,0,102,.08); border:1px solid var(--border);
-    margin-bottom:44px; display:grid; grid-template-columns:220px 1fr; gap:34px; align-items:center;
-  }
-  /* SIGNATURE ELEMENT: thermo dial + vertical tube */
-  .thermo-visual{display:flex;flex-direction:column;align-items:center;gap:14px;}
-  .dial-wrap{position:relative;width:190px;height:190px;}
-  .dial-wrap svg{width:100%;height:100%;transform:rotate(-90deg);}
-  .dial-bg{fill:none;stroke:#f1edfb;stroke-width:14;}
-  .dial-fg{fill:none;stroke:url(#dialGrad);stroke-width:14;stroke-linecap:round;
-    stroke-dasharray:502; stroke-dashoffset:502; transition:stroke-dashoffset .5s cubic-bezier(.4,0,.2,1);}
-  .dial-center{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .dial-emoji{font-size:1.6rem;margin-bottom:2px;}
-  .dial-value{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;color:var(--t1);}
-  .dial-unit{font-size:.75rem;color:var(--t3);font-weight:700;}
-  .tube-wrap{display:flex;align-items:center;gap:10px;}
-  .tube{position:relative;width:22px;height:110px;border-radius:12px;background:#f1edfb;border:2px solid #e4dcf7;overflow:hidden;}
-  .tube-fill{position:absolute;bottom:0;left:0;width:100%;height:10%;border-radius:0 0 10px 10px;
-    background:linear-gradient(180deg,var(--hot),var(--gold),var(--cold)); transition:height .5s ease;}
-  .tube-bulb{width:30px;height:30px;border-radius:50%;background:var(--hot);margin-top:-4px;box-shadow:0 0 0 2px #e4dcf7;}
+      /* TOOL WIDGET */
+      .tool-box {
+        background: var(--surface);
+        border-radius: 22px;
+        padding: 34px;
+        box-shadow: 0 15px 45px rgba(45, 0, 102, 0.08);
+        border: 1px solid var(--border);
+        margin-bottom: 44px;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 34px;
+        align-items: center;
+      }
+      /* SIGNATURE ELEMENT: thermo dial + vertical tube */
+      .thermo-visual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .dial-wrap {
+        position: relative;
+        width: 190px;
+        height: 190px;
+      }
+      .dial-wrap svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+      .dial-bg {
+        fill: none;
+        stroke: #f1edfb;
+        stroke-width: 14;
+      }
+      .dial-fg {
+        fill: none;
+        stroke: url(#dialGrad);
+        stroke-width: 14;
+        stroke-linecap: round;
+        stroke-dasharray: 502;
+        stroke-dashoffset: 502;
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .dial-center {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .dial-emoji {
+        font-size: 1.6rem;
+        margin-bottom: 2px;
+      }
+      .dial-value {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: var(--t1);
+      }
+      .dial-unit {
+        font-size: 0.75rem;
+        color: var(--t3);
+        font-weight: 700;
+      }
+      .tube-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .tube {
+        position: relative;
+        width: 22px;
+        height: 110px;
+        border-radius: 12px;
+        background: #f1edfb;
+        border: 2px solid #e4dcf7;
+        overflow: hidden;
+      }
+      .tube-fill {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        border-radius: 0 0 10px 10px;
+        background: linear-gradient(180deg, var(--hot), var(--gold), var(--cold));
+        transition: height 0.5s ease;
+      }
+      .tube-bulb {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--hot);
+        margin-top: -4px;
+        box-shadow: 0 0 0 2px #e4dcf7;
+      }
 
-  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
-  .form-label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;color:var(--p2);text-transform:uppercase;letter-spacing:1px;}
-  .form-input{
-    padding:12px 14px;border:2px solid var(--border);border-radius:10px;
-    font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t1);
-    transition:.2s;
-  }
-  .form-input:focus{outline:none;border-color:var(--p3);box-shadow:0 0 0 3px rgba(168,85,247,.15);}
-  .btn-row{display:flex;gap:10px;margin-top:6px;}
-  .btn-primary{
-    flex:1;padding:11px 20px;background:linear-gradient(135deg,var(--p2),var(--pk));color:#fff;
-    border:none;border-radius:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;
-  }
-  .btn-secondary{
-    flex:1;padding:11px 20px;background:#fff;color:var(--p2);border:2px solid var(--p3);
-    border-radius:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;
-  }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+      .form-label {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 0.72rem;
+        color: var(--p2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .form-input {
+        padding: 12px 14px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--t1);
+        transition: 0.2s;
+      }
+      .form-input:focus {
+        outline: none;
+        border-color: var(--p3);
+        box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+      }
+      .btn-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .btn-primary {
+        flex: 1;
+        padding: 11px 20px;
+        background: linear-gradient(135deg, var(--p2), var(--pk));
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+      .btn-secondary {
+        flex: 1;
+        padding: 11px 20px;
+        background: #fff;
+        color: var(--p2);
+        border: 2px solid var(--p3);
+        border-radius: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
 
-  .toc{max-width:640px;margin:0 auto 40px;background:#f8f5ff;border-radius:14px;padding:20px 24px;}
-  .toc h2{font-size:1rem;margin-bottom:10px;color:var(--p2);}
-  .toc ol{padding-left:20px;color:var(--t2);font-size:.9rem;}
-  .toc li{margin-bottom:5px;}
-  .toc a{text-decoration:none;color:var(--t2);}
-  .toc a:hover{color:var(--p2);}
+      .toc {
+        max-width: 640px;
+        margin: 0 auto 40px;
+        background: #f8f5ff;
+        border-radius: 14px;
+        padding: 20px 24px;
+      }
+      .toc h2 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: var(--p2);
+      }
+      .toc ol {
+        padding-left: 20px;
+        color: var(--t2);
+        font-size: 0.9rem;
+      }
+      .toc li {
+        margin-bottom: 5px;
+      }
+      .toc a {
+        text-decoration: none;
+        color: var(--t2);
+      }
+      .toc a:hover {
+        color: var(--p2);
+      }
 
-  section.block{margin-bottom:50px;}
-  h2.sec-title{font-size:1.7rem;font-weight:800;color:var(--t1);margin-bottom:16px;}
-  .sec-title .accent{color:var(--p3);}
+      section.block {
+        margin-bottom: 50px;
+      }
+      h2.sec-title {
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: var(--t1);
+        margin-bottom: 16px;
+      }
+      .sec-title .accent {
+        color: var(--p3);
+      }
 
-  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px;}
-  .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;}
-  .feature-card .ico{font-size:1.6rem;margin-bottom:10px;}
-  .feature-card h3{font-family:'Montserrat',sans-serif;font-size:1rem;color:var(--t1);margin-bottom:6px;}
-  .feature-card p{font-size:.88rem;color:var(--t3);}
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .feature-card .ico {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+      }
+      .feature-card h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        color: var(--t1);
+        margin-bottom: 6px;
+      }
+      .feature-card p {
+        font-size: 0.88rem;
+        color: var(--t3);
+      }
 
-  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0;}
-  .stat-card{background:#faf6ff;border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;}
-  .stat-card .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;color:var(--p2);}
-  .stat-card .lbl{font-size:.78rem;color:var(--t3);margin-top:4px;}
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 14px;
+        margin: 22px 0;
+      }
+      .stat-card {
+        background: #faf6ff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        text-align: center;
+      }
+      .stat-card .num {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: var(--p2);
+      }
+      .stat-card .lbl {
+        font-size: 0.78rem;
+        color: var(--t3);
+        margin-top: 4px;
+      }
 
-  table.ref-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.92rem;}
-  table.ref-table th{background:var(--p1);color:#fff;padding:10px 12px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.78rem;}
-  table.ref-table td{padding:10px 12px;border-bottom:1px solid var(--border);}
-  table.ref-table tr:nth-child(even){background:#faf8ff;}
+      table.ref-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.92rem;
+      }
+      table.ref-table th {
+        background: var(--p1);
+        color: #fff;
+        padding: 10px 12px;
+        text-align: left;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.78rem;
+      }
+      table.ref-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      table.ref-table tr:nth-child(even) {
+        background: #faf8ff;
+      }
 
-  .cta-banner{
-    background:linear-gradient(135deg,var(--p1),var(--p2));
-    border-radius:20px;padding:36px;text-align:center;color:#fff;margin:44px 0;
-  }
-  .cta-banner h3{font-size:1.4rem;margin-bottom:10px;}
-  .cta-banner p{color:rgba(255,255,255,.8);margin-bottom:18px;font-size:.95rem;}
-  .cta-banner a{
-    display:inline-block;background:#fff;color:var(--p2);padding:12px 28px;border-radius:50px;
-    font-family:'Montserrat',sans-serif;font-weight:800;text-decoration:none;font-size:.9rem;
-  }
+      .cta-banner {
+        background: linear-gradient(135deg, var(--p1), var(--p2));
+        border-radius: 20px;
+        padding: 36px;
+        text-align: center;
+        color: #fff;
+        margin: 44px 0;
+      }
+      .cta-banner h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+      .cta-banner p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 18px;
+        font-size: 0.95rem;
+      }
+      .cta-banner a {
+        display: inline-block;
+        background: #fff;
+        color: var(--p2);
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
 
-  .faq-item{border-bottom:1px solid var(--border);padding:16px 0;cursor:pointer;}
-  .faq-q{display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--t1);font-size:.98rem;}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:.9rem;color:var(--t3);}
-  .faq-item.open .faq-a{max-height:200px;padding-top:10px;}
-  .faq-item.open .faq-q .arrow{transform:rotate(180deg);}
-  .arrow{transition:.3s;}
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+        cursor: pointer;
+      }
+      .faq-q {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: var(--t1);
+        font-size: 0.98rem;
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        font-size: 0.9rem;
+        color: var(--t3);
+      }
+      .faq-item.open .faq-a {
+        max-height: 200px;
+        padding-top: 10px;
+      }
+      .faq-item.open .faq-q .arrow {
+        transform: rotate(180deg);
+      }
+      .arrow {
+        transition: 0.3s;
+      }
 
-  .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:18px;}
-  .related-card{
-    padding:16px;background:#fff;border:1px solid var(--border);border-radius:14px;text-align:center;
-    text-decoration:none;color:var(--t1);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;
-    transition:.2s;
-  }
-  .related-card:hover{border-color:var(--p3);transform:translateY(-3px);}
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .related-card {
+        padding: 16px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--t1);
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        transition: 0.2s;
+      }
+      .related-card:hover {
+        border-color: var(--p3);
+        transform: translateY(-3px);
+      }
 
-  
+      footer.site {
+        background: linear-gradient(135deg, var(--p1), var(--p2));
+        color: #fff;
+        padding: 40px 24px 24px;
+        margin-top: 20px;
+      }
+      .footer-grid {
+        max-width: 960px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .footer-grid a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-size: 0.82rem;
+      }
+      footer.site .bottom {
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 18px;
+      }
 
-  footer.site{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;padding:40px 24px 24px;margin-top:20px;}
-  .footer-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px;}
-  .footer-grid a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.82rem;}
-  footer.site .bottom{text-align:center;font-size:.8rem;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.15);padding-top:18px;}
+      .toast {
+        position: fixed;
+        bottom: 26px;
+        right: 26px;
+        background: var(--p2);
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 10px;
+        display: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        z-index: 999;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+      .toast.show {
+        display: block;
+        animation: slideIn 0.3s ease;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(300px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
 
-  .toast{position:fixed;bottom:26px;right:26px;background:var(--p2);color:#fff;padding:14px 22px;border-radius:10px;
-    display:none;font-weight:700;font-size:.85rem;z-index:999;box-shadow:0 8px 25px rgba(0,0,0,.2);}
-  .toast.show{display:block;animation:slideIn .3s ease;}
-  @keyframes slideIn{from{transform:translateX(300px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+      @media (max-width: 640px) {
+        body {
+          font-size: 15.5px;
+        }
+        h1 {
+          font-size: 1.52rem;
+        }
+        .tool-box {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .thermo-visual {
+          flex-direction: row;
+          justify-content: center;
+        }
+        .stat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .nav-links a:not(.cta-btn) {
+          display: none;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi Temperature Converter","url":"https://toolyfi.com/temperature-converter.html","description":"A browser-based converter that calculates Celsius, Fahrenheit, and Kelvin values from one entered temperature using displayed formulas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Temperature Converter","item":"https://toolyfi.com/temperature-converter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert Celsius to Fahrenheit?","acceptedAnswer":{"@type":"Answer","text":"Multiply Celsius by 9/5 and add 32: °F = (°C × 9/5) + 32."}},{"@type":"Question","name":"How do I convert Fahrenheit to Celsius?","acceptedAnswer":{"@type":"Answer","text":"Subtract 32 and multiply by 5/9: °C = (°F − 32) × 5/9."}},{"@type":"Question","name":"How do I convert Celsius to Kelvin?","acceptedAnswer":{"@type":"Answer","text":"Add 273.15: K = °C + 273.15."}},{"@type":"Question","name":"What is absolute zero?","acceptedAnswer":{"@type":"Answer","text":"Absolute zero is 0 K, which equals −273.15 °C and −459.67 °F."}},{"@type":"Question","name":"Why is −40 important in temperature conversion?","acceptedAnswer":{"@type":"Answer","text":"At −40, Celsius and Fahrenheit have the same numeric value: −40 °C equals −40 °F."}},{"@type":"Question","name":"Does this tool accept negative temperatures?","acceptedAnswer":{"@type":"Answer","text":"It accepts negative Celsius and Fahrenheit values. Kelvin values below zero are not physically valid, so review the source before using such an input."}},{"@type":"Question","name":"How should I round a converted temperature?","acceptedAnswer":{"@type":"Answer","text":"Keep enough decimal places for the source measurement and final context. Do not let a calculator display imply greater measurement precision than the original reading supports."}},{"@type":"Question","name":"Should I use an online conversion as a safety or medical decision?","acceptedAnswer":{"@type":"Answer","text":"No. Use the tool as a transparent unit conversion and follow the relevant calibrated instrument, professional procedure, or local guidance for any safety-sensitive decision."}}]}
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas — warm ivory, ink navy, coral; show formulas and results with no fabricated social proof. */
+      :root {
+        --bg: #faf8f4;
+        --surface: #fffdf9;
+        --border: #e7ded4;
+        --t1: #172437;
+        --t2: #4d5966;
+        --t3: #6b7785;
+        --p1: #172437;
+        --p2: #c9523f;
+        --p3: #ef6c54;
+        --pk: #f47b64;
+        --gold: #f4b660;
+        --cold: #4ea7c4;
+        --hot: #ef6c54;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        background: var(--bg);
+      }
+      h1,
+      h2,
+      h3,
+      .font-display {
+        font-family: "Fraunces", Georgia, serif;
+      }
+      header.site {
+        background: #172437;
+      }
+      .logo img {
+        width: 112px;
+        height: 40px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .logo-gem,
+      .badge-free,
+      .logo-text {
+        display: none;
+      }
+      .cta-btn {
+        background: #ef6c54 !important;
+      }
+      .hero {
+        padding: 62px 0 36px;
+      }
+      .pill-purple {
+        background: #fff1ec;
+        color: #b94b3a;
+      }
+      .pill-gold {
+        background: #fff9e9;
+        color: #8b631d;
+      }
+      .hero p.sub {
+        max-width: 640px;
+      }
+      .quick-answer {
+        background: #fff6f2;
+        border-color: #ef6c54;
+      }
+      .quick-answer b {
+        color: #b94b3a;
+      }
+      .tool-box {
+        box-shadow: 0 16px 40px rgba(23, 36, 55, 0.1);
+      }
+      .form-label {
+        color: #b94b3a;
+      }
+      .form-input:focus {
+        border-color: #ef6c54;
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.13);
+      }
+      .btn-primary {
+        background: #ef6c54;
+      }
+      .btn-secondary {
+        border-color: #ef6c54;
+        color: #b94b3a;
+      }
+      .toc {
+        background: #f8f4ee;
+      }
+      .toc h2,
+      .toc a {
+        color: #172437;
+      }
+      .sec-title .accent {
+        color: #c9523f;
+      }
+      .stat-card {
+        background: #fff6f2;
+      }
+      .stat-card .num {
+        color: #b94b3a;
+      }
+      table.ref-table th {
+        background: #172437;
+      }
+      table.ref-table tr:nth-child(even) {
+        background: #f8f4ee;
+      }
+      .feature-card:hover,
+      .related-card:hover {
+        border-color: #ef6c54;
+      }
+      .cta-banner,
+      footer.site {
+        background: #172437;
+      }
+      .cta-banner a {
+        color: #b94b3a;
+      }
+      .faq-q {
+        color: #172437;
+      }
+      .faq-item {
+        cursor: pointer;
+      }
+      .toast {
+        background: #ef6c54;
+      }
+      @media (max-width: 640px) {
+        .logo img {
+          width: 96px;
+        }
+      }
+    </style>
+    <style>
+      /* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */
+      .toolyfi-visual {
+        max-width: 1040px;
+        margin: 0 auto 42px;
+        padding: 0 20px;
+      }
+      .toolyfi-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        border: 1px solid #e7ded4;
+        border-radius: 18px;
+        background: #f7f2eb;
+        box-shadow: 0 18px 40px rgba(23, 36, 55, 0.09);
+      }
+      .toolyfi-visual figcaption {
+        margin-top: 9px;
+        color: #607080;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .toolyfi-visual {
+          padding: 0 16px;
+          margin-bottom: 28px;
+        }
+        .toolyfi-visual img {
+          border-radius: 13px;
+        }
+        .toolyfi-visual figcaption {
+          font-size: 0.72rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+  </head>
+  <body>
+    <header class="site">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Toolyfi" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">All Tools</a></li>
+        <li><a href="index.html#calculators">Calculators</a></li>
+        <li><a href="index.html" class="cta-btn">Explore Tools →</a></li>
+      </ul>
+    </header>
 
-  @media(max-width:640px){
-    body{font-size:15.5px;}
-    h1{font-size:1.52rem;}
-    .tool-box{grid-template-columns:1fr;text-align:center;}
-    .thermo-visual{flex-direction:row;justify-content:center;}
-    .stat-grid{grid-template-columns:repeat(2,1fr);}
-    .nav-links a:not(.cta-btn){display:none;}
-  }
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Toolyfi Temperature Converter","url":"https://toolyfi.com/temperature-converter.html","description":"A browser-based converter that calculates Celsius, Fahrenheit, and Kelvin values from one entered temperature using displayed formulas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolyfi.com/"},{"@type":"ListItem","position":2,"name":"Temperature Converter","item":"https://toolyfi.com/temperature-converter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert Celsius to Fahrenheit?","acceptedAnswer":{"@type":"Answer","text":"Multiply Celsius by 9/5 and add 32: °F = (°C × 9/5) + 32."}},{"@type":"Question","name":"How do I convert Fahrenheit to Celsius?","acceptedAnswer":{"@type":"Answer","text":"Subtract 32 and multiply by 5/9: °C = (°F − 32) × 5/9."}},{"@type":"Question","name":"How do I convert Celsius to Kelvin?","acceptedAnswer":{"@type":"Answer","text":"Add 273.15: K = °C + 273.15."}},{"@type":"Question","name":"What is absolute zero?","acceptedAnswer":{"@type":"Answer","text":"Absolute zero is 0 K, which equals −273.15 °C and −459.67 °F."}},{"@type":"Question","name":"Why is −40 important in temperature conversion?","acceptedAnswer":{"@type":"Answer","text":"At −40, Celsius and Fahrenheit have the same numeric value: −40 °C equals −40 °F."}},{"@type":"Question","name":"Does this tool accept negative temperatures?","acceptedAnswer":{"@type":"Answer","text":"It accepts negative Celsius and Fahrenheit values. Kelvin values below zero are not physically valid, so review the source before using such an input."}},{"@type":"Question","name":"How should I round a converted temperature?","acceptedAnswer":{"@type":"Answer","text":"Keep enough decimal places for the source measurement and final context. Do not let a calculator display imply greater measurement precision than the original reading supports."}},{"@type":"Question","name":"Should I use an online conversion as a safety or medical decision?","acceptedAnswer":{"@type":"Answer","text":"No. Use the tool as a transparent unit conversion and follow the relevant calibrated instrument, professional procedure, or local guidance for any safety-sensitive decision."}}]}</script><style>
-/* Toolyfi Editorial Utility Atlas — warm ivory, ink navy, coral; show formulas and results with no fabricated social proof. */
-:root{--bg:#FAF8F4;--surface:#FFFDF9;--border:#E7DED4;--t1:#172437;--t2:#4D5966;--t3:#6B7785;--p1:#172437;--p2:#C9523F;--p3:#EF6C54;--pk:#F47B64;--gold:#F4B660;--cold:#4EA7C4;--hot:#EF6C54}body{font-family:'Plus Jakarta Sans',Arial,sans-serif;background:var(--bg)}h1,h2,h3,.font-display{font-family:'Fraunces',Georgia,serif}header.site{background:#172437}.logo img{width:112px;height:40px;object-fit:contain;object-position:left center}.logo-gem,.badge-free,.logo-text{display:none}.cta-btn{background:#EF6C54!important}.hero{padding:62px 0 36px}.pill-purple{background:#FFF1EC;color:#B94B3A}.pill-gold{background:#FFF9E9;color:#8B631D}.hero p.sub{max-width:640px}.quick-answer{background:#FFF6F2;border-color:#EF6C54}.quick-answer b{color:#B94B3A}.tool-box{box-shadow:0 16px 40px rgba(23,36,55,.1)}.form-label{color:#B94B3A}.form-input:focus{border-color:#EF6C54;box-shadow:0 0 0 3px rgba(239,108,84,.13)}.btn-primary{background:#EF6C54}.btn-secondary{border-color:#EF6C54;color:#B94B3A}.toc{background:#F8F4EE}.toc h2,.toc a{color:#172437}.sec-title .accent{color:#C9523F}.stat-card{background:#FFF6F2}.stat-card .num{color:#B94B3A}table.ref-table th{background:#172437}table.ref-table tr:nth-child(even){background:#F8F4EE}.feature-card:hover,.related-card:hover{border-color:#EF6C54}.cta-banner,footer.site{background:#172437}.cta-banner a{color:#B94B3A}.faq-q{color:#172437}.faq-item{cursor:pointer}.toast{background:#EF6C54}@media(max-width:640px){.logo img{width:96px}}
-</style><style>/* Toolyfi visual pilot — unique, relevant, semantic image with intrinsic ratio prevents layout shift. */.toolyfi-visual{max-width:1040px;margin:0 auto 42px;padding:0 20px}.toolyfi-visual img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #E7DED4;border-radius:18px;background:#F7F2EB;box-shadow:0 18px 40px rgba(23,36,55,.09)}.toolyfi-visual figcaption{margin-top:9px;color:#607080;font-size:.78rem;line-height:1.45;text-align:center}@media(max-width:640px){.toolyfi-visual{padding:0 16px;margin-bottom:28px}.toolyfi-visual img{border-radius:13px}.toolyfi-visual figcaption{font-size:.72rem}}</style><link rel="stylesheet" href="/toolyfi-core.css" data-toolyfi-core="1">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png">
-</head>
-<body>
+    <div class="wrap">
+      <section class="hero">
+        <div class="badge-row">
+          <span class="pill pill-purple">⚡ Browser-side conversion</span
+          ><span class="pill pill-gold">📐 Exact formulas shown</span>
+        </div>
+        <h1>Convert <span class="hl">Celsius, Fahrenheit & Kelvin</span></h1>
+        <p class="sub">
+          Enter a value in any scale and review the corresponding Celsius, Fahrenheit, and Kelvin
+          results locally in your browser.
+        </p>
+        <div class="share-bar">
+          <button class="share-btn" onclick="copyResults()">📋 Copy all results</button
+          ><a class="share-btn" href="unit-converter.html">📏 More unit conversions</a>
+        </div>
+        <div class="quick-answer">
+          <b>⚡ Short version:</b> °F = °C × 9/5 + 32. °C = (°F − 32) × 5/9. K = °C + 273.15. Water
+          freezes at 0°C / 32°F / 273.15K and boils at 100°C / 212°F / 373.15K.
+        </div>
+      </section>
+      <figure class="toolyfi-visual" aria-label="Tool illustration">
+        <img
+          src="images/toolyfi-temperature-converter-hero.webp"
+          width="1200"
+          height="800"
+          alt="Three scientific temperature instruments connected as a Celsius, Fahrenheit, and Kelvin conversion concept."
+          decoding="async"
+        />
+        <figcaption>
+          Toolyfi visual guide: a unique illustration of this tool’s core task.
+        </figcaption>
+      </figure>
 
-<header class="site">
-  <a href="index.html" class="logo">
-    <img src="logo.png" alt="Toolyfi">
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">All Tools</a></li>
-    <li><a href="index.html#calculators">Calculators</a></li>
-    <li><a href="index.html" class="cta-btn">Explore Tools →</a></li>
-  </ul>
-</header>
+      <div class="tool-box" id="tool">
+        <div class="thermo-visual">
+          <div class="dial-wrap">
+            <svg viewBox="0 0 180 180">
+              <defs>
+                <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="50%" stop-color="#f59e0b" />
+                  <stop offset="100%" stop-color="#f43f5e" />
+                </linearGradient>
+              </defs>
+              <circle class="dial-bg" cx="90" cy="90" r="80" />
+              <circle class="dial-fg" id="dialFg" cx="90" cy="90" r="80" />
+            </svg>
+            <div class="dial-center">
+              <div class="dial-emoji" id="dialEmoji">🌤️</div>
+              <div class="dial-value" id="dialValue">20°</div>
+              <div class="dial-unit">CELSIUS</div>
+            </div>
+          </div>
+          <div class="tube-wrap">
+            <div class="tube"><div class="tube-fill" id="tubeFill"></div></div>
+            <div class="tube-bulb" id="tubeBulb"></div>
+          </div>
+        </div>
 
-<div class="wrap">
-
-  <section class="hero">
-    <div class="badge-row"><span class="pill pill-purple">⚡ Browser-side conversion</span><span class="pill pill-gold">📐 Exact formulas shown</span></div>
-    <h1>Convert <span class="hl">Celsius, Fahrenheit & Kelvin</span></h1>
-    <p class="sub">Enter a value in any scale and review the corresponding Celsius, Fahrenheit, and Kelvin results locally in your browser.</p>
-    <div class="share-bar"><button class="share-btn" onclick="copyResults()">📋 Copy all results</button><a class="share-btn" href="unit-converter.html">📏 More unit conversions</a></div>
-    <div class="quick-answer">
-      <b>⚡ Short version:</b> °F = °C × 9/5 + 32. °C = (°F − 32) × 5/9. K = °C + 273.15. Water freezes at 0°C / 32°F / 273.15K and boils at 100°C / 212°F / 373.15K.
-    </div>
-  </section><figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-temperature-converter-hero.webp" width="1200" height="800" alt="Three scientific temperature instruments connected as a Celsius, Fahrenheit, and Kelvin conversion concept." decoding="async"><figcaption>Toolyfi visual guide: a unique illustration of this tool’s core task.</figcaption></figure>
-
-  <div class="tool-box" id="tool">
-    <div class="thermo-visual">
-      <div class="dial-wrap">
-        <svg viewBox="0 0 180 180">
-          <defs>
-            <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#38bdf8"/>
-              <stop offset="50%" stop-color="#f59e0b"/>
-              <stop offset="100%" stop-color="#f43f5e"/>
-            </linearGradient>
-          </defs>
-          <circle class="dial-bg" cx="90" cy="90" r="80"/>
-          <circle class="dial-fg" id="dialFg" cx="90" cy="90" r="80"/>
-        </svg>
-        <div class="dial-center">
-          <div class="dial-emoji" id="dialEmoji">🌤️</div>
-          <div class="dial-value" id="dialValue">20°</div>
-          <div class="dial-unit">CELSIUS</div>
+        <div>
+          <div class="form-group">
+            <label class="form-label">Celsius (°C)</label>
+            <input
+              type="number"
+              class="form-input"
+              id="celsius"
+              oninput="convertTemp('c')"
+              step="0.01"
+              placeholder="e.g. 20"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Fahrenheit (°F)</label>
+            <input
+              type="number"
+              class="form-input"
+              id="fahrenheit"
+              oninput="convertTemp('f')"
+              step="0.01"
+              placeholder="e.g. 68"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kelvin (K)</label>
+            <input
+              type="number"
+              class="form-input"
+              id="kelvin"
+              oninput="convertTemp('k')"
+              step="0.01"
+              placeholder="e.g. 293.15"
+            />
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary" onclick="copyResults()">📋 Copy Results</button>
+            <button class="btn-secondary" onclick="clearInputs()">🔄 Clear</button>
+          </div>
         </div>
       </div>
-      <div class="tube-wrap">
-        <div class="tube"><div class="tube-fill" id="tubeFill"></div></div>
-        <div class="tube-bulb" id="tubeBulb"></div>
+
+      <div class="toc">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#more">More than a converter</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#numbers">Reference numbers</a></li>
+          <li><a href="#usecases">Use cases</a></li>
+          <li><a href="#steps">How to use</a></li>
+          <li><a href="#who">Who it's for</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
       </div>
-    </div>
 
-    <div>
-      <div class="form-group">
-        <label class="form-label">Celsius (°C)</label>
-        <input type="number" class="form-input" id="celsius" oninput="convertTemp('c')" step="0.01" placeholder="e.g. 20">
+      <section class="block" id="more">
+        <h2 class="sec-title">
+          More than just a <span class="accent">temperature converter</span>
+        </h2>
+        <p>
+          Most converters give you a single number and stop there. Toolyfi's version keeps all three
+          scales open at once and syncs them live, so you can see Celsius, Fahrenheit, and Kelvin
+          moving together as you type — the thermo-dial and tube fill in real time to give you an
+          instant visual sense of "how hot is that, really."
+        </p>
+        <p>
+          Whether you're checking an oven setting from a US recipe, reporting a fever in the unit
+          your doctor expects, or converting lab data for a physics assignment, the goal is the
+          same: get an accurate number in under two seconds without hunting through ads or pop-ups.
+        </p>
+      </section>
+
+      <section class="block" id="features">
+        <h2 class="sec-title">Built for <span class="accent">speed and accuracy</span></h2>
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="ico">⚡</div>
+            <h3>Live Sync</h3>
+            <p>All three scales update instantly as you type — no "Convert" button needed.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🎯</div>
+            <h3>Two Decimal Precision</h3>
+            <p>Accurate to 0.01°, useful for lab work as well as everyday checks.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🌡️</div>
+            <h3>Visual Thermo-Dial</h3>
+            <p>A live gauge and tube fill so you can gauge intensity at a glance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">📋</div>
+            <h3>One-Tap Copy</h3>
+            <p>Copy all three converted values together for notes, recipes, or reports.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🔒</div>
+            <h3>Browser-side calculation</h3>
+            <p>
+              The page calculates the three displayed scales directly from the value you enter;
+              avoid placing sensitive information in general web tools.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="numbers">
+        <h2 class="sec-title">Reference numbers <span class="accent">worth memorizing</span></h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="num">0K</div>
+            <div class="lbl">Absolute Zero</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">37°C</div>
+            <div class="lbl">Body Temp</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">100°C</div>
+            <div class="lbl">Water Boils</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">−40°</div>
+            <div class="lbl">C = F (same!)</div>
+          </div>
+        </div>
+        <table class="ref-table">
+          <tr>
+            <th>Description</th>
+            <th>Celsius</th>
+            <th>Fahrenheit</th>
+            <th>Kelvin</th>
+          </tr>
+          <tr>
+            <td>Absolute Zero</td>
+            <td>−273.15°C</td>
+            <td>−459.67°F</td>
+            <td>0 K</td>
+          </tr>
+          <tr>
+            <td>Very Cold Day</td>
+            <td>−18°C</td>
+            <td>0°F</td>
+            <td>255.15 K</td>
+          </tr>
+          <tr>
+            <td>Freezing Point of Water</td>
+            <td>0°C</td>
+            <td>32°F</td>
+            <td>273.15 K</td>
+          </tr>
+          <tr>
+            <td>Room Temperature</td>
+            <td>21°C</td>
+            <td>70°F</td>
+            <td>294.15 K</td>
+          </tr>
+          <tr>
+            <td>Body Temperature</td>
+            <td>37°C</td>
+            <td>98.6°F</td>
+            <td>310.15 K</td>
+          </tr>
+          <tr>
+            <td>Hot Bath</td>
+            <td>40°C</td>
+            <td>104°F</td>
+            <td>313.15 K</td>
+          </tr>
+          <tr>
+            <td>Water Boils</td>
+            <td>100°C</td>
+            <td>212°F</td>
+            <td>373.15 K</td>
+          </tr>
+          <tr>
+            <td>Moderate Oven</td>
+            <td>180°C</td>
+            <td>356°F</td>
+            <td>453.15 K</td>
+          </tr>
+          <tr>
+            <td>Hot Oven</td>
+            <td>220°C</td>
+            <td>428°F</td>
+            <td>493.15 K</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="block" id="usecases">
+        <h2 class="sec-title">Common <span class="accent">use cases</span></h2>
+        <p>
+          <strong>Cooking with US recipes:</strong> Most American recipes list oven temperatures in
+          Fahrenheit while the rest of the world bakes in Celsius. A quick check here prevents a
+          burnt or undercooked dish. Pair it with our
+          <a href="unit-converter.html">unit converter</a> for cups-to-grams conversions in the same
+          recipe.
+        </p>
+        <p>
+          <strong>Travel & weather:</strong> If you're checking a forecast from a US site while
+          living in a Celsius country (or vice versa), converting the day's high and low takes the
+          guesswork out of packing.
+        </p>
+        <p>
+          <strong>Health tracking:</strong> Thermometers sold in different countries use different
+          scales. Converting a child's or your own reading against the fever threshold above helps
+          you react appropriately without confusion.
+        </p>
+        <p>
+          <strong>Science & engineering:</strong> Kelvin is the SI base unit for thermodynamic
+          calculations. Students and engineers often need to shift between lab notation (K) and
+          everyday reporting (°C).
+        </p>
+      </section>
+
+      <section class="block" id="steps">
+        <h2 class="sec-title">How to use it in <span class="accent">3 steps</span></h2>
+        <p>
+          <strong>1. Pick any field.</strong> Click into Celsius, Fahrenheit, or Kelvin — it doesn't
+          matter which.
+        </p>
+        <p>
+          <strong>2. Type your value.</strong> The other two fields, the dial, and the tube update
+          instantly.
+        </p>
+        <p>
+          <strong>3. Copy or clear.</strong> Use "Copy Results" to grab all three values in one
+          line, or "Clear" to start over.
+        </p>
+      </section>
+
+      <section class="block" id="who">
+        <h2 class="sec-title">Who this tool is <span class="accent">built for</span></h2>
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="ico">👩‍🍳</div>
+            <h3>Home Cooks</h3>
+            <p>Convert oven temps between US and metric recipes.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🎓</div>
+            <h3>Students</h3>
+            <p>Physics and chemistry homework involving Kelvin conversions.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🩺</div>
+            <h3>Parents & Caregivers</h3>
+            <p>Reading a fever thermometer from another country's scale.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">✈️</div>
+            <h3>Travelers</h3>
+            <p>Understanding foreign weather reports at a glance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🔬</div>
+            <h3>Lab Technicians</h3>
+            <p>Fast, precise unit shifts for experiments and reports.</p>
+          </div>
+          <div class="feature-card">
+            <div class="ico">🏗️</div>
+            <h3>Engineers</h3>
+            <p>Cross-checking spec sheets that mix unit systems.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-banner">
+        <h3>Need more than temperature?</h3>
+        <p>
+          Toolyfi has 50+ free calculators and converters — currency, BMI, age, percentages and
+          more.
+        </p>
+        <a href="index.html">Browse All Free Tools →</a>
       </div>
-      <div class="form-group">
-        <label class="form-label">Fahrenheit (°F)</label>
-        <input type="number" class="form-input" id="fahrenheit" oninput="convertTemp('f')" step="0.01" placeholder="e.g. 68">
+
+      <section class="block guide" id="guide">
+        <h2 class="sec-title">
+          Temperature conversion: <span class="accent">a practical guide</span>
+        </h2>
+        <p>
+          A temperature converter changes the scale used to describe the same thermal state. It does
+          not measure temperature for you. You need a reading from a thermometer, a recipe, a
+          weather report, a specification, or a scientific source; this page then expresses that
+          reading in Celsius, Fahrenheit, and Kelvin. The distinction is important because a
+          calculation can be exact while the original reading is approximate, wrongly measured, or
+          used outside the context for which it was intended.
+        </p>
+        <p>
+          Toolyfi keeps all three fields visible so that you can start with the scale you have and
+          immediately inspect the other two. Enter a value in one field and the page calculates the
+          remaining scales in the browser. The dial is a visual orientation aid, not an instrument.
+          The input fields, labelled units, and formula relationships are the parts to review when
+          accuracy matters.
+        </p>
+        <h2 class="sec-title">The three temperature scales</h2>
+        <p>
+          <strong>Celsius</strong> is common in everyday weather, cooking, education, and
+          international reporting. At standard pressure, water freezes near 0 °C and boils near 100
+          °C. <strong>Fahrenheit</strong> is widely used in the United States and appears in many
+          recipes, appliance manuals, and forecasts. <strong>Kelvin</strong> is an absolute
+          temperature scale used in science and engineering. It uses the same interval size as
+          Celsius, but its zero point is absolute zero, so a change of 1 K is the same size as a
+          change of 1 °C even though the displayed values differ by 273.15.
+        </p>
+        <p>
+          The unit symbols carry meaning. Celsius and Fahrenheit use degree signs: °C and °F. Kelvin
+          is written K without a degree sign. Preserve that distinction when copying a result into a
+          note, laboratory record, or technical document. A number on its own is not a complete
+          temperature statement.
+        </p>
+        <h2 class="sec-title">Exact formulas used by this page</h2>
+        <p>
+          The Celsius-to-Fahrenheit relationship is <strong>°F = (°C × 9/5) + 32</strong>. To
+          reverse it, use <strong>°C = (°F − 32) × 5/9</strong>. Celsius and Kelvin use the offset
+          formulas <strong>K = °C + 273.15</strong> and <strong>°C = K − 273.15</strong>. Fahrenheit
+          to Kelvin is easiest to compute by first converting Fahrenheit to Celsius and then adding
+          273.15. The browser does these steps for you when you edit any one of the three fields.
+        </p>
+        <p>
+          For example, 20 °C becomes 68 °F because 20 multiplied by 1.8 equals 36, and 36 plus 32
+          equals 68. The same reading is 293.15 K. Conversely, 68 °F becomes 20 °C because
+          subtracting 32 gives 36 and multiplying by 5/9 gives 20. Working through a familiar
+          example once helps confirm which field is the source and which value is the result.
+        </p>
+        <h2 class="sec-title">Celsius to Fahrenheit for cooking and weather</h2>
+        <p>
+          Recipes often create the most immediate conversion need. An oven instruction may say 350
+          °F while an appliance dial displays Celsius. A conversion gives you a comparable setting,
+          but the exact heat delivered in an oven can vary. Oven calibration, fan setting, rack
+          position, cookware, altitude, and recipe method all affect the final result. Use the
+          converted temperature as one input alongside the recipe’s timing and the food-safety
+          procedure appropriate to the dish.
+        </p>
+        <p>
+          Weather is another everyday use. A forecast of 68 °F is 20 °C; 32 °F is 0 °C; and −40 is
+          the special point where both scales display the same number. Forecast reports describe air
+          temperature under a specified method and location. They do not replace local warnings,
+          heat-index information, wind conditions, or official safety guidance. Convert the unit so
+          you can understand the report, then read the source context.
+        </p>
+        <h2 class="sec-title">Kelvin in science and engineering</h2>
+        <p>
+          Kelvin is especially useful when a calculation depends on absolute temperature rather than
+          a relative everyday scale. It appears in physics, chemistry, material science, lighting,
+          astronomy, and thermodynamic formulas. A kelvin value below 0 K is not physically valid
+          for an ordinary temperature measurement. If a source value produces a negative Kelvin
+          result, check whether the original field was labelled correctly or whether a Celsius value
+          was entered into the Kelvin field by mistake.
+        </p>
+        <p>
+          When reporting a scientific result, retain the original unit and measurement uncertainty.
+          A converter may display two decimals, but that does not prove a source thermometer was
+          accurate to two decimal places. Match the rounding to your measurement method and the
+          standard required by the assignment, experiment, or document. In a technical calculation,
+          preserve full working precision until the final presentation step where possible.
+        </p>
+        <h2 class="sec-title">Reference points, not operating instructions</h2>
+        <p>
+          Reference points help you detect obvious mistakes. Water’s freezing and boiling points,
+          for example, are often used as learning examples under standard atmospheric pressure.
+          Those points can shift with pressure and dissolved substances, so they are not universal
+          operating targets. Room temperature is also a context-dependent phrase rather than one
+          fixed number. A stated reference is useful for orientation, but it should not be
+          substituted for a calibrated instrument or official procedure.
+        </p>
+        <p>
+          The same caution applies to human, food, laboratory, equipment, and environmental
+          readings. This converter can translate a stated number from one scale into another. It
+          does not diagnose a condition, confirm whether food is safe, determine whether a device is
+          within specification, or replace professional evaluation. When a temperature reading
+          affects a health or safety decision, use the relevant validated instrument and follow
+          appropriate professional or local guidance.
+        </p>
+        <h2 class="sec-title">How to use the three-field converter</h2>
+        <p>
+          First, choose the field that matches your source. Type the number exactly as it was
+          provided, including a minus sign when relevant. The other two fields update immediately.
+          Second, look at the unit labels before copying the result. Third, check whether the output
+          range is sensible for the context; a cooking temperature converted into Kelvin will be a
+          much larger number, but it still represents the same thermal state. Fourth, use Copy
+          Results when you need all three labelled values in a note or message.
+        </p>
+        <p>
+          If you want to start over, use Clear. This empties the three source/result fields and
+          returns the dial to its visual default. It does not restore an earlier value, so keep a
+          source record for an important reading. The tool intentionally does not create an account
+          or store a history. That makes the page focused for quick conversion, while your own
+          document remains the place to preserve a calculation trail.
+        </p>
+        <h2 class="sec-title">Rounding and significant figures</h2>
+        <p>
+          Do not copy more precision than the source supports. If a weather app rounds to the
+          nearest whole degree, a converted result with two decimal places is a mathematical
+          consequence of the formula, not evidence that the weather observation was measured to
+          one-hundredth of a degree. A recipe may reasonably use a rounded oven setting. A
+          laboratory report may require a stated uncertainty and a defined number of significant
+          figures. Let the final context decide how the result should appear.
+        </p>
+        <p>
+          Rounding too early can also create avoidable drift when a number is converted several
+          times. Keep the original reading and the intermediate result intact during calculations,
+          then round once at the final output. If a system requires a specific precision, follow
+          that system’s format. The displayed values on this page are a convenient representation;
+          they are not a universal precision recommendation.
+        </p>
+        <h2 class="sec-title">Common mistakes to avoid</h2>
+        <p>
+          One common mistake is applying the Celsius-to-Fahrenheit formula backward. Another is
+          forgetting the 32-degree offset and multiplying alone. A third is writing degrees Kelvin
+          instead of kelvin, or adding a degree sign to K. Users also sometimes enter a Fahrenheit
+          number into the Celsius field because the displayed values are not visually distinct
+          enough in a copied note. Check the field label before typing and preserve the unit beside
+          every number when transferring it elsewhere.
+        </p>
+        <p>
+          A more subtle mistake is treating temperature difference and absolute temperature as
+          identical in every calculation. A change of 1 °C equals a change of 1 K, but Fahrenheit
+          intervals have a different size. Engineering and scientific problems can distinguish
+          between an absolute reading and a temperature change. Read the problem’s notation and
+          required formula carefully rather than converting each number mechanically.
+        </p>
+        <h2 class="sec-title">From one scale to all three: worked conversions</h2>
+        <p>
+          Worked examples are valuable because they make the offset and multiplier visible. Start
+          with 0 °C. Celsius to Fahrenheit gives (0 × 9/5) + 32, which is 32 °F. Celsius to Kelvin
+          gives 0 + 273.15, which is 273.15 K. Start with 212 °F. Subtract 32 to get 180, multiply
+          by 5/9 to get 100 °C, then add 273.15 to reach 373.15 K. The three outputs describe the
+          same temperature using three different scales.
+        </p>
+        <p>
+          Now try −40. The Fahrenheit-to-Celsius formula gives (−40 − 32) × 5/9, which is −40. This
+          is the point where the numerical values meet. It is a useful self-check because a
+          calculation that does not return −40 in both fields likely has a sign, offset, or
+          scale-selection error. For Kelvin, the same reading is 233.15 K. The value remains
+          positive because it is above absolute zero.
+        </p>
+        <p>
+          These examples demonstrate arithmetic, not a recommendation for a particular environment.
+          Do not assume that a familiar number proves a sensor or thermostat is correct. A converter
+          can check scale relationships; it cannot calibrate the device that produced the source
+          reading.
+        </p>
+        <h2 class="sec-title">Temperature differences versus temperature readings</h2>
+        <p>
+          A temperature reading identifies a point on a scale. A temperature difference describes a
+          change between two readings. Celsius and Kelvin intervals are the same size: an increase
+          of 10 °C is an increase of 10 K. Fahrenheit intervals are smaller, so a change of 10 °C
+          corresponds to a change of 18 °F. This distinction matters in scientific and engineering
+          formulas. A direct conversion of an absolute number may require the full offset formula,
+          while a conversion of a difference may require only the interval relationship.
+        </p>
+        <p>
+          When an instruction says “raise the temperature by 5 degrees,” first identify its original
+          scale and whether it refers to a difference. Do not automatically add 273.15 to a Celsius
+          difference. In everyday cooking and weather language, context often makes the intent
+          clear, but technical work should state the unit and whether a value is absolute or
+          differential.
+        </p>
+        <h2 class="sec-title">Ovens, appliances, and process settings</h2>
+        <p>
+          Recipe and appliance conversions are convenient, but a displayed set point is not always
+          the exact temperature experienced by food or material. Ovens cycle around their target,
+          probes sit in different locations, and cookware changes how heat reaches a surface. A
+          conversion from 350 °F to about 177 °C helps you choose the intended setting; it does not
+          validate the appliance. Follow the recipe author, equipment manual, and any food-safety
+          guidance that applies to the dish.
+        </p>
+        <p>
+          For industrial or laboratory processes, the gap between a displayed set point and an
+          actual sample temperature can be more consequential. Use the approved instrument,
+          calibration routine, and procedure. Document the source measurement and convert its unit
+          only as part of the required workflow. Do not use a general browser converter as evidence
+          that a system has reached a safe or compliant operating condition.
+        </p>
+        <h2 class="sec-title">Weather, climate, and environmental context</h2>
+        <p>
+          Weather reports can list the same conditions in different scales, but comfort and risk
+          depend on more than air temperature. Humidity, wind, sun exposure, rainfall, altitude,
+          clothing, activity level, and local warnings may all matter. Converting 95 °F to 35 °C can
+          improve understanding for a reader accustomed to Celsius, yet it does not state the heat
+          index. Converting 0 °C to 32 °F can clarify freezing conditions, yet it does not predict
+          ice formation on a particular road.
+        </p>
+        <p>
+          Use converted numbers to read a source more clearly. For travel or outdoor plans, also
+          check the official forecast, alerts, and local information. This is a unit tool, not a
+          forecasting service, climate analysis, or emergency alert system.
+        </p>
+        <h2 class="sec-title">Input validation and unusual values</h2>
+        <p>
+          The page accepts decimal values and negative Celsius or Fahrenheit readings. It calculates
+          a corresponding Kelvin value from the formula. If you enter a Kelvin value below zero, the
+          arithmetic may produce a value, but the input is not a physically valid absolute
+          temperature in ordinary thermodynamics. Treat such an entry as a signal to check the
+          source field, unit, or sign. Clear labels and a quick sanity check are often more
+          effective than attempting to guess the user’s intention silently.
+        </p>
+        <p>
+          Extremely large values can also be mathematically convertible but outside the practical
+          range of a household thermometer, weather report, or recipe. The tool does not classify a
+          value as safe, normal, dangerous, or appropriate. It simply applies the scale
+          relationship. That limitation keeps the calculation transparent and prevents a numeric
+          display from pretending to be advice.
+        </p>
+        <h2 class="sec-title">Copying results without losing context</h2>
+        <p>
+          Copy Results produces a line with all three values and their units. That is useful for a
+          worksheet, note, chat, or draft report. Before pasting, decide whether the reader needs
+          all three scales or only the destination scale. Including unnecessary values can make a
+          simple recipe note harder to scan, while omitting the source can make a technical record
+          difficult to audit. Keep the unit symbol beside each number and retain the original value
+          when someone may need to reproduce the conversion.
+        </p>
+        <p>
+          If the final destination requires a particular wording, form, or precision, change the
+          presentation after checking the calculation. A browser result can supply the numbers, but
+          the destination’s standards determine how those numbers should be recorded. For a formal
+          document, keep a traceable source rather than relying only on copied clipboard text.
+        </p>
+        <h2 class="sec-title">A concise review routine</h2>
+        <p>
+          Before using a converted temperature, ask five questions. What scale was the source
+          actually using? Did I enter it in the matching field? Do the returned values look
+          plausible against a known reference point? Is the rounding appropriate for the source
+          measurement? Does the final context require a calibrated instrument, a documented
+          procedure, or professional guidance? These questions take very little time and help
+          separate a correct calculation from an appropriate decision.
+        </p>
+        <p>
+          Toolyfi’s converter is intentionally focused on the first part of the workflow:
+          translating a stated temperature across three scales. It gives you the formulas, visible
+          labels, a browser-side calculation, and copy-ready output. The final responsibility is to
+          connect that result to the correct source, required precision, and real-world context.
+        </p>
+        <h2 class="sec-title">Formula checks you can do by hand</h2>
+        <p>
+          Hand checks are useful when you want to validate a copied result without rebuilding the
+          full calculation. For Celsius to Fahrenheit, multiply by two and add thirty only as a
+          rough mental estimate; use the exact 9/5 formula for the final value. For Fahrenheit to
+          Celsius, subtracting thirty and halving gives a rough intuition but not an exact
+          conversion. For Kelvin, remember the fixed 273.15 offset from Celsius. These shortcuts are
+          for spotting a number that is obviously in the wrong range, not for replacing the page’s
+          displayed formula.
+        </p>
+        <p>
+          A simple independent check is to convert the result back into the original scale. If you
+          entered 25 °C and copied 77 °F, put 77 into the Fahrenheit field; the Celsius field should
+          return 25.00. A round trip will not repair an incorrect source measurement, but it does
+          catch a swapped field, omitted offset, or transcription mistake. When a document or
+          calculation is important, retain this kind of check alongside the original source rather
+          than relying on memory.
+        </p>
+        <h2 class="sec-title">Related Toolyfi workflows</h2>
+        <p>
+          Use the broader <a href="unit-converter.html">Unit Converter</a> when your task also
+          includes length, mass, volume, area, data, time, pressure, speed, or energy. Use
+          <a href="scientific-calculator.html">Scientific Calculator</a> when a conversion feeds
+          into an expression you need to evaluate. Use
+          <a href="number-to-words.html">Number to Words</a> for a readable written-number draft,
+          and <a href="text-trimmer.html">Text Trimmer</a> when copying a result into a strict text
+          field. Each utility solves a different part of a workflow; none substitutes for the source
+          context or standard that governs the final decision.
+        </p>
+        <h2 class="sec-title">Final check before you copy</h2>
+        <p>
+          Confirm that the source unit is correct, the selected field matches that source, the
+          result carries the intended destination unit, and the rounding fits the context. If the
+          number will be used in a safety-sensitive, legal, medical, financial, or regulated
+          setting, confirm the calculation and the relevant procedure independently. This page
+          provides a transparent three-scale conversion; responsible use depends on checking what
+          the temperature means in the place where it will be used.
+        </p>
+      </section>
+      <section class="block" id="faq">
+        <h2 class="sec-title">Frequently asked <span class="accent">questions</span></h2>
+        <div class="faq-item">
+          <div class="faq-q">
+            How do I convert Celsius to Fahrenheit? <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            Use °F = (°C × 9/5) + 32. Enter a Celsius value in the first field and this page
+            calculates the other scales.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            How do I convert Fahrenheit to Celsius? <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            Use °C = (°F − 32) × 5/9. Enter the Fahrenheit reading and review the labelled Celsius
+            result.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I convert Celsius to Kelvin? <span class="arrow">▾</span></div>
+          <div class="faq-a">
+            Add 273.15: K = °C + 273.15. Kelvin is written with K, without a degree sign.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is absolute zero? <span class="arrow">▾</span></div>
+          <div class="faq-a">Absolute zero is 0 K, equal to −273.15 °C and −459.67 °F.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            Why do Celsius and Fahrenheit meet at −40? <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            −40 is the one temperature with the same numeric value on both the Celsius and
+            Fahrenheit scales.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I enter a negative temperature? <span class="arrow">▾</span></div>
+          <div class="faq-a">
+            Yes for Celsius and Fahrenheit. Kelvin values below 0 K are not physically valid, so
+            verify the source and field label.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            How should I round a converted result? <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            Match the precision of the source measurement and the required final context; do not let
+            the calculator display imply greater accuracy than the source supports.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            Can this page make a safety or medical decision? <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            No. It converts stated units. Use a suitable calibrated instrument and follow
+            professional or local guidance for safety-sensitive decisions.
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="sec-title">Related <span class="accent">tools</span></h2>
+        <div class="related-grid">
+          <a href="currency-converter.html" class="related-card">💱 Currency Converter</a>
+          <a href="unit-converter.html" class="related-card">📏 Unit Converter</a>
+          <a href="scientific-calculator.html" class="related-card">🧮 Scientific Calculator</a>
+          <a href="age-calculator.html" class="related-card">🎂 Age Calculator</a>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site">
+      <div class="footer-grid">
+        <a href="index.html">Home</a>
+        <a href="currency-converter.html">Currency Converter</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="unit-converter.html">Unit Converter</a>
+        <a href="scientific-calculator.html">Scientific Calculator</a>
+        <a href="percentage-calculator.html">Percentage Calculator</a>
+        <a href="age-calculator.html">Age Calculator</a>
+        <a href="index.html">All 50+ Tools →</a>
       </div>
-      <div class="form-group">
-        <label class="form-label">Kelvin (K)</label>
-        <input type="number" class="form-input" id="kelvin" oninput="convertTemp('k')" step="0.01" placeholder="e.g. 293.15">
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="copyResults()">📋 Copy Results</button>
-        <button class="btn-secondary" onclick="clearInputs()">🔄 Clear</button>
-      </div>
-    </div>
-  </div>
+      <div class="bottom">© 2026 Toolyfi.com — Free Temperature Converter</div>
+    </footer>
 
-  <div class="toc">
-    <h2>On this page</h2>
-    <ol>
-      <li><a href="#more">More than a converter</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#numbers">Reference numbers</a></li>
-      <li><a href="#usecases">Use cases</a></li>
-      <li><a href="#steps">How to use</a></li>
-      <li><a href="#who">Who it's for</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ol>
-  </div>
+    <div class="toast" id="toast"></div>
 
-  <section class="block" id="more">
-    <h2 class="sec-title">More than just a <span class="accent">temperature converter</span></h2>
-    <p>Most converters give you a single number and stop there. Toolyfi's version keeps all three scales open at once and syncs them live, so you can see Celsius, Fahrenheit, and Kelvin moving together as you type — the thermo-dial and tube fill in real time to give you an instant visual sense of "how hot is that, really."</p>
-    <p>Whether you're checking an oven setting from a US recipe, reporting a fever in the unit your doctor expects, or converting lab data for a physics assignment, the goal is the same: get an accurate number in under two seconds without hunting through ads or pop-ups.</p>
-  </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const celsius = document.getElementById("celsius");
+        const fahrenheit = document.getElementById("fahrenheit");
+        const kelvin = document.getElementById("kelvin");
+        const dialFg = document.getElementById("dialFg");
+        const dialValue = document.getElementById("dialValue");
+        const dialEmoji = document.getElementById("dialEmoji");
+        const tubeFill = document.getElementById("tubeFill");
+        const tubeBulb = document.getElementById("tubeBulb");
+        const CIRC = 502;
 
-  <section class="block" id="features">
-    <h2 class="sec-title">Built for <span class="accent">speed and accuracy</span></h2>
-    <div class="card-grid">
-      <div class="feature-card"><div class="ico">⚡</div><h3>Live Sync</h3><p>All three scales update instantly as you type — no "Convert" button needed.</p></div>
-      <div class="feature-card"><div class="ico">🎯</div><h3>Two Decimal Precision</h3><p>Accurate to 0.01°, useful for lab work as well as everyday checks.</p></div>
-      <div class="feature-card"><div class="ico">🌡️</div><h3>Visual Thermo-Dial</h3><p>A live gauge and tube fill so you can gauge intensity at a glance.</p></div>
-      <div class="feature-card"><div class="ico">📋</div><h3>One-Tap Copy</h3><p>Copy all three converted values together for notes, recipes, or reports.</p></div>
-      <div class="feature-card"><div class="ico">🔒</div><h3>Browser-side calculation</h3><p>The page calculates the three displayed scales directly from the value you enter; avoid placing sensitive information in general web tools.</p></div>
-    </div>
-  </section>
+        function updateVisuals(c) {
+          // clamp for dial display -40 to 220 range
+          let pct = (c - -40) / (220 - -40);
+          pct = Math.max(0, Math.min(1, pct));
+          dialFg.style.strokeDashoffset = CIRC - pct * CIRC;
+          dialValue.textContent = c.toFixed(1) + "°";
+          tubeFill.style.height = (pct * 100).toFixed(0) + "%";
 
-  <section class="block" id="numbers">
-    <h2 class="sec-title">Reference numbers <span class="accent">worth memorizing</span></h2>
-    <div class="stat-grid">
-      <div class="stat-card"><div class="num">0K</div><div class="lbl">Absolute Zero</div></div>
-      <div class="stat-card"><div class="num">37°C</div><div class="lbl">Body Temp</div></div>
-      <div class="stat-card"><div class="num">100°C</div><div class="lbl">Water Boils</div></div>
-      <div class="stat-card"><div class="num">−40°</div><div class="lbl">C = F (same!)</div></div>
-    </div>
-    <table class="ref-table">
-      <tr><th>Description</th><th>Celsius</th><th>Fahrenheit</th><th>Kelvin</th></tr>
-      <tr><td>Absolute Zero</td><td>−273.15°C</td><td>−459.67°F</td><td>0 K</td></tr>
-      <tr><td>Very Cold Day</td><td>−18°C</td><td>0°F</td><td>255.15 K</td></tr>
-      <tr><td>Freezing Point of Water</td><td>0°C</td><td>32°F</td><td>273.15 K</td></tr>
-      <tr><td>Room Temperature</td><td>21°C</td><td>70°F</td><td>294.15 K</td></tr>
-      <tr><td>Body Temperature</td><td>37°C</td><td>98.6°F</td><td>310.15 K</td></tr>
-            <tr><td>Hot Bath</td><td>40°C</td><td>104°F</td><td>313.15 K</td></tr>
-      <tr><td>Water Boils</td><td>100°C</td><td>212°F</td><td>373.15 K</td></tr>
-      <tr><td>Moderate Oven</td><td>180°C</td><td>356°F</td><td>453.15 K</td></tr>
-      <tr><td>Hot Oven</td><td>220°C</td><td>428°F</td><td>493.15 K</td></tr>
-    </table>
-  </section>
+          let color;
+          if (c <= 0) {
+            color = "#38bdf8";
+            dialEmoji.textContent = "🥶";
+          } else if (c <= 20) {
+            color = "#38bdf8";
+            dialEmoji.textContent = "❄️";
+          } else if (c <= 30) {
+            color = "#f59e0b";
+            dialEmoji.textContent = "🌤️";
+          } else if (c <= 45) {
+            color = "#f97316";
+            dialEmoji.textContent = "☀️";
+          } else {
+            color = "#f43f5e";
+            dialEmoji.textContent = "🔥";
+          }
+          tubeBulb.style.background = color;
+        }
 
-  <section class="block" id="usecases">
-    <h2 class="sec-title">Common <span class="accent">use cases</span></h2>
-    <p><strong>Cooking with US recipes:</strong> Most American recipes list oven temperatures in Fahrenheit while the rest of the world bakes in Celsius. A quick check here prevents a burnt or undercooked dish. Pair it with our <a href="unit-converter.html">unit converter</a> for cups-to-grams conversions in the same recipe.</p>
-    <p><strong>Travel & weather:</strong> If you're checking a forecast from a US site while living in a Celsius country (or vice versa), converting the day's high and low takes the guesswork out of packing.</p>
-    <p><strong>Health tracking:</strong> Thermometers sold in different countries use different scales. Converting a child's or your own reading against the fever threshold above helps you react appropriately without confusion.</p>
-    <p><strong>Science & engineering:</strong> Kelvin is the SI base unit for thermodynamic calculations. Students and engineers often need to shift between lab notation (K) and everyday reporting (°C).</p>
-  </section>
+        window.convertTemp = function (src) {
+          let c, f, k;
+          if (src === "c" && celsius.value !== "") {
+            c = parseFloat(celsius.value);
+            f = (c * 9) / 5 + 32;
+            k = c + 273.15;
+          } else if (src === "f" && fahrenheit.value !== "") {
+            f = parseFloat(fahrenheit.value);
+            c = ((f - 32) * 5) / 9;
+            k = c + 273.15;
+          } else if (src === "k" && kelvin.value !== "") {
+            k = parseFloat(kelvin.value);
+            c = k - 273.15;
+            f = (c * 9) / 5 + 32;
+          } else {
+            return;
+          }
 
-  <section class="block" id="steps">
-    <h2 class="sec-title">How to use it in <span class="accent">3 steps</span></h2>
-    <p><strong>1. Pick any field.</strong> Click into Celsius, Fahrenheit, or Kelvin — it doesn't matter which.</p>
-    <p><strong>2. Type your value.</strong> The other two fields, the dial, and the tube update instantly.</p>
-    <p><strong>3. Copy or clear.</strong> Use "Copy Results" to grab all three values in one line, or "Clear" to start over.</p>
-  </section>
+          if (src !== "c") celsius.value = c.toFixed(2);
+          if (src !== "f") fahrenheit.value = f.toFixed(2);
+          if (src !== "k") kelvin.value = k.toFixed(2);
 
-  <section class="block" id="who">
-    <h2 class="sec-title">Who this tool is <span class="accent">built for</span></h2>
-    <div class="card-grid">
-      <div class="feature-card"><div class="ico">👩‍🍳</div><h3>Home Cooks</h3><p>Convert oven temps between US and metric recipes.</p></div>
-      <div class="feature-card"><div class="ico">🎓</div><h3>Students</h3><p>Physics and chemistry homework involving Kelvin conversions.</p></div>
-      <div class="feature-card"><div class="ico">🩺</div><h3>Parents & Caregivers</h3><p>Reading a fever thermometer from another country's scale.</p></div>
-      <div class="feature-card"><div class="ico">✈️</div><h3>Travelers</h3><p>Understanding foreign weather reports at a glance.</p></div>
-      <div class="feature-card"><div class="ico">🔬</div><h3>Lab Technicians</h3><p>Fast, precise unit shifts for experiments and reports.</p></div>
-      <div class="feature-card"><div class="ico">🏗️</div><h3>Engineers</h3><p>Cross-checking spec sheets that mix unit systems.</p></div>
-    </div>
-  </section>
+          updateVisuals(c);
+        };
 
-  <div class="cta-banner">
-    <h3>Need more than temperature?</h3>
-    <p>Toolyfi has 50+ free calculators and converters — currency, BMI, age, percentages and more.</p>
-    <a href="index.html">Browse All Free Tools →</a>
-  </div>
+        window.clearInputs = function () {
+          celsius.value = "";
+          fahrenheit.value = "";
+          kelvin.value = "";
+          updateVisuals(20);
+          showToast("🔄 Cleared!");
+        };
 
-  <section class="block guide" id="guide"><h2 class="sec-title">Temperature conversion: <span class="accent">a practical guide</span></h2><p>A temperature converter changes the scale used to describe the same thermal state. It does not measure temperature for you. You need a reading from a thermometer, a recipe, a weather report, a specification, or a scientific source; this page then expresses that reading in Celsius, Fahrenheit, and Kelvin. The distinction is important because a calculation can be exact while the original reading is approximate, wrongly measured, or used outside the context for which it was intended.</p><p>Toolyfi keeps all three fields visible so that you can start with the scale you have and immediately inspect the other two. Enter a value in one field and the page calculates the remaining scales in the browser. The dial is a visual orientation aid, not an instrument. The input fields, labelled units, and formula relationships are the parts to review when accuracy matters.</p><h2 class="sec-title">The three temperature scales</h2><p><strong>Celsius</strong> is common in everyday weather, cooking, education, and international reporting. At standard pressure, water freezes near 0 °C and boils near 100 °C. <strong>Fahrenheit</strong> is widely used in the United States and appears in many recipes, appliance manuals, and forecasts. <strong>Kelvin</strong> is an absolute temperature scale used in science and engineering. It uses the same interval size as Celsius, but its zero point is absolute zero, so a change of 1 K is the same size as a change of 1 °C even though the displayed values differ by 273.15.</p><p>The unit symbols carry meaning. Celsius and Fahrenheit use degree signs: °C and °F. Kelvin is written K without a degree sign. Preserve that distinction when copying a result into a note, laboratory record, or technical document. A number on its own is not a complete temperature statement.</p><h2 class="sec-title">Exact formulas used by this page</h2><p>The Celsius-to-Fahrenheit relationship is <strong>°F = (°C × 9/5) + 32</strong>. To reverse it, use <strong>°C = (°F − 32) × 5/9</strong>. Celsius and Kelvin use the offset formulas <strong>K = °C + 273.15</strong> and <strong>°C = K − 273.15</strong>. Fahrenheit to Kelvin is easiest to compute by first converting Fahrenheit to Celsius and then adding 273.15. The browser does these steps for you when you edit any one of the three fields.</p><p>For example, 20 °C becomes 68 °F because 20 multiplied by 1.8 equals 36, and 36 plus 32 equals 68. The same reading is 293.15 K. Conversely, 68 °F becomes 20 °C because subtracting 32 gives 36 and multiplying by 5/9 gives 20. Working through a familiar example once helps confirm which field is the source and which value is the result.</p><h2 class="sec-title">Celsius to Fahrenheit for cooking and weather</h2><p>Recipes often create the most immediate conversion need. An oven instruction may say 350 °F while an appliance dial displays Celsius. A conversion gives you a comparable setting, but the exact heat delivered in an oven can vary. Oven calibration, fan setting, rack position, cookware, altitude, and recipe method all affect the final result. Use the converted temperature as one input alongside the recipe’s timing and the food-safety procedure appropriate to the dish.</p><p>Weather is another everyday use. A forecast of 68 °F is 20 °C; 32 °F is 0 °C; and −40 is the special point where both scales display the same number. Forecast reports describe air temperature under a specified method and location. They do not replace local warnings, heat-index information, wind conditions, or official safety guidance. Convert the unit so you can understand the report, then read the source context.</p><h2 class="sec-title">Kelvin in science and engineering</h2><p>Kelvin is especially useful when a calculation depends on absolute temperature rather than a relative everyday scale. It appears in physics, chemistry, material science, lighting, astronomy, and thermodynamic formulas. A kelvin value below 0 K is not physically valid for an ordinary temperature measurement. If a source value produces a negative Kelvin result, check whether the original field was labelled correctly or whether a Celsius value was entered into the Kelvin field by mistake.</p><p>When reporting a scientific result, retain the original unit and measurement uncertainty. A converter may display two decimals, but that does not prove a source thermometer was accurate to two decimal places. Match the rounding to your measurement method and the standard required by the assignment, experiment, or document. In a technical calculation, preserve full working precision until the final presentation step where possible.</p><h2 class="sec-title">Reference points, not operating instructions</h2><p>Reference points help you detect obvious mistakes. Water’s freezing and boiling points, for example, are often used as learning examples under standard atmospheric pressure. Those points can shift with pressure and dissolved substances, so they are not universal operating targets. Room temperature is also a context-dependent phrase rather than one fixed number. A stated reference is useful for orientation, but it should not be substituted for a calibrated instrument or official procedure.</p><p>The same caution applies to human, food, laboratory, equipment, and environmental readings. This converter can translate a stated number from one scale into another. It does not diagnose a condition, confirm whether food is safe, determine whether a device is within specification, or replace professional evaluation. When a temperature reading affects a health or safety decision, use the relevant validated instrument and follow appropriate professional or local guidance.</p><h2 class="sec-title">How to use the three-field converter</h2><p>First, choose the field that matches your source. Type the number exactly as it was provided, including a minus sign when relevant. The other two fields update immediately. Second, look at the unit labels before copying the result. Third, check whether the output range is sensible for the context; a cooking temperature converted into Kelvin will be a much larger number, but it still represents the same thermal state. Fourth, use Copy Results when you need all three labelled values in a note or message.</p><p>If you want to start over, use Clear. This empties the three source/result fields and returns the dial to its visual default. It does not restore an earlier value, so keep a source record for an important reading. The tool intentionally does not create an account or store a history. That makes the page focused for quick conversion, while your own document remains the place to preserve a calculation trail.</p><h2 class="sec-title">Rounding and significant figures</h2><p>Do not copy more precision than the source supports. If a weather app rounds to the nearest whole degree, a converted result with two decimal places is a mathematical consequence of the formula, not evidence that the weather observation was measured to one-hundredth of a degree. A recipe may reasonably use a rounded oven setting. A laboratory report may require a stated uncertainty and a defined number of significant figures. Let the final context decide how the result should appear.</p><p>Rounding too early can also create avoidable drift when a number is converted several times. Keep the original reading and the intermediate result intact during calculations, then round once at the final output. If a system requires a specific precision, follow that system’s format. The displayed values on this page are a convenient representation; they are not a universal precision recommendation.</p><h2 class="sec-title">Common mistakes to avoid</h2><p>One common mistake is applying the Celsius-to-Fahrenheit formula backward. Another is forgetting the 32-degree offset and multiplying alone. A third is writing degrees Kelvin instead of kelvin, or adding a degree sign to K. Users also sometimes enter a Fahrenheit number into the Celsius field because the displayed values are not visually distinct enough in a copied note. Check the field label before typing and preserve the unit beside every number when transferring it elsewhere.</p><p>A more subtle mistake is treating temperature difference and absolute temperature as identical in every calculation. A change of 1 °C equals a change of 1 K, but Fahrenheit intervals have a different size. Engineering and scientific problems can distinguish between an absolute reading and a temperature change. Read the problem’s notation and required formula carefully rather than converting each number mechanically.</p><h2 class="sec-title">From one scale to all three: worked conversions</h2><p>Worked examples are valuable because they make the offset and multiplier visible. Start with 0 °C. Celsius to Fahrenheit gives (0 × 9/5) + 32, which is 32 °F. Celsius to Kelvin gives 0 + 273.15, which is 273.15 K. Start with 212 °F. Subtract 32 to get 180, multiply by 5/9 to get 100 °C, then add 273.15 to reach 373.15 K. The three outputs describe the same temperature using three different scales.</p><p>Now try −40. The Fahrenheit-to-Celsius formula gives (−40 − 32) × 5/9, which is −40. This is the point where the numerical values meet. It is a useful self-check because a calculation that does not return −40 in both fields likely has a sign, offset, or scale-selection error. For Kelvin, the same reading is 233.15 K. The value remains positive because it is above absolute zero.</p><p>These examples demonstrate arithmetic, not a recommendation for a particular environment. Do not assume that a familiar number proves a sensor or thermostat is correct. A converter can check scale relationships; it cannot calibrate the device that produced the source reading.</p><h2 class="sec-title">Temperature differences versus temperature readings</h2><p>A temperature reading identifies a point on a scale. A temperature difference describes a change between two readings. Celsius and Kelvin intervals are the same size: an increase of 10 °C is an increase of 10 K. Fahrenheit intervals are smaller, so a change of 10 °C corresponds to a change of 18 °F. This distinction matters in scientific and engineering formulas. A direct conversion of an absolute number may require the full offset formula, while a conversion of a difference may require only the interval relationship.</p><p>When an instruction says “raise the temperature by 5 degrees,” first identify its original scale and whether it refers to a difference. Do not automatically add 273.15 to a Celsius difference. In everyday cooking and weather language, context often makes the intent clear, but technical work should state the unit and whether a value is absolute or differential.</p><h2 class="sec-title">Ovens, appliances, and process settings</h2><p>Recipe and appliance conversions are convenient, but a displayed set point is not always the exact temperature experienced by food or material. Ovens cycle around their target, probes sit in different locations, and cookware changes how heat reaches a surface. A conversion from 350 °F to about 177 °C helps you choose the intended setting; it does not validate the appliance. Follow the recipe author, equipment manual, and any food-safety guidance that applies to the dish.</p><p>For industrial or laboratory processes, the gap between a displayed set point and an actual sample temperature can be more consequential. Use the approved instrument, calibration routine, and procedure. Document the source measurement and convert its unit only as part of the required workflow. Do not use a general browser converter as evidence that a system has reached a safe or compliant operating condition.</p><h2 class="sec-title">Weather, climate, and environmental context</h2><p>Weather reports can list the same conditions in different scales, but comfort and risk depend on more than air temperature. Humidity, wind, sun exposure, rainfall, altitude, clothing, activity level, and local warnings may all matter. Converting 95 °F to 35 °C can improve understanding for a reader accustomed to Celsius, yet it does not state the heat index. Converting 0 °C to 32 °F can clarify freezing conditions, yet it does not predict ice formation on a particular road.</p><p>Use converted numbers to read a source more clearly. For travel or outdoor plans, also check the official forecast, alerts, and local information. This is a unit tool, not a forecasting service, climate analysis, or emergency alert system.</p><h2 class="sec-title">Input validation and unusual values</h2><p>The page accepts decimal values and negative Celsius or Fahrenheit readings. It calculates a corresponding Kelvin value from the formula. If you enter a Kelvin value below zero, the arithmetic may produce a value, but the input is not a physically valid absolute temperature in ordinary thermodynamics. Treat such an entry as a signal to check the source field, unit, or sign. Clear labels and a quick sanity check are often more effective than attempting to guess the user’s intention silently.</p><p>Extremely large values can also be mathematically convertible but outside the practical range of a household thermometer, weather report, or recipe. The tool does not classify a value as safe, normal, dangerous, or appropriate. It simply applies the scale relationship. That limitation keeps the calculation transparent and prevents a numeric display from pretending to be advice.</p><h2 class="sec-title">Copying results without losing context</h2><p>Copy Results produces a line with all three values and their units. That is useful for a worksheet, note, chat, or draft report. Before pasting, decide whether the reader needs all three scales or only the destination scale. Including unnecessary values can make a simple recipe note harder to scan, while omitting the source can make a technical record difficult to audit. Keep the unit symbol beside each number and retain the original value when someone may need to reproduce the conversion.</p><p>If the final destination requires a particular wording, form, or precision, change the presentation after checking the calculation. A browser result can supply the numbers, but the destination’s standards determine how those numbers should be recorded. For a formal document, keep a traceable source rather than relying only on copied clipboard text.</p><h2 class="sec-title">A concise review routine</h2><p>Before using a converted temperature, ask five questions. What scale was the source actually using? Did I enter it in the matching field? Do the returned values look plausible against a known reference point? Is the rounding appropriate for the source measurement? Does the final context require a calibrated instrument, a documented procedure, or professional guidance? These questions take very little time and help separate a correct calculation from an appropriate decision.</p><p>Toolyfi’s converter is intentionally focused on the first part of the workflow: translating a stated temperature across three scales. It gives you the formulas, visible labels, a browser-side calculation, and copy-ready output. The final responsibility is to connect that result to the correct source, required precision, and real-world context.</p><h2 class="sec-title">Formula checks you can do by hand</h2><p>Hand checks are useful when you want to validate a copied result without rebuilding the full calculation. For Celsius to Fahrenheit, multiply by two and add thirty only as a rough mental estimate; use the exact 9/5 formula for the final value. For Fahrenheit to Celsius, subtracting thirty and halving gives a rough intuition but not an exact conversion. For Kelvin, remember the fixed 273.15 offset from Celsius. These shortcuts are for spotting a number that is obviously in the wrong range, not for replacing the page’s displayed formula.</p><p>A simple independent check is to convert the result back into the original scale. If you entered 25 °C and copied 77 °F, put 77 into the Fahrenheit field; the Celsius field should return 25.00. A round trip will not repair an incorrect source measurement, but it does catch a swapped field, omitted offset, or transcription mistake. When a document or calculation is important, retain this kind of check alongside the original source rather than relying on memory.</p><h2 class="sec-title">Related Toolyfi workflows</h2><p>Use the broader <a href="unit-converter.html">Unit Converter</a> when your task also includes length, mass, volume, area, data, time, pressure, speed, or energy. Use <a href="scientific-calculator.html">Scientific Calculator</a> when a conversion feeds into an expression you need to evaluate. Use <a href="number-to-words.html">Number to Words</a> for a readable written-number draft, and <a href="text-trimmer.html">Text Trimmer</a> when copying a result into a strict text field. Each utility solves a different part of a workflow; none substitutes for the source context or standard that governs the final decision.</p><h2 class="sec-title">Final check before you copy</h2><p>Confirm that the source unit is correct, the selected field matches that source, the result carries the intended destination unit, and the rounding fits the context. If the number will be used in a safety-sensitive, legal, medical, financial, or regulated setting, confirm the calculation and the relevant procedure independently. This page provides a transparent three-scale conversion; responsible use depends on checking what the temperature means in the place where it will be used.</p></section><section class="block" id="faq"><h2 class="sec-title">Frequently asked <span class="accent">questions</span></h2><div class="faq-item"><div class="faq-q">How do I convert Celsius to Fahrenheit? <span class="arrow">▾</span></div><div class="faq-a">Use °F = (°C × 9/5) + 32. Enter a Celsius value in the first field and this page calculates the other scales.</div></div><div class="faq-item"><div class="faq-q">How do I convert Fahrenheit to Celsius? <span class="arrow">▾</span></div><div class="faq-a">Use °C = (°F − 32) × 5/9. Enter the Fahrenheit reading and review the labelled Celsius result.</div></div><div class="faq-item"><div class="faq-q">How do I convert Celsius to Kelvin? <span class="arrow">▾</span></div><div class="faq-a">Add 273.15: K = °C + 273.15. Kelvin is written with K, without a degree sign.</div></div><div class="faq-item"><div class="faq-q">What is absolute zero? <span class="arrow">▾</span></div><div class="faq-a">Absolute zero is 0 K, equal to −273.15 °C and −459.67 °F.</div></div><div class="faq-item"><div class="faq-q">Why do Celsius and Fahrenheit meet at −40? <span class="arrow">▾</span></div><div class="faq-a">−40 is the one temperature with the same numeric value on both the Celsius and Fahrenheit scales.</div></div><div class="faq-item"><div class="faq-q">Can I enter a negative temperature? <span class="arrow">▾</span></div><div class="faq-a">Yes for Celsius and Fahrenheit. Kelvin values below 0 K are not physically valid, so verify the source and field label.</div></div><div class="faq-item"><div class="faq-q">How should I round a converted result? <span class="arrow">▾</span></div><div class="faq-a">Match the precision of the source measurement and the required final context; do not let the calculator display imply greater accuracy than the source supports.</div></div><div class="faq-item"><div class="faq-q">Can this page make a safety or medical decision? <span class="arrow">▾</span></div><div class="faq-a">No. It converts stated units. Use a suitable calibrated instrument and follow professional or local guidance for safety-sensitive decisions.</div></div></section>
+        window.copyResults = function () {
+          if (celsius.value === "") {
+            showToast("⚠️ Enter a temperature first");
+            return;
+          }
+          const text = `${celsius.value}°C | ${fahrenheit.value}°F | ${kelvin.value}K`;
+          navigator.clipboard.writeText(text);
+          showToast("📋 Copied!");
+        };
 
-  <section class="block">
-    <h2 class="sec-title">Related <span class="accent">tools</span></h2>
-    <div class="related-grid">
-      <a href="currency-converter.html" class="related-card">💱 Currency Converter</a>
-      <a href="unit-converter.html" class="related-card">📏 Unit Converter</a>
-      <a href="scientific-calculator.html" class="related-card">🧮 Scientific Calculator</a>
-      <a href="age-calculator.html" class="related-card">🎂 Age Calculator</a>
-    </div>
-  </section>
+        window.copyLink = function () {
+          navigator.clipboard.writeText("https://toolyfi.com/temperature-converter.html");
+          showToast("🔗 Link copied!");
+        };
 
-</div>
+        window.showToast = function (msg) {
+          const toast = document.getElementById("toast");
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 2500);
+        };
 
-<footer class="site">
-  <div class="footer-grid">
-    <a href="index.html">Home</a>
-    <a href="currency-converter.html">Currency Converter</a>
-    <a href="bmi-calculator.html">BMI Calculator</a>
-    <a href="unit-converter.html">Unit Converter</a>
-    <a href="scientific-calculator.html">Scientific Calculator</a>
-    <a href="percentage-calculator.html">Percentage Calculator</a>
-    <a href="age-calculator.html">Age Calculator</a>
-    <a href="index.html">All 50+ Tools →</a>
-  </div>
-  <div class="bottom">© 2026 Toolyfi.com — Free Temperature Converter</div>
-</footer>
+        // init with room temp
+        celsius.value = 20;
+        updateVisuals(20);
+        fahrenheit.value = ((20 * 9) / 5 + 32).toFixed(2);
+        kelvin.value = (20 + 273.15).toFixed(2);
 
-<div class="toast" id="toast"></div>
+        // FAQ accordion
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          item.addEventListener("click", () => {
+            item.classList.toggle("open");
+          });
+        });
+      });
+    </script>
 
-<!-- Tidio Chatbot -->
-<script src="//code.tidio.co/ftcse7wrwdumbu32qyeeqwcygoz4lv4d.js" async></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-
-  const celsius = document.getElementById('celsius');
-  const fahrenheit = document.getElementById('fahrenheit');
-  const kelvin = document.getElementById('kelvin');
-  const dialFg = document.getElementById('dialFg');
-  const dialValue = document.getElementById('dialValue');
-  const dialEmoji = document.getElementById('dialEmoji');
-  const tubeFill = document.getElementById('tubeFill');
-  const tubeBulb = document.getElementById('tubeBulb');
-  const CIRC = 502;
-
-  function updateVisuals(c){
-    // clamp for dial display -40 to 220 range
-    let pct = (c - (-40)) / (220 - (-40));
-    pct = Math.max(0, Math.min(1, pct));
-    dialFg.style.strokeDashoffset = CIRC - (pct * CIRC);
-    dialValue.textContent = c.toFixed(1) + '°';
-    tubeFill.style.height = (pct*100).toFixed(0) + '%';
-
-    let color;
-    if(c <= 0){ color = '#38bdf8'; dialEmoji.textContent='🥶'; }
-    else if(c <= 20){ color = '#38bdf8'; dialEmoji.textContent='❄️'; }
-    else if(c <= 30){ color = '#f59e0b'; dialEmoji.textContent='🌤️'; }
-    else if(c <= 45){ color = '#f97316'; dialEmoji.textContent='☀️'; }
-    else { color = '#f43f5e'; dialEmoji.textContent='🔥'; }
-    tubeBulb.style.background = color;
-  }
-
-  window.convertTemp = function(src){
-    let c,f,k;
-    if(src==='c' && celsius.value!==''){
-      c = parseFloat(celsius.value); f=(c*9/5)+32; k=c+273.15;
-    } else if(src==='f' && fahrenheit.value!==''){
-      f = parseFloat(fahrenheit.value); c=(f-32)*5/9; k=c+273.15;
-    } else if(src==='k' && kelvin.value!==''){
-      k = parseFloat(kelvin.value); c=k-273.15; f=(c*9/5)+32;
-    } else { return; }
-
-    if(src!=='c') celsius.value = c.toFixed(2);
-    if(src!=='f') fahrenheit.value = f.toFixed(2);
-    if(src!=='k') kelvin.value = k.toFixed(2);
-
-    updateVisuals(c);
-  };
-
-  window.clearInputs = function(){
-    celsius.value=''; fahrenheit.value=''; kelvin.value='';
-    updateVisuals(20);
-    showToast('🔄 Cleared!');
-  };
-
-  window.copyResults = function(){
-    if(celsius.value===''){ showToast('⚠️ Enter a temperature first'); return; }
-    const text = `${celsius.value}°C | ${fahrenheit.value}°F | ${kelvin.value}K`;
-    navigator.clipboard.writeText(text);
-    showToast('📋 Copied!');
-  };
-
-  window.copyLink = function(){
-    navigator.clipboard.writeText('https://toolyfi.com/temperature-converter.html');
-    showToast('🔗 Link copied!');
-  };
-
-  window.showToast = function(msg){
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 2500);
-  };
-
-  // init with room temp
-  celsius.value = 20; updateVisuals(20);
-  fahrenheit.value = (20*9/5+32).toFixed(2);
-  kelvin.value = (20+273.15).toFixed(2);
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    item.addEventListener('click', ()=>{
-      item.classList.toggle('open');
-    });
-  });
-});
-</script>
-
-<script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
     <script src="/pwa-register.js" defer></script>
-</body>
+  </body>
 </html>
