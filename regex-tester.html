@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regex Tester: Test JavaScript Patterns Locally | Toolyfi</title>
+    <meta
+      name="description"
+      content="Test JavaScript regular expressions locally with live matches, flags, capture groups, indices, safe syntax errors, and a practical regex guide."
+    />
+    <meta
+      name="keywords"
+      content="regex tester, regular expression tester, JavaScript regex tester, regex match tester, capture groups, regex flags"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/regex-tester.html" />
+    <meta property="og:title" content="Regex Tester: Test JavaScript Patterns Locally | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Test a JavaScript regular expression against sample text with live match details and capture groups in your browser."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/regex-tester.html" />
+    <meta property="og:image" content="https://toolyfi.com/images/toolyfi-regex-tester-hero.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Regex Tester",
+        "url": "https://toolyfi.com/regex-tester.html",
+        "description": "A browser-local JavaScript regular expression tester with live matches, capture groups, flags, and syntax errors.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Regex Tester",
+            "item": "https://toolyfi.com/regex-tester.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which regex flavor does this tester use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This page uses the JavaScript RegExp engine available in your browser. Syntax can differ from PCRE, Python, Java, .NET, or command-line tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this regex tester send my text anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Pattern construction, matching, highlighting, and capture-group inspection run in the active browser. The page does not submit or store entered pattern or test text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the global g flag do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The g flag asks JavaScript to continue through the input and return all non-overlapping matches. Without it, a regular expression normally reports only its first match."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are capture groups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Parentheses create capture groups. Each group can retain a portion of the overall match, which is useful when extracting structured pieces such as dates, identifiers, or names."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my pattern produce a syntax error?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A syntax error often means an unclosed bracket, parenthesis, or character class, an invalid flag, or JavaScript syntax that is unsupported in the current browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the i flag do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The i flag makes matching case-insensitive for the applicable characters, so a pattern can match uppercase and lowercase variations without listing each one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should I use multiline mode?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use m when anchors such as ^ and $ should operate at individual line boundaries instead of only at the start and end of the entire test string."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are some matches not highlighted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The highlighter renders non-overlapping matches returned by JavaScript. A zero-length match is listed in details but not painted because it has no character span."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a regex prove input is safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. A regex can check a chosen text shape, but it cannot prove identity, authorization, data integrity, business validity, or the safety of a URL, file, or command."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I test a replacement expression?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This page focuses on matching and extraction. Copy the verified pattern into the relevant language or editor for replacement work, then test its replacement syntax separately."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --muted: #617080;
+        --coral: #ef6c54;
+        --soft: #fff0ea;
+        --line: #e8e1d7;
+        --blue: #e9f1f7;
+        --green: #e7f3ec;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px clamp(18px, 4vw, 58px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(250, 248, 244, 0.96);
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font:
+          800 1.48rem Fraunces,
+          serif;
+        text-decoration: none;
+      }
+      .logo img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        width: min(1180px, 100%);
+        margin: auto;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        padding: 22px 0 8px;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+      .crumbs a {
+        font-weight: 800;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(350px, 1.1fr);
+        gap: 34px;
+        padding: 45px 0 58px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.73rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        line-height: 1.08;
+      }
+      h1 {
+        margin: 13px 0 19px;
+        max-width: 640px;
+        font-size: clamp(2.7rem, 6vw, 5.2rem);
+        letter-spacing: -0.055em;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .hero p {
+        max-width: 610px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 22px;
+      }
+      .hero-pills span {
+        padding: 7px 10px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .toolyfi-visual {
+        position: relative;
+        margin: 0;
+      }
+      .toolyfi-visual > img {
+        width: 100%;
+        height: clamp(250px, 37vw, 455px);
+        object-fit: cover;
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--paper);
+        padding: 8px 11px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(23, 36, 55, 0.15);
+      }
+      .toolyfi-hero-mark img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .tool-wrap {
+        padding: 0 0 56px;
+      }
+      .tool-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+      .tool-card-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 21px 25px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .tool-card-head h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+      .tool-card-head p {
+        margin: 5px 0 0;
+        color: #c6d1de;
+        font-size: 0.81rem;
+      }
+      .local-note {
+        align-self: center;
+        color: #ffd4cb;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .tool-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.88fr);
+        gap: 0;
+      }
+      .editor {
+        padding: 25px;
+        border-right: 1px solid var(--line);
+      }
+      label {
+        display: block;
+        margin: 0 0 8px;
+        font-size: 0.75rem;
+        color: var(--muted);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+      .pattern-row {
+        display: grid;
+        grid-template-columns: 30px 1fr 30px;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .slash {
+        color: var(--coral);
+        font:
+          800 1.35rem Fraunces,
+          serif;
+        text-align: center;
+      }
+      input,
+      textarea {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--ink);
+      }
+      #pattern {
+        padding: 13px 4px;
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.95rem;
+      }
+      textarea {
+        min-height: 220px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        resize: vertical;
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.89rem;
+        line-height: 1.65;
+      }
+      .flags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 15px 0 20px;
+      }
+      .flag {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        border: 1px solid var(--line);
+        padding: 7px 9px;
+        background: #fff;
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .flag input {
+        width: auto;
+        accent-color: var(--coral);
+      }
+      .examples {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+      }
+      .examples button,
+      .secondary {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 8px 10px;
+        color: var(--ink);
+        font-size: 0.74rem;
+        font-weight: 800;
+      }
+      .examples button:hover,
+      .secondary:hover {
+        border-color: var(--coral);
+        color: var(--coral);
+      }
+      .results {
+        padding: 25px;
+        background: #fcfaf7;
+      }
+      .result-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+      .result-head h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+      .status {
+        padding: 6px 9px;
+        background: var(--green);
+        color: #17663c;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .status.error {
+        color: #a43c2c;
+        background: var(--soft);
+      }
+      .highlight {
+        min-height: 184px;
+        margin: 17px 0;
+        padding: 15px;
+        overflow: auto;
+        background: #fff;
+        border: 1px solid var(--line);
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.87rem;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      mark {
+        padding: 1px 0;
+        background: #ffcf69;
+        color: var(--ink);
+      }
+      .match-list {
+        max-height: 315px;
+        overflow: auto;
+        border-top: 1px solid var(--line);
+      }
+      .match {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .match-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .match code,
+      .groups code {
+        display: block;
+        margin-top: 7px;
+        padding: 8px;
+        background: var(--blue);
+        color: #274456;
+        overflow: auto;
+        font-size: 0.77rem;
+      }
+      .groups {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.74rem;
+      }
+      .empty {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin: 0 0 55px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .metric {
+        padding: 17px;
+        background: var(--paper);
+      }
+      .metric strong {
+        display: block;
+        color: var(--coral);
+        font:
+          800 1.5rem Fraunces,
+          serif;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 48px;
+        padding-bottom: 68px;
+      }
+      article {
+        max-width: 760px;
+      }
+      article h2 {
+        margin: 40px 0 15px;
+        font-size: clamp(1.55rem, 3vw, 2.25rem);
+      }
+      article h3 {
+        margin: 28px 0 10px;
+        font-size: 1.27rem;
+      }
+      article p,
+      article li {
+        color: #465669;
+        font-size: 0.96rem;
+      }
+      article li {
+        margin: 7px 0;
+      }
+      .callout {
+        margin: 24px 0;
+        padding: 18px 20px;
+        border-left: 4px solid var(--coral);
+        background: var(--soft);
+        color: #7b382d;
+      }
+      .aside {
+        align-self: start;
+        position: sticky;
+        top: 18px;
+        padding: 21px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .aside h2 {
+        margin: 0 0 12px;
+        font-size: 1.23rem;
+      }
+      .aside a {
+        display: block;
+        padding: 9px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: #dbe7f0;
+        text-decoration: none;
+        font-size: 0.82rem;
+      }
+      .faq {
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+      details {
+        padding: 18px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .related {
+        padding: 50px 0;
+        background: var(--ink);
+        color: #fff;
+      }
+      .related h2 {
+        margin-top: 0;
+        font-size: 2rem;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .related a {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      footer {
+        padding: 28px clamp(18px, 4vw, 58px);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.79rem;
+      }
+      @media (max-width: 820px) {
+        .hero,
+        .tool-grid,
+        .content {
+          grid-template-columns: 1fr;
+        }
+        .editor {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .aside {
+          position: static;
+        }
+        .faq-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .site-header nav {
+          gap: 12px;
+        }
+        .site-header nav a:first-child {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .tool-card,
+        .metric,
+        .related a {
+          transition:
+            transform 180ms var(--ease),
+            box-shadow 180ms var(--ease);
+        }
+        .related a:hover {
+          transform: translateY(-3px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs"><a href="index.html">Home</a> / Developer tools / Regex Tester</div>
+        <section class="hero">
+          <div>
+            <div class="eyebrow">Browser-native developer utility</div>
+            <h1>Test patterns.<br /><em>See matches.</em></h1>
+            <p>
+              Build and inspect JavaScript regular expressions with live highlighting, flags,
+              capture groups, character indices, and clear syntax errors — all in the active
+              browser.
+            </p>
+            <div class="hero-pills">
+              <span>JavaScript RegExp</span><span>Live capture groups</span><span>No account</span
+              ><span>Local matching</span>
+            </div>
+          </div>
+          <figure class="toolyfi-visual">
+            <img
+              src="images/toolyfi-regex-tester-hero.webp"
+              alt="Abstract Toolyfi regex pattern workspace with capture-group brackets"
+              fetchpriority="high"
+            /><span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool-wrap" aria-labelledby="tool-heading">
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <div>
+                <h2 id="tool-heading">Regex workspace</h2>
+                <p>Enter a pattern and text. Match details update as you type.</p>
+              </div>
+              <span class="local-note">Runs locally in this browser</span>
+            </div>
+            <div class="tool-grid">
+              <div class="editor">
+                <label for="pattern">Regular expression</label>
+                <div class="pattern-row">
+                  <span class="slash">/</span
+                  ><input
+                    id="pattern"
+                    value="\b([A-Z][a-z]+)\b"
+                    spellcheck="false"
+                    aria-describedby="pattern-help"
+                  /><span class="slash">/</span>
+                </div>
+                <div class="flags" id="flags">
+                  <label class="flag"
+                    ><input type="checkbox" value="g" checked />g all matches</label
+                  ><label class="flag"><input type="checkbox" value="i" />i ignore case</label
+                  ><label class="flag"><input type="checkbox" value="m" />m multiline</label
+                  ><label class="flag"><input type="checkbox" value="s" />s dotAll</label
+                  ><label class="flag"><input type="checkbox" value="u" />u Unicode</label>
+                </div>
+                <label for="testText">Test string</label
+                ><textarea id="testText" spellcheck="false">
+Anna and Ben are learning JavaScript in Karachi. Ava writes regular expressions on Monday.</textarea
+                >
+                <div class="examples">
+                  <button
+                    type="button"
+                    data-pattern="\b\d{4}-\d{2}-\d{2}\b"
+                    data-text="Release date: 2026-08-21\nArchive date: 2025-12-31"
+                  >
+                    ISO dates</button
+                  ><button
+                    type="button"
+                    data-pattern="([\w.+-]+)@([\w-]+\.[\w.-]+)"
+                    data-text="Contact: hello@toolyfi.com or support@example.org"
+                  >
+                    Email groups</button
+                  ><button
+                    type="button"
+                    data-pattern="https?://[^\s]+"
+                    data-text="Visit https://toolyfi.com/tools and http://example.org/docs today."
+                  >
+                    URLs</button
+                  ><button class="secondary" type="button" id="clear">Clear</button>
+                </div>
+              </div>
+              <div class="results">
+                <div class="result-head">
+                  <h3>Match output</h3>
+                  <span class="status" id="status" aria-live="polite">Ready</span>
+                </div>
+                <div class="highlight" id="highlight" aria-label="Highlighted matches"></div>
+                <div class="match-list" id="matchList"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="metric-row" aria-label="Regex tester summary">
+          <div class="metric"><strong id="matchCount">0</strong><span>matches found</span></div>
+          <div class="metric"><strong id="groupCount">0</strong><span>capture groups</span></div>
+          <div class="metric"><strong id="charCount">0</strong><span>test characters</span></div>
+        </section>
+        <section class="content">
+          <article>
+            <div class="eyebrow">Regex guide</div>
+            <h2 id="what-is">How to use a regex tester without guessing</h2>
+            <p>
+              A regular expression, often shortened to <strong>regex</strong>, is a compact pattern
+              language for describing text. A pattern can find a word, split a record, validate a
+              narrow input shape, or pull pieces from structured text. The compact syntax is
+              powerful, but it is also easy to misread. A tester gives the pattern a safe place to
+              meet representative text before it is placed inside a form, script, transformation, or
+              application rule. This Toolyfi page deliberately uses the JavaScript RegExp engine in
+              the browser, so its behavior is closest to browser and Node.js code rather than a
+              different server-side regex flavor.
+            </p>
+            <p>
+              Start with a concrete question. Instead of beginning with a dense expression, decide
+              what a successful match should look like, what must not match, and where the text may
+              vary. Then write the smallest pattern that expresses that rule. For example,
+              <code>\\b\\d{4}-\\d{2}-\\d{2}\\b</code> describes a date-shaped sequence such as
+              2026-08-21. It does not establish that the date exists on a calendar, identify who
+              entered it, or prove that a record is trustworthy. Keeping those limits visible makes
+              a regex easier to review and less likely to be used as a false security boundary.
+            </p>
+            <h2 id="workspace">Read the workspace in four parts</h2>
+            <p>
+              The pattern field holds the expression without enclosing slash characters. Choose
+              flags with the small controls beneath it. The test string is the sample data that
+              JavaScript searches. The right panel paints each non-overlapping match and lists its
+              index, length, full value, and any captured values. A numbered capture group appears
+              whenever ordinary parentheses surround part of the pattern. This layout separates the
+              specification from its evidence: you can see what was written, exactly where it
+              matched, and what the groups returned.
+            </p>
+            <p>
+              Use varied samples rather than a single happy-path sentence. Include a valid case, a
+              nearly valid case, different capitalization, line breaks, empty fields, punctuation,
+              and values at the beginning and end of the string. A pattern that only succeeds on one
+              hand-made example may be too narrow or too broad in real data. The global flag is
+              particularly important in a tester: with <code>g</code> enabled, JavaScript keeps
+              scanning to display all non-overlapping matches. Without it, the same expression
+              usually reports only the first match, which can make a useful pattern look incomplete.
+            </p>
+            <div class="callout">
+              <strong>Local-only boundary:</strong> this tester constructs a JavaScript
+              <code>RegExp</code> and searches text in the current browser. It does not fetch URLs,
+              call an API, submit the contents, or save the pattern. Do not paste secrets merely
+              because a tool is local; follow your own handling rules.
+            </div>
+            <h2 id="flags">Choose flags intentionally</h2>
+            <p>
+              Flags change how a pattern is evaluated. The <code>i</code> flag makes applicable
+              comparisons case-insensitive, which is useful for a keyword search where uppercase and
+              lowercase should mean the same thing. The <code>m</code> flag changes the meaning of
+              <code>^</code> and <code>$</code> so they can match the start and end of individual
+              lines. It does not make a dot match a line break. For that behavior, use
+              <code>s</code>, known as dotAll. The <code>u</code> flag enables Unicode-aware
+              behavior for many modern JavaScript features. Flags are not decorations: change one at
+              a time and observe how the result moves.
+            </p>
+            <p>
+              A common source of confusion is mixing a regex flag with a pattern token. A global
+              search uses <code>g</code> outside the expression, while a global-looking character
+              class such as <code>[A-Z]</code> is part of the pattern itself. Likewise, boundaries
+              such as <code>\\b</code> can be useful for finding a whole ASCII-style word, but their
+              exact behavior depends on the engine's word-character rules. If your data includes
+              non-English names or symbols, test those characters directly rather than assuming an
+              example written for English behaves identically.
+            </p>
+            <h2 id="groups">Use capture groups for extraction</h2>
+            <p>
+              Parentheses create capture groups. Consider the email-shaped example
+              <code>([\\w.+-]+)@([\\w-]+\\.[\\w.-]+)</code>. The whole match is the complete
+              address. Group one is the text before the at sign, and group two is the domain-shaped
+              text after it. A tester is valuable here because it shows both the whole match and the
+              individual pieces. If you intended a group to be structural only, use non-capturing
+              parentheses, <code>(?:...)</code>, so it does not alter group numbering.
+            </p>
+            <p>
+              Groups are not automatically validation. An address pattern can identify a candidate
+              string, but it cannot confirm mail delivery, account ownership, or permission. In the
+              same way, a date-shaped capture can pull year, month, and day text, but application
+              code must still decide whether a date is acceptable. Good implementation separates
+              text parsing from domain checks: let the regex capture a shape, then validate the
+              resulting values with clear rules and appropriate sources.
+            </p>
+            <h2 id="classes">Build patterns from small tokens</h2>
+            <p>
+              Character classes are an approachable next step. <code>[abc]</code> matches one
+              character chosen from a, b, or c. <code>[A-Z]</code> matches one uppercase English
+              letter. A negated class begins with <code>^</code> inside the brackets, so
+              <code>[^,]+</code> means one or more characters that are not a comma. The shorthand
+              <code>\\d</code> is often used for digits, <code>\\s</code> for whitespace, and
+              <code>\\w</code> for word characters. Quantifiers describe how many times the
+              preceding token may occur: <code>?</code>, <code>*</code>, <code>+</code>, and
+              <code>{n,m}</code>.
+            </p>
+            <p>
+              Build incrementally. Test the literal text first. Add one class. Add a quantity. Add a
+              boundary or group only when the earlier version behaves as expected. This process
+              exposes the exact step that introduces an unwanted match. It is also easier for
+              another developer to review than a pattern assembled in one large jump. Keep an
+              example table next to production code when a complicated expression must stay: list
+              the inputs that should match, the inputs that should fail, and the group values that
+              matter.
+            </p>
+            <h2 id="anchors">Anchors, alternation, and line-based text</h2>
+            <p>
+              Anchors constrain position. <code>^</code> normally targets the beginning of the input
+              and <code>$</code> the end. With multiline mode selected, they can target individual
+              line boundaries. This is useful when checking a line-oriented log or configuration
+              list. Alternation uses a pipe: <code>cat|dog</code> means cat or dog. Parentheses can
+              scope alternation, as in <code>^(cat|dog)$</code>, which accepts exactly one of those
+              complete values. Without the anchors, the same token can match as part of a longer
+              sentence.
+            </p>
+            <p>
+              When a result is surprising, inspect the index field in the match panel. It points to
+              the zero-based character offset JavaScript returned. That makes it easier to spot a
+              hidden space, a newline, or an earlier substring that won the match. The highlighted
+              preview is designed for reading, while the detailed records are designed for checking.
+              Use both. A highlighted result can look plausible even when the first match begins
+              earlier than you expected; the index and group values make the behavior explicit.
+            </p>
+            <h2 id="errors">Treat syntax errors as useful feedback</h2>
+            <p>
+              A malformed regular expression should not be silently repaired. An unmatched
+              parenthesis, a broken character range, unsupported syntax, or an invalid flag may make
+              the browser reject the pattern. The status label above reports the native error
+              message instead of pretending that no matches were found. Correct the earliest
+              structural problem first, then retest. For an opening bracket, look for its closing
+              bracket. For a literal dot, escape it as <code>\\.</code>. For a literal plus or
+              question mark, escape it too. Error messages are clues, not a replacement for
+              understanding the pattern.
+            </p>
+            <p>
+              JavaScript regex features can vary from another flavor. A pattern copied from a PCRE
+              documentation page may use modifiers, escapes, or constructs that JavaScript does not
+              recognize. Begin by identifying the target runtime. If the pattern will run in a
+              browser, test it here with JavaScript semantics. If it will run in a database, Python
+              service, or .NET application, use that environment's documentation and tests before
+              deployment. A cross-flavor comparison is not a production proof.
+            </p>
+            <h2 id="quality">Write regexes that remain maintainable</h2>
+            <p>
+              Prefer a readable pattern and a short explanation over a clever but opaque one. Name
+              the business rule outside the expression, comment a non-obvious group, and use small
+              constants in code. Be cautious with nested broad quantifiers such as
+              <code>(.*)+</code>; on some inputs they can create slow matching behavior. A tester
+              can show correctness on a small sample, but it cannot fully benchmark untrusted,
+              high-volume production traffic. Set input limits, use the right engine for the job,
+              and review performance where the expression will actually run.
+            </p>
+            <p>
+              Finally, decide whether regex is the right tool. A URL can often be parsed with the
+              browser's <code>URL</code> API. JSON should be parsed with <code>JSON.parse</code>.
+              Dates should be interpreted by deliberate date logic. Regex is ideal for locating
+              recurring text patterns and extracting predictable fragments, not for replacing every
+              structured parser. You can use Toolyfi’s
+              <a href="json-formatter.html">JSON Formatter</a>,
+              <a href="url-encoder-decoder.html">URL Encoder &amp; Decoder</a>, and
+              <a href="base64-encoder.html">Base64 Encoder</a> alongside this tester when each
+              transformation needs a dedicated, clearer tool.
+            </p>
+            <h2 id="examples">Test for false positives, not only success</h2>
+            <p>
+              A pattern is often judged by whether it finds one expected value. That is only half of
+              the job. A useful test set also contains values that look similar but must fail. If a
+              pattern is intended to identify a product code, include a missing dash, a too-long
+              segment, an empty segment, a value embedded inside a larger word, and an unrelated
+              punctuation mark. Place these examples next to a genuine match in the same test
+              string. The highlighted output will reveal whether an expression is consuming a
+              character that belongs to its neighbor or skipping an allowed variation.
+            </p>
+            <p>
+              This discipline is especially helpful with broad tokens such as dot and
+              <code>\\w</code>. A dot can match almost any character except a line terminator unless
+              dotAll mode is active. A word-character shorthand is not a promise that a field is a
+              human name or a safe account identifier. Give every expression a short collection of
+              positive and negative examples. When requirements change, add an example first,
+              observe the old behavior, then adjust the pattern. Over time, that collection becomes
+              a lightweight specification rather than a memory of why a dense expression was
+              written.
+            </p>
+            <h2 id="escaping">Escape punctuation deliberately</h2>
+            <p>
+              Regex punctuation is one of the most common sources of accidental behavior. A plain
+              period means “any single character,” while <code>\\.</code> means a literal period.
+              The same distinction matters for plus, question mark, asterisk, parentheses, square
+              brackets, curly braces, pipe, caret, dollar sign, and backslash. When you search for a
+              literal punctuation mark, escape it unless the current context clearly makes it
+              ordinary. In a character class, some rules change again; the hyphen can describe a
+              range when placed between characters.
+            </p>
+            <p>
+              A practical habit is to begin by typing the literal example text, run it, and only
+              then convert the changing pieces into tokens. For a domain-like value, test the
+              literal dot before adding a character class for the labels. For a version string,
+              decide whether a plus sign is content or a quantifier. This small sequence prevents
+              the expression from becoming mysterious. It also makes a review conversation clearer
+              because every metacharacter has a stated purpose instead of being copied from a
+              pattern collection.
+            </p>
+            <h2 id="whitespace">Make whitespace and line endings visible</h2>
+            <p>
+              Many matching failures are invisible at first glance. A sample may contain a trailing
+              space, a tab, a non-breaking space, or a line ending copied from another system. The
+              index and character length shown in this workspace help expose where a visible-looking
+              word begins and ends, but the test set should still include line breaks and extra
+              whitespace when real input can contain them. Use <code>\\s</code> only when the rule
+              truly allows all whitespace characters; use a literal space when one ordinary space is
+              the intended requirement.
+            </p>
+            <p>
+              In multi-line text, ask whether a match may cross a line boundary. A careless broad
+              token can swallow adjacent records. If each line is a separate record, use multiline
+              mode with anchors and test a blank line between samples. If the content comes from a
+              form field, consider trimming or normalizing it in the application before matching.
+              That decision belongs to the input contract, not to a hidden regex workaround. A good
+              tester helps distinguish a pattern issue from an input-cleaning decision.
+            </p>
+            <h2 id="named-groups">Use named groups when code needs clarity</h2>
+            <p>
+              Modern JavaScript supports named capture groups, for example
+              <code>(?&lt;year&gt;\\d{4})-(?&lt;month&gt;\\d{2})-(?&lt;day&gt;\\d{2})</code>. The
+              pattern still matches a date-shaped string, but application code can refer to
+              meaningful labels instead of remembering that group one is the year and group three is
+              the day. This is helpful when a pattern grows or when several people maintain it.
+              Before relying on a newer feature, verify the browsers or runtime versions that will
+              execute it.
+            </p>
+            <p>
+              Numeric groups remain useful for a short local extraction, but their positions can
+              shift when another parenthesis is added. Non-capturing groups reduce that risk when a
+              group exists only to control precedence. A tester makes the distinction visible:
+              adding ordinary parentheses will add a capture value to the output; adding
+              <code>(?:...)</code> will not. Keep only the captures that downstream code genuinely
+              reads. That makes both the match details and the eventual implementation easier to
+              understand.
+            </p>
+            <h2 id="unicode">Check real-world characters directly</h2>
+            <p>
+              Sample data written only with simple English characters can hide internationalization
+              problems. Names, addresses, titles, and comments may include accented letters, Arabic
+              script, Urdu, emoji, combining marks, or punctuation that looks like an ASCII dash but
+              is not one. Select the Unicode flag when the intended JavaScript behavior calls for
+              it, but do not assume it turns a broad shorthand into a complete human-language
+              validator. Test the actual characters your product accepts and record the expected
+              result.
+            </p>
+            <p>
+              Unicode property escapes such as <code>\\p{L}</code> can be useful in modern
+              JavaScript when a rule concerns letters across scripts, usually with the
+              <code>u</code> flag. They should be introduced with compatibility and product
+              requirements in mind, not merely because they look more advanced. A name policy may
+              allow spaces, apostrophes, and hyphens in addition to letters. Regex can help express
+              a narrow text rule, but a fair product experience also needs accessible error messages
+              and a way for genuine users to resolve edge cases.
+            </p>
+            <h2 id="lookarounds">Use lookarounds only when they make the rule clearer</h2>
+            <p>
+              Lookarounds describe context without consuming it. A lookahead can require a next
+              token, while a lookbehind can require text immediately before the match. These tools
+              are useful for a precise extraction, but they can make an expression difficult to read
+              and may have compatibility limits in older environments. First ask whether a captured
+              delimiter followed by simple application logic would be clearer. A regex that is easy
+              to explain is often easier to troubleshoot later.
+            </p>
+            <p>
+              When you do use a lookaround, give it an explicit counterexample. For instance, a
+              negative lookbehind intended to avoid matching a word inside an email address should
+              be tested next to an ordinary sentence occurrence and a similar string that has a
+              different delimiter. Inspect the exact index returned by the tester. A contextual
+              assertion may be correct on a short sentence but unexpected at the start of input, at
+              a line break, or beside an emoji. Testing those edges turns a clever pattern into a
+              documented rule.
+            </p>
+            <h2 id="validation">Separate format checks from business validation</h2>
+            <p>
+              A regex can check whether an invoice number resembles a chosen convention or whether a
+              local identifier contains only permitted characters. It cannot tell whether the
+              invoice is authorized, whether a number exists in a database, whether a date is valid
+              for a transaction, or whether a user may perform an action. Treat a regex as one
+              validation layer among several. Parse structured values with suitable APIs, query
+              authoritative systems where necessary, and enforce authorization on the server.
+            </p>
+            <p>
+              This separation also improves error messages. Instead of returning “invalid input” for
+              every failure, distinguish a missing field, an unexpected character, a malformed
+              structure, and a value that is not accepted by business rules. Regex can support the
+              shape check, but it should not be made responsible for decisions it cannot know. Never
+              use a pattern as a security filter for HTML, SQL, shell commands, or permissions; use
+              context-appropriate encoders, parameterized APIs, validation, and access controls.
+            </p>
+            <h2 id="performance">Avoid patterns with costly ambiguity</h2>
+            <p>
+              Most small expressions are fast on ordinary input, but some combinations of nested or
+              overlapping quantifiers can take much longer on a carefully chosen near-match. This is
+              a concern when an application evaluates user-controlled text at scale. Expressions
+              such as a broad repetition inside another broad repetition deserve review, especially
+              when followed by a token that is absent near the end of a long string. A visual tester
+              is useful for correctness; production profiling and input limits are still necessary
+              for performance confidence.
+            </p>
+            <p>
+              Reduce ambiguity by making tokens specific where possible, anchoring the expression
+              when the whole value must match, and avoiding repeated catch-all fragments. If a
+              parser or simple string operation can do the job, it may be easier to reason about and
+              less prone to slow paths. At the integration layer, limit request sizes and avoid
+              running expensive validation repeatedly on every keystroke for large content.
+              Performance is a system property, not only a property of the pattern itself.
+            </p>
+            <h2 id="workflow">Move from the tester into production carefully</h2>
+            <p>
+              Once a pattern behaves as expected here, copy it into a small automated test suite in
+              the language and runtime where it will ship. Include the same positive and negative
+              examples used in the workspace. If the target is not JavaScript, do not assume the
+              syntax ports unchanged. Record the regex flavor, flags, expected captures, and why the
+              expression exists. This information matters more than making the expression as short
+              as possible.
+            </p>
+            <p>
+              A dependable workflow is: describe the input contract, gather representative samples,
+              build the smallest pattern, inspect matches and groups, add near-misses, test target
+              runtime behavior, and review performance or security boundaries. Revisit the pattern
+              when the data format changes. The goal is not to write the most elaborate regex; it is
+              to create a clear, tested text rule that another person can safely maintain. Toolyfi’s
+              browser-local workspace is the first inspection step, not a substitute for integration
+              testing or domain knowledge.
+            </p>
+            <p>
+              Keep the finished pattern close to the examples that justify it. Future maintainers
+              should be able to see the allowed input shape, the rejected look-alikes, the selected
+              flags, and the expected capture values without reverse-engineering every symbol. That
+              small amount of documentation makes regex work safer to change, easier to test, and
+              more reliable when a product expands to new data or languages.
+            </p>
+          </article>
+          <aside class="aside">
+            <h2>On this page</h2>
+            <a href="#what-is">What a regex tester does</a
+            ><a href="#workspace">Workspace overview</a><a href="#flags">Flags</a
+            ><a href="#groups">Capture groups</a><a href="#classes">Character classes</a
+            ><a href="#anchors">Anchors and alternation</a><a href="#errors">Syntax errors</a
+            ><a href="#quality">Maintainability</a>
+          </aside>
+        </section>
+        <section class="faq" id="faq">
+          <div class="eyebrow">Practical questions</div>
+          <h2>Regex Tester FAQ</h2>
+          <div class="faq-grid">
+            <details>
+              <summary>Which regex flavor does this tester use?</summary>
+              <p>
+                This tool uses JavaScript RegExp semantics in your browser. Other flavors can differ
+                in syntax and behavior.
+              </p>
+            </details>
+            <details>
+              <summary>Does this tester send my text anywhere?</summary>
+              <p>
+                No. Matching and rendering run locally in this browser tab; the page does not submit
+                or store the entries.
+              </p>
+            </details>
+            <details>
+              <summary>What does the global g flag do?</summary>
+              <p>
+                It lets JavaScript continue through the text and list all non-overlapping matches
+                instead of only the first one.
+              </p>
+            </details>
+            <details>
+              <summary>What are capture groups?</summary>
+              <p>
+                Parentheses can retain parts of a match. The output panel lists the whole match and
+                each captured group.
+              </p>
+            </details>
+            <details>
+              <summary>Why does my pattern show a syntax error?</summary>
+              <p>
+                Look for an unclosed bracket or parenthesis, an invalid range or flag, or syntax
+                unsupported by JavaScript.
+              </p>
+            </details>
+            <details>
+              <summary>What does the i flag do?</summary>
+              <p>
+                It makes matching case-insensitive for applicable characters, allowing upper- and
+                lower-case variants.
+              </p>
+            </details>
+            <details>
+              <summary>When should I use multiline mode?</summary>
+              <p>
+                Use m when anchors should match at line boundaries as well as the start or end of
+                the complete input.
+              </p>
+            </details>
+            <details>
+              <summary>Why are zero-length matches not painted?</summary>
+              <p>
+                They are listed in match details, but no span can be highlighted because they cover
+                no visible characters.
+              </p>
+            </details>
+            <details>
+              <summary>Can a regex prove input is safe?</summary>
+              <p>
+                No. It checks a text shape only. Use proper parsing, authorization, validation, and
+                security controls for real decisions.
+              </p>
+            </details>
+            <details>
+              <summary>Can I test replacements here?</summary>
+              <p>
+                This focused workspace tests matching and extraction. Verify replacement syntax in
+                the language or editor where it will run.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+      <section class="related">
+        <div class="shell">
+          <h2>Continue the developer workflow</h2>
+          <div class="related-grid">
+            <a href="json-formatter.html"
+              >JSON Formatter<br /><small>Parse and format JSON locally</small></a
+            ><a href="url-encoder-decoder.html"
+              >URL Encoder &amp; Decoder<br /><small>Inspect percent-encoded components</small></a
+            ><a href="base64-encoder.html"
+              >Base64 Encoder<br /><small>Encode and decode text values</small></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © 2026 Toolyfi · Browser-native tools for practical work ·
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </footer>
+    <script>
+      const patternInput = document.getElementById("pattern");
+      const testText = document.getElementById("testText");
+      const status = document.getElementById("status");
+      const highlight = document.getElementById("highlight");
+      const matchList = document.getElementById("matchList");
+      const escapeHtml = (value) =>
+        value.replace(
+          /[&<>'"]/g,
+          (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char],
+        );
+      function getFlags() {
+        return [...document.querySelectorAll("#flags input:checked")]
+          .map((input) => input.value)
+          .join("");
+      }
+      function setStatus(text, error = false) {
+        status.textContent = text;
+        status.classList.toggle("error", error);
+      }
+      function render() {
+        const source = patternInput.value;
+        const text = testText.value;
+        document.getElementById("charCount").textContent = text.length;
+        if (!source) {
+          highlight.textContent = text || "Enter a pattern and test string to see matches.";
+          matchList.innerHTML = '<p class="empty">No pattern entered yet.</p>';
+          document.getElementById("matchCount").textContent = "0";
+          document.getElementById("groupCount").textContent = "0";
+          setStatus("Ready");
+          return;
+        }
+        let regex;
+        try {
+          regex = new RegExp(source, getFlags());
+        } catch (error) {
+          highlight.textContent = text;
+          matchList.innerHTML = '<p class="empty">Correct the expression and try again.</p>';
+          document.getElementById("matchCount").textContent = "0";
+          document.getElementById("groupCount").textContent = "0";
+          setStatus(error.message, true);
+          return;
+        }
+        const scanFlags = regex.flags.includes("g") ? regex.flags : `${regex.flags}g`;
+        const scanner = new RegExp(regex.source, scanFlags);
+        const matches = [...text.matchAll(scanner)];
+        const spans = matches
+          .filter((match) => match[0].length > 0)
+          .map((match) => ({
+            start: match.index,
+            end: match.index + match[0].length,
+            value: match[0],
+          }));
+        let cursor = 0;
+        let output = "";
+        spans.forEach((span) => {
+          output += escapeHtml(text.slice(cursor, span.start));
+          output += `<mark>${escapeHtml(span.value)}</mark>`;
+          cursor = span.end;
+        });
+        highlight.innerHTML =
+          output + escapeHtml(text.slice(cursor)) ||
+          '<span class="empty">The test string is empty.</span>';
+        const maximumGroups = matches.reduce(
+          (largest, match) => Math.max(largest, Math.max(0, match.length - 1)),
+          0,
+        );
+        document.getElementById("matchCount").textContent = matches.length;
+        document.getElementById("groupCount").textContent = maximumGroups;
+        setStatus(
+          matches.length
+            ? `${matches.length} match${matches.length === 1 ? "" : "es"}`
+            : "No matches",
+        );
+        matchList.innerHTML = matches.length
+          ? matches
+              .map((match, index) => {
+                const groups = match.slice(1);
+                const groupMarkup = groups.length
+                  ? `<div class="groups">Capture groups${groups
+                      .map(
+                        (group, groupIndex) =>
+                          `<code>${groupIndex + 1}: ${escapeHtml(group ?? "undefined")}</code>`,
+                      )
+                      .join("")}</div>`
+                  : "";
+                const title = `Match ${index + 1} · index ${match.index}`;
+                const length = `${match[0].length} chars`;
+                const value = escapeHtml(match[0]);
+                return `<div class="match"><div class="match-title"><span>${title}</span><span>${length}</span></div><code>${value}</code>${groupMarkup}</div>`;
+              })
+              .join("")
+          : '<p class="empty">No part of the current test string matches this expression.</p>';
+      }
+      document
+        .querySelectorAll("#flags input")
+        .forEach((input) => input.addEventListener("change", render));
+      patternInput.addEventListener("input", render);
+      testText.addEventListener("input", render);
+      document.querySelectorAll(".examples button[data-pattern]").forEach((button) =>
+        button.addEventListener("click", () => {
+          patternInput.value = button.dataset.pattern;
+          testText.value = button.dataset.text;
+          document.querySelector('#flags input[value="g"]').checked = true;
+          render();
+        }),
+      );
+      document.getElementById("clear").addEventListener("click", () => {
+        patternInput.value = "";
+        testText.value = "";
+        render();
+        patternInput.focus();
+      });
+      render();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+    <script src="/pwa-register.js" defer></script>
+  </body>
+</html>
