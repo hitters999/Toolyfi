@@ -367,9 +367,31 @@
         min-height: 100%;
         overflow: auto;
       }
+      body {
+        display: flex;
+        justify-content: center;
+        background: var(--bg);
+      }
       .app {
+        width: min(100%, 860px);
         min-height: 780px;
         height: auto;
+      }
+      html:fullscreen,
+      html:fullscreen body {
+        background: var(--bg);
+      }
+      html:fullscreen .app,
+      body.fallback-fullscreen .app {
+        width: min(100%, 980px);
+        min-height: 100dvh;
+        height: 100dvh;
+      }
+      body.fallback-fullscreen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        overflow: auto;
       }
     </style>
   </head>
@@ -385,6 +407,8 @@
         </div>
         <div class="top-actions">
           <button class="pill active" id="angleBtn" onclick="toggleAngle()">DEG</button
+          ><button class="pill fullscreen-btn" id="fullscreenBtn" onclick="toggleFullscreen()">
+            ⛶ Full screen</button
           ><button class="icon-btn" aria-label="History" onclick="openHistory()">↺</button>
         </div>
       </header>
@@ -530,6 +554,34 @@
         angle = angle === "DEG" ? "RAD" : "DEG";
         render();
       }
+      function updateFullscreenLabel() {
+        const button = $("fullscreenBtn");
+        if (button) {
+          button.textContent =
+            document.fullscreenElement || document.body.classList.contains("fallback-fullscreen")
+              ? "✕ Exit full screen"
+              : "⛶ Full screen";
+        }
+      }
+      async function toggleFullscreen() {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen?.();
+          updateFullscreenLabel();
+          return;
+        }
+        if (document.body.classList.contains("fallback-fullscreen")) {
+          document.body.classList.remove("fallback-fullscreen");
+          updateFullscreenLabel();
+          return;
+        }
+        try {
+          await document.documentElement.requestFullscreen?.();
+        } catch (error) {
+          document.body.classList.add("fallback-fullscreen");
+        }
+        updateFullscreenLabel();
+      }
+      document.addEventListener("fullscreenchange", updateFullscreenLabel);
       function toggleHyp() {
         hyp = !hyp;
         if (hyp) {
