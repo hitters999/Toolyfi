@@ -208,8 +208,11 @@
       .keypad {
         flex: 1;
         min-height: 0;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: repeat(5, minmax(28px, 0.66fr)) repeat(3, minmax(42px, 1fr)) minmax(
+            48px,
+            1.12fr
+          );
         gap: 7px;
       }
       .row {
@@ -217,7 +220,6 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 7px;
         min-height: 0;
-        flex: 1;
       }
       .key {
         min-height: 38px;
@@ -250,6 +252,52 @@
       }
       .key.sci {
         font-size: 13px;
+      }
+      .row:nth-child(-n + 5) .key {
+        min-height: 28px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 720;
+        color: #cbd5ee;
+        background: linear-gradient(145deg, #1f2a47, #141d35);
+        box-shadow:
+          0 3px 0 #090d1b,
+          0 6px 11px #0002,
+          inset 1px 1px 0 #ffffff0e;
+      }
+      .row:nth-child(-n + 5) .key .sub {
+        font-size: 8px;
+      }
+      .row:nth-child(n + 6) .key {
+        min-height: 42px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 780;
+        background: linear-gradient(145deg, #2c3855, #1b263f);
+        box-shadow:
+          0 5px 0 #09101d,
+          0 9px 16px #0004,
+          inset 1px 1px 0 #ffffff18;
+      }
+      .row:nth-child(n + 6) .key.operator {
+        color: #f0eaff;
+        background: linear-gradient(145deg, #4a3d7a, #2b2452);
+        box-shadow:
+          0 5px 0 #19133a,
+          0 9px 16px #0004,
+          inset 1px 1px 0 #ffffff1c;
+      }
+      .row:nth-child(n + 6) .key.danger {
+        color: #fff1f5;
+        background: linear-gradient(145deg, #b64072, #732746);
+      }
+      .row:nth-child(n + 6) .key.equal {
+        color: #efffff;
+        background: linear-gradient(145deg, #2ed2df, #10879f);
+        box-shadow:
+          0 5px 0 #075667,
+          0 9px 16px #0005,
+          inset 1px 1px 0 #ffffff34;
       }
       .key.operator {
         color: #e0d6ff;
@@ -349,6 +397,14 @@
         .key {
           border-radius: 11px;
           min-height: 31px;
+        }
+        .row:nth-child(-n + 5) .key {
+          min-height: 26px;
+          font-size: 11px;
+        }
+        .row:nth-child(n + 6) .key {
+          min-height: 38px;
+          font-size: 17px;
         }
         .keypad {
           gap: 5px;
