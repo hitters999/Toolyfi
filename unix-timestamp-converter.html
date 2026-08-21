@@ -1,0 +1,1575 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unix Timestamp Converter: Seconds, Milliseconds & UTC | Toolyfi</title>
+    <meta
+      name="description"
+      content="Convert Unix seconds and milliseconds to ISO, UTC, and local time, or turn a date-time into copy-ready epoch values in your browser."
+    />
+    <meta
+      name="keywords"
+      content="Unix timestamp converter, epoch converter, Unix time seconds milliseconds, timestamp to date, date to Unix timestamp, UTC time converter"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/unix-timestamp-converter.html" />
+    <meta
+      property="og:title"
+      content="Unix Timestamp Converter: Seconds, Milliseconds & UTC | Toolyfi"
+    />
+    <meta
+      property="og:description"
+      content="A browser-local Unix timestamp converter with seconds, milliseconds, UTC, local-time, and date conversion views."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/unix-timestamp-converter.html" />
+    <meta
+      property="og:image"
+      content="https://toolyfi.com/images/toolyfi-unix-timestamp-converter-hero.webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/images/pwa-icon-192.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Unix Timestamp Converter",
+        "url": "https://toolyfi.com/unix-timestamp-converter.html",
+        "description": "A browser-local tool for converting Unix seconds or milliseconds to readable time and converting date-time input back to epoch values.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Unix Timestamp Converter",
+            "item": "https://toolyfi.com/unix-timestamp-converter.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a Unix timestamp?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Unix timestamp is a count of elapsed seconds from 1970-01-01T00:00:00Z. JavaScript Date values use milliseconds internally."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool support seconds and milliseconds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select Unix seconds, Unix milliseconds, or automatic length detection before converting a whole-number epoch value."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are conversions processed locally?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Browser Date APIs perform the conversion in your browser. The tool does not send a timestamp to a Toolyfi conversion service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can the same timestamp show different local and UTC time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A timestamp represents one instant. UTC and your browser local timezone use different clock displays for that same instant."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a Unix timestamp an epoch value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In common technical usage, Unix time and epoch time describe the same seconds-from-1970 convention; always confirm whether a system expects seconds or milliseconds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this tool verify when a real-world event happened?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The tool formats a numeric time value. It cannot verify an event, a document, a server clock, or a record's authenticity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the year-2038 limitation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some older systems store signed 32-bit Unix seconds and can overflow in 2038. Modern software may use larger ranges, but the target system determines its supported dates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a Unix timestamp be negative?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Negative Unix timestamps represent instants before 1970-01-01T00:00:00Z when the receiving software supports them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do UTC and local formats mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "UTC is a worldwide time standard. Local time applies the timezone and daylight-saving rules configured in the browser or device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does the converter reject my value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter a whole integer without commas or text, select the correct unit, and ensure the value is within JavaScript Date's supported range."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Toolyfi Editorial Utility Atlas: local epoch conversion, warm ivory/ink/coral, static hero only. */
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fff;
+        --ink: #172437;
+        --muted: #657184;
+        --coral: #ef6c54;
+        --soft: #fff0eb;
+        --blue: #e8f0f5;
+        --sage: #e8f2ec;
+        --line: #e5dfd6;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+        margin: 0;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .site-header {
+        align-items: center;
+        background: rgba(250, 248, 244, 0.96);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        padding: 15px clamp(18px, 4vw, 58px);
+        position: relative;
+        z-index: 4;
+      }
+      .logo {
+        align-items: center;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 1.48rem;
+        font-weight: 800;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo img {
+        height: 34px;
+        width: 34px;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        color: var(--muted);
+        font-size: 0.83rem;
+        padding: 22px 0 8px;
+      }
+      .crumbs a {
+        font-weight: 700;
+      }
+      .hero {
+        display: grid;
+        gap: 34px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+        padding: 52px 0 62px;
+      }
+      .eyebrow {
+        align-items: center;
+        color: var(--coral);
+        display: flex;
+        font-size: 0.75rem;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        background: var(--coral);
+        content: "";
+        height: 2px;
+        width: 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+      }
+      h1 {
+        font-size: clamp(3.2rem, 7vw, 6.8rem);
+        margin: 18px 0 22px;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .lead {
+        color: #516072;
+        font-size: 1.07rem;
+        max-width: 600px;
+      }
+      .trust {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: #445269;
+        font-size: 0.83rem;
+        font-weight: 700;
+        margin-top: 28px;
+        padding: 14px 17px;
+      }
+      .trust strong {
+        color: var(--coral);
+        margin-right: 8px;
+      }
+      .toolyfi-visual {
+        aspect-ratio: 16 / 9;
+        border-radius: 20px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .toolyfi-visual > img {
+        animation: none !important;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        transform: none !important;
+        transition: none !important;
+        width: 100%;
+      }
+      .toolyfi-hero-mark {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.93);
+        border-radius: 999px;
+        bottom: 14px;
+        display: inline-flex;
+        font-family: Fraunces, serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        gap: 6px;
+        padding: 7px 11px;
+        position: absolute;
+        right: 14px;
+      }
+      .toolyfi-hero-mark img {
+        height: 24px;
+        width: 24px;
+      }
+      .time-layout {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 20px;
+      }
+      .generator-panel,
+      .inspect-panel {
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+      .inspect-panel {
+        background: var(--blue);
+      }
+      .panel-kicker {
+        color: var(--coral);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .generator-panel h3,
+      .inspect-panel h3 {
+        font-size: 1.7rem;
+        margin: 5px 0 10px;
+      }
+      .control-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      label {
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+      select {
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        display: block;
+        margin-top: 5px;
+        padding: 10px;
+        width: 100%;
+      }
+      .time-list {
+        border-top: 1px solid var(--line);
+        margin-top: 18px;
+        max-height: 430px;
+        overflow: auto;
+      }
+      .time-row {
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        padding: 10px 0;
+      }
+      .time-row code {
+        font-size: 0.84rem;
+        overflow-wrap: anywhere;
+      }
+      .time-row button {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        font-size: 0.75rem;
+        font-weight: 800;
+        padding: 6px 9px;
+      }
+      .empty {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .inspect-panel textarea {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--line);
+        min-height: 125px;
+        margin: 14px 0;
+      }
+      .inspect-result {
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 0.82rem;
+        margin-top: 15px;
+        min-height: 86px;
+        padding: 12px;
+        overflow-wrap: anywhere;
+      }
+      @media (max-width: 780px) {
+        .time-layout,
+        .control-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .time-layout {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 20px;
+      }
+      .time-tool input,
+      .time-tool select {
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        display: block;
+        margin-top: 5px;
+        padding: 10px;
+        width: 100%;
+      }
+      .time-results {
+        border-top: 1px solid var(--line);
+        margin-top: 18px;
+      }
+      .time-row {
+        align-items: flex-start;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+        padding: 11px 0;
+      }
+      .time-row code {
+        max-width: 72%;
+        overflow-wrap: anywhere;
+        text-align: right;
+      }
+      @media (max-width: 780px) {
+        .time-layout {
+          grid-template-columns: 1fr;
+        }
+        .time-row {
+          display: block;
+        }
+        .time-row code {
+          display: block;
+          max-width: 100%;
+          text-align: left;
+        }
+      }
+      .tool {
+        background: var(--paper);
+        border-top: 4px solid var(--coral);
+        box-shadow: var(--shadow);
+        margin-bottom: 74px;
+        padding: clamp(22px, 4vw, 46px);
+      }
+      .tool-top {
+        align-items: end;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+      .tool h2 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        margin: 0;
+      }
+      .tool-top p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0;
+        max-width: 430px;
+      }
+      .mode-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+      .mode {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #516072;
+        font-size: 0.82rem;
+        font-weight: 800;
+        padding: 10px 13px;
+        transition:
+          background 160ms var(--ease),
+          color 160ms var(--ease),
+          transform 160ms var(--ease);
+      }
+      .mode.active {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: #fff;
+      }
+      .mode:active,
+      .action:active {
+        transform: scale(0.97);
+      }
+      .mode-note {
+        background: var(--blue);
+        border-left: 3px solid #7da9bc;
+        color: #3a5667;
+        font-size: 0.84rem;
+        margin: 0 0 20px;
+        padding: 10px 14px;
+      }
+      .work-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1fr auto 1fr;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        min-width: 0;
+      }
+      .panel-label {
+        align-items: center;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        font-size: 0.77rem;
+        font-weight: 800;
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        padding: 11px 13px;
+        text-transform: uppercase;
+      }
+      textarea {
+        border: 0;
+        color: var(--ink);
+        display: block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        min-height: 260px;
+        outline: none;
+        padding: 15px;
+        resize: vertical;
+        width: 100%;
+      }
+      .output {
+        background: #fcfcfb;
+        min-height: 260px;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+      .rail {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+      }
+      .action {
+        background: var(--ink);
+        border: 0;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        height: 44px;
+        transition:
+          transform 160ms var(--ease),
+          background 160ms var(--ease);
+        width: 44px;
+      }
+      .action:hover {
+        background: var(--coral);
+      }
+      .action.small {
+        border-radius: 999px;
+        font-size: 0.78rem;
+        height: auto;
+        padding: 10px 13px;
+        width: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .action.ghost {
+        background: var(--ivory);
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .status {
+        color: var(--muted);
+        font-size: 0.81rem;
+        margin: 13px 0 0;
+        min-height: 24px;
+      }
+      .status.error {
+        color: #a63b2b;
+        font-weight: 700;
+      }
+      .metrics {
+        display: grid;
+        gap: 11px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 25px;
+      }
+      .metric {
+        border-top: 1px solid var(--line);
+        padding-top: 11px;
+      }
+      .metric b {
+        display: block;
+        font-family: Fraunces, serif;
+        font-size: 1.42rem;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+      .analysis {
+        background: var(--sage);
+        margin-top: 28px;
+        padding: 20px;
+      }
+      .analysis[hidden] {
+        display: none;
+      }
+      .analysis h3 {
+        font-size: 1.5rem;
+        margin: 0 0 8px;
+      }
+      .parts {
+        display: grid;
+        gap: 9px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .part {
+        background: rgba(255, 255, 255, 0.68);
+        padding: 10px;
+      }
+      .part span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .part code {
+        font-size: 0.84rem;
+        overflow-wrap: anywhere;
+      }
+      .query-list {
+        margin: 15px 0 0;
+      }
+      .query-list li {
+        font-size: 0.86rem;
+        margin-bottom: 5px;
+      }
+      .principles {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 0.7fr 1.3fr;
+        padding: 54px 0 66px;
+      }
+      .principles h2 {
+        font-size: clamp(2.25rem, 4.2vw, 4rem);
+        margin: 0;
+      }
+      .principles p {
+        color: var(--muted);
+        margin: 0;
+      }
+      article {
+        border-top: 1px solid var(--line);
+        padding: 66px 0 44px;
+      }
+      article > p:first-of-type {
+        color: var(--muted);
+        font-size: 1.08rem;
+        max-width: 850px;
+      }
+      article h2 {
+        font-size: clamp(2.35rem, 5vw, 4.8rem);
+        margin: 8px 0 22px;
+        max-width: 830px;
+      }
+      article h3 {
+        font-size: 1.75rem;
+        margin: 42px 0 12px;
+      }
+      article p,
+      article li {
+        max-width: 850px;
+      }
+      article li {
+        margin-bottom: 9px;
+      }
+      blockquote {
+        border-left: 3px solid var(--coral);
+        color: #405069;
+        font-family: Fraunces, serif;
+        font-size: 1.28rem;
+        margin: 28px 0;
+        max-width: 800px;
+        padding: 8px 0 8px 20px;
+      }
+      .faq {
+        background: var(--ink);
+        color: #fff;
+        margin: 26px calc(50% - 50vw) 0;
+        padding: 68px max(18px, calc((100vw - 1084px) / 2));
+      }
+      .faq h2 {
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        margin: 0 0 25px;
+      }
+      details {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 900px;
+        padding: 17px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-family: Fraunces, serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      details p {
+        color: #d8e1eb;
+        max-width: 760px;
+      }
+      .related {
+        padding: 60px 0;
+      }
+      .related h2 {
+        font-size: 2.5rem;
+        margin: 0 0 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-links a {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-weight: 800;
+        padding: 12px 15px;
+        text-decoration: none;
+        transition:
+          transform 160ms var(--ease),
+          border-color 160ms var(--ease);
+      }
+      .related-links a:hover {
+        border-color: var(--coral);
+        transform: translateY(-2px);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        gap: 14px;
+        justify-content: space-between;
+        padding: 25px clamp(18px, 4vw, 58px);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 480ms var(--ease),
+          transform 480ms var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 780px) {
+        .site-header nav a:first-child {
+          display: none;
+        }
+        .hero,
+        .principles {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 34px 0 42px;
+        }
+        .toolyfi-visual {
+          aspect-ratio: 4 / 3;
+        }
+        .toolyfi-hero-mark {
+          bottom: 10px;
+          right: 10px;
+        }
+        .tool-top,
+        .work-grid {
+          align-items: stretch;
+          grid-template-columns: 1fr;
+        }
+        .tool-top {
+          display: block;
+        }
+        .tool-top p {
+          margin-top: 12px;
+        }
+        .rail {
+          flex-direction: row;
+          order: 2;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .parts {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs">
+          <a href="index.html">Home</a> / <a href="index.html#directory">All tools</a> / Unix
+          Timestamp Converter
+        </div>
+        <section class="hero">
+          <div class="reveal">
+            <span class="eyebrow">Browser-local epoch conversion</span>
+            <h1>Read the <em>instant.</em> Keep the timezone clear.</h1>
+            <p class="lead">
+              Convert Unix seconds and milliseconds into ISO, UTC, and local-device time. Turn an
+              explicit date-time back into copy-ready epoch values without sending it anywhere.
+            </p>
+            <p class="trust">
+              <strong>Local by design:</strong> Conversion uses browser date APIs. It does not fetch
+              a timezone service, submit your timestamp, or claim that your device clock is
+              authoritative.
+            </p>
+          </div>
+          <figure class="toolyfi-visual reveal">
+            <img
+              src="images/toolyfi-unix-timestamp-converter-hero.webp"
+              alt="Ink navy clock, abstract timestamp cards, blue ruler, and brass stationery on an ivory desk"
+              fetchpriority="high"
+            /><span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool reveal time-tool" aria-labelledby="tool-title">
+          <div class="tool-top">
+            <div><h2 id="tool-title">Unix Timestamp Converter</h2></div>
+            <p>
+              Choose seconds or milliseconds, then compare the same instant in UTC and your
+              browser’s local timezone.
+            </p>
+          </div>
+          <div class="time-layout">
+            <section class="generator-panel">
+              <div class="panel-kicker">Epoch to date</div>
+              <h3>Read a timestamp</h3>
+              <div class="control-grid">
+                <label
+                  >Timestamp
+                  <input
+                    id="timestamp-input"
+                    inputmode="numeric"
+                    value="0"
+                    placeholder="e.g. 1704067200" /></label
+                ><label
+                  >Unit
+                  <select id="timestamp-unit">
+                    <option value="seconds">Unix seconds</option>
+                    <option value="milliseconds">Unix milliseconds</option>
+                    <option value="auto">Suggest from length</option>
+                  </select></label
+                >
+              </div>
+              <div class="actions">
+                <button class="action small" id="convert-timestamp" type="button">
+                  Convert timestamp</button
+                ><button class="action small ghost" id="now-seconds" type="button">
+                  Use current time</button
+                ><button class="action small ghost" id="copy-timestamp" type="button">
+                  Copy output
+                </button>
+              </div>
+              <p class="status" id="status" aria-live="polite">
+                Enter a timestamp or use the example zero.
+              </p>
+              <div class="time-results" id="time-results">
+                <p class="empty">Your ISO, UTC, local, and epoch views will appear here.</p>
+              </div>
+            </section>
+            <aside class="inspect-panel">
+              <div class="panel-kicker">Date to epoch</div>
+              <h3>Write a timestamp</h3>
+              <p>
+                Use the browser’s local interpretation or enter a UTC date-time explicitly with a Z
+                suffix.
+              </p>
+              <label>Date-time <input id="date-input" type="datetime-local" /></label
+              ><label
+                >Interpret as
+                <select id="date-mode">
+                  <option value="local">Browser local time</option>
+                  <option value="utc">UTC components</option>
+                </select></label
+              >
+              <div class="actions">
+                <button class="action small" id="convert-date" type="button">Convert date</button
+                ><button class="action small ghost" id="copy-date" type="button">
+                  Copy values
+                </button>
+              </div>
+              <div class="inspect-result" id="date-result" aria-live="polite">
+                No date converted yet.
+              </div>
+            </aside>
+          </div>
+          <div class="metrics">
+            <div class="metric"><b id="metric-seconds">0</b><span>SECONDS VIEW</span></div>
+            <div class="metric"><b id="metric-ms">0</b><span>MILLISECONDS VIEW</span></div>
+            <div class="metric"><b id="metric-offset">—</b><span>LOCAL OFFSET</span></div>
+            <div class="metric"><b>Local</b><span>PROCESSING BOUNDARY</span></div>
+          </div>
+        </section>
+        <section class="principles reveal">
+          <h2>A timestamp names an instant. A display adds a timezone.</h2>
+          <p>
+            <strong>Unix time</strong> is conventionally counted in seconds from
+            1970-01-01T00:00:00Z. JavaScript Date values use milliseconds internally. The same
+            instant can show different clock text locally, so this page displays UTC and
+            browser-local views together instead of hiding the distinction.
+          </p>
+        </section>
+        <article class="article reveal">
+          <span class="eyebrow">Practical guide · Unix timestamp</span>
+          <h2>Unix timestamps explained: units, UTC, local time, and reliable conversion</h2>
+          <p>
+            A Unix timestamp converter is most useful when it makes time assumptions visible. This
+            Toolyfi tool reads a whole-number epoch value as seconds or milliseconds, shows ISO and
+            UTC output, presents the browser-local view, and can turn a selected date-time back into
+            epoch values. Processing happens in the browser; the tool does not submit your timestamp
+            to a conversion service.
+          </p>
+
+          <h3>Start with the epoch and the unit</h3>
+          <p>
+            Unix time counts elapsed seconds from 1970-01-01T00:00:00Z. JavaScript Date uses
+            milliseconds, so an application can represent the same instant with either 1704067200 or
+            1704067200000. The practical value of a timestamp converter is that it makes this hidden
+            arithmetic visible: it shows the numeric seconds view, the numeric milliseconds view, an
+            ISO UTC representation, and the local-device display together. That comparison helps a
+            developer, analyst, or support teammate spot an incorrect assumption before it reaches a
+            queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            Write the expected unit beside a field name, API example, and database migration. Never
+            depend only on how many digits a contemporary date happens to have. A reliable workflow
+            starts with the raw source value, records the unit, renders a UTC reference, and only
+            then selects a local display. This prevents a common error in which a valid number is
+            blamed for a mismatch that was actually caused by an undocumented timezone or precision
+            conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Recognize one instant in many displays</h3>
+          <p>
+            A timestamp identifies an instant, not a country-specific clock reading. ISO output, UTC
+            text, and a browser-local string can all correctly describe that same instant. The
+            practical value of a timestamp converter is that it makes this hidden arithmetic
+            visible: it shows the numeric seconds view, the numeric milliseconds view, an ISO UTC
+            representation, and the local-device display together. That comparison helps a
+            developer, analyst, or support teammate spot an incorrect assumption before it reaches a
+            queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            Compare UTC first during a support investigation. Then record the browser or server
+            timezone separately instead of assuming the local clock is universal. A reliable
+            workflow starts with the raw source value, records the unit, renders a UTC reference,
+            and only then selects a local display. This prevents a common error in which a valid
+            number is blamed for a mismatch that was actually caused by an undocumented timezone or
+            precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Choose seconds or milliseconds deliberately</h3>
+          <p>
+            Unix-oriented APIs commonly exchange whole seconds, while browser code and many event
+            systems exchange milliseconds. A thousand-fold unit mistake can create an apparently
+            plausible but wildly incorrect date. The practical value of a timestamp converter is
+            that it makes this hidden arithmetic visible: it shows the numeric seconds view, the
+            numeric milliseconds view, an ISO UTC representation, and the local-device display
+            together. That comparison helps a developer, analyst, or support teammate spot an
+            incorrect assumption before it reaches a queue, database, report, or customer-facing
+            interface.
+          </p>
+          <p>
+            Use this converter with a known test value such as zero, then verify the result against
+            the receiving system before processing a production dataset. A reliable workflow starts
+            with the raw source value, records the unit, renders a UTC reference, and only then
+            selects a local display. This prevents a common error in which a valid number is blamed
+            for a mismatch that was actually caused by an undocumented timezone or precision
+            conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Interpret local date-time input carefully</h3>
+          <p>
+            A local date-time has no timezone offset until an environment gives it one.
+            Daylight-saving changes can also create an hour that occurs twice or an hour that does
+            not occur at all. The practical value of a timestamp converter is that it makes this
+            hidden arithmetic visible: it shows the numeric seconds view, the numeric milliseconds
+            view, an ISO UTC representation, and the local-device display together. That comparison
+            helps a developer, analyst, or support teammate spot an incorrect assumption before it
+            reaches a queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            For an unambiguous cross-system event, store or transmit UTC with an explicit Z suffix.
+            Keep local display choice close to the person viewing it. A reliable workflow starts
+            with the raw source value, records the unit, renders a UTC reference, and only then
+            selects a local display. This prevents a common error in which a valid number is blamed
+            for a mismatch that was actually caused by an undocumented timezone or precision
+            conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Use ISO 8601 for readable interchange</h3>
+          <p>
+            An ISO string such as 2024-01-01T00:00:00.000Z makes the calendar date, time,
+            millisecond precision, and UTC interpretation visible in one value. The practical value
+            of a timestamp converter is that it makes this hidden arithmetic visible: it shows the
+            numeric seconds view, the numeric milliseconds view, an ISO UTC representation, and the
+            local-device display together. That comparison helps a developer, analyst, or support
+            teammate spot an incorrect assumption before it reaches a queue, database, report, or
+            customer-facing interface.
+          </p>
+          <p>
+            Use ISO text in logs, documentation, and JSON examples when people need to inspect the
+            time. Use an epoch number when a documented interface explicitly requests it. A reliable
+            workflow starts with the raw source value, records the unit, renders a UTC reference,
+            and only then selects a local display. This prevents a common error in which a valid
+            number is blamed for a mismatch that was actually caused by an undocumented timezone or
+            precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Know what the browser tool does and does not prove</h3>
+          <p>
+            The converter formats a supplied numeric value with browser Date APIs. It does not
+            contact an authority, compare a server clock, validate a signed record, or establish
+            when a real-world event happened. The practical value of a timestamp converter is that
+            it makes this hidden arithmetic visible: it shows the numeric seconds view, the numeric
+            milliseconds view, an ISO UTC representation, and the local-device display together.
+            That comparison helps a developer, analyst, or support teammate spot an incorrect
+            assumption before it reaches a queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            Treat the result as a representation aid. Use the system of record, application logs,
+            and authenticated evidence when an event time has compliance or legal significance. A
+            reliable workflow starts with the raw source value, records the unit, renders a UTC
+            reference, and only then selects a local display. This prevents a common error in which
+            a valid number is blamed for a mismatch that was actually caused by an undocumented
+            timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Handle negative values and far dates</h3>
+          <p>
+            Negative timestamps can represent instants before the 1970 epoch when the software stack
+            supports them. Browser dates also have a finite range, and an invalid value should be
+            handled as an error rather than silently normalized. The practical value of a timestamp
+            converter is that it makes this hidden arithmetic visible: it shows the numeric seconds
+            view, the numeric milliseconds view, an ISO UTC representation, and the local-device
+            display together. That comparison helps a developer, analyst, or support teammate spot
+            an incorrect assumption before it reaches a queue, database, report, or customer-facing
+            interface.
+          </p>
+          <p>
+            Test historical and future limits in the target runtime. A value accepted by one browser
+            or database type is not automatically accepted by every service in a workflow. A
+            reliable workflow starts with the raw source value, records the unit, renders a UTC
+            reference, and only then selects a local display. This prevents a common error in which
+            a valid number is blamed for a mismatch that was actually caused by an undocumented
+            timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Plan for the year-2038 boundary</h3>
+          <p>
+            Older software that stores signed 32-bit Unix seconds cannot represent times after
+            January 2038. Modern platforms may use wider values, but compatibility depends on the
+            actual library, operating system, and storage type. The practical value of a timestamp
+            converter is that it makes this hidden arithmetic visible: it shows the numeric seconds
+            view, the numeric milliseconds view, an ISO UTC representation, and the local-device
+            display together. That comparison helps a developer, analyst, or support teammate spot
+            an incorrect assumption before it reaches a queue, database, report, or customer-facing
+            interface.
+          </p>
+          <p>
+            Do not infer capacity from a language name or a dashboard. Read the target product
+            documentation and include boundary dates in integration tests where long-lived records
+            matter. A reliable workflow starts with the raw source value, records the unit, renders
+            a UTC reference, and only then selects a local display. This prevents a common error in
+            which a valid number is blamed for a mismatch that was actually caused by an
+            undocumented timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Keep precision honest</h3>
+          <p>
+            A whole Unix-second field cannot describe a millisecond event precisely, and a
+            millisecond value may be rounded when it crosses into a second-only system. Precision is
+            part of the data contract, not a cosmetic format. The practical value of a timestamp
+            converter is that it makes this hidden arithmetic visible: it shows the numeric seconds
+            view, the numeric milliseconds view, an ISO UTC representation, and the local-device
+            display together. That comparison helps a developer, analyst, or support teammate spot
+            an incorrect assumption before it reaches a queue, database, report, or customer-facing
+            interface.
+          </p>
+          <p>
+            Name fields clearly, for example created_at_seconds or occurred_at_ms. Document
+            rounding, truncation, and timezone behavior near the interface rather than leaving it to
+            callers. A reliable workflow starts with the raw source value, records the unit, renders
+            a UTC reference, and only then selects a local display. This prevents a common error in
+            which a valid number is blamed for a mismatch that was actually caused by an
+            undocumented timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Debug timestamp mismatches methodically</h3>
+          <p>
+            When two systems disagree, inspect the original value, selected unit, timezone
+            assumption, parsed ISO form, and destination field type in that order. This separates
+            arithmetic mistakes from display and serialization mistakes. The practical value of a
+            timestamp converter is that it makes this hidden arithmetic visible: it shows the
+            numeric seconds view, the numeric milliseconds view, an ISO UTC representation, and the
+            local-device display together. That comparison helps a developer, analyst, or support
+            teammate spot an incorrect assumption before it reaches a queue, database, report, or
+            customer-facing interface.
+          </p>
+          <p>
+            Record one non-sensitive reproducible example and the exact expected UTC result. Avoid
+            repeatedly changing a value until it appears to work because that hides the real
+            contract mismatch. A reliable workflow starts with the raw source value, records the
+            unit, renders a UTC reference, and only then selects a local display. This prevents a
+            common error in which a valid number is blamed for a mismatch that was actually caused
+            by an undocumented timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Design APIs and database fields explicitly</h3>
+          <p>
+            A timestamp field needs an ownership rule: which system creates it, which precision it
+            carries, whether it is nullable, and whether it represents creation, update, scheduling,
+            or an event occurrence. The practical value of a timestamp converter is that it makes
+            this hidden arithmetic visible: it shows the numeric seconds view, the numeric
+            milliseconds view, an ISO UTC representation, and the local-device display together.
+            That comparison helps a developer, analyst, or support teammate spot an incorrect
+            assumption before it reaches a queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            Use a database timestamp type or integer epoch only after checking the query, indexing,
+            migration, and client-library behavior required by the product. A reliable workflow
+            starts with the raw source value, records the unit, renders a UTC reference, and only
+            then selects a local display. This prevents a common error in which a valid number is
+            blamed for a mismatch that was actually caused by an undocumented timezone or precision
+            conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+
+          <h3>Use local conversion responsibly</h3>
+          <p>
+            Browser-local conversion is useful for debugging, fixtures, documentation, and everyday
+            engineering checks because the timestamp does not need to leave the device for a simple
+            format conversion. The practical value of a timestamp converter is that it makes this
+            hidden arithmetic visible: it shows the numeric seconds view, the numeric milliseconds
+            view, an ISO UTC representation, and the local-device display together. That comparison
+            helps a developer, analyst, or support teammate spot an incorrect assumption before it
+            reaches a queue, database, report, or customer-facing interface.
+          </p>
+          <p>
+            Remember that copied values can still enter a clipboard manager, a ticket, or a
+            screenshot. Remove personal or sensitive context before sharing diagnostic material. A
+            reliable workflow starts with the raw source value, records the unit, renders a UTC
+            reference, and only then selects a local display. This prevents a common error in which
+            a valid number is blamed for a mismatch that was actually caused by an undocumented
+            timezone or precision conversion.
+          </p>
+          <p>
+            Keep timestamps as data rather than decoration. A visible calendar label can be
+            friendly, but it should be derived from a clearly defined instant and locale rule. When
+            a team documents those choices, tests one example end to end, and keeps conversion
+            boundaries explicit, logs, integrations, and reports become easier to reconcile over
+            time. A small verification note should identify the source value, the intended unit, the
+            UTC result, the local display environment, and the receiving system's expected type.
+            That disciplined record turns a one-off conversion into evidence another teammate can
+            reproduce without guessing.
+          </p>
+          <h3>Source and related reading</h3>
+          <p>
+            JavaScript Date represents milliseconds from the 1970 UTC epoch, while its local methods
+            display that instant using the host environment's timezone.
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+              target="_blank"
+              rel="noopener noreferrer"
+              >MDN's Date reference</a
+            >
+            explains the model, and
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString"
+              target="_blank"
+              rel="noopener noreferrer"
+              >its toISOString reference</a
+            >
+            documents UTC output marked with Z. Use the receiving system's own documentation as the
+            authority for field type and precision.
+          </p>
+        </article>
+      </div>
+      <section class="faq">
+        <div class="shell">
+          <span class="eyebrow">Questions, answered</span>
+          <h2>Unix timestamp FAQ</h2>
+          <details>
+            <summary>What is a Unix timestamp?</summary>
+            <p>
+              A Unix timestamp counts elapsed seconds from 1970-01-01T00:00:00Z. JavaScript Date
+              values use milliseconds internally.
+            </p>
+          </details>
+          <details>
+            <summary>Does this tool support seconds and milliseconds?</summary>
+            <p>
+              Yes. Select Unix seconds, Unix milliseconds, or automatic length detection before
+              converting a whole-number epoch value.
+            </p>
+          </details>
+          <details>
+            <summary>Are conversions processed locally?</summary>
+            <p>
+              Yes. Browser Date APIs perform the conversion in your browser. The tool does not send
+              a timestamp to a Toolyfi conversion service.
+            </p>
+          </details>
+          <details>
+            <summary>Why can the same timestamp show different local and UTC time?</summary>
+            <p>
+              A timestamp represents one instant. UTC and your browser local timezone use different
+              clock displays for that same instant.
+            </p>
+          </details>
+          <details>
+            <summary>Is a Unix timestamp an epoch value?</summary>
+            <p>
+              Yes. Unix time and epoch time commonly describe the same seconds-from-1970 convention;
+              always confirm whether a system expects seconds or milliseconds.
+            </p>
+          </details>
+          <details>
+            <summary>Can this tool verify when a real-world event happened?</summary>
+            <p>
+              No. The tool formats a numeric time value. It cannot verify an event, a document, a
+              server clock, or a record's authenticity.
+            </p>
+          </details>
+          <details>
+            <summary>What is the year-2038 limitation?</summary>
+            <p>
+              Some older systems store signed 32-bit Unix seconds and can overflow in 2038. The
+              target system determines the actual range it supports.
+            </p>
+          </details>
+          <details>
+            <summary>Can a Unix timestamp be negative?</summary>
+            <p>
+              Yes. Negative Unix timestamps represent instants before 1970-01-01T00:00:00Z when the
+              receiving software supports them.
+            </p>
+          </details>
+          <details>
+            <summary>What do UTC and local formats mean?</summary>
+            <p>
+              UTC is a worldwide time standard. Local time applies the timezone and daylight-saving
+              rules configured in the browser or device.
+            </p>
+          </details>
+          <details>
+            <summary>Why does the converter reject my value?</summary>
+            <p>
+              Enter a whole integer without commas or text, select the correct unit, and ensure the
+              value is within JavaScript Date's supported range.
+            </p>
+          </details>
+        </div>
+      </section>
+      <div class="shell related reveal">
+        <span class="eyebrow">Keep working</span>
+        <h2>Related browser-local tools</h2>
+        <div class="related-links">
+          <a href="age-calculator.html">Age Calculator</a
+          ><a href="json-formatter.html">JSON Formatter</a
+          ><a href="base64-encoder.html">Base64 Encoder</a
+          ><a href="random-number-generator.html">Random Number Generator</a
+          ><a href="index.html#directory">All tools</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <span>Toolyfi — Free tools for real work.</span
+      ><span
+        ><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> ·
+        <a href="contact.html">Contact</a></span
+      >
+    </footer>
+    <script>
+      // Toolyfi Editorial Utility Atlas: browser-local epoch conversion with explicit units and timezone views.
+      let latestText = "";
+      const $ = (selector) => document.querySelector(selector);
+      const status = $("#status");
+      const showStatus = (text, error = false) => {
+        status.textContent = text;
+        status.className = error ? "status error" : "status";
+      };
+      const formatUtc = (date) => date.toUTCString();
+      const formatLocal = (date) =>
+        date.toLocaleString([], { dateStyle: "medium", timeStyle: "medium" });
+      const readTimestamp = () => {
+        const raw = $("#timestamp-input").value.trim();
+        const unitChoice = $("#timestamp-unit").value;
+        if (!/^[+-]?\d+$/.test(raw)) throw new Error("Use a whole-number Unix timestamp.");
+        const numeric = Number(raw);
+        if (!Number.isSafeInteger(numeric))
+          throw new Error("Use a timestamp within JavaScript’s safe integer range.");
+        const unit =
+          unitChoice === "auto"
+            ? raw.replace(/^[+-]/, "").length >= 13
+              ? "milliseconds"
+              : "seconds"
+            : unitChoice;
+        const ms = unit === "seconds" ? numeric * 1000 : numeric;
+        const date = new Date(ms);
+        if (Number.isNaN(date.getTime()))
+          throw new Error("That value is outside the browser Date range.");
+        return { date, seconds: Math.trunc(ms / 1000), milliseconds: ms, unit };
+      };
+      const renderTimestamp = () => {
+        try {
+          const result = readTimestamp();
+          latestText =
+            "ISO 8601: " +
+            result.date.toISOString() +
+            "\nUTC: " +
+            formatUtc(result.date) +
+            "\nLocal: " +
+            formatLocal(result.date) +
+            "\nUnix seconds: " +
+            result.seconds +
+            "\nUnix milliseconds: " +
+            result.milliseconds;
+          $("#time-results").innerHTML =
+            '<div class="time-row"><span>ISO 8601</span><code>' +
+            result.date.toISOString() +
+            '</code></div><div class="time-row"><span>UTC</span><code>' +
+            formatUtc(result.date) +
+            '</code></div><div class="time-row"><span>Local device time</span><code>' +
+            formatLocal(result.date) +
+            '</code></div><div class="time-row"><span>Unix seconds</span><code>' +
+            result.seconds +
+            '</code></div><div class="time-row"><span>Unix milliseconds</span><code>' +
+            result.milliseconds +
+            "</code></div>";
+          $("#metric-seconds").textContent = result.seconds;
+          $("#metric-ms").textContent = result.milliseconds;
+          $("#metric-offset").textContent =
+            "UTC" +
+            (result.date.getTimezoneOffset() <= 0 ? "+" : "-") +
+            Math.abs(result.date.getTimezoneOffset() / 60);
+          showStatus("Converted locally as " + result.unit + ".");
+        } catch (error) {
+          $("#time-results").innerHTML = '<p class="empty">' + error.message + "</p>";
+          showStatus(error.message, true);
+        }
+      };
+      const dateToEpoch = () => {
+        const raw = $("#date-input").value;
+        if (!raw) return ($("#date-result").textContent = "Choose a date and time first.");
+        const parts = raw.split(/[T:-]/).map(Number);
+        let date;
+        if ($("#date-mode").value === "utc")
+          date = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4]));
+        else date = new Date(raw);
+        if (Number.isNaN(date.getTime()))
+          return ($("#date-result").textContent = "That date-time is not valid.");
+        latestText =
+          "Unix seconds: " +
+          Math.trunc(date.getTime() / 1000) +
+          "\nUnix milliseconds: " +
+          date.getTime() +
+          "\nISO 8601: " +
+          date.toISOString();
+        $("#date-result").innerHTML =
+          "<strong>Unix seconds:</strong> " +
+          Math.trunc(date.getTime() / 1000) +
+          "<br><strong>Unix milliseconds:</strong> " +
+          date.getTime() +
+          "<br><strong>ISO:</strong> " +
+          date.toISOString();
+      };
+      $("#convert-timestamp").addEventListener("click", renderTimestamp);
+      $("#now-seconds").addEventListener("click", () => {
+        $("#timestamp-input").value = Math.floor(Date.now() / 1000);
+        $("#timestamp-unit").value = "seconds";
+        renderTimestamp();
+      });
+      $("#copy-timestamp").addEventListener("click", async () => {
+        await navigator.clipboard.writeText(latestText);
+        showStatus("Current conversion copied locally.");
+      });
+      $("#convert-date").addEventListener("click", dateToEpoch);
+      $("#copy-date").addEventListener("click", async () => {
+        if (!latestText) return;
+        await navigator.clipboard.writeText(latestText);
+        $("#date-result").insertAdjacentHTML("beforeend", "<br><small>Copied locally.</small>");
+      });
+      $("#timestamp-input").addEventListener("input", renderTimestamp);
+      renderTimestamp();
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>
