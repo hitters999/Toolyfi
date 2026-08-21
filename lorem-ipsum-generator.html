@@ -1,0 +1,1557 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lorem Ipsum Generator: Words, Sentences & HTML | Toolyfi</title>
+    <meta
+      name="description"
+      content="Generate deterministic Lorem Ipsum placeholder text locally. Choose words, sentences, or paragraphs, switch between plain text and HTML, then copy or download the result."
+    />
+    <meta
+      name="keywords"
+      content="lorem ipsum generator, placeholder text generator, dummy text generator, lorem ipsum HTML, lorem ipsum paragraphs, lorem ipsum words"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://toolyfi.com/lorem-ipsum-generator.html" />
+    <meta property="og:title" content="Lorem Ipsum Generator: Words, Sentences & HTML | Toolyfi" />
+    <meta
+      property="og:description"
+      content="Generate controlled placeholder text in your browser, then copy or download plain-text or HTML output."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolyfi.com/lorem-ipsum-generator.html" />
+    <meta property="og:image" content="https://toolyfi.com/images/toolyfi-lorem-ipsum-hero.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Toolyfi Lorem Ipsum Generator",
+        "url": "https://toolyfi.com/lorem-ipsum-generator.html",
+        "description": "A browser-local Lorem Ipsum generator with deterministic words, sentences, paragraphs, plain text, HTML, copy, and download controls.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolyfi.com/" },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Lorem Ipsum Generator",
+            "item": "https://toolyfi.com/lorem-ipsum-generator.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does the Lorem Ipsum Generator upload text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The selected placeholder output is calculated in the browser. Copying and downloading happen locally in the active tab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What output units can I choose?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose words, sentences, or paragraphs. The quantity field controls the selected unit, and paragraph length adjusts the paragraph mode."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I generate HTML paragraphs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select HTML output to wrap generated paragraphs in p elements that can be pasted into a suitable template or editor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is generated Lorem Ipsum real content?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is placeholder text intended for visual layout, typography, and early interface prototyping. Replace it before publishing user-facing content."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the output deterministic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The same selected settings create the same result, which makes a mockup easier to reproduce and compare during design review."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I control exact character count?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This focused generator controls words, sentences, and paragraphs. Use the shown character count as a guide and make final copy adjustments in your editor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I use Lorem Ipsum in usability testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use it carefully. Placeholder text can help test visual rhythm, but representative content is better when testing comprehension, scanning, error states, or real task decisions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does HTML output include styling?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. HTML output contains simple paragraph tags and text only. Styling should remain the responsibility of the destination template or stylesheet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I download the generated result?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Download creates a local text file using the current output mode. No account or server storage is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should replace placeholder text before launch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use reviewed, accessible, audience-appropriate real content, including meaningful labels, instructions, messages, alt text, and legal or policy text where needed."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root {
+        --ivory: #faf8f4;
+        --paper: #fffdf9;
+        --ink: #172437;
+        --muted: #617080;
+        --coral: #ef6c54;
+        --soft: #fff0ea;
+        --line: #e8e1d7;
+        --blue: #e9f1f7;
+        --green: #e7f3ec;
+        --shadow: 0 20px 56px rgba(23, 36, 55, 0.1);
+        --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.65;
+      }
+      a {
+        color: inherit;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px clamp(18px, 4vw, 58px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(250, 248, 244, 0.96);
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font:
+          800 1.48rem Fraunces,
+          serif;
+        text-decoration: none;
+      }
+      .logo img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+      .site-header nav {
+        display: flex;
+        gap: 20px;
+      }
+      .site-header nav a {
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .shell {
+        width: min(1180px, 100%);
+        margin: auto;
+        padding: 0 clamp(18px, 4vw, 48px);
+      }
+      .crumbs {
+        padding: 22px 0 8px;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+      .crumbs a {
+        font-weight: 800;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(350px, 1.1fr);
+        gap: 34px;
+        padding: 45px 0 58px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: var(--coral);
+        font-size: 0.73rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Fraunces, serif;
+        line-height: 1.08;
+      }
+      h1 {
+        margin: 13px 0 19px;
+        max-width: 660px;
+        font-size: clamp(2.7rem, 6vw, 5.2rem);
+        letter-spacing: -0.055em;
+      }
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .hero p {
+        max-width: 610px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 22px;
+      }
+      .hero-pills span {
+        padding: 7px 10px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .toolyfi-visual {
+        position: relative;
+        margin: 0;
+      }
+      .toolyfi-visual > img {
+        width: 100%;
+        height: clamp(250px, 37vw, 455px);
+        object-fit: cover;
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .toolyfi-hero-mark {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--paper);
+        padding: 8px 11px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(23, 36, 55, 0.15);
+      }
+      .toolyfi-hero-mark img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .tool-wrap {
+        padding: 0 0 56px;
+      }
+      .tool-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+      .tool-card-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 21px 25px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .tool-card-head h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+      .tool-card-head p {
+        margin: 5px 0 0;
+        color: #c6d1de;
+        font-size: 0.81rem;
+      }
+      .local-note {
+        align-self: center;
+        color: #ffd4cb;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr 1fr 1fr;
+        gap: 12px;
+        align-items: end;
+        padding: 20px 22px;
+        background: #fcfaf7;
+        border-bottom: 1px solid var(--line);
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+      label {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      select,
+      input[type="number"] {
+        min-height: 39px;
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+      }
+      .toggle {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 39px;
+        color: var(--ink);
+        font-size: 0.79rem;
+        font-weight: 800;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .toggle input {
+        accent-color: var(--coral);
+      }
+      .work-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
+      }
+      .settings {
+        padding: 25px;
+        background: linear-gradient(140deg, #fffdf9, #fff5ef);
+      }
+      .settings h3 {
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+      }
+      .settings p {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .format-cards {
+        display: grid;
+        gap: 10px;
+        margin: 18px 0;
+      }
+      .format-card {
+        position: relative;
+        display: block;
+        padding: 15px 15px 15px 43px;
+        border: 1px solid var(--line);
+        background: #fff;
+        cursor: pointer;
+      }
+      .format-card:has(input:checked) {
+        border-color: var(--coral);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.12);
+      }
+      .format-card input {
+        position: absolute;
+        left: 15px;
+        top: 19px;
+        accent-color: var(--coral);
+      }
+      .format-card strong {
+        display: block;
+        font-size: 0.88rem;
+      }
+      .format-card span {
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .tips {
+        margin-top: 19px;
+        padding: 15px;
+        background: var(--blue);
+        color: #30485f;
+        font-size: 0.78rem;
+      }
+      .output-pane {
+        padding: 25px;
+      }
+      .pane-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .pane-head h3 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+      .status {
+        padding: 6px 9px;
+        background: var(--green);
+        color: #17663c;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      textarea {
+        display: block;
+        width: 100%;
+        min-height: 335px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        resize: vertical;
+        outline: 0;
+        font:
+          0.87rem/1.65 ui-monospace,
+          SFMono-Regular,
+          Consolas,
+          monospace;
+      }
+      textarea:focus {
+        border-color: var(--coral);
+        box-shadow: 0 0 0 3px rgba(239, 108, 84, 0.13);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 13px;
+      }
+      .button {
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .button.primary {
+        border-color: var(--coral);
+        background: var(--coral);
+        color: #fff;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+      }
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        margin: 0 0 55px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .metric {
+        padding: 17px;
+        background: var(--paper);
+      }
+      .metric strong {
+        display: block;
+        color: var(--coral);
+        font:
+          800 1.5rem Fraunces,
+          serif;
+      }
+      .metric span {
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 48px;
+        padding-bottom: 68px;
+      }
+      article {
+        max-width: 760px;
+      }
+      article h2 {
+        margin: 40px 0 15px;
+        font-size: clamp(1.55rem, 3vw, 2.25rem);
+      }
+      article h3 {
+        margin: 28px 0 10px;
+        font-size: 1.27rem;
+      }
+      article p,
+      article li {
+        color: #465669;
+        font-size: 0.96rem;
+      }
+      article li {
+        margin: 7px 0;
+      }
+      .callout {
+        margin: 24px 0;
+        padding: 18px 20px;
+        border-left: 4px solid var(--coral);
+        background: var(--soft);
+        color: #7b382d;
+      }
+      .aside {
+        align-self: start;
+        position: sticky;
+        top: 18px;
+        padding: 21px;
+        background: var(--ink);
+        color: #fff;
+      }
+      .aside h2 {
+        margin: 0 0 12px;
+        font-size: 1.23rem;
+      }
+      .aside a {
+        display: block;
+        padding: 9px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: #dbe7f0;
+        text-decoration: none;
+        font-size: 0.82rem;
+      }
+      .faq {
+        padding: 64px 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+      details {
+        padding: 18px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .related {
+        padding: 50px 0;
+        background: var(--ink);
+        color: #fff;
+      }
+      .related h2 {
+        margin-top: 0;
+        font-size: 2rem;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .related a {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      footer {
+        padding: 28px clamp(18px, 4vw, 58px);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.79rem;
+      }
+      @media (max-width: 820px) {
+        .hero,
+        .work-grid,
+        .content {
+          grid-template-columns: 1fr;
+        }
+        .controls {
+          grid-template-columns: 1fr 1fr;
+        }
+        .settings {
+          border-bottom: 1px solid var(--line);
+        }
+        .aside {
+          position: static;
+        }
+        .faq-grid,
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .metric-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .site-header nav {
+          gap: 12px;
+        }
+        .site-header nav a:first-child {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .button,
+        .related a {
+          transition:
+            transform 180ms var(--ease),
+            box-shadow 180ms var(--ease);
+        }
+        .related a:hover {
+          transform: translateY(-3px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo" aria-label="Toolyfi home"
+        ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</a
+      >
+      <nav><a href="index.html">Home</a><a href="index.html#directory">All tools</a></nav>
+    </header>
+    <main>
+      <div class="shell">
+        <div class="crumbs"><a href="index.html">Home</a> / Text tools / Lorem Ipsum Generator</div>
+        <section class="hero">
+          <div>
+            <div class="eyebrow">Browser-native placeholder utility</div>
+            <h1>Give your layout<br /><em>room to breathe.</em></h1>
+            <p>
+              Generate deterministic placeholder copy for early visual work. Choose a unit, select
+              plain text or simple HTML paragraphs, then copy or download the result.
+            </p>
+            <div class="hero-pills">
+              <span>Words to paragraphs</span><span>Plain text or HTML</span
+              ><span>Copy or download</span><span>Local generation</span>
+            </div>
+          </div>
+          <figure class="toolyfi-visual">
+            <img
+              src="images/toolyfi-lorem-ipsum-hero.webp"
+              alt="Abstract Toolyfi typography workspace with placeholder paragraph forms"
+              fetchpriority="high"
+            /><span class="toolyfi-hero-mark"
+              ><img src="images/toolyfi-header-emblem.png" alt="" />Toolyfi</span
+            >
+          </figure>
+        </section>
+        <section class="tool-wrap" aria-labelledby="tool-heading">
+          <div class="tool-card">
+            <div class="tool-card-head">
+              <div>
+                <h2 id="tool-heading">Lorem Ipsum workspace</h2>
+                <p>Settings and generated output stay in this browser tab.</p>
+              </div>
+              <span class="local-note">Runs locally in this browser</span>
+            </div>
+            <div class="controls">
+              <div class="field">
+                <label for="unit">Generate by</label
+                ><select id="unit">
+                  <option value="paragraphs">Paragraphs</option>
+                  <option value="sentences">Sentences</option>
+                  <option value="words">Words</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="quantity">Quantity</label
+                ><input id="quantity" type="number" min="1" max="100" value="3" />
+              </div>
+              <div class="field">
+                <label for="length">Paragraph length</label
+                ><select id="length">
+                  <option value="short">Short · 42 words</option>
+                  <option value="medium" selected>Medium · 76 words</option>
+                  <option value="long">Long · 118 words</option>
+                </select>
+              </div>
+              <label class="toggle"
+                ><input id="classic" type="checkbox" checked /> Start with classic opening</label
+              >
+            </div>
+            <div class="work-grid">
+              <section class="settings">
+                <h3>Choose an output format</h3>
+                <p>
+                  Use plain text for a writing canvas or simple HTML when a destination expects
+                  paragraph elements. HTML output adds no styling.
+                </p>
+                <div class="format-cards">
+                  <label class="format-card"
+                    ><input type="radio" name="format" value="text" checked /><strong
+                      >Plain text</strong
+                    ><span
+                      >Separate paragraphs with a blank line for direct paste into a text field or
+                      layout draft.</span
+                    ></label
+                  ><label class="format-card"
+                    ><input type="radio" name="format" value="html" /><strong>Simple HTML</strong
+                    ><span
+                      >Wrap each paragraph in a <code>&lt;p&gt;</code> element for a compatible
+                      template or editor.</span
+                    ></label
+                  >
+                </div>
+                <div class="tips">
+                  <strong>Placeholder boundary:</strong> Lorem Ipsum helps test visual rhythm and
+                  approximate space. It is not final copy, accessible instruction, legal text, or
+                  representative content for a task-based usability test.
+                </div>
+              </section>
+              <section class="output-pane">
+                <div class="pane-head">
+                  <h3>Generated output</h3>
+                  <span class="status" id="status" aria-live="polite">Ready</span>
+                </div>
+                <textarea id="output" readonly aria-label="Generated Lorem Ipsum output"></textarea>
+                <div class="actions">
+                  <button class="button primary" id="generate" type="button">
+                    Generate placeholder text</button
+                  ><button class="button" id="copy" type="button">Copy output</button
+                  ><button class="button" id="download" type="button">Download .txt</button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section class="metric-row" aria-label="Generated text summary">
+          <div class="metric"><strong id="wordCount">0</strong><span>words</span></div>
+          <div class="metric"><strong id="sentenceCount">0</strong><span>sentences</span></div>
+          <div class="metric"><strong id="paragraphCount">0</strong><span>paragraphs</span></div>
+          <div class="metric"><strong id="characterCount">0</strong><span>characters</span></div>
+        </section>
+        <section class="content">
+          <article>
+            <div class="eyebrow">Placeholder text guide</div>
+            <h2 id="purpose">What Lorem Ipsum is designed to do</h2>
+            <p>
+              Lorem Ipsum is placeholder text used to give a layout the visual density of written
+              language before final content is ready. It is common in typography, print, interface
+              mockups, component libraries, and early page compositions because its word shapes
+              create a more realistic text block than repeating “content here.” The goal is not to
+              communicate. The goal is to help a reviewer notice hierarchy, line length, spacing,
+              type scale, contrast, and the relationship between text and surrounding elements
+              without being drawn into detailed editorial debate.
+            </p>
+            <p>
+              That narrow purpose matters. Placeholder text can make an empty card, article
+              template, brochure panel, or design prototype feel populated enough to evaluate the
+              visual system. It cannot validate whether instructions are understandable, whether a
+              checkout message answers a customer question, or whether a service description is
+              credible. Lorem Ipsum removes semantic meaning on purpose. Use it when the team needs
+              to examine form; replace it when the team needs to examine understanding, inclusion,
+              search intent, or a real task.
+            </p>
+            <h2 id="controls">Choose the unit that matches the visual question</h2>
+            <p>
+              This Toolyfi generator provides three practical units: words, sentences, and
+              paragraphs. Words are useful when a design needs a short label-like run,
+              navigation-space test, compact metadata placeholder, or a deliberately small text
+              area. Sentences are useful for cards, alerts, excerpts, helper text, and components
+              where punctuation creates the look of a natural statement. Paragraphs are useful for
+              body copy, article shells, documentation layouts, landing-page sections, and print
+              compositions where the vertical rhythm of multiple text blocks matters.
+            </p>
+            <p>
+              Quantity controls the selected unit. In paragraph mode, the length setting controls
+              how many generated words are used in each paragraph. Short paragraphs can help test
+              condensed cards or narrow columns; medium paragraphs give a familiar article rhythm;
+              long paragraphs make it easier to judge wide reading measures and long-form spacing.
+              The control is not a substitute for real editorial requirements. It is simply a
+              repeatable way to create approximately appropriate visual mass while a layout is still
+              under construction.
+            </p>
+            <div class="callout">
+              <strong>Local-only boundary:</strong> Selected settings, generated placeholder text,
+              copying, and download preparation happen in the current browser. This page does not
+              submit or store the output. Use your own data-handling rules whenever a downstream
+              document includes real material.
+            </div>
+            <h2 id="deterministic">Why deterministic output is helpful</h2>
+            <p>
+              Some dummy-text tools add randomness every time a control changes. Randomness can be
+              entertaining, but it complicates visual comparison. When the output shifts at every
+              refresh, it is harder to tell whether a typography change improved the layout or
+              whether different word lengths merely changed the wraps. Toolyfi uses a deterministic
+              sequence: the same options create the same placeholder result. That makes a
+              screenshot, component review, or design handoff easier to reproduce. A teammate can
+              select the same settings and see the same text shape.
+            </p>
+            <p>
+              Deterministic does not mean meaningful or unique content. It means the generator
+              behaves predictably for the selected controls. If you need a specific phrase, test
+              dataset, or editorial variation, create that material separately and make its origin
+              clear. The placeholder should never be confused with an approved message.
+              Reproducibility is valuable because it controls the design variable, not because it
+              creates publishable copy.
+            </p>
+            <h2 id="text-html">Plain text and HTML are different handoffs</h2>
+            <p>
+              Plain-text output contains generated paragraphs separated by blank lines. It is a good
+              starting point for a visual editor, a text area, a document draft, a prototyping tool,
+              or any destination that wants raw text and applies its own paragraph behavior. HTML
+              output wraps each generated paragraph in a simple <code>&lt;p&gt;</code> element. It
+              can be convenient when pasting into a compatible page template, a code prototype, or a
+              content environment that expects structural markup.
+            </p>
+            <p>
+              The HTML option intentionally contains no classes, inline styles, links, headings, or
+              semantic claims. Presentation belongs to the destination stylesheet and component
+              system. Before pasting generated HTML, confirm that the receiving editor allows the
+              tag and does not escape it as visible text. Before pasting plain text, confirm how the
+              destination handles blank lines. A useful generator gives you a clear format boundary
+              rather than assuming every editor treats text the same way.
+            </p>
+            <h2 id="layout">Use placeholder copy to test layout, not truth</h2>
+            <p>
+              Placeholder text is effective for questions about visual rhythm. A designer can see
+              whether a heading dominates too much, whether a card becomes too tall, whether a small
+              mobile column creates uncomfortable line lengths, or whether a serif and sans-serif
+              pairing remains readable at the intended scale. It can also reveal overflow, awkward
+              truncation, inconsistent vertical spacing, and alignment problems around buttons,
+              images, and metadata. Those are valuable findings before content production is
+              complete.
+            </p>
+            <p>
+              However, a text block that resembles language can conceal content problems. A real
+              page might contain product names, dates, prices, translations, abbreviations, long
+              unbroken URLs, medical terms, legal terms, names with diacritics, or error messages
+              that do not resemble Latin-like filler. If a design must handle those realities,
+              introduce representative content early. Lorem Ipsum should be a temporary scaffold,
+              not a reason to postpone the important question of whether real people can understand
+              and act on the interface.
+            </p>
+            <h2 id="accessibility">Accessibility requires meaningful replacement content</h2>
+            <p>
+              Accessibility is not satisfied by a layout that accommodates placeholder paragraphs.
+              Assistive technology users, people translating a page, and people scanning under time
+              pressure need content that accurately conveys purpose. Buttons require meaningful
+              labels, form fields require usable labels and instructions, error states need clear
+              corrective language, images need appropriate alternatives where they communicate
+              information, and page landmarks should describe the actual structure. Lorem Ipsum is
+              unsuitable for all of those user-facing responsibilities.
+            </p>
+            <p>
+              Use the generator during private layout exploration, then plan a transition to real
+              content before user research, stakeholder approval, indexing, or launch. Ask whether
+              headings answer the reader’s question, whether link labels identify destinations,
+              whether empty states explain next steps, and whether alerts are understandable outside
+              of visual context. A beautiful placeholder layout can still fail a real person if the
+              eventual text is vague, inaccessible, or missing. Content and interface design have to
+              meet before the experience is considered ready.
+            </p>
+            <h2 id="testing">Do not use filler for content-sensitive testing</h2>
+            <p>
+              Task-based usability testing relies on participants understanding the words they see.
+              If the test asks someone to compare options, complete a form, find support, or
+              interpret a message, dummy text removes the information necessary for a valid
+              observation. In those cases, use representative draft copy that is clearly marked as
+              draft and approved for the test. It can be shorter or less polished than launch copy,
+              but it needs to communicate the real task well enough for the behavior being studied.
+            </p>
+            <p>
+              Likewise, screen-reader review, localization planning, search optimization, and
+              conversion testing all need meaningful text. Translation length can vary greatly by
+              language. A real title may be longer than its English placeholder. Search snippets
+              depend on actual topic language. Trust depends on precise claims that can be
+              supported. Lorem Ipsum can prepare the canvas, but it cannot answer any of those
+              questions. Use it where non-meaning helps, and retire it where meaning is the work.
+            </p>
+            <h2 id="length">Think beyond character count</h2>
+            <p>
+              The generator displays word, sentence, paragraph, and character counts so you can
+              judge the scale of the result. Counts are useful as rough layout controls, but they
+              are not a guarantee of rendered space. A 100-character run made of narrow lowercase
+              letters occupies a different width than 100 characters full of capitals, numerals, or
+              punctuation. A translated paragraph can have the same word count but a different line
+              count. Different fonts, language systems, zoom levels, and container widths also alter
+              the visual result.
+            </p>
+            <p>
+              For a durable component, test the placeholder block at several responsive widths and
+              then test representative final content. Include a short case, a typical case, a long
+              case, and an unusually long unbroken value where the product might legitimately
+              contain one. The point is not to make a component fit Lorem Ipsum perfectly. It is to
+              ensure the component has sensible overflow, wrap, truncation, and spacing behavior
+              when actual production content arrives.
+            </p>
+            <h2 id="history">A brief, careful note on the familiar passage</h2>
+            <p>
+              The familiar “Lorem ipsum dolor sit amet” sequence is widely associated with scrambled
+              passages linked to Cicero’s <em>De finibus bonorum et malorum</em>. It became a
+              practical publishing placeholder in modern print and later digital design contexts.
+              Its appearance resembles language without inviting the same detailed reading as a
+              clear English paragraph, which helped designers focus on the composition of a specimen
+              or page. The commonly repeated story has variations, so this tool does not present the
+              generated output as a historically exact or linguistically reliable reconstruction.
+            </p>
+            <p>
+              For design work, historical precision is usually less important than an honest
+              explanation of purpose: it is dummy text, not a translation and not original editorial
+              material. If a project needs actual Latin, culturally accurate language, educational
+              material, or a publication-quality quotation, consult an appropriate primary or
+              editorial source instead of using generated filler. A placeholder generator serves a
+              different job and should be labeled as such in a project workflow.
+            </p>
+            <h2 id="workflow">A practical placeholder-text workflow</h2>
+            <p>
+              Start by naming the visual question. Are you testing a card’s height, a documentation
+              article’s reading rhythm, a CMS paragraph slot, or a narrow mobile shell? Select the
+              unit and quantity that create an appropriate amount of text. Choose plain text for
+              general paste workflows or HTML for a compatible prototype. Paste the result into the
+              layout, review it at target breakpoints, and capture the design observations. Because
+              the output is deterministic, the same settings can be used again after a visual
+              change.
+            </p>
+            <p>
+              Next, make a content replacement plan. Identify which areas need approved headings,
+              realistic body copy, messages, labels, metadata, accessible alternatives, and
+              localizations. Do not wait until the final day to discover that real names or
+              translations create overflow. Keep placeholder output out of production content
+              repositories unless it is explicitly labeled as mock data. Before publishing, search
+              for common filler phrases and verify that no dummy text remains in visible copy,
+              metadata, empty states, emails, or downloadable documents.
+            </p>
+            <h2 id="html-safety">Paste HTML with an explicit boundary</h2>
+            <p>
+              HTML output is convenient only when the destination expects HTML. Pasting tags into a
+              plain-text editor may show the literal tag characters, while pasting untrusted HTML
+              into a system with weak sanitization can create security or formatting problems. This
+              tool outputs only paragraph tags around generated text, but the receiving system still
+              controls how markup is interpreted. Preview the pasted result in the destination and
+              use its supported authoring method rather than relying on browser paste behavior
+              alone.
+            </p>
+            <p>
+              For a developer prototype, simple paragraph tags may be enough to test default
+              typography. For a content management system, use the CMS’s native blocks or rich-text
+              controls if they preserve semantics more predictably. For a design tool, plain text
+              may be the better choice. The right format follows the destination’s model. This
+              distinction is why the format switch is visible: it asks you to choose the handoff
+              intentionally instead of turning every output into markup by default.
+            </p>
+            <h2 id="copy-download">Copy and download deliberately</h2>
+            <p>
+              The Copy control writes the current output to the browser clipboard when permissions
+              allow. The Download control creates a local text file using the same visible result.
+              Both actions are browser-local, but the place where you paste or save the content may
+              have separate privacy, versioning, or sharing rules. Treat the generated filler as
+              project material once it leaves this page. Give mock files names that signal their
+              status, such as “layout-placeholder-draft,” so a colleague does not mistake them for
+              final content.
+            </p>
+            <p>
+              When a design moves forward, replace the file or paste location with the real approved
+              copy rather than continually editing dummy text. This keeps prototypes readable and
+              reduces the chance of accidental publication. A quick final audit should include page
+              source, metadata, documents, email templates, modal states, and alternate language
+              versions. Placeholder text tends to survive in the least visible places; a deliberate
+              content sweep is more reliable than assuming the main page is the only surface.
+            </p>
+            <h2 id="related-work">Use related tools for their own jobs</h2>
+            <p>
+              Placeholder generation often sits next to text preparation tasks, but the tasks should
+              stay distinct. Use Toolyfi’s <a href="word-counter.html">Word Counter</a> when you
+              need a count for real writing, not a visual placeholder. Use the
+              <a href="case-converter.html">Case Converter</a> when a legitimate string needs a
+              predictable casing change. Use the
+              <a href="markdown-to-html-seo.html">Markdown to HTML</a> when converting authored
+              Markdown into markup. Each tool makes one operation visible, which makes review
+              simpler than combining unrelated changes into a single copy-and-paste step.
+            </p>
+            <p>
+              That same discipline improves quality. Lorem Ipsum is a layout input, while real
+              content carries user needs, brand voice, legal meaning, accessibility requirements,
+              and search intent. Keeping those roles separate lets a design team explore visual form
+              without claiming that the information architecture is complete. When the moment comes
+              to publish, meaningful content must take over. Use this generator to make the
+              temporary scaffold clear, quick, and reproducible—not to hide that a scaffold is still
+              there.
+            </p>
+            <h2 id="checklist">Finish with a launch checklist</h2>
+            <p>
+              Before a public page is approved, check that placeholder paragraphs are gone and that
+              every important message is real, reviewed, and appropriate for the audience. Read
+              headings, buttons, navigation labels, empty states, confirmation messages, errors,
+              image alternatives, social metadata, and downloadable assets. Test at mobile and
+              desktop widths with real content lengths. Confirm translations where relevant and
+              ensure that any claims have an evidence basis. This is content quality work, not a
+              final decorative pass.
+            </p>
+            <p>
+              Placeholder text remains useful precisely because it is temporary. It can reveal a
+              cramped layout early, enable a fast component mockup, and keep a visual review focused
+              when final copy is not ready. The responsible workflow is simple: generate it locally,
+              label it as filler, use it to answer a layout question, and replace it before people
+              rely on the information. That preserves the helpful part of Lorem Ipsum while keeping
+              content and user trust at the center of the finished experience.
+            </p>
+            <h2 id="responsive">Stress-test responsive text behavior early</h2>
+            <p>
+              A paragraph that looks balanced on a wide desktop canvas may become a very different
+              object on a phone. Line lengths shorten, headings wrap, buttons move, sidebars
+              collapse, and a small change in a sentence can turn a compact module into a tall
+              stack. Lorem Ipsum can help expose these layout changes before final prose exists.
+              Generate a short, medium, and long placeholder run, place each version in the same
+              component, and compare the behavior across the breakpoints that the product actually
+              supports.
+            </p>
+            <p>
+              Look for practical failure modes: text that collides with an icon, a card action
+              pushed below a visual boundary, a summary that becomes too dense, a scroll area with
+              no clear end, or a heading that leaves an awkward single word on the final line. Then
+              repeat the test with representative real content as soon as it becomes available.
+              Placeholder text helps find structural weakness, while real content checks whether the
+              structure supports the product's actual language. Both stages are useful, and neither
+              replaces the other.
+            </p>
+            <h2 id="components">Use filler deliberately in component libraries</h2>
+            <p>
+              A component library often needs examples that make a card, alert, table row, dialog,
+              or empty state visually understandable without implying a real customer, order, or
+              event. In that narrow context, clearly labeled placeholder text is safer than invented
+              personal details or fabricated usage stories. It lets the example show hierarchy and
+              spacing while avoiding a false claim. Keep the labels obvious: “Example title,”
+              “Placeholder description,” or a visible development-only marker can prevent demo text
+              from being confused with product data.
+            </p>
+            <p>
+              Treat component examples as test fixtures for presentation rather than source material
+              for launch pages. When a component defines a maximum description length, multiline
+              behavior, or overflow treatment, record those rules in its documentation. Then authors
+              know whether they can use a long body paragraph, whether an image needs a fallback
+              aspect ratio, and how a call to action behaves when copy is localized. The value is
+              not that dummy text fills a box. The value is that it helps a team state the box's
+              intended content contract.
+            </p>
+            <h2 id="localization">Plan for localization and language reality</h2>
+            <p>
+              Latin-like filler does not model every writing system. A translated label can be much
+              longer or shorter than its source. Arabic and Urdu introduce right-to-left direction;
+              Chinese and Japanese have different word-boundary and line-breaking behavior; names,
+              addresses, and dates vary by culture. A layout approved only with Lorem Ipsum may
+              still fail when a localized message is introduced. Use filler for early shape, then
+              add representative localized samples before declaring the component ready for
+              production.
+            </p>
+            <p>
+              Internationalization review should also consider punctuation, numerals, date order,
+              truncation, screen-reader language metadata, and text expansion. Do not fake a
+              language or invent a translation merely to make a screenshot look complete. Work with
+              a qualified translator or approved language resource when real wording is needed. A
+              predictable placeholder generator is useful because it makes its limitation clear: it
+              gives visual mass, not cultural or linguistic validation.
+            </p>
+            <h2 id="governance">Keep placeholder content out of production governance paths</h2>
+            <p>
+              Content governance includes more than the visible page. Search metadata, structured
+              data, emails, push notifications, PDFs, alternate language pages, app-store listings,
+              and help articles can all accidentally retain dummy text. Because some of those
+              surfaces are copied from templates, a production audit should search for common Lorem
+              Ipsum phrases and review any generic fallback text. The goal is not to ban templates;
+              it is to ensure that a temporary draft signal is not mistaken for an approved public
+              statement.
+            </p>
+            <p>
+              A simple release checklist can assign ownership: design verifies that layout examples
+              were replaced, content verifies meaning and voice, accessibility review checks labels
+              and instructions, and engineering checks metadata and error states. This is more
+              dependable than leaving the responsibility to an informal last-minute scan. A
+              generated paragraph is harmless in a private wireframe but confusing in a confirmation
+              email or accessibility announcement. Clear ownership gives placeholder content an
+              expiry date.
+            </p>
+            <h2 id="review">Make reviews about the right thing</h2>
+            <p>
+              Placeholder text can reduce a common review distraction. When a team is meeting to
+              decide whether a card grid, type scale, or page hierarchy works, realistic draft copy
+              may trigger line-by-line editorial feedback before the visual question is resolved.
+              Clearly marked filler helps separate those conversations. The reviewer can concentrate
+              on visual grouping, scanning order, and available space, while the content team can
+              later focus on accuracy, tone, evidence, and actionability with the attention those
+              topics deserve.
+            </p>
+            <p>
+              The separation should be temporary and explicit. Document which review is in progress
+              and what remains unresolved. If the question shifts from visual form to a user
+              decision, replace the filler with meaningful draft content immediately. A review is
+              most useful when its evidence matches its objective. Lorem Ipsum is evidence about
+              density and rhythm; it is not evidence about comprehension, trust, conversion, or
+              search relevance.
+            </p>
+            <h2 id="avoid">Common placeholder-text mistakes to avoid</h2>
+            <p>
+              Do not use Lorem Ipsum as an excuse to omit error states, empty states, confirmations,
+              warnings, pricing information, policy text, or core instructions. Those elements are
+              part of the experience, and their actual wording often changes the layout in
+              meaningful ways. Do not leave filler behind in a screenshot sent to customers or in a
+              prototype shared outside the product team without a visible draft label. Do not
+              replace a genuine data-model question with a generic paragraph simply because the
+              layout looks calmer.
+            </p>
+            <p>
+              Also avoid treating generated text as a source of historical Latin or as a creative
+              writing resource. This tool builds placeholder sequences for layout testing. Its
+              output is not a translation, citation, legal template, medical explanation, financial
+              message, or accessibility statement. Naming that boundary protects readers and makes
+              the utility more useful. A focused tool does one small job transparently rather than
+              implying that dummy text can solve content problems it was never designed to address.
+            </p>
+          </article>
+          <aside class="aside">
+            <h2>On this page</h2>
+            <a href="#purpose">Purpose of Lorem Ipsum</a><a href="#controls">Units and controls</a
+            ><a href="#deterministic">Deterministic output</a><a href="#text-html">Text vs HTML</a
+            ><a href="#layout">Layout testing</a><a href="#accessibility">Accessibility boundary</a
+            ><a href="#testing">Usability testing</a><a href="#workflow">Practical workflow</a
+            ><a href="#checklist">Launch checklist</a>
+          </aside>
+        </section>
+        <section class="faq" id="faq">
+          <div class="eyebrow">Practical questions</div>
+          <h2>Lorem Ipsum Generator FAQ</h2>
+          <div class="faq-grid">
+            <details>
+              <summary>Does the generator upload text?</summary>
+              <p>
+                No. Generation, copying, and download preparation happen in the active browser tab.
+              </p>
+            </details>
+            <details>
+              <summary>What output units can I choose?</summary>
+              <p>
+                Choose words, sentences, or paragraphs. Quantity controls the selected unit and
+                paragraph length applies in paragraph mode.
+              </p>
+            </details>
+            <details>
+              <summary>Can I generate HTML paragraphs?</summary>
+              <p>
+                Yes. HTML mode wraps generated paragraphs in simple <code>&lt;p&gt;</code> elements
+                without styles.
+              </p>
+            </details>
+            <details>
+              <summary>Is Lorem Ipsum real content?</summary>
+              <p>
+                No. It is temporary placeholder text for visual layout and should be replaced before
+                public use.
+              </p>
+            </details>
+            <details>
+              <summary>Why is the result deterministic?</summary>
+              <p>
+                The same options create the same output, helping teams reproduce a layout state for
+                review.
+              </p>
+            </details>
+            <details>
+              <summary>Can I control exact character count?</summary>
+              <p>
+                The tool controls words, sentences, and paragraphs; the shown character count helps
+                guide final adjustment.
+              </p>
+            </details>
+            <details>
+              <summary>Is filler suitable for usability testing?</summary>
+              <p>
+                Only for visual form checks. Use representative meaningful content for comprehension
+                and task-based testing.
+              </p>
+            </details>
+            <details>
+              <summary>Does HTML output include CSS?</summary>
+              <p>
+                No. It contains only text in paragraph tags. Destination styling stays in the
+                relevant template or stylesheet.
+              </p>
+            </details>
+            <details>
+              <summary>Can I download the result?</summary>
+              <p>Yes. The Download control prepares a local text file from the current output.</p>
+            </details>
+            <details>
+              <summary>What should replace filler before launch?</summary>
+              <p>
+                Use reviewed, accessible, audience-appropriate final content for every visible and
+                metadata surface.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+      <section class="related">
+        <div class="shell">
+          <h2>Continue the writing workflow</h2>
+          <div class="related-grid">
+            <a href="word-counter.html"
+              >Word Counter<br /><small>Measure real writing before publish</small></a
+            ><a href="case-converter.html"
+              >Case Converter<br /><small>Transform legitimate text carefully</small></a
+            ><a href="markdown-to-html-seo.html"
+              >Markdown to HTML<br /><small>Turn authored Markdown into markup</small></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © 2026 Toolyfi · Browser-native tools for practical work ·
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </footer>
+    <script>
+      const words = [
+        "lorem",
+        "ipsum",
+        "dolor",
+        "sit",
+        "amet",
+        "consectetur",
+        "adipiscing",
+        "elit",
+        "sed",
+        "do",
+        "eiusmod",
+        "tempor",
+        "incididunt",
+        "ut",
+        "labore",
+        "et",
+        "dolore",
+        "magna",
+        "aliqua",
+        "enim",
+        "ad",
+        "minim",
+        "veniam",
+        "quis",
+        "nostrud",
+        "exercitation",
+        "ullamco",
+        "laboris",
+        "nisi",
+        "aliquip",
+        "ex",
+        "ea",
+        "commodo",
+        "consequat",
+        "duis",
+        "aute",
+        "irure",
+        "in",
+        "reprehenderit",
+        "voluptate",
+        "velit",
+        "esse",
+        "cillum",
+        "fugiat",
+        "nulla",
+        "pariatur",
+        "excepteur",
+        "sint",
+        "occaecat",
+        "cupidatat",
+        "non",
+        "proident",
+        "sunt",
+        "culpa",
+        "qui",
+        "officia",
+        "deserunt",
+        "mollit",
+        "anim",
+        "id",
+        "est",
+        "laborum",
+        "integer",
+        "porta",
+        "facilisis",
+        "sem",
+        "placerat",
+        "vestibulum",
+        "curabitur",
+        "rhoncus",
+        "ornare",
+        "mauris",
+        "fermentum",
+        "sollicitudin",
+        "viverra",
+        "pharetra",
+        "sapien",
+        "sagittis",
+        "blandit",
+        "commodo",
+        "lacinia",
+        "pulvinar",
+        "auctor",
+        "interdum",
+        "nunc",
+        "pretium",
+        "congue",
+        "ligula",
+        "tincidunt",
+        "tellus",
+        "mattis",
+        "sodales",
+        "aliquam",
+        "quisque",
+        "imperdiet",
+        "faucibus",
+        "dui",
+        "bibendum",
+        "elementum",
+        "erat",
+        "malesuada",
+        "habitant",
+        "morbi",
+        "tristique",
+        "senectus",
+        "netus",
+        "ridiculus",
+        "mus",
+        "varius",
+        "consequat",
+        "aliquet",
+        "egestas",
+        "volutpat",
+        "nam",
+        "massa",
+        "eros",
+        "finibus",
+        "dictum",
+        "maximus",
+        "vulputate",
+        "cras",
+        "lectus",
+        "porta",
+        "diam",
+        "turpis",
+        "convallis",
+        "metus",
+        "efficitur",
+        "hendrerit",
+        "facilisi",
+        "donec",
+        "gravida",
+        "arcu",
+        "iaculis",
+        "semper",
+        "erat",
+        "fringilla",
+        "proin",
+        "tortor",
+        "suspendisse",
+        "dignissim",
+        "laoreet",
+        "pellentesque",
+        "habitasse",
+        "platea",
+        "dictumst",
+      ];
+      const unit = document.getElementById("unit");
+      const quantity = document.getElementById("quantity");
+      const length = document.getElementById("length");
+      const classic = document.getElementById("classic");
+      const output = document.getElementById("output");
+      const status = document.getElementById("status");
+      const lengthMap = { short: 42, medium: 76, long: 118 };
+      const caps = (value) => (value ? value.charAt(0).toUpperCase() + value.slice(1) : value);
+      function sourceWords(count, offset = 0) {
+        return Array.from({ length: count }, (_, index) => words[(index + offset) % words.length]);
+      }
+      function makeSentence(count, offset) {
+        const list = sourceWords(count, offset);
+        return `${caps(list.join(" "))}.`;
+      }
+      function makeSentences(count, offset = 0) {
+        let result = [];
+        let used = 0;
+        for (let index = 0; index < count; index += 1) {
+          const size = 9 + ((index + offset) % 7);
+          result.push(makeSentence(size, used + offset));
+          used += size;
+        }
+        return result;
+      }
+      function makeParagraph(wordTotal, offset) {
+        let remaining = wordTotal;
+        let cursor = offset;
+        const sentences = [];
+        while (remaining > 0) {
+          const desired = 10 + ((cursor + remaining) % 8);
+          const size = Math.min(desired, remaining);
+          sentences.push(makeSentence(size, cursor));
+          cursor += size;
+          remaining -= size;
+        }
+        return sentences.join(" ");
+      }
+      function makeWordBlock(count) {
+        const list = sourceWords(count);
+        if (classic.checked && list.length) {
+          list[0] = caps(list[0]);
+          if (list.length > 4) list[4] = `${list[4]},`;
+          list[list.length - 1] = `${list[list.length - 1].replace(/[.,]$/, "")}.`;
+        }
+        return list.join(" ");
+      }
+      function makeClassicParagraph(wordTotal, offset) {
+        const opening = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+        const openingWords = 8;
+        if (!classic.checked || wordTotal <= openingWords) return makeParagraph(wordTotal, offset);
+        return `${opening} ${makeParagraph(wordTotal - openingWords, offset + openingWords)}`;
+      }
+      function escapeHtml(value) {
+        return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function generate() {
+        const selectedUnit = unit.value;
+        const selectedQuantity = Math.min(100, Math.max(1, Number(quantity.value) || 1));
+        const html = document.querySelector('input[name="format"]:checked').value === "html";
+        let paragraphs = [];
+        if (selectedUnit === "words") paragraphs = [makeWordBlock(selectedQuantity)];
+        if (selectedUnit === "sentences") {
+          const sentences = classic.checked
+            ? [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                ...makeSentences(selectedQuantity - 1, 8),
+              ]
+            : makeSentences(selectedQuantity);
+          paragraphs = [sentences.join(" ")];
+        }
+        if (selectedUnit === "paragraphs")
+          paragraphs = Array.from({ length: selectedQuantity }, (_, index) =>
+            index === 0
+              ? makeClassicParagraph(lengthMap[length.value], index * 23)
+              : makeParagraph(lengthMap[length.value], index * 23),
+          );
+        const text = html
+          ? paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("\n")
+          : paragraphs.join("\n\n");
+        output.value = text;
+        const plain = paragraphs.join(" ");
+        const sentenceTotal = (plain.match(/[.!?](?=\s|$)/g) || []).length;
+        document.getElementById("wordCount").textContent = plain.trim()
+          ? plain.trim().split(/\s+/).length
+          : 0;
+        document.getElementById("sentenceCount").textContent = sentenceTotal;
+        document.getElementById("paragraphCount").textContent = paragraphs.length;
+        document.getElementById("characterCount").textContent = text.length;
+        status.textContent = `Generated ${paragraphs.length} paragraph${paragraphs.length === 1 ? "" : "s"}`;
+      }
+      unit.addEventListener("change", () => {
+        const isParagraph = unit.value === "paragraphs";
+        length.disabled = !isParagraph;
+        generate();
+      });
+      [quantity, length, classic].forEach((control) => control.addEventListener("input", generate));
+      document
+        .querySelectorAll('input[name="format"]')
+        .forEach((control) => control.addEventListener("change", generate));
+      document.getElementById("generate").addEventListener("click", generate);
+      document.getElementById("copy").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(output.value);
+          status.textContent = "Output copied";
+        } catch {
+          output.select();
+          document.execCommand("copy");
+          status.textContent = "Output copied";
+        }
+      });
+      document.getElementById("download").addEventListener("click", () => {
+        const html = document.querySelector('input[name="format"]:checked').value === "html";
+        const blob = new Blob([output.value], {
+          type: html ? "text/html;charset=utf-8" : "text/plain;charset=utf-8",
+        });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = html ? "toolyfi-lorem-ipsum.html" : "toolyfi-lorem-ipsum.txt";
+        link.click();
+        URL.revokeObjectURL(link.href);
+        status.textContent = "Download prepared";
+      });
+      generate();
+    </script>
+    <script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
+    <script src="/pwa-register.js" defer></script>
+  </body>
+</html>
