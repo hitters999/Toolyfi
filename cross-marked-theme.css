@@ -1,0 +1,118 @@
+/* Cross-marked Toolyfi pages: editorial utility theme matching the supplied reference direction. */
+:root {
+  --tf-paper: #f6f0e7;
+  --tf-paper-deep: #eee5d8;
+  --tf-ink: #172437;
+  --tf-coral: #ef6c54;
+  --tf-coral-dark: #cf4f3f;
+  --tf-muted: #627084;
+  --tf-card: #fffdf9;
+  --tf-line: rgba(23, 36, 55, 0.16);
+  --tf-shadow: 5px 5px 0 rgba(23, 36, 55, 0.9);
+  --tf-serif: Georgia, 'Times New Roman', serif;
+  --tf-sans: Arial, Helvetica, sans-serif;
+}
+
+html { background: var(--tf-paper); }
+body {
+  background-color: var(--tf-paper) !important;
+  background-image: linear-gradient(var(--tf-line) 1px, transparent 1px), linear-gradient(90deg, var(--tf-line) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
+  color: var(--tf-ink) !important;
+  font-family: var(--tf-sans) !important;
+  line-height: 1.7 !important;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 15% 10%, rgba(239,108,84,.12), transparent 26%), radial-gradient(circle at 88% 70%, rgba(239,108,84,.08), transparent 24%);
+  z-index: -1;
+}
+
+header, .site-header, .tf-global-header {
+  background: rgba(246,240,231,.94) !important;
+  border-bottom: 1px solid var(--tf-line) !important;
+  box-shadow: 0 8px 22px rgba(23,36,55,.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+header a, .site-header a, nav a, .nav-links a { color: var(--tf-ink) !important; }
+.logo, .nav-logo, .tf-global-brand, .site-header .logo { color: var(--tf-ink) !important; font-family: var(--tf-serif) !important; font-weight: 800 !important; letter-spacing: -1px !important; }
+.logo span, .tf-word-accent, .eyebrow, .section-tag, .section-label, .hero-badge, .tool-link, .tag, .kind, .category, .updated-badge { color: var(--tf-coral) !important; }
+
+.hero, .toolyfi-hero, .hero-copy {
+  background: transparent !important;
+  color: var(--tf-ink) !important;
+  padding-top: clamp(46px, 7vw, 88px) !important;
+  padding-bottom: clamp(34px, 5vw, 64px) !important;
+}
+.hero h1, .hero h2, .hero h3, .toolyfi-hero h1, .hero-copy h1 {
+  color: var(--tf-ink) !important;
+  font-family: var(--tf-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: -1.5px !important;
+  line-height: 1.02 !important;
+}
+.hero h1 em, .hero h1 span, .toolyfi-hero h1 em, .toolyfi-hero h1 span { color: var(--tf-coral) !important; }
+.hero p, .hero-sub, .lede, .hero-note { color: var(--tf-muted) !important; font-size: 1.05rem !important; }
+.hero-badge, .hero-pills span, .trust-pills span, .pill {
+  background: rgba(239,108,84,.10) !important;
+  border: 1px solid rgba(239,108,84,.42) !important;
+  color: var(--tf-coral-dark) !important;
+}
+
+.tool-card, .tool-wrap, .tool, .tool-widget, .panel, .calc-wrap, .converter-grid, .upload-card, .results-top, .result-box, .card, .feature-card, .benefit-card, .example-card, .reason-card, .more-card, .faq-item, .section, .article-section, .guide, .wide, .content-section {
+  background: rgba(255,253,249,.94) !important;
+  border-color: var(--tf-line) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 2px 0 rgba(23,36,55,.06) !important;
+}
+.tool-card, .tool-wrap, .tool, .tool-widget, .panel, .calc-wrap, .converter-grid, .upload-card { box-shadow: var(--tf-shadow) !important; }
+
+.tool-card-header, .tool-header, .tool-header-title, .calc-head, .card-title {
+  background: var(--tf-ink) !important;
+  color: #fff !important;
+  border-color: var(--tf-ink) !important;
+}
+.tool-card-header h2, .tool-header h2, .tool-header-title, .tool-card-header *, .calc-head * { color: #fff !important; }
+
+h1, h2, h3, h4, .section-title, .section h2, .feature-content h3, .card h3, .card-title, .faq-q, .guide h2, .article-section h2, .article-section h3 {
+  color: var(--tf-ink) !important;
+  font-family: var(--tf-serif) !important;
+  font-weight: 800 !important;
+}
+p, li, label, .hint, .sub, .lede, .section-sub, .article-section p, .article-section li { color: var(--tf-muted); }
+
+button, .btn, .btn-calculate, .generate-btn, .upload-btn, .cta-btn, .download-btn, .visit, .primary, .mode.active, .tab-btn.active {
+  background: var(--tf-coral) !important;
+  border-color: var(--tf-coral) !important;
+  color: #fff !important;
+  border-radius: 2px !important;
+  box-shadow: 3px 3px 0 var(--tf-ink) !important;
+  font-weight: 700 !important;
+}
+button:hover, .btn:hover, .btn-calculate:hover, .generate-btn:hover, .upload-btn:hover, .cta-btn:hover, .download-btn:hover, .visit:hover { background: var(--tf-coral-dark) !important; transform: translate(-1px, -1px); }
+button.secondary, .btn-secondary, .btn-reset, .btn-clear, .act-secondary { background: transparent !important; color: var(--tf-ink) !important; border: 1px solid var(--tf-ink) !important; box-shadow: none !important; }
+
+input, textarea, select, .search, .search-row input, .prompt-input, .field input, .field select {
+  background: #fff !important;
+  color: var(--tf-ink) !important;
+  border: 1px solid var(--tf-line) !important;
+  border-radius: 2px !important;
+}
+input:focus, textarea:focus, select:focus { outline: 2px solid rgba(239,108,84,.35) !important; border-color: var(--tf-coral) !important; }
+
+.ad-unit, .ad-slot, .ad-top, .ad-mid { background: transparent !important; border-color: var(--tf-line) !important; }
+.divider, hr { border-color: var(--tf-line) !important; }
+footer, .footer, .footer-tools { background: var(--tf-ink) !important; color: #fff !important; }
+footer a, .footer a, .footer-tools a { color: #fff !important; }
+
+@media (max-width: 720px) {
+  body { background-size: 34px 34px !important; }
+  .hero, .toolyfi-hero, .hero-copy { padding-left: 18px !important; padding-right: 18px !important; }
+  .hero h1, .toolyfi-hero h1, .hero-copy h1 { font-size: clamp(2.2rem, 13vw, 3.7rem) !important; }
+  .tool-card, .tool-wrap, .tool, .tool-widget, .panel, .calc-wrap, .converter-grid, .upload-card { box-shadow: 3px 3px 0 var(--tf-ink) !important; }
+}
