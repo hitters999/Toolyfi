@@ -16,6 +16,8 @@ Before using any thread, manually check the current subreddit rules and read the
 | `threads.example.json` | Safe example input format. Copy it to `threads.json` only for local testing, or provide another input path. |
 | `subreddit-rules.example.json` | Template for manually confirmed subreddit link rules. Copy to `subreddit-rules.json` and update only after checking each subreddit. |
 | `../scripts/reddit-draft.js` | Discovery-from-input, scoring, English drafting, and guardrail enforcement. |
+| `approved-posts.example.json` | Example of the only queue shape accepted by the publisher. |
+| `../scripts/reddit-publish-approved.js` | Authorized comment publisher, disabled by default and limited to allowlisted subreddits. |
 
 ## Local run
 
@@ -49,11 +51,42 @@ Each thread object should contain `id`, `url`, `subreddit`, `title`, `body`, opt
 
 ## Review process
 
-The output is a Markdown queue. For each candidate, review the full original thread, confirm the subreddit rules, edit the proposed reply for accuracy and tone, and choose `APPROVE`, `EDIT`, `REJECT`, or `SKIP`. “Approve” means ready for a human to post manually; it does not trigger posting. If a link is included, disclose the Toolyfi affiliation and confirm that the link is allowed. If the draft does not add meaningful value, choose `SKIP`.
+The output is a Markdown queue. For each candidate, review the full original thread, confirm the subreddit rules, edit the proposed reply for accuracy and tone, and choose `APPROVE`, `EDIT`, `REJECT`, or `SKIP`. If a link is included, disclose the Toolyfi affiliation and confirm that the link is allowed. If the draft does not add meaningful value, choose `SKIP`.
+
+For automatic comments, a human must first create a separate `approved-posts.json` queue in the format shown by `approved-posts.example.json`. Every item must include a Reddit fullname such as `t3_...` or `t1_...`, the complete thread URL, `approved: true`, an approval timestamp, an approver name, and the final text. The publisher rejects items that are not explicitly approved.
+
+## Automatic publisher: disabled by default
+
+The publisher is intentionally a separate step from drafting. A dry run is safe and requires no Reddit credentials:
+
+```bash
+node scripts/reddit-publish-approved.js \
+  --input reddit/approved-posts.example.json \
+  --state /tmp/toolyfi-reddit-state.json
+```
+
+Live mode is blocked unless all of these are intentionally configured on a private runner: an OAuth access token with the `submit` scope, `REDDIT_POSTING_ENABLED=true`, `AUTO_POST_CONFIRM=YES_I_CONFIRM`, `REDDIT_OAUTH_SCOPE=submit`, and `--live`. The publisher verifies the authorized account, accepts only allowlisted subreddits, prevents duplicate candidate IDs, enforces a one-post-per-subcommunity cooldown by default, rejects promotional or vote-manipulation language, and stops when the state file has `emergency_stop: true`.
+
+Example live invocation, only after Reddit commercial approval and authorized credentials are in place:
+
+```bash
+REDDIT_ACCESS_TOKEN="$REDDIT_ACCESS_TOKEN" \
+REDDIT_USERNAME="your_reddit_username" \
+REDDIT_OAUTH_SCOPE="submit" \
+REDDIT_ALLOWED_SUBREDDITS="learnprogramming,webdev,seo" \
+REDDIT_POSTING_ENABLED=true \
+AUTO_POST_CONFIRM=YES_I_CONFIRM \
+node scripts/reddit-publish-approved.js \
+  --input /secure/path/approved-posts.json \
+  --state /secure/path/publish-state.json \
+  --live
+```
+
+Do not run that command yet without Reddit's required commercial permission and a deliberate review of the allowlist. The current public GitHub repository must not contain access tokens, real Reddit exports, or a persistent state file.
 
 ## Safety boundaries
 
-The script does not contain a Reddit login, OAuth publisher, comment endpoint, vote endpoint, DM endpoint, or browser automation. It cannot publish anything. It must not be extended into auto-upvotes, mass DMs, repetitive bulk posting, multiple-account manipulation, ban evasion, or artificial behavior intended to circumvent moderation.
+The draft script does not contain a Reddit login, OAuth publisher, vote endpoint, DM endpoint, or browser automation. The separate publisher contains only the official comment endpoint and is disabled by default. It must not be extended into auto-upvotes, mass DMs, repetitive bulk posting, multiple-account manipulation, ban evasion, or artificial behavior intended to circumvent moderation.
 
 Financial, tax, health, legal, and other sensitive topics require extra care. Keep replies general, state assumptions, avoid personalized advice, and direct readers to official or qualified sources where appropriate. Tool capability and privacy claims must remain consistent with the actual Toolyfi implementation.
 
