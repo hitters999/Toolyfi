@@ -219,7 +219,7 @@ html
                 <div>Paragraphs: <span id="paraCount">0</span></div>
                 <div>Reading Time: <span id="readTime">0</span> min</div>
             </div>
-            
+
         </div>
     </section>
     <figure class="toolyfi-visual" aria-label="Tool illustration"><img src="images/toolyfi-word-counter-hero.webp" width="1200" height="800" alt="Editorial writing sheet with abstract paragraph lines, coral highlights, and an elegant word-counting frame." loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('is-missing')"><figcaption>A visual cue for drafting and reviewing length—your live counter stays above.</figcaption></figure>
@@ -413,5 +413,16 @@ html
 
     <script>const input=document.getElementById('textInput');const countWords=()=>{const text=input.value;const segmenter=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter(undefined,{granularity:'word'}):null;const words=segmenter?[...segmenter.segment(text)].filter(s=>s.isWordLike).length:(text.trim()?text.trim().split(/\s+/).length:0);const chars=[...text].length;const charsNoSpace=[...text.replace(/\s/g,'')].length;const sentences=text.trim()?text.split(/(?<=[.!?])\s+|[\n]+/).filter(s=>/[\p{L}\p{N}]/u.test(s)).length:0;const paras=text.split(/\n\s*\n/).filter(p=>p.trim()).length;const read=words?Math.max(1,Math.ceil(words/200)):0;document.getElementById('wordCount').textContent=words;document.getElementById('charCount').textContent=chars;document.getElementById('charNoSpace').textContent=charsNoSpace;document.getElementById('sentenceCount').textContent=sentences;document.getElementById('paraCount').textContent=paras;document.getElementById('readTime').textContent=read;document.getElementById('copyBtn').style.display=words||chars?'inline-block':'none';};async function copyOutput(){const t='Words: '+document.getElementById('wordCount').textContent+' | Characters: '+document.getElementById('charCount').textContent+' | Characters without spaces: '+document.getElementById('charNoSpace').textContent+' | Sentences: '+document.getElementById('sentenceCount').textContent+' | Paragraphs: '+document.getElementById('paraCount').textContent+' | Reading time: '+document.getElementById('readTime').textContent+' min';try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(t);const btn=document.getElementById('copyBtn');btn.textContent='Copied';btn.classList.add('copied');document.getElementById('copyStatus').textContent='Summary copied to clipboard.';setTimeout(()=>{btn.textContent='Copy summary';btn.classList.remove('copied');document.getElementById('copyStatus').textContent='';},1800)}catch(e){document.getElementById('copyStatus').textContent='Clipboard access was unavailable. Select the stats manually.';}}function clearText(){input.value='';countWords();input.focus();}function toggleFaq(el){el.parentElement.classList.toggle('active')}input.addEventListener('input',countWords);countWords();</script><script src="/toolyfi-brand.js" defer data-toolyfi-brand="1"></script>
     <script src="/pwa-register.js" defer></script>
+
+<section class="seo-guide seo-guide-text-security" id="word-counter-guide">
+  <h2>How to use a word and character counter</h2>
+  <p>Paste or type your text into the counter to see word count, character count, sentence count, paragraph count, and an estimated reading time. Review the result before submitting an assignment, publishing a post, or preparing copy for a form with a strict limit.</p>
+  <h3>Choose the count that matches your task</h3>
+  <p>Word limits usually count words separated by spaces, while character limits may include or exclude spaces depending on the platform. Use the character result when working with social captions, metadata, SMS messages, titles, or application fields. For a longer document, compare the paragraph and sentence counts as a quick readability check rather than treating them as a quality score.</p>
+  <h3>Practical workflows</h3>
+  <p>Writers can check a draft before publishing, students can verify an assignment limit, and developers can inspect sample text for interface constraints. If a platform reports a different total, check whether it counts punctuation, line breaks, emojis, or markup differently. Toolyfi processes ordinary text in the page and does not replace the rules of the platform where you will paste the final copy.</p>
+  <h3>Related Toolyfi utilities</h3>
+  <p>After counting text, try the <a href="text-trimmer.html">Text Trimmer</a> to remove excess whitespace, the <a href="special-characters-counter.html">Special Characters Counter</a> to inspect symbols, or the <a href="lorem-ipsum-generator.html">Lorem Ipsum Generator</a> to create layout placeholder text.</p>
+</section>
 </body>
 </html>
