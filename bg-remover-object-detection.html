@@ -370,6 +370,8 @@
         <div class="upload-btn">Select Image</div>
       </div>
 
+      <p id="processingStatus" role="status" aria-live="polite" style="margin: 16px 0; text-align: center; font-weight: 700;"></p>
+
       <div id="previewGrid" class="preview-grid">
         <div class="preview-item">
           <p style="margin-bottom: 8px; font-weight: 700">Original Image</p>
@@ -646,28 +648,81 @@
     </footer>
 
     <script>
-      function handleUpload(input) {
-        if (input.files && input.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            document.getElementById("originalImg").src = e.target.result;
-            document.getElementById("previewGrid").style.display = "grid";
+      const BACKGROUND_REMOVER_API = "https://toolyfi-backend-production.up.railway.app/api/remove-bg";
+      let processedImageData = "";
 
-            // Simulate AI processing
-            document.getElementById("removedImg").style.opacity = "0.3";
-            setTimeout(() => {
-              document.getElementById("removedImg").src = e.target.result; // In real app, this would be the processed image
-              document.getElementById("removedImg").style.opacity = "1";
-            }, 2000);
-          };
-          reader.readAsDataURL(input.files[0]);
+      function setProcessingStatus(message, isError = false) {
+        const status = document.getElementById("processingStatus");
+        status.textContent = message;
+        status.style.color = isError ? "#b42318" : "var(--primary)";
+      }
+
+      async function processBackground(imageDataUrl) {
+        setProcessingStatus("Removing the background with AI…");
+        const response = await fetch(BACKGROUND_REMOVER_API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ image: imageDataUrl }),
+        });
+        const data = await response.json().catch(() => null);
+        if (!response.ok || !data || !data.success || !data.image) {
+          throw new Error(data && data.error ? data.error : `Processing failed (${response.status})`);
         }
+        return data.image;
+      }
+
+      function handleUpload(input) {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        const allowedTypes = ["image/png", "image/jpeg", "image/gif", "image/bmp", "image/webp"];
+        if (!allowedTypes.includes(file.type)) {
+          setProcessingStatus("Please choose a PNG, JPG, GIF, BMP, or WEBP image.", true);
+          input.value = "";
+          return;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          setProcessingStatus("File too large. The maximum size is 10 MB.", true);
+          input.value = "";
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = async function (event) {
+          const originalImage = document.getElementById("originalImg");
+          const removedImage = document.getElementById("removedImg");
+          document.getElementById("previewGrid").style.display = "grid";
+          originalImage.src = event.target.result;
+          removedImage.removeAttribute("src");
+          removedImage.style.opacity = "0.35";
+          processedImageData = "";
+
+          try {
+            processedImageData = await processBackground(event.target.result);
+            removedImage.src = processedImageData;
+            removedImage.style.opacity = "1";
+            setProcessingStatus("Done. Review the edges, then download your transparent PNG.");
+          } catch (error) {
+            console.error("Background removal failed:", error);
+            removedImage.removeAttribute("src");
+            removedImage.style.opacity = "1";
+            setProcessingStatus(error.message || "Background removal failed. Please try again.", true);
+          }
+        };
+        reader.onerror = () => setProcessingStatus("The image could not be read. Please try another file.", true);
+        reader.readAsDataURL(file);
       }
 
       function downloadResult() {
-        alert(
-          "In the full version, your transparent PNG would download now. This is a demo preview.",
-        );
+        if (!processedImageData) {
+          setProcessingStatus("Process an image successfully before downloading.", true);
+          return;
+        }
+        const link = document.createElement("a");
+        link.href = processedImageData;
+        link.download = `toolyfi-background-removed-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       }
     </script>
 
