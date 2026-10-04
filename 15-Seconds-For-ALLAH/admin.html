@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Check & Balance • 15 Seconds for Allah | Toolyfi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #071714;
+      color: #F8F9FA;
+      font-family: 'Noto Nastaliq Urdu', sans-serif;
+      padding: 24px 14px;
+      display: flex;
+      justify-content: center;
+    }
+    .wrap { width: 100%; max-width: 780px; }
+    .card {
+      background: #0E2621;
+      border: 1.5px solid #E5C07B;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    h1, h2 { color: #E5C07B; margin-bottom: 8px; }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #2D4F48;
+      background: #05100D;
+      color: #fff;
+      font-size: 14px;
+      direction: ltr;
+    }
+    button {
+      background: #E5C07B;
+      color: #05100D;
+      font-weight: 700;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .stat-box {
+      background: #05100D;
+      border: 1px solid rgba(229,192,123,0.4);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat-val { font-size: 22px; color: #FDE68A; font-weight: bold; font-family: sans-serif; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-family: sans-serif;
+      direction: ltr;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #1E3F38;
+      text-align: left;
+      font-size: 13px;
+    }
+    th { color: #E5C07B; }
+    #dashboardArea { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="loginArea" class="card">
+      <h1>🔒 ایڈمن چیک اینڈ بیلنس پورٹل (Admin Login)</h1>
+      <p style="color:#94A3B8;font-size:13px;margin-bottom:12px;">Restricted Backend for 15 Seconds for Allah • Toolyfi.com</p>
+      <input type="email" id="emailInput" placeholder="Admin Email (hitters999@gmail.com / umerm1992@gmail.com)" value="hitters999@gmail.com" />
+      <input type="password" id="passInput" placeholder="Secret Admin Passcode" />
+      <button onclick="unlockAdmin()">ایڈمن لاگ ان (Unlock Check & Balance)</button>
+    </div>
+
+    <div id="dashboardArea">
+      <div class="card">
+        <h2>📊 آن لائن چیک اینڈ بیلنس (1 Point = 1 Paisa PKR)</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-val" id="totalSessions">0</div>
+            <div>مکمل 15s سیشنز</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="totalPoints">0</div>
+            <div>مجموعی پوائنٹس</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="totalPkr">Rs. 0.00</div>
+            <div>مجموعی ہدیہ (PKR)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>👥 ویورز اور پوائنٹس ریکارڈ (Viewers Ledger)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>User / Account</th>
+              <th>Source Read</th>
+              <th>Points</th>
+              <th>Hadya (PKR)</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="ledgerRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function unlockAdmin() {
+      const email = document.getElementById('emailInput').value.trim().toLowerCase();
+      const pass = document.getElementById('passInput').value.trim();
+      const validEmails = ['hitters999@gmail.com', 'umerm1992@gmail.com', 'admin@15seconds4allah.com', 'hitters999', 'admin'];
+      if (validEmails.includes(email) && (pass === 'Allah@7860' || pass === '7860')) {
+        document.getElementById('loginArea').style.display = 'none';
+        document.getElementById('dashboardArea').style.display = 'block';
+        renderLedger();
+      } else {
+        alert('غلط ایڈمن ای میل یا پاس کوڈ!');
+      }
+    }
+
+    function renderLedger() {
+      const logs = JSON.parse(localStorage.getItem('toolyfi_15s_logs') || '[]');
+      const totalPts = logs.reduce((acc, r) => acc + (r.points || 10), 0);
+      document.getElementById('totalSessions').textContent = logs.length;
+      document.getElementById('totalPoints').textContent = totalPts;
+      document.getElementById('totalPkr').textContent = 'Rs. ' + (totalPts * 0.01).toFixed(2);
+
+      const tbody = document.getElementById('ledgerRows');
+      tbody.innerHTML = logs.map(r => `
+        <tr>
+          <td>${r.user}</td>
+          <td>${r.source}</td>
+          <td style="color:#E5C07B;font-weight:bold;">+${r.points} pts</td>
+          <td style="color:#10B981;font-weight:bold;">Rs. ${(r.pkr || 0.10).toFixed(2)}</td>
+          <td>${new Date(r.timestamp).toLocaleString()}</td>
+        </tr>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

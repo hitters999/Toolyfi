@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Prayer Times (اوقاتِ نماز) & Hijri Date Calculator — 15 Seconds for Allah | Toolyfi</title>
+  <meta name="description" content="Accurate daily Islamic Prayer Times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) and Hijri Calendar for Lahore, Karachi, Islamabad, Makkah, Madinah and worldwide." />
+  <link rel="canonical" href="https://toolyfi.com/15-Seconds-For-ALLAH/prayer-times.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg-center: #113026; --bg-edge: #05100D; --gold: #E5C07B; --gold-bright: #FDE68A; --cyan: #4FD1C5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 20%, var(--bg-center), var(--bg-edge) 75%);
+      color: #F8F9FA;
+      font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
+      line-height: 1.9;
+    }
+    .navbar {
+      background: rgba(5, 16, 13, 0.94);
+      border-bottom: 1.5px solid rgba(229, 192, 123, 0.35);
+      padding: 12px 18px;
+    }
+    .nav-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-link {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .nav-link.active, .nav-link:hover {
+      background: var(--gold);
+      color: #05100D;
+      font-weight: 700;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+    .card {
+      background: rgba(14, 38, 33, 0.9);
+      border: 1.5px solid rgba(229, 192, 123, 0.5);
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    .cities { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .city-btn {
+      padding: 7px 15px;
+      border-radius: 10px;
+      border: 1px solid var(--gold);
+      background: #05100D;
+      color: #fff;
+      cursor: pointer;
+      font-family: 'Noto Nastaliq Urdu', sans-serif;
+    }
+    .prayer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .prayer-box {
+      background: #05100D;
+      border: 1px solid rgba(229, 192, 123, 0.4);
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+    }
+    .p-name { color: var(--gold-bright); font-size: 16px; }
+    .p-time { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 800; color: #FFFFFF; direction: ltr; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" style="color:var(--gold);text-decoration:none;font-weight:800;font-family:'Inter',sans-serif;">☪ 15 SECONDS 4 ALLAH</a>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="index.html" class="nav-link">🏠 ہوم اور 15s ٹائمر</a>
+        <a href="hadith.html" class="nav-link">📚 36,000+ احادیث</a>
+        <a href="azkar.html" class="nav-link">🤲 مسنون اذکار</a>
+        <a href="prayer-times.html" class="nav-link active">🕌 اوقاتِ نماز</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="card">
+      <h1 style="color:var(--gold);font-size:22px;">🕌 اوقاتِ نماز اور ہجری تاریخ (Live Prayer Times)</h1>
+      <p id="hijriLabel" style="color:var(--cyan);font-size:14px;">لاہور، پاکستان • جامعہ العلوم الاسلامیہ کراچی میتھڈ</p>
+
+      <div class="cities">
+        <button class="city-btn" onclick="fetchPrayers('Lahore','Pakistan','لاہور')">🇵🇰 لاہور</button>
+        <button class="city-btn" onclick="fetchPrayers('Karachi','Pakistan','کراچی')">🇵🇰 کراچی</button>
+        <button class="city-btn" onclick="fetchPrayers('Islamabad','Pakistan','اسلام آباد')">🇵🇰 اسلام آباد</button>
+        <button class="city-btn" onclick="fetchPrayers('Peshawar','Pakistan','پشاور')">🇵🇰 پشاور</button>
+        <button class="city-btn" onclick="fetchPrayers('Makkah','Saudi Arabia','مکہ مکرمہ')">🇸🇦 مکہ مکرمہ</button>
+        <button class="city-btn" onclick="fetchPrayers('Madinah','Saudi Arabia','مدینہ منورہ')">🇸🇦 مدینہ منورہ</button>
+      </div>
+
+      <div class="prayer-grid">
+        <div class="prayer-box"><div class="p-name">فجر (Fajr)</div><div class="p-time" id="tFajr">05:02</div></div>
+        <div class="prayer-box"><div class="p-name">طلوع (Sunrise)</div><div class="p-time" id="tSun">06:18</div></div>
+        <div class="prayer-box"><div class="p-name">ظہر (Dhuhr)</div><div class="p-time" id="tDhuhr">12:10</div></div>
+        <div class="prayer-box"><div class="p-name">عصر (Asr)</div><div class="p-time" id="tAsr">16:25</div></div>
+        <div class="prayer-box"><div class="p-name">مغرب (Maghrib)</div><div class="p-time" id="tMaghrib">18:02</div></div>
+        <div class="prayer-box"><div class="p-name">عشاء (Isha)</div><div class="p-time" id="tIsha">19:22</div></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function fetchPrayers(city, country, urduCity) {
+      try {
+        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&method=1&school=1`);
+        const json = await res.json();
+        const t = json.data.timings;
+        const h = json.data.date.hijri;
+        document.getElementById('hijriLabel').textContent = `${urduCity} • ہجری تاریخ: ${h.day} ${h.month.ar} ${h.year}ھ`;
+        document.getElementById('tFajr').textContent = t.Fajr;
+        document.getElementById('tSun').textContent = t.Sunrise;
+        document.getElementById('tDhuhr').textContent = t.Dhuhr;
+        document.getElementById('tAsr').textContent = t.Asr;
+        document.getElementById('tMaghrib').textContent = t.Maghrib;
+        document.getElementById('tIsha').textContent = t.Isha;
+      } catch (e) {}
+    }
+    fetchPrayers('Lahore','Pakistan','لاہور');
+  </script>
+</body>
+</html>
