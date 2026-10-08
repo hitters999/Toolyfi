@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de Taxas Shopee, TikTok Shop e Mercado Livre 2026 | Toolyfi</title>
+<meta name="description" content="Calcule comissão, taxa fixa, lucro líquido, margem e preço de equilíbrio na Shopee, TikTok Shop e Mercado Livre. Grátis, sem cadastro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf6f1;--ink:#16213a;--mut:#5b6478;--coral:#ff6347;--navy:#16213a;--sage:#e1e9e1;--card:#fff;--line:#e7dfd4;--field:#faf6f1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1426;--ink:#f1ece4;--mut:#a3abbd;--card:#18213a;--sage:#1b2a33;--line:#2a3350;--field:#0e1426}}
+:root[data-theme="dark"]{--bg:#0e1426;--ink:#f1ece4;--mut:#a3abbd;--card:#18213a;--sage:#1b2a33;--line:#2a3350;--field:#0e1426}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+.serif{font-family:"DM Serif Display",Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.02em}
+em{font-style:italic;color:var(--coral)}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand img{height:40px;width:auto;display:block}
+.brand span{font-size:28px;line-height:1}
+nav a{font-size:13px;color:var(--ink);text-decoration:none;padding:8px 12px;border-radius:4px}
+nav a.cta{background:var(--coral);color:#fff;font-weight:600}
+.crumb{font-size:12px;color:var(--mut);padding:16px 0 0}
+.hero{padding:28px 0 36px}
+.hero h1{font-size:clamp(34px,7.2vw,60px);line-height:1.02;margin:0 0 16px;max-width:15em}
+.hero p{max-width:34em;color:var(--mut);margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:12px;border:1px solid var(--line);padding:5px 10px;background:var(--card)}
+.note{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;font-size:13px;color:var(--mut)}
+.note .wrap{display:flex;gap:12px;align-items:flex-start}
+.note i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--coral);color:#fff;font:600 13px/22px Inter,sans-serif;text-align:center}
+.note b{color:var(--ink)}
+.calc{background:var(--navy);color:#f4efe8;padding:44px 0 56px}
+.calc h2{font-size:clamp(28px,5.5vw,44px);line-height:1.05;margin:0 0 10px}
+.calc>.wrap>p{color:#b9c0d1;max-width:34em;margin:0 0 24px}
+.card{background:var(--card);color:var(--ink);padding:22px;box-shadow:10px 10px 0 var(--coral)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--field);padding:4px;gap:4px;margin-bottom:18px}
+.tabs button{font:500 13px Inter,sans-serif;border:0;background:transparent;color:var(--mut);padding:11px 4px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 0 var(--line)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:5px}
+input[type=text]{width:100%;font:500 16px Inter,sans-serif;padding:12px;border:1px solid var(--line);background:var(--field);color:var(--ink);border-radius:0}
+input:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.hint{font-size:12.5px;color:var(--mut);margin:14px 0 0;padding-left:12px;border-left:3px solid var(--coral)}
+.chk{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:14px}
+.chk input{width:18px;height:18px;accent-color:var(--coral)}
+.result{position:relative;background:var(--sage);color:var(--ink);margin-top:34px;padding:26px 22px;overflow:hidden}
+.result::after{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 54px 54px 0;border-color:transparent var(--coral) transparent transparent}
+.result .lbl{font-size:12px;color:var(--mut);font-weight:600}
+.big{font-size:clamp(44px,12vw,76px);line-height:1;margin:6px 0 4px}
+.big.neg{color:var(--coral)}
+.sub{font-size:14px;color:var(--mut)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0}
+.stats div{background:var(--card);padding:12px 14px}
+.stats small{display:block;font-size:11.5px;color:var(--mut)}
+.stats b{font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--mut);font-weight:600}
+td:last-child,th:last-child{text-align:right}
+.scroll{overflow-x:auto}
+.best{font-size:11px;background:var(--coral);color:#fff;padding:1px 6px;margin-left:6px}
+.btn{width:100%;margin-top:18px;font:600 13px Inter,sans-serif;padding:13px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+h3{font-size:22px;margin:22px 0 8px}
+.info{padding:48px 0}
+.info h2{font-size:clamp(26px,5vw,38px);margin:0 0 14px}
+.info p,.info li{color:var(--mut);max-width:42em}
+code{background:var(--card);border:1px solid var(--line);padding:2px 6px;font-size:13px}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:26px 0;font-size:13px;color:var(--mut)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+footer .brand img{height:32px}footer .brand span{font-size:22px}
+@media (prefers-reduced-motion:no-preference){.big{transition:color .2s}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#" aria-label="Toolyfi"><img src="%%LOGO%%" alt="Logo Toolyfi"><span class="serif">Tooly<em>fi</em></span></a>
+  <nav><a href="#calc">Calculadora</a> <a class="cta" href="#faq">Dúvidas</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="crumb">Início / Calculadoras / Taxas de marketplace</div>
+  <h1 class="serif" style="margin-top:18px">Quanto sobra de cada venda na <em>Shopee</em>, TikTok Shop e Mercado Livre</h1>
+  <p>Informe preço, custo e impostos. Veja lucro líquido, margem, preço de equilíbrio e compare os três canais lado a lado. Os valores de taxa são editáveis porque mudam com frequência.</p>
+  <div class="chips"><span>Shopee</span><span>TikTok Shop</span><span>Mercado Livre</span><span>Cálculo no seu navegador</span></div>
+</div></section>
+
+<div class="note"><div class="wrap"><i>!</i><div><b>Confirme as taxas da sua conta.</b> Os valores pré-preenchidos vêm de fontes públicas do mercado (checadas em 8 out 2026) e podem diferir da sua Central do Vendedor. Resultado é estimativa de planejamento, não fatura.</div></div></div>
+
+<section class="calc" id="calc"><div class="wrap">
+  <h2 class="serif">Informe o preço. <em>Veja o que sobra.</em></h2>
+  <p>Escolha o canal, ajuste comissão e taxa fixa se precisar, e preencha seus custos.</p>
+  <div class="card">
+    <div class="tabs" role="tablist" aria-label="Canal de venda" id="tabs"></div>
+    <div class="grid">
+      <div><label for="c">Comissão (%)</label><input id="c" type="text" inputmode="decimal"></div>
+      <div><label for="f">Taxa fixa por item (R$)</label><input id="f" type="text" inputmode="decimal"></div>
+      <div><label for="p">Preço de venda (R$)</label><input id="p" type="text" inputmode="decimal" value="79,90"></div>
+      <div><label for="k">Custo do produto (R$)</label><input id="k" type="text" inputmode="decimal" value="30"></div>
+      <div><label for="s">Frete pago por você (R$)</label><input id="s" type="text" inputmode="decimal" value="0"></div>
+      <div><label for="i">Imposto sobre a venda (%)</label><input id="i" type="text" inputmode="decimal" value="4"></div>
+      <div><label for="a">Anúncios e afiliados (%)</label><input id="a" type="text" inputmode="decimal" value="0"></div>
+      <div><label for="o">Outros custos por pedido (R$)</label><input id="o" type="text" inputmode="decimal" value="2"></div>
+      <div><label for="m">Margem desejada (%)</label><input id="m" type="text" inputmode="decimal" value="20"></div>
+    </div>
+    <label class="chk" id="cpfbox"><input type="checkbox" id="cpf"> Vendo como pessoa física (CPF): +R$ 3 por item, segundo guias do mercado</label>
+    <p class="hint" id="hint"></p>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <div class="lbl">Lucro líquido por venda</div>
+    <div class="big serif" id="lucro">—</div>
+    <div class="sub" id="marg"></div>
+    <div class="stats">
+      <div><small>Total de taxas do canal</small><b id="taxas">—</b></div>
+      <div><small>Repasse antes dos seus custos</small><b id="repasse">—</b></div>
+      <div><small>Preço de equilíbrio (lucro zero)</small><b id="be">—</b></div>
+      <div><small id="sugl">Preço para a margem desejada</small><b id="sug">—</b></div>
+    </div>
+    <h3 class="serif">Para onde vai o dinheiro</h3>
+    <table><tbody id="rows"></tbody></table>
+    <h3 class="serif">Mesmo produto nos três canais</h3>
+    <div class="scroll"><table><thead><tr><th>Canal</th><th>Taxas</th><th>Lucro</th><th>Margem</th></tr></thead><tbody id="cmp"></tbody></table></div>
+    <button class="btn" id="copy" type="button">Copiar resumo</button>
+  </div>
+</div></section>
+
+<section class="info"><div class="wrap">
+  <h2 class="serif">Como o cálculo <em>funciona</em></h2>
+  <p>Lucro líquido = preço − comissão − taxa fixa − imposto − anúncios − custo do produto − frete − outros custos.</p>
+  <p>Preço de equilíbrio = custos fixos ÷ (1 − soma dos percentuais). Preço para uma margem desejada = custos fixos ÷ (1 − soma dos percentuais − margem).</p>
+  <p>Se a comissão do seu canal muda por faixa de preço, atualize o campo de comissão e a taxa fixa quando o preço mudar de faixa.</p>
+</div></section>
+
+<section class="info" id="faq" style="padding-top:0"><div class="wrap">
+  <h2 class="serif">Perguntas <em>frequentes</em></h2>
+  <details><summary>Quanto a Shopee cobra de taxa em 2026?</summary><p>Guias do mercado indicam que, desde março de 2026, a comissão passou a variar por faixa de preço e o Programa de Frete Grátis ficou obrigatório. As tabelas publicadas diferem entre si, por isso esta calculadora deixa comissão e taxa fixa editáveis. Confirme sempre na sua Central do Vendedor.</p></details>
+  <details><summary>Por que produtos baratos perdem mais margem?</summary><p>A taxa fixa pesa mais no preço baixo. Uma taxa de R$ 4,50 em um item de R$ 30 já consome 15% do preço, antes da comissão percentual.</p></details>
+  <details><summary>Como definir o preço mínimo de venda?</summary><p>Use o preço de equilíbrio para não ter prejuízo e o preço para a margem desejada para saber quanto cobrar de fato. Inclua frete, imposto e anúncios nos campos acima.</p></details>
+  <details><summary>Meus dados ficam salvos?</summary><p>Não. O cálculo roda inteiro no seu navegador e nada é enviado.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="#" aria-label="Toolyfi"><img src="%%LOGO%%" alt="Logo Toolyfi"><span class="serif">Tooly<em>fi</em></span></a>
+  <span>Estimativas de planejamento. Não substitui a Central do Vendedor.</span>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const P={
+ shopee:{n:"Shopee",c:20,f:4.5,h:"Faixa até R$ 79,99: comissão 20% + taxa fixa de R$ 4,50 (desde 01/10/2026, segundo fontes do mercado). Outras faixas têm valores diferentes: edite."},
+ tiktok:{n:"TikTok Shop",c:6,f:4,h:"Referência até 14/07/2026: 6% + R$ 4 por item. As faixas mudaram em 15/07/2026: edite com os valores da sua conta."},
+ ml:{n:"Mercado Livre",c:14,f:0,h:"Exemplo de comissão de categoria (cerca de 14%). Varia por categoria e anúncio; frete por peso entra no campo Frete."},
+ custom:{n:"Personalizado",c:15,f:0,h:"Digite a comissão e a taxa fixa de qualquer canal."}
+};
+let sel="shopee";
+const num=v=>{let s=String(v).trim().replace(/[^\d.,-]/g,"");if(s.includes(","))s=s.replace(/\./g,"").replace(",",".");const x=parseFloat(s);return isFinite(x)?x:0};
+const R=v=>isFinite(v)?v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}):"—";
+const T=v=>isFinite(v)?v.toLocaleString("pt-BR",{maximumFractionDigits:1})+"%":"—";
+const val=id=>num($(id).value);
+function calc(k){
+ const d=P[k],p=val("p"),cpf=(k==="shopee"&&$("cpf").checked)?3:0,
+ com=p*d.c/100,fix=d.f+cpf,imp=p*val("i")/100,ads=p*val("a")/100,
+ cost=val("k"),fr=val("s"),oth=val("o"),
+ fee=com+fix,lucro=p-fee-imp-ads-cost-fr-oth,
+ pct=(d.c+val("i")+val("a"))/100,fixed=fix+cost+fr+oth,m=val("m")/100;
+ return{p,com,fix,imp,ads,cost,fr,oth,fee,lucro,marg:p?lucro/p*100:0,
+  be:pct<1?fixed/(1-pct):NaN,sug:(1-pct-m)>0?fixed/(1-pct-m):NaN,rep:p-fee};
+}
+function render(){
+ const r=calc(sel);
+ $("lucro").textContent=R(r.lucro);$("lucro").classList.toggle("neg",r.lucro<0);
+ $("marg").textContent=r.p?"Margem de "+T(r.marg)+" sobre o preço de venda"+(r.lucro<0?" (prejuízo)":""):"Informe o preço de venda";
+ $("taxas").textContent=R(r.fee);$("repasse").textContent=R(r.rep);$("be").textContent=R(r.be);
+ $("sug").textContent=R(r.sug);$("sugl").textContent="Preço para "+T(val("m"))+" de margem";
+ const rows=[["Comissão ("+T(P[sel].c)+")",r.com],["Taxa fixa",r.fix],["Imposto",r.imp],["Anúncios e afiliados",r.ads],["Custo do produto",r.cost],["Frete pago por você",r.fr],["Outros custos",r.oth]];
+ $("rows").innerHTML=rows.map(x=>"<tr><td>"+x[0]+"</td><td>"+R(x[1])+"</td></tr>").join("");
+ const ks=["shopee","tiktok","ml"],all=ks.map(k=>[k,calc(k)]),best=Math.max(...all.map(x=>x[1].lucro));
+ $("cmp").innerHTML=all.map(([k,c])=>"<tr><td>"+P[k].n+(c.lucro===best&&r.p?'<span class="best">melhor</span>':"")+"</td><td>"+R(c.fee)+"</td><td>"+R(c.lucro)+"</td><td>"+T(c.marg)+"</td></tr>").join("");
+}
+function tabs(){
+ $("tabs").innerHTML=Object.keys(P).map(k=>'<button role="tab" type="button" data-k="'+k+'" aria-selected="'+(k===sel)+'">'+P[k].n.replace("Mercado Livre","M. Livre")+"</button>").join("");
+ $("c").value=String(P[sel].c).replace(".",",");$("f").value=P[sel].f.toFixed(2).replace(".",",");
+ $("hint").textContent=P[sel].h;$("cpfbox").style.display=sel==="shopee"?"flex":"none";
+}
+$("tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;sel=b.dataset.k;tabs();render()});
+$("c").addEventListener("input",()=>{P[sel].c=val("c");render()});
+$("f").addEventListener("input",()=>{P[sel].f=val("f");render()});
+["p","k","s","i","a","o","m","cpf"].forEach(id=>$(id).addEventListener("input",render));
+$("copy").addEventListener("click",async()=>{
+ const r=calc(sel),t="Toolyfi - "+P[sel].n+"\nPreço: "+R(r.p)+"\nTaxas: "+R(r.fee)+"\nLucro líquido: "+R(r.lucro)+" ("+T(r.marg)+")\nPreço de equilíbrio: "+R(r.be);
+ try{await navigator.clipboard.writeText(t);$("copy").textContent="Resumo copiado"}catch(e){$("copy").textContent="Não foi possível copiar"}
+ setTimeout(()=>$("copy").textContent="Copiar resumo",1800);
+});
+tabs();render();
+</script>
+</body>
+</html>
