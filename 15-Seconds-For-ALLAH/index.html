@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>15 Seconds for Allah (۱۵ سیکنڈز اللہ کے لیے) — Daily Dhikr Popup, 36,000+ Hadiths & Hadya App | Toolyfi</title>
-  <meta name="description" content="Download 15 Seconds for Allah Android App & Web Portal. Non-blocking Dhikr reminders, 36,000+ Authentic Hadiths, Quranic Duas, Prayer Times, and a server-verified rewards wallet; shared rewards and withdrawals are not active until backend deployment." />
+  <meta name="description" content="Download 15 Seconds for Allah Android App & Web Portal. Non-blocking Dhikr reminders, 36,000+ Authentic Hadiths, Quranic Duas, Prayer Times, and a server-verified points wallet; cash withdrawals and payouts are not currently available." />
   <meta name="keywords" content="15 Seconds for Allah, Islamic Dhikr App, Masnoon Duain Urdu, Sahih Bukhari Urdu Online, Daily Azkar Reminder Popup, Islamic Status Poster Maker, Toolyfi Islamic App, APKPure Islamic App" />
-  <!-- Set to the deployed backend origin after hosting is configured; leave empty to disable rewards safely. -->
-  <meta name="allah15-api-base" content="" />
+  <!-- Deployed Render API origin; keep empty to fail closed and disable rewards. -->
+  <meta name="allah15-api-base" content="https://toolyfi-backend.onrender.com" />
   <link rel="canonical" href="https://toolyfi.com/15-Seconds-For-ALLAH/" />
 
   <!-- Open Graph / WhatsApp / Facebook Preview Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="15 Seconds for Allah • ہر 15 منٹ بعد خودکار ذکر پاپ اپ اور ہدیہ والٹ" />
-  <meta property="og:description" content="دنیا کے کاموں میں صرف 15 سیکنڈ اللہ کے لیے! خودکار ذکر پاپ اپ، 36,000+ احادیث، اور سرور سے تصدیق شدہ rewards؛ مشترکہ پوائنٹس و ادائیگی backend فعال ہونے کے بعد۔" />
+  <meta property="og:description" content="دنیا کے کاموں میں صرف 15 سیکنڈ اللہ کے لیے! خودکار ذکر پاپ اپ، 36,000+ احادیث، اور server-verified points؛ نقد ادائیگی یا withdrawals فی الحال دستیاب نہیں۔" />
   <meta property="og:url" content="https://toolyfi.com/15-Seconds-For-ALLAH/" />
   <meta property="og:site_name" content="Toolyfi • 15 Seconds for Allah" />
 
@@ -53,7 +53,7 @@
             "name": "15 Seconds for Allah ایپ کیا ہے اور کیسے کام کرتی ہے؟",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "یہ ایک اسلامی اینڈرائیڈ ایپ اور ویب پورٹل ہے۔ Rewards wallet صرف Firebase sign-in اور server verification کے ذریعے ہوگا؛ مشترکہ rewards اور ادائیگی backend deployment کے بعد دستیاب ہوں گے۔"
+              "text": "یہ ایک اسلامی اینڈرائیڈ ایپ اور ویب پورٹل ہے۔ Points صرف Firebase sign-in اور server verification کے ذریعے جمع ہوتے ہیں؛ یہ points نقد رقم نہیں اور فی الحال withdrawal دستیاب نہیں۔"
             }
           },
           {
@@ -61,7 +61,7 @@
             "name": "پوائنٹس اور ہدیہ والٹ کب دستیاب ہوگا؟",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "پوائنٹس صرف Google sign-in کے بعد server-verified 15 سیکنڈ session پر جمع ہوں گے۔ Shared wallet اور withdrawals backend اور payout process فعال ہونے تک دستیاب نہیں ہیں۔"
+              "text": "Google sign-in کے بعد مکمل 15 سیکنڈ server-verified session پر points جمع ہوتے ہیں۔ Wallet صرف points دکھاتا ہے؛ کوئی cash value، payout یا withdrawal فی الحال دستیاب نہیں۔"
             }
           }
         ]
@@ -482,11 +482,11 @@
       <!-- 2. Server-verified rewards wallet & Official APK Download Hub -->
       <aside class="card" id="download">
         <h2 style="color:var(--gold);font-size:19px;text-align:center;">🪙 حوصلہ افزائی ہدیہ والٹ اور ایپ ڈاؤن لوڈ</h2>
-        <p style="font-size:13px;color:#CBD5E1;text-align:center;">پوائنٹس backend سے آئیں گے؛ فی الحال ادائیگی یا withdrawal فعال نہیں۔</p>
+        <p style="font-size:13px;color:#CBD5E1;text-align:center;">پوائنٹس صرف Google sign-in اور server verification سے ملتے ہیں؛ نقد ادائیگی یا withdrawal دستیاب نہیں۔</p>
 
         <div class="wallet-balance-box">
-          <div class="pkr-big" id="walletPkrDisplay">Rs. 0.00 PKR</div>
-          <div class="pts-sub" id="walletPtsDisplay">0 server-verified points</div>
+          <div class="pkr-big" id="walletPointsDisplay">0 points</div>
+          <div class="pts-sub" id="walletPtsDisplay">Server-verified points only; no cash value or withdrawal.</div>
         </div>
 
         <button id="googleSignInButton" class="btn btn-teal" style="width:100%;margin-bottom:8px;" onclick="signInWithGoogle()">Google سے محفوظ سائن اِن</button>
@@ -501,8 +501,8 @@
           ⚡ Direct APK Download (GitHub Release)
         </a>
 
-        <button class="btn btn-teal" style="width:100%;" onclick="requestWithdrawal()">
-          💳 ہدیہ نکلوائیں (JazzCash / EasyPaisa Withdraw)
+        <button type="button" class="btn btn-teal" style="width:100%;opacity:0.65;cursor:not-allowed;" disabled aria-disabled="true" title="Cash payouts are not available.">
+          💳 نقد ادائیگی / withdrawal فی الحال دستیاب نہیں
         </button>
       </aside>
     </div>
@@ -543,7 +543,7 @@
       </p>
       <ul style="padding-right:20px;font-size:14px;color:#CBD5E1;">
         <li><b>Non-Blocking Floating Popup:</b> جب آپ موبائل پر کوئی بھی کام کر رہے ہوں، یہ ایپ پوری اسکرین بلاک کیے بغیر اوپر صرف 5 سیکنڈ کا خوبصورت ذکر پاپ اپ دکھاتی ہے۔</li>
-        <li><b>سرور سے تصدیق شدہ rewards:</b> Google sign-in اور backend فعال ہونے کے بعد مکمل 15 سیکنڈ sessions ہی پوائنٹس کے اہل ہوں گے؛ موجودہ build میں shared rewards اور payouts بند ہیں۔</li>
+        <li><b>سرور سے تصدیق شدہ points:</b> Google sign-in کے بعد مکمل 15 سیکنڈ session پر ہی points ملتے ہیں؛ points کی cash value، payout یا withdrawal فی الحال نہیں۔</li>
         <li><b>وائرل اسلامک پوسٹر میکر:</b> ایک کلک میں 1080x1080 ایچ ڈی پوسٹر بنا کر واٹس ایپ اسٹیٹس اور فیس بک پر شیئر کریں۔</li>
       </ul>
     </section>
@@ -702,8 +702,8 @@
 
     function updateWalletUI() {
       const points = Math.max(0, Number(pointsBalance) || 0);
-      document.getElementById('walletPkrDisplay').textContent = 'Rs. ' + (points * 0.01).toFixed(2) + ' PKR';
-      document.getElementById('walletPtsDisplay').textContent = points + ' server-verified points';
+      document.getElementById('walletPointsDisplay').textContent = points.toLocaleString() + ' points';
+      document.getElementById('walletPtsDisplay').textContent = 'Server-verified points only; no cash value or withdrawal.';
     }
 
     function startCountdown() {
@@ -775,7 +775,7 @@
     }
 
     function requestWithdrawal() {
-      alert('ہدیہ نکلوائی ابھی دستیاب نہیں۔ backend اور باقاعدہ payout process فعال ہونے تک یہ بٹن درخواست جمع نہیں کرتا۔');
+      alert('نقد ادائیگی یا withdrawal فی الحال دستیاب نہیں؛ کوئی درخواست جمع نہیں ہوئی۔');
     }
 
     // Initialize from URL params if opened from the Android App
