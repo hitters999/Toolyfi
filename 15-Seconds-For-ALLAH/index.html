@@ -446,7 +446,7 @@
   <main class="main-wrap">
     <!-- Top Viral Hook Banner -->
     <div class="viral-ribbon">
-      ✨ <b>ذکر بھی، محفوظ Rewards بھی!</b> • Google سے حقیقی سائن اِن کے بعد 15 سیکنڈ کی سرگرمی سرور سے تصدیق ہوگی؛ مشترکہ پوائنٹس اور ادائیگی کا نظام backend دستیاب ہونے پر فعال ہوگا۔
+      ✨ <b>ذکر بھی، server-verified points بھی!</b> • Google سے سائن اِن کریں؛ مکمل 15 سیکنڈ کے بعد points سرور سے verify ہوتے ہیں۔ ان points کی cash value، payout یا withdrawal نہیں۔
     </div>
 
     <!-- Hero Grid: Left = 15s Sacred Timer & Dhikr Reader, Right = Hadya Wallet & APK Download -->
@@ -633,7 +633,7 @@
     })();
 
     async function apiRequest(path, method = 'GET', body = null) {
-      if (!apiBase) throw new Error('Reward backend is not deployed/configured');
+      if (!apiBase) throw new Error('Reward API is not configured');
       if (!firebaseAuth?.currentUser || !firebaseSdk) throw new Error('Google sign-in required');
       const token = await firebaseSdk.getIdToken(firebaseAuth.currentUser);
       const response = await fetch(`${apiBase}/api/15-seconds-for-allah${path}`, {
@@ -677,11 +677,11 @@
       if (signedInUser) {
         status.textContent = apiBase
           ? `Firebase کے ذریعے سائن اِن: ${signedInUser.email || 'Google user'}`
-          : `سائن اِن: ${signedInUser.email || 'Google user'} — shared rewards backend ابھی deploy نہیں ہوا۔`;
+          : `سائن اِن: ${signedInUser.email || 'Google user'} — Reward API configure نہیں، اس لیے points sync دستیاب نہیں۔`;
       } else if (apiBase) {
         status.textContent = 'والٹ دیکھنے کے لیے Google سے سائن اِن کریں۔';
       } else {
-        status.textContent = 'Google login دستیاب ہے؛ مشترکہ پوائنٹس backend deploy ہونے تک بند ہیں۔';
+        status.textContent = 'Google login دستیاب ہے؛ points صرف Reward API configure ہونے پر sync ہوں گے۔';
       }
     }
 
@@ -724,7 +724,7 @@
       rewardEl.textContent = !firebaseAuth?.currentUser
         ? '⏳ 15 سیکنڈ کا مطالعہ مکمل کریں؛ پوائنٹس کے لیے پہلے Google سے سائن اِن کریں۔'
         : !apiBase
-          ? '⏳ Timer چل رہا ہے؛ مشترکہ پوائنٹس backend deploy ہونے تک دستیاب نہیں۔'
+          ? '⏳ Timer چل رہا ہے؛ Reward API configure نہ ہونے پر points sync دستیاب نہیں۔'
           : '⏳ سرور reward session کھول رہا ہے۔ 15 سیکنڈ مکمل ہونے پر سرور تصدیق کرے گا۔';
 
       timerInterval = setInterval(async () => {
