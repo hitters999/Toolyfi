@@ -8,6 +8,7 @@ Toolyfi is a collection of practical browser-based tools for everyday work, incl
 - [QR Code Generator](https://toolyfi.com/qr-code-generator.html) — create QR codes directly in the browser.
 - [Password Generator](https://toolyfi.com/password-generator.html) — generate strong random passwords locally.
 - [Unit Converter](https://toolyfi.com/unit-converter.html) — convert common measurements quickly.
+- [Calculadora Shopee](https://toolyfi.com/pt-br/calculadora-shopee/) — calculate Shopee fees, selling price, margin, and net profit in Brazilian reais.
 - [Markdown to HTML Converter](https://toolyfi.com/markdown-to-html-seo.html) — convert Markdown into clean HTML.
 - [Word Counter](https://toolyfi.com/word-counter.html) — count words, characters, and reading time.
 - [BMI Calculator](https://toolyfi.com/bmi-calculator.html) — calculate BMI using height and weight.
