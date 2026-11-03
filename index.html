@@ -1342,6 +1342,56 @@
           min-height: 220px;
         }
       }
+
+      .seo-opportunity {
+        max-width: 1440px;
+        margin: 0 auto;
+        border-left: 1px solid #15243b20;
+        border-right: 1px solid #15243b20;
+        border-top: 1px solid #15243b20;
+        background: var(--card);
+      }
+      .seo-opportunity-inner {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+        gap: 42px;
+        padding: 76px clamp(28px, 6vw, 96px);
+      }
+      .seo-opportunity h2 {
+        margin: 18px 0 16px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(36px, 4.5vw, 64px);
+        font-weight: 500;
+        letter-spacing: -4px;
+        line-height: 0.95;
+      }
+      .seo-opportunity h2 em { color: var(--coral); font-style: italic; }
+      .seo-opportunity-copy p { max-width: 410px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+      .seo-source { margin-top: 24px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+      .seo-source strong { color: var(--ink); }
+      .seo-chart-card { border: 1px solid #15243b24; padding: 22px; background: #fffdf8; }
+      .seo-legend { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; color: var(--muted); font-size: 11px; font-weight: 700; }
+      .seo-legend span::before { display: inline-block; width: 10px; height: 10px; margin-right: 6px; content: ""; vertical-align: -1px; }
+      .seo-legend .volume::before { background: var(--coral); }
+      .seo-legend .kd::before { background: var(--ink); }
+      .seo-row { display: grid; grid-template-columns: minmax(145px, 1.35fr) minmax(110px, 1fr) 52px 48px; align-items: center; gap: 9px; margin: 12px 0; }
+      .seo-keyword { overflow: hidden; color: var(--ink); font-size: 11px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+      .seo-bars { display: grid; gap: 4px; }
+      .seo-bar { height: 9px; min-width: 3px; }
+      .seo-bar.volume { background: var(--coral); }
+      .seo-bar.kd { background: var(--ink); }
+      .seo-number { color: var(--muted); font-size: 11px; font-weight: 700; text-align: right; }
+      .seo-kd-value { color: var(--ink); }
+      .seo-axis { display: flex; justify-content: space-between; margin: 14px 100px 0 154px; color: var(--muted); font-size: 10px; }
+      @media (max-width: 820px) {
+        .seo-opportunity-inner { grid-template-columns: 1fr; gap: 28px; padding: 54px 28px; }
+      }
+      @media (max-width: 560px) {
+        .seo-opportunity-inner { padding: 44px 20px; }
+        .seo-chart-card { padding: 16px 12px; }
+        .seo-row { grid-template-columns: minmax(115px, 1.2fr) minmax(80px, 1fr) 42px 38px; gap: 6px; }
+        .seo-axis { margin-left: 121px; margin-right: 80px; }
+      }
     </style>
     <style>
       .brand-mark-image {
@@ -2026,6 +2076,29 @@
             <h2>Open a tool.<br /><em>Make progress.</em></h2>
           </div>
           <a class="circle" href="#directory" aria-label="Explore all tools">↓</a>
+        </div>
+      </section>
+
+      <section class="seo-opportunity" id="seo-opportunity">
+        <div class="seo-opportunity-inner">
+          <div class="seo-opportunity-copy">
+            <div class="kicker"><span>05</span> BRAZIL SEO SIGNAL</div>
+            <h2>Shopee demand with <em>room to rank.</em></h2>
+            <p>Brazil SEMrush research shows strong monthly demand for a Portuguese Shopee calculator while the core calculator variations remain low difficulty.</p>
+            <div class="actions"><a class="primary" href="pt-br/calculadora-shopee/">Open Shopee calculator <span>↗</span></a></div>
+            <p class="seo-source"><strong>Snapshot:</strong> Brazil database, Nov 2026. Volume is monthly searches; KD is keyword difficulty. The chart uses the target terms selected for Toolyfi’s Portuguese calculator.</p>
+          </div>
+          <div class="seo-chart-card" aria-label="Brazil Portuguese Shopee keyword volume and keyword difficulty chart">
+            <div class="seo-legend"><span class="volume">Monthly searches</span><span class="kd">KD difficulty</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora shopee">calculadora shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:100%"></span><span class="seo-bar kd" style="width:100%"></span></div><span class="seo-number">4.4K</span><span class="seo-number seo-kd-value">14%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora de preço shopee">calculadora de preço shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:3.9%"></span><span class="seo-bar kd" style="width:35.7%"></span></div><span class="seo-number">170</span><span class="seo-number seo-kd-value">5%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora de precificação shopee">calculadora de precificação shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:3.9%"></span><span class="seo-bar kd" style="width:35.7%"></span></div><span class="seo-number">170</span><span class="seo-number seo-kd-value">5%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora de taxas shopee">calculadora de taxas shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:3.9%"></span><span class="seo-bar kd" style="width:42.9%"></span></div><span class="seo-number">170</span><span class="seo-number seo-kd-value">6%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora da shopee">calculadora da shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:4.8%"></span><span class="seo-bar kd" style="width:50%"></span></div><span class="seo-number">210</span><span class="seo-number seo-kd-value">7%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="calculadora taxa shopee">calculadora taxa shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:3.2%"></span><span class="seo-bar kd" style="width:57.1%"></span></div><span class="seo-number">140</span><span class="seo-number seo-kd-value">8%</span></div>
+            <div class="seo-row"><span class="seo-keyword" title="simulador de custos shopee">simulador de custos shopee</span><div class="seo-bars"><span class="seo-bar volume" style="width:3.2%"></span><span class="seo-bar kd" style="width:100%"></span></div><span class="seo-number">140</span><span class="seo-number seo-kd-value">14%</span></div>
+            <div class="seo-axis"><span>0</span><span>1K</span><span>2K</span><span>3K</span><span>4.4K</span></div>
+          </div>
         </div>
       </section>
     </main>
